@@ -11,6 +11,32 @@ Sistemas de numeración decimal, binario y hexadecimal.
 -----------------------------------------------------------------------------
 Apartado 8.1.1.5
 
+Ejercicio: convertir a binario
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Convertir a binario 
+43
+67
+95
+121
+193
+217
+675
+
+
+Ejercicio: convertir a hexadecimal
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+5191
+2193
+21430
+39810
+46712
+
+
+
+
 Conversión entre sistemas.
 -----------------------------------------------------------------------------
 Apartado 8.1.1.5
