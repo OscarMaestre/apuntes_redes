@@ -15,7 +15,8 @@ Ejercicio: convertir a binario
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Convertir a binario 
+Convertir a binario:
+
 * 43
 * 67
 * 95
