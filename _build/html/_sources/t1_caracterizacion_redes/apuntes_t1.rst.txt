@@ -102,6 +102,10 @@ Cable STP: apartado 4.2.1.4
 Cableado estructurado: subsistemas troncales y horizontales.
 -----------------------------------------------------------------------------
 
-Algoritmo de acceso al medio CSMA/CD.Estructura de la trama "Ethernet".
+Algoritmo de acceso al medio CSMA/CD.
 -----------------------------------------------------------------------------
 Apartado 4.4.3.3 página 198
+
+Estructura de la trama "Ethernet".
+---------------------------------------------------------------------------
+Apartado 4.4.4.6
