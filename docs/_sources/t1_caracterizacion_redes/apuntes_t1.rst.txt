@@ -15,24 +15,25 @@ Ejercicio: convertir a binario
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Convertir a binario 
-43
-67
-95
-121
-193
-217
-675
+Convertir a binario:
+
+* 43
+* 67
+* 95
+* 121
+* 193
+* 217
+* 675
 
 
 Ejercicio: convertir a hexadecimal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-5191
-2193
-21430
-39810
-46712
+* 5191
+* 2193
+* 21430
+* 39810
+* 46712
 
 
 
@@ -101,6 +102,10 @@ Cable STP: apartado 4.2.1.4
 Cableado estructurado: subsistemas troncales y horizontales.
 -----------------------------------------------------------------------------
 
-Algoritmo de acceso al medio CSMA/CD.Estructura de la trama "Ethernet".
+Algoritmo de acceso al medio CSMA/CD.
 -----------------------------------------------------------------------------
 Apartado 4.4.3.3 página 198
+
+Estructura de la trama "Ethernet".
+---------------------------------------------------------------------------
+Apartado 4.4.4.6
