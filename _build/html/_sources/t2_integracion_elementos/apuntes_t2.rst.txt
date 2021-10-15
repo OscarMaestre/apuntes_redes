@@ -2,22 +2,62 @@ Integración de elementos en una red
 =========================================
 
 Los medios físicos.
+---------------------------------------------------
+Apartado 1.2.1.4 Página 29
+
 Ancho de banda y tasa de transferencia.
+---------------------------------------------------
+Apartado 4.1.3.2 página 162
+
 Los cables metálicos (coaxial, STP y UTP).
+---------------------------------------------------
+
 Factores físicos que afectan a la transmisión.
+---------------------------------------------------
+
 La conexión inalámbrica.
+---------------------------------------------------
+
 Los espectros de onda de microondas y radio.
+---------------------------------------------------
+
 Topologías.
+---------------------------------------------------
+
 Asociación y autenticación en la WLAN.
+---------------------------------------------------
+
 Direccionamiento.
+---------------------------------------------------
+
 Dominios de colisión y de «broadcast».
+---------------------------------------------------
+
 Direcciones IPv4 y máscaras de red.
+---------------------------------------------------
+
 Protocolos de resolución de direcciones ARP, RARP.
+---------------------------------------------------
+
 Direcciones Ipv6
+---------------------------------------------------
+
 Conjuntos de protocolos IPv6
+---------------------------------------------------
+
 Túneles IPv6
+---------------------------------------------------
+
 Direccionamiento dinámico (DHCP).
+---------------------------------------------------
+
 Adaptadores.
+---------------------------------------------------
+
 Adaptadores alámbricos: instalación y configuración.Adaptadores inalámbricos: instalación y configuración.
+---------------------------------------------------
+
 Monitorización de la red mediante aplicaciones que usan el protocolo SNMP.
+---------------------------------------------------
+
 

@@ -108,4 +108,4 @@ Apartado 4.4.3.3 página 198
 
 Estructura de la trama "Ethernet".
 ---------------------------------------------------------------------------
-Apartado 4.4.4.6
+Apartado 4.4.4.6, página 209
