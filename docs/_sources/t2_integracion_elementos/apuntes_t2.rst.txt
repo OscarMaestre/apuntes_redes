@@ -55,9 +55,9 @@ Adaptadores.
 ---------------------------------------------------
 
 Adaptadores alámbricos: instalación y configuración.Adaptadores inalámbricos: instalación y configuración.
----------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
 
 Monitorización de la red mediante aplicaciones que usan el protocolo SNMP.
----------------------------------------------------
+---------------------------------------------------------------------------------
 
 
