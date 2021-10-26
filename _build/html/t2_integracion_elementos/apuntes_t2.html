@@ -39,28 +39,264 @@
 <section id="los-medios-fisicos">
 <h2>Los medios físicos.<a class="headerlink" href="#los-medios-fisicos" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Apartado 1.2.1.4 Página 29</p>
+<section id="los-cables-metalicos-coaxial-stp-y-utp">
+<h3>Los cables metálicos (coaxial, STP y UTP).<a class="headerlink" href="#los-cables-metalicos-coaxial-stp-y-utp" title="Enlazar permanentemente con este título">¶</a></h3>
+<p><a href="#id1"><span class="problematic" id="id2">*</span></a>Cable coaxial: apartado 4.2.1.5, página 168.
+<a href="#id3"><span class="problematic" id="id4">*</span></a>Cable UTP: apartado 4.2.2.1, página 170.
+<a href="#id5"><span class="problematic" id="id6">*</span></a>Cable STP: apartado 4.2.1.4, página 167.</p>
+</section>
+<section id="fibra-optica-y-tipos-de-fibra">
+<h3>Fibra óptica y tipos de fibra.<a class="headerlink" href="#fibra-optica-y-tipos-de-fibra" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Apartado 4.2.3.3, página 176.</p>
+</section>
 </section>
 <section id="ancho-de-banda-y-tasa-de-transferencia">
 <h2>Ancho de banda y tasa de transferencia.<a class="headerlink" href="#ancho-de-banda-y-tasa-de-transferencia" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Apartado 4.1.3.2 página 162</p>
+<p>En realidad antes de comprender el ancho de banda necesitamos comprender algunos conceptos básicos y que indicamos en los siguientes apartados</p>
+<section id="analogico-vs-digital">
+<h3>Analógico vs digital<a class="headerlink" href="#analogico-vs-digital" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><p>Una señal analógica es una señal en la que aceptamos cualquier valor.</p></li>
+<li><p>Una señal digital es una en la que solo se aceptan ciertos valores.</p></li>
+</ul>
 </section>
-<section id="los-cables-metalicos-coaxial-stp-y-utp">
-<h2>Los cables metálicos (coaxial, STP y UTP).<a class="headerlink" href="#los-cables-metalicos-coaxial-stp-y-utp" title="Enlazar permanentemente con este título">¶</a></h2>
+<section id="parametros-de-una-senal">
+<h3>Parámetros de una señal.<a class="headerlink" href="#parametros-de-una-senal" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><p>Se llama amplitud a la altura de una onda. Cabe destacar que por altura nos referimos a la distancia entre el punto más alto y más bajo de una señal.</p></li>
+<li><p>Se llama longitud de onda a la distancia que recorre una señal entera. Se mide en metros (o mm, o hasta nanómetros)</p></li>
+<li><p>Se llama fase al punto donde empieza y acaba la onda, que no tiene por qué ser siempre el punto 0 o el punto más alto.</p></li>
+</ul>
+</section>
+<section id="modulacion">
+<h3>Modulación<a class="headerlink" href="#modulacion" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Modificar parámetros de una señal para enviar 0 y 1. Si combinamos la modificación de muchos parámetros conseguiremos enviar más bits por segundo, pero la recepción se vuelve algo muy complejo.</p>
+</section>
+<section id="medidas">
+<h3>Medidas<a class="headerlink" href="#medidas" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>En informática, en general 1K=1024. Sin embargo, en redes, las medidas como 1=1000. Por tanto si nos hablan de una conexión de 300Mbps, se refieren a 300*10e6. Además se debe recordar que:</p>
+<ul class="simple">
+<li><p>«b» (en minúscula) se refiere a <em>bits</em>.</p></li>
+<li><p>«B» (en mayúscula) se refiere a <em>bytes</em>.</p></li>
+</ul>
+<p>Pero ¿entonces qué es el ancho de banda? Se define como la diferencia entre la frecuencia máxima que se acepta y la frecuencia mínima. Cuanto más ancha sea esa banda, más datos podremos meter. No es lo mismo que la <em>velocidad</em>.</p>
+<p>La diferencia entre el ancho de banda y la velocidad, es lo que llamamos <em>rendimiento</em>, que se mide en porcentaje y nunca es del 100%</p>
+<ul class="simple">
+<li><p>Si tenemos una fibra de 600Mbps, y perdemos el 8% en protocolos, ¿a qué velocidad nos descargaremos un archivo?</p></li>
+</ul>
+<p>Si pierdo el 8%, conservamos el 92, es decir 0.92*600=552Mbps. Si un archivo ocupa 400MB, entonces ocupa 400*8Mb, es decir 3200Mb, que en realidad es 3200*1024 Kb, o lo que es lo mismo 3200*1024*1024 bits, o sea 3.355.443.200 bits. Si queremos descargar esos 3.355.443.200 bits en una fibra de 552Mbps, aún tendremos que convertir 552 «medidas estándar», es decir 552.000.000 bits por segundo.</p>
+<p>Conclusión: si dividimos 3.355.443.200 bits por 552.000.000 obtenemos 6,078 segundos.</p>
+</section>
 </section>
 <section id="factores-fisicos-que-afectan-a-la-transmision">
 <h2>Factores físicos que afectan a la transmisión.<a class="headerlink" href="#factores-fisicos-que-afectan-a-la-transmision" title="Enlazar permanentemente con este título">¶</a></h2>
 </section>
 <section id="la-conexion-inalambrica">
 <h2>La conexión inalámbrica.<a class="headerlink" href="#la-conexion-inalambrica" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Se han popularizado mucho por ofrecer una ventaja inexistente en otros medios: la movilidad. Las redes Wifi usan el estándar 802.11, del cual ha habido muchas variantes:</p>
+<ul class="simple">
+<li><p>802.11a), fue el primero, que ofrecía un máximo de 11Mbps, un alcance de unos pocos metros.</p></li>
+<li><p>802.11n) ofrece mucha más velocidad y alcance.</p></li>
+</ul>
+<p>Aparte de eso, las redes Wifi son más inseguras.</p>
+<p>Un detalle muy sutil es que en ocasiones los usuarios usan la clave correcta en la red equivocada.</p>
+<p>Si nuestro portátil tiene una tarjeta WiFi 802.11n) y nuestro router wifi resulta ser 802.11 a) ambos dispositivos cambian automáticamente al protocolo más compatible, que será el más lento.</p>
+<p>Toda red Wifi tiene un identificador llamado SSID. La costumbre es que los nodos difundan el nombre. Sin embargo no es obligatorio, puede activarse una opción con un nombre parecido a este «Not broadcast SSID»</p>
+<p>Hay muchos tipos de conexiones:</p>
+<ul class="simple">
+<li><p>Wifi: conexión doméstica, con alcance alto y una velocidad alta.</p></li>
+<li><p>Bluetooth:  punto a punto, velocidad baja y un alcance bajo, consume muy poca energía.</p></li>
+<li><p>4G, 5G.</p></li>
+</ul>
 </section>
 <section id="los-espectros-de-onda-de-microondas-y-radio">
 <h2>Los espectros de onda de microondas y radio.<a class="headerlink" href="#los-espectros-de-onda-de-microondas-y-radio" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Apartado….</p>
 </section>
 <section id="topologias">
 <h2>Topologías.<a class="headerlink" href="#topologias" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><p>Bus: los equipos forman una línea y cada equipo tiene que averiguar al principio qué ordenadores están a su izquierda y cuales a su derecha. <strong>Obsoleto</strong></p></li>
+<li><p>Anillo: antiguo,  los equipos se conectaban en círculo y había un sentido de giro en el envío de paquetes, el sistema era un poco mejor, pero los cortes en el cable producían errores en toda la red. <strong>Muy improbable que sigan usándose.</strong></p></li>
+<li><p>Estrella: la conexión de los cables implica conectar todos los dispositivos a un punto central que retransmite los datos el equipo correcto. <strong>Es prácticamente el único sistema que queda en uso</strong></p></li>
+</ul>
 </section>
 <section id="asociacion-y-autenticacion-en-la-wlan">
 <h2>Asociación y autenticación en la WLAN.<a class="headerlink" href="#asociacion-y-autenticacion-en-la-wlan" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Se llama «autenticación» al proceso seguido por un punto de acceso para ver si un equipo va a tener permiso para enviar y recibir datos a través de ese punto de acceso.</p>
+<p>Se llama «asociación» al proceso por el cual un dispositivo utiliza el permiso concedido en el punto anterior para enviar y recibir datos.</p>
+<p>Dentro de los sistemas de autenticación:</p>
+<ul class="simple">
+<li><p>Deshabilitado: cualquier puede asociarse al punto de acceso y transmitir y recibir.</p></li>
+<li><p>WEP (Wire Equivalent Privacy) usa un sistema de cifrado y un sistema de claves. Quien proporcione la clave correcta podrá asociarse al punto de acceso y enviar y recibir datos cifrados con una clave del router.</p></li>
+<li><p>WPA: usa un cifrado más potente y mucho más difícil de romper que WEP.</p></li>
+<li><p>WPA2: va aún más lejos y ofrece una seguridad mucho mayor.</p></li>
+</ul>
+<p>WEP, WPA y WPA2 suelen basarse un sistema llamado PSK (Pre-Shared Key o clave pre-compartida). En estos casos ponemos una clave en los router/puntos de acceso que luego también pondremos en los ordenadores. Estos sistemas suelen llamarse WPA-PSK y WPA2-PSK.</p>
+<p>Existe una variante: WPA,WPA2 usan un tercer equipo que actúa de servidor de autenticación.</p>
+<p>En todos los sistemas de autenticación ocurre lo siguiente:
+* Los sistemas de cifrado pueden ser más potentes o más débiles. Los más potentes implican velocidades más lentas al gastar más tiempo en el cifrado y descifrado.
+* Una vez que un dispositivo envía una petición de conexión el router/punto de acceso envía una petición de clave.
+* Si el dispositivo envía una clave correcta, el router envía una clave de cifrado que se usará durante toda la sesión.</p>
+</section>
+<section id="dispositivos-hardware-en-redes-hubs-aps-switches-y-routers">
+<h2>Dispositivos hardware en redes: hubs, APs, switches y routers<a class="headerlink" href="#dispositivos-hardware-en-redes-hubs-aps-switches-y-routers" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Dispositivos hay muchos, pero no todos ellos trabajan en la misma capa de red.</p>
+<section id="hub">
+<h3>Hub<a class="headerlink" href="#hub" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Un hub o concentrador es un dispositivo «tonto», cualquier paquete que reciba lo difunde por todos los puertos Ethernet. Por lo tanto es un dispositivo de capa de enlace.</p>
+</section>
+<section id="switch">
+<h3>Switch<a class="headerlink" href="#switch" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Un switch es un dispositivo con un software incorporado que ejecuta un programa que apoyándose en una memoria RAM interna consigue enviar los paquetes <strong>solo al destinatario correcto</strong>. En un pequeño número sí generará colisiones, pero su número es muchísimo menor que el de un hub.</p>
+</section>
+<section id="ejemplo-de-simulacion-con-switch">
+<h3>Ejemplo de simulación con switch<a class="headerlink" href="#ejemplo-de-simulacion-con-switch" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Supongamos que tenemos un switch. Supongamos que tenemos tres ordenadores:</p>
+<ul class="simple">
+<li><p>Ordenador con IP 192.168.1.20 con MAC 0A conectado al puerto 2 del switch.</p></li>
+<li><p>Ordenador con IP 192.168.1.21 con MAC 0B conectado al puerto 5 del switch.</p></li>
+<li><p>Ordenador con IP 192.168.1.22 con MAC 0C conectado al puerto 9 del switch.</p></li>
+</ul>
+<p>Al principio la tabla del switch está en este estado:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 62%" />
+<col style="width: 38%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Puerto</p></td>
+<td><p>Mac</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Ahora supongamos que en el 192.168.1.20 envía un ping al 192.168.1.22. El 192.168.1.20 mete el mensaje (que llevará la MAC de origen 0A dentro) en su cable que llega al switch.</p>
+<p>El switch se encuentra con dos cosas:</p>
+<ol class="arabic simple">
+<li><p>No sabe en qué puerto está el ordenador 0C que es el destinatario final: <strong>no tendrá más remedio que enviar ese paquete por todos los puertos menos por donde vino</strong></p></li>
+<li><p>El switch acaba de aprender y apuntar en su tabla que el ordenador con la MAC 0A está en el puerto 2, así que ahora la tabla del switch queda como sigue:</p></li>
+</ol>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 62%" />
+<col style="width: 38%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Puerto</p></td>
+<td><p>Mac</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>0A</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>El mensaje llegará a todos los ordenadores y casi todos lo descartarán pero el «ping» llegará correctamente al 0C el cual enviará un mensaje de respuesta usando como MAC de origen 0C. Ese mensaje llega al switch que ahora se encuentra con dos cosas:</p>
+<ol class="arabic simple">
+<li><p>El ordenador con la MAC 0C está conectado al puerto 9, así que ese conocimiento nuevo se apunta en la tabla quedará como sigue:</p></li>
+</ol>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 62%" />
+<col style="width: 38%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Puerto</p></td>
+<td><p>Mac</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>0A</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>0C</p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple" start="2">
+<li><p>El switch sabe que tiene que enviar un paquete al 0A así que analiza su tabla de direcciones. Al analizar su tabla y observar que tiene apunta que ese destinatario 0A está en el puerto 2 <strong>EL PAQUETE SE ENVÍA SOLO POR EL PUERTO CORRECTO</strong> sin generar colisiones en otros puntos de la red.</p></li>
+</ol>
+</section>
 </section>
 <section id="direccionamiento">
 <h2>Direccionamiento.<a class="headerlink" href="#direccionamiento" title="Enlazar permanentemente con este título">¶</a></h2>
@@ -118,14 +354,29 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../t1_caracterizacion_redes/apuntes_t1.html">Caracterización de redes</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Integración de elementos en una red</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#los-medios-fisicos">Los medios físicos.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ancho-de-banda-y-tasa-de-transferencia">Ancho de banda y tasa de transferencia.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#los-cables-metalicos-coaxial-stp-y-utp">Los cables metálicos (coaxial, STP y UTP).</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#los-medios-fisicos">Los medios físicos.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#los-cables-metalicos-coaxial-stp-y-utp">Los cables metálicos (coaxial, STP y UTP).</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fibra-optica-y-tipos-de-fibra">Fibra óptica y tipos de fibra.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ancho-de-banda-y-tasa-de-transferencia">Ancho de banda y tasa de transferencia.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#analogico-vs-digital">Analógico vs digital</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parametros-de-una-senal">Parámetros de una señal.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modulacion">Modulación</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#medidas">Medidas</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#factores-fisicos-que-afectan-a-la-transmision">Factores físicos que afectan a la transmisión.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#la-conexion-inalambrica">La conexión inalámbrica.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#los-espectros-de-onda-de-microondas-y-radio">Los espectros de onda de microondas y radio.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#topologias">Topologías.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#asociacion-y-autenticacion-en-la-wlan">Asociación y autenticación en la WLAN.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dispositivos-hardware-en-redes-hubs-aps-switches-y-routers">Dispositivos hardware en redes: hubs, APs, switches y routers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hub">Hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#switch">Switch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ejemplo-de-simulacion-con-switch">Ejemplo de simulación con switch</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#direccionamiento">Direccionamiento.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dominios-de-colision-y-de-broadcast">Dominios de colisión y de «broadcast».</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#direcciones-ipv4-y-mascaras-de-red">Direcciones IPv4 y máscaras de red.</a></li>
