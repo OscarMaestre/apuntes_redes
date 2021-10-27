@@ -7,9 +7,9 @@ Apartado 1.2.1.4 Página 29
 
 Los cables metálicos (coaxial, STP y UTP).
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-*Cable coaxial: apartado 4.2.1.5, página 168.
-*Cable UTP: apartado 4.2.2.1, página 170.
-*Cable STP: apartado 4.2.1.4, página 167.
+* Cable coaxial: apartado 4.2.1.5, página 168.
+* Cable UTP: apartado 4.2.2.1, página 170.
+* Cable STP: apartado 4.2.1.4, página 167.
 
 Fibra óptica y tipos de fibra.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -248,11 +248,58 @@ El mensaje llegará a todos los ordenadores y casi todos lo descartarán pero el
 Direccionamiento. 
 ---------------------------------------------------
 
+Hasta ahora hemos visto que hay muchas capas de red: enlace, red, transporte, aplicación. Cada capa tiene su propio sistema de direcciones:
+
+* En Ethernet hemos aprendido que las direcciones son de 48 bits, que se escriben como parejas de números hexadecimales, por ejemplo 3a:d1:f3:55:a8:10. Se debe recordar que hay una dirección Ethernet especial llamada "dirección de broadcast" o "dirección de difusión". Cuando un dispositivo quiere enviar un mensaje a toda la red, pone la dirección ff:ff:ff:ff:ff:ff como dirección de destino. Esto se hace por ejemplo en ARP cuando un ordenador quiere averiguar la MAC teniendo solo su IP. Los switches SIEMPRE OBEDECEN ESAS DIFUSIONES.
+
+* Si hay muchos sistemas de direcciones siempre va a ser necesario "traducir entre ellos". Y por ejemplo ya conocemos ARP (Address Resolution Protocol), el cual dada una IP usa difusiones para averiguar la MAC de dicho ordenador con esa IP.
+
+Ethernet en realidad divide la MAC en dos partes: los tres primeros pares son el código de fabricante. Los tres últimos son el número de la tarjeta.
+
 Dominios de colisión y de "broadcast".
 ---------------------------------------------------
+* Se llama "dominio de colisión" al conjunto de equipos que son susceptibles de provocarse colisiones mutuamente. En general es mucho mejor para el rendimiento el tener muchos dominios pequeños en lugar de uno grande.
+
+* Dominio de broadcast o dominio de difusión es el conjunto de ordenadores que reciben las difusiones de un ordenador.
+
+Un dominio de difusón **NO TIENE POR QUÉ COINCIDIR** con el dominio de colisiones en una red.
 
 Direcciones IPv4 y máscaras de red.
 ---------------------------------------------------
+Las direcciones IP son las direcciones de la capa software de red más extendida. La capa de red va a ser capaz de enviar datos a sitios remotos. Las direcciones IP están pensadas para poder distinguir un dispositivo cualquiera de cualquier otro del mundo.
+
+Las direcciones IP son software, son un parámetro de configuración. La capa de red sirve como "abstracción" de la capa de enlace Ethernet.
+
+En esencia una dirección IP es una secuencia binaria de 32 bits, como esta:
+
+10010000.11110001.01110011.10101011
+
+
+Como son muy poco prácticas de manejar y recordar, se suele permitir el escribirlas como números en decimal separados por un punto.
+
+
+* El primer byte de la dirección dada es 10010000, que en decimal es 144.
+* El segundo byte es 11110001, que en decimal es 241.
+* El tercer byte es 01110011, que en decimal es 115.
+* El cuarto byte es 10101011, que en decimal es 171.
+
+Por tanto esa IP era 144.241.115.171.
+
+
+
+La idea original era que con 32 bits se podrían tener 2 a la 32 equipos, es decir 4.294.967.296 ordenadores.
+
+Como aparentemente había direcciones de sobra, se decidió asignarlas en bloques. Como una IP debe servir para poner número a las redes, y dentro de las redes poner número a cada equipo de esa red, se decidió utilizar siempre una secuencia llamada máscara para poder distinguir cual es el número de red y cual es el número de host.
+
+
+Supongamos que en un cierto sitio se tiene una red. Si en un ordenador nos han dado una secuencia de bits como la de arriba 10010000.11110001.01110011.10101011 (que en decimal era 144.241.115.171 ) ¿como saber cual es la parte de red y la parte de host. La clave es mirar ese parámetro llamado máscara. Supongamos que esa máscara es 255.0.0.0. Si la pasamos a binario sale que la máscara es 11111111.00000000.00000000.00000000.
+
++---------------+-------------------------------------------------+
+| Num de red    |      Número de host                             |
++---------------+-------------------------------------------------+
+| 10010000      | 11110001.01110011.10101011                      |
++---------------+-------------------------------------------------+
+
 
 Protocolos de resolución de direcciones ARP, RARP.
 ---------------------------------------------------

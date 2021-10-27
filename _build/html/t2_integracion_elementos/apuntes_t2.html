@@ -4,15 +4,15 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Integración de elementos en una red &#8212; documentación de Apuntes de redes - 1.0</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <script src="../_static/translations.js"></script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
@@ -34,46 +34,48 @@
 
           <div class="body" role="main">
             
-  <section id="integracion-de-elementos-en-una-red">
+  <div class="section" id="integracion-de-elementos-en-una-red">
 <h1>Integración de elementos en una red<a class="headerlink" href="#integracion-de-elementos-en-una-red" title="Enlazar permanentemente con este título">¶</a></h1>
-<section id="los-medios-fisicos">
+<div class="section" id="los-medios-fisicos">
 <h2>Los medios físicos.<a class="headerlink" href="#los-medios-fisicos" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Apartado 1.2.1.4 Página 29</p>
-<section id="los-cables-metalicos-coaxial-stp-y-utp">
+<div class="section" id="los-cables-metalicos-coaxial-stp-y-utp">
 <h3>Los cables metálicos (coaxial, STP y UTP).<a class="headerlink" href="#los-cables-metalicos-coaxial-stp-y-utp" title="Enlazar permanentemente con este título">¶</a></h3>
-<p><a href="#id1"><span class="problematic" id="id2">*</span></a>Cable coaxial: apartado 4.2.1.5, página 168.
-<a href="#id3"><span class="problematic" id="id4">*</span></a>Cable UTP: apartado 4.2.2.1, página 170.
-<a href="#id5"><span class="problematic" id="id6">*</span></a>Cable STP: apartado 4.2.1.4, página 167.</p>
-</section>
-<section id="fibra-optica-y-tipos-de-fibra">
+<ul class="simple">
+<li><p>Cable coaxial: apartado 4.2.1.5, página 168.</p></li>
+<li><p>Cable UTP: apartado 4.2.2.1, página 170.</p></li>
+<li><p>Cable STP: apartado 4.2.1.4, página 167.</p></li>
+</ul>
+</div>
+<div class="section" id="fibra-optica-y-tipos-de-fibra">
 <h3>Fibra óptica y tipos de fibra.<a class="headerlink" href="#fibra-optica-y-tipos-de-fibra" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Apartado 4.2.3.3, página 176.</p>
-</section>
-</section>
-<section id="ancho-de-banda-y-tasa-de-transferencia">
+</div>
+</div>
+<div class="section" id="ancho-de-banda-y-tasa-de-transferencia">
 <h2>Ancho de banda y tasa de transferencia.<a class="headerlink" href="#ancho-de-banda-y-tasa-de-transferencia" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Apartado 4.1.3.2 página 162</p>
 <p>En realidad antes de comprender el ancho de banda necesitamos comprender algunos conceptos básicos y que indicamos en los siguientes apartados</p>
-<section id="analogico-vs-digital">
+<div class="section" id="analogico-vs-digital">
 <h3>Analógico vs digital<a class="headerlink" href="#analogico-vs-digital" title="Enlazar permanentemente con este título">¶</a></h3>
 <ul class="simple">
 <li><p>Una señal analógica es una señal en la que aceptamos cualquier valor.</p></li>
 <li><p>Una señal digital es una en la que solo se aceptan ciertos valores.</p></li>
 </ul>
-</section>
-<section id="parametros-de-una-senal">
+</div>
+<div class="section" id="parametros-de-una-senal">
 <h3>Parámetros de una señal.<a class="headerlink" href="#parametros-de-una-senal" title="Enlazar permanentemente con este título">¶</a></h3>
 <ul class="simple">
 <li><p>Se llama amplitud a la altura de una onda. Cabe destacar que por altura nos referimos a la distancia entre el punto más alto y más bajo de una señal.</p></li>
 <li><p>Se llama longitud de onda a la distancia que recorre una señal entera. Se mide en metros (o mm, o hasta nanómetros)</p></li>
 <li><p>Se llama fase al punto donde empieza y acaba la onda, que no tiene por qué ser siempre el punto 0 o el punto más alto.</p></li>
 </ul>
-</section>
-<section id="modulacion">
+</div>
+<div class="section" id="modulacion">
 <h3>Modulación<a class="headerlink" href="#modulacion" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Modificar parámetros de una señal para enviar 0 y 1. Si combinamos la modificación de muchos parámetros conseguiremos enviar más bits por segundo, pero la recepción se vuelve algo muy complejo.</p>
-</section>
-<section id="medidas">
+</div>
+<div class="section" id="medidas">
 <h3>Medidas<a class="headerlink" href="#medidas" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>En informática, en general 1K=1024. Sin embargo, en redes, las medidas como 1=1000. Por tanto si nos hablan de una conexión de 300Mbps, se refieren a 300*10e6. Además se debe recordar que:</p>
 <ul class="simple">
@@ -87,12 +89,12 @@
 </ul>
 <p>Si pierdo el 8%, conservamos el 92, es decir 0.92*600=552Mbps. Si un archivo ocupa 400MB, entonces ocupa 400*8Mb, es decir 3200Mb, que en realidad es 3200*1024 Kb, o lo que es lo mismo 3200*1024*1024 bits, o sea 3.355.443.200 bits. Si queremos descargar esos 3.355.443.200 bits en una fibra de 552Mbps, aún tendremos que convertir 552 «medidas estándar», es decir 552.000.000 bits por segundo.</p>
 <p>Conclusión: si dividimos 3.355.443.200 bits por 552.000.000 obtenemos 6,078 segundos.</p>
-</section>
-</section>
-<section id="factores-fisicos-que-afectan-a-la-transmision">
+</div>
+</div>
+<div class="section" id="factores-fisicos-que-afectan-a-la-transmision">
 <h2>Factores físicos que afectan a la transmisión.<a class="headerlink" href="#factores-fisicos-que-afectan-a-la-transmision" title="Enlazar permanentemente con este título">¶</a></h2>
-</section>
-<section id="la-conexion-inalambrica">
+</div>
+<div class="section" id="la-conexion-inalambrica">
 <h2>La conexión inalámbrica.<a class="headerlink" href="#la-conexion-inalambrica" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Se han popularizado mucho por ofrecer una ventaja inexistente en otros medios: la movilidad. Las redes Wifi usan el estándar 802.11, del cual ha habido muchas variantes:</p>
 <ul class="simple">
@@ -109,20 +111,20 @@
 <li><p>Bluetooth:  punto a punto, velocidad baja y un alcance bajo, consume muy poca energía.</p></li>
 <li><p>4G, 5G.</p></li>
 </ul>
-</section>
-<section id="los-espectros-de-onda-de-microondas-y-radio">
+</div>
+<div class="section" id="los-espectros-de-onda-de-microondas-y-radio">
 <h2>Los espectros de onda de microondas y radio.<a class="headerlink" href="#los-espectros-de-onda-de-microondas-y-radio" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Apartado….</p>
-</section>
-<section id="topologias">
+</div>
+<div class="section" id="topologias">
 <h2>Topologías.<a class="headerlink" href="#topologias" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><p>Bus: los equipos forman una línea y cada equipo tiene que averiguar al principio qué ordenadores están a su izquierda y cuales a su derecha. <strong>Obsoleto</strong></p></li>
 <li><p>Anillo: antiguo,  los equipos se conectaban en círculo y había un sentido de giro en el envío de paquetes, el sistema era un poco mejor, pero los cortes en el cable producían errores en toda la red. <strong>Muy improbable que sigan usándose.</strong></p></li>
 <li><p>Estrella: la conexión de los cables implica conectar todos los dispositivos a un punto central que retransmite los datos el equipo correcto. <strong>Es prácticamente el único sistema que queda en uso</strong></p></li>
 </ul>
-</section>
-<section id="asociacion-y-autenticacion-en-la-wlan">
+</div>
+<div class="section" id="asociacion-y-autenticacion-en-la-wlan">
 <h2>Asociación y autenticación en la WLAN.<a class="headerlink" href="#asociacion-y-autenticacion-en-la-wlan" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Se llama «autenticación» al proceso seguido por un punto de acceso para ver si un equipo va a tener permiso para enviar y recibir datos a través de ese punto de acceso.</p>
 <p>Se llama «asociación» al proceso por el cual un dispositivo utiliza el permiso concedido en el punto anterior para enviar y recibir datos.</p>
@@ -139,19 +141,19 @@
 * Los sistemas de cifrado pueden ser más potentes o más débiles. Los más potentes implican velocidades más lentas al gastar más tiempo en el cifrado y descifrado.
 * Una vez que un dispositivo envía una petición de conexión el router/punto de acceso envía una petición de clave.
 * Si el dispositivo envía una clave correcta, el router envía una clave de cifrado que se usará durante toda la sesión.</p>
-</section>
-<section id="dispositivos-hardware-en-redes-hubs-aps-switches-y-routers">
+</div>
+<div class="section" id="dispositivos-hardware-en-redes-hubs-aps-switches-y-routers">
 <h2>Dispositivos hardware en redes: hubs, APs, switches y routers<a class="headerlink" href="#dispositivos-hardware-en-redes-hubs-aps-switches-y-routers" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Dispositivos hay muchos, pero no todos ellos trabajan en la misma capa de red.</p>
-<section id="hub">
+<div class="section" id="hub">
 <h3>Hub<a class="headerlink" href="#hub" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Un hub o concentrador es un dispositivo «tonto», cualquier paquete que reciba lo difunde por todos los puertos Ethernet. Por lo tanto es un dispositivo de capa de enlace.</p>
-</section>
-<section id="switch">
+</div>
+<div class="section" id="switch">
 <h3>Switch<a class="headerlink" href="#switch" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Un switch es un dispositivo con un software incorporado que ejecuta un programa que apoyándose en una memoria RAM interna consigue enviar los paquetes <strong>solo al destinatario correcto</strong>. En un pequeño número sí generará colisiones, pero su número es muchísimo menor que el de un hub.</p>
-</section>
-<section id="ejemplo-de-simulacion-con-switch">
+</div>
+<div class="section" id="ejemplo-de-simulacion-con-switch">
 <h3>Ejemplo de simulación con switch<a class="headerlink" href="#ejemplo-de-simulacion-con-switch" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Supongamos que tenemos un switch. Supongamos que tenemos tres ordenadores:</p>
 <ul class="simple">
@@ -296,42 +298,82 @@
 <ol class="arabic simple" start="2">
 <li><p>El switch sabe que tiene que enviar un paquete al 0A así que analiza su tabla de direcciones. Al analizar su tabla y observar que tiene apunta que ese destinatario 0A está en el puerto 2 <strong>EL PAQUETE SE ENVÍA SOLO POR EL PUERTO CORRECTO</strong> sin generar colisiones en otros puntos de la red.</p></li>
 </ol>
-</section>
-</section>
-<section id="direccionamiento">
+</div>
+</div>
+<div class="section" id="direccionamiento">
 <h2>Direccionamiento.<a class="headerlink" href="#direccionamiento" title="Enlazar permanentemente con este título">¶</a></h2>
-</section>
-<section id="dominios-de-colision-y-de-broadcast">
+<p>Hasta ahora hemos visto que hay muchas capas de red: enlace, red, transporte, aplicación. Cada capa tiene su propio sistema de direcciones:</p>
+<ul class="simple">
+<li><p>En Ethernet hemos aprendido que las direcciones son de 48 bits, que se escriben como parejas de números hexadecimales, por ejemplo 3a:d1:f3:55:a8:10. Se debe recordar que hay una dirección Ethernet especial llamada «dirección de broadcast» o «dirección de difusión». Cuando un dispositivo quiere enviar un mensaje a toda la red, pone la dirección ff:ff:ff:ff:ff:ff como dirección de destino. Esto se hace por ejemplo en ARP cuando un ordenador quiere averiguar la MAC teniendo solo su IP. Los switches SIEMPRE OBEDECEN ESAS DIFUSIONES.</p></li>
+<li><p>Si hay muchos sistemas de direcciones siempre va a ser necesario «traducir entre ellos». Y por ejemplo ya conocemos ARP (Address Resolution Protocol), el cual dada una IP usa difusiones para averiguar la MAC de dicho ordenador con esa IP.</p></li>
+</ul>
+<p>Ethernet en realidad divide la MAC en dos partes: los tres primeros pares son el código de fabricante. Los tres últimos son el número de la tarjeta.</p>
+</div>
+<div class="section" id="dominios-de-colision-y-de-broadcast">
 <h2>Dominios de colisión y de «broadcast».<a class="headerlink" href="#dominios-de-colision-y-de-broadcast" title="Enlazar permanentemente con este título">¶</a></h2>
-</section>
-<section id="direcciones-ipv4-y-mascaras-de-red">
+<ul class="simple">
+<li><p>Se llama «dominio de colisión» al conjunto de equipos que son susceptibles de provocarse colisiones mutuamente. En general es mucho mejor para el rendimiento el tener muchos dominios pequeños en lugar de uno grande.</p></li>
+<li><p>Dominio de broadcast o dominio de difusión es el conjunto de ordenadores que reciben las difusiones de un ordenador.</p></li>
+</ul>
+<p>Un dominio de difusón <strong>NO TIENE POR QUÉ COINCIDIR</strong> con el dominio de colisiones en una red.</p>
+</div>
+<div class="section" id="direcciones-ipv4-y-mascaras-de-red">
 <h2>Direcciones IPv4 y máscaras de red.<a class="headerlink" href="#direcciones-ipv4-y-mascaras-de-red" title="Enlazar permanentemente con este título">¶</a></h2>
-</section>
-<section id="protocolos-de-resolucion-de-direcciones-arp-rarp">
+<p>Las direcciones IP son las direcciones de la capa software de red más extendida. La capa de red va a ser capaz de enviar datos a sitios remotos. Las direcciones IP están pensadas para poder distinguir un dispositivo cualquiera de cualquier otro del mundo.</p>
+<p>Las direcciones IP son software, son un parámetro de configuración. La capa de red sirve como «abstracción» de la capa de enlace Ethernet.</p>
+<p>En esencia una dirección IP es una secuencia binaria de 32 bits, como esta:</p>
+<p>10010000.11110001.01110011.10101011</p>
+<p>Como son muy poco prácticas de manejar y recordar, se suele permitir el escribirlas como números en decimal separados por un punto.</p>
+<ul class="simple">
+<li><p>El primer byte de la dirección dada es 10010000, que en decimal es 144.</p></li>
+<li><p>El segundo byte es 11110001, que en decimal es 241.</p></li>
+<li><p>El tercer byte es 01110011, que en decimal es 115.</p></li>
+<li><p>El cuarto byte es 10101011, que en decimal es 171.</p></li>
+</ul>
+<p>Por tanto esa IP era 144.241.115.171.</p>
+<p>La idea original era que con 32 bits se podrían tener 2 a la 32 equipos, es decir 4.294.967.296 ordenadores.</p>
+<p>Como aparentemente había direcciones de sobra, se decidió asignarlas en bloques. Como una IP debe servir para poner número a las redes, y dentro de las redes poner número a cada equipo de esa red, se decidió utilizar siempre una secuencia llamada máscara para poder distinguir cual es el número de red y cual es el número de host.</p>
+<p>Supongamos que en un cierto sitio se tiene una red. Si en un ordenador nos han dado una secuencia de bits como la de arriba 10010000.11110001.01110011.10101011 (que en decimal era 144.241.115.171 ) ¿como saber cual es la parte de red y la parte de host. La clave es mirar ese parámetro llamado máscara. Supongamos que esa máscara es 255.0.0.0. Si la pasamos a binario sale que la máscara es 11111111.00000000.00000000.00000000.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 77%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Num de red</p></td>
+<td><p>Número de host</p></td>
+</tr>
+<tr class="row-even"><td><p>10010000</p></td>
+<td><p>11110001.01110011.10101011</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="protocolos-de-resolucion-de-direcciones-arp-rarp">
 <h2>Protocolos de resolución de direcciones ARP, RARP.<a class="headerlink" href="#protocolos-de-resolucion-de-direcciones-arp-rarp" title="Enlazar permanentemente con este título">¶</a></h2>
-</section>
-<section id="direcciones-ipv6">
+</div>
+<div class="section" id="direcciones-ipv6">
 <h2>Direcciones Ipv6<a class="headerlink" href="#direcciones-ipv6" title="Enlazar permanentemente con este título">¶</a></h2>
-</section>
-<section id="conjuntos-de-protocolos-ipv6">
+</div>
+<div class="section" id="conjuntos-de-protocolos-ipv6">
 <h2>Conjuntos de protocolos IPv6<a class="headerlink" href="#conjuntos-de-protocolos-ipv6" title="Enlazar permanentemente con este título">¶</a></h2>
-</section>
-<section id="tuneles-ipv6">
+</div>
+<div class="section" id="tuneles-ipv6">
 <h2>Túneles IPv6<a class="headerlink" href="#tuneles-ipv6" title="Enlazar permanentemente con este título">¶</a></h2>
-</section>
-<section id="direccionamiento-dinamico-dhcp">
+</div>
+<div class="section" id="direccionamiento-dinamico-dhcp">
 <h2>Direccionamiento dinámico (DHCP).<a class="headerlink" href="#direccionamiento-dinamico-dhcp" title="Enlazar permanentemente con este título">¶</a></h2>
-</section>
-<section id="adaptadores">
+</div>
+<div class="section" id="adaptadores">
 <h2>Adaptadores.<a class="headerlink" href="#adaptadores" title="Enlazar permanentemente con este título">¶</a></h2>
-</section>
-<section id="adaptadores-alambricos-instalacion-y-configuracion-adaptadores-inalambricos-instalacion-y-configuracion">
+</div>
+<div class="section" id="adaptadores-alambricos-instalacion-y-configuracion-adaptadores-inalambricos-instalacion-y-configuracion">
 <h2>Adaptadores alámbricos: instalación y configuración.Adaptadores inalámbricos: instalación y configuración.<a class="headerlink" href="#adaptadores-alambricos-instalacion-y-configuracion-adaptadores-inalambricos-instalacion-y-configuracion" title="Enlazar permanentemente con este título">¶</a></h2>
-</section>
-<section id="monitorizacion-de-la-red-mediante-aplicaciones-que-usan-el-protocolo-snmp">
+</div>
+<div class="section" id="monitorizacion-de-la-red-mediante-aplicaciones-que-usan-el-protocolo-snmp">
 <h2>Monitorización de la red mediante aplicaciones que usan el protocolo SNMP.<a class="headerlink" href="#monitorizacion-de-la-red-mediante-aplicaciones-que-usan-el-protocolo-snmp" title="Enlazar permanentemente con este título">¶</a></h2>
-</section>
-</section>
+</div>
+</div>
 
 
           </div>
@@ -350,7 +392,7 @@
 
 
 <h3>Navegación</h3>
-<p class="caption" role="heading"><span class="caption-text">Índice:</span></p>
+<p class="caption"><span class="caption-text">Índice:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../t1_caracterizacion_redes/apuntes_t1.html">Caracterización de redes</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Integración de elementos en una red</a><ul>
@@ -412,7 +454,7 @@
   <h3 id="searchlabel">Búsqueda rápida</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Ir a" />
     </form>
     </div>
@@ -434,7 +476,7 @@
       &copy;2021, Oscar G. G..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

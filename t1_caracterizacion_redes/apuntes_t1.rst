@@ -63,6 +63,7 @@ Apartados 3.3.2.3
 El protocolo ARP
 -----------------------------------------------------------------------------
 Tenemos esta situación:
+
 * Un ordenador tiene la IP 192.168.1.10
 * Otro ordenador tiene la IP 192.168.1.11
 * Se desea enviar un bloque de datos desde el 192.168.1.10 hacia el  192.168.1.11

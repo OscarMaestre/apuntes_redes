@@ -7,9 +7,9 @@ Apartado 1.2.1.4 Página 29
 
 Los cables metálicos (coaxial, STP y UTP).
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-*Cable coaxial: apartado 4.2.1.5, página 168.
-*Cable UTP: apartado 4.2.2.1, página 170.
-*Cable STP: apartado 4.2.1.4, página 167.
+* Cable coaxial: apartado 4.2.1.5, página 168.
+* Cable UTP: apartado 4.2.2.1, página 170.
+* Cable STP: apartado 4.2.1.4, página 167.
 
 Fibra óptica y tipos de fibra.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
