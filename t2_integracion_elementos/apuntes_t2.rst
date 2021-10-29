@@ -304,8 +304,52 @@ Supongamos que en un cierto sitio se tiene una red. Si en un ordenador nos han d
 Protocolos de resolución de direcciones ARP, RARP.
 ---------------------------------------------------
 
-Direcciones Ipv6
+Direcciones IPv6
 ---------------------------------------------------
+
+Representación de direcciones
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Dadas las limitaciones en las direcciones IPv4 se diseñó un nuevo formato de direcciones en el que hubiera muchas más posibilidades: **IPv6** En IPv6 hay *128 bits para direcciones* lo que supone un espacio de direcciones de 2 elevado a 128, un número realmente grande. Las direcciones IPv6 se escriben como secuencias de 8 grupos de 4 hexadecimales separadas por dos puntos, a continuación vemos algunos ejemplos::
+
+    fe80:a13d:d3d6:a190:31d2:a216:3261:1800
+    3410:0000:0000:0000:0000:0000:0000:2900
+
+El segundo ejemplo muestra algo interesante y además muy habitual: **la mayor parte de las veces una dirección IPv6 tendrá muchos ceros consecutivos**. En ese caso, se puede abreviar esa dirección eliminando las secuencias de ceros **pero dejando un "doble dos puntos"** para indicar que hemos recortado una IPv6, así tendríamos que la última dirección la podemos escribir así::
+
+    3410:0000:0000:0000:0000:0000:0000:2900 (sin abreviar)
+    3410::2900 (abreviada)
+
+
+Pero ¡cuidado! esta abreviatura debe hacerse con cuidado. Supongamos una IPv6 como esta::
+
+    5199:0000:0000:1767:0000:0000:0000:00a5
+
+Obsérvese que tenemos dos secuencias de ceros. Una de 8 ceros y otra de 12 ceros. La pregunta típica es ¿puedo abreviar ambos bloques? La respuesta es **NO**. Si escribiéramos la IPv6 así::
+
+    5199::1767::00a5
+
+entonces ocurriría que **la máquina no podría nunca saber cuantos ceros hay en cada bloque abreviado**. Por ello haremos lo siguiente:
+
+1. El bloque más grande de ceros, lo eliminaremos y pondremos el "doble dos puntos".
+2. El bloque de ceros más pequeño se "recorta" dejándolo con un solo cero por bloque.
+3. Si algun bloque tiene ceros por la izquierda se pueden eliminar (igual que en la vida real da igual escribir 15 que 0015)
+
+Así la dirección IPv6 5199:0000:0000:1767:0000:0000:0000:00a5
+
+1. Se recorta primero por el bloque de ceros de la derecha y queda 5199:0000:0000:1767::00a5
+2. Y el 5199:0000:0000:1767::00a5 se recorta de nuevo en los ceros de la izquierda para quedar como 5199:0:0:1767::00a5
+3. Por último observamos que en el bloque final hay un 00a5 que se puede escribir como a5, así que nuestra dirección queda finalmente como *5199:0:0:1767::a5*
+
+
+Tipos de direcciones
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Hay tres tipos básicos de direcciones IPv6: unicast, anycast y multicast.
+
+* Las direcciones unicast son direcciones que indican una única conexión en todo Internet. Son las direcciones más comunes
+* Las direcciones anycast se usan por lo administradores para "formar grupos". En anycast habrá muchas máquinas con la mismo IPv6 anycast pero cuando se envíe algo a esa dirección anycast **solo se enviará a uno de ellos**. Los router se encargarán de entregarlo a la máquina más cerca que tenga esa dirección anycast.
+* Las direcciones multicast se usan en casos en los que varios nodos van a tener una misma IPv6 y cuando se envíe algo a esa IPv6 **todos la recibirán**.
 
 Conjuntos de protocolos IPv6
 ---------------------------------------------------
@@ -328,3 +372,4 @@ Monitorización de la red mediante aplicaciones que usan el protocolo SNMP.
 
 
 
+.. include:: ejerciciosipv6/ejercicios_ipv6.rst
