@@ -1,0 +1,25 @@
+graph Red{
+    size="18,21"
+    rankdir="LR"
+    subgraph {
+        rankdir="LR";
+        "0a" [shape=box]
+        "02" [shape=box]
+    }
+    subgraph {
+        rankdir="LR";
+        switch1 [shape=box]
+        switch2 [shape=box]  
+    }
+    subgraph{
+        "0f" [shape=box]
+        "09" [shape=box]
+        "0d" [shape=box]
+    }
+    switch1--switch2 [headlabel="0", taillabel="7"]
+    "0a"--switch1 [taillabel="3"]
+    "02"--switch1 [taillabel="5"]
+    switch2--"0f" [headlabel="2"]
+    switch2--"09" [headlabel="6"]
+    switch2--"0d" [headlabel="4"]
+}

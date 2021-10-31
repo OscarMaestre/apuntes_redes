@@ -1,0 +1,24 @@
+graph Red{
+    size="18,21"
+    rankdir="LR"
+   
+    
+    subgraph{
+        rankdir="LR"
+    "22" [shape=box]
+"d7" [shape=box]
+    }
+        
+    
+    subgraph{
+        rankdir="LR"
+    "f1" [shape=box]
+"dd" [shape=box]
+    }
+        
+    "Switch 1"--"Switch 2"
+"22"--"Switch 1" [headlabel="2"]
+"d7"--"Switch 1" [headlabel="3"]
+"f1"--"Switch 2" [taillabel="3"]
+"dd"--"Switch 2" [taillabel="4"]    
+}
