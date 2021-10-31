@@ -8,15 +8,19 @@ class GeneradorMACS(object):
     def __init__(self) -> None:
         self.lista_macs_generadas=[]
     def generar_mac(self):
-        mac=hex(randint(16,255))
+        num_mac=hex(randint(16,255))
+        mac=str(num_mac)[2:].strip()
         while mac  in self.lista_macs_generadas:
-            mac=hex(randint(16,255))
+            num_mac=hex(randint(16,255))
+            mac=str(num_mac)[2:]
         self.lista_macs_generadas.append(mac)
         return mac
 
 @dataclass
 class Ordenador(object):
     mac:str
+    def set_puerto_switch(self, puerto):
+        self.puerto=puerto
 
     
 
@@ -36,18 +40,25 @@ class Switch(object):
 
     def anadir_entrada(self, puerto, mac):
         self.tabla_mac[puerto].append(mac)
+
     
+
     def anadir_entrada_azar(self, mac):
-        puerto=randint(0, self.MAX_PUERTOS-1)
+        puerto=self.get_num_puerto_libre_azar()
         self.anadir_entrada(puerto, mac)
 
-    def anadir_entrada_a_puerto_libre(self, mac):
+    def get_num_puerto_libre_azar(self):
         encontrado_puerto_libre=False
         while not encontrado_puerto_libre:
             puerto=randint(0, self.MAX_PUERTOS-1)
             if self.tabla_mac[puerto]==[]:
                 encontrado_puerto_libre=True
-        print("Añadiendo en puerto libre:"+str(puerto))
+                return puerto
+
+    def anadir_entrada_a_puerto_libre(self, mac, puerto_a_excluir):
+        puerto=self.get_num_puerto_azar()
+        while puerto==puerto_a_excluir:
+            puerto=self.get_num_puerto_azar()
         self.anadir_entrada(puerto, mac)
 
     def __str__(self) -> str:
@@ -72,7 +83,8 @@ class Switch(object):
         for p in self.tabla_mac:
             if p==[]:
                 fila=[num_puerto, ""]
-            else:fila=[num_puerto, ",".join(p)]
+            else:
+                fila=[num_puerto, ",".join(p)]
 
             valores.append(fila)
             num_puerto=num_puerto+1
@@ -80,6 +92,28 @@ class Switch(object):
         headers=tipos_cabeceras, value_matrix=valores)
         return str(escritor_tablas)
 
+def get_aristas_switch_izq():
+    pass
+def get_grafo_dos_switches():
+    grafo="""
+    subgraph {
+        rankdir="LR";
+        switch1 [shape=box]
+        switch2 [shape=box]  
+    }
+    """
+    return grafo
+
+def get_grafo_pcs(vector_pcs):
+    lista_nodos=["\t\"{0}\" [shape=box]".format(pc.mac) for pc in vector_pcs]
+    nodos_pcs="\n".join(lista_nodos)
+    plantilla_grafo="""
+    subgraph{{
+        rankdir="LR"
+{0}
+    }}
+    """
+    return plantilla_grafo.format(nodos_pcs)
 
 
 def get_mac_azar_vector_pcs(vector_pcs):
@@ -99,10 +133,12 @@ def generar_ejercicio_dos_switches(nombre_archivo):
     num_equipos=randint(2, 4)
     macs=[]
     pcs1=[]
-    puerto_switch1=switch1.get_num_puerto_azar()
-    puerto_switch2=switch2.get_num_puerto_azar()
+    
+    puerto_switch1=switch1.get_num_puerto_libre_azar()
+    puerto_switch2=switch2.get_num_puerto_libre_azar()
     mensaje_union="El switch 1 tiene un cable en el puerto {0} que va al puerto {1} del switch 2".format(puerto_switch1, puerto_switch2)
     print (mensaje_union)
+    
     for i in range(0, num_equipos):
         mac_azar=generador.generar_mac()
         macs.append(mac_azar)
@@ -111,16 +147,18 @@ def generar_ejercicio_dos_switches(nombre_archivo):
         pcs1.append(pc)
         #Decidimos al azar si añadimos la MAC de ese PC al switch1
         if random()>0.30:
-            switch1.anadir_entrada_a_puerto_libre(mac_azar)
-            print("Añadiendo {0} al switch 1".format(mac_azar))
+            switch1.anadir_entrada_a_puerto_libre(mac_azar, puerto_switch1)
+            #print("Añadiendo {0} al switch 1".format(mac_azar))
         else:
-            print("NO añadiendo {0} al switch 1".format(mac_azar))
+            #print("NO añadiendo {0} al switch 1".format(mac_azar))
+            pass
         #Y hacemos lo mismo con el switch 2
         if randint(0, 1)==0:
             switch2.anadir_entrada(puerto_switch2, mac_azar)
-            print("Añadiendo {0} al switch 2".format(mac_azar))
+            #print("Añadiendo {0} al switch 2".format(mac_azar))
         else:
-            print("NO añadiendo {0} al switch 2".format(mac_azar))
+            pass
+            #print("NO añadiendo {0} al switch 2".format(mac_azar))
 
     #Generamos un grupo de equipos
     num_equipos=randint(2, 4)
@@ -138,7 +176,11 @@ def generar_ejercicio_dos_switches(nombre_archivo):
             switch1.anadir_entrada(puerto_switch1, mac_azar)
         #Y hacemos lo mismo con el switch 2
         if random()>0.3:
-            switch2.anadir_entrada_a_puerto_libre(mac_azar)
+            switch2.anadir_entrada_a_puerto_libre(mac_azar, puerto_switch2)
+
+
+   
+
 
     #Elegimos un sentido de envío
     origen=""
@@ -157,5 +199,11 @@ def generar_ejercicio_dos_switches(nombre_archivo):
     print(switch2.get_tabla_rst())
 
     print(mensaje)
+
+    nodos_pcs1=get_grafo_pcs(pcs1)
+    print(nodos_pcs1)
+    nodos_pcs2=get_grafo_pcs(pcs2)
+    print(nodos_pcs2)
+    
 
 generar_ejercicio_dos_switches("P1.png")
