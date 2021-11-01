@@ -351,6 +351,23 @@ Hay tres tipos básicos de direcciones IPv6: unicast, anycast y multicast.
 * Las direcciones anycast se usan por lo administradores para "formar grupos". En anycast habrá muchas máquinas con la mismo IPv6 anycast pero cuando se envíe algo a esa dirección anycast **solo se enviará a uno de ellos**. Los router se encargarán de entregarlo a la máquina más cerca que tenga esa dirección anycast.
 * Las direcciones multicast se usan en casos en los que varios nodos van a tener una misma IPv6 y cuando se envíe algo a esa IPv6 **todos la recibirán**.
 
+Las direcciones reservadas por el IETF son las siguientes:
+
+
++----------------+-----------+--------------+-------------+--------------------+
+| Uso            | Prefijo   | Primera IPv6 | Última IPv6 | Fracción que ocupa |
++================+===========+==============+=============+====================+
+| Unicast global | 2000::/3  | 2000::/3     | 3fff::/3    | 1/8                |
++----------------+-----------+--------------+-------------+--------------------+
+| Unicast local  | fc00::/7  | fc00::/7     | fdff::/7    | 1/128              |
+| único          |           |              |             |                    |
++----------------+-----------+--------------+-------------+--------------------+
+| Unicast local  | fe80::/10 | fe80::/10    | febf::/10   | 1/1024             |
+| en enlace      |           |              |             |                    |
++----------------+-----------+--------------+-------------+--------------------+
+| Multicast      | ff00::/8  | ff00:/8      | ffff:/8     | 1/256              |
++----------------+-----------+--------------+-------------+--------------------+
+
 Conjuntos de protocolos IPv6
 ---------------------------------------------------
 
@@ -373,3 +390,5 @@ Monitorización de la red mediante aplicaciones que usan el protocolo SNMP.
 
 
 .. include:: ejerciciosipv6/ejercicios_ipv6.rst
+
+.. include:: ejercicios_ips/clasificacion_ipv6.rst

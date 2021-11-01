@@ -1,0 +1,60 @@
+\babel@toc {spanish}{}
+\contentsline {chapter}{\numberline {1}Caracterización de redes}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Terminología: redes LAN, MAN y WAN, topologías, arquitecturas, protocolos.}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Sistemas de numeración decimal, binario y hexadecimal.}{1}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Ejercicio: convertir a binario}{1}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Ejercicio: convertir a hexadecimal}{2}{subsection.1.2.2}%
+\contentsline {section}{\numberline {1.3}Conversión entre sistemas.}{2}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Arquitectura de redes.}{2}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Encapsulamiento de la información.}{2}{section.1.5}%
+\contentsline {section}{\numberline {1.6}El modelo OSI.El modelo TCP/IP.}{2}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Las tecnologías «Ethernet».}{2}{section.1.7}%
+\contentsline {section}{\numberline {1.8}El protocolo ARP}{2}{section.1.8}%
+\contentsline {section}{\numberline {1.9}El modelo OSI y «Ethernet».}{3}{section.1.9}%
+\contentsline {section}{\numberline {1.10}Tipos de cableado «Ethernet».}{3}{section.1.10}%
+\contentsline {section}{\numberline {1.11}Cableado estructurado: subsistemas troncales y horizontales.}{3}{section.1.11}%
+\contentsline {section}{\numberline {1.12}Algoritmo de acceso al medio CSMA/CD.}{3}{section.1.12}%
+\contentsline {section}{\numberline {1.13}Estructura de la trama «Ethernet».}{3}{section.1.13}%
+\contentsline {chapter}{\numberline {2}Integración de elementos en una red}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Los medios físicos.}{5}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Los cables metálicos (coaxial, STP y UTP).}{5}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Fibra óptica y tipos de fibra.}{5}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}Ancho de banda y tasa de transferencia.}{5}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Analógico vs digital}{6}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Parámetros de una señal.}{6}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Modulación}{6}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Medidas}{6}{subsection.2.2.4}%
+\contentsline {section}{\numberline {2.3}Factores físicos que afectan a la transmisión.}{7}{section.2.3}%
+\contentsline {section}{\numberline {2.4}La conexión inalámbrica.}{7}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Los espectros de onda de microondas y radio.}{7}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Topologías.}{7}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Asociación y autenticación en la WLAN.}{8}{section.2.7}%
+\contentsline {section}{\numberline {2.8}Dispositivos hardware en redes: hubs, APs, switches y routers}{8}{section.2.8}%
+\contentsline {subsection}{\numberline {2.8.1}Hub}{8}{subsection.2.8.1}%
+\contentsline {subsection}{\numberline {2.8.2}Switch}{8}{subsection.2.8.2}%
+\contentsline {subsection}{\numberline {2.8.3}Ejemplo de simulación con switch}{9}{subsection.2.8.3}%
+\contentsline {section}{\numberline {2.9}Direccionamiento.}{10}{section.2.9}%
+\contentsline {section}{\numberline {2.10}Dominios de colisión y de «broadcast».}{10}{section.2.10}%
+\contentsline {section}{\numberline {2.11}Direcciones IPv4 y máscaras de red.}{11}{section.2.11}%
+\contentsline {section}{\numberline {2.12}Protocolos de resolución de direcciones ARP, RARP.}{11}{section.2.12}%
+\contentsline {section}{\numberline {2.13}Direcciones IPv6}{11}{section.2.13}%
+\contentsline {subsection}{\numberline {2.13.1}Representación de direcciones}{11}{subsection.2.13.1}%
+\contentsline {subsection}{\numberline {2.13.2}Tipos de direcciones}{12}{subsection.2.13.2}%
+\contentsline {section}{\numberline {2.14}Conjuntos de protocolos IPv6}{13}{section.2.14}%
+\contentsline {section}{\numberline {2.15}Túneles IPv6}{13}{section.2.15}%
+\contentsline {section}{\numberline {2.16}Direccionamiento dinámico (DHCP).}{13}{section.2.16}%
+\contentsline {section}{\numberline {2.17}Adaptadores.}{13}{section.2.17}%
+\contentsline {section}{\numberline {2.18}Adaptadores alámbricos: instalación y configuración.Adaptadores inalámbricos: instalación y configuración.}{13}{section.2.18}%
+\contentsline {section}{\numberline {2.19}Monitorización de la red mediante aplicaciones que usan el protocolo SNMP.}{13}{section.2.19}%
+\contentsline {section}{\numberline {2.20}Anexo: Ejercicios sobre compresión de direcciones IPv6}{13}{section.2.20}%
+\contentsline {subsection}{\numberline {2.20.1}Soluciones a compresión de direcciones IPv6}{15}{subsection.2.20.1}%
+\contentsline {section}{\numberline {2.21}Anexo: ejercicios sobre clasificación de direcciones IPv6}{17}{section.2.21}%
+\contentsline {subsection}{\numberline {2.21.1}Soluciones a la clasificaciones de direcciones IPv6}{19}{subsection.2.21.1}%
+\contentsline {chapter}{\numberline {3}Configuración y administración de conmutadores}{21}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Configuración y administración básica de routers}{23}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Configuración de redes virtuales VLAN}{25}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Configuración y administración de protocolos dinámicos}{27}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Configuración del acceso a Internet desde una LAN}{29}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Ejercicios propuestos para el tema 1}{31}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Conversión de números}{31}{section.8.1}%
+\contentsline {chapter}{\numberline {9}Soluciones a ejercicios seleccionados}{33}{chapter.9}%

@@ -306,6 +306,10 @@ Protocolos de resolución de direcciones ARP, RARP.
 
 Direcciones IPv6
 ---------------------------------------------------
+
+Representación de direcciones
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Dadas las limitaciones en las direcciones IPv4 se diseñó un nuevo formato de direcciones en el que hubiera muchas más posibilidades: **IPv6** En IPv6 hay *128 bits para direcciones* lo que supone un espacio de direcciones de 2 elevado a 128, un número realmente grande. Las direcciones IPv6 se escriben como secuencias de 8 grupos de 4 hexadecimales separadas por dos puntos, a continuación vemos algunos ejemplos::
 
     fe80:a13d:d3d6:a190:31d2:a216:3261:1800
@@ -338,8 +342,31 @@ Así la dirección IPv6 5199:0000:0000:1767:0000:0000:0000:00a5
 3. Por último observamos que en el bloque final hay un 00a5 que se puede escribir como a5, así que nuestra dirección queda finalmente como *5199:0:0:1767::a5*
 
 
+Tipos de direcciones
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Hay tres tipos básicos de direcciones IPv6: unicast, anycast y multicast.
+
+* Las direcciones unicast son direcciones que indican una única conexión en todo Internet. Son las direcciones más comunes
+* Las direcciones anycast se usan por lo administradores para "formar grupos". En anycast habrá muchas máquinas con la mismo IPv6 anycast pero cuando se envíe algo a esa dirección anycast **solo se enviará a uno de ellos**. Los router se encargarán de entregarlo a la máquina más cerca que tenga esa dirección anycast.
+* Las direcciones multicast se usan en casos en los que varios nodos van a tener una misma IPv6 y cuando se envíe algo a esa IPv6 **todos la recibirán**.
+
+Las direcciones reservadas por el IETF son las siguientes:
 
 
++----------------+-----------+--------------+-------------+--------------------+
+| Uso            | Prefijo   | Primera IPv6 | Última IPv6 | Fracción que ocupa |
++================+===========+==============+=============+====================+
+| Unicast global | 2000::/3  | 2000::/3     | 3fff::/3    | 1/8                |
++----------------+-----------+--------------+-------------+--------------------+
+| Unicast local  | fc00::/7  | fc00::/7     | fdff::/7    | 1/128              |
+| único          |           |              |             |                    |
++----------------+-----------+--------------+-------------+--------------------+
+| Unicast local  | fe80::/10 | fe80::/10    | febf::/10   | 1/1024             |
+| en enlace      |           |              |             |                    |
++----------------+-----------+--------------+-------------+--------------------+
+| Multicast      | ff00::/8  | ff00:/8      | ffff:/8     | 1/256              |
++----------------+-----------+--------------+-------------+--------------------+
 
 Conjuntos de protocolos IPv6
 ---------------------------------------------------
@@ -363,3 +390,5 @@ Monitorización de la red mediante aplicaciones que usan el protocolo SNMP.
 
 
 .. include:: ejerciciosipv6/ejercicios_ipv6.rst
+
+.. include:: ejercicios_ips/clasificacion_ipv6.rst
