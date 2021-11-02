@@ -447,6 +447,32 @@ de clase A</p></td>
 </tbody>
 </table>
 </section>
+<section id="desperdicio-y-solucion">
+<h2>Desperdicio y solución<a class="headerlink" href="#desperdicio-y-solucion" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Debido a que el desperdicio era inasumible el IETF decidió lo siguiente:</p>
+<ol class="arabic simple">
+<li><p>Una solución para el corto plazo, ya que el ritmo de conexión a Internet crecía exponencialmente. Esta solución fue el NAT.</p></li>
+<li><p>Por otro lado para resolver el problema a largo plazo el IETF diseñó IPv6.</p></li>
+</ol>
+<p>Hablaremos de IPv6 en los apartados siguientes. En cuanto al NAT cabe destacar que actúa de la forma siguiente:</p>
+<p>1.- Hay unos rangos de direcciones que <strong>sí se pueden repetir en Internet</strong>. Esto ocurre porque en realidad NUNCA SE USAN COMO DIRECCIONES DE DESTINO EN LA INTERNET PÚBLICA.
+2. Todo router que use NAT en realidad cambia las IPs de origen de los paquetes que salen y pone en su lugar <strong>su propia IP</strong> (a la que llamamos pública). Cuando un paquete sale lo hará usando como IP de origen la IP del router.
+3. El router anota en una tabla estas manipulaciones y cuando vengas las respuestas, el router volverá a manipular la IP para volver a poner la IP del equipo original que envió algo.</p>
+<p>El NAT se caracteriza por:</p>
+<ol class="arabic simple">
+<li><p>Funcionó muy bien. Eso es una ventaja.</p></li>
+<li><p>Perjudica al rendimiento. Los router están contínuamente quitando y poniendo direcciones de los paquetes que entran y salen.</p></li>
+<li><p>Determinadas operaciones, como abrir servicios, pueden ser difíciles de conseguir para el usuario medio, que se ve obligado a «abrir puertos.»</p></li>
+</ol>
+<p>Los rangos de direcciones «privadas» o repetibles en Internet son los siguientes:</p>
+<ul class="simple">
+<li><p>La red 10.0.0.0/8</p></li>
+<li><p>La red 172.16.0.0/12</p></li>
+<li><p>La red 192.168.0.0/16</p></li>
+</ul>
+<p>En estos rangos aparece el concepto de «máscara abreviada». En lugar de escribir la máscara en binario o en decimal (como 255.0.0.0 o 255.255.255.0) se ha escrito en estos rangos es <strong>la cantidad de unos que hay dentro de la parte de red de la máscara</strong></p>
+<p>Los rangos de direcciones aceptables en esos casos son entonces:</p>
+</section>
 <section id="protocolos-de-resolucion-de-direcciones-arp-rarp">
 <h2>Protocolos de resolución de direcciones ARP, RARP.<a class="headerlink" href="#protocolos-de-resolucion-de-direcciones-arp-rarp" title="Enlazar permanentemente con este título">¶</a></h2>
 </section>
@@ -1457,6 +1483,7 @@ en enlace</p></td>
 <li class="toctree-l2"><a class="reference internal" href="#direccionamiento">Direccionamiento.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dominios-de-colision-y-de-broadcast">Dominios de colisión y de «broadcast».</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#direcciones-ipv4-y-mascaras-de-red">Direcciones IPv4 y máscaras de red.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#desperdicio-y-solucion">Desperdicio y solución</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#protocolos-de-resolucion-de-direcciones-arp-rarp">Protocolos de resolución de direcciones ARP, RARP.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#direcciones-ipv6">Direcciones IPv6</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#representacion-de-direcciones">Representación de direcciones</a></li>

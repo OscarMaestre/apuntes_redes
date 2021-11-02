@@ -331,6 +331,38 @@ Por desgracia en los comienzos de Internet las direcciones IP **se dividieron en
 | Última de clase C  | 11011111 | 11111111 | 11111111 | 11111111 | 223.255.255.255 |
 +--------------------+----------+----------+----------+----------+-----------------+
 
+Desperdicio y solución
+------------------------
+Debido a que el desperdicio era inasumible el IETF decidió lo siguiente:
+
+1. Una solución para el corto plazo, ya que el ritmo de conexión a Internet crecía exponencialmente. Esta solución fue el NAT.
+2. Por otro lado para resolver el problema a largo plazo el IETF diseñó IPv6.
+
+
+Hablaremos de IPv6 en los apartados siguientes. En cuanto al NAT cabe destacar que actúa de la forma siguiente:
+
+1.- Hay unos rangos de direcciones que **sí se pueden repetir en Internet**. Esto ocurre porque en realidad NUNCA SE USAN COMO DIRECCIONES DE DESTINO EN LA INTERNET PÚBLICA.
+2. Todo router que use NAT en realidad cambia las IPs de origen de los paquetes que salen y pone en su lugar **su propia IP** (a la que llamamos pública). Cuando un paquete sale lo hará usando como IP de origen la IP del router.
+3. El router anota en una tabla estas manipulaciones y cuando vengas las respuestas, el router volverá a manipular la IP para volver a poner la IP del equipo original que envió algo.
+
+
+
+El NAT se caracteriza por:
+
+1. Funcionó muy bien. Eso es una ventaja.
+2. Perjudica al rendimiento. Los router están contínuamente quitando y poniendo direcciones de los paquetes que entran y salen.
+3. Determinadas operaciones, como abrir servicios, pueden ser difíciles de conseguir para el usuario medio, que se ve obligado a "abrir puertos."
+
+Los rangos de direcciones "privadas" o repetibles en Internet son los siguientes:
+
+* La red 10.0.0.0/8
+* La red 172.16.0.0/12
+* La red 192.168.0.0/16
+
+En estos rangos aparece el concepto de "máscara abreviada". En lugar de escribir la máscara en binario o en decimal (como 255.0.0.0 o 255.255.255.0) se ha escrito en estos rangos es **la cantidad de unos que hay dentro de la parte de red de la máscara**
+
+Los rangos de direcciones aceptables en esos casos son entonces:
+
 
 
 
