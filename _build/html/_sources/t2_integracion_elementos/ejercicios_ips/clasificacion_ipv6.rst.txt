@@ -1,6 +1,6 @@
 
 Anexo: ejercicios sobre clasificación de direcciones IPv6
-------------------------------------------------------------
+=============================================================
 
 Dadas las siguientes direcciones IPv6 indica de qué tipo son:
 
@@ -56,7 +56,7 @@ Dadas las siguientes direcciones IPv6 indica de qué tipo son:
 50. ``fddd::1d58:0:bfa5:f060:0``
 
 Soluciones a la clasificaciones de direcciones IPv6
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------------------------------------------
 
 1. ``feab:e7b8:6626:0:a16e:0:6efe:995f`` es de tipo unicast local en enlace
 2. ``fdf6:22e5:e01:0:9af6::`` es de tipo unicast local único
