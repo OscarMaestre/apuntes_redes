@@ -472,6 +472,22 @@ de clase A</p></td>
 </ul>
 <p>En estos rangos aparece el concepto de «máscara abreviada». En lugar de escribir la máscara en binario o en decimal (como 255.0.0.0 o 255.255.255.0) se ha escrito en estos rangos es <strong>la cantidad de unos que hay dentro de la parte de red de la máscara</strong></p>
 <p>Los rangos de direcciones aceptables en esos casos son entonces:</p>
+<ul class="simple">
+<li><p>Desde 10.0.0.0 hasta 10.255.255.255</p></li>
+<li><p>Desde 172.16.0.0 hasta 172.31.255.255</p></li>
+<li><p>Desde 192.168.0.0 hasta 192.168.255.255</p></li>
+</ul>
+<p>¿Qué se podría decir entonces sobre la IP 161.43.118.31?</p>
+<p>Convirtamos 161 a binario: 10100001</p>
+<ul class="simple">
+<li><p>La IP empieza por 10, es decir, parece de clase B.</p></li>
+<li><p>Dicha IP no está en el rango 172.16.0.0 a 172.31.255.255, así que es una <strong>IP pública</strong></p></li>
+<li><p>Al ser de clase B es probable que su máscara sea /16, es decir, 255.255.0.0.</p></li>
+</ul>
+<p>¿Qué se podría decir sobre la 172.25.0.13?
+* Es privada. Está entre 172.16.0.0 y 172.31.255.255. En concreto es del segundo bloque, o sea que su máscara es /12 o más bits.
+* Una máscara /12 sería 11111111.11110000.00000000.00000000, o en decimal 255.240.0.0
+* Si se convierte a binario, 172 queda como 10101100, empieza por la pareja de bits 10, es decir, es de clase B.</p>
 </section>
 <section id="protocolos-de-resolucion-de-direcciones-arp-rarp">
 <h2>Protocolos de resolución de direcciones ARP, RARP.<a class="headerlink" href="#protocolos-de-resolucion-de-direcciones-arp-rarp" title="Enlazar permanentemente con este título">¶</a></h2>

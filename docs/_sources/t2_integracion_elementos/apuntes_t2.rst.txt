@@ -363,8 +363,23 @@ En estos rangos aparece el concepto de "máscara abreviada". En lugar de escribi
 
 Los rangos de direcciones aceptables en esos casos son entonces:
 
+* Desde 10.0.0.0 hasta 10.255.255.255
+* Desde 172.16.0.0 hasta 172.31.255.255
+* Desde 192.168.0.0 hasta 192.168.255.255
+
+¿Qué se podría decir entonces sobre la IP 161.43.118.31?
+
+Convirtamos 161 a binario: 10100001
+
+* La IP empieza por 10, es decir, parece de clase B.
+* Dicha IP no está en el rango 172.16.0.0 a 172.31.255.255, así que es una **IP pública**
+* Al ser de clase B es probable que su máscara sea /16, es decir, 255.255.0.0.
 
 
+¿Qué se podría decir sobre la 172.25.0.13?
+* Es privada. Está entre 172.16.0.0 y 172.31.255.255. En concreto es del segundo bloque, o sea que su máscara es /12 o más bits.
+* Una máscara /12 sería 11111111.11110000.00000000.00000000, o en decimal 255.240.0.0
+* Si se convierte a binario, 172 queda como 10101100, empieza por la pareja de bits 10, es decir, es de clase B.
 
 Protocolos de resolución de direcciones ARP, RARP.
 ---------------------------------------------------
