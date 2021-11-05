@@ -12,7 +12,7 @@ class Generador(object):
         #print("Mascara:/"+str(self.bits_mascara))
         self.bits_host=32-self.bits_mascara
         self.secuencia_binaria=self.generar()
-        print(self.secuencia_binaria)
+        #print(self.secuencia_binaria)
         bytes_ip=[]
         for i in range(0, 4):
             #print("Trozo:"+str(i))
