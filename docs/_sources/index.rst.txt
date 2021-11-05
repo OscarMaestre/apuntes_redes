@@ -19,7 +19,10 @@ Apuntes de Planificación y Administración de Redes
    t7_acceso_internet/apuntes_t7.rst
 
    anexos/t1_ejercicios.rst
+   t2_integracion_elementos/ejercicios_subredes_ipv4/rangos_direcciones.rst
+   t2_integracion_elementos/ejerciciosipv6/ejercicios_ipv6.rst
 
+   t2_integracion_elementos/ejercicios_ips/clasificacion_ipv6.rst
 
 
 

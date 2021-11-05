@@ -1,4 +1,4 @@
-Ejercicios propuestos para el tema 1
+Anexo: Ejercicios propuestos para el tema 1
 ===========================================
 
 Conversión de números
@@ -16,7 +16,7 @@ Convertir a binarios los siguientes números:
 
 
 Soluciones a ejercicios seleccionados
-======================================
+----------------------------------------
 
 Convertir a binarios los siguientes números:
 
