@@ -381,6 +381,60 @@ Convirtamos 161 a binario: 10100001
 * Una máscara /12 sería 11111111.11110000.00000000.00000000, o en decimal 255.240.0.0
 * Si se convierte a binario, 172 queda como 10101100, empieza por la pareja de bits 10, es decir, es de clase B.
 
+Direcciones de red y de difusión
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+En las direcciones IP sabemos que tenemos dos partes
+
+* Parte de red, también llamado **prefijo de red**.
+* Parte de host, que es una secuencia binaria que cambia en cada equipo.
+
+
+Supongamos que tenemos un conjunto de servidores y que queremos ubicarlos en una red. Supongamos que usamos un rango privado como 192.168.1.0 con máscara /24
+
+Esto significa que nuestros últimos 8 bits pueden ser estos
++============+
+|Últimos bits|
++============+
+|  00000000  |
++------------+
+|  00000001  |
++------------+
+|  00000010  |
++------------+
+|  00000011  |
++------------+
+|  00000100  |
++------------+
+|   ......   |
++------------+
+|   11111111 |
++------------+
+
+En realidad, la combinación **todos los bits a 0** y la **todos los bits a uno** NO SON DIRECCIONES IP VÁLIDAS ASIGNABLES A NODOS. Esto significa que no podemos poner a un equipo ni la 192.168.1.0 ni la 192.168.1.255. **Estas direcciones tienen un significado especial**
+
+* La **todo a ceros** se usa para "nombrar la red". Así, nuestra red digamos que "se llama 192.168.1.0/24"
+* La **todo a unos** es la DIRECCIÓN DE DIFUSIÓN. Cuando un ordenador de nuestra red quiera enviar algo a todos usará como dirección de destino la 192.168.1.255
+
+Por tanto, en realidad dentro de nuestra sala de servidores solo podemos poner direcciones entre 192.168.1.1 y 192.168.1.254
+
+
+Enrutamiento
+----------------
+
+El enrutamiento es el proceso de configurar nodos y routers para conseguir llevar los paquetes hasta su destino:
+
+* En los nodos esto implica configurar el "gateway", "puerta de enlace", "router por defecto". Es decir indicar la IP de algún dispositivo de enrutamiento en la red.
+
+* En los nodos implica rellenar las tablas de rutas. Es decir, indicar al router las direcciones de red (con las máscaras) e indicarles la IP del siguiente nodo para llegar a esa red.
+
+
+Para el ejemplo visto en clase, repetir el proceso para estas redes:
+
+1. Red 172.25.3.0/24 para la red izquierda, 16.2.0.0/16 para la red intermedia (la de los router) y red 61.24.3.0/24 para la red derecha.
+2. * Red 41.0.0.0/24 para la red izquierda, 192.168.24.0/24 para la red intermedia (la de los router) y red 184.2.91.0/24 para la red derecha.
+
+
+
 Protocolos de resolución de direcciones ARP, RARP.
 ---------------------------------------------------
 
