@@ -12,22 +12,29 @@ class Generador(object):
         #print("Mascara:/"+str(self.bits_mascara))
         self.bits_host=32-self.bits_mascara
         self.secuencia_binaria=self.generar()
-        #print(self.secuencia_binaria)
-        bytes_ip=[]
-        for i in range(0, 4):
-            #print("Trozo:"+str(i))
-            li=i*8
-            ls=li+8
-            trozo=int(self.secuencia_binaria[li:ls], 2)
-            bytes_ip.append(str(trozo))
-        #print(bytes_ip)
-        self.cadena=".".join(bytes_ip)
+        
+        self.cadena=self.convertir_a_decimal(self.secuencia_binaria)
         #print(self.cadena)
         self.direccion=ipaddress.IPv4Network(
             self.cadena+"/"+str(self.bits_mascara)
         )
         self.num_ejercicio=num_ejercicio
-        #print (self.direccion)
+
+    def convertir_a_decimal(self, secuencia_binaria):
+        bytes_ip=[]
+        for i in range(0, 4):
+            li=i*8
+            ls=li+8
+            trozo=int(secuencia_binaria[li:ls], 2)
+            bytes_ip.append(str(trozo))
+        cadena=".".join(bytes_ip)
+        return cadena
+
+    def get_mascara_en_decimal(self):
+        prefijo="1"*self.bits_mascara
+        sufijo ="0"*self.bits_host
+        mascara=prefijo+sufijo
+        return self.convertir_a_decimal(mascara)
 
     def generar(self):
         
@@ -92,16 +99,18 @@ Para el enunciado *"Obtener el rango de direcciones posible para {1}"*, la soluc
             hosts[-1], direccion_broadcast)
 
 
-print("Anexo: ejercicios sobre rangos de direcciones")
-print("===================================================")
-MAX_EJERCICIOS=51
-ejercicios=[]
-for i in range(1, MAX_EJERCICIOS):
-    ejercicio=Generador(i)
-    ejercicios.append(ejercicio)
 
-for i in range(1, MAX_EJERCICIOS):
-    print(ejercicios[i-1].get_enunciado())
+if __name__=="__main__":
+    print("Anexo: ejercicios sobre rangos de direcciones")
+    print("===================================================")
+    MAX_EJERCICIOS=51
+    ejercicios=[]
+    for i in range(1, MAX_EJERCICIOS):
+        ejercicio=Generador(i)
+        ejercicios.append(ejercicio)
 
-for i in range(1, MAX_EJERCICIOS):
-    print(ejercicios[i-1].get_solucion())
+    for i in range(1, MAX_EJERCICIOS):
+        print(ejercicios[i-1].get_enunciado())
+
+    for i in range(1, MAX_EJERCICIOS):
+        print(ejercicios[i-1].get_solucion())

@@ -1,0 +1,1203 @@
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Anexo: ejercicios de enrutamiento &#8212; documentación de Apuntes de redes - 1.0</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="Anexo: Ejercicios sobre compresión de direcciones IPv6" href="../ejerciciosipv6/ejercicios_ipv6.html" />
+    <link rel="prev" title="Anexo: ejercicios sobre rangos de direcciones" href="rangos_direcciones.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="anexo-ejercicios-de-enrutamiento">
+<h1>Anexo: ejercicios de enrutamiento<a class="headerlink" href="#anexo-ejercicios-de-enrutamiento" title="Enlazar permanentemente con este título">¶</a></h1>
+<section id="ejercicios-con-dos-router">
+<h2>Ejercicios con dos router<a class="headerlink" href="#ejercicios-con-dos-router" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para todos estos casos se puede asumir una arquitectura como la siguiente</p>
+<section id="ejercicio-1">
+<h3>Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 2.176.48.0/21 en el área izquierda.</p></li>
+<li><p>Red 169.199.24.0/21 en el área central.</p></li>
+<li><p>Red 95.168.0.0/14 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+</section>
+<section id="ejercicio-2">
+<h3>Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 110.173.47.136/29 en el área izquierda.</p></li>
+<li><p>Red 5.126.0.0/15 en el área central.</p></li>
+<li><p>Red 171.37.242.0/24 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+</section>
+<section id="ejercicio-3">
+<h3>Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 0.164.0.0/15 en el área izquierda.</p></li>
+<li><p>Red 3.47.128.0/19 en el área central.</p></li>
+<li><p>Red 31.144.0.0/13 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+</section>
+<section id="ejercicio-4">
+<h3>Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 156.51.172.144/28 en el área izquierda.</p></li>
+<li><p>Red 32.179.184.128/25 en el área central.</p></li>
+<li><p>Red 127.128.0.0/10 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+</section>
+<section id="ejercicio-5">
+<h3>Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 57.224.0.0/11 en el área izquierda.</p></li>
+<li><p>Red 213.5.250.96/29 en el área central.</p></li>
+<li><p>Red 177.99.84.48/29 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+</section>
+<section id="ejercicio-6">
+<h3>Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 13.69.31.52/30 en el área izquierda.</p></li>
+<li><p>Red 82.208.0.0/14 en el área central.</p></li>
+<li><p>Red 222.202.125.72/29 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+</section>
+<section id="ejercicio-7">
+<h3>Ejercicio 7<a class="headerlink" href="#ejercicio-7" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 212.241.91.64/28 en el área izquierda.</p></li>
+<li><p>Red 39.66.113.236/30 en el área central.</p></li>
+<li><p>Red 117.43.240.0/23 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+</section>
+<section id="ejercicio-8">
+<h3>Ejercicio 8<a class="headerlink" href="#ejercicio-8" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 169.71.8.0/23 en el área izquierda.</p></li>
+<li><p>Red 221.78.68.0/25 en el área central.</p></li>
+<li><p>Red 179.97.0.0/16 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+</section>
+<section id="ejercicio-9">
+<h3>Ejercicio 9<a class="headerlink" href="#ejercicio-9" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 74.200.0.0/13 en el área izquierda.</p></li>
+<li><p>Red 72.72.0.0/14 en el área central.</p></li>
+<li><p>Red 151.119.0.0/17 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+</section>
+<section id="ejercicio-10">
+<h3>Ejercicio 10<a class="headerlink" href="#ejercicio-10" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 184.220.79.192/26 en el área izquierda.</p></li>
+<li><p>Red 172.122.0.0/16 en el área central.</p></li>
+<li><p>Red 58.51.144.0/22 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+</section>
+<section id="ejercicio-11">
+<h3>Ejercicio 11<a class="headerlink" href="#ejercicio-11" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 177.238.40.0/21 en el área izquierda.</p></li>
+<li><p>Red 129.66.1.128/25 en el área central.</p></li>
+<li><p>Red 133.1.32.0/19 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+</section>
+<section id="ejercicio-12">
+<h3>Ejercicio 12<a class="headerlink" href="#ejercicio-12" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 133.51.0.0/18 en el área izquierda.</p></li>
+<li><p>Red 25.64.0.0/12 en el área central.</p></li>
+<li><p>Red 140.163.64.0/19 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+</section>
+<section id="ejercicio-13">
+<h3>Ejercicio 13<a class="headerlink" href="#ejercicio-13" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 57.248.224.0/21 en el área izquierda.</p></li>
+<li><p>Red 168.187.0.0/16 en el área central.</p></li>
+<li><p>Red 73.250.227.192/27 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+</section>
+<section id="ejercicio-14">
+<h3>Ejercicio 14<a class="headerlink" href="#ejercicio-14" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 218.240.66.112/28 en el área izquierda.</p></li>
+<li><p>Red 173.81.128.0/19 en el área central.</p></li>
+<li><p>Red 220.138.169.128/26 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+</section>
+<section id="ejercicio-15">
+<h3>Ejercicio 15<a class="headerlink" href="#ejercicio-15" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 16.48.0.0/15 en el área izquierda.</p></li>
+<li><p>Red 39.228.0.0/17 en el área central.</p></li>
+<li><p>Red 115.120.0.0/13 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+</section>
+<section id="ejercicio-16">
+<h3>Ejercicio 16<a class="headerlink" href="#ejercicio-16" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 215.119.234.16/28 en el área izquierda.</p></li>
+<li><p>Red 41.28.0.0/14 en el área central.</p></li>
+<li><p>Red 182.37.5.128/27 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+</section>
+<section id="ejercicio-17">
+<h3>Ejercicio 17<a class="headerlink" href="#ejercicio-17" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 84.47.40.96/29 en el área izquierda.</p></li>
+<li><p>Red 34.0.0.0/10 en el área central.</p></li>
+<li><p>Red 35.197.176.0/22 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+</section>
+<section id="ejercicio-18">
+<h3>Ejercicio 18<a class="headerlink" href="#ejercicio-18" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 43.32.0.0/11 en el área izquierda.</p></li>
+<li><p>Red 54.155.128.0/17 en el área central.</p></li>
+<li><p>Red 204.78.3.164/30 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+</section>
+<section id="ejercicio-19">
+<h3>Ejercicio 19<a class="headerlink" href="#ejercicio-19" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 69.64.0.0/11 en el área izquierda.</p></li>
+<li><p>Red 213.251.69.160/28 en el área central.</p></li>
+<li><p>Red 172.106.0.0/18 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+</section>
+<section id="ejercicio-20">
+<h3>Ejercicio 20<a class="headerlink" href="#ejercicio-20" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 128.16.145.0/24 en el área izquierda.</p></li>
+<li><p>Red 9.142.128.0/17 en el área central.</p></li>
+<li><p>Red 213.122.23.76/30 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+</section>
+<section id="ejercicio-21">
+<h3>Ejercicio 21<a class="headerlink" href="#ejercicio-21" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 110.240.0.0/13 en el área izquierda.</p></li>
+<li><p>Red 37.244.96.248/29 en el área central.</p></li>
+<li><p>Red 146.25.96.0/20 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+</section>
+<section id="solucion-al-ejercicio-1-de-enrutamiento">
+<h3>Solución al ejercicio 1 de enrutamiento<a class="headerlink" href="#solucion-al-ejercicio-1-de-enrutamiento" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 2.176.48.0/21 en el área izquierda.</p></li>
+<li><p>Red 169.199.24.0/21 en el área central.</p></li>
+<li><p>Red 95.168.0.0/14 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+<p>Las direcciones serían estas:</p>
+<ul class="simple">
+<li><p>PC 1I: IP 2.176.48.1, máscara 255.255.248.0, gateway 2.176.55.254</p></li>
+<li><p>PC 2I: IP 2.176.48.2, máscara 255.255.248.0, gateway 2.176.55.254</p></li>
+<li><p>Router I, interfaz izquierda: IP 2.176.55.254, máscara 255.255.248.0</p></li>
+<li><p>Router I, interfaz derecha: IP 169.199.24.1, máscara 255.255.248.0</p></li>
+<li><p>PC 1D: IP 95.168.0.1, máscara 255.252.0.0, gateway 95.171.255.254</p></li>
+<li><p>PC 2D: IP 95.168.0.2, máscara 255.252.0.0, gateway 95.171.255.254</p></li>
+<li><p>Router D, interfaz derecha: IP 95.171.255.254, máscara 255.252.0.0</p></li>
+<li><p>Router D, interfaz izquierda: IP 169.199.31.254, máscara 255.255.248.0</p></li>
+</ul>
+<p>La tabla de rutas del Router I contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 95.168.0.0/14, máscara 255.252.0.0, siguiente salto: 169.199.31.254</p></li>
+</ul>
+<p>La tabla de rutas del Router D contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 2.176.48.0/21, máscara 255.255.248.0, siguiente salto 169.199.24.1</p></li>
+</ul>
+</section>
+<section id="solucion-al-ejercicio-2-de-enrutamiento">
+<h3>Solución al ejercicio 2 de enrutamiento<a class="headerlink" href="#solucion-al-ejercicio-2-de-enrutamiento" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 110.173.47.136/29 en el área izquierda.</p></li>
+<li><p>Red 5.126.0.0/15 en el área central.</p></li>
+<li><p>Red 171.37.242.0/24 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+<p>Las direcciones serían estas:</p>
+<ul class="simple">
+<li><p>PC 1I: IP 110.173.47.137, máscara 255.255.255.248, gateway 110.173.47.142</p></li>
+<li><p>PC 2I: IP 110.173.47.138, máscara 255.255.255.248, gateway 110.173.47.142</p></li>
+<li><p>Router I, interfaz izquierda: IP 110.173.47.142, máscara 255.255.255.248</p></li>
+<li><p>Router I, interfaz derecha: IP 5.126.0.1, máscara 255.254.0.0</p></li>
+<li><p>PC 1D: IP 171.37.242.1, máscara 255.255.255.0, gateway 171.37.242.254</p></li>
+<li><p>PC 2D: IP 171.37.242.2, máscara 255.255.255.0, gateway 171.37.242.254</p></li>
+<li><p>Router D, interfaz derecha: IP 171.37.242.254, máscara 255.255.255.0</p></li>
+<li><p>Router D, interfaz izquierda: IP 5.127.255.254, máscara 255.254.0.0</p></li>
+</ul>
+<p>La tabla de rutas del Router I contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 171.37.242.0/24, máscara 255.255.255.0, siguiente salto: 5.127.255.254</p></li>
+</ul>
+<p>La tabla de rutas del Router D contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 110.173.47.136/29, máscara 255.255.255.248, siguiente salto 5.126.0.1</p></li>
+</ul>
+</section>
+<section id="solucion-al-ejercicio-3-de-enrutamiento">
+<h3>Solución al ejercicio 3 de enrutamiento<a class="headerlink" href="#solucion-al-ejercicio-3-de-enrutamiento" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 0.164.0.0/15 en el área izquierda.</p></li>
+<li><p>Red 3.47.128.0/19 en el área central.</p></li>
+<li><p>Red 31.144.0.0/13 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+<p>Las direcciones serían estas:</p>
+<ul class="simple">
+<li><p>PC 1I: IP 0.164.0.1, máscara 255.254.0.0, gateway 0.165.255.254</p></li>
+<li><p>PC 2I: IP 0.164.0.2, máscara 255.254.0.0, gateway 0.165.255.254</p></li>
+<li><p>Router I, interfaz izquierda: IP 0.165.255.254, máscara 255.254.0.0</p></li>
+<li><p>Router I, interfaz derecha: IP 3.47.128.1, máscara 255.255.224.0</p></li>
+<li><p>PC 1D: IP 31.144.0.1, máscara 255.248.0.0, gateway 31.151.255.254</p></li>
+<li><p>PC 2D: IP 31.144.0.2, máscara 255.248.0.0, gateway 31.151.255.254</p></li>
+<li><p>Router D, interfaz derecha: IP 31.151.255.254, máscara 255.248.0.0</p></li>
+<li><p>Router D, interfaz izquierda: IP 3.47.159.254, máscara 255.255.224.0</p></li>
+</ul>
+<p>La tabla de rutas del Router I contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 31.144.0.0/13, máscara 255.248.0.0, siguiente salto: 3.47.159.254</p></li>
+</ul>
+<p>La tabla de rutas del Router D contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 0.164.0.0/15, máscara 255.254.0.0, siguiente salto 3.47.128.1</p></li>
+</ul>
+</section>
+<section id="solucion-al-ejercicio-4-de-enrutamiento">
+<h3>Solución al ejercicio 4 de enrutamiento<a class="headerlink" href="#solucion-al-ejercicio-4-de-enrutamiento" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 156.51.172.144/28 en el área izquierda.</p></li>
+<li><p>Red 32.179.184.128/25 en el área central.</p></li>
+<li><p>Red 127.128.0.0/10 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+<p>Las direcciones serían estas:</p>
+<ul class="simple">
+<li><p>PC 1I: IP 156.51.172.145, máscara 255.255.255.240, gateway 156.51.172.158</p></li>
+<li><p>PC 2I: IP 156.51.172.146, máscara 255.255.255.240, gateway 156.51.172.158</p></li>
+<li><p>Router I, interfaz izquierda: IP 156.51.172.158, máscara 255.255.255.240</p></li>
+<li><p>Router I, interfaz derecha: IP 32.179.184.129, máscara 255.255.255.128</p></li>
+<li><p>PC 1D: IP 127.128.0.1, máscara 255.192.0.0, gateway 127.191.255.254</p></li>
+<li><p>PC 2D: IP 127.128.0.2, máscara 255.192.0.0, gateway 127.191.255.254</p></li>
+<li><p>Router D, interfaz derecha: IP 127.191.255.254, máscara 255.192.0.0</p></li>
+<li><p>Router D, interfaz izquierda: IP 32.179.184.254, máscara 255.255.255.128</p></li>
+</ul>
+<p>La tabla de rutas del Router I contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 127.128.0.0/10, máscara 255.192.0.0, siguiente salto: 32.179.184.254</p></li>
+</ul>
+<p>La tabla de rutas del Router D contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 156.51.172.144/28, máscara 255.255.255.240, siguiente salto 32.179.184.129</p></li>
+</ul>
+</section>
+<section id="solucion-al-ejercicio-5-de-enrutamiento">
+<h3>Solución al ejercicio 5 de enrutamiento<a class="headerlink" href="#solucion-al-ejercicio-5-de-enrutamiento" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 57.224.0.0/11 en el área izquierda.</p></li>
+<li><p>Red 213.5.250.96/29 en el área central.</p></li>
+<li><p>Red 177.99.84.48/29 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+<p>Las direcciones serían estas:</p>
+<ul class="simple">
+<li><p>PC 1I: IP 57.224.0.1, máscara 255.224.0.0, gateway 57.255.255.254</p></li>
+<li><p>PC 2I: IP 57.224.0.2, máscara 255.224.0.0, gateway 57.255.255.254</p></li>
+<li><p>Router I, interfaz izquierda: IP 57.255.255.254, máscara 255.224.0.0</p></li>
+<li><p>Router I, interfaz derecha: IP 213.5.250.97, máscara 255.255.255.248</p></li>
+<li><p>PC 1D: IP 177.99.84.49, máscara 255.255.255.248, gateway 177.99.84.54</p></li>
+<li><p>PC 2D: IP 177.99.84.50, máscara 255.255.255.248, gateway 177.99.84.54</p></li>
+<li><p>Router D, interfaz derecha: IP 177.99.84.54, máscara 255.255.255.248</p></li>
+<li><p>Router D, interfaz izquierda: IP 213.5.250.102, máscara 255.255.255.248</p></li>
+</ul>
+<p>La tabla de rutas del Router I contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 177.99.84.48/29, máscara 255.255.255.248, siguiente salto: 213.5.250.102</p></li>
+</ul>
+<p>La tabla de rutas del Router D contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 57.224.0.0/11, máscara 255.224.0.0, siguiente salto 213.5.250.97</p></li>
+</ul>
+</section>
+<section id="solucion-al-ejercicio-6-de-enrutamiento">
+<h3>Solución al ejercicio 6 de enrutamiento<a class="headerlink" href="#solucion-al-ejercicio-6-de-enrutamiento" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 13.69.31.52/30 en el área izquierda.</p></li>
+<li><p>Red 82.208.0.0/14 en el área central.</p></li>
+<li><p>Red 222.202.125.72/29 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+<p>Las direcciones serían estas:</p>
+<ul class="simple">
+<li><p>PC 1I: IP 13.69.31.53, máscara 255.255.255.252, gateway 13.69.31.54</p></li>
+<li><p>PC 2I: IP 13.69.31.54, máscara 255.255.255.252, gateway 13.69.31.54</p></li>
+<li><p>Router I, interfaz izquierda: IP 13.69.31.54, máscara 255.255.255.252</p></li>
+<li><p>Router I, interfaz derecha: IP 82.208.0.1, máscara 255.252.0.0</p></li>
+<li><p>PC 1D: IP 222.202.125.73, máscara 255.255.255.248, gateway 222.202.125.78</p></li>
+<li><p>PC 2D: IP 222.202.125.74, máscara 255.255.255.248, gateway 222.202.125.78</p></li>
+<li><p>Router D, interfaz derecha: IP 222.202.125.78, máscara 255.255.255.248</p></li>
+<li><p>Router D, interfaz izquierda: IP 82.211.255.254, máscara 255.252.0.0</p></li>
+</ul>
+<p>La tabla de rutas del Router I contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 222.202.125.72/29, máscara 255.255.255.248, siguiente salto: 82.211.255.254</p></li>
+</ul>
+<p>La tabla de rutas del Router D contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 13.69.31.52/30, máscara 255.255.255.252, siguiente salto 82.208.0.1</p></li>
+</ul>
+</section>
+<section id="solucion-al-ejercicio-7-de-enrutamiento">
+<h3>Solución al ejercicio 7 de enrutamiento<a class="headerlink" href="#solucion-al-ejercicio-7-de-enrutamiento" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 212.241.91.64/28 en el área izquierda.</p></li>
+<li><p>Red 39.66.113.236/30 en el área central.</p></li>
+<li><p>Red 117.43.240.0/23 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+<p>Las direcciones serían estas:</p>
+<ul class="simple">
+<li><p>PC 1I: IP 212.241.91.65, máscara 255.255.255.240, gateway 212.241.91.78</p></li>
+<li><p>PC 2I: IP 212.241.91.66, máscara 255.255.255.240, gateway 212.241.91.78</p></li>
+<li><p>Router I, interfaz izquierda: IP 212.241.91.78, máscara 255.255.255.240</p></li>
+<li><p>Router I, interfaz derecha: IP 39.66.113.237, máscara 255.255.255.252</p></li>
+<li><p>PC 1D: IP 117.43.240.1, máscara 255.255.254.0, gateway 117.43.241.254</p></li>
+<li><p>PC 2D: IP 117.43.240.2, máscara 255.255.254.0, gateway 117.43.241.254</p></li>
+<li><p>Router D, interfaz derecha: IP 117.43.241.254, máscara 255.255.254.0</p></li>
+<li><p>Router D, interfaz izquierda: IP 39.66.113.238, máscara 255.255.255.252</p></li>
+</ul>
+<p>La tabla de rutas del Router I contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 117.43.240.0/23, máscara 255.255.254.0, siguiente salto: 39.66.113.238</p></li>
+</ul>
+<p>La tabla de rutas del Router D contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 212.241.91.64/28, máscara 255.255.255.240, siguiente salto 39.66.113.237</p></li>
+</ul>
+</section>
+<section id="solucion-al-ejercicio-8-de-enrutamiento">
+<h3>Solución al ejercicio 8 de enrutamiento<a class="headerlink" href="#solucion-al-ejercicio-8-de-enrutamiento" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 169.71.8.0/23 en el área izquierda.</p></li>
+<li><p>Red 221.78.68.0/25 en el área central.</p></li>
+<li><p>Red 179.97.0.0/16 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+<p>Las direcciones serían estas:</p>
+<ul class="simple">
+<li><p>PC 1I: IP 169.71.8.1, máscara 255.255.254.0, gateway 169.71.9.254</p></li>
+<li><p>PC 2I: IP 169.71.8.2, máscara 255.255.254.0, gateway 169.71.9.254</p></li>
+<li><p>Router I, interfaz izquierda: IP 169.71.9.254, máscara 255.255.254.0</p></li>
+<li><p>Router I, interfaz derecha: IP 221.78.68.1, máscara 255.255.255.128</p></li>
+<li><p>PC 1D: IP 179.97.0.1, máscara 255.255.0.0, gateway 179.97.255.254</p></li>
+<li><p>PC 2D: IP 179.97.0.2, máscara 255.255.0.0, gateway 179.97.255.254</p></li>
+<li><p>Router D, interfaz derecha: IP 179.97.255.254, máscara 255.255.0.0</p></li>
+<li><p>Router D, interfaz izquierda: IP 221.78.68.126, máscara 255.255.255.128</p></li>
+</ul>
+<p>La tabla de rutas del Router I contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 179.97.0.0/16, máscara 255.255.0.0, siguiente salto: 221.78.68.126</p></li>
+</ul>
+<p>La tabla de rutas del Router D contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 169.71.8.0/23, máscara 255.255.254.0, siguiente salto 221.78.68.1</p></li>
+</ul>
+</section>
+<section id="solucion-al-ejercicio-9-de-enrutamiento">
+<h3>Solución al ejercicio 9 de enrutamiento<a class="headerlink" href="#solucion-al-ejercicio-9-de-enrutamiento" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 74.200.0.0/13 en el área izquierda.</p></li>
+<li><p>Red 72.72.0.0/14 en el área central.</p></li>
+<li><p>Red 151.119.0.0/17 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+<p>Las direcciones serían estas:</p>
+<ul class="simple">
+<li><p>PC 1I: IP 74.200.0.1, máscara 255.248.0.0, gateway 74.207.255.254</p></li>
+<li><p>PC 2I: IP 74.200.0.2, máscara 255.248.0.0, gateway 74.207.255.254</p></li>
+<li><p>Router I, interfaz izquierda: IP 74.207.255.254, máscara 255.248.0.0</p></li>
+<li><p>Router I, interfaz derecha: IP 72.72.0.1, máscara 255.252.0.0</p></li>
+<li><p>PC 1D: IP 151.119.0.1, máscara 255.255.128.0, gateway 151.119.127.254</p></li>
+<li><p>PC 2D: IP 151.119.0.2, máscara 255.255.128.0, gateway 151.119.127.254</p></li>
+<li><p>Router D, interfaz derecha: IP 151.119.127.254, máscara 255.255.128.0</p></li>
+<li><p>Router D, interfaz izquierda: IP 72.75.255.254, máscara 255.252.0.0</p></li>
+</ul>
+<p>La tabla de rutas del Router I contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 151.119.0.0/17, máscara 255.255.128.0, siguiente salto: 72.75.255.254</p></li>
+</ul>
+<p>La tabla de rutas del Router D contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 74.200.0.0/13, máscara 255.248.0.0, siguiente salto 72.72.0.1</p></li>
+</ul>
+</section>
+<section id="solucion-al-ejercicio-10-de-enrutamiento">
+<h3>Solución al ejercicio 10 de enrutamiento<a class="headerlink" href="#solucion-al-ejercicio-10-de-enrutamiento" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 184.220.79.192/26 en el área izquierda.</p></li>
+<li><p>Red 172.122.0.0/16 en el área central.</p></li>
+<li><p>Red 58.51.144.0/22 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+<p>Las direcciones serían estas:</p>
+<ul class="simple">
+<li><p>PC 1I: IP 184.220.79.193, máscara 255.255.255.192, gateway 184.220.79.254</p></li>
+<li><p>PC 2I: IP 184.220.79.194, máscara 255.255.255.192, gateway 184.220.79.254</p></li>
+<li><p>Router I, interfaz izquierda: IP 184.220.79.254, máscara 255.255.255.192</p></li>
+<li><p>Router I, interfaz derecha: IP 172.122.0.1, máscara 255.255.0.0</p></li>
+<li><p>PC 1D: IP 58.51.144.1, máscara 255.255.252.0, gateway 58.51.147.254</p></li>
+<li><p>PC 2D: IP 58.51.144.2, máscara 255.255.252.0, gateway 58.51.147.254</p></li>
+<li><p>Router D, interfaz derecha: IP 58.51.147.254, máscara 255.255.252.0</p></li>
+<li><p>Router D, interfaz izquierda: IP 172.122.255.254, máscara 255.255.0.0</p></li>
+</ul>
+<p>La tabla de rutas del Router I contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 58.51.144.0/22, máscara 255.255.252.0, siguiente salto: 172.122.255.254</p></li>
+</ul>
+<p>La tabla de rutas del Router D contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 184.220.79.192/26, máscara 255.255.255.192, siguiente salto 172.122.0.1</p></li>
+</ul>
+</section>
+<section id="solucion-al-ejercicio-11-de-enrutamiento">
+<h3>Solución al ejercicio 11 de enrutamiento<a class="headerlink" href="#solucion-al-ejercicio-11-de-enrutamiento" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 177.238.40.0/21 en el área izquierda.</p></li>
+<li><p>Red 129.66.1.128/25 en el área central.</p></li>
+<li><p>Red 133.1.32.0/19 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+<p>Las direcciones serían estas:</p>
+<ul class="simple">
+<li><p>PC 1I: IP 177.238.40.1, máscara 255.255.248.0, gateway 177.238.47.254</p></li>
+<li><p>PC 2I: IP 177.238.40.2, máscara 255.255.248.0, gateway 177.238.47.254</p></li>
+<li><p>Router I, interfaz izquierda: IP 177.238.47.254, máscara 255.255.248.0</p></li>
+<li><p>Router I, interfaz derecha: IP 129.66.1.129, máscara 255.255.255.128</p></li>
+<li><p>PC 1D: IP 133.1.32.1, máscara 255.255.224.0, gateway 133.1.63.254</p></li>
+<li><p>PC 2D: IP 133.1.32.2, máscara 255.255.224.0, gateway 133.1.63.254</p></li>
+<li><p>Router D, interfaz derecha: IP 133.1.63.254, máscara 255.255.224.0</p></li>
+<li><p>Router D, interfaz izquierda: IP 129.66.1.254, máscara 255.255.255.128</p></li>
+</ul>
+<p>La tabla de rutas del Router I contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 133.1.32.0/19, máscara 255.255.224.0, siguiente salto: 129.66.1.254</p></li>
+</ul>
+<p>La tabla de rutas del Router D contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 177.238.40.0/21, máscara 255.255.248.0, siguiente salto 129.66.1.129</p></li>
+</ul>
+</section>
+<section id="solucion-al-ejercicio-12-de-enrutamiento">
+<h3>Solución al ejercicio 12 de enrutamiento<a class="headerlink" href="#solucion-al-ejercicio-12-de-enrutamiento" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 133.51.0.0/18 en el área izquierda.</p></li>
+<li><p>Red 25.64.0.0/12 en el área central.</p></li>
+<li><p>Red 140.163.64.0/19 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+<p>Las direcciones serían estas:</p>
+<ul class="simple">
+<li><p>PC 1I: IP 133.51.0.1, máscara 255.255.192.0, gateway 133.51.63.254</p></li>
+<li><p>PC 2I: IP 133.51.0.2, máscara 255.255.192.0, gateway 133.51.63.254</p></li>
+<li><p>Router I, interfaz izquierda: IP 133.51.63.254, máscara 255.255.192.0</p></li>
+<li><p>Router I, interfaz derecha: IP 25.64.0.1, máscara 255.240.0.0</p></li>
+<li><p>PC 1D: IP 140.163.64.1, máscara 255.255.224.0, gateway 140.163.95.254</p></li>
+<li><p>PC 2D: IP 140.163.64.2, máscara 255.255.224.0, gateway 140.163.95.254</p></li>
+<li><p>Router D, interfaz derecha: IP 140.163.95.254, máscara 255.255.224.0</p></li>
+<li><p>Router D, interfaz izquierda: IP 25.79.255.254, máscara 255.240.0.0</p></li>
+</ul>
+<p>La tabla de rutas del Router I contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 140.163.64.0/19, máscara 255.255.224.0, siguiente salto: 25.79.255.254</p></li>
+</ul>
+<p>La tabla de rutas del Router D contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 133.51.0.0/18, máscara 255.255.192.0, siguiente salto 25.64.0.1</p></li>
+</ul>
+</section>
+<section id="solucion-al-ejercicio-13-de-enrutamiento">
+<h3>Solución al ejercicio 13 de enrutamiento<a class="headerlink" href="#solucion-al-ejercicio-13-de-enrutamiento" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 57.248.224.0/21 en el área izquierda.</p></li>
+<li><p>Red 168.187.0.0/16 en el área central.</p></li>
+<li><p>Red 73.250.227.192/27 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+<p>Las direcciones serían estas:</p>
+<ul class="simple">
+<li><p>PC 1I: IP 57.248.224.1, máscara 255.255.248.0, gateway 57.248.231.254</p></li>
+<li><p>PC 2I: IP 57.248.224.2, máscara 255.255.248.0, gateway 57.248.231.254</p></li>
+<li><p>Router I, interfaz izquierda: IP 57.248.231.254, máscara 255.255.248.0</p></li>
+<li><p>Router I, interfaz derecha: IP 168.187.0.1, máscara 255.255.0.0</p></li>
+<li><p>PC 1D: IP 73.250.227.193, máscara 255.255.255.224, gateway 73.250.227.222</p></li>
+<li><p>PC 2D: IP 73.250.227.194, máscara 255.255.255.224, gateway 73.250.227.222</p></li>
+<li><p>Router D, interfaz derecha: IP 73.250.227.222, máscara 255.255.255.224</p></li>
+<li><p>Router D, interfaz izquierda: IP 168.187.255.254, máscara 255.255.0.0</p></li>
+</ul>
+<p>La tabla de rutas del Router I contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 73.250.227.192/27, máscara 255.255.255.224, siguiente salto: 168.187.255.254</p></li>
+</ul>
+<p>La tabla de rutas del Router D contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 57.248.224.0/21, máscara 255.255.248.0, siguiente salto 168.187.0.1</p></li>
+</ul>
+</section>
+<section id="solucion-al-ejercicio-14-de-enrutamiento">
+<h3>Solución al ejercicio 14 de enrutamiento<a class="headerlink" href="#solucion-al-ejercicio-14-de-enrutamiento" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 218.240.66.112/28 en el área izquierda.</p></li>
+<li><p>Red 173.81.128.0/19 en el área central.</p></li>
+<li><p>Red 220.138.169.128/26 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+<p>Las direcciones serían estas:</p>
+<ul class="simple">
+<li><p>PC 1I: IP 218.240.66.113, máscara 255.255.255.240, gateway 218.240.66.126</p></li>
+<li><p>PC 2I: IP 218.240.66.114, máscara 255.255.255.240, gateway 218.240.66.126</p></li>
+<li><p>Router I, interfaz izquierda: IP 218.240.66.126, máscara 255.255.255.240</p></li>
+<li><p>Router I, interfaz derecha: IP 173.81.128.1, máscara 255.255.224.0</p></li>
+<li><p>PC 1D: IP 220.138.169.129, máscara 255.255.255.192, gateway 220.138.169.190</p></li>
+<li><p>PC 2D: IP 220.138.169.130, máscara 255.255.255.192, gateway 220.138.169.190</p></li>
+<li><p>Router D, interfaz derecha: IP 220.138.169.190, máscara 255.255.255.192</p></li>
+<li><p>Router D, interfaz izquierda: IP 173.81.159.254, máscara 255.255.224.0</p></li>
+</ul>
+<p>La tabla de rutas del Router I contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 220.138.169.128/26, máscara 255.255.255.192, siguiente salto: 173.81.159.254</p></li>
+</ul>
+<p>La tabla de rutas del Router D contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 218.240.66.112/28, máscara 255.255.255.240, siguiente salto 173.81.128.1</p></li>
+</ul>
+</section>
+<section id="solucion-al-ejercicio-15-de-enrutamiento">
+<h3>Solución al ejercicio 15 de enrutamiento<a class="headerlink" href="#solucion-al-ejercicio-15-de-enrutamiento" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 16.48.0.0/15 en el área izquierda.</p></li>
+<li><p>Red 39.228.0.0/17 en el área central.</p></li>
+<li><p>Red 115.120.0.0/13 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+<p>Las direcciones serían estas:</p>
+<ul class="simple">
+<li><p>PC 1I: IP 16.48.0.1, máscara 255.254.0.0, gateway 16.49.255.254</p></li>
+<li><p>PC 2I: IP 16.48.0.2, máscara 255.254.0.0, gateway 16.49.255.254</p></li>
+<li><p>Router I, interfaz izquierda: IP 16.49.255.254, máscara 255.254.0.0</p></li>
+<li><p>Router I, interfaz derecha: IP 39.228.0.1, máscara 255.255.128.0</p></li>
+<li><p>PC 1D: IP 115.120.0.1, máscara 255.248.0.0, gateway 115.127.255.254</p></li>
+<li><p>PC 2D: IP 115.120.0.2, máscara 255.248.0.0, gateway 115.127.255.254</p></li>
+<li><p>Router D, interfaz derecha: IP 115.127.255.254, máscara 255.248.0.0</p></li>
+<li><p>Router D, interfaz izquierda: IP 39.228.127.254, máscara 255.255.128.0</p></li>
+</ul>
+<p>La tabla de rutas del Router I contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 115.120.0.0/13, máscara 255.248.0.0, siguiente salto: 39.228.127.254</p></li>
+</ul>
+<p>La tabla de rutas del Router D contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 16.48.0.0/15, máscara 255.254.0.0, siguiente salto 39.228.0.1</p></li>
+</ul>
+</section>
+<section id="solucion-al-ejercicio-16-de-enrutamiento">
+<h3>Solución al ejercicio 16 de enrutamiento<a class="headerlink" href="#solucion-al-ejercicio-16-de-enrutamiento" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 215.119.234.16/28 en el área izquierda.</p></li>
+<li><p>Red 41.28.0.0/14 en el área central.</p></li>
+<li><p>Red 182.37.5.128/27 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+<p>Las direcciones serían estas:</p>
+<ul class="simple">
+<li><p>PC 1I: IP 215.119.234.17, máscara 255.255.255.240, gateway 215.119.234.30</p></li>
+<li><p>PC 2I: IP 215.119.234.18, máscara 255.255.255.240, gateway 215.119.234.30</p></li>
+<li><p>Router I, interfaz izquierda: IP 215.119.234.30, máscara 255.255.255.240</p></li>
+<li><p>Router I, interfaz derecha: IP 41.28.0.1, máscara 255.252.0.0</p></li>
+<li><p>PC 1D: IP 182.37.5.129, máscara 255.255.255.224, gateway 182.37.5.158</p></li>
+<li><p>PC 2D: IP 182.37.5.130, máscara 255.255.255.224, gateway 182.37.5.158</p></li>
+<li><p>Router D, interfaz derecha: IP 182.37.5.158, máscara 255.255.255.224</p></li>
+<li><p>Router D, interfaz izquierda: IP 41.31.255.254, máscara 255.252.0.0</p></li>
+</ul>
+<p>La tabla de rutas del Router I contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 182.37.5.128/27, máscara 255.255.255.224, siguiente salto: 41.31.255.254</p></li>
+</ul>
+<p>La tabla de rutas del Router D contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 215.119.234.16/28, máscara 255.255.255.240, siguiente salto 41.28.0.1</p></li>
+</ul>
+</section>
+<section id="solucion-al-ejercicio-17-de-enrutamiento">
+<h3>Solución al ejercicio 17 de enrutamiento<a class="headerlink" href="#solucion-al-ejercicio-17-de-enrutamiento" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 84.47.40.96/29 en el área izquierda.</p></li>
+<li><p>Red 34.0.0.0/10 en el área central.</p></li>
+<li><p>Red 35.197.176.0/22 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+<p>Las direcciones serían estas:</p>
+<ul class="simple">
+<li><p>PC 1I: IP 84.47.40.97, máscara 255.255.255.248, gateway 84.47.40.102</p></li>
+<li><p>PC 2I: IP 84.47.40.98, máscara 255.255.255.248, gateway 84.47.40.102</p></li>
+<li><p>Router I, interfaz izquierda: IP 84.47.40.102, máscara 255.255.255.248</p></li>
+<li><p>Router I, interfaz derecha: IP 34.0.0.1, máscara 255.192.0.0</p></li>
+<li><p>PC 1D: IP 35.197.176.1, máscara 255.255.252.0, gateway 35.197.179.254</p></li>
+<li><p>PC 2D: IP 35.197.176.2, máscara 255.255.252.0, gateway 35.197.179.254</p></li>
+<li><p>Router D, interfaz derecha: IP 35.197.179.254, máscara 255.255.252.0</p></li>
+<li><p>Router D, interfaz izquierda: IP 34.63.255.254, máscara 255.192.0.0</p></li>
+</ul>
+<p>La tabla de rutas del Router I contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 35.197.176.0/22, máscara 255.255.252.0, siguiente salto: 34.63.255.254</p></li>
+</ul>
+<p>La tabla de rutas del Router D contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 84.47.40.96/29, máscara 255.255.255.248, siguiente salto 34.0.0.1</p></li>
+</ul>
+</section>
+<section id="solucion-al-ejercicio-18-de-enrutamiento">
+<h3>Solución al ejercicio 18 de enrutamiento<a class="headerlink" href="#solucion-al-ejercicio-18-de-enrutamiento" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 43.32.0.0/11 en el área izquierda.</p></li>
+<li><p>Red 54.155.128.0/17 en el área central.</p></li>
+<li><p>Red 204.78.3.164/30 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+<p>Las direcciones serían estas:</p>
+<ul class="simple">
+<li><p>PC 1I: IP 43.32.0.1, máscara 255.224.0.0, gateway 43.63.255.254</p></li>
+<li><p>PC 2I: IP 43.32.0.2, máscara 255.224.0.0, gateway 43.63.255.254</p></li>
+<li><p>Router I, interfaz izquierda: IP 43.63.255.254, máscara 255.224.0.0</p></li>
+<li><p>Router I, interfaz derecha: IP 54.155.128.1, máscara 255.255.128.0</p></li>
+<li><p>PC 1D: IP 204.78.3.165, máscara 255.255.255.252, gateway 204.78.3.166</p></li>
+<li><p>PC 2D: IP 204.78.3.166, máscara 255.255.255.252, gateway 204.78.3.166</p></li>
+<li><p>Router D, interfaz derecha: IP 204.78.3.166, máscara 255.255.255.252</p></li>
+<li><p>Router D, interfaz izquierda: IP 54.155.255.254, máscara 255.255.128.0</p></li>
+</ul>
+<p>La tabla de rutas del Router I contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 204.78.3.164/30, máscara 255.255.255.252, siguiente salto: 54.155.255.254</p></li>
+</ul>
+<p>La tabla de rutas del Router D contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 43.32.0.0/11, máscara 255.224.0.0, siguiente salto 54.155.128.1</p></li>
+</ul>
+</section>
+<section id="solucion-al-ejercicio-19-de-enrutamiento">
+<h3>Solución al ejercicio 19 de enrutamiento<a class="headerlink" href="#solucion-al-ejercicio-19-de-enrutamiento" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 69.64.0.0/11 en el área izquierda.</p></li>
+<li><p>Red 213.251.69.160/28 en el área central.</p></li>
+<li><p>Red 172.106.0.0/18 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+<p>Las direcciones serían estas:</p>
+<ul class="simple">
+<li><p>PC 1I: IP 69.64.0.1, máscara 255.224.0.0, gateway 69.95.255.254</p></li>
+<li><p>PC 2I: IP 69.64.0.2, máscara 255.224.0.0, gateway 69.95.255.254</p></li>
+<li><p>Router I, interfaz izquierda: IP 69.95.255.254, máscara 255.224.0.0</p></li>
+<li><p>Router I, interfaz derecha: IP 213.251.69.161, máscara 255.255.255.240</p></li>
+<li><p>PC 1D: IP 172.106.0.1, máscara 255.255.192.0, gateway 172.106.63.254</p></li>
+<li><p>PC 2D: IP 172.106.0.2, máscara 255.255.192.0, gateway 172.106.63.254</p></li>
+<li><p>Router D, interfaz derecha: IP 172.106.63.254, máscara 255.255.192.0</p></li>
+<li><p>Router D, interfaz izquierda: IP 213.251.69.174, máscara 255.255.255.240</p></li>
+</ul>
+<p>La tabla de rutas del Router I contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 172.106.0.0/18, máscara 255.255.192.0, siguiente salto: 213.251.69.174</p></li>
+</ul>
+<p>La tabla de rutas del Router D contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 69.64.0.0/11, máscara 255.224.0.0, siguiente salto 213.251.69.161</p></li>
+</ul>
+</section>
+<section id="solucion-al-ejercicio-20-de-enrutamiento">
+<h3>Solución al ejercicio 20 de enrutamiento<a class="headerlink" href="#solucion-al-ejercicio-20-de-enrutamiento" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 128.16.145.0/24 en el área izquierda.</p></li>
+<li><p>Red 9.142.128.0/17 en el área central.</p></li>
+<li><p>Red 213.122.23.76/30 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+<p>Las direcciones serían estas:</p>
+<ul class="simple">
+<li><p>PC 1I: IP 128.16.145.1, máscara 255.255.255.0, gateway 128.16.145.254</p></li>
+<li><p>PC 2I: IP 128.16.145.2, máscara 255.255.255.0, gateway 128.16.145.254</p></li>
+<li><p>Router I, interfaz izquierda: IP 128.16.145.254, máscara 255.255.255.0</p></li>
+<li><p>Router I, interfaz derecha: IP 9.142.128.1, máscara 255.255.128.0</p></li>
+<li><p>PC 1D: IP 213.122.23.77, máscara 255.255.255.252, gateway 213.122.23.78</p></li>
+<li><p>PC 2D: IP 213.122.23.78, máscara 255.255.255.252, gateway 213.122.23.78</p></li>
+<li><p>Router D, interfaz derecha: IP 213.122.23.78, máscara 255.255.255.252</p></li>
+<li><p>Router D, interfaz izquierda: IP 9.142.255.254, máscara 255.255.128.0</p></li>
+</ul>
+<p>La tabla de rutas del Router I contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 213.122.23.76/30, máscara 255.255.255.252, siguiente salto: 9.142.255.254</p></li>
+</ul>
+<p>La tabla de rutas del Router D contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 128.16.145.0/24, máscara 255.255.255.0, siguiente salto 9.142.128.1</p></li>
+</ul>
+</section>
+<section id="solucion-al-ejercicio-21-de-enrutamiento">
+<h3>Solución al ejercicio 21 de enrutamiento<a class="headerlink" href="#solucion-al-ejercicio-21-de-enrutamiento" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
+los nodos de la red. Se desean utilizar las siguientes redes:</p>
+<ul class="simple">
+<li><p>Red 110.240.0.0/13 en el área izquierda.</p></li>
+<li><p>Red 37.244.96.248/29 en el área central.</p></li>
+<li><p>Red 146.25.96.0/20 en el área derecha</p></li>
+</ul>
+<p>Aparte de eso, se desean respetar unos ciertos estándares:</p>
+<ul class="simple">
+<li><p>Los routers de acceso a red deben tener siempre la primera IP de la red.</p></li>
+<li><p>Los routers de distribución (los centrales) deberán tener la primera IP en el punto izquierdo y la última en el derecho.</p></li>
+</ul>
+<p>Las direcciones serían estas:</p>
+<ul class="simple">
+<li><p>PC 1I: IP 110.240.0.1, máscara 255.248.0.0, gateway 110.247.255.254</p></li>
+<li><p>PC 2I: IP 110.240.0.2, máscara 255.248.0.0, gateway 110.247.255.254</p></li>
+<li><p>Router I, interfaz izquierda: IP 110.247.255.254, máscara 255.248.0.0</p></li>
+<li><p>Router I, interfaz derecha: IP 37.244.96.249, máscara 255.255.255.248</p></li>
+<li><p>PC 1D: IP 146.25.96.1, máscara 255.255.240.0, gateway 146.25.111.254</p></li>
+<li><p>PC 2D: IP 146.25.96.2, máscara 255.255.240.0, gateway 146.25.111.254</p></li>
+<li><p>Router D, interfaz derecha: IP 146.25.111.254, máscara 255.255.240.0</p></li>
+<li><p>Router D, interfaz izquierda: IP 37.244.96.254, máscara 255.255.255.248</p></li>
+</ul>
+<p>La tabla de rutas del Router I contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 146.25.96.0/20, máscara 255.255.240.0, siguiente salto: 37.244.96.254</p></li>
+</ul>
+<p>La tabla de rutas del Router D contiene la entrada siguiente:</p>
+<ul class="simple">
+<li><p>Red 110.240.0.0/13, máscara 255.248.0.0, siguiente salto 37.244.96.249</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Apuntes de redes</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegación</h3>
+<p class="caption" role="heading"><span class="caption-text">Índice:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../t1_caracterizacion_redes/apuntes_t1.html">Caracterización de redes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apuntes_t2.html">Integración de elementos en una red</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apuntes_t2.html#anexo-ejercicios-sobre-compresion-de-direcciones-ipv6">Anexo: Ejercicios sobre compresión de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apuntes_t2.html#anexo-ejercicios-sobre-clasificacion-de-direcciones-ipv6">Anexo: ejercicios sobre clasificación de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t3_conmutadores/apuntes_t3.html">Configuración y administración de conmutadores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t4_routers/apuntes_t4.html">Configuración y administración básica de routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t5_vlans/apuntes_t5.html">Configuración de redes virtuales VLAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t6_enrutamiento_dinamico/apuntes_t6.html">Configuración y administración de protocolos dinámicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t7_acceso_internet/apuntes_t7.html">Configuración del acceso a Internet desde una LAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../anexos/t1_ejercicios.html">Anexo: Ejercicios propuestos para el tema 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rangos_direcciones.html">Anexo: ejercicios sobre rangos de direcciones</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Anexo: ejercicios de enrutamiento</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ejercicios-con-dos-router">Ejercicios con dos router</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ejercicio-1">Ejercicio 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ejercicio-2">Ejercicio 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ejercicio-3">Ejercicio 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ejercicio-4">Ejercicio 4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ejercicio-5">Ejercicio 5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ejercicio-6">Ejercicio 6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ejercicio-7">Ejercicio 7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ejercicio-8">Ejercicio 8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ejercicio-9">Ejercicio 9</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ejercicio-10">Ejercicio 10</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ejercicio-11">Ejercicio 11</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ejercicio-12">Ejercicio 12</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ejercicio-13">Ejercicio 13</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ejercicio-14">Ejercicio 14</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ejercicio-15">Ejercicio 15</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ejercicio-16">Ejercicio 16</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ejercicio-17">Ejercicio 17</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ejercicio-18">Ejercicio 18</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ejercicio-19">Ejercicio 19</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ejercicio-20">Ejercicio 20</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ejercicio-21">Ejercicio 21</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solucion-al-ejercicio-1-de-enrutamiento">Solución al ejercicio 1 de enrutamiento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solucion-al-ejercicio-2-de-enrutamiento">Solución al ejercicio 2 de enrutamiento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solucion-al-ejercicio-3-de-enrutamiento">Solución al ejercicio 3 de enrutamiento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solucion-al-ejercicio-4-de-enrutamiento">Solución al ejercicio 4 de enrutamiento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solucion-al-ejercicio-5-de-enrutamiento">Solución al ejercicio 5 de enrutamiento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solucion-al-ejercicio-6-de-enrutamiento">Solución al ejercicio 6 de enrutamiento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solucion-al-ejercicio-7-de-enrutamiento">Solución al ejercicio 7 de enrutamiento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solucion-al-ejercicio-8-de-enrutamiento">Solución al ejercicio 8 de enrutamiento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solucion-al-ejercicio-9-de-enrutamiento">Solución al ejercicio 9 de enrutamiento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solucion-al-ejercicio-10-de-enrutamiento">Solución al ejercicio 10 de enrutamiento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solucion-al-ejercicio-11-de-enrutamiento">Solución al ejercicio 11 de enrutamiento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solucion-al-ejercicio-12-de-enrutamiento">Solución al ejercicio 12 de enrutamiento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solucion-al-ejercicio-13-de-enrutamiento">Solución al ejercicio 13 de enrutamiento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solucion-al-ejercicio-14-de-enrutamiento">Solución al ejercicio 14 de enrutamiento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solucion-al-ejercicio-15-de-enrutamiento">Solución al ejercicio 15 de enrutamiento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solucion-al-ejercicio-16-de-enrutamiento">Solución al ejercicio 16 de enrutamiento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solucion-al-ejercicio-17-de-enrutamiento">Solución al ejercicio 17 de enrutamiento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solucion-al-ejercicio-18-de-enrutamiento">Solución al ejercicio 18 de enrutamiento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solucion-al-ejercicio-19-de-enrutamiento">Solución al ejercicio 19 de enrutamiento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solucion-al-ejercicio-20-de-enrutamiento">Solución al ejercicio 20 de enrutamiento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solucion-al-ejercicio-21-de-enrutamiento">Solución al ejercicio 21 de enrutamiento</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ejerciciosipv6/ejercicios_ipv6.html">Anexo: Ejercicios sobre compresión de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ejercicios_ips/clasificacion_ipv6.html">Anexo: ejercicios sobre clasificación de direcciones IPv6</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="rangos_direcciones.html" title="capítulo anterior">Anexo: ejercicios sobre rangos de direcciones</a></li>
+      <li>Next: <a href="../ejerciciosipv6/ejercicios_ipv6.html" title="próximo capítulo">Anexo: Ejercicios sobre compresión de direcciones IPv6</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Oscar G. G..
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/t2_integracion_elementos/ejercicios_subredes_ipv4/ejercicios_dos_router.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

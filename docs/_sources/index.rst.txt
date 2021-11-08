@@ -20,6 +20,7 @@ Apuntes de Planificación y Administración de Redes
 
    anexos/t1_ejercicios.rst
    t2_integracion_elementos/ejercicios_subredes_ipv4/rangos_direcciones.rst
+   t2_integracion_elementos/ejercicios_subredes_ipv4/ejercicios_dos_router.rst
    t2_integracion_elementos/ejerciciosipv6/ejercicios_ipv6.rst
 
    t2_integracion_elementos/ejercicios_ips/clasificacion_ipv6.rst
