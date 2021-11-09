@@ -3,750 +3,750 @@ Anexo: ejercicios sobre rangos de direcciones
 
 Ejercicio 1
 -----------------------------
-Obtener el rango de direcciones posible para 46.233.192.0/20
+Obtener el rango de direcciones posible para 199.231.113.240/28
 
 
 Ejercicio 2
 -----------------------------
-Obtener el rango de direcciones posible para 199.134.141.0/25
+Obtener el rango de direcciones posible para 138.246.226.0/25
 
 
 Ejercicio 3
 -----------------------------
-Obtener el rango de direcciones posible para 22.252.0.0/14
+Obtener el rango de direcciones posible para 40.233.128.0/17
 
 
 Ejercicio 4
 -----------------------------
-Obtener el rango de direcciones posible para 79.168.0.0/14
+Obtener el rango de direcciones posible para 101.144.0.0/14
 
 
 Ejercicio 5
 -----------------------------
-Obtener el rango de direcciones posible para 131.215.184.64/26
+Obtener el rango de direcciones posible para 40.16.0.0/14
 
 
 Ejercicio 6
 -----------------------------
-Obtener el rango de direcciones posible para 214.122.164.192/26
+Obtener el rango de direcciones posible para 100.92.0.0/18
 
 
 Ejercicio 7
 -----------------------------
-Obtener el rango de direcciones posible para 209.173.168.84/30
+Obtener el rango de direcciones posible para 67.224.0.0/11
 
 
 Ejercicio 8
 -----------------------------
-Obtener el rango de direcciones posible para 153.111.128.0/17
+Obtener el rango de direcciones posible para 159.36.118.0/23
 
 
 Ejercicio 9
 -----------------------------
-Obtener el rango de direcciones posible para 134.87.135.192/26
+Obtener el rango de direcciones posible para 176.159.104.0/21
 
 
 Ejercicio 10
 -----------------------------
-Obtener el rango de direcciones posible para 161.198.239.168/29
+Obtener el rango de direcciones posible para 156.93.152.0/21
 
 
 Ejercicio 11
 -----------------------------
-Obtener el rango de direcciones posible para 72.61.160.0/19
+Obtener el rango de direcciones posible para 38.204.0.0/16
 
 
 Ejercicio 12
 -----------------------------
-Obtener el rango de direcciones posible para 137.170.96.0/20
+Obtener el rango de direcciones posible para 42.32.0.0/12
 
 
 Ejercicio 13
 -----------------------------
-Obtener el rango de direcciones posible para 32.96.0.0/13
+Obtener el rango de direcciones posible para 127.244.0.0/17
 
 
 Ejercicio 14
 -----------------------------
-Obtener el rango de direcciones posible para 44.128.0.0/10
+Obtener el rango de direcciones posible para 209.173.178.192/26
 
 
 Ejercicio 15
 -----------------------------
-Obtener el rango de direcciones posible para 50.142.0.0/17
+Obtener el rango de direcciones posible para 73.0.0.0/10
 
 
 Ejercicio 16
 -----------------------------
-Obtener el rango de direcciones posible para 57.128.0.0/10
+Obtener el rango de direcciones posible para 28.96.0.0/11
 
 
 Ejercicio 17
 -----------------------------
-Obtener el rango de direcciones posible para 66.16.0.0/12
+Obtener el rango de direcciones posible para 170.220.0.0/16
 
 
 Ejercicio 18
 -----------------------------
-Obtener el rango de direcciones posible para 163.46.54.128/25
+Obtener el rango de direcciones posible para 93.148.0.0/19
 
 
 Ejercicio 19
 -----------------------------
-Obtener el rango de direcciones posible para 68.112.0.0/13
+Obtener el rango de direcciones posible para 49.192.0.0/11
 
 
 Ejercicio 20
 -----------------------------
-Obtener el rango de direcciones posible para 171.51.209.0/25
+Obtener el rango de direcciones posible para 131.21.0.0/17
 
 
 Ejercicio 21
 -----------------------------
-Obtener el rango de direcciones posible para 40.161.64.0/19
+Obtener el rango de direcciones posible para 74.128.224.0/20
 
 
 Ejercicio 22
 -----------------------------
-Obtener el rango de direcciones posible para 35.150.240.0/20
+Obtener el rango de direcciones posible para 25.176.0.0/12
 
 
 Ejercicio 23
 -----------------------------
-Obtener el rango de direcciones posible para 35.70.0.0/15
+Obtener el rango de direcciones posible para 84.64.0.0/10
 
 
 Ejercicio 24
 -----------------------------
-Obtener el rango de direcciones posible para 4.8.0.0/15
+Obtener el rango de direcciones posible para 135.127.148.80/28
 
 
 Ejercicio 25
 -----------------------------
-Obtener el rango de direcciones posible para 118.195.102.0/24
+Obtener el rango de direcciones posible para 172.138.109.0/25
 
 
 Ejercicio 26
 -----------------------------
-Obtener el rango de direcciones posible para 56.127.224.0/19
+Obtener el rango de direcciones posible para 57.18.0.0/15
 
 
 Ejercicio 27
 -----------------------------
-Obtener el rango de direcciones posible para 73.146.96.0/19
+Obtener el rango de direcciones posible para 215.42.38.0/25
 
 
 Ejercicio 28
 -----------------------------
-Obtener el rango de direcciones posible para 130.122.104.0/22
+Obtener el rango de direcciones posible para 110.86.104.0/21
 
 
 Ejercicio 29
 -----------------------------
-Obtener el rango de direcciones posible para 99.74.239.64/28
+Obtener el rango de direcciones posible para 50.176.0.0/13
 
 
 Ejercicio 30
 -----------------------------
-Obtener el rango de direcciones posible para 92.32.0.0/12
+Obtener el rango de direcciones posible para 29.96.0.0/11
 
 
 Ejercicio 31
 -----------------------------
-Obtener el rango de direcciones posible para 44.96.0.0/11
+Obtener el rango de direcciones posible para 58.40.0.0/13
 
 
 Ejercicio 32
 -----------------------------
-Obtener el rango de direcciones posible para 152.129.48.0/21
+Obtener el rango de direcciones posible para 3.128.0.0/11
 
 
 Ejercicio 33
 -----------------------------
-Obtener el rango de direcciones posible para 121.1.0.0/18
+Obtener el rango de direcciones posible para 34.141.108.176/28
 
 
 Ejercicio 34
 -----------------------------
-Obtener el rango de direcciones posible para 179.127.48.0/20
+Obtener el rango de direcciones posible para 116.107.234.0/24
 
 
 Ejercicio 35
 -----------------------------
-Obtener el rango de direcciones posible para 47.64.0.0/10
+Obtener el rango de direcciones posible para 108.42.175.64/26
 
 
 Ejercicio 36
 -----------------------------
-Obtener el rango de direcciones posible para 70.100.128.0/17
+Obtener el rango de direcciones posible para 75.144.0.0/12
 
 
 Ejercicio 37
 -----------------------------
-Obtener el rango de direcciones posible para 18.64.0.0/10
+Obtener el rango de direcciones posible para 100.72.0.0/13
 
 
 Ejercicio 38
 -----------------------------
-Obtener el rango de direcciones posible para 110.0.0.0/12
+Obtener el rango de direcciones posible para 166.110.0.0/17
 
 
 Ejercicio 39
 -----------------------------
-Obtener el rango de direcciones posible para 119.0.0.0/13
+Obtener el rango de direcciones posible para 35.32.0.0/11
 
 
 Ejercicio 40
 -----------------------------
-Obtener el rango de direcciones posible para 77.244.0.0/14
+Obtener el rango de direcciones posible para 90.124.0.0/15
 
 
 Ejercicio 41
 -----------------------------
-Obtener el rango de direcciones posible para 201.241.110.0/25
+Obtener el rango de direcciones posible para 43.229.67.96/28
 
 
 Ejercicio 42
 -----------------------------
-Obtener el rango de direcciones posible para 39.192.0.0/10
+Obtener el rango de direcciones posible para 216.221.181.0/24
 
 
 Ejercicio 43
 -----------------------------
-Obtener el rango de direcciones posible para 138.212.0.0/16
+Obtener el rango de direcciones posible para 23.64.0.0/10
 
 
 Ejercicio 44
 -----------------------------
-Obtener el rango de direcciones posible para 137.240.128.0/20
+Obtener el rango de direcciones posible para 23.154.8.0/21
 
 
 Ejercicio 45
 -----------------------------
-Obtener el rango de direcciones posible para 222.103.44.192/26
+Obtener el rango de direcciones posible para 21.192.0.0/13
 
 
 Ejercicio 46
 -----------------------------
-Obtener el rango de direcciones posible para 140.218.36.252/30
+Obtener el rango de direcciones posible para 175.158.16.0/20
 
 
 Ejercicio 47
 -----------------------------
-Obtener el rango de direcciones posible para 20.151.128.0/17
+Obtener el rango de direcciones posible para 173.2.160.0/22
 
 
 Ejercicio 48
 -----------------------------
-Obtener el rango de direcciones posible para 146.9.224.0/19
+Obtener el rango de direcciones posible para 160.17.152.0/22
 
 
 Ejercicio 49
 -----------------------------
-Obtener el rango de direcciones posible para 207.172.113.0/30
+Obtener el rango de direcciones posible para 31.144.0.0/12
 
 
 Ejercicio 50
 -----------------------------
-Obtener el rango de direcciones posible para 71.240.0.0/13
+Obtener el rango de direcciones posible para 125.32.0.0/14
 
 
-Ejercicio 1
+Solución al ejercicio 1
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 46.233.192.0/20"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 199.231.113.240/28"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 46.233.192.0
-2. La primera IP asignable sería la 46.233.192.1
-3. La última IP asignable sería la 46.233.207.254
-4. La última IP, que sería la de difusión, sería 46.233.207.255
+1. La primera IP, que sería la IP de la red, sería 199.231.113.240
+2. La primera IP asignable sería la 199.231.113.241
+3. La última IP asignable sería la 199.231.113.254
+4. La última IP, que sería la de difusión, sería 199.231.113.255
 
 
-Ejercicio 2
+Solución al ejercicio 2
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 199.134.141.0/25"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 138.246.226.0/25"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 199.134.141.0
-2. La primera IP asignable sería la 199.134.141.1
-3. La última IP asignable sería la 199.134.141.126
-4. La última IP, que sería la de difusión, sería 199.134.141.127
+1. La primera IP, que sería la IP de la red, sería 138.246.226.0
+2. La primera IP asignable sería la 138.246.226.1
+3. La última IP asignable sería la 138.246.226.126
+4. La última IP, que sería la de difusión, sería 138.246.226.127
 
 
-Ejercicio 3
+Solución al ejercicio 3
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 22.252.0.0/14"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 40.233.128.0/17"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 22.252.0.0
-2. La primera IP asignable sería la 22.252.0.1
-3. La última IP asignable sería la 22.255.255.254
-4. La última IP, que sería la de difusión, sería 22.255.255.255
+1. La primera IP, que sería la IP de la red, sería 40.233.128.0
+2. La primera IP asignable sería la 40.233.128.1
+3. La última IP asignable sería la 40.233.255.254
+4. La última IP, que sería la de difusión, sería 40.233.255.255
 
 
-Ejercicio 4
+Solución al ejercicio 4
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 79.168.0.0/14"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 101.144.0.0/14"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 79.168.0.0
-2. La primera IP asignable sería la 79.168.0.1
-3. La última IP asignable sería la 79.171.255.254
-4. La última IP, que sería la de difusión, sería 79.171.255.255
+1. La primera IP, que sería la IP de la red, sería 101.144.0.0
+2. La primera IP asignable sería la 101.144.0.1
+3. La última IP asignable sería la 101.147.255.254
+4. La última IP, que sería la de difusión, sería 101.147.255.255
 
 
-Ejercicio 5
+Solución al ejercicio 5
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 131.215.184.64/26"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 40.16.0.0/14"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 131.215.184.64
-2. La primera IP asignable sería la 131.215.184.65
-3. La última IP asignable sería la 131.215.184.126
-4. La última IP, que sería la de difusión, sería 131.215.184.127
+1. La primera IP, que sería la IP de la red, sería 40.16.0.0
+2. La primera IP asignable sería la 40.16.0.1
+3. La última IP asignable sería la 40.19.255.254
+4. La última IP, que sería la de difusión, sería 40.19.255.255
 
 
-Ejercicio 6
+Solución al ejercicio 6
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 214.122.164.192/26"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 100.92.0.0/18"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 214.122.164.192
-2. La primera IP asignable sería la 214.122.164.193
-3. La última IP asignable sería la 214.122.164.254
-4. La última IP, que sería la de difusión, sería 214.122.164.255
+1. La primera IP, que sería la IP de la red, sería 100.92.0.0
+2. La primera IP asignable sería la 100.92.0.1
+3. La última IP asignable sería la 100.92.63.254
+4. La última IP, que sería la de difusión, sería 100.92.63.255
 
 
-Ejercicio 7
+Solución al ejercicio 7
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 209.173.168.84/30"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 67.224.0.0/11"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 209.173.168.84
-2. La primera IP asignable sería la 209.173.168.85
-3. La última IP asignable sería la 209.173.168.86
-4. La última IP, que sería la de difusión, sería 209.173.168.87
+1. La primera IP, que sería la IP de la red, sería 67.224.0.0
+2. La primera IP asignable sería la 67.224.0.1
+3. La última IP asignable sería la 67.255.255.254
+4. La última IP, que sería la de difusión, sería 67.255.255.255
 
 
-Ejercicio 8
+Solución al ejercicio 8
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 153.111.128.0/17"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 159.36.118.0/23"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 153.111.128.0
-2. La primera IP asignable sería la 153.111.128.1
-3. La última IP asignable sería la 153.111.255.254
-4. La última IP, que sería la de difusión, sería 153.111.255.255
+1. La primera IP, que sería la IP de la red, sería 159.36.118.0
+2. La primera IP asignable sería la 159.36.118.1
+3. La última IP asignable sería la 159.36.119.254
+4. La última IP, que sería la de difusión, sería 159.36.119.255
 
 
-Ejercicio 9
+Solución al ejercicio 9
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 134.87.135.192/26"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 176.159.104.0/21"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 134.87.135.192
-2. La primera IP asignable sería la 134.87.135.193
-3. La última IP asignable sería la 134.87.135.254
-4. La última IP, que sería la de difusión, sería 134.87.135.255
+1. La primera IP, que sería la IP de la red, sería 176.159.104.0
+2. La primera IP asignable sería la 176.159.104.1
+3. La última IP asignable sería la 176.159.111.254
+4. La última IP, que sería la de difusión, sería 176.159.111.255
 
 
-Ejercicio 10
+Solución al ejercicio 10
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 161.198.239.168/29"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 156.93.152.0/21"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 161.198.239.168
-2. La primera IP asignable sería la 161.198.239.169
-3. La última IP asignable sería la 161.198.239.174
-4. La última IP, que sería la de difusión, sería 161.198.239.175
+1. La primera IP, que sería la IP de la red, sería 156.93.152.0
+2. La primera IP asignable sería la 156.93.152.1
+3. La última IP asignable sería la 156.93.159.254
+4. La última IP, que sería la de difusión, sería 156.93.159.255
 
 
-Ejercicio 11
+Solución al ejercicio 11
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 72.61.160.0/19"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 38.204.0.0/16"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 72.61.160.0
-2. La primera IP asignable sería la 72.61.160.1
-3. La última IP asignable sería la 72.61.191.254
-4. La última IP, que sería la de difusión, sería 72.61.191.255
+1. La primera IP, que sería la IP de la red, sería 38.204.0.0
+2. La primera IP asignable sería la 38.204.0.1
+3. La última IP asignable sería la 38.204.255.254
+4. La última IP, que sería la de difusión, sería 38.204.255.255
 
 
-Ejercicio 12
+Solución al ejercicio 12
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 137.170.96.0/20"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 42.32.0.0/12"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 137.170.96.0
-2. La primera IP asignable sería la 137.170.96.1
-3. La última IP asignable sería la 137.170.111.254
-4. La última IP, que sería la de difusión, sería 137.170.111.255
+1. La primera IP, que sería la IP de la red, sería 42.32.0.0
+2. La primera IP asignable sería la 42.32.0.1
+3. La última IP asignable sería la 42.47.255.254
+4. La última IP, que sería la de difusión, sería 42.47.255.255
 
 
-Ejercicio 13
+Solución al ejercicio 13
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 32.96.0.0/13"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 127.244.0.0/17"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 32.96.0.0
-2. La primera IP asignable sería la 32.96.0.1
-3. La última IP asignable sería la 32.103.255.254
-4. La última IP, que sería la de difusión, sería 32.103.255.255
+1. La primera IP, que sería la IP de la red, sería 127.244.0.0
+2. La primera IP asignable sería la 127.244.0.1
+3. La última IP asignable sería la 127.244.127.254
+4. La última IP, que sería la de difusión, sería 127.244.127.255
 
 
-Ejercicio 14
+Solución al ejercicio 14
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 44.128.0.0/10"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 209.173.178.192/26"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 44.128.0.0
-2. La primera IP asignable sería la 44.128.0.1
-3. La última IP asignable sería la 44.191.255.254
-4. La última IP, que sería la de difusión, sería 44.191.255.255
+1. La primera IP, que sería la IP de la red, sería 209.173.178.192
+2. La primera IP asignable sería la 209.173.178.193
+3. La última IP asignable sería la 209.173.178.254
+4. La última IP, que sería la de difusión, sería 209.173.178.255
 
 
-Ejercicio 15
+Solución al ejercicio 15
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 50.142.0.0/17"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 73.0.0.0/10"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 50.142.0.0
-2. La primera IP asignable sería la 50.142.0.1
-3. La última IP asignable sería la 50.142.127.254
-4. La última IP, que sería la de difusión, sería 50.142.127.255
+1. La primera IP, que sería la IP de la red, sería 73.0.0.0
+2. La primera IP asignable sería la 73.0.0.1
+3. La última IP asignable sería la 73.63.255.254
+4. La última IP, que sería la de difusión, sería 73.63.255.255
 
 
-Ejercicio 16
+Solución al ejercicio 16
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 57.128.0.0/10"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 28.96.0.0/11"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 57.128.0.0
-2. La primera IP asignable sería la 57.128.0.1
-3. La última IP asignable sería la 57.191.255.254
-4. La última IP, que sería la de difusión, sería 57.191.255.255
+1. La primera IP, que sería la IP de la red, sería 28.96.0.0
+2. La primera IP asignable sería la 28.96.0.1
+3. La última IP asignable sería la 28.127.255.254
+4. La última IP, que sería la de difusión, sería 28.127.255.255
 
 
-Ejercicio 17
+Solución al ejercicio 17
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 66.16.0.0/12"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 170.220.0.0/16"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 66.16.0.0
-2. La primera IP asignable sería la 66.16.0.1
-3. La última IP asignable sería la 66.31.255.254
-4. La última IP, que sería la de difusión, sería 66.31.255.255
+1. La primera IP, que sería la IP de la red, sería 170.220.0.0
+2. La primera IP asignable sería la 170.220.0.1
+3. La última IP asignable sería la 170.220.255.254
+4. La última IP, que sería la de difusión, sería 170.220.255.255
 
 
-Ejercicio 18
+Solución al ejercicio 18
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 163.46.54.128/25"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 93.148.0.0/19"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 163.46.54.128
-2. La primera IP asignable sería la 163.46.54.129
-3. La última IP asignable sería la 163.46.54.254
-4. La última IP, que sería la de difusión, sería 163.46.54.255
+1. La primera IP, que sería la IP de la red, sería 93.148.0.0
+2. La primera IP asignable sería la 93.148.0.1
+3. La última IP asignable sería la 93.148.31.254
+4. La última IP, que sería la de difusión, sería 93.148.31.255
 
 
-Ejercicio 19
+Solución al ejercicio 19
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 68.112.0.0/13"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 49.192.0.0/11"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 68.112.0.0
-2. La primera IP asignable sería la 68.112.0.1
-3. La última IP asignable sería la 68.119.255.254
-4. La última IP, que sería la de difusión, sería 68.119.255.255
+1. La primera IP, que sería la IP de la red, sería 49.192.0.0
+2. La primera IP asignable sería la 49.192.0.1
+3. La última IP asignable sería la 49.223.255.254
+4. La última IP, que sería la de difusión, sería 49.223.255.255
 
 
-Ejercicio 20
+Solución al ejercicio 20
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 171.51.209.0/25"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 131.21.0.0/17"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 171.51.209.0
-2. La primera IP asignable sería la 171.51.209.1
-3. La última IP asignable sería la 171.51.209.126
-4. La última IP, que sería la de difusión, sería 171.51.209.127
+1. La primera IP, que sería la IP de la red, sería 131.21.0.0
+2. La primera IP asignable sería la 131.21.0.1
+3. La última IP asignable sería la 131.21.127.254
+4. La última IP, que sería la de difusión, sería 131.21.127.255
 
 
-Ejercicio 21
+Solución al ejercicio 21
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 40.161.64.0/19"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 74.128.224.0/20"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 40.161.64.0
-2. La primera IP asignable sería la 40.161.64.1
-3. La última IP asignable sería la 40.161.95.254
-4. La última IP, que sería la de difusión, sería 40.161.95.255
+1. La primera IP, que sería la IP de la red, sería 74.128.224.0
+2. La primera IP asignable sería la 74.128.224.1
+3. La última IP asignable sería la 74.128.239.254
+4. La última IP, que sería la de difusión, sería 74.128.239.255
 
 
-Ejercicio 22
+Solución al ejercicio 22
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 35.150.240.0/20"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 25.176.0.0/12"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 35.150.240.0
-2. La primera IP asignable sería la 35.150.240.1
-3. La última IP asignable sería la 35.150.255.254
-4. La última IP, que sería la de difusión, sería 35.150.255.255
+1. La primera IP, que sería la IP de la red, sería 25.176.0.0
+2. La primera IP asignable sería la 25.176.0.1
+3. La última IP asignable sería la 25.191.255.254
+4. La última IP, que sería la de difusión, sería 25.191.255.255
 
 
-Ejercicio 23
+Solución al ejercicio 23
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 35.70.0.0/15"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 84.64.0.0/10"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 35.70.0.0
-2. La primera IP asignable sería la 35.70.0.1
-3. La última IP asignable sería la 35.71.255.254
-4. La última IP, que sería la de difusión, sería 35.71.255.255
+1. La primera IP, que sería la IP de la red, sería 84.64.0.0
+2. La primera IP asignable sería la 84.64.0.1
+3. La última IP asignable sería la 84.127.255.254
+4. La última IP, que sería la de difusión, sería 84.127.255.255
 
 
-Ejercicio 24
+Solución al ejercicio 24
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 4.8.0.0/15"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 135.127.148.80/28"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 4.8.0.0
-2. La primera IP asignable sería la 4.8.0.1
-3. La última IP asignable sería la 4.9.255.254
-4. La última IP, que sería la de difusión, sería 4.9.255.255
+1. La primera IP, que sería la IP de la red, sería 135.127.148.80
+2. La primera IP asignable sería la 135.127.148.81
+3. La última IP asignable sería la 135.127.148.94
+4. La última IP, que sería la de difusión, sería 135.127.148.95
 
 
-Ejercicio 25
+Solución al ejercicio 25
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 118.195.102.0/24"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 172.138.109.0/25"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 118.195.102.0
-2. La primera IP asignable sería la 118.195.102.1
-3. La última IP asignable sería la 118.195.102.254
-4. La última IP, que sería la de difusión, sería 118.195.102.255
+1. La primera IP, que sería la IP de la red, sería 172.138.109.0
+2. La primera IP asignable sería la 172.138.109.1
+3. La última IP asignable sería la 172.138.109.126
+4. La última IP, que sería la de difusión, sería 172.138.109.127
 
 
-Ejercicio 26
+Solución al ejercicio 26
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 56.127.224.0/19"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 57.18.0.0/15"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 56.127.224.0
-2. La primera IP asignable sería la 56.127.224.1
-3. La última IP asignable sería la 56.127.255.254
-4. La última IP, que sería la de difusión, sería 56.127.255.255
+1. La primera IP, que sería la IP de la red, sería 57.18.0.0
+2. La primera IP asignable sería la 57.18.0.1
+3. La última IP asignable sería la 57.19.255.254
+4. La última IP, que sería la de difusión, sería 57.19.255.255
 
 
-Ejercicio 27
+Solución al ejercicio 27
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 73.146.96.0/19"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 215.42.38.0/25"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 73.146.96.0
-2. La primera IP asignable sería la 73.146.96.1
-3. La última IP asignable sería la 73.146.127.254
-4. La última IP, que sería la de difusión, sería 73.146.127.255
+1. La primera IP, que sería la IP de la red, sería 215.42.38.0
+2. La primera IP asignable sería la 215.42.38.1
+3. La última IP asignable sería la 215.42.38.126
+4. La última IP, que sería la de difusión, sería 215.42.38.127
 
 
-Ejercicio 28
+Solución al ejercicio 28
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 130.122.104.0/22"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 110.86.104.0/21"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 130.122.104.0
-2. La primera IP asignable sería la 130.122.104.1
-3. La última IP asignable sería la 130.122.107.254
-4. La última IP, que sería la de difusión, sería 130.122.107.255
+1. La primera IP, que sería la IP de la red, sería 110.86.104.0
+2. La primera IP asignable sería la 110.86.104.1
+3. La última IP asignable sería la 110.86.111.254
+4. La última IP, que sería la de difusión, sería 110.86.111.255
 
 
-Ejercicio 29
+Solución al ejercicio 29
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 99.74.239.64/28"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 50.176.0.0/13"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 99.74.239.64
-2. La primera IP asignable sería la 99.74.239.65
-3. La última IP asignable sería la 99.74.239.78
-4. La última IP, que sería la de difusión, sería 99.74.239.79
+1. La primera IP, que sería la IP de la red, sería 50.176.0.0
+2. La primera IP asignable sería la 50.176.0.1
+3. La última IP asignable sería la 50.183.255.254
+4. La última IP, que sería la de difusión, sería 50.183.255.255
 
 
-Ejercicio 30
+Solución al ejercicio 30
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 92.32.0.0/12"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 29.96.0.0/11"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 92.32.0.0
-2. La primera IP asignable sería la 92.32.0.1
-3. La última IP asignable sería la 92.47.255.254
-4. La última IP, que sería la de difusión, sería 92.47.255.255
+1. La primera IP, que sería la IP de la red, sería 29.96.0.0
+2. La primera IP asignable sería la 29.96.0.1
+3. La última IP asignable sería la 29.127.255.254
+4. La última IP, que sería la de difusión, sería 29.127.255.255
 
 
-Ejercicio 31
+Solución al ejercicio 31
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 44.96.0.0/11"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 58.40.0.0/13"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 44.96.0.0
-2. La primera IP asignable sería la 44.96.0.1
-3. La última IP asignable sería la 44.127.255.254
-4. La última IP, que sería la de difusión, sería 44.127.255.255
+1. La primera IP, que sería la IP de la red, sería 58.40.0.0
+2. La primera IP asignable sería la 58.40.0.1
+3. La última IP asignable sería la 58.47.255.254
+4. La última IP, que sería la de difusión, sería 58.47.255.255
 
 
-Ejercicio 32
+Solución al ejercicio 32
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 152.129.48.0/21"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 3.128.0.0/11"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 152.129.48.0
-2. La primera IP asignable sería la 152.129.48.1
-3. La última IP asignable sería la 152.129.55.254
-4. La última IP, que sería la de difusión, sería 152.129.55.255
+1. La primera IP, que sería la IP de la red, sería 3.128.0.0
+2. La primera IP asignable sería la 3.128.0.1
+3. La última IP asignable sería la 3.159.255.254
+4. La última IP, que sería la de difusión, sería 3.159.255.255
 
 
-Ejercicio 33
+Solución al ejercicio 33
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 121.1.0.0/18"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 34.141.108.176/28"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 121.1.0.0
-2. La primera IP asignable sería la 121.1.0.1
-3. La última IP asignable sería la 121.1.63.254
-4. La última IP, que sería la de difusión, sería 121.1.63.255
+1. La primera IP, que sería la IP de la red, sería 34.141.108.176
+2. La primera IP asignable sería la 34.141.108.177
+3. La última IP asignable sería la 34.141.108.190
+4. La última IP, que sería la de difusión, sería 34.141.108.191
 
 
-Ejercicio 34
+Solución al ejercicio 34
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 179.127.48.0/20"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 116.107.234.0/24"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 179.127.48.0
-2. La primera IP asignable sería la 179.127.48.1
-3. La última IP asignable sería la 179.127.63.254
-4. La última IP, que sería la de difusión, sería 179.127.63.255
+1. La primera IP, que sería la IP de la red, sería 116.107.234.0
+2. La primera IP asignable sería la 116.107.234.1
+3. La última IP asignable sería la 116.107.234.254
+4. La última IP, que sería la de difusión, sería 116.107.234.255
 
 
-Ejercicio 35
+Solución al ejercicio 35
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 47.64.0.0/10"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 108.42.175.64/26"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 47.64.0.0
-2. La primera IP asignable sería la 47.64.0.1
-3. La última IP asignable sería la 47.127.255.254
-4. La última IP, que sería la de difusión, sería 47.127.255.255
+1. La primera IP, que sería la IP de la red, sería 108.42.175.64
+2. La primera IP asignable sería la 108.42.175.65
+3. La última IP asignable sería la 108.42.175.126
+4. La última IP, que sería la de difusión, sería 108.42.175.127
 
 
-Ejercicio 36
+Solución al ejercicio 36
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 70.100.128.0/17"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 75.144.0.0/12"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 70.100.128.0
-2. La primera IP asignable sería la 70.100.128.1
-3. La última IP asignable sería la 70.100.255.254
-4. La última IP, que sería la de difusión, sería 70.100.255.255
+1. La primera IP, que sería la IP de la red, sería 75.144.0.0
+2. La primera IP asignable sería la 75.144.0.1
+3. La última IP asignable sería la 75.159.255.254
+4. La última IP, que sería la de difusión, sería 75.159.255.255
 
 
-Ejercicio 37
+Solución al ejercicio 37
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 18.64.0.0/10"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 100.72.0.0/13"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 18.64.0.0
-2. La primera IP asignable sería la 18.64.0.1
-3. La última IP asignable sería la 18.127.255.254
-4. La última IP, que sería la de difusión, sería 18.127.255.255
+1. La primera IP, que sería la IP de la red, sería 100.72.0.0
+2. La primera IP asignable sería la 100.72.0.1
+3. La última IP asignable sería la 100.79.255.254
+4. La última IP, que sería la de difusión, sería 100.79.255.255
 
 
-Ejercicio 38
+Solución al ejercicio 38
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 110.0.0.0/12"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 166.110.0.0/17"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 110.0.0.0
-2. La primera IP asignable sería la 110.0.0.1
-3. La última IP asignable sería la 110.15.255.254
-4. La última IP, que sería la de difusión, sería 110.15.255.255
+1. La primera IP, que sería la IP de la red, sería 166.110.0.0
+2. La primera IP asignable sería la 166.110.0.1
+3. La última IP asignable sería la 166.110.127.254
+4. La última IP, que sería la de difusión, sería 166.110.127.255
 
 
-Ejercicio 39
+Solución al ejercicio 39
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 119.0.0.0/13"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 35.32.0.0/11"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 119.0.0.0
-2. La primera IP asignable sería la 119.0.0.1
-3. La última IP asignable sería la 119.7.255.254
-4. La última IP, que sería la de difusión, sería 119.7.255.255
+1. La primera IP, que sería la IP de la red, sería 35.32.0.0
+2. La primera IP asignable sería la 35.32.0.1
+3. La última IP asignable sería la 35.63.255.254
+4. La última IP, que sería la de difusión, sería 35.63.255.255
 
 
-Ejercicio 40
+Solución al ejercicio 40
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 77.244.0.0/14"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 90.124.0.0/15"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 77.244.0.0
-2. La primera IP asignable sería la 77.244.0.1
-3. La última IP asignable sería la 77.247.255.254
-4. La última IP, que sería la de difusión, sería 77.247.255.255
+1. La primera IP, que sería la IP de la red, sería 90.124.0.0
+2. La primera IP asignable sería la 90.124.0.1
+3. La última IP asignable sería la 90.125.255.254
+4. La última IP, que sería la de difusión, sería 90.125.255.255
 
 
-Ejercicio 41
+Solución al ejercicio 41
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 201.241.110.0/25"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 43.229.67.96/28"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 201.241.110.0
-2. La primera IP asignable sería la 201.241.110.1
-3. La última IP asignable sería la 201.241.110.126
-4. La última IP, que sería la de difusión, sería 201.241.110.127
+1. La primera IP, que sería la IP de la red, sería 43.229.67.96
+2. La primera IP asignable sería la 43.229.67.97
+3. La última IP asignable sería la 43.229.67.110
+4. La última IP, que sería la de difusión, sería 43.229.67.111
 
 
-Ejercicio 42
+Solución al ejercicio 42
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 39.192.0.0/10"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 216.221.181.0/24"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 39.192.0.0
-2. La primera IP asignable sería la 39.192.0.1
-3. La última IP asignable sería la 39.255.255.254
-4. La última IP, que sería la de difusión, sería 39.255.255.255
+1. La primera IP, que sería la IP de la red, sería 216.221.181.0
+2. La primera IP asignable sería la 216.221.181.1
+3. La última IP asignable sería la 216.221.181.254
+4. La última IP, que sería la de difusión, sería 216.221.181.255
 
 
-Ejercicio 43
+Solución al ejercicio 43
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 138.212.0.0/16"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 23.64.0.0/10"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 138.212.0.0
-2. La primera IP asignable sería la 138.212.0.1
-3. La última IP asignable sería la 138.212.255.254
-4. La última IP, que sería la de difusión, sería 138.212.255.255
+1. La primera IP, que sería la IP de la red, sería 23.64.0.0
+2. La primera IP asignable sería la 23.64.0.1
+3. La última IP asignable sería la 23.127.255.254
+4. La última IP, que sería la de difusión, sería 23.127.255.255
 
 
-Ejercicio 44
+Solución al ejercicio 44
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 137.240.128.0/20"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 23.154.8.0/21"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 137.240.128.0
-2. La primera IP asignable sería la 137.240.128.1
-3. La última IP asignable sería la 137.240.143.254
-4. La última IP, que sería la de difusión, sería 137.240.143.255
+1. La primera IP, que sería la IP de la red, sería 23.154.8.0
+2. La primera IP asignable sería la 23.154.8.1
+3. La última IP asignable sería la 23.154.15.254
+4. La última IP, que sería la de difusión, sería 23.154.15.255
 
 
-Ejercicio 45
+Solución al ejercicio 45
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 222.103.44.192/26"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 21.192.0.0/13"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 222.103.44.192
-2. La primera IP asignable sería la 222.103.44.193
-3. La última IP asignable sería la 222.103.44.254
-4. La última IP, que sería la de difusión, sería 222.103.44.255
+1. La primera IP, que sería la IP de la red, sería 21.192.0.0
+2. La primera IP asignable sería la 21.192.0.1
+3. La última IP asignable sería la 21.199.255.254
+4. La última IP, que sería la de difusión, sería 21.199.255.255
 
 
-Ejercicio 46
+Solución al ejercicio 46
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 140.218.36.252/30"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 175.158.16.0/20"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 140.218.36.252
-2. La primera IP asignable sería la 140.218.36.253
-3. La última IP asignable sería la 140.218.36.254
-4. La última IP, que sería la de difusión, sería 140.218.36.255
+1. La primera IP, que sería la IP de la red, sería 175.158.16.0
+2. La primera IP asignable sería la 175.158.16.1
+3. La última IP asignable sería la 175.158.31.254
+4. La última IP, que sería la de difusión, sería 175.158.31.255
 
 
-Ejercicio 47
+Solución al ejercicio 47
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 20.151.128.0/17"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 173.2.160.0/22"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 20.151.128.0
-2. La primera IP asignable sería la 20.151.128.1
-3. La última IP asignable sería la 20.151.255.254
-4. La última IP, que sería la de difusión, sería 20.151.255.255
+1. La primera IP, que sería la IP de la red, sería 173.2.160.0
+2. La primera IP asignable sería la 173.2.160.1
+3. La última IP asignable sería la 173.2.163.254
+4. La última IP, que sería la de difusión, sería 173.2.163.255
 
 
-Ejercicio 48
+Solución al ejercicio 48
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 146.9.224.0/19"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 160.17.152.0/22"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 146.9.224.0
-2. La primera IP asignable sería la 146.9.224.1
-3. La última IP asignable sería la 146.9.255.254
-4. La última IP, que sería la de difusión, sería 146.9.255.255
+1. La primera IP, que sería la IP de la red, sería 160.17.152.0
+2. La primera IP asignable sería la 160.17.152.1
+3. La última IP asignable sería la 160.17.155.254
+4. La última IP, que sería la de difusión, sería 160.17.155.255
 
 
-Ejercicio 49
+Solución al ejercicio 49
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 207.172.113.0/30"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 31.144.0.0/12"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 207.172.113.0
-2. La primera IP asignable sería la 207.172.113.1
-3. La última IP asignable sería la 207.172.113.2
-4. La última IP, que sería la de difusión, sería 207.172.113.3
+1. La primera IP, que sería la IP de la red, sería 31.144.0.0
+2. La primera IP asignable sería la 31.144.0.1
+3. La última IP asignable sería la 31.159.255.254
+4. La última IP, que sería la de difusión, sería 31.159.255.255
 
 
-Ejercicio 50
+Solución al ejercicio 50
 -----------------------------
-Para el enunciado *"Obtener el rango de direcciones posible para 71.240.0.0/13"*, la solución sería:
+Para el enunciado *"Obtener el rango de direcciones posible para 125.32.0.0/14"*, la solución sería:
 
-1. La primera IP, que sería la IP de la red, sería 71.240.0.0
-2. La primera IP asignable sería la 71.240.0.1
-3. La última IP asignable sería la 71.247.255.254
-4. La última IP, que sería la de difusión, sería 71.247.255.255
+1. La primera IP, que sería la IP de la red, sería 125.32.0.0
+2. La primera IP asignable sería la 125.32.0.1
+3. La última IP asignable sería la 125.35.255.254
+4. La última IP, que sería la de difusión, sería 125.35.255.255
 

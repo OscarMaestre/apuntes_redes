@@ -8,7 +8,7 @@ class Generador(object):
 
     def __init__(self, num_ejercicio) -> None:
         self.primer_byte=randint(8, 52)
-        self.bits_mascara=randint(10, 30)
+        self.bits_mascara=randint(10, 28)
         #print("Mascara:/"+str(self.bits_mascara))
         self.bits_host=32-self.bits_mascara
         self.secuencia_binaria=self.generar()
