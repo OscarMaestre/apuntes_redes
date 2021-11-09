@@ -48,6 +48,9 @@ Ejercicio {0}
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
+.. figure:: RedDosRouters.png
+
+
 * Red {1} en el área izquierda.
 * Red {2} en el área derecha
 * Red {3} en el área RI-RC.
@@ -151,6 +154,8 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 * Red {2} en el área central.
 * Red {3} en el área derecha
 
+.. figure:: RedDosRouters.png
+
 Aparte de eso, se desean respetar unos ciertos estándares:
 
 * Los routers de acceso a red deben tener siempre la primera IP de la red.
@@ -185,11 +190,11 @@ Las direcciones serían estas:
 * Router D, interfaz derecha: IP {8}, máscara {7}
 * Router D, interfaz izquierda: IP {11}, máscara {13}
 
-La tabla de rutas del Router I contiene la entrada siguiente:
+La tabla de rutas del Router I debería tener la entrada siguiente:
 
 * Red {9}, máscara {10}, siguiente salto: {11}
 
-La tabla de rutas del Router D contiene la entrada siguiente:
+La tabla de rutas del Router D debería tener la entrada siguiente:
 
 * Red {14}, máscara {15}, siguiente salto {12}
         """
