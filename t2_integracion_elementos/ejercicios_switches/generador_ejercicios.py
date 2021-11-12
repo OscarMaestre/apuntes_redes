@@ -151,47 +151,48 @@ class GeneradorEjercicios(object):
 
         #Caso 1 ¿El switch 1 conoce al destinatario?
         puerto_asociado_en_switch1=switch.get_puerto_asociado(mac_destino)
-        txt_respuesta1="* El {0} envía el mensaje por el puerto {1}."
-        txt_respuesta2="* El {0} envía el mensaje por todos los puertos menos por donde vino."
+        txt_respuesta1="El {0} envía el mensaje por el puerto {1}."
+        txt_respuesta2="El {0} envía el mensaje por todos los puertos menos por donde vino."
         if switch.conoce_a_mac(mac_destino):
             tupla1=(txt_respuesta1.format(nombre_switch1, puerto_asociado_en_switch1), 
                     True,
-                    ", {0} está en esa posición en la tabla de MACs".format(mac_destino))
+                    ", ``{0}`` está en esa posición en la tabla de MACs".format(mac_destino))
             tupla2=(txt_respuesta2.format(nombre_switch1), False,
-                    " no necesita hacer difusión, tiene la MAC de destino {0} en su tabla, en el puerto {1}.".format(mac_destino, puerto_asociado_en_switch1))
+                    " no necesita hacer difusión, tiene la MAC de destino ``{0}`` en su tabla, en el puerto {1}.".format(mac_destino, puerto_asociado_en_switch1))
             vector_tuplas_respuestas.append(tupla1)
             vector_tuplas_respuestas.append(tupla2)
         else:
             otro_puerto=switch.get_num_puerto_libre_azar()
             tupla1=(txt_respuesta1.format(nombre_switch1, otro_puerto), False,
-            ", no conoce a la MAC de destino {0}, así que necesita difundir.".format(mac_destino))
+            ", no conoce a la MAC de destino ``{0}``, así que necesita difundir.".format(mac_destino))
             tupla2=(txt_respuesta2.format(nombre_switch1), True,
-            ", necesita hacerlo porque no tiene la MAC de destino {0} en su tabla".format(mac_destino))
+            ", necesita hacerlo porque no tiene la MAC de destino ``{0}`` en su tabla".format(mac_destino))
             vector_tuplas_respuestas.append(tupla1)
             vector_tuplas_respuestas.append(tupla2)
 
         #Caso 2 ¿El switch 1 conoce al emisor?
         puerto_asociado_en_switch1=switch.get_puerto_asociado(mac_origen)
-        txt_respuesta1="* El {0} apunta en su tabla de MACS  la MAC de origen ``{1}``."
-        txt_respuesta2="* El {0} no modifica su tabla de MACS, no aprende nada nuevo."
+        txt_respuesta1="El {0} apunta en su tabla de MACS  la MAC de origen ``{1}``."
+        txt_respuesta2="El {0} no modifica su tabla de MACS, no aprende nada nuevo."
         if switch.conoce_a_mac(mac_origen):
             tupla1=(txt_respuesta1.format(nombre_switch1, mac_origen), False,
             ", ya tenía esa MAC")
             tupla2=(txt_respuesta2.format(nombre_switch1), False,
-            ", sí la modifica, no tenía la MAC de origen {0}.".format(mac_origen))
+            ", sí la modifica, no tenía la MAC de origen ``{0}``.".format(mac_origen))
             vector_tuplas_respuestas.append(tupla1)
             vector_tuplas_respuestas.append(tupla2)
         else:
             otro_puerto=switch.get_num_puerto_libre_azar()
             tupla1=(txt_respuesta1.format(nombre_switch1, mac_origen, otro_puerto), True,
-            ", antes no lo conocía, así que sí anota la MAC de origen {0}.".format(mac_origen))
+            ", antes no lo conocía, así que sí anota la MAC de origen ``{0}``.".format(mac_origen))
             tupla2=(txt_respuesta2.format(nombre_switch1), False,
-            ", no conocía la MAC de origen {0}, así que la anota.".format(mac_origen))
+            ", no conocía la MAC de origen ``{0}``, así que la anota.".format(mac_origen))
             vector_tuplas_respuestas.append(tupla1)
             vector_tuplas_respuestas.append(tupla2)
 
         #Fin de la generacion
         shuffle(vector_tuplas_respuestas)
+     
         return vector_tuplas_respuestas
 
     def generar_vector_respuestas(self, mac_origen, mac_destino, switch1, switch2):
@@ -201,16 +202,29 @@ class GeneradorEjercicios(object):
         vector_respuestas=vector1+vector2
         self.vector_respuestas=vector_respuestas
         shuffle(self.vector_respuestas)
-
+        
+        return self.vector_respuestas
 
             
     def get_respuestas_sin_solucion(self):
-        lineas=[texto for texto,respuesta, causa in self.vector_respuestas]
+        vector_con_numero_de_orden=[]
+        for pos in range(0, len(self.vector_respuestas)):
+            (txt, respuesta, causa)=self.vector_respuestas[pos]
+            vector_con_numero_de_orden.append(
+                (str(pos+1)+". "+txt, respuesta, causa)
+            )
+        lineas=[texto for texto,respuesta, causa in vector_con_numero_de_orden]
         return "\n".join(lineas)
 
     def get_respuestas_con_solucion(self):
+        vector_con_numero_de_orden=[]
+        for pos in range(0, len(self.vector_respuestas)):
+            (txt, respuesta, causa)=self.vector_respuestas[pos]
+            vector_con_numero_de_orden.append(
+                (str(pos+1)+". "+txt, respuesta, causa)
+            )
         lineas=[]
-        for texto,respuesta, causa in self.vector_respuestas:
+        for texto,respuesta, causa in vector_con_numero_de_orden:
             if respuesta==True:
                 lineas.append(texto+" **Verdadera**"+causa)
             else:
@@ -317,6 +331,7 @@ Solución al ejercicio {0} de switches
 {4}
 
 {5}
+
 """
         self.enunciado=plantilla_enunciado.format(
             plantilla_cabecera.format(self.num_ejercicio),

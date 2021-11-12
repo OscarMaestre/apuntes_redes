@@ -5,16 +5,16 @@ Anexo: ejercicios con tablas MAC de switches
 Ejercicio 1 de switches
 ----------------------------------
 
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 1 que va al puerto 2 del switch 2. Se pretende enviar desde ``ec0c`` a ``a548`` sabiendo lo siguiente:
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 1 que va al puerto 2 del switch 2. Se pretende enviar desde ``65fc`` a ``a15e`` sabiendo lo siguiente:
 
 
 .. figure:: Switches3-2.png
 
-* Ordenador 1I tiene la MAC ``a548``.
-* Ordenador 2I tiene la MAC ``cc63``.
-* Ordenador 3I tiene la MAC ``4e42``.
-* Ordenador 1D tiene la MAC ``ec0c``.
-* Ordenador 2D tiene la MAC ``a4c8``.
+* Ordenador 1I tiene la MAC ``ea9b``.
+* Ordenador 2I tiene la MAC ``65fc``.
+* Ordenador 3I tiene la MAC ``9e6f``.
+* Ordenador 1D tiene la MAC ``eb9a``.
+* Ordenador 2D tiene la MAC ``a15e``.
 
 .. table:: Tabla MAC de Switch 1
 
@@ -22,7 +22,64 @@ Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 1 qu
     Numero de puerto    MAC   
     ================  ========
                    0  --      
-                   1  ``cc63``
+                   1  ``65fc``
+                   2  ``9e6f``
+                   3  --      
+                   4  ``ea9b``
+                   5  --      
+                   6  --      
+                   7  --      
+    ================  ========
+
+
+.. table:: Tabla MAC de Switch 2
+
+    ================  ===
+    Numero de puerto  MAC
+    ================  ===
+                   0  -- 
+                   1  -- 
+                   2  -- 
+                   3  -- 
+                   4  -- 
+                   5  -- 
+                   6  -- 
+                   7  -- 
+    ================  ===
+
+
+Indica si las siguientes afirmaciones son verdaderas o falsas:
+
+1. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+2. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+3. El Switch 2 envía el mensaje por el puerto 7.
+4. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``65fc``.
+5. El Switch 1 envía el mensaje por el puerto 6.
+6. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``65fc``.
+7. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+8. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+
+
+Ejercicio 2 de switches
+----------------------------------
+
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 1 que va al puerto 4 del switch 2. Se pretende enviar desde ``b039`` a ``c50e`` sabiendo lo siguiente:
+
+
+.. figure:: Switches2-2.png
+
+* Ordenador 1I tiene la MAC ``b039``.
+* Ordenador 2I tiene la MAC ``a6e8``.
+* Ordenador 1D tiene la MAC ``c50e``.
+* Ordenador 2D tiene la MAC ``b490``.
+
+.. table:: Tabla MAC de Switch 1
+
+    ================  ========
+    Numero de puerto    MAC   
+    ================  ========
+                   0  --      
+                   1  ``b490``
                    2  --      
                    3  --      
                    4  --      
@@ -39,8 +96,8 @@ Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 1 qu
     ================  ========
                    0  --      
                    1  --      
-                   2  ``cc63``
-                   3  --      
+                   2  --      
+                   3  ``b490``
                    4  --      
                    5  --      
                    6  --      
@@ -50,30 +107,89 @@ Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 1 qu
 
 Indica si las siguientes afirmaciones son verdaderas o falsas:
 
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``ec0c``.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 2 envía el mensaje por el puerto 4.
-* El Switch 1 envía el mensaje por el puerto 6.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``ec0c``.
+1. El Switch 2 envía el mensaje por el puerto 2.
+2. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``b039``.
+3. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+4. El Switch 1 envía el mensaje por el puerto 0.
+5. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``b039``.
+6. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+7. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+8. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
 
 
-Ejercicio 2 de switches
+Ejercicio 3 de switches
 ----------------------------------
 
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 5 que va al puerto 7 del switch 2. Se pretende enviar desde ``dd84`` a ``9e68`` sabiendo lo siguiente:
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 6 que va al puerto 4 del switch 2. Se pretende enviar desde ``a636`` a ``8fc8`` sabiendo lo siguiente:
 
 
-.. figure:: Switches2-4.png
+.. figure:: Switches2-3.png
 
-* Ordenador 1I tiene la MAC ``7e2e``.
-* Ordenador 2I tiene la MAC ``9e68``.
-* Ordenador 1D tiene la MAC ``5bb1``.
-* Ordenador 2D tiene la MAC ``c383``.
-* Ordenador 3D tiene la MAC ``dd84``.
-* Ordenador 4D tiene la MAC ``413c``.
+* Ordenador 1I tiene la MAC ``c583``.
+* Ordenador 2I tiene la MAC ``a636``.
+* Ordenador 1D tiene la MAC ``98a8``.
+* Ordenador 2D tiene la MAC ``94bd``.
+* Ordenador 3D tiene la MAC ``8fc8``.
+
+.. table:: Tabla MAC de Switch 1
+
+    ================  ========
+    Numero de puerto    MAC   
+    ================  ========
+                   0  --      
+                   1  ``c583``
+                   2  --      
+                   3  --      
+                   4  --      
+                   5  ``a636``
+                   6  ``94bd``
+                   7  --      
+    ================  ========
+
+
+.. table:: Tabla MAC de Switch 2
+
+    ================  ========
+    Numero de puerto    MAC   
+    ================  ========
+                   0  --      
+                   1  --      
+                   2  ``94bd``
+                   3  --      
+                   4  ``c583``
+                   5  --      
+                   6  --      
+                   7  --      
+    ================  ========
+
+
+Indica si las siguientes afirmaciones son verdaderas o falsas:
+
+1. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+2. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``a636``.
+3. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``a636``.
+4. El Switch 2 envía el mensaje por el puerto 3.
+5. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+6. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+7. El Switch 1 envía el mensaje por el puerto 3.
+8. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+
+
+Ejercicio 4 de switches
+----------------------------------
+
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 6 que va al puerto 4 del switch 2. Se pretende enviar desde ``b4f3`` a ``7a3c`` sabiendo lo siguiente:
+
+
+.. figure:: Switches3-4.png
+
+* Ordenador 1I tiene la MAC ``e607``.
+* Ordenador 2I tiene la MAC ``5a70``.
+* Ordenador 3I tiene la MAC ``b4f3``.
+* Ordenador 1D tiene la MAC ``7a3c``.
+* Ordenador 2D tiene la MAC ``fd70``.
+* Ordenador 3D tiene la MAC ``b54d``.
+* Ordenador 4D tiene la MAC ``c4a2``.
 
 .. table:: Tabla MAC de Switch 1
 
@@ -81,14 +197,73 @@ Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 5 qu
     Numero de puerto       MAC     
     ================  =============
                    0  --           
-                   1  ``9e68``     
+                   1  --           
                    2  --           
                    3  --           
                    4  --           
-                   5  ``5bb1,c383``
+                   5  --           
+                   6  ``7a3c,b54d``
+                   7  --           
+    ================  =============
+
+
+.. table:: Tabla MAC de Switch 2
+
+    ================  =============
+    Numero de puerto       MAC     
+    ================  =============
+                   0  ``b54d``     
+                   1  ``7a3c``     
+                   2  --           
+                   3  --           
+                   4  ``e607,b4f3``
+                   5  --           
                    6  --           
                    7  --           
     ================  =============
+
+
+Indica si las siguientes afirmaciones son verdaderas o falsas:
+
+1. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``b4f3``.
+2. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+3. El Switch 1 envía el mensaje por el puerto 6.
+4. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+5. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+6. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+7. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``b4f3``.
+8. El Switch 2 envía el mensaje por el puerto 1.
+
+
+Ejercicio 5 de switches
+----------------------------------
+
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 5 que va al puerto 3 del switch 2. Se pretende enviar desde ``bf67`` a ``bf66`` sabiendo lo siguiente:
+
+
+.. figure:: Switches3-3.png
+
+* Ordenador 1I tiene la MAC ``6a0f``.
+* Ordenador 2I tiene la MAC ``4bd8``.
+* Ordenador 3I tiene la MAC ``bf67``.
+* Ordenador 1D tiene la MAC ``bf66``.
+* Ordenador 2D tiene la MAC ``8ac4``.
+* Ordenador 3D tiene la MAC ``482a``.
+
+.. table:: Tabla MAC de Switch 1
+
+    ================  ===
+    Numero de puerto  MAC
+    ================  ===
+                   0  -- 
+                   1  -- 
+                   2  -- 
+                   3  -- 
+                   4  -- 
+                   5  -- 
+                   6  -- 
+                   7  -- 
+    ================  ===
 
 
 .. table:: Tabla MAC de Switch 2
@@ -98,44 +273,61 @@ Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 5 qu
     ================  ========
                    0  --      
                    1  --      
-                   2  --      
+                   2  ``482a``
                    3  --      
                    4  --      
-                   5  ``dd84``
+                   5  --      
                    6  --      
-                   7  ``5bb1``
+                   7  --      
     ================  ========
 
 
 Indica si las siguientes afirmaciones son verdaderas o falsas:
 
-* El Switch 2 envía el mensaje por el puerto 4.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``dd84``.
-* El Switch 1 envía el mensaje por el puerto 1.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``dd84``.
+1. El Switch 2 envía el mensaje por el puerto 4.
+2. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``bf67``.
+3. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+4. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+5. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``bf67``.
+6. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+7. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+8. El Switch 1 envía el mensaje por el puerto 3.
 
 
-Ejercicio 3 de switches
+Ejercicio 6 de switches
 ----------------------------------
 
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 4 que va al puerto 1 del switch 2. Se pretende enviar desde ``de08`` a ``8413`` sabiendo lo siguiente:
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 7 que va al puerto 7 del switch 2. Se pretende enviar desde ``61a4`` a ``b5f1`` sabiendo lo siguiente:
 
 
-.. figure:: Switches3-4.png
+.. figure:: Switches4-4.png
 
-* Ordenador 1I tiene la MAC ``de08``.
-* Ordenador 2I tiene la MAC ``9fb0``.
-* Ordenador 3I tiene la MAC ``8a24``.
-* Ordenador 1D tiene la MAC ``68de``.
-* Ordenador 2D tiene la MAC ``c12f``.
-* Ordenador 3D tiene la MAC ``4c35``.
-* Ordenador 4D tiene la MAC ``8413``.
+* Ordenador 1I tiene la MAC ``f6bf``.
+* Ordenador 2I tiene la MAC ``fcf5``.
+* Ordenador 3I tiene la MAC ``61a4``.
+* Ordenador 4I tiene la MAC ``96e2``.
+* Ordenador 1D tiene la MAC ``c153``.
+* Ordenador 2D tiene la MAC ``9c0b``.
+* Ordenador 3D tiene la MAC ``b5f1``.
+* Ordenador 4D tiene la MAC ``a32d``.
 
 .. table:: Tabla MAC de Switch 1
+
+    ================  =============
+    Numero de puerto       MAC     
+    ================  =============
+                   0  --           
+                   1  ``61a4``     
+                   2  --           
+                   3  ``fcf5``     
+                   4  --           
+                   5  --           
+                   6  --           
+                   7  ``c153,a32d``
+    ================  =============
+
+
+.. table:: Tabla MAC de Switch 2
 
     ================  ==================
     Numero de puerto         MAC        
@@ -144,595 +336,406 @@ Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 4 qu
                    1  --                
                    2  --                
                    3  --                
-                   4  ``68de,4c35,8413``
+                   4  --                
+                   5  ``c153``          
+                   6  --                
+                   7  ``fcf5,61a4,96e2``
+    ================  ==================
+
+
+Indica si las siguientes afirmaciones son verdaderas o falsas:
+
+1. El Switch 1 envía el mensaje por el puerto 4.
+2. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``61a4``.
+3. El Switch 2 envía el mensaje por el puerto 3.
+4. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+5. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+6. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+7. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``61a4``.
+8. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+
+
+Ejercicio 7 de switches
+----------------------------------
+
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 2 que va al puerto 0 del switch 2. Se pretende enviar desde ``6d8d`` a ``5fa6`` sabiendo lo siguiente:
+
+
+.. figure:: Switches3-4.png
+
+* Ordenador 1I tiene la MAC ``95c5``.
+* Ordenador 2I tiene la MAC ``7dac``.
+* Ordenador 3I tiene la MAC ``6d8d``.
+* Ordenador 1D tiene la MAC ``e387``.
+* Ordenador 2D tiene la MAC ``6198``.
+* Ordenador 3D tiene la MAC ``4099``.
+* Ordenador 4D tiene la MAC ``5fa6``.
+
+.. table:: Tabla MAC de Switch 1
+
+    ================  =============
+    Numero de puerto       MAC     
+    ================  =============
+                   0  --           
+                   1  --           
+                   2  ``e387,6198``
+                   3  --           
+                   4  --           
+                   5  --           
+                   6  --           
+                   7  --           
+    ================  =============
+
+
+.. table:: Tabla MAC de Switch 2
+
+    ================  ========
+    Numero de puerto    MAC   
+    ================  ========
+                   0  ``6d8d``
+                   1  --      
+                   2  --      
+                   3  ``e387``
+                   4  --      
+                   5  --      
+                   6  --      
+                   7  --      
+    ================  ========
+
+
+Indica si las siguientes afirmaciones son verdaderas o falsas:
+
+1. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+2. El Switch 2 envía el mensaje por el puerto 7.
+3. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+4. El Switch 1 envía el mensaje por el puerto 1.
+5. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``6d8d``.
+6. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``6d8d``.
+7. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+8. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+
+
+Ejercicio 8 de switches
+----------------------------------
+
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 6 que va al puerto 1 del switch 2. Se pretende enviar desde ``958c`` a ``bb84`` sabiendo lo siguiente:
+
+
+.. figure:: Switches3-2.png
+
+* Ordenador 1I tiene la MAC ``958c``.
+* Ordenador 2I tiene la MAC ``94ce``.
+* Ordenador 3I tiene la MAC ``80e7``.
+* Ordenador 1D tiene la MAC ``9690``.
+* Ordenador 2D tiene la MAC ``bb84``.
+
+.. table:: Tabla MAC de Switch 1
+
+    ================  ===
+    Numero de puerto  MAC
+    ================  ===
+                   0  -- 
+                   1  -- 
+                   2  -- 
+                   3  -- 
+                   4  -- 
+                   5  -- 
+                   6  -- 
+                   7  -- 
+    ================  ===
+
+
+.. table:: Tabla MAC de Switch 2
+
+    ================  ========
+    Numero de puerto    MAC   
+    ================  ========
+                   0  --      
+                   1  ``94ce``
+                   2  --      
+                   3  --      
+                   4  --      
+                   5  --      
+                   6  ``9690``
+                   7  --      
+    ================  ========
+
+
+Indica si las siguientes afirmaciones son verdaderas o falsas:
+
+1. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+2. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+3. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``958c``.
+4. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+5. El Switch 2 envía el mensaje por el puerto 2.
+6. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+7. El Switch 1 envía el mensaje por el puerto 4.
+8. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``958c``.
+
+
+Ejercicio 9 de switches
+----------------------------------
+
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 4 que va al puerto 7 del switch 2. Se pretende enviar desde ``cb76`` a ``bee9`` sabiendo lo siguiente:
+
+
+.. figure:: Switches4-2.png
+
+* Ordenador 1I tiene la MAC ``bee9``.
+* Ordenador 2I tiene la MAC ``8c88``.
+* Ordenador 3I tiene la MAC ``457c``.
+* Ordenador 4I tiene la MAC ``beea``.
+* Ordenador 1D tiene la MAC ``cb76``.
+* Ordenador 2D tiene la MAC ``abf2``.
+
+.. table:: Tabla MAC de Switch 1
+
+    ================  =============
+    Numero de puerto       MAC     
+    ================  =============
+                   0  ``8c88``     
+                   1  --           
+                   2  ``457c``     
+                   3  --           
+                   4  ``cb76,abf2``
+                   5  --           
+                   6  --           
+                   7  --           
+    ================  =============
+
+
+.. table:: Tabla MAC de Switch 2
+
+    ================  ========
+    Numero de puerto    MAC   
+    ================  ========
+                   0  --      
+                   1  --      
+                   2  --      
+                   3  --      
+                   4  ``cb76``
+                   5  --      
+                   6  --      
+                   7  ``beea``
+    ================  ========
+
+
+Indica si las siguientes afirmaciones son verdaderas o falsas:
+
+1. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+2. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+3. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+4. El Switch 1 envía el mensaje por el puerto 6.
+5. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+6. El Switch 2 envía el mensaje por el puerto 0.
+7. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``cb76``.
+8. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``cb76``.
+
+
+Ejercicio 10 de switches
+----------------------------------
+
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 0 que va al puerto 7 del switch 2. Se pretende enviar desde ``5a09`` a ``c525`` sabiendo lo siguiente:
+
+
+.. figure:: Switches2-3.png
+
+* Ordenador 1I tiene la MAC ``95c3``.
+* Ordenador 2I tiene la MAC ``5a09``.
+* Ordenador 1D tiene la MAC ``c525``.
+* Ordenador 2D tiene la MAC ``d0bd``.
+* Ordenador 3D tiene la MAC ``7083``.
+
+.. table:: Tabla MAC de Switch 1
+
+    ================  ===
+    Numero de puerto  MAC
+    ================  ===
+                   0  -- 
+                   1  -- 
+                   2  -- 
+                   3  -- 
+                   4  -- 
+                   5  -- 
+                   6  -- 
+                   7  -- 
+    ================  ===
+
+
+.. table:: Tabla MAC de Switch 2
+
+    ================  ========
+    Numero de puerto    MAC   
+    ================  ========
+                   0  ``7083``
+                   1  --      
+                   2  --      
+                   3  --      
+                   4  --      
+                   5  ``c525``
+                   6  --      
+                   7  ``5a09``
+    ================  ========
+
+
+Indica si las siguientes afirmaciones son verdaderas o falsas:
+
+1. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``5a09``.
+2. El Switch 1 envía el mensaje por el puerto 0.
+3. El Switch 2 envía el mensaje por el puerto 5.
+4. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+5. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+6. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+7. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+8. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``5a09``.
+
+
+Ejercicio 11 de switches
+----------------------------------
+
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 6 que va al puerto 3 del switch 2. Se pretende enviar desde ``cc6a`` a ``7019`` sabiendo lo siguiente:
+
+
+.. figure:: Switches3-3.png
+
+* Ordenador 1I tiene la MAC ``60b2``.
+* Ordenador 2I tiene la MAC ``7019``.
+* Ordenador 3I tiene la MAC ``9b6f``.
+* Ordenador 1D tiene la MAC ``6275``.
+* Ordenador 2D tiene la MAC ``cc6a``.
+* Ordenador 3D tiene la MAC ``9f99``.
+
+.. table:: Tabla MAC de Switch 1
+
+    ================  =============
+    Numero de puerto       MAC     
+    ================  =============
+                   0  --           
+                   1  --           
+                   2  ``7019``     
+                   3  --           
+                   4  --           
+                   5  --           
+                   6  ``6275,cc6a``
+                   7  --           
+    ================  =============
+
+
+.. table:: Tabla MAC de Switch 2
+
+    ================  ========
+    Numero de puerto    MAC   
+    ================  ========
+                   0  --      
+                   1  --      
+                   2  --      
+                   3  ``9b6f``
+                   4  --      
+                   5  --      
+                   6  --      
+                   7  --      
+    ================  ========
+
+
+Indica si las siguientes afirmaciones son verdaderas o falsas:
+
+1. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+2. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+3. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+4. El Switch 1 envía el mensaje por el puerto 2.
+5. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``cc6a``.
+6. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``cc6a``.
+7. El Switch 2 envía el mensaje por el puerto 1.
+8. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+
+
+Ejercicio 12 de switches
+----------------------------------
+
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 6 que va al puerto 1 del switch 2. Se pretende enviar desde ``a96c`` a ``500d`` sabiendo lo siguiente:
+
+
+.. figure:: Switches3-4.png
+
+* Ordenador 1I tiene la MAC ``500d``.
+* Ordenador 2I tiene la MAC ``f182``.
+* Ordenador 3I tiene la MAC ``8c75``.
+* Ordenador 1D tiene la MAC ``471e``.
+* Ordenador 2D tiene la MAC ``a07c``.
+* Ordenador 3D tiene la MAC ``a96c``.
+* Ordenador 4D tiene la MAC ``4c6b``.
+
+.. table:: Tabla MAC de Switch 1
+
+    ================  ========
+    Numero de puerto    MAC   
+    ================  ========
+                   0  --      
+                   1  ``500d``
+                   2  --      
+                   3  --      
+                   4  --      
+                   5  ``8c75``
+                   6  ``4c6b``
+                   7  --      
+    ================  ========
+
+
+.. table:: Tabla MAC de Switch 2
+
+    ================  ==================
+    Numero de puerto         MAC        
+    ================  ==================
+                   0  --                
+                   1  ``500d,f182,8c75``
+                   2  ``471e``          
+                   3  ``4c6b``          
+                   4  --                
                    5  --                
                    6  --                
                    7  --                
     ================  ==================
 
 
-.. table:: Tabla MAC de Switch 2
-
-    ================  ========
-    Numero de puerto    MAC   
-    ================  ========
-                   0  ``c12f``
-                   1  ``8a24``
-                   2  --      
-                   3  --      
-                   4  --      
-                   5  --      
-                   6  --      
-                   7  --      
-    ================  ========
-
-
 Indica si las siguientes afirmaciones son verdaderas o falsas:
 
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``de08``.
-* El Switch 1 envía el mensaje por el puerto 4.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``de08``.
-* El Switch 2 envía el mensaje por el puerto 5.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
-
-
-Ejercicio 4 de switches
-----------------------------------
-
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 7 que va al puerto 3 del switch 2. Se pretende enviar desde ``50d2`` a ``e9b5`` sabiendo lo siguiente:
-
-
-.. figure:: Switches4-3.png
-
-* Ordenador 1I tiene la MAC ``ece5``.
-* Ordenador 2I tiene la MAC ``50d2``.
-* Ordenador 3I tiene la MAC ``bb19``.
-* Ordenador 4I tiene la MAC ``60c2``.
-* Ordenador 1D tiene la MAC ``aa99``.
-* Ordenador 2D tiene la MAC ``e863``.
-* Ordenador 3D tiene la MAC ``e9b5``.
-
-.. table:: Tabla MAC de Switch 1
-
-    ================  ========
-    Numero de puerto    MAC   
-    ================  ========
-                   0  ``bb19``
-                   1  ``50d2``
-                   2  --      
-                   3  --      
-                   4  --      
-                   5  --      
-                   6  --      
-                   7  --      
-    ================  ========
-
-
-.. table:: Tabla MAC de Switch 2
-
-    ================  =============
-    Numero de puerto       MAC     
-    ================  =============
-                   0  ``aa99``     
-                   1  ``e863``     
-                   2  --           
-                   3  ``bb19,60c2``
-                   4  --           
-                   5  --           
-                   6  --           
-                   7  --           
-    ================  =============
-
-
-Indica si las siguientes afirmaciones son verdaderas o falsas:
-
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``50d2``.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 2 envía el mensaje por el puerto 5.
-* El Switch 1 envía el mensaje por el puerto 4.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``50d2``.
-
-
-Ejercicio 5 de switches
-----------------------------------
-
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 2 que va al puerto 1 del switch 2. Se pretende enviar desde ``d973`` a ``9a1a`` sabiendo lo siguiente:
-
-
-.. figure:: Switches3-2.png
-
-* Ordenador 1I tiene la MAC ``c194``.
-* Ordenador 2I tiene la MAC ``9a1a``.
-* Ordenador 3I tiene la MAC ``6072``.
-* Ordenador 1D tiene la MAC ``d973``.
-* Ordenador 2D tiene la MAC ``a947``.
-
-.. table:: Tabla MAC de Switch 1
-
-    ================  ========
-    Numero de puerto    MAC   
-    ================  ========
-                   0  --      
-                   1  --      
-                   2  ``a947``
-                   3  --      
-                   4  --      
-                   5  --      
-                   6  --      
-                   7  --      
-    ================  ========
-
-
-.. table:: Tabla MAC de Switch 2
-
-    ================  ========
-    Numero de puerto    MAC   
-    ================  ========
-                   0  ``d973``
-                   1  --      
-                   2  --      
-                   3  --      
-                   4  --      
-                   5  ``a947``
-                   6  --      
-                   7  --      
-    ================  ========
-
-
-Indica si las siguientes afirmaciones son verdaderas o falsas:
-
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``d973``.
-* El Switch 1 envía el mensaje por el puerto 3.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 2 envía el mensaje por el puerto 3.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``d973``.
-
-
-Ejercicio 6 de switches
-----------------------------------
-
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 7 que va al puerto 0 del switch 2. Se pretende enviar desde ``cf0f`` a ``d421`` sabiendo lo siguiente:
-
-
-.. figure:: Switches3-2.png
-
-* Ordenador 1I tiene la MAC ``533b``.
-* Ordenador 2I tiene la MAC ``d421``.
-* Ordenador 3I tiene la MAC ``8b59``.
-* Ordenador 1D tiene la MAC ``a1f7``.
-* Ordenador 2D tiene la MAC ``cf0f``.
-
-.. table:: Tabla MAC de Switch 1
-
-    ================  ========
-    Numero de puerto    MAC   
-    ================  ========
-                   0  --      
-                   1  --      
-                   2  --      
-                   3  --      
-                   4  --      
-                   5  --      
-                   6  --      
-                   7  ``a1f7``
-    ================  ========
-
-
-.. table:: Tabla MAC de Switch 2
-
-    ================  ========
-    Numero de puerto    MAC   
-    ================  ========
-                   0  --      
-                   1  --      
-                   2  --      
-                   3  ``a1f7``
-                   4  --      
-                   5  --      
-                   6  --      
-                   7  --      
-    ================  ========
-
-
-Indica si las siguientes afirmaciones son verdaderas o falsas:
-
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``cf0f``.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 2 envía el mensaje por el puerto 1.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``cf0f``.
-* El Switch 1 envía el mensaje por el puerto 3.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-
-
-Ejercicio 7 de switches
-----------------------------------
-
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 3 que va al puerto 2 del switch 2. Se pretende enviar desde ``d5e8`` a ``889f`` sabiendo lo siguiente:
-
-
-.. figure:: Switches2-3.png
-
-* Ordenador 1I tiene la MAC ``f6f5``.
-* Ordenador 2I tiene la MAC ``889f``.
-* Ordenador 1D tiene la MAC ``d822``.
-* Ordenador 2D tiene la MAC ``9e8a``.
-* Ordenador 3D tiene la MAC ``d5e8``.
-
-.. table:: Tabla MAC de Switch 1
-
-    ================  ========
-    Numero de puerto    MAC   
-    ================  ========
-                   0  --      
-                   1  --      
-                   2  --      
-                   3  --      
-                   4  --      
-                   5  ``889f``
-                   6  --      
-                   7  ``f6f5``
-    ================  ========
-
-
-.. table:: Tabla MAC de Switch 2
-
-    ================  ========
-    Numero de puerto    MAC   
-    ================  ========
-                   0  --      
-                   1  --      
-                   2  --      
-                   3  --      
-                   4  --      
-                   5  --      
-                   6  ``d5e8``
-                   7  --      
-    ================  ========
-
-
-Indica si las siguientes afirmaciones son verdaderas o falsas:
-
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``d5e8``.
-* El Switch 2 envía el mensaje por el puerto 2.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 envía el mensaje por el puerto 5.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``d5e8``.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-
-
-Ejercicio 8 de switches
-----------------------------------
-
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 0 que va al puerto 6 del switch 2. Se pretende enviar desde ``42fd`` a ``6e03`` sabiendo lo siguiente:
-
-
-.. figure:: Switches2-4.png
-
-* Ordenador 1I tiene la MAC ``e2e4``.
-* Ordenador 2I tiene la MAC ``6e03``.
-* Ordenador 1D tiene la MAC ``9c02``.
-* Ordenador 2D tiene la MAC ``65ae``.
-* Ordenador 3D tiene la MAC ``42fd``.
-* Ordenador 4D tiene la MAC ``c8ee``.
-
-.. table:: Tabla MAC de Switch 1
-
-    ================  =============
-    Numero de puerto       MAC     
-    ================  =============
-                   0  ``42fd,c8ee``
-                   1  --           
-                   2  ``6e03``     
-                   3  --           
-                   4  --           
-                   5  ``e2e4``     
-                   6  --           
-                   7  --           
-    ================  =============
-
-
-.. table:: Tabla MAC de Switch 2
-
-    ================  ========
-    Numero de puerto    MAC   
-    ================  ========
-                   0  --      
-                   1  --      
-                   2  --      
-                   3  --      
-                   4  ``65ae``
-                   5  --      
-                   6  ``6e03``
-                   7  --      
-    ================  ========
-
-
-Indica si las siguientes afirmaciones son verdaderas o falsas:
-
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 envía el mensaje por el puerto 2.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``42fd``.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``42fd``.
-* El Switch 2 envía el mensaje por el puerto 6.
-
-
-Ejercicio 9 de switches
-----------------------------------
-
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 5 que va al puerto 0 del switch 2. Se pretende enviar desde ``94bb`` a ``cb23`` sabiendo lo siguiente:
-
-
-.. figure:: Switches2-2.png
-
-* Ordenador 1I tiene la MAC ``f093``.
-* Ordenador 2I tiene la MAC ``cb23``.
-* Ordenador 1D tiene la MAC ``640c``.
-* Ordenador 2D tiene la MAC ``94bb``.
-
-.. table:: Tabla MAC de Switch 1
-
-    ================  ========
-    Numero de puerto    MAC   
-    ================  ========
-                   0  --      
-                   1  ``cb23``
-                   2  --      
-                   3  --      
-                   4  --      
-                   5  --      
-                   6  --      
-                   7  --      
-    ================  ========
-
-
-.. table:: Tabla MAC de Switch 2
-
-    ================  ===
-    Numero de puerto  MAC
-    ================  ===
-                   0  -- 
-                   1  -- 
-                   2  -- 
-                   3  -- 
-                   4  -- 
-                   5  -- 
-                   6  -- 
-                   7  -- 
-    ================  ===
-
-
-Indica si las siguientes afirmaciones son verdaderas o falsas:
-
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``94bb``.
-* El Switch 2 envía el mensaje por el puerto 7.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 envía el mensaje por el puerto 1.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``94bb``.
-
-
-Ejercicio 10 de switches
-----------------------------------
-
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 3 que va al puerto 2 del switch 2. Se pretende enviar desde ``7026`` a ``a423`` sabiendo lo siguiente:
-
-
-.. figure:: Switches4-4.png
-
-* Ordenador 1I tiene la MAC ``895a``.
-* Ordenador 2I tiene la MAC ``7c6d``.
-* Ordenador 3I tiene la MAC ``a423``.
-* Ordenador 4I tiene la MAC ``c4ed``.
-* Ordenador 1D tiene la MAC ``63e4``.
-* Ordenador 2D tiene la MAC ``7026``.
-* Ordenador 3D tiene la MAC ``87e7``.
-* Ordenador 4D tiene la MAC ``466a``.
-
-.. table:: Tabla MAC de Switch 1
-
-    ================  =============
-    Numero de puerto       MAC     
-    ================  =============
-                   0  --           
-                   1  ``895a``     
-                   2  ``a423``     
-                   3  ``63e4,7026``
-                   4  ``c4ed``     
-                   5  ``7c6d``     
-                   6  --           
-                   7  --           
-    ================  =============
-
-
-.. table:: Tabla MAC de Switch 2
-
-    ================  ========
-    Numero de puerto    MAC   
-    ================  ========
-                   0  --      
-                   1  ``7026``
-                   2  ``7c6d``
-                   3  --      
-                   4  --      
-                   5  --      
-                   6  --      
-                   7  --      
-    ================  ========
-
-
-Indica si las siguientes afirmaciones son verdaderas o falsas:
-
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``7026``.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 envía el mensaje por el puerto 2.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 2 envía el mensaje por el puerto 5.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``7026``.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-
-
-Ejercicio 11 de switches
-----------------------------------
-
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 0 que va al puerto 7 del switch 2. Se pretende enviar desde ``ee1f`` a ``5f4c`` sabiendo lo siguiente:
-
-
-.. figure:: Switches2-3.png
-
-* Ordenador 1I tiene la MAC ``ee1f``.
-* Ordenador 2I tiene la MAC ``c7cc``.
-* Ordenador 1D tiene la MAC ``926d``.
-* Ordenador 2D tiene la MAC ``5f4c``.
-* Ordenador 3D tiene la MAC ``78fa``.
-
-.. table:: Tabla MAC de Switch 1
-
-    ================  ===
-    Numero de puerto  MAC
-    ================  ===
-                   0  -- 
-                   1  -- 
-                   2  -- 
-                   3  -- 
-                   4  -- 
-                   5  -- 
-                   6  -- 
-                   7  -- 
-    ================  ===
-
-
-.. table:: Tabla MAC de Switch 2
-
-    ================  ========
-    Numero de puerto    MAC   
-    ================  ========
-                   0  --      
-                   1  --      
-                   2  --      
-                   3  --      
-                   4  --      
-                   5  --      
-                   6  --      
-                   7  ``ee1f``
-    ================  ========
-
-
-Indica si las siguientes afirmaciones son verdaderas o falsas:
-
-* El Switch 1 envía el mensaje por el puerto 0.
-* El Switch 2 envía el mensaje por el puerto 1.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``ee1f``.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``ee1f``.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-
-
-Ejercicio 12 de switches
-----------------------------------
-
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 2 que va al puerto 0 del switch 2. Se pretende enviar desde ``418d`` a ``79d5`` sabiendo lo siguiente:
-
-
-.. figure:: Switches2-3.png
-
-* Ordenador 1I tiene la MAC ``79d5``.
-* Ordenador 2I tiene la MAC ``8d79``.
-* Ordenador 1D tiene la MAC ``418d``.
-* Ordenador 2D tiene la MAC ``f8f5``.
-* Ordenador 3D tiene la MAC ``9c7b``.
-
-.. table:: Tabla MAC de Switch 1
-
-    ================  =============
-    Numero de puerto       MAC     
-    ================  =============
-                   0  --           
-                   1  --           
-                   2  ``418d,9c7b``
-                   3  --           
-                   4  --           
-                   5  --           
-                   6  --           
-                   7  --           
-    ================  =============
-
-
-.. table:: Tabla MAC de Switch 2
-
-    ================  ========
-    Numero de puerto    MAC   
-    ================  ========
-                   0  --      
-                   1  --      
-                   2  ``418d``
-                   3  --      
-                   4  --      
-                   5  --      
-                   6  ``f8f5``
-                   7  --      
-    ================  ========
-
-
-Indica si las siguientes afirmaciones son verdaderas o falsas:
-
-* El Switch 1 envía el mensaje por el puerto 7.
-* El Switch 2 envía el mensaje por el puerto 1.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``418d``.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``418d``.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+1. El Switch 2 envía el mensaje por el puerto 1.
+2. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+3. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+4. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+5. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``a96c``.
+6. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+7. El Switch 1 envía el mensaje por el puerto 1.
+8. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``a96c``.
 
 
 Ejercicio 13 de switches
 ----------------------------------
 
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 1 que va al puerto 3 del switch 2. Se pretende enviar desde ``920f`` a ``cc20`` sabiendo lo siguiente:
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 6 que va al puerto 7 del switch 2. Se pretende enviar desde ``8ce0`` a ``9b8c`` sabiendo lo siguiente:
 
 
 .. figure:: Switches2-4.png
 
-* Ordenador 1I tiene la MAC ``920f``.
-* Ordenador 2I tiene la MAC ``ca67``.
-* Ordenador 1D tiene la MAC ``95c2``.
-* Ordenador 2D tiene la MAC ``7d24``.
-* Ordenador 3D tiene la MAC ``5833``.
-* Ordenador 4D tiene la MAC ``cc20``.
+* Ordenador 1I tiene la MAC ``8ce0``.
+* Ordenador 2I tiene la MAC ``6a4b``.
+* Ordenador 1D tiene la MAC ``c5c3``.
+* Ordenador 2D tiene la MAC ``be66``.
+* Ordenador 3D tiene la MAC ``9b8c``.
+* Ordenador 4D tiene la MAC ``6ff1``.
 
 .. table:: Tabla MAC de Switch 1
 
     ================  ========
     Numero de puerto    MAC   
     ================  ========
-                   0  --      
-                   1  ``cc20``
+                   0  ``8ce0``
+                   1  --      
                    2  --      
                    3  --      
                    4  --      
                    5  --      
-                   6  --      
+                   6  ``9b8c``
                    7  --      
     ================  ========
 
@@ -743,161 +746,157 @@ Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 1 qu
     Numero de puerto    MAC   
     ================  ========
                    0  --      
-                   1  ``5833``
+                   1  --      
                    2  --      
-                   3  --      
-                   4  --      
+                   3  ``be66``
+                   4  ``c5c3``
                    5  --      
                    6  --      
-                   7  --      
+                   7  ``6a4b``
     ================  ========
 
 
 Indica si las siguientes afirmaciones son verdaderas o falsas:
 
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``920f``.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``920f``.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 envía el mensaje por el puerto 1.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 2 envía el mensaje por el puerto 5.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+1. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``8ce0``.
+2. El Switch 2 envía el mensaje por el puerto 2.
+3. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+4. El Switch 1 envía el mensaje por el puerto 6.
+5. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``8ce0``.
+6. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+7. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+8. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
 
 
 Ejercicio 14 de switches
 ----------------------------------
 
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 3 que va al puerto 2 del switch 2. Se pretende enviar desde ``6301`` a ``d6de`` sabiendo lo siguiente:
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 2 que va al puerto 4 del switch 2. Se pretende enviar desde ``af07`` a ``bafc`` sabiendo lo siguiente:
 
 
-.. figure:: Switches3-2.png
+.. figure:: Switches2-2.png
 
-* Ordenador 1I tiene la MAC ``f7fa``.
-* Ordenador 2I tiene la MAC ``f8d3``.
-* Ordenador 3I tiene la MAC ``6301``.
-* Ordenador 1D tiene la MAC ``5e95``.
-* Ordenador 2D tiene la MAC ``d6de``.
+* Ordenador 1I tiene la MAC ``bafc``.
+* Ordenador 2I tiene la MAC ``7c04``.
+* Ordenador 1D tiene la MAC ``af07``.
+* Ordenador 2D tiene la MAC ``cca8``.
 
 .. table:: Tabla MAC de Switch 1
 
     ================  ========
     Numero de puerto    MAC   
     ================  ========
-                   0  ``f8d3``
-                   1  --      
-                   2  --      
-                   3  ``5e95``
-                   4  --      
-                   5  --      
-                   6  ``f7fa``
-                   7  --      
-    ================  ========
-
-
-.. table:: Tabla MAC de Switch 2
-
-    ================  ========
-    Numero de puerto    MAC   
-    ================  ========
-                   0  --      
+                   0  ``7c04``
                    1  --      
                    2  --      
                    3  --      
                    4  --      
                    5  --      
-                   6  ``5e95``
-                   7  --      
+                   6  --      
+                   7  ``bafc``
     ================  ========
+
+
+.. table:: Tabla MAC de Switch 2
+
+    ================  ===
+    Numero de puerto  MAC
+    ================  ===
+                   0  -- 
+                   1  -- 
+                   2  -- 
+                   3  -- 
+                   4  -- 
+                   5  -- 
+                   6  -- 
+                   7  -- 
+    ================  ===
 
 
 Indica si las siguientes afirmaciones son verdaderas o falsas:
 
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``6301``.
-* El Switch 2 envía el mensaje por el puerto 2.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``6301``.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 envía el mensaje por el puerto 5.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+1. El Switch 1 envía el mensaje por el puerto 7.
+2. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``af07``.
+3. El Switch 2 envía el mensaje por el puerto 4.
+4. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+5. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``af07``.
+6. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+7. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+8. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
 
 
 Ejercicio 15 de switches
 ----------------------------------
 
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 4 que va al puerto 7 del switch 2. Se pretende enviar desde ``94f5`` a ``9b89`` sabiendo lo siguiente:
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 0 que va al puerto 4 del switch 2. Se pretende enviar desde ``c85b`` a ``ac7b`` sabiendo lo siguiente:
 
 
-.. figure:: Switches3-4.png
+.. figure:: Switches3-2.png
 
-* Ordenador 1I tiene la MAC ``90a0``.
-* Ordenador 2I tiene la MAC ``b3d6``.
-* Ordenador 3I tiene la MAC ``9b89``.
-* Ordenador 1D tiene la MAC ``94f5``.
-* Ordenador 2D tiene la MAC ``ea4a``.
-* Ordenador 3D tiene la MAC ``61ae``.
-* Ordenador 4D tiene la MAC ``a6c7``.
+* Ordenador 1I tiene la MAC ``c85b``.
+* Ordenador 2I tiene la MAC ``f0b6``.
+* Ordenador 3I tiene la MAC ``d3b0``.
+* Ordenador 1D tiene la MAC ``55af``.
+* Ordenador 2D tiene la MAC ``ac7b``.
 
 .. table:: Tabla MAC de Switch 1
-
-    ================  =============
-    Numero de puerto       MAC     
-    ================  =============
-                   0  --           
-                   1  ``b3d6``     
-                   2  --           
-                   3  --           
-                   4  ``ea4a,a6c7``
-                   5  --           
-                   6  --           
-                   7  --           
-    ================  =============
-
-
-.. table:: Tabla MAC de Switch 2
 
     ================  ========
     Numero de puerto    MAC   
     ================  ========
-                   0  ``94f5``
+                   0  ``c85b``
                    1  --      
                    2  --      
                    3  --      
-                   4  ``a6c7``
+                   4  --      
                    5  --      
                    6  --      
-                   7  ``9b89``
+                   7  ``f0b6``
     ================  ========
+
+
+.. table:: Tabla MAC de Switch 2
+
+    ================  ==================
+    Numero de puerto         MAC        
+    ================  ==================
+                   0  --                
+                   1  --                
+                   2  --                
+                   3  --                
+                   4  ``c85b,f0b6,d3b0``
+                   5  --                
+                   6  --                
+                   7  --                
+    ================  ==================
 
 
 Indica si las siguientes afirmaciones son verdaderas o falsas:
 
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``94f5``.
-* El Switch 2 envía el mensaje por el puerto 7.
-* El Switch 1 envía el mensaje por el puerto 3.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``94f5``.
+1. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+2. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+3. El Switch 2 envía el mensaje por el puerto 1.
+4. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``c85b``.
+5. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``c85b``.
+6. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+7. El Switch 1 envía el mensaje por el puerto 3.
+8. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
 
 
 Ejercicio 16 de switches
 ----------------------------------
 
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 2 que va al puerto 7 del switch 2. Se pretende enviar desde ``699a`` a ``86d6`` sabiendo lo siguiente:
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 3 que va al puerto 0 del switch 2. Se pretende enviar desde ``6bdc`` a ``e281`` sabiendo lo siguiente:
 
 
-.. figure:: Switches3-4.png
+.. figure:: Switches3-3.png
 
-* Ordenador 1I tiene la MAC ``5026``.
-* Ordenador 2I tiene la MAC ``526b``.
-* Ordenador 3I tiene la MAC ``86d6``.
-* Ordenador 1D tiene la MAC ``d454``.
-* Ordenador 2D tiene la MAC ``699a``.
-* Ordenador 3D tiene la MAC ``d464``.
-* Ordenador 4D tiene la MAC ``f172``.
+* Ordenador 1I tiene la MAC ``94a5``.
+* Ordenador 2I tiene la MAC ``e281``.
+* Ordenador 3I tiene la MAC ``e902``.
+* Ordenador 1D tiene la MAC ``7395``.
+* Ordenador 2D tiene la MAC ``945e``.
+* Ordenador 3D tiene la MAC ``6bdc``.
 
 .. table:: Tabla MAC de Switch 1
 
@@ -906,12 +905,12 @@ Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 2 qu
     ================  ========
                    0  --      
                    1  --      
-                   2  ``d454``
-                   3  --      
+                   2  --      
+                   3  ``6bdc``
                    4  --      
                    5  --      
-                   6  --      
-                   7  ``86d6``
+                   6  ``e281``
+                   7  ``e902``
     ================  ========
 
 
@@ -920,11 +919,11 @@ Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 2 qu
     ================  ========
     Numero de puerto    MAC   
     ================  ========
-                   0  --      
+                   0  ``e281``
                    1  --      
-                   2  ``699a``
+                   2  --      
                    3  --      
-                   4  ``d454``
+                   4  ``945e``
                    5  --      
                    6  --      
                    7  --      
@@ -933,99 +932,112 @@ Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 2 qu
 
 Indica si las siguientes afirmaciones son verdaderas o falsas:
 
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``699a``.
-* El Switch 2 envía el mensaje por el puerto 1.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``699a``.
-* El Switch 1 envía el mensaje por el puerto 7.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+1. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+2. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+3. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+4. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``6bdc``.
+5. El Switch 1 envía el mensaje por el puerto 6.
+6. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``6bdc``.
+7. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+8. El Switch 2 envía el mensaje por el puerto 0.
 
 
 Ejercicio 17 de switches
 ----------------------------------
 
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 3 que va al puerto 0 del switch 2. Se pretende enviar desde ``b578`` a ``4c29`` sabiendo lo siguiente:
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 5 que va al puerto 0 del switch 2. Se pretende enviar desde ``c21f`` a ``6c3f`` sabiendo lo siguiente:
 
 
-.. figure:: Switches3-3.png
+.. figure:: Switches2-2.png
 
-* Ordenador 1I tiene la MAC ``f92b``.
-* Ordenador 2I tiene la MAC ``b578``.
-* Ordenador 3I tiene la MAC ``46dd``.
-* Ordenador 1D tiene la MAC ``6daf``.
-* Ordenador 2D tiene la MAC ``83bb``.
-* Ordenador 3D tiene la MAC ``4c29``.
+* Ordenador 1I tiene la MAC ``6c3f``.
+* Ordenador 2I tiene la MAC ``b141``.
+* Ordenador 1D tiene la MAC ``55b0``.
+* Ordenador 2D tiene la MAC ``c21f``.
 
 .. table:: Tabla MAC de Switch 1
 
-    ================  =============
-    Numero de puerto       MAC     
-    ================  =============
-                   0  ``b578``     
-                   1  --           
-                   2  --           
-                   3  ``83bb,4c29``
-                   4  --           
-                   5  --           
-                   6  ``46dd``     
-                   7  --           
-    ================  =============
+    ================  ========
+    Numero de puerto    MAC   
+    ================  ========
+                   0  --      
+                   1  --      
+                   2  --      
+                   3  ``6c3f``
+                   4  --      
+                   5  ``55b0``
+                   6  --      
+                   7  --      
+    ================  ========
 
 
 .. table:: Tabla MAC de Switch 2
 
-    ================  =============
-    Numero de puerto       MAC     
-    ================  =============
-                   0  ``f92b,46dd``
-                   1  --           
-                   2  --           
-                   3  ``83bb``     
-                   4  --           
-                   5  --           
-                   6  ``4c29``     
-                   7  --           
-    ================  =============
+    ================  ===
+    Numero de puerto  MAC
+    ================  ===
+                   0  -- 
+                   1  -- 
+                   2  -- 
+                   3  -- 
+                   4  -- 
+                   5  -- 
+                   6  -- 
+                   7  -- 
+    ================  ===
 
 
 Indica si las siguientes afirmaciones son verdaderas o falsas:
 
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 2 envía el mensaje por el puerto 6.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 envía el mensaje por el puerto 3.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``b578``.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``b578``.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+1. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+2. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+3. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+4. El Switch 1 envía el mensaje por el puerto 3.
+5. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``c21f``.
+6. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+7. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``c21f``.
+8. El Switch 2 envía el mensaje por el puerto 1.
 
 
 Ejercicio 18 de switches
 ----------------------------------
 
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 3 que va al puerto 7 del switch 2. Se pretende enviar desde ``8e69`` a ``ffaf`` sabiendo lo siguiente:
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 7 que va al puerto 5 del switch 2. Se pretende enviar desde ``aeaf`` a ``8913`` sabiendo lo siguiente:
 
 
-.. figure:: Switches4-2.png
+.. figure:: Switches3-2.png
 
-* Ordenador 1I tiene la MAC ``ed2d``.
-* Ordenador 2I tiene la MAC ``8e69``.
-* Ordenador 3I tiene la MAC ``cf58``.
-* Ordenador 4I tiene la MAC ``faa0``.
-* Ordenador 1D tiene la MAC ``a359``.
-* Ordenador 2D tiene la MAC ``ffaf``.
+* Ordenador 1I tiene la MAC ``ecd9``.
+* Ordenador 2I tiene la MAC ``aeaf``.
+* Ordenador 3I tiene la MAC ``460c``.
+* Ordenador 1D tiene la MAC ``ab77``.
+* Ordenador 2D tiene la MAC ``8913``.
 
 .. table:: Tabla MAC de Switch 1
 
     ================  ========
     Numero de puerto    MAC   
     ================  ========
-                   0  ``faa0``
+                   0  --      
                    1  --      
                    2  --      
-                   3  ``ffaf``
+                   3  --      
+                   4  --      
+                   5  ``aeaf``
+                   6  --      
+                   7  ``ab77``
+    ================  ========
+
+
+.. table:: Tabla MAC de Switch 2
+
+    ================  ========
+    Numero de puerto    MAC   
+    ================  ========
+                   0  --      
+                   1  ``ab77``
+                   2  --      
+                   3  --      
                    4  --      
                    5  --      
                    6  --      
@@ -1033,47 +1045,31 @@ Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 3 qu
     ================  ========
 
 
-.. table:: Tabla MAC de Switch 2
-
-    ================  =============
-    Numero de puerto       MAC     
-    ================  =============
-                   0  --           
-                   1  --           
-                   2  --           
-                   3  --           
-                   4  --           
-                   5  ``a359``     
-                   6  --           
-                   7  ``ed2d,cf58``
-    ================  =============
-
-
 Indica si las siguientes afirmaciones son verdaderas o falsas:
 
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``8e69``.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``8e69``.
-* El Switch 2 envía el mensaje por el puerto 1.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 envía el mensaje por el puerto 3.
+1. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+2. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+3. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``aeaf``.
+4. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+5. El Switch 2 envía el mensaje por el puerto 0.
+6. El Switch 1 envía el mensaje por el puerto 4.
+7. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+8. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``aeaf``.
 
 
 Ejercicio 19 de switches
 ----------------------------------
 
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 2 que va al puerto 3 del switch 2. Se pretende enviar desde ``ceda`` a ``ad8a`` sabiendo lo siguiente:
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 4 que va al puerto 0 del switch 2. Se pretende enviar desde ``523d`` a ``eea3`` sabiendo lo siguiente:
 
 
-.. figure:: Switches3-2.png
+.. figure:: Switches2-3.png
 
-* Ordenador 1I tiene la MAC ``d7fc``.
-* Ordenador 2I tiene la MAC ``ad8a``.
-* Ordenador 3I tiene la MAC ``f745``.
-* Ordenador 1D tiene la MAC ``ceda``.
-* Ordenador 2D tiene la MAC ``6045``.
+* Ordenador 1I tiene la MAC ``523d``.
+* Ordenador 2I tiene la MAC ``52cd``.
+* Ordenador 1D tiene la MAC ``cb88``.
+* Ordenador 2D tiene la MAC ``eea3``.
+* Ordenador 3D tiene la MAC ``54cd``.
 
 .. table:: Tabla MAC de Switch 1
 
@@ -1083,7 +1079,23 @@ Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 2 qu
                    0  --      
                    1  --      
                    2  --      
-                   3  ``f745``
+                   3  ``52cd``
+                   4  ``54cd``
+                   5  --      
+                   6  ``523d``
+                   7  --      
+    ================  ========
+
+
+.. table:: Tabla MAC de Switch 2
+
+    ================  ========
+    Numero de puerto    MAC   
+    ================  ========
+                   0  --      
+                   1  --      
+                   2  --      
+                   3  ``cb88``
                    4  --      
                    5  --      
                    6  --      
@@ -1091,15 +1103,118 @@ Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 2 qu
     ================  ========
 
 
+Indica si las siguientes afirmaciones son verdaderas o falsas:
+
+1. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+2. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``523d``.
+3. El Switch 1 envía el mensaje por el puerto 0.
+4. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+5. El Switch 2 envía el mensaje por el puerto 7.
+6. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``523d``.
+7. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+8. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+
+
+Ejercicio 20 de switches
+----------------------------------
+
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 5 que va al puerto 1 del switch 2. Se pretende enviar desde ``f4c2`` a ``c600`` sabiendo lo siguiente:
+
+
+.. figure:: Switches3-3.png
+
+* Ordenador 1I tiene la MAC ``b41d``.
+* Ordenador 2I tiene la MAC ``d212``.
+* Ordenador 3I tiene la MAC ``f4c2``.
+* Ordenador 1D tiene la MAC ``5e3e``.
+* Ordenador 2D tiene la MAC ``40d7``.
+* Ordenador 3D tiene la MAC ``c600``.
+
+.. table:: Tabla MAC de Switch 1
+
+    ================  ========
+    Numero de puerto    MAC   
+    ================  ========
+                   0  --      
+                   1  --      
+                   2  ``d212``
+                   3  --      
+                   4  ``b41d``
+                   5  ``5e3e``
+                   6  --      
+                   7  --      
+    ================  ========
+
+
+.. table:: Tabla MAC de Switch 2
+
+    ================  ========
+    Numero de puerto    MAC   
+    ================  ========
+                   0  --      
+                   1  ``f4c2``
+                   2  ``c600``
+                   3  --      
+                   4  --      
+                   5  --      
+                   6  --      
+                   7  --      
+    ================  ========
+
+
+Indica si las siguientes afirmaciones son verdaderas o falsas:
+
+1. El Switch 1 envía el mensaje por el puerto 6.
+2. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``f4c2``.
+3. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+4. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+5. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``f4c2``.
+6. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+7. El Switch 2 envía el mensaje por el puerto 2.
+8. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+
+
+Ejercicio 21 de switches
+----------------------------------
+
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 5 que va al puerto 2 del switch 2. Se pretende enviar desde ``d008`` a ``da71`` sabiendo lo siguiente:
+
+
+.. figure:: Switches4-3.png
+
+* Ordenador 1I tiene la MAC ``da71``.
+* Ordenador 2I tiene la MAC ``9bd6``.
+* Ordenador 3I tiene la MAC ``5fe4``.
+* Ordenador 4I tiene la MAC ``72c6``.
+* Ordenador 1D tiene la MAC ``d008``.
+* Ordenador 2D tiene la MAC ``80c4``.
+* Ordenador 3D tiene la MAC ``ae72``.
+
+.. table:: Tabla MAC de Switch 1
+
+    ================  =============
+    Numero de puerto       MAC     
+    ================  =============
+                   0  ``5fe4``     
+                   1  ``9bd6``     
+                   2  --           
+                   3  --           
+                   4  ``da71``     
+                   5  ``80c4,ae72``
+                   6  --           
+                   7  --           
+    ================  =============
+
+
 .. table:: Tabla MAC de Switch 2
 
     ================  =============
     Numero de puerto       MAC     
     ================  =============
-                   0  ``6045``     
+                   0  --           
                    1  --           
-                   2  --           
-                   3  ``d7fc,f745``
+                   2  ``9bd6,72c6``
+                   3  --           
                    4  --           
                    5  --           
                    6  --           
@@ -1109,31 +1224,30 @@ Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 2 qu
 
 Indica si las siguientes afirmaciones son verdaderas o falsas:
 
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``ceda``.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 envía el mensaje por el puerto 2.
-* El Switch 2 envía el mensaje por el puerto 1.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``ceda``.
+1. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``d008``.
+2. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+3. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+4. El Switch 2 envía el mensaje por el puerto 1.
+5. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``d008``.
+6. El Switch 1 envía el mensaje por el puerto 4.
+7. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+8. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
 
 
-Ejercicio 20 de switches
+Ejercicio 22 de switches
 ----------------------------------
 
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 2 que va al puerto 5 del switch 2. Se pretende enviar desde ``c8f4`` a ``9359`` sabiendo lo siguiente:
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 5 que va al puerto 1 del switch 2. Se pretende enviar desde ``a4a0`` a ``bd89`` sabiendo lo siguiente:
 
 
-.. figure:: Switches4-3.png
+.. figure:: Switches3-3.png
 
-* Ordenador 1I tiene la MAC ``c8f4``.
-* Ordenador 2I tiene la MAC ``52bf``.
-* Ordenador 3I tiene la MAC ``ff7f``.
-* Ordenador 4I tiene la MAC ``bda6``.
-* Ordenador 1D tiene la MAC ``9359``.
-* Ordenador 2D tiene la MAC ``8b7b``.
-* Ordenador 3D tiene la MAC ``abb3``.
+* Ordenador 1I tiene la MAC ``c38c``.
+* Ordenador 2I tiene la MAC ``7249``.
+* Ordenador 3I tiene la MAC ``bd89``.
+* Ordenador 1D tiene la MAC ``a13d``.
+* Ordenador 2D tiene la MAC ``a4a0``.
+* Ordenador 3D tiene la MAC ``7fe2``.
 
 .. table:: Tabla MAC de Switch 1
 
@@ -1142,12 +1256,12 @@ Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 2 qu
     ================  ========
                    0  --      
                    1  --      
-                   2  ``abb3``
+                   2  ``7249``
                    3  --      
                    4  --      
-                   5  ``ff7f``
+                   5  ``a4a0``
                    6  --      
-                   7  --      
+                   7  ``c38c``
     ================  ========
 
 
@@ -1156,174 +1270,58 @@ Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 2 qu
     ================  =============
     Numero de puerto       MAC     
     ================  =============
-                   0  ``9359``     
-                   1  --           
+                   0  --           
+                   1  ``7249,bd89``
                    2  --           
                    3  --           
-                   4  ``abb3``     
-                   5  ``ff7f,bda6``
-                   6  --           
-                   7  --           
-    ================  =============
-
-
-Indica si las siguientes afirmaciones son verdaderas o falsas:
-
-* El Switch 1 envía el mensaje por el puerto 6.
-* El Switch 2 envía el mensaje por el puerto 0.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``c8f4``.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``c8f4``.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
-
-
-Ejercicio 21 de switches
-----------------------------------
-
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 4 que va al puerto 2 del switch 2. Se pretende enviar desde ``6bcf`` a ``becb`` sabiendo lo siguiente:
-
-
-.. figure:: Switches3-3.png
-
-* Ordenador 1I tiene la MAC ``fb54``.
-* Ordenador 2I tiene la MAC ``becb``.
-* Ordenador 3I tiene la MAC ``e68f``.
-* Ordenador 1D tiene la MAC ``6bcf``.
-* Ordenador 2D tiene la MAC ``b1db``.
-* Ordenador 3D tiene la MAC ``854b``.
-
-.. table:: Tabla MAC de Switch 1
-
-    ================  =============
-    Numero de puerto       MAC     
-    ================  =============
-                   0  --           
-                   1  --           
-                   2  ``e68f``     
-                   3  --           
-                   4  ``6bcf,b1db``
+                   4  --           
                    5  --           
                    6  --           
                    7  --           
     ================  =============
 
 
-.. table:: Tabla MAC de Switch 2
-
-    ================  ========
-    Numero de puerto    MAC   
-    ================  ========
-                   0  --      
-                   1  ``b1db``
-                   2  ``fb54``
-                   3  --      
-                   4  --      
-                   5  ``6bcf``
-                   6  --      
-                   7  --      
-    ================  ========
-
-
 Indica si las siguientes afirmaciones son verdaderas o falsas:
 
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``6bcf``.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``6bcf``.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 envía el mensaje por el puerto 1.
-* El Switch 2 envía el mensaje por el puerto 7.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
-
-
-Ejercicio 22 de switches
-----------------------------------
-
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 3 que va al puerto 1 del switch 2. Se pretende enviar desde ``d02c`` a ``9d00`` sabiendo lo siguiente:
-
-
-.. figure:: Switches2-4.png
-
-* Ordenador 1I tiene la MAC ``9d00``.
-* Ordenador 2I tiene la MAC ``fbaa``.
-* Ordenador 1D tiene la MAC ``da15``.
-* Ordenador 2D tiene la MAC ``8fa4``.
-* Ordenador 3D tiene la MAC ``bed1``.
-* Ordenador 4D tiene la MAC ``d02c``.
-
-.. table:: Tabla MAC de Switch 1
-
-    ================  ========
-    Numero de puerto    MAC   
-    ================  ========
-                   0  --      
-                   1  ``9d00``
-                   2  --      
-                   3  --      
-                   4  --      
-                   5  --      
-                   6  --      
-                   7  --      
-    ================  ========
-
-
-.. table:: Tabla MAC de Switch 2
-
-    ================  ========
-    Numero de puerto    MAC   
-    ================  ========
-                   0  --      
-                   1  ``fbaa``
-                   2  --      
-                   3  --      
-                   4  --      
-                   5  --      
-                   6  --      
-                   7  --      
-    ================  ========
-
-
-Indica si las siguientes afirmaciones son verdaderas o falsas:
-
-* El Switch 2 envía el mensaje por el puerto 2.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``d02c``.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``d02c``.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 envía el mensaje por el puerto 1.
+1. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``a4a0``.
+2. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+3. El Switch 2 envía el mensaje por el puerto 1.
+4. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``a4a0``.
+5. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+6. El Switch 1 envía el mensaje por el puerto 6.
+7. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+8. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
 
 
 Ejercicio 23 de switches
 ----------------------------------
 
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 0 que va al puerto 1 del switch 2. Se pretende enviar desde ``6f12`` a ``9af0`` sabiendo lo siguiente:
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 5 que va al puerto 6 del switch 2. Se pretende enviar desde ``cf1a`` a ``ff22`` sabiendo lo siguiente:
 
 
-.. figure:: Switches2-2.png
+.. figure:: Switches2-4.png
 
-* Ordenador 1I tiene la MAC ``9af0``.
-* Ordenador 2I tiene la MAC ``faba``.
-* Ordenador 1D tiene la MAC ``6f12``.
-* Ordenador 2D tiene la MAC ``5fbf``.
+* Ordenador 1I tiene la MAC ``cf1a``.
+* Ordenador 2I tiene la MAC ``f8bf``.
+* Ordenador 1D tiene la MAC ``7bbb``.
+* Ordenador 2D tiene la MAC ``f16d``.
+* Ordenador 3D tiene la MAC ``ff22``.
+* Ordenador 4D tiene la MAC ``ca96``.
 
 .. table:: Tabla MAC de Switch 1
 
-    ================  ========
-    Numero de puerto    MAC   
-    ================  ========
-                   0  ``faba``
-                   1  --      
-                   2  --      
-                   3  --      
-                   4  --      
-                   5  --      
-                   6  --      
-                   7  ``9af0``
-    ================  ========
+    ================  =============
+    Numero de puerto       MAC     
+    ================  =============
+                   0  ``f8bf``     
+                   1  --           
+                   2  --           
+                   3  --           
+                   4  --           
+                   5  ``7bbb,ca96``
+                   6  --           
+                   7  --           
+    ================  =============
 
 
 .. table:: Tabla MAC de Switch 2
@@ -1332,160 +1330,159 @@ Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 0 qu
     Numero de puerto    MAC   
     ================  ========
                    0  --      
-                   1  ``faba``
+                   1  ``ff22``
                    2  --      
                    3  --      
                    4  --      
-                   5  --      
-                   6  --      
+                   5  ``f16d``
+                   6  ``f8bf``
                    7  --      
     ================  ========
 
 
 Indica si las siguientes afirmaciones son verdaderas o falsas:
 
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``6f12``.
-* El Switch 1 envía el mensaje por el puerto 7.
-* El Switch 2 envía el mensaje por el puerto 3.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``6f12``.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+1. El Switch 1 envía el mensaje por el puerto 6.
+2. El Switch 2 envía el mensaje por el puerto 1.
+3. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+4. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``cf1a``.
+5. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``cf1a``.
+6. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+7. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+8. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
 
 
 Ejercicio 24 de switches
 ----------------------------------
 
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 1 que va al puerto 2 del switch 2. Se pretende enviar desde ``44a8`` a ``f7ee`` sabiendo lo siguiente:
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 3 que va al puerto 6 del switch 2. Se pretende enviar desde ``aad0`` a ``f384`` sabiendo lo siguiente:
 
 
-.. figure:: Switches4-2.png
+.. figure:: Switches4-4.png
 
-* Ordenador 1I tiene la MAC ``44a8``.
-* Ordenador 2I tiene la MAC ``47fc``.
-* Ordenador 3I tiene la MAC ``a511``.
-* Ordenador 4I tiene la MAC ``c6da``.
-* Ordenador 1D tiene la MAC ``662b``.
-* Ordenador 2D tiene la MAC ``f7ee``.
+* Ordenador 1I tiene la MAC ``fc79``.
+* Ordenador 2I tiene la MAC ``8e17``.
+* Ordenador 3I tiene la MAC ``f384``.
+* Ordenador 4I tiene la MAC ``dd0e``.
+* Ordenador 1D tiene la MAC ``6ebe``.
+* Ordenador 2D tiene la MAC ``6b67``.
+* Ordenador 3D tiene la MAC ``685e``.
+* Ordenador 4D tiene la MAC ``aad0``.
 
 .. table:: Tabla MAC de Switch 1
 
-    ================  ===
-    Numero de puerto  MAC
-    ================  ===
-                   0  -- 
-                   1  -- 
-                   2  -- 
-                   3  -- 
-                   4  -- 
-                   5  -- 
-                   6  -- 
-                   7  -- 
-    ================  ===
+    ================  =============
+    Numero de puerto       MAC     
+    ================  =============
+                   0  ``fc79``     
+                   1  ``8e17``     
+                   2  --           
+                   3  ``6ebe,685e``
+                   4  --           
+                   5  ``f384``     
+                   6  --           
+                   7  --           
+    ================  =============
 
 
 .. table:: Tabla MAC de Switch 2
 
-    ================  ===
-    Numero de puerto  MAC
-    ================  ===
-                   0  -- 
-                   1  -- 
-                   2  -- 
-                   3  -- 
-                   4  -- 
-                   5  -- 
-                   6  -- 
-                   7  -- 
-    ================  ===
+    ================  ========
+    Numero de puerto    MAC   
+    ================  ========
+                   0  --      
+                   1  --      
+                   2  --      
+                   3  ``6b67``
+                   4  --      
+                   5  --      
+                   6  ``f384``
+                   7  ``6ebe``
+    ================  ========
 
 
 Indica si las siguientes afirmaciones son verdaderas o falsas:
 
-* El Switch 1 envía el mensaje por el puerto 6.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``44a8``.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 2 envía el mensaje por el puerto 0.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``44a8``.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+1. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+2. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``aad0``.
+3. El Switch 1 envía el mensaje por el puerto 5.
+4. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+5. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+6. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``aad0``.
+7. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+8. El Switch 2 envía el mensaje por el puerto 6.
 
 
 Ejercicio 25 de switches
 ----------------------------------
 
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 4 que va al puerto 7 del switch 2. Se pretende enviar desde ``d6d4`` a ``f493`` sabiendo lo siguiente:
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 0 que va al puerto 3 del switch 2. Se pretende enviar desde ``e75d`` a ``abe5`` sabiendo lo siguiente:
 
 
-.. figure:: Switches4-2.png
+.. figure:: Switches2-3.png
 
-* Ordenador 1I tiene la MAC ``e6db``.
-* Ordenador 2I tiene la MAC ``ee07``.
-* Ordenador 3I tiene la MAC ``b3d7``.
-* Ordenador 4I tiene la MAC ``d6d4``.
-* Ordenador 1D tiene la MAC ``4fe5``.
-* Ordenador 2D tiene la MAC ``f493``.
+* Ordenador 1I tiene la MAC ``e75d``.
+* Ordenador 2I tiene la MAC ``5e30``.
+* Ordenador 1D tiene la MAC ``9a8e``.
+* Ordenador 2D tiene la MAC ``8656``.
+* Ordenador 3D tiene la MAC ``abe5``.
 
 .. table:: Tabla MAC de Switch 1
 
     ================  ========
     Numero de puerto    MAC   
     ================  ========
-                   0  --      
+                   0  ``9a8e``
                    1  --      
                    2  --      
                    3  --      
-                   4  ``4fe5``
+                   4  --      
                    5  --      
-                   6  ``b3d7``
-                   7  --      
+                   6  --      
+                   7  ``e75d``
     ================  ========
 
 
 .. table:: Tabla MAC de Switch 2
 
-    ================  ========
-    Numero de puerto    MAC   
-    ================  ========
-                   0  --      
-                   1  --      
-                   2  ``4fe5``
-                   3  --      
-                   4  --      
-                   5  --      
-                   6  --      
-                   7  ``ee07``
-    ================  ========
+    ================  ===
+    Numero de puerto  MAC
+    ================  ===
+                   0  -- 
+                   1  -- 
+                   2  -- 
+                   3  -- 
+                   4  -- 
+                   5  -- 
+                   6  -- 
+                   7  -- 
+    ================  ===
 
 
 Indica si las siguientes afirmaciones son verdaderas o falsas:
 
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 envía el mensaje por el puerto 1.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``d6d4``.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``d6d4``.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 2 envía el mensaje por el puerto 3.
+1. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+2. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``e75d``.
+3. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+4. El Switch 1 envía el mensaje por el puerto 4.
+5. El Switch 2 envía el mensaje por el puerto 3.
+6. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+7. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+8. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``e75d``.
 
 
 Ejercicio 26 de switches
 ----------------------------------
 
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 0 que va al puerto 0 del switch 2. Se pretende enviar desde ``5bfc`` a ``d9cd`` sabiendo lo siguiente:
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 4 que va al puerto 5 del switch 2. Se pretende enviar desde ``6dfe`` a ``b530`` sabiendo lo siguiente:
 
 
-.. figure:: Switches3-3.png
+.. figure:: Switches2-2.png
 
-* Ordenador 1I tiene la MAC ``7ed9``.
-* Ordenador 2I tiene la MAC ``da84``.
-* Ordenador 3I tiene la MAC ``5bfc``.
-* Ordenador 1D tiene la MAC ``d9cd``.
-* Ordenador 2D tiene la MAC ``b96e``.
-* Ordenador 3D tiene la MAC ``cd38``.
+* Ordenador 1I tiene la MAC ``c32e``.
+* Ordenador 2I tiene la MAC ``6dfe``.
+* Ordenador 1D tiene la MAC ``b530``.
+* Ordenador 2D tiene la MAC ``9e8a``.
 
 .. table:: Tabla MAC de Switch 1
 
@@ -1494,71 +1491,72 @@ Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 0 qu
     ================  ========
                    0  --      
                    1  --      
-                   2  --      
+                   2  ``6dfe``
                    3  --      
-                   4  ``7ed9``
+                   4  --      
                    5  --      
                    6  --      
-                   7  ``5bfc``
+                   7  --      
     ================  ========
 
 
 .. table:: Tabla MAC de Switch 2
 
-    ================  ========
-    Numero de puerto    MAC   
-    ================  ========
-                   0  --      
-                   1  --      
-                   2  --      
-                   3  --      
-                   4  --      
-                   5  --      
-                   6  --      
-                   7  ``b96e``
-    ================  ========
+    ================  ===
+    Numero de puerto  MAC
+    ================  ===
+                   0  -- 
+                   1  -- 
+                   2  -- 
+                   3  -- 
+                   4  -- 
+                   5  -- 
+                   6  -- 
+                   7  -- 
+    ================  ===
 
 
 Indica si las siguientes afirmaciones son verdaderas o falsas:
 
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``5bfc``.
-* El Switch 2 envía el mensaje por el puerto 6.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 envía el mensaje por el puerto 2.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``5bfc``.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+1. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+2. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+3. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+4. El Switch 1 envía el mensaje por el puerto 4.
+5. El Switch 2 envía el mensaje por el puerto 0.
+6. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+7. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``6dfe``.
+8. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``6dfe``.
 
 
 Ejercicio 27 de switches
 ----------------------------------
 
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 6 que va al puerto 2 del switch 2. Se pretende enviar desde ``9616`` a ``63e9`` sabiendo lo siguiente:
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 7 que va al puerto 3 del switch 2. Se pretende enviar desde ``5fef`` a ``81b9`` sabiendo lo siguiente:
 
 
-.. figure:: Switches2-4.png
+.. figure:: Switches3-4.png
 
-* Ordenador 1I tiene la MAC ``63e9``.
-* Ordenador 2I tiene la MAC ``5b26``.
-* Ordenador 1D tiene la MAC ``be88``.
-* Ordenador 2D tiene la MAC ``9616``.
-* Ordenador 3D tiene la MAC ``fda4``.
-* Ordenador 4D tiene la MAC ``6703``.
+* Ordenador 1I tiene la MAC ``abff``.
+* Ordenador 2I tiene la MAC ``5fef``.
+* Ordenador 3I tiene la MAC ``6026``.
+* Ordenador 1D tiene la MAC ``892c``.
+* Ordenador 2D tiene la MAC ``51f8``.
+* Ordenador 3D tiene la MAC ``7d04``.
+* Ordenador 4D tiene la MAC ``81b9``.
 
 .. table:: Tabla MAC de Switch 1
 
     ================  ========
     Numero de puerto    MAC   
     ================  ========
-                   0  ``63e9``
+                   0  --      
                    1  --      
-                   2  --      
-                   3  --      
+                   2  ``5fef``
+                   3  ``abff``
                    4  --      
-                   5  --      
+                   5  ``6026``
                    6  --      
-                   7  --      
+                   7  ``892c``
     ================  ========
 
 
@@ -1567,45 +1565,43 @@ Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 6 qu
     ================  ========
     Numero de puerto    MAC   
     ================  ========
-                   0  --      
+                   0  ``81b9``
                    1  --      
-                   2  ``63e9``
-                   3  --      
+                   2  --      
+                   3  ``51f8``
                    4  --      
                    5  --      
-                   6  ``be88``
+                   6  --      
                    7  --      
     ================  ========
 
 
 Indica si las siguientes afirmaciones son verdaderas o falsas:
 
-* El Switch 2 envía el mensaje por el puerto 2.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``9616``.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``9616``.
-* El Switch 1 envía el mensaje por el puerto 0.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+1. El Switch 2 envía el mensaje por el puerto 0.
+2. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+3. El Switch 1 envía el mensaje por el puerto 1.
+4. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+5. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+6. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+7. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``5fef``.
+8. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``5fef``.
 
 
 Ejercicio 28 de switches
 ----------------------------------
 
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 7 que va al puerto 3 del switch 2. Se pretende enviar desde ``7a56`` a ``abae`` sabiendo lo siguiente:
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 1 que va al puerto 1 del switch 2. Se pretende enviar desde ``6ac1`` a ``75c8`` sabiendo lo siguiente:
 
 
-.. figure:: Switches4-4.png
+.. figure:: Switches3-3.png
 
-* Ordenador 1I tiene la MAC ``7f54``.
-* Ordenador 2I tiene la MAC ``d7cd``.
-* Ordenador 3I tiene la MAC ``ce9a``.
-* Ordenador 4I tiene la MAC ``7a56``.
-* Ordenador 1D tiene la MAC ``b8a6``.
-* Ordenador 2D tiene la MAC ``eb2e``.
-* Ordenador 3D tiene la MAC ``424a``.
-* Ordenador 4D tiene la MAC ``abae``.
+* Ordenador 1I tiene la MAC ``6aec``.
+* Ordenador 2I tiene la MAC ``6ac1``.
+* Ordenador 3I tiene la MAC ``8a98``.
+* Ordenador 1D tiene la MAC ``da28``.
+* Ordenador 2D tiene la MAC ``75c8``.
+* Ordenador 3D tiene la MAC ``c241``.
 
 .. table:: Tabla MAC de Switch 1
 
@@ -1613,10 +1609,10 @@ Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 7 qu
     Numero de puerto    MAC   
     ================  ========
                    0  --      
-                   1  --      
-                   2  --      
-                   3  ``7f54``
-                   4  --      
+                   1  ``da28``
+                   2  ``6aec``
+                   3  --      
+                   4  ``8a98``
                    5  --      
                    6  --      
                    7  --      
@@ -1625,57 +1621,58 @@ Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 7 qu
 
 .. table:: Tabla MAC de Switch 2
 
-    ================  ========
-    Numero de puerto    MAC   
-    ================  ========
-                   0  ``abae``
-                   1  --      
-                   2  ``424a``
-                   3  ``d7cd``
-                   4  --      
-                   5  --      
-                   6  --      
-                   7  --      
-    ================  ========
+    ================  ===
+    Numero de puerto  MAC
+    ================  ===
+                   0  -- 
+                   1  -- 
+                   2  -- 
+                   3  -- 
+                   4  -- 
+                   5  -- 
+                   6  -- 
+                   7  -- 
+    ================  ===
 
 
 Indica si las siguientes afirmaciones son verdaderas o falsas:
 
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 envía el mensaje por el puerto 2.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``7a56``.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``7a56``.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 2 envía el mensaje por el puerto 0.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+1. El Switch 2 envía el mensaje por el puerto 3.
+2. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+3. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+4. El Switch 1 envía el mensaje por el puerto 3.
+5. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``6ac1``.
+6. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``6ac1``.
+7. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+8. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
 
 
 Ejercicio 29 de switches
 ----------------------------------
 
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 7 que va al puerto 6 del switch 2. Se pretende enviar desde ``f9a6`` a ``8380`` sabiendo lo siguiente:
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 0 que va al puerto 3 del switch 2. Se pretende enviar desde ``fd2e`` a ``84f1`` sabiendo lo siguiente:
 
 
-.. figure:: Switches3-2.png
+.. figure:: Switches2-4.png
 
-* Ordenador 1I tiene la MAC ``56b2``.
-* Ordenador 2I tiene la MAC ``b0f1``.
-* Ordenador 3I tiene la MAC ``f9a6``.
-* Ordenador 1D tiene la MAC ``8682``.
-* Ordenador 2D tiene la MAC ``8380``.
+* Ordenador 1I tiene la MAC ``fd2e``.
+* Ordenador 2I tiene la MAC ``4ad9``.
+* Ordenador 1D tiene la MAC ``8d5d``.
+* Ordenador 2D tiene la MAC ``84f1``.
+* Ordenador 3D tiene la MAC ``8d8b``.
+* Ordenador 4D tiene la MAC ``b6eb``.
 
 .. table:: Tabla MAC de Switch 1
 
     ================  ========
     Numero de puerto    MAC   
     ================  ========
-                   0  --      
-                   1  ``b0f1``
+                   0  ``84f1``
+                   1  --      
                    2  --      
-                   3  --      
+                   3  ``fd2e``
                    4  --      
-                   5  ``56b2``
+                   5  --      
                    6  --      
                    7  --      
     ================  ========
@@ -1687,57 +1684,57 @@ Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 7 qu
     Numero de puerto    MAC   
     ================  ========
                    0  --      
-                   1  ``8682``
+                   1  --      
                    2  --      
-                   3  --      
-                   4  ``8380``
+                   3  ``fd2e``
+                   4  --      
                    5  --      
-                   6  --      
+                   6  ``84f1``
                    7  --      
     ================  ========
 
 
 Indica si las siguientes afirmaciones son verdaderas o falsas:
 
-* El Switch 2 envía el mensaje por el puerto 4.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``f9a6``.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``f9a6``.
-* El Switch 1 envía el mensaje por el puerto 6.
+1. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+2. El Switch 1 envía el mensaje por el puerto 0.
+3. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+4. El Switch 2 envía el mensaje por el puerto 6.
+5. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+6. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``fd2e``.
+7. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+8. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``fd2e``.
 
 
 Ejercicio 30 de switches
 ----------------------------------
 
-Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 0 que va al puerto 2 del switch 2. Se pretende enviar desde ``613e`` a ``6947`` sabiendo lo siguiente:
+Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 6 que va al puerto 7 del switch 2. Se pretende enviar desde ``9e19`` a ``bf0d`` sabiendo lo siguiente:
 
 
-.. figure:: Switches4-3.png
+.. figure:: Switches3-4.png
 
-* Ordenador 1I tiene la MAC ``511d``.
-* Ordenador 2I tiene la MAC ``c00a``.
-* Ordenador 3I tiene la MAC ``6947``.
-* Ordenador 4I tiene la MAC ``7c5f``.
-* Ordenador 1D tiene la MAC ``613e``.
-* Ordenador 2D tiene la MAC ``aa57``.
-* Ordenador 3D tiene la MAC ``a7a7``.
+* Ordenador 1I tiene la MAC ``bf0d``.
+* Ordenador 2I tiene la MAC ``7c59``.
+* Ordenador 3I tiene la MAC ``5588``.
+* Ordenador 1D tiene la MAC ``bf94``.
+* Ordenador 2D tiene la MAC ``b315``.
+* Ordenador 3D tiene la MAC ``9e19``.
+* Ordenador 4D tiene la MAC ``5b55``.
 
 .. table:: Tabla MAC de Switch 1
 
     ================  ========
     Numero de puerto    MAC   
     ================  ========
-                   0  ``a7a7``
+                   0  ``7c59``
                    1  --      
                    2  --      
-                   3  ``c00a``
-                   4  --      
+                   3  --      
+                   4  ``5588``
                    5  --      
-                   6  --      
-                   7  ``511d``
+                   6  ``5b55``
+                   7  --      
     ================  ========
 
 
@@ -1748,412 +1745,412 @@ Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto 0 qu
     ================  ========
                    0  --      
                    1  --      
-                   2  ``7c5f``
-                   3  ``613e``
+                   2  ``bf94``
+                   3  --      
                    4  --      
                    5  --      
-                   6  ``a7a7``
-                   7  --      
+                   6  --      
+                   7  ``bf0d``
     ================  ========
 
 
 Indica si las siguientes afirmaciones son verdaderas o falsas:
 
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``613e``.
-* El Switch 2 envía el mensaje por el puerto 1.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 envía el mensaje por el puerto 4.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``613e``.
+1. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo.
+2. El Switch 2 envía el mensaje por el puerto 7.
+3. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``9e19``.
+4. El Switch 2 envía el mensaje por todos los puertos menos por donde vino.
+5. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``9e19``.
+6. El Switch 1 envía el mensaje por todos los puertos menos por donde vino.
+7. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo.
+8. El Switch 1 envía el mensaje por el puerto 3.
 
 Solucion al ejercicio 1 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``ec0c``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ec0c.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ec0c, así que la anota.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino a548 en su tabla
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino a548 en su tabla
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ec0c, así que la anota.
-* El Switch 2 envía el mensaje por el puerto 4. **Falsa**, no conoce a la MAC de destino a548, así que necesita difundir.
-* El Switch 1 envía el mensaje por el puerto 6. **Falsa**, no conoce a la MAC de destino a548, así que necesita difundir.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``ec0c``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ec0c.
+1. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen ``65fc``.
+2. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``a15e`` en su tabla
+3. El Switch 2 envía el mensaje por el puerto 7. **Falsa**, no conoce a la MAC de destino ``a15e``, así que necesita difundir.
+4. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``65fc``. **Falsa**, ya tenía esa MAC
+5. El Switch 1 envía el mensaje por el puerto 6. **Falsa**, no conoce a la MAC de destino ``a15e``, así que necesita difundir.
+6. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``65fc``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``65fc``.
+7. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``a15e`` en su tabla
+8. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``65fc``, así que la anota.
 
 Solucion al ejercicio 2 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 2 envía el mensaje por el puerto 4. **Falsa**, no conoce a la MAC de destino 9e68, así que necesita difundir.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen dd84, así que la anota.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino 9e68 en su tabla
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen dd84.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino 9e68 en su tabla, en el puerto 1.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``dd84``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen dd84.
-* El Switch 1 envía el mensaje por el puerto 1. **Verdadera**, 9e68 está en esa posición en la tabla de MACs
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``dd84``. **Falsa**, ya tenía esa MAC
+1. El Switch 2 envía el mensaje por el puerto 2. **Falsa**, no conoce a la MAC de destino ``c50e``, así que necesita difundir.
+2. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``b039``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``b039``.
+3. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``b039``, así que la anota.
+4. El Switch 1 envía el mensaje por el puerto 0. **Falsa**, no conoce a la MAC de destino ``c50e``, así que necesita difundir.
+5. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``b039``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``b039``.
+6. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``b039``, así que la anota.
+7. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``c50e`` en su tabla
+8. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``c50e`` en su tabla
 
 Solucion al ejercicio 3 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``de08``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen de08.
-* El Switch 1 envía el mensaje por el puerto 4. **Verdadera**, 8413 está en esa posición en la tabla de MACs
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino 8413 en su tabla, en el puerto 4.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``de08``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen de08.
-* El Switch 2 envía el mensaje por el puerto 5. **Falsa**, no conoce a la MAC de destino 8413, así que necesita difundir.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen de08, así que la anota.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen de08, así que la anota.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino 8413 en su tabla
+1. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``a636``, así que la anota.
+2. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``a636``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``a636``.
+3. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``a636``. **Falsa**, ya tenía esa MAC
+4. El Switch 2 envía el mensaje por el puerto 3. **Falsa**, no conoce a la MAC de destino ``8fc8``, así que necesita difundir.
+5. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen ``a636``.
+6. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``8fc8`` en su tabla
+7. El Switch 1 envía el mensaje por el puerto 3. **Falsa**, no conoce a la MAC de destino ``8fc8``, así que necesita difundir.
+8. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``8fc8`` en su tabla
 
 Solucion al ejercicio 4 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino e9b5 en su tabla
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``50d2``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen 50d2.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen 50d2.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen 50d2, así que la anota.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino e9b5 en su tabla
-* El Switch 2 envía el mensaje por el puerto 5. **Falsa**, no conoce a la MAC de destino e9b5, así que necesita difundir.
-* El Switch 1 envía el mensaje por el puerto 4. **Falsa**, no conoce a la MAC de destino e9b5, así que necesita difundir.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``50d2``. **Falsa**, ya tenía esa MAC
+1. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``b4f3``. **Falsa**, ya tenía esa MAC
+2. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino ``7a3c`` en su tabla, en el puerto 6.
+3. El Switch 1 envía el mensaje por el puerto 6. **Verdadera**, ``7a3c`` está en esa posición en la tabla de MACs
+4. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino ``7a3c`` en su tabla, en el puerto 1.
+5. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen ``b4f3``.
+6. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``b4f3``, así que la anota.
+7. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``b4f3``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``b4f3``.
+8. El Switch 2 envía el mensaje por el puerto 1. **Verdadera**, ``7a3c`` está en esa posición en la tabla de MACs
 
 Solucion al ejercicio 5 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino 9a1a en su tabla
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen d973, así que la anota.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``d973``. **Falsa**, ya tenía esa MAC
-* El Switch 1 envía el mensaje por el puerto 3. **Falsa**, no conoce a la MAC de destino 9a1a, así que necesita difundir.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino 9a1a en su tabla
-* El Switch 2 envía el mensaje por el puerto 3. **Falsa**, no conoce a la MAC de destino 9a1a, así que necesita difundir.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen d973.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``d973``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen d973.
+1. El Switch 2 envía el mensaje por el puerto 4. **Falsa**, no conoce a la MAC de destino ``bf66``, así que necesita difundir.
+2. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``bf67``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``bf67``.
+3. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``bf66`` en su tabla
+4. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``bf67``, así que la anota.
+5. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``bf67``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``bf67``.
+6. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``bf67``, así que la anota.
+7. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``bf66`` en su tabla
+8. El Switch 1 envía el mensaje por el puerto 3. **Falsa**, no conoce a la MAC de destino ``bf66``, así que necesita difundir.
 
 Solucion al ejercicio 6 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``cf0f``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen cf0f.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino d421 en su tabla
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen cf0f, así que la anota.
-* El Switch 2 envía el mensaje por el puerto 1. **Falsa**, no conoce a la MAC de destino d421, así que necesita difundir.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``cf0f``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen cf0f.
-* El Switch 1 envía el mensaje por el puerto 3. **Falsa**, no conoce a la MAC de destino d421, así que necesita difundir.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino d421 en su tabla
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen cf0f, así que la anota.
+1. El Switch 1 envía el mensaje por el puerto 4. **Falsa**, no conoce a la MAC de destino ``b5f1``, así que necesita difundir.
+2. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``61a4``. **Falsa**, ya tenía esa MAC
+3. El Switch 2 envía el mensaje por el puerto 3. **Falsa**, no conoce a la MAC de destino ``b5f1``, así que necesita difundir.
+4. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen ``61a4``.
+5. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen ``61a4``.
+6. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``b5f1`` en su tabla
+7. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``61a4``. **Falsa**, ya tenía esa MAC
+8. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``b5f1`` en su tabla
 
 Solucion al ejercicio 7 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``d5e8``. **Falsa**, ya tenía esa MAC
-* El Switch 2 envía el mensaje por el puerto 2. **Falsa**, no conoce a la MAC de destino 889f, así que necesita difundir.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino 889f en su tabla, en el puerto 5.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen d5e8, así que la anota.
-* El Switch 1 envía el mensaje por el puerto 5. **Verdadera**, 889f está en esa posición en la tabla de MACs
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``d5e8``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen d5e8.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino 889f en su tabla
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen d5e8.
+1. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``6d8d``, así que la anota.
+2. El Switch 2 envía el mensaje por el puerto 7. **Falsa**, no conoce a la MAC de destino ``5fa6``, así que necesita difundir.
+3. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen ``6d8d``.
+4. El Switch 1 envía el mensaje por el puerto 1. **Falsa**, no conoce a la MAC de destino ``5fa6``, así que necesita difundir.
+5. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``6d8d``. **Falsa**, ya tenía esa MAC
+6. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``6d8d``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``6d8d``.
+7. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``5fa6`` en su tabla
+8. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``5fa6`` en su tabla
 
 Solucion al ejercicio 8 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen 42fd, así que la anota.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino 6e03 en su tabla, en el puerto 2.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino 6e03 en su tabla, en el puerto 6.
-* El Switch 1 envía el mensaje por el puerto 2. **Verdadera**, 6e03 está en esa posición en la tabla de MACs
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``42fd``. **Falsa**, ya tenía esa MAC
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen 42fd.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``42fd``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen 42fd.
-* El Switch 2 envía el mensaje por el puerto 6. **Verdadera**, 6e03 está en esa posición en la tabla de MACs
+1. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``958c``, así que la anota.
+2. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``958c``, así que la anota.
+3. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``958c``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``958c``.
+4. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``bb84`` en su tabla
+5. El Switch 2 envía el mensaje por el puerto 2. **Falsa**, no conoce a la MAC de destino ``bb84``, así que necesita difundir.
+6. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``bb84`` en su tabla
+7. El Switch 1 envía el mensaje por el puerto 4. **Falsa**, no conoce a la MAC de destino ``bb84``, así que necesita difundir.
+8. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``958c``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``958c``.
 
 Solucion al ejercicio 9 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``94bb``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen 94bb.
-* El Switch 2 envía el mensaje por el puerto 7. **Falsa**, no conoce a la MAC de destino cb23, así que necesita difundir.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen 94bb, así que la anota.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen 94bb, así que la anota.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino cb23 en su tabla
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino cb23 en su tabla, en el puerto 1.
-* El Switch 1 envía el mensaje por el puerto 1. **Verdadera**, cb23 está en esa posición en la tabla de MACs
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``94bb``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen 94bb.
+1. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``bee9`` en su tabla
+2. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen ``cb76``.
+3. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``bee9`` en su tabla
+4. El Switch 1 envía el mensaje por el puerto 6. **Falsa**, no conoce a la MAC de destino ``bee9``, así que necesita difundir.
+5. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen ``cb76``.
+6. El Switch 2 envía el mensaje por el puerto 0. **Falsa**, no conoce a la MAC de destino ``bee9``, así que necesita difundir.
+7. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``cb76``. **Falsa**, ya tenía esa MAC
+8. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``cb76``. **Falsa**, ya tenía esa MAC
 
 Solucion al ejercicio 10 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``7026``. **Falsa**, ya tenía esa MAC
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino a423 en su tabla, en el puerto 2.
-* El Switch 1 envía el mensaje por el puerto 2. **Verdadera**, a423 está en esa posición en la tabla de MACs
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino a423 en su tabla
-* El Switch 2 envía el mensaje por el puerto 5. **Falsa**, no conoce a la MAC de destino a423, así que necesita difundir.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen 7026.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``7026``. **Falsa**, ya tenía esa MAC
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen 7026.
+1. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``5a09``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``5a09``.
+2. El Switch 1 envía el mensaje por el puerto 0. **Falsa**, no conoce a la MAC de destino ``c525``, así que necesita difundir.
+3. El Switch 2 envía el mensaje por el puerto 5. **Verdadera**, ``c525`` está en esa posición en la tabla de MACs
+4. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino ``c525`` en su tabla, en el puerto 5.
+5. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen ``5a09``.
+6. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``c525`` en su tabla
+7. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``5a09``, así que la anota.
+8. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``5a09``. **Falsa**, ya tenía esa MAC
 
 Solucion al ejercicio 11 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 1 envía el mensaje por el puerto 0. **Falsa**, no conoce a la MAC de destino 5f4c, así que necesita difundir.
-* El Switch 2 envía el mensaje por el puerto 1. **Falsa**, no conoce a la MAC de destino 5f4c, así que necesita difundir.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``ee1f``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ee1f.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino 5f4c en su tabla
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ee1f, así que la anota.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen ee1f.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``ee1f``. **Falsa**, ya tenía esa MAC
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino 5f4c en su tabla
+1. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino ``7019`` en su tabla, en el puerto 2.
+2. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``7019`` en su tabla
+3. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``cc6a``, así que la anota.
+4. El Switch 1 envía el mensaje por el puerto 2. **Verdadera**, ``7019`` está en esa posición en la tabla de MACs
+5. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``cc6a``. **Falsa**, ya tenía esa MAC
+6. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``cc6a``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``cc6a``.
+7. El Switch 2 envía el mensaje por el puerto 1. **Falsa**, no conoce a la MAC de destino ``7019``, así que necesita difundir.
+8. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen ``cc6a``.
 
 Solucion al ejercicio 12 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 1 envía el mensaje por el puerto 7. **Falsa**, no conoce a la MAC de destino 79d5, así que necesita difundir.
-* El Switch 2 envía el mensaje por el puerto 1. **Falsa**, no conoce a la MAC de destino 79d5, así que necesita difundir.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen 418d.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``418d``. **Falsa**, ya tenía esa MAC
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino 79d5 en su tabla
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``418d``. **Falsa**, ya tenía esa MAC
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen 418d.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino 79d5 en su tabla
+1. El Switch 2 envía el mensaje por el puerto 1. **Verdadera**, ``500d`` está en esa posición en la tabla de MACs
+2. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino ``500d`` en su tabla, en el puerto 1.
+3. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino ``500d`` en su tabla, en el puerto 1.
+4. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``a96c``, así que la anota.
+5. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``a96c``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``a96c``.
+6. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``a96c``, así que la anota.
+7. El Switch 1 envía el mensaje por el puerto 1. **Verdadera**, ``500d`` está en esa posición en la tabla de MACs
+8. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``a96c``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``a96c``.
 
 Solucion al ejercicio 13 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``920f``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen 920f.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``920f``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen 920f.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen 920f, así que la anota.
-* El Switch 1 envía el mensaje por el puerto 1. **Verdadera**, cc20 está en esa posición en la tabla de MACs
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino cc20 en su tabla
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino cc20 en su tabla, en el puerto 1.
-* El Switch 2 envía el mensaje por el puerto 5. **Falsa**, no conoce a la MAC de destino cc20, así que necesita difundir.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen 920f, así que la anota.
+1. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``8ce0``. **Falsa**, ya tenía esa MAC
+2. El Switch 2 envía el mensaje por el puerto 2. **Falsa**, no conoce a la MAC de destino ``9b8c``, así que necesita difundir.
+3. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen ``8ce0``.
+4. El Switch 1 envía el mensaje por el puerto 6. **Verdadera**, ``9b8c`` está en esa posición en la tabla de MACs
+5. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``8ce0``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``8ce0``.
+6. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``8ce0``, así que la anota.
+7. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino ``9b8c`` en su tabla, en el puerto 6.
+8. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``9b8c`` en su tabla
 
 Solucion al ejercicio 14 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``6301``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen 6301.
-* El Switch 2 envía el mensaje por el puerto 2. **Falsa**, no conoce a la MAC de destino d6de, así que necesita difundir.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``6301``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen 6301.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino d6de en su tabla
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino d6de en su tabla
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen 6301, así que la anota.
-* El Switch 1 envía el mensaje por el puerto 5. **Falsa**, no conoce a la MAC de destino d6de, así que necesita difundir.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen 6301, así que la anota.
+1. El Switch 1 envía el mensaje por el puerto 7. **Verdadera**, ``bafc`` está en esa posición en la tabla de MACs
+2. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``af07``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``af07``.
+3. El Switch 2 envía el mensaje por el puerto 4. **Falsa**, no conoce a la MAC de destino ``bafc``, así que necesita difundir.
+4. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``af07``, así que la anota.
+5. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``af07``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``af07``.
+6. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``af07``, así que la anota.
+7. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino ``bafc`` en su tabla, en el puerto 7.
+8. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``bafc`` en su tabla
 
 Solucion al ejercicio 15 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``94f5``. **Falsa**, ya tenía esa MAC
-* El Switch 2 envía el mensaje por el puerto 7. **Verdadera**, 9b89 está en esa posición en la tabla de MACs
-* El Switch 1 envía el mensaje por el puerto 3. **Falsa**, no conoce a la MAC de destino 9b89, así que necesita difundir.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen 94f5.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino 9b89 en su tabla
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino 9b89 en su tabla, en el puerto 7.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen 94f5, así que la anota.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``94f5``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen 94f5.
+1. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``ac7b`` en su tabla
+2. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen ``c85b``.
+3. El Switch 2 envía el mensaje por el puerto 1. **Falsa**, no conoce a la MAC de destino ``ac7b``, así que necesita difundir.
+4. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``c85b``. **Falsa**, ya tenía esa MAC
+5. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``c85b``. **Falsa**, ya tenía esa MAC
+6. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen ``c85b``.
+7. El Switch 1 envía el mensaje por el puerto 3. **Falsa**, no conoce a la MAC de destino ``ac7b``, así que necesita difundir.
+8. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``ac7b`` en su tabla
 
 Solucion al ejercicio 16 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen 699a.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``699a``. **Falsa**, ya tenía esa MAC
-* El Switch 2 envía el mensaje por el puerto 1. **Falsa**, no conoce a la MAC de destino 86d6, así que necesita difundir.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino 86d6 en su tabla, en el puerto 7.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen 699a, así que la anota.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``699a``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen 699a.
-* El Switch 1 envía el mensaje por el puerto 7. **Verdadera**, 86d6 está en esa posición en la tabla de MACs
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino 86d6 en su tabla
+1. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino ``e281`` en su tabla, en el puerto 0.
+2. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen ``6bdc``.
+3. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino ``e281`` en su tabla, en el puerto 6.
+4. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``6bdc``. **Falsa**, ya tenía esa MAC
+5. El Switch 1 envía el mensaje por el puerto 6. **Verdadera**, ``e281`` está en esa posición en la tabla de MACs
+6. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``6bdc``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``6bdc``.
+7. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``6bdc``, así que la anota.
+8. El Switch 2 envía el mensaje por el puerto 0. **Verdadera**, ``e281`` está en esa posición en la tabla de MACs
 
 Solucion al ejercicio 17 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen b578, así que la anota.
-* El Switch 2 envía el mensaje por el puerto 6. **Verdadera**, 4c29 está en esa posición en la tabla de MACs
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen b578.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino 4c29 en su tabla, en el puerto 6.
-* El Switch 1 envía el mensaje por el puerto 3. **Verdadera**, 4c29 está en esa posición en la tabla de MACs
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``b578``. **Falsa**, ya tenía esa MAC
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``b578``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen b578.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino 4c29 en su tabla, en el puerto 3.
+1. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``c21f``, así que la anota.
+2. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino ``6c3f`` en su tabla, en el puerto 3.
+3. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``6c3f`` en su tabla
+4. El Switch 1 envía el mensaje por el puerto 3. **Verdadera**, ``6c3f`` está en esa posición en la tabla de MACs
+5. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``c21f``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``c21f``.
+6. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``c21f``, así que la anota.
+7. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``c21f``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``c21f``.
+8. El Switch 2 envía el mensaje por el puerto 1. **Falsa**, no conoce a la MAC de destino ``6c3f``, así que necesita difundir.
 
 Solucion al ejercicio 18 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen 8e69, así que la anota.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen 8e69, así que la anota.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``8e69``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen 8e69.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ffaf en su tabla
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``8e69``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen 8e69.
-* El Switch 2 envía el mensaje por el puerto 1. **Falsa**, no conoce a la MAC de destino ffaf, así que necesita difundir.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino ffaf en su tabla, en el puerto 3.
-* El Switch 1 envía el mensaje por el puerto 3. **Verdadera**, ffaf está en esa posición en la tabla de MACs
+1. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``aeaf``, así que la anota.
+2. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen ``aeaf``.
+3. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``aeaf``. **Falsa**, ya tenía esa MAC
+4. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``8913`` en su tabla
+5. El Switch 2 envía el mensaje por el puerto 0. **Falsa**, no conoce a la MAC de destino ``8913``, así que necesita difundir.
+6. El Switch 1 envía el mensaje por el puerto 4. **Falsa**, no conoce a la MAC de destino ``8913``, así que necesita difundir.
+7. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``8913`` en su tabla
+8. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``aeaf``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``aeaf``.
 
 Solucion al ejercicio 19 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ceda, así que la anota.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``ceda``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ceda.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ad8a en su tabla
-* El Switch 1 envía el mensaje por el puerto 2. **Falsa**, no conoce a la MAC de destino ad8a, así que necesita difundir.
-* El Switch 2 envía el mensaje por el puerto 1. **Falsa**, no conoce a la MAC de destino ad8a, así que necesita difundir.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ceda, así que la anota.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ad8a en su tabla
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``ceda``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ceda.
+1. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``eea3`` en su tabla
+2. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``523d``. **Falsa**, ya tenía esa MAC
+3. El Switch 1 envía el mensaje por el puerto 0. **Falsa**, no conoce a la MAC de destino ``eea3``, así que necesita difundir.
+4. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``eea3`` en su tabla
+5. El Switch 2 envía el mensaje por el puerto 7. **Falsa**, no conoce a la MAC de destino ``eea3``, así que necesita difundir.
+6. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``523d``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``523d``.
+7. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``523d``, así que la anota.
+8. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen ``523d``.
 
 Solucion al ejercicio 20 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 1 envía el mensaje por el puerto 6. **Falsa**, no conoce a la MAC de destino 9359, así que necesita difundir.
-* El Switch 2 envía el mensaje por el puerto 0. **Verdadera**, 9359 está en esa posición en la tabla de MACs
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``c8f4``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen c8f4.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen c8f4, así que la anota.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen c8f4, así que la anota.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino 9359 en su tabla
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``c8f4``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen c8f4.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino 9359 en su tabla, en el puerto 0.
+1. El Switch 1 envía el mensaje por el puerto 6. **Falsa**, no conoce a la MAC de destino ``c600``, así que necesita difundir.
+2. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``f4c2``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``f4c2``.
+3. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino ``c600`` en su tabla, en el puerto 2.
+4. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``c600`` en su tabla
+5. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``f4c2``. **Falsa**, ya tenía esa MAC
+6. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen ``f4c2``.
+7. El Switch 2 envía el mensaje por el puerto 2. **Verdadera**, ``c600`` está en esa posición en la tabla de MACs
+8. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``f4c2``, así que la anota.
 
 Solucion al ejercicio 21 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino becb en su tabla
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``6bcf``. **Falsa**, ya tenía esa MAC
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen 6bcf.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``6bcf``. **Falsa**, ya tenía esa MAC
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen 6bcf.
-* El Switch 1 envía el mensaje por el puerto 1. **Falsa**, no conoce a la MAC de destino becb, así que necesita difundir.
-* El Switch 2 envía el mensaje por el puerto 7. **Falsa**, no conoce a la MAC de destino becb, así que necesita difundir.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino becb en su tabla
+1. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``d008``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``d008``.
+2. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino ``da71`` en su tabla, en el puerto 4.
+3. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``da71`` en su tabla
+4. El Switch 2 envía el mensaje por el puerto 1. **Falsa**, no conoce a la MAC de destino ``da71``, así que necesita difundir.
+5. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``d008``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``d008``.
+6. El Switch 1 envía el mensaje por el puerto 4. **Verdadera**, ``da71`` está en esa posición en la tabla de MACs
+7. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``d008``, así que la anota.
+8. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``d008``, así que la anota.
 
 Solucion al ejercicio 22 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 2 envía el mensaje por el puerto 2. **Falsa**, no conoce a la MAC de destino 9d00, así que necesita difundir.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``d02c``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen d02c.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen d02c, así que la anota.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino 9d00 en su tabla
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen d02c, así que la anota.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``d02c``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen d02c.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino 9d00 en su tabla, en el puerto 1.
-* El Switch 1 envía el mensaje por el puerto 1. **Verdadera**, 9d00 está en esa posición en la tabla de MACs
+1. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``a4a0``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``a4a0``.
+2. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``a4a0``, así que la anota.
+3. El Switch 2 envía el mensaje por el puerto 1. **Verdadera**, ``bd89`` está en esa posición en la tabla de MACs
+4. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``a4a0``. **Falsa**, ya tenía esa MAC
+5. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino ``bd89`` en su tabla, en el puerto 1.
+6. El Switch 1 envía el mensaje por el puerto 6. **Falsa**, no conoce a la MAC de destino ``bd89``, así que necesita difundir.
+7. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``bd89`` en su tabla
+8. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen ``a4a0``.
 
 Solucion al ejercicio 23 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen 6f12, así que la anota.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino 9af0 en su tabla, en el puerto 7.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``6f12``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen 6f12.
-* El Switch 1 envía el mensaje por el puerto 7. **Verdadera**, 9af0 está en esa posición en la tabla de MACs
-* El Switch 2 envía el mensaje por el puerto 3. **Falsa**, no conoce a la MAC de destino 9af0, así que necesita difundir.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen 6f12, así que la anota.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``6f12``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen 6f12.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino 9af0 en su tabla
+1. El Switch 1 envía el mensaje por el puerto 6. **Falsa**, no conoce a la MAC de destino ``ff22``, así que necesita difundir.
+2. El Switch 2 envía el mensaje por el puerto 1. **Verdadera**, ``ff22`` está en esa posición en la tabla de MACs
+3. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``cf1a``, así que la anota.
+4. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``cf1a``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``cf1a``.
+5. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``cf1a``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``cf1a``.
+6. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino ``ff22`` en su tabla, en el puerto 1.
+7. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``ff22`` en su tabla
+8. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``cf1a``, así que la anota.
 
 Solucion al ejercicio 24 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 1 envía el mensaje por el puerto 6. **Falsa**, no conoce a la MAC de destino f7ee, así que necesita difundir.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen 44a8, así que la anota.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``44a8``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen 44a8.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen 44a8, así que la anota.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino f7ee en su tabla
-* El Switch 2 envía el mensaje por el puerto 0. **Falsa**, no conoce a la MAC de destino f7ee, así que necesita difundir.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``44a8``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen 44a8.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino f7ee en su tabla
+1. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino ``f384`` en su tabla, en el puerto 6.
+2. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``aad0``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``aad0``.
+3. El Switch 1 envía el mensaje por el puerto 5. **Verdadera**, ``f384`` está en esa posición en la tabla de MACs
+4. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``aad0``, así que la anota.
+5. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino ``f384`` en su tabla, en el puerto 5.
+6. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``aad0``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``aad0``.
+7. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``aad0``, así que la anota.
+8. El Switch 2 envía el mensaje por el puerto 6. **Verdadera**, ``f384`` está en esa posición en la tabla de MACs
 
 Solucion al ejercicio 25 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino f493 en su tabla
-* El Switch 1 envía el mensaje por el puerto 1. **Falsa**, no conoce a la MAC de destino f493, así que necesita difundir.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen d6d4, así que la anota.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``d6d4``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen d6d4.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen d6d4, así que la anota.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``d6d4``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen d6d4.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino f493 en su tabla
-* El Switch 2 envía el mensaje por el puerto 3. **Falsa**, no conoce a la MAC de destino f493, así que necesita difundir.
+1. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``abe5`` en su tabla
+2. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``e75d``. **Falsa**, ya tenía esa MAC
+3. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``abe5`` en su tabla
+4. El Switch 1 envía el mensaje por el puerto 4. **Falsa**, no conoce a la MAC de destino ``abe5``, así que necesita difundir.
+5. El Switch 2 envía el mensaje por el puerto 3. **Falsa**, no conoce a la MAC de destino ``abe5``, así que necesita difundir.
+6. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen ``e75d``.
+7. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``e75d``, así que la anota.
+8. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``e75d``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``e75d``.
 
 Solucion al ejercicio 26 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``5bfc``. **Falsa**, ya tenía esa MAC
-* El Switch 2 envía el mensaje por el puerto 6. **Falsa**, no conoce a la MAC de destino d9cd, así que necesita difundir.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino d9cd en su tabla
-* El Switch 1 envía el mensaje por el puerto 2. **Falsa**, no conoce a la MAC de destino d9cd, así que necesita difundir.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino d9cd en su tabla
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen 5bfc.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``5bfc``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen 5bfc.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen 5bfc, así que la anota.
+1. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``6dfe``, así que la anota.
+2. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``b530`` en su tabla
+3. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen ``6dfe``.
+4. El Switch 1 envía el mensaje por el puerto 4. **Falsa**, no conoce a la MAC de destino ``b530``, así que necesita difundir.
+5. El Switch 2 envía el mensaje por el puerto 0. **Falsa**, no conoce a la MAC de destino ``b530``, así que necesita difundir.
+6. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``b530`` en su tabla
+7. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``6dfe``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``6dfe``.
+8. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``6dfe``. **Falsa**, ya tenía esa MAC
 
 Solucion al ejercicio 27 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 2 envía el mensaje por el puerto 2. **Verdadera**, 63e9 está en esa posición en la tabla de MACs
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen 9616, así que la anota.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino 63e9 en su tabla, en el puerto 0.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``9616``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen 9616.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen 9616, así que la anota.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``9616``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen 9616.
-* El Switch 1 envía el mensaje por el puerto 0. **Verdadera**, 63e9 está en esa posición en la tabla de MACs
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino 63e9 en su tabla, en el puerto 2.
+1. El Switch 2 envía el mensaje por el puerto 0. **Verdadera**, ``81b9`` está en esa posición en la tabla de MACs
+2. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``81b9`` en su tabla
+3. El Switch 1 envía el mensaje por el puerto 1. **Falsa**, no conoce a la MAC de destino ``81b9``, así que necesita difundir.
+4. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino ``81b9`` en su tabla, en el puerto 0.
+5. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``5fef``, así que la anota.
+6. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen ``5fef``.
+7. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``5fef``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``5fef``.
+8. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``5fef``. **Falsa**, ya tenía esa MAC
 
 Solucion al ejercicio 28 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen 7a56, así que la anota.
-* El Switch 1 envía el mensaje por el puerto 2. **Falsa**, no conoce a la MAC de destino abae, así que necesita difundir.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``7a56``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen 7a56.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen 7a56, así que la anota.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``7a56``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen 7a56.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino abae en su tabla, en el puerto 0.
-* El Switch 2 envía el mensaje por el puerto 0. **Verdadera**, abae está en esa posición en la tabla de MACs
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino abae en su tabla
+1. El Switch 2 envía el mensaje por el puerto 3. **Falsa**, no conoce a la MAC de destino ``75c8``, así que necesita difundir.
+2. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``75c8`` en su tabla
+3. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``6ac1``, así que la anota.
+4. El Switch 1 envía el mensaje por el puerto 3. **Falsa**, no conoce a la MAC de destino ``75c8``, así que necesita difundir.
+5. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``6ac1``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``6ac1``.
+6. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``6ac1``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``6ac1``.
+7. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``75c8`` en su tabla
+8. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``6ac1``, así que la anota.
 
 Solucion al ejercicio 29 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 2 envía el mensaje por el puerto 4. **Verdadera**, 8380 está en esa posición en la tabla de MACs
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino 8380 en su tabla
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino 8380 en su tabla, en el puerto 4.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``f9a6``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen f9a6.
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen f9a6, así que la anota.
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen f9a6, así que la anota.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``f9a6``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen f9a6.
-* El Switch 1 envía el mensaje por el puerto 6. **Falsa**, no conoce a la MAC de destino 8380, así que necesita difundir.
+1. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino ``84f1`` en su tabla, en el puerto 6.
+2. El Switch 1 envía el mensaje por el puerto 0. **Verdadera**, ``84f1`` está en esa posición en la tabla de MACs
+3. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen ``fd2e``.
+4. El Switch 2 envía el mensaje por el puerto 6. **Verdadera**, ``84f1`` está en esa posición en la tabla de MACs
+5. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen ``fd2e``.
+6. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``fd2e``. **Falsa**, ya tenía esa MAC
+7. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino ``84f1`` en su tabla, en el puerto 0.
+8. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``fd2e``. **Falsa**, ya tenía esa MAC
 
 Solucion al ejercicio 30 de switches
 -----------------------------------------
 Las respuestas son:
 
-* El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, sí la modifica, no tenía la MAC de origen 613e.
-* El Switch 2 apunta en su tabla de MACS  la MAC de origen ``613e``. **Falsa**, ya tenía esa MAC
-* El Switch 2 envía el mensaje por el puerto 1. **Falsa**, no conoce a la MAC de destino 6947, así que necesita difundir.
-* El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino 6947 en su tabla
-* El Switch 1 envía el mensaje por el puerto 4. **Falsa**, no conoce a la MAC de destino 6947, así que necesita difundir.
-* El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino 6947 en su tabla
-* El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen 613e, así que la anota.
-* El Switch 1 apunta en su tabla de MACS  la MAC de origen ``613e``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen 613e.
+1. El Switch 1 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``9e19``, así que la anota.
+2. El Switch 2 envía el mensaje por el puerto 7. **Verdadera**, ``bf0d`` está en esa posición en la tabla de MACs
+3. El Switch 1 apunta en su tabla de MACS  la MAC de origen ``9e19``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``9e19``.
+4. El Switch 2 envía el mensaje por todos los puertos menos por donde vino. **Falsa** no necesita hacer difusión, tiene la MAC de destino ``bf0d`` en su tabla, en el puerto 7.
+5. El Switch 2 apunta en su tabla de MACS  la MAC de origen ``9e19``. **Verdadera**, antes no lo conocía, así que sí anota la MAC de origen ``9e19``.
+6. El Switch 1 envía el mensaje por todos los puertos menos por donde vino. **Verdadera**, necesita hacerlo porque no tiene la MAC de destino ``bf0d`` en su tabla
+7. El Switch 2 no modifica su tabla de MACS, no aprende nada nuevo. **Falsa**, no conocía la MAC de origen ``9e19``, así que la anota.
+8. El Switch 1 envía el mensaje por el puerto 3. **Falsa**, no conoce a la MAC de destino ``bf0d``, así que necesita difundir.
