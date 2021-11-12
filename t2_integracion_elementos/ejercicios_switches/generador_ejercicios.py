@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from random import randint, random, seed, shuffle
+from random import randint, random, seed, shuffle, choices, choice, sample
 from dataclasses import dataclass
 from pytablewriter import RstSimpleTableWriter
 
@@ -21,8 +21,10 @@ class Ordenador(object):
     mac:str
     def set_puerto_switch(self, puerto):
         self.puerto=puerto
+    def __str__(self) -> str:
+        return "PC con MAC {0} en puerto {1}".format(self.mac,self.puerto)
 
-    
+
 
 class Switch(object):
     def __init__(self) -> None:
@@ -87,9 +89,9 @@ class Switch(object):
         num_puerto=0
         for p in self.tabla_mac:
             if p==[]:
-                fila=[num_puerto, ""]
+                fila=[num_puerto, "--"]
             else:
-                fila=[num_puerto, ",".join(p)]
+                fila=[num_puerto, "``"+",".join(p)+"``"]
 
             valores.append(fila)
             num_puerto=num_puerto+1
@@ -230,9 +232,12 @@ class GeneradorEjercicios(object):
         
         puerto_switch1=switch1.get_num_puerto_libre_azar()
         puerto_switch2=switch2.get_num_puerto_libre_azar()
+        switch1.anadir_entrada_a_puerto_libre("Switch 2", puerto_switch1)
+        switch2.anadir_entrada_a_puerto_libre("Switch 1", puerto_switch2)
         mensaje_union="Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto {0} que va al puerto {1} del switch 2".format(puerto_switch1, puerto_switch2)
         
         
+        #Esta es la red izquierda
         for i in range(0, num_equipos1):
             mac_azar=generador.generar_mac()
             macs.append(mac_azar)
@@ -327,29 +332,139 @@ Solución al ejercicio {0} de switches
 
 
 
-seed()
-MAX_EJERCICIOS=20
-print("Anexo: ejercicios con tablas MAC de switches")
-print("================================================")
-vector_ejercicios=[]
-for i in range(0, MAX_EJERCICIOS):
-    ejercicio=GeneradorEjercicios(i+1)
-    ejercicio.generar_ejercicio_dos_switches()
-    vector_ejercicios.append(ejercicio)
+
+class GeneradorEjerciciosV2(GeneradorEjercicios):
+    def __init__(self, num_ejercicio) -> None:
+        super().__init__(num_ejercicio)
+    
+    def generar_lista_pcs_azar(self):
+        generador=GeneradorMACS()
+        pcs=[]
+        num_equipos=randint(2, 4)
+        for i in range(0, num_equipos):
+            mac_azar=generador.generar_mac()
+            pc=Ordenador(mac=mac_azar)
+            pcs.append(pc)
+        return pcs
+
+    def asignar_pcs_remotos_en_puerto_switch_al_azar(self, switch, lista_pcs_remotos, puerto):
+        for pc in lista_pcs_remotos:
+            if random()<0.3:
+                switch.anadir_entrada(puerto,pc.mac)
+
+    def asignar_pcs_locales_en_switch(self, switch, lista_pcs):
+        for pc in lista_pcs:
+            if random()<0.4:
+                switch.anadir_entrada_azar(pc.mac)
+
+    def get_origen_y_destino(self, listas_pcs):
+        lista_origen_y_destino=sample(listas_pcs, k=2)
+        pc_origen=choice(lista_origen_y_destino[0])
+        pc_destino=choice(lista_origen_y_destino[1])
+        return (pc_origen.mac, pc_destino.mac)
+
+    def generar_ejercicio_dos_switches(self, solucion=False):
+        
+        generador=GeneradorMACS()
+        switch1=Switch()
+        switch2=Switch()
+        
+        switch1.set_nombre("Switch 1")
+        switch2.set_nombre("Switch 2")
+        #Generamos un grupo de equipos
+        
+        pcs1=self.generar_lista_pcs_azar()
+        pcs2=self.generar_lista_pcs_azar()
+        
+        puerto_switch1=switch1.get_num_puerto_libre_azar()
+        puerto_switch2=switch2.get_num_puerto_libre_azar()
+        #switch1.anadir_entrada_a_puerto_libre("Switch 2", puerto_switch1)
+        #switch2.anadir_entrada_a_puerto_libre("Switch 1", puerto_switch2)
+        mensaje_union="Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto {0} que va al puerto {1} del switch 2".format(puerto_switch1, puerto_switch2)
+        
+        self.asignar_pcs_remotos_en_puerto_switch_al_azar(
+            switch1, pcs2, puerto_switch1
+        )
+        self.asignar_pcs_remotos_en_puerto_switch_al_azar(
+            switch2, pcs1, puerto_switch2
+        )
+        self.asignar_pcs_locales_en_switch(switch1, pcs1)
+        self.asignar_pcs_locales_en_switch(switch2, pcs2)
+
+        num_equipos1=len(pcs1)
+        num_equipos2=len(pcs2)
+        nombre_de_fichero="Switches{0}-{1}.png".format(num_equipos1, num_equipos2)
+        (origen, destino)=self.get_origen_y_destino([pcs1, pcs2])
+        if solucion==False:
+            plantilla_cabecera="""
+Ejercicio {0} de switches
+----------------------------------
+"""
+        else:
+            plantilla_cabecera="""
+Solución al ejercicio {0} de switches
+------------------------------------------
+"""
+                        
+        mensaje=mensaje_union+". Se pretende enviar desde ``{0}`` a ``{1}`` sabiendo lo siguiente:\n".format(origen, destino)
+        datos_ordenadores_izq=formatear_pcs(pcs1, "I")
+        datos_ordenadores_der=formatear_pcs(pcs2, "D")
+
+        plantilla_enunciado="""
+{0}
+{1}
+
+.. figure:: {6}
+
+{2}
+{3}
+
+{4}
+
+{5}
+"""
+        self.enunciado=plantilla_enunciado.format(
+            plantilla_cabecera.format(self.num_ejercicio),
+            mensaje,
+            datos_ordenadores_izq,
+            datos_ordenadores_der,
+            switch1.get_tabla_rst(),
+            switch2.get_tabla_rst(), nombre_de_fichero
+        )
+        
+        self.generar_vector_respuestas(origen, destino,switch1, switch2)
+        #print(self.vector_respuestas)
 
 
-for ej in vector_ejercicios:
-    print(ej.enunciado)
-    print("Indica si las siguientes afirmaciones son verdaderas o falsas:\n")
-    print(ej.get_respuestas_sin_solucion())
 
-pos=1
-for ej in vector_ejercicios:
-    print()
-    print("Solucion al ejercicio {0} de switches".format(pos))
-    print("-----------------------------------------")
-    print("Las respuestas son:")
-    print()
-    pos=pos+1
-    print(ej.get_respuestas_con_solucion())
-#generar_ejercicio_dos_switches("P1.png")
+
+def ejecutar_script():
+    seed()
+    MAX_EJERCICIOS=1
+    print("Anexo: ejercicios con tablas MAC de switches")
+    print("================================================")
+    vector_ejercicios=[]
+    for i in range(0, 30):
+        ejercicio=GeneradorEjerciciosV2(i+1)
+        ejercicio.generar_ejercicio_dos_switches()
+        vector_ejercicios.append(ejercicio)
+
+
+    for ej in vector_ejercicios:
+        print(ej.enunciado)
+        print("Indica si las siguientes afirmaciones son verdaderas o falsas:\n")
+        print(ej.get_respuestas_sin_solucion())
+
+    pos=1
+    for ej in vector_ejercicios:
+        print()
+        print("Solucion al ejercicio {0} de switches".format(pos))
+        print("-----------------------------------------")
+        print("Las respuestas son:")
+        print()
+        pos=pos+1
+        print(ej.get_respuestas_con_solucion())
+    #generar_ejercicio_dos_switches("P1.png")
+
+if __name__=="__main__":
+    ejecutar_script()
