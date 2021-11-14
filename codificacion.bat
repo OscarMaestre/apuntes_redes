@@ -1,0 +1,2 @@
+chcp 65001
+set PYTHONIOENCODING=utf_8
