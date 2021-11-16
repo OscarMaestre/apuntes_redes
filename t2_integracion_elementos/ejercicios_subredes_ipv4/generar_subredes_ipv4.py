@@ -7,14 +7,16 @@ from utilidades.ip.ipv4 import GeneradorIPV4Azar
 
 class Generador(GeneradorIPV4Azar):
 
+    
 
     def get_enunciado(self):
         plantilla="""
 Ejercicio {0}
 -----------------------------
-Obtener el rango de direcciones posible para {1}
+Obtener el rango de direcciones posible para {1} (en binario {2})
 """
-        return plantilla.format(self.num_ejercicio, self.direccion)
+        binario=self.get_direccion_en_binario(self.direccion)
+        return plantilla.format(self.num_ejercicio, self.direccion, binario)
 
     def get_solucion(self):
         direccion_red=self.direccion.network_address
