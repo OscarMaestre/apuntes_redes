@@ -423,9 +423,9 @@ Enrutamiento
 
 El enrutamiento es el proceso de configurar nodos y routers para conseguir llevar los paquetes hasta su destino:
 
-* En los nodos esto implica configurar el "gateway", "puerta de enlace", "router por defecto". Es decir indicar la IP de algún dispositivo de enrutamiento en la red.
+* En los terminales (ordenadores, tablets, móviles...) esto implica configurar el "gateway", "puerta de enlace", "router por defecto". Es decir indicar la IP de algún dispositivo de enrutamiento en la red.
 
-* En los nodos implica rellenar las tablas de rutas. Es decir, indicar al router las direcciones de red (con las máscaras) e indicarles la IP del siguiente nodo para llegar a esa red.
+* En los routers implica rellenar las tablas de rutas. Es decir, indicar al router las direcciones de red (con las máscaras) e indicarles la IP del siguiente nodo para llegar a esa red.
 
 
 Para el ejemplo visto en clase, repetir el proceso para estas redes:
@@ -433,8 +433,87 @@ Para el ejemplo visto en clase, repetir el proceso para estas redes:
 1. Red 172.25.3.0/24 para la red izquierda, 16.2.0.0/16 para la red intermedia (la de los router) y red 61.24.3.0/24 para la red derecha.
 2. * Red 41.0.0.0/24 para la red izquierda, 192.168.24.0/24 para la red intermedia (la de los router) y red 184.2.91.0/24 para la red derecha.
 
+Subredes
+-------------
+
+Supongamos una red como 36.56.0.0/15. Si calculamos el rango de hosts nos salen 131.072 hosts con IPs comprendidas entre 36.56.0.1 y 36.57.255.254
+
+Esta red está formada por un solo dominio de colisión muy grande, lo que es muy ineficiente y encima inseguro. Este proceso tiene que mejorar, y para ello tenemos una técnica llamada "subredes" o "subnetting".
 
 
+La idea básica es que **vamos a hacer la máscara más ancha** de manera que vamos a perder bits de host pero vamos a poder tener unas entidades más pequeñas llamadas subredes, las cuales formarán parte de la red principal.
+
+Veamos un esquema, si pasamos 36.56.0.0 a binario veremos algo como esto
+
++----------+----------+----------+----------+
+| Byte 1   | Byte 2   | Byte 3   | Byte 4   |
++==========+==========+==========+==========+
+| 00100100 | 00111000 | 00000000 | 00000000 |
++----------+----------+----------+----------+
+| 36       | 56       | 0        | 0        |
++----------+----------+----------+----------+
+
+
+Veamos como es el patrón.
+
+* R significa que es un bit de red
+* H significa que es un bit de host.
+
++----------+----------+----------+----------+
+| Byte 1   | Byte 2   | Byte 3   | Byte 4   |
++==========+==========+==========+==========+
+| 00100100 | 00111000 | 00000000 | 00000000 |
++----------+----------+----------+----------+
+| RRRRRRRR | RRRRRRRH | HHHHHHHH | HHHHHHHH |
++----------+----------+----------+----------+
+| 36       | 56       | 0        | 0        |
++----------+----------+----------+----------+
+
+Vamos a analizar las necesidades de la empresa y vamos a usar solo tantos bits de host como requiera el departamento o sala más grande. Una vez hecha la asignación de bits de host al departamento más grande, los bits que nos queden se pueden usar como **identificación de subred**
+
+
+===================================
+00100100.00111000.00000000.00000000
+===================================
+RRRRRRRR RRRRRRRS SSSSSSSS SSHHHHHH
+===================================
+11111111 11111111 11111111 11000000
+===================================
+  255      255     255      192
+===================================
+
+Ahora hay que empezar a poner los números de subred.
+¿Cual es nuestra primera subred? Recordemos que tenemos 11 bits, así que en teoría sería 11 bits a 0, pero por costumbre la combinación todo ceros y todo unos, nunca se usa.
+
++-----------------------------------+
+|00100100.00111000.00000000.00000000|
++-----------------------------------+
+|RRRRRRRR RRRRRRRS SSSSSSSS SSHHHHHH|
++---------------------------------+
+
+La primera subred sería algo como esto
+
++----------------+-------------+------+------------+
+|00100100.0011100|0.00000000.00|000000|            |
++----------------+-------------+------+------------+
+|RRRRRRRR RRRRRRR|S.SSSSSSSS.SS|HHHHHH|            |
++----------------+-------------+------+------------+
+|00100100.0011100|0.00000000.01|000000|IP de subred|
+|00100100.0011100|0.00000000.01|000001|Primera IP  |
+|00100100.0011100|0.00000000.01|000010|Segunda IP  |
+|00100100.0011100|0.00000000.01|111110|Última IP   |
+|00100100.0011100|0.00000000.01|111111|IP difusión |
++----------------+-------------+------+------------+
+
+Esto significa que la primera subred va así:
+
+* 36.56.0.64/26 es la IP de la subred 1
+* 36.56.0.65/26 es la primera IP asignable en esa subred 1
+* 36.56.0.66/26 es la segunda IP
+* 36.56.0.126/26 es la última IP asignable a un equipo.
+* 36.56.0.127/26 es la IP de difusión en la subred 1.
+
+Es decir, al ampliar la máscara y dejar solo los bits de host que necesitamos, ahora ocurre que en toda la empresa, la máscara en todos será 255.255.255.192
 Protocolos de resolución de direcciones ARP, RARP.
 ---------------------------------------------------
 

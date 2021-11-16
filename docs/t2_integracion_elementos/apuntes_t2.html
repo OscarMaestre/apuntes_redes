@@ -498,7 +498,7 @@ de clase A</p></td>
 <p>Supongamos que tenemos un conjunto de servidores y que queremos ubicarlos en una red. Supongamos que usamos un rango privado como 192.168.1.0 con máscara /24</p>
 <p>Esto significa que nuestros últimos 8 bits pueden ser estos
 +============+
-<a href="#id3"><span class="problematic" id="id4">|Últimos bits|</span></a>
+<a href="#id4"><span class="problematic" id="id5">|Últimos bits|</span></a>
 +============+
 |  00000000  |
 +————+
@@ -526,8 +526,8 @@ de clase A</p></td>
 <h2>Enrutamiento<a class="headerlink" href="#enrutamiento" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>El enrutamiento es el proceso de configurar nodos y routers para conseguir llevar los paquetes hasta su destino:</p>
 <ul class="simple">
-<li><p>En los nodos esto implica configurar el «gateway», «puerta de enlace», «router por defecto». Es decir indicar la IP de algún dispositivo de enrutamiento en la red.</p></li>
-<li><p>En los nodos implica rellenar las tablas de rutas. Es decir, indicar al router las direcciones de red (con las máscaras) e indicarles la IP del siguiente nodo para llegar a esa red.</p></li>
+<li><p>En los terminales (ordenadores, tablets, móviles…) esto implica configurar el «gateway», «puerta de enlace», «router por defecto». Es decir indicar la IP de algún dispositivo de enrutamiento en la red.</p></li>
+<li><p>En los routers implica rellenar las tablas de rutas. Es decir, indicar al router las direcciones de red (con las máscaras) e indicarles la IP del siguiente nodo para llegar a esa red.</p></li>
 </ul>
 <p>Para el ejemplo visto en clase, repetir el proceso para estas redes:</p>
 <ol class="arabic simple">
@@ -538,9 +538,143 @@ de clase A</p></td>
 </li>
 </ol>
 </section>
-<section id="protocolos-de-resolucion-de-direcciones-arp-rarp">
-<h2>Protocolos de resolución de direcciones ARP, RARP.<a class="headerlink" href="#protocolos-de-resolucion-de-direcciones-arp-rarp" title="Enlazar permanentemente con este título">¶</a></h2>
+<section id="subredes">
+<h2>Subredes<a class="headerlink" href="#subredes" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Supongamos una red como 36.56.0.0/15. Si calculamos el rango de hosts nos salen 131.072 hosts con IPs comprendidas entre 36.56.0.1 y 36.57.255.254</p>
+<p>Esta red está formada por un solo dominio de colisión muy grande, lo que es muy ineficiente y encima inseguro. Este proceso tiene que mejorar, y para ello tenemos una técnica llamada «subredes» o «subnetting».</p>
+<p>La idea básica es que <strong>vamos a hacer la máscara más ancha</strong> de manera que vamos a perder bits de host pero vamos a poder tener unas entidades más pequeñas llamadas subredes, las cuales formarán parte de la red principal.</p>
+<p>Veamos un esquema, si pasamos 36.56.0.0 a binario veremos algo como esto</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Byte 1</p></th>
+<th class="head"><p>Byte 2</p></th>
+<th class="head"><p>Byte 3</p></th>
+<th class="head"><p>Byte 4</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>00100100</p></td>
+<td><p>00111000</p></td>
+<td><p>00000000</p></td>
+<td><p>00000000</p></td>
+</tr>
+<tr class="row-odd"><td><p>36</p></td>
+<td><p>56</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p>Veamos como es el patrón.</p>
+<ul class="simple">
+<li><p>R significa que es un bit de red</p></li>
+<li><p>H significa que es un bit de host.</p></li>
+</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Byte 1</p></th>
+<th class="head"><p>Byte 2</p></th>
+<th class="head"><p>Byte 3</p></th>
+<th class="head"><p>Byte 4</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>00100100</p></td>
+<td><p>00111000</p></td>
+<td><p>00000000</p></td>
+<td><p>00000000</p></td>
+</tr>
+<tr class="row-odd"><td><p>RRRRRRRR</p></td>
+<td><p>RRRRRRRH</p></td>
+<td><p>HHHHHHHH</p></td>
+<td><p>HHHHHHHH</p></td>
+</tr>
+<tr class="row-even"><td><p>36</p></td>
+<td><p>56</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p>Vamos a analizar las necesidades de la empresa y vamos a usar solo tantos bits de host como requiera el departamento o sala más grande. Una vez hecha la asignación de bits de host al departamento más grande, los bits que nos queden se pueden usar como <strong>identificación de subred</strong></p>
 </section>
+</section>
+<section id="rrrrrrrr-rrrrrrrs-ssssssss-sshhhhhh">
+<h1>RRRRRRRR RRRRRRRS SSSSSSSS SSHHHHHH<a class="headerlink" href="#rrrrrrrr-rrrrrrrs-ssssssss-sshhhhhh" title="Enlazar permanentemente con este título">¶</a></h1>
+</section>
+<section id="id1">
+<h1>11111111 11111111 11111111 11000000<a class="headerlink" href="#id1" title="Enlazar permanentemente con este título">¶</a></h1>
+<blockquote>
+<div><p>255      255     255      192</p>
+</div></blockquote>
+<hr class="docutils" />
+<p>Ahora hay que empezar a poner los números de subred.
+¿Cual es nuestra primera subred? Recordemos que tenemos 11 bits, así que en teoría sería 11 bits a 0, pero por costumbre la combinación todo ceros y todo unos, nunca se usa.</p>
+<p>La primera subred sería algo como esto</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 28%" />
+<col style="width: 13%" />
+<col style="width: 26%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>00100100.0011100</p></td>
+<td><p>0.00000000.00</p></td>
+<td><p>000000</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>RRRRRRRR RRRRRRR</p></td>
+<td><p>S.SSSSSSSS.SS</p></td>
+<td><p>HHHHHH</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>00100100.0011100
+00100100.0011100
+00100100.0011100
+00100100.0011100
+00100100.0011100</p></td>
+<td><p>0.00000000.01
+0.00000000.01
+0.00000000.01
+0.00000000.01
+0.00000000.01</p></td>
+<td><p>000000
+000001
+000010
+111110
+111111</p></td>
+<td><p>IP de subred
+Primera IP
+Segunda IP
+Última IP
+IP difusión</p></td>
+</tr>
+</tbody>
+</table>
+<p>Esto significa que la primera subred va así:</p>
+<ul class="simple">
+<li><p>36.56.0.64/26 es la IP de la subred 1</p></li>
+<li><p>36.56.0.65/26 es la primera IP asignable en esa subred 1</p></li>
+<li><p>36.56.0.66/26 es la segunda IP</p></li>
+<li><p>36.56.0.126/26 es la última IP asignable a un equipo.</p></li>
+<li><p>36.56.0.127/26 es la IP de difusión en la subred 1.</p></li>
+</ul>
+<p>Es decir, al ampliar la máscara y dejar solo los bits de host que necesitamos, ahora ocurre que en toda la empresa, la máscara en todos será 255.255.255.192
+Protocolos de resolución de direcciones ARP, RARP.
+—————————————————</p>
 <section id="direcciones-ipv6">
 <h2>Direcciones IPv6<a class="headerlink" href="#direcciones-ipv6" title="Enlazar permanentemente con este título">¶</a></h2>
 <section id="representacion-de-direcciones">
@@ -654,8 +788,8 @@ en enlace</p></td>
 <section id="anexo-ejercicios-sobre-compresion-de-direcciones-ipv6">
 <h1>Anexo: Ejercicios sobre compresión de direcciones IPv6<a class="headerlink" href="#anexo-ejercicios-sobre-compresion-de-direcciones-ipv6" title="Enlazar permanentemente con este título">¶</a></h1>
 <p>Comprimir las direcciones IPv6 siguientes según las reglas de compresión del protocolo (las soluciones aparecen al final):</p>
-<table class="docutils align-default" id="id1">
-<caption><span class="caption-text">Ejercicios propuestos IPv6</span><a class="headerlink" href="#id1" title="Enlace permanente a esta tabla">¶</a></caption>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">Ejercicios propuestos IPv6</span><a class="headerlink" href="#id2" title="Enlace permanente a esta tabla">¶</a></caption>
 <colgroup>
 <col style="width: 23%" />
 <col style="width: 77%" />
@@ -971,8 +1105,8 @@ en enlace</p></td>
 <section id="soluciones-a-compresion-de-direcciones-ipv6">
 <h2>Soluciones a compresión de direcciones IPv6<a class="headerlink" href="#soluciones-a-compresion-de-direcciones-ipv6" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>A continuación se muestran las soluciones a los ejercicios propuestos:</p>
-<table class="docutils align-default" id="id2">
-<caption><span class="caption-text">Ejercicios resueltos IPv6</span><a class="headerlink" href="#id2" title="Enlace permanente a esta tabla">¶</a></caption>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-text">Ejercicios resueltos IPv6</span><a class="headerlink" href="#id3" title="Enlace permanente a esta tabla">¶</a></caption>
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 45%" />
@@ -1553,7 +1687,11 @@ en enlace</p></td>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#enrutamiento">Enrutamiento</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#protocolos-de-resolucion-de-direcciones-arp-rarp">Protocolos de resolución de direcciones ARP, RARP.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#subredes">Subredes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#rrrrrrrr-rrrrrrrs-ssssssss-sshhhhhh">RRRRRRRR RRRRRRRS SSSSSSSS SSHHHHHH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#id1">11111111 11111111 11111111 11000000</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#direcciones-ipv6">Direcciones IPv6</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#representacion-de-direcciones">Representación de direcciones</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tipos-de-direcciones">Tipos de direcciones</a></li>
