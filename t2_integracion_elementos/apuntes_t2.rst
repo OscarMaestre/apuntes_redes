@@ -512,6 +512,7 @@ Esto significa que la primera subred va así:
 * 36.56.0.127/26 es la IP de difusión en la subred 1.
 
 Es decir, al ampliar la máscara y dejar solo los bits de host que necesitamos, ahora ocurre que en toda la empresa, la máscara en todos será 255.255.255.192
+
 Protocolos de resolución de direcciones ARP, RARP.
 ---------------------------------------------------
 
