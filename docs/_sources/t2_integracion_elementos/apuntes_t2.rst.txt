@@ -389,9 +389,8 @@ En las direcciones IP sabemos que tenemos dos partes
 * Parte de host, que es una secuencia binaria que cambia en cada equipo.
 
 
-Supongamos que tenemos un conjunto de servidores y que queremos ubicarlos en una red. Supongamos que usamos un rango privado como 192.168.1.0 con máscara /24
+Supongamos que tenemos un conjunto de servidores y que queremos ubicarlos en una red. Supongamos que usamos un rango privado como 192.168.1.0 con máscara /24 (24 bits a uno). Esto significa que nuestros últimos 8 bits pueden ser estos.
 
-Esto significa que nuestros últimos 8 bits pueden ser estos
 +============+
 |Últimos bits|
 +============+
@@ -471,16 +470,15 @@ Veamos como es el patrón.
 
 Vamos a analizar las necesidades de la empresa y vamos a usar solo tantos bits de host como requiera el departamento o sala más grande. Una vez hecha la asignación de bits de host al departamento más grande, los bits que nos queden se pueden usar como **identificación de subred**
 
-
-===================================
-00100100.00111000.00000000.00000000
-===================================
-RRRRRRRR RRRRRRRS SSSSSSSS SSHHHHHH
-===================================
-11111111 11111111 11111111 11000000
-===================================
-  255      255     255      192
-===================================
++----------+----------+----------+----------+
+| 00100100 | 00111000 | 00000000 | 00000000 |
++==========+==========+==========+==========+
+| RRRRRRRR | RRRRRRRS | SSSSSSSS | SSHHHHHH |
++----------+----------+----------+----------+
+| 11111111 | 11111111 | 11111111 | 11000000 |
++----------+----------+----------+----------+
+| 255      | 255      | 255      | 192      |
++----------+----------+----------+----------+
 
 Ahora hay que empezar a poner los números de subred.
 ¿Cual es nuestra primera subred? Recordemos que tenemos 11 bits, así que en teoría sería 11 bits a 0, pero por costumbre la combinación todo ceros y todo unos, nunca se usa.
@@ -489,7 +487,7 @@ Ahora hay que empezar a poner los números de subred.
 |00100100.00111000.00000000.00000000|
 +-----------------------------------+
 |RRRRRRRR RRRRRRRS SSSSSSSS SSHHHHHH|
-+---------------------------------+
++-----------------------------------+
 
 La primera subred sería algo como esto
 

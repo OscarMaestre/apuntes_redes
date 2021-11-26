@@ -495,10 +495,9 @@ de clase A</p></td>
 <li><p>Parte de red, también llamado <strong>prefijo de red</strong>.</p></li>
 <li><p>Parte de host, que es una secuencia binaria que cambia en cada equipo.</p></li>
 </ul>
-<p>Supongamos que tenemos un conjunto de servidores y que queremos ubicarlos en una red. Supongamos que usamos un rango privado como 192.168.1.0 con máscara /24</p>
-<p>Esto significa que nuestros últimos 8 bits pueden ser estos
-+============+
-<a href="#id4"><span class="problematic" id="id5">|Últimos bits|</span></a>
+<p>Supongamos que tenemos un conjunto de servidores y que queremos ubicarlos en una red. Supongamos que usamos un rango privado como 192.168.1.0 con máscara /24 (24 bits a uno). Esto significa que nuestros últimos 8 bits pueden ser estos.</p>
+<p>+============+
+<a href="#id3"><span class="problematic" id="id4">|Últimos bits|</span></a>
 +============+
 |  00000000  |
 +————+
@@ -609,19 +608,51 @@ de clase A</p></td>
 </tbody>
 </table>
 <p>Vamos a analizar las necesidades de la empresa y vamos a usar solo tantos bits de host como requiera el departamento o sala más grande. Una vez hecha la asignación de bits de host al departamento más grande, los bits que nos queden se pueden usar como <strong>identificación de subred</strong></p>
-</section>
-</section>
-<section id="rrrrrrrr-rrrrrrrs-ssssssss-sshhhhhh">
-<h1>RRRRRRRR RRRRRRRS SSSSSSSS SSHHHHHH<a class="headerlink" href="#rrrrrrrr-rrrrrrrs-ssssssss-sshhhhhh" title="Enlazar permanentemente con este título"></a></h1>
-</section>
-<section id="id1">
-<h1>11111111 11111111 11111111 11000000<a class="headerlink" href="#id1" title="Enlazar permanentemente con este título"></a></h1>
-<blockquote>
-<div><p>255      255     255      192</p>
-</div></blockquote>
-<hr class="docutils" />
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>00100100</p></th>
+<th class="head"><p>00111000</p></th>
+<th class="head"><p>00000000</p></th>
+<th class="head"><p>00000000</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RRRRRRRR</p></td>
+<td><p>RRRRRRRS</p></td>
+<td><p>SSSSSSSS</p></td>
+<td><p>SSHHHHHH</p></td>
+</tr>
+<tr class="row-odd"><td><p>11111111</p></td>
+<td><p>11111111</p></td>
+<td><p>11111111</p></td>
+<td><p>11000000</p></td>
+</tr>
+<tr class="row-even"><td><p>255</p></td>
+<td><p>255</p></td>
+<td><p>255</p></td>
+<td><p>192</p></td>
+</tr>
+</tbody>
+</table>
 <p>Ahora hay que empezar a poner los números de subred.
 ¿Cual es nuestra primera subred? Recordemos que tenemos 11 bits, así que en teoría sería 11 bits a 0, pero por costumbre la combinación todo ceros y todo unos, nunca se usa.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>00100100.00111000.00000000.00000000</p></td>
+</tr>
+<tr class="row-even"><td><p>RRRRRRRR RRRRRRRS SSSSSSSS SSHHHHHH</p></td>
+</tr>
+</tbody>
+</table>
 <p>La primera subred sería algo como esto</p>
 <table class="docutils align-default">
 <colgroup>
@@ -675,6 +706,7 @@ IP difusión</p></td>
 <p>Es decir, al ampliar la máscara y dejar solo los bits de host que necesitamos, ahora ocurre que en toda la empresa, la máscara en todos será 255.255.255.192
 Protocolos de resolución de direcciones ARP, RARP.
 —————————————————</p>
+</section>
 <section id="direcciones-ipv6">
 <h2>Direcciones IPv6<a class="headerlink" href="#direcciones-ipv6" title="Enlazar permanentemente con este título"></a></h2>
 <section id="representacion-de-direcciones">
@@ -788,8 +820,8 @@ en enlace</p></td>
 <section id="anexo-ejercicios-sobre-compresion-de-direcciones-ipv6">
 <h1>Anexo: Ejercicios sobre compresión de direcciones IPv6<a class="headerlink" href="#anexo-ejercicios-sobre-compresion-de-direcciones-ipv6" title="Enlazar permanentemente con este título"></a></h1>
 <p>Comprimir las direcciones IPv6 siguientes según las reglas de compresión del protocolo (las soluciones aparecen al final):</p>
-<table class="docutils align-default" id="id2">
-<caption><span class="caption-text">Ejercicios propuestos IPv6</span><a class="headerlink" href="#id2" title="Enlace permanente a esta tabla"></a></caption>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Ejercicios propuestos IPv6</span><a class="headerlink" href="#id1" title="Enlace permanente a esta tabla"></a></caption>
 <colgroup>
 <col style="width: 23%" />
 <col style="width: 77%" />
@@ -1105,8 +1137,8 @@ en enlace</p></td>
 <section id="soluciones-a-compresion-de-direcciones-ipv6">
 <h2>Soluciones a compresión de direcciones IPv6<a class="headerlink" href="#soluciones-a-compresion-de-direcciones-ipv6" title="Enlazar permanentemente con este título"></a></h2>
 <p>A continuación se muestran las soluciones a los ejercicios propuestos:</p>
-<table class="docutils align-default" id="id3">
-<caption><span class="caption-text">Ejercicios resueltos IPv6</span><a class="headerlink" href="#id3" title="Enlace permanente a esta tabla"></a></caption>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">Ejercicios resueltos IPv6</span><a class="headerlink" href="#id2" title="Enlace permanente a esta tabla"></a></caption>
 <colgroup>
 <col style="width: 14%" />
 <col style="width: 45%" />
@@ -1688,10 +1720,6 @@ en enlace</p></td>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#enrutamiento">Enrutamiento</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#subredes">Subredes</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#rrrrrrrr-rrrrrrrs-ssssssss-sshhhhhh">RRRRRRRR RRRRRRRS SSSSSSSS SSHHHHHH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#id1">11111111 11111111 11111111 11000000</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#direcciones-ipv6">Direcciones IPv6</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#representacion-de-direcciones">Representación de direcciones</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tipos-de-direcciones">Tipos de direcciones</a></li>
@@ -1721,6 +1749,7 @@ en enlace</p></td>
 <li class="toctree-l1"><a class="reference internal" href="../anexos/t1_ejercicios.html">Anexo: Ejercicios propuestos para el tema 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ejercicios_switches/ejercicios_dos_switches.html">Anexo: ejercicios con tablas MAC de switches</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ejercicios_subredes_ipv4/rangos_direcciones.html">Anexo: ejercicios sobre rangos de direcciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ejercicios_subredes/ejercicios_calculo_subredes.html">Anexo: cálculo de subredes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ejercicios_subredes_ipv4/ejercicios_dos_router.html">Anexo: ejercicios de enrutamiento</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ejercicios_subredes_ipv4/ejercicios_3_router_caso_a.html">Anexo: ejercicios de enrutamiento con 3 routers (caso 1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ejerciciosipv6/ejercicios_ipv6.html">Anexo: Ejercicios sobre compresión de direcciones IPv6</a></li>
@@ -1762,7 +1791,7 @@ en enlace</p></td>
       &copy;2021, Oscar G. G..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
