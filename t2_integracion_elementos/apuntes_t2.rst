@@ -580,6 +580,20 @@ Las direcciones reservadas por el IETF son las siguientes:
 | Multicast      | ff00::/8  | ff00:/8      | ffff:/8     | 1/256              |
 +----------------+-----------+--------------+-------------+--------------------+
 
+
+Uso de direcciones
+------------------------
+En IPv6 va a ocurrir que TODOS LOS NODOS van a tener siempre al menos una IPv6 de enlace local. Después aparte de esa, pueden tener una o varias unicast y una o varias multicast. Como norma general, lo habitual será tener esto
+
+* Direcciones local link: UNA y SIEMPRE.
+* Direcciones unicast: NORMALMENTE UNA, aunque puede haber varias.
+* Direcciones multicast: puede haber una o varias, dependiendo de a cuantos grupos se pertenezca.
+
+
+
+
+
+
 Conjuntos de protocolos IPv6
 ---------------------------------------------------
 
