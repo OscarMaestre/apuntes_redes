@@ -585,10 +585,46 @@ Uso de direcciones
 ------------------------
 En IPv6 va a ocurrir que TODOS LOS NODOS van a tener siempre al menos una IPv6 de enlace local. Después aparte de esa, pueden tener una o varias unicast y una o varias multicast. Como norma general, lo habitual será tener esto
 
-* Direcciones local link: UNA y SIEMPRE.
-* Direcciones unicast: NORMALMENTE UNA, aunque puede haber varias.
+* Direcciones local link: UNA POR TARJETA y SIEMPRE.
+* Direcciones unicast: NORMALMENTE UNA POR TARJETA, aunque puede haber varias.
 * Direcciones multicast: puede haber una o varias, dependiendo de a cuantos grupos se pertenezca.
 
+
+
+Ampliación del encaminamiento
+--------------------------------
+
+En apartados anteriores hemos construido tablas de rutas pequeñas para rutas pequeñas. Pero en grandes redes pasan dos cosas:
+
+1. Averiguar los mejores caminos es largo y difícil.
+2. Aunque los calculemos las redes fluctúan mucho y un buen camino hoy puede ser una mala ruta dentro de 5 minutos.
+
+Se pueden hacer dos cosas:
+
+1. Construir las tablas de rutas a mano.
+2. Dejar que los routers construyan las tablas automáticamente.
+
+Supongamos una red como la de la figura:
+
+.. figure:: Red_compleja_routers.png
+
+¿Cual sería el mejor camino para ir de la izquierda a la derecha? Podríamos pensar en que el mejor camino es el más corto pero en redes eso no tiene por qué ser así. Un camino podría ser "muy largo en longitud" pero cruzar enlaces de 1Gb/s y resultar ser más rápido que otro camino con menos cables pero más lentos. Por desgracia este camino bueno podría empeorar el día de mañana y volver a mejorar al siguiente. En suma, las redes son a veces demasiado aleatorias y construir los caminos a mano puede ser muy ineficiente.
+
+Por suerte, existen protocolos de enrutamiento en los que los router construyen ellos solos todas las tablas. Para ello se basan en ciertas premisas:
+
+1. Todos los router anuncian periódicamente todo lo que saben.
+2. Todos los router reciben periódicamente información de otros router. Pueden y deben usar esa información para actualizar su propio conocimiento y así encontrar caminos mejores.
+3. No hemos mencionado hasta ahora que en realidad en las tablas de rutas hay una columna llamada "métrica". Una métrica indica el coste de seguir una ruta. Así, si en una tabla de rutas tenemos algo como esto y llega un paquete con destino a la red 10.0.0.0, el router elegirá enviarlo por la IP 65.133.8.71.
+
++----------+-----------+---------------+---------+
+| Red      | Máscara   | Sig. salto    | Métrica |
++==========+===========+===============+=========+
+| 10.0.0.0 | 255.0.0.0 | 10.43.2.1     | 13      |
++----------+-----------+---------------+---------+
+| 20.0.0.0 | 255.0.0.0 | 161.51.91.103 | 7       |
++----------+-----------+---------------+---------+
+| 10.0.0.0 | 255.0.0.0 | 65.133.8.71   | 10      |
++----------+-----------+---------------+---------+
 
 
 
