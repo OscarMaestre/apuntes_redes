@@ -36,16 +36,67 @@
             
   <section id="configuracion-y-administracion-de-conmutadores">
 <h1>Configuración y administración de conmutadores<a class="headerlink" href="#configuracion-y-administracion-de-conmutadores" title="Enlazar permanentemente con este título"></a></h1>
-<p>Segmentación de la red.
-Ventajas que presenta.
-Conmutadores y dominios de colisión y  «broadcast».
-Segmentación de redes.
-Formas de conexión al conmutador para su configuración.
-Configuración del conmutador.
+<section id="segmentacion-de-la-red">
+<h2>Segmentación de la red.<a class="headerlink" href="#segmentacion-de-la-red" title="Enlazar permanentemente con este título"></a></h2>
+<p>En primer lugar analicemos una red grande.</p>
+<figure class="align-default">
+<img alt="../_images/01-red-grande.png" src="../_images/01-red-grande.png" />
+</figure>
+<p>En una red como la que mostramos, puede haber muchos enviando y recibiendo a la vez. ¿Qué ocurre si un nodo genera una difusión? En redes tan grandes, la cantidad de «perjudicados» por una difusión, aumenta mucho. De hecho aumenta más cuanto más ordenadores hay en un switch.</p>
+</section>
+</section>
+<section id="ventajas-que-presenta">
+<h1>Ventajas que presenta.<a class="headerlink" href="#ventajas-que-presenta" title="Enlazar permanentemente con este título"></a></h1>
+<p>En este sentido, los switches pueden ayudar a aliviar problemas de congestión usandolos como divisores de redes. Una red grande se puede dividir en dos redes más pequeñas y mejorar el rendimiento. Por desgracia esto implica dos cosas:</p>
+<ul class="simple">
+<li><p>Coste. Donde antes había un switch ahora hay dos.</p></li>
+<li><p>Trabajo. Recablear toda una sala es algo lento.</p></li>
+</ul>
+</section>
+<section id="conmutadores-y-dominios-de-colision-y-broadcast">
+<h1>Conmutadores y dominios de colisión y «broadcast».<a class="headerlink" href="#conmutadores-y-dominios-de-colision-y-broadcast" title="Enlazar permanentemente con este título"></a></h1>
+<p>Se denomina «dominio de colisión» al conjunto de máquinas que pertenecen a un mismo enlace o red local y en el que una de esas máquinas puede perjudicar a las demás sin querer.</p>
+<p>Se denomina «dominio de broadcast» al conjunto de máquinas en las que UNA DIFUSIÓN IP (es decir, un paquete en el que la IP de destino es algo como 192.168.1.255) puede perjudicar a las demás sin querer. Un dominio de broadcast puede abarcar muchas redes Ethernet, o lo que es lo mismo, un dominio de broadcast puede abarcar muchos dominios de colisión. En la imagen siguiente puede verse una red muy grande compuesta por varias redes más pequeñas. Una difusión IP generada por una máquina cualquiera <em>podría ser recibida por todos los equipos de esa red</em></p>
+<figure class="align-default">
+<img alt="../_images/02-dominio-broadcast.png" src="../_images/02-dominio-broadcast.png" />
+</figure>
+<section id="formas-de-conexion-al-conmutador-para-su-configuracion">
+<h2>Formas de conexión al conmutador para su configuración.<a class="headerlink" href="#formas-de-conexion-al-conmutador-para-su-configuracion" title="Enlazar permanentemente con este título"></a></h2>
+<section id="cables">
+<h3>Cables<a class="headerlink" href="#cables" title="Enlazar permanentemente con este título"></a></h3>
+<p>Los switches Cisco aceptan varios tipos de cable para conectar un PC con ellos y enviarles comandos:</p>
+<ol class="arabic simple">
+<li><p>Cable de red típico. Muchos switches por defecto <strong>traen deshabilitado el acceso por medio de este tipo de cable</strong>.</p></li>
+<li><p>Cable de consola.</p></li>
+</ol>
+</section>
+<section id="protocolos">
+<h3>Protocolos<a class="headerlink" href="#protocolos" title="Enlazar permanentemente con este título"></a></h3>
+<ul class="simple">
+<li><p>Telnet: un protocolo muy simple que <strong>no cifra los datos</strong></p></li>
+<li><p>SSH: es el que debería usarse siempre porque entre otras ventajas SSH <strong>cifra datos</strong>.</p></li>
+</ul>
+</section>
+<section id="practica-intercepcion-de-contrasenas">
+<h3>Práctica: intercepción de contraseñas.<a class="headerlink" href="#practica-intercepcion-de-contrasenas" title="Enlazar permanentemente con este título"></a></h3>
+<p>Descarga Putty en tu Windows e instala los siguientes páquetes en tu máquina virtual Ubuntu:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span> <span class="o">-</span><span class="n">y</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">wireshark</span> <span class="n">openssh</span><span class="o">-</span><span class="n">server</span> <span class="n">telnetd</span>
+</pre></div>
+</div>
+<p>Ve a tu máquina Ubuntu y crea un usuario para él que además pertenezca al grupo administrador (grupo <code class="docutils literal notranslate"><span class="pre">sudo</span></code>). Usa estos comandos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">adduser</span> <span class="n">pepe</span>
+<span class="n">sudo</span> <span class="n">usermod</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">G</span> <span class="n">sudo</span> <span class="n">pepe</span>
+</pre></div>
+</div>
+<p>Asegúrate de tener la tarjeta de tu máquina virtual en modo puente, arranca Wireshark y despues pide a tu compañero que use tanto Telnet como SSH para conectar con tu máquina. Intenta ver como envía la contraseña.</p>
+<p>Configuración del conmutador.
 Configuración estática y dinámica de la tabla de direcciones MAC.
 Diagnóstico de incidencias del conmutador.
 Las tormentas de «broadcast».
 El protocolo Spanning-Tree.</p>
+</section>
+</section>
 </section>
 
 
@@ -71,7 +122,20 @@ El protocolo Spanning-Tree.</p>
 <li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/apuntes_t2.html">Integración de elementos en una red</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/apuntes_t2.html#anexo-ejercicios-sobre-compresion-de-direcciones-ipv6">Anexo: Ejercicios sobre compresión de direcciones IPv6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/apuntes_t2.html#anexo-ejercicios-sobre-clasificacion-de-direcciones-ipv6">Anexo: ejercicios sobre clasificación de direcciones IPv6</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuración y administración de conmutadores</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuración y administración de conmutadores</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#segmentacion-de-la-red">Segmentación de la red.</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#ventajas-que-presenta">Ventajas que presenta.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#conmutadores-y-dominios-de-colision-y-broadcast">Conmutadores y dominios de colisión y «broadcast».</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#formas-de-conexion-al-conmutador-para-su-configuracion">Formas de conexión al conmutador para su configuración.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cables">Cables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#protocolos">Protocolos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#practica-intercepcion-de-contrasenas">Práctica: intercepción de contraseñas.</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../t4_routers/apuntes_t4.html">Configuración y administración básica de routers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../t5_vlans/apuntes_t5.html">Configuración de redes virtuales VLAN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../t6_enrutamiento_dinamico/apuntes_t6.html">Configuración y administración de protocolos dinámicos</a></li>

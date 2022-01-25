@@ -591,8 +591,8 @@ En IPv6 va a ocurrir que TODOS LOS NODOS van a tener siempre al menos una IPv6 d
 
 
 
-Ampliación del encaminamiento
---------------------------------
+Ampliación: encaminamiento dinámico
+---------------------------------------
 
 En apartados anteriores hemos construido tablas de rutas pequeñas para rutas pequeñas. Pero en grandes redes pasan dos cosas:
 
@@ -627,7 +627,18 @@ Por suerte, existen protocolos de enrutamiento en los que los router construyen 
 +----------+-----------+---------------+---------+
 
 
+Enrutamiento "interior" y "exterior"
+-------------------------------------
+Un protocolo de enrutamiento (dinámico) interior es un protocolo pensado para una organización con muchas redes y routers que desea que dentro de su empresa el enrutamiento sea dinámico. A todos estos protocolos se les llama IGP (Protocolos para Gateway interiores). Dentro de este conjunto tenemos RIP y OSPF.
 
+Un protocolo de enrutamiento (dinámico) exterior es un protocolo pensado para intercambiar información con una red externa, de fuera de nuestra empresa. Aquí el único protocolo existente es BGP (Border Gateway Protocol)
+
+En grandes redes es obligatorio disponer de un número que usará BGP. Este número se llama "número de sistema autónomo o AS number".
+
+Dado que Internet es una red demasiado grande, la administración de direcciones IP, números AS se delega en lo que se llama "Registros", y hay más o menos uno por continente.
+
+* "RIPE" es el registro para Europa.
+* "APNIC" es el registro para Asia y Pacífico.
 
 
 Conjuntos de protocolos IPv6

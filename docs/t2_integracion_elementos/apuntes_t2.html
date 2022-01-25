@@ -808,8 +808,8 @@ en enlace</p></td>
 <li><p>Direcciones multicast: puede haber una o varias, dependiendo de a cuantos grupos se pertenezca.</p></li>
 </ul>
 </section>
-<section id="ampliacion-del-encaminamiento">
-<h2>Ampliación del encaminamiento<a class="headerlink" href="#ampliacion-del-encaminamiento" title="Enlazar permanentemente con este título"></a></h2>
+<section id="ampliacion-encaminamiento-dinamico">
+<h2>Ampliación: encaminamiento dinámico<a class="headerlink" href="#ampliacion-encaminamiento-dinamico" title="Enlazar permanentemente con este título"></a></h2>
 <p>En apartados anteriores hemos construido tablas de rutas pequeñas para rutas pequeñas. Pero en grandes redes pasan dos cosas:</p>
 <ol class="arabic simple">
 <li><p>Averiguar los mejores caminos es largo y difícil.</p></li>
@@ -863,6 +863,17 @@ en enlace</p></td>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="enrutamiento-interior-y-exterior">
+<h2>Enrutamiento «interior» y «exterior»<a class="headerlink" href="#enrutamiento-interior-y-exterior" title="Enlazar permanentemente con este título"></a></h2>
+<p>Un protocolo de enrutamiento (dinámico) interior es un protocolo pensado para una organización con muchas redes y routers que desea que dentro de su empresa el enrutamiento sea dinámico. A todos estos protocolos se les llama IGP (Protocolos para Gateway interiores). Dentro de este conjunto tenemos RIP y OSPF.</p>
+<p>Un protocolo de enrutamiento (dinámico) exterior es un protocolo pensado para intercambiar información con una red externa, de fuera de nuestra empresa. Aquí el único protocolo existente es BGP (Border Gateway Protocol)</p>
+<p>En grandes redes es obligatorio disponer de un número que usará BGP. Este número se llama «número de sistema autónomo o AS number».</p>
+<p>Dado que Internet es una red demasiado grande, la administración de direcciones IP, números AS se delega en lo que se llama «Registros», y hay más o menos uno por continente.</p>
+<ul class="simple">
+<li><p>«RIPE» es el registro para Europa.</p></li>
+<li><p>«APNIC» es el registro para Asia y Pacífico.</p></li>
+</ul>
 </section>
 <section id="conjuntos-de-protocolos-ipv6">
 <h2>Conjuntos de protocolos IPv6<a class="headerlink" href="#conjuntos-de-protocolos-ipv6" title="Enlazar permanentemente con este título"></a></h2>
@@ -1793,7 +1804,8 @@ en enlace</p></td>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#uso-de-direcciones">Uso de direcciones</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ampliacion-del-encaminamiento">Ampliación del encaminamiento</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ampliacion-encaminamiento-dinamico">Ampliación: encaminamiento dinámico</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#enrutamiento-interior-y-exterior">Enrutamiento «interior» y «exterior»</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#conjuntos-de-protocolos-ipv6">Conjuntos de protocolos IPv6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tuneles-ipv6">Túneles IPv6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#direccionamiento-dinamico-dhcp">Direccionamiento dinámico (DHCP).</a></li>
@@ -1811,6 +1823,8 @@ en enlace</p></td>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../t3_conmutadores/apuntes_t3.html">Configuración y administración de conmutadores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t3_conmutadores/apuntes_t3.html#ventajas-que-presenta">Ventajas que presenta.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t3_conmutadores/apuntes_t3.html#conmutadores-y-dominios-de-colision-y-broadcast">Conmutadores y dominios de colisión y «broadcast».</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../t4_routers/apuntes_t4.html">Configuración y administración básica de routers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../t5_vlans/apuntes_t5.html">Configuración de redes virtuales VLAN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../t6_enrutamiento_dinamico/apuntes_t6.html">Configuración y administración de protocolos dinámicos</a></li>
