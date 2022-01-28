@@ -518,6 +518,15 @@ Protocolos de resolución de direcciones ARP, RARP.
 
 Direcciones IPv6
 ---------------------------------------------------
+Dadas las limitaciones en las direcciones IPv4 se diseñó un nuevo formato de direcciones en el que hubiera muchas más posibilidades: **IPv6** En IPv6 hay *128 bits para direcciones* lo que supone un espacio de direcciones de 2 elevado a 128, un número realmente grande. Las direcciones IPv6 se escriben como secuencias de 8 grupos de 4 hexadecimales separadas por dos puntos, a continuación vemos algunos ejemplos::
+
+    fe80:a13d:d3d6:a190:31d2:a216:3261:1800
+    3410:0000:0000:0000:0000:0000:0000:2900
+
+El segundo ejemplo muestra algo interesante y además muy habitual: **la mayor parte de las veces una dirección IPv6 tendrá muchos ceros consecutivos**. En ese caso, se puede abreviar esa dirección eliminando las secuencias de ceros **pero dejando un "doble dos puntos"** para indicar que hemos recortado una IPv6, así tendríamos que la última dirección la podemos escribir así::
+
+    3410:0000:0000:0000:0000:0000:0000:2900 (sin abreviar)
+    3410::2900 (abreviada)
 
 Representación de direcciones
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
