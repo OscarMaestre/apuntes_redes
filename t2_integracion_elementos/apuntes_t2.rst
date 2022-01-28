@@ -391,23 +391,26 @@ En las direcciones IP sabemos que tenemos dos partes
 
 Supongamos que tenemos un conjunto de servidores y que queremos ubicarlos en una red. Supongamos que usamos un rango privado como 192.168.1.0 con máscara /24 (24 bits a uno). Esto significa que nuestros últimos 8 bits pueden ser estos.
 
-+============+
-|Últimos bits|
-+============+
-|  00000000  |
-+------------+
-|  00000001  |
-+------------+
-|  00000010  |
-+------------+
-|  00000011  |
-+------------+
-|  00000100  |
-+------------+
-|   ......   |
-+------------+
-|   11111111 |
-+------------+
++--------------+
+| Últimos bits |
++==============+
+| 00000000     |
++--------------+
+| 00000001     |
++--------------+
+| 00000010     |
++--------------+
+| 00000011     |
++--------------+
+| 00000100     |
++--------------+
+| ...          |
++--------------+
+| ...          |
++--------------+
+| 11111111     |
++--------------+
+
 
 En realidad, la combinación **todos los bits a 0** y la **todos los bits a uno** NO SON DIRECCIONES IP VÁLIDAS ASIGNABLES A NODOS. Esto significa que no podemos poner a un equipo ni la 192.168.1.0 ni la 192.168.1.255. **Estas direcciones tienen un significado especial**
 

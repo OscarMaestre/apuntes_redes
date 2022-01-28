@@ -150,12 +150,14 @@
 </section>
 <section id="configuracion-de-contrasenas">
 <h3>Configuración de contraseñas<a class="headerlink" href="#configuracion-de-contrasenas" title="Enlazar permanentemente con este título"></a></h3>
-<p>Se puede poner contraseña a un montón de elementos:
-* Contraseña al cable de consola.
-* Contraseña de administrador para el modo privilegiado.
-* Contraseña al telnet.
-* Contraseña SSH.
-* Contraseña al puerto auxiliar.</p>
+<p>Se puede poner contraseña a un montón de elementos:</p>
+<ul class="simple">
+<li><p>Contraseña al cable de consola.</p></li>
+<li><p>Contraseña de administrador para el modo privilegiado.</p></li>
+<li><p>Contraseña al telnet.</p></li>
+<li><p>Contraseña SSH.</p></li>
+<li><p>Contraseña al puerto auxiliar.</p></li>
+</ul>
 <p>Para poner contraseña a la conexión por cable de consola:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Switch</span><span class="o">&gt;</span><span class="n">enable</span>
 <span class="n">Switch</span><span class="c1">#configure terminal</span>
@@ -177,11 +179,19 @@
 <p class="admonition-title">Advertencia</p>
 <p>En muchos foros, manuales, tutoriales, vídeos se indica que el comando es «enable password» en lugar de «enable secret». Hace mucho tiempo que eso no es verdad. El comando Cisco fue durante mucho tiempo «enable password» y de hecho <strong>el comando sigue funcionando</strong>. Sin embargo, <code class="docutils literal notranslate"><span class="pre">enable</span> <span class="pre">password</span></code> guarda las claves en la memoria <strong>SIN CIFRAR</strong>.</p>
 </div>
-<p>Configuración estática y dinámica de la tabla de direcciones MAC.
-Diagnóstico de incidencias del conmutador.
-Las tormentas de «broadcast».
-El protocolo Spanning-Tree.</p>
 </section>
+</section>
+<section id="configuracion-estatica-y-dinamica-de-la-tabla-de-direcciones-mac">
+<h2>Configuración estática y dinámica de la tabla de direcciones MAC.<a class="headerlink" href="#configuracion-estatica-y-dinamica-de-la-tabla-de-direcciones-mac" title="Enlazar permanentemente con este título"></a></h2>
+</section>
+<section id="diagnostico-de-incidencias-del-conmutador">
+<h2>Diagnóstico de incidencias del conmutador.<a class="headerlink" href="#diagnostico-de-incidencias-del-conmutador" title="Enlazar permanentemente con este título"></a></h2>
+</section>
+<section id="las-tormentas-de-broadcast">
+<h2>Las tormentas de «broadcast».<a class="headerlink" href="#las-tormentas-de-broadcast" title="Enlazar permanentemente con este título"></a></h2>
+</section>
+<section id="el-protocolo-spanning-tree">
+<h2>El protocolo Spanning-Tree.<a class="headerlink" href="#el-protocolo-spanning-tree" title="Enlazar permanentemente con este título"></a></h2>
 </section>
 </section>
 
@@ -228,6 +238,10 @@ El protocolo Spanning-Tree.</p>
 <li class="toctree-l3"><a class="reference internal" href="#configuracion-de-contrasenas">Configuración de contraseñas</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#configuracion-estatica-y-dinamica-de-la-tabla-de-direcciones-mac">Configuración estática y dinámica de la tabla de direcciones MAC.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#diagnostico-de-incidencias-del-conmutador">Diagnóstico de incidencias del conmutador.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#las-tormentas-de-broadcast">Las tormentas de «broadcast».</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#el-protocolo-spanning-tree">El protocolo Spanning-Tree.</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../t4_routers/apuntes_t4.html">Configuración y administración básica de routers</a></li>

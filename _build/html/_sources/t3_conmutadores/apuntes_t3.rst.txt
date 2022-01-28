@@ -126,6 +126,7 @@ Configuración de contraseñas
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Se puede poner contraseña a un montón de elementos:
+
 * Contraseña al cable de consola.
 * Contraseña de administrador para el modo privilegiado. 
 * Contraseña al telnet.
@@ -160,6 +161,13 @@ Para poner una clave al modo de administrador::
 
 
 Configuración estática y dinámica de la tabla de direcciones MAC.
+------------------------------------------------------------------
+
 Diagnóstico de incidencias del conmutador.
+------------------------------------------------------------------
+
 Las tormentas de "broadcast".
+------------------------------------------------------------------
+
 El protocolo Spanning-Tree.
+------------------------------------------------------------------
