@@ -181,6 +181,49 @@
 </div>
 </section>
 </section>
+<section id="poner-una-ip-de-gestion-a-un-switch">
+<h2>Poner una IP de gestión a un switch<a class="headerlink" href="#poner-una-ip-de-gestion-a-un-switch" title="Enlazar permanentemente con este título"></a></h2>
+<p>Los comandos serían algo como esto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Switch</span><span class="o">&gt;</span><span class="n">enable</span>
+<span class="n">Switch</span><span class="c1">#configure terminal</span>
+<span class="n">Switch</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1">#interface vlan 1</span>
+<span class="n">Switch</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="c1">#ip address 192.168.1.2 255.255.255.0</span>
+<span class="n">Switch</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="c1">#no shutdown</span>
+</pre></div>
+</div>
+<p>Para poner contraseña a Telnet y SSH el procedimiento es bastante parecido:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>enable
+configure terminal
+line vty 0 15
+password clave1234!
+login
+</pre></div>
+</div>
+<p>Para SSH hay que hacer dos cosas:</p>
+<ol class="arabic simple">
+<li><p>Generar las claves del nodo.</p></li>
+<li><p>Configurar el acceso ssh.</p></li>
+</ol>
+<section id="configurar-claves-publicas-de-un-nodo">
+<h3>Configurar claves públicas de un nodo<a class="headerlink" href="#configurar-claves-publicas-de-un-nodo" title="Enlazar permanentemente con este título"></a></h3>
+<p>Los comandos serían estos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ip</span> <span class="n">domain</span><span class="o">-</span><span class="n">name</span> <span class="n">midominio</span><span class="o">.</span><span class="n">com</span>
+<span class="n">crypto</span> <span class="n">key</span> <span class="n">generate</span> <span class="n">rsa</span> <span class="n">general</span><span class="o">-</span><span class="n">keys</span> <span class="n">modulus</span> <span class="mi">2048</span>
+</pre></div>
+</div>
+</section>
+<section id="configurar-el-acceso-ssh">
+<h3>Configurar el acceso SSH<a class="headerlink" href="#configurar-el-acceso-ssh" title="Enlazar permanentemente con este título"></a></h3>
+<p>Una vez dado el paso anterior haríamos esto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">username</span> <span class="n">admin</span><span class="o">-</span><span class="n">ssh</span> <span class="n">secrete</span> <span class="n">clavessh1234</span>
+<span class="n">line</span> <span class="n">vty</span> <span class="mi">0</span> <span class="mi">15</span>
+<span class="n">login</span> <span class="n">local</span>
+<span class="n">transport</span> <span class="nb">input</span> <span class="n">ssh</span>
+<span class="n">exit</span>
+</pre></div>
+</div>
+</section>
+</section>
 <section id="configuracion-estatica-y-dinamica-de-la-tabla-de-direcciones-mac">
 <h2>Configuración estática y dinámica de la tabla de direcciones MAC.<a class="headerlink" href="#configuracion-estatica-y-dinamica-de-la-tabla-de-direcciones-mac" title="Enlazar permanentemente con este título"></a></h2>
 </section>
@@ -236,6 +279,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#modo-privilegiado">Modo privilegiado</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#modo-de-configuracion-global">Modo de configuración global:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configuracion-de-contrasenas">Configuración de contraseñas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#poner-una-ip-de-gestion-a-un-switch">Poner una IP de gestión a un switch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configurar-claves-publicas-de-un-nodo">Configurar claves públicas de un nodo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configurar-el-acceso-ssh">Configurar el acceso SSH</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#configuracion-estatica-y-dinamica-de-la-tabla-de-direcciones-mac">Configuración estática y dinámica de la tabla de direcciones MAC.</a></li>

@@ -155,10 +155,48 @@ Para poner una clave al modo de administrador::
 
    En muchos foros, manuales, tutoriales, vídeos se indica que el comando es "enable password" en lugar de "enable secret". Hace mucho tiempo que eso no es verdad. El comando Cisco fue durante mucho tiempo "enable password" y de hecho **el comando sigue funcionando**. Sin embargo, ``enable password`` guarda las claves en la memoria **SIN CIFRAR**.
 
+Poner una IP de gestión a un switch
+--------------------------------------
+
+Los comandos serían algo como esto::
+
+    Switch>enable
+    Switch#configure terminal    
+    Switch(config)#interface vlan 1
+    Switch(config-if)#ip address 192.168.1.2 255.255.255.0
+    Switch(config-if)#no shutdown
 
 
+Para poner contraseña a Telnet y SSH el procedimiento es bastante parecido::
+
+    enable
+    configure terminal
+    line vty 0 15
+    password clave1234!
+    login
+
+Para SSH hay que hacer dos cosas:
+
+1. Generar las claves del nodo.
+2. Configurar el acceso ssh.
+
+Configurar claves públicas de un nodo
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Los comandos serían estos::
+
+    ip domain-name midominio.com
+    crypto key generate rsa general-keys modulus 2048
 
 
+Configurar el acceso SSH
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Una vez dado el paso anterior haríamos esto::
+
+    username admin-ssh secrete clavessh1234
+    line vty 0 15
+    login local
+    transport input ssh
+    exit
 
 Configuración estática y dinámica de la tabla de direcciones MAC.
 ------------------------------------------------------------------
