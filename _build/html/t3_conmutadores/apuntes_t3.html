@@ -68,6 +68,7 @@
 <ol class="arabic simple">
 <li><p>Cable de red típico. Muchos switches por defecto <strong>traen deshabilitado el acceso por medio de este tipo de cable</strong>.</p></li>
 <li><p>Cable de consola.</p></li>
+<li><p>Cable auxiliar. Cada vez menos utilizado.</p></li>
 </ol>
 </section>
 <section id="protocolos">
@@ -90,8 +91,93 @@
 </pre></div>
 </div>
 <p>Asegúrate de tener la tarjeta de tu máquina virtual en modo puente, arranca Wireshark y despues pide a tu compañero que use tanto Telnet como SSH para conectar con tu máquina. Intenta ver como envía la contraseña.</p>
-<p>Configuración del conmutador.
-Configuración estática y dinámica de la tabla de direcciones MAC.
+</section>
+</section>
+<section id="configuracion-del-conmutador">
+<h2>Configuración del conmutador.<a class="headerlink" href="#configuracion-del-conmutador" title="Enlazar permanentemente con este título"></a></h2>
+<section id="el-sistema-operativo-ios">
+<h3>El sistema operativo IOS<a class="headerlink" href="#el-sistema-operativo-ios" title="Enlazar permanentemente con este título"></a></h3>
+<p>IOS es el S.O de Cisco se maneja fundamentalmente por comandos. Sin embargo, cuando encendemos un switch/router por primera vez, no es posible acceder a ese sistema. Necesitamos proporcionar una configuración inicial. Y para ello, usaremos casi con toda seguridad el cable de consola.</p>
+<p>El cable de consola es un cable propio de Cisco y por un lado usa una conexión propia de Cisco y en el otro extremos puede ser:</p>
+<ul class="simple">
+<li><p>USB (hoy en día lo más probable)</p></li>
+<li><p>RS-232 (aún muy utilizado, pero está cayendo en desuso)</p></li>
+<li><p>RJ-45 (depende del dispositivo)</p></li>
+</ul>
+<p>Para acceder al sistema operativo necesitaremos un ordenador en el que haya algún programa de tipo «Terminal». Este programa enviará los datos directamente al dispositivo (sin direcciones de origen ni de destino ni nada). Es vital saber qué velocidades acepta el dispositivo al que nos conectamos. En el caso Cisco, es casi sin excepción:</p>
+<ul class="simple">
+<li><p>Velocidad: 9600 bits por segundo.</p></li>
+<li><p>Tamaño de los caracteres de datos: 8 bits.</p></li>
+<li><p>Paridad. Es un mecanismo de comprobación de comprobación de errores. Los dispositivos Cisco no usan paridad.</p></li>
+<li><p>Bits de stop. En Cisco se usa 1 bits de stop.</p></li>
+<li><p>Control de flujo/velocidad. No se usará ninguno.</p></li>
+</ul>
+<p>En ocasiones se puede ver algo como 96008N1N. Esto significa «9600 bits/seg», «8 bits de datos», «No paridad», «1 bit de stop» y «No control de flujo».</p>
+<p>Una vez que tenemos acceso al sistema operativo, debemos recordar que IOS es un sistema operativo modal.</p>
+<ol class="arabic simple">
+<li><p>El sistema operativo arranca en modo usuario. En ese modo lo único que se suele poder hacer es «visualizar», pero no «cambiar» ni «configurar». En suma, se usa el comando «show»</p></li>
+<li><p>Para pasar al modo «privilegiado» se usa el comando <code class="docutils literal notranslate"><span class="pre">enable</span></code>. Lo normal es que dicho modo tenga una clave. Para volver al modo usuario podemos usar <code class="docutils literal notranslate"><span class="pre">disable</span></code>.</p></li>
+<li><p>Para pasar al modo «configuración» se usa <code class="docutils literal notranslate"><span class="pre">configure</span> <span class="pre">terminal</span></code> desde el modo privilegiado.</p></li>
+</ol>
+<p>La figura siguiente, tomada de Cisco, muestra los distintos modos:</p>
+<figure class="align-default">
+<img alt="../_images/03-modos-cisco.png" src="../_images/03-modos-cisco.png" />
+</figure>
+</section>
+<section id="el-modo-usuario">
+<h3>El modo usuario<a class="headerlink" href="#el-modo-usuario" title="Enlazar permanentemente con este título"></a></h3>
+<p>En este modo solo se pueden usar unos pocos comandos show. Por ejemplo:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">interfaces</span></code> muestra la información de todos los interfaces.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">interfaces</span> <span class="pre">Fastethernet</span> <span class="pre">0/1</span></code> muestra solo la tarjeta 0/1</p></li>
+</ul>
+</section>
+<section id="modo-privilegiado">
+<h3>Modo privilegiado<a class="headerlink" href="#modo-privilegiado" title="Enlazar permanentemente con este título"></a></h3>
+<p>Comandos muy típicos:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">running-config</span></code> muestra la configuración en RAM.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">startup-config</span></code> muestra la configuración de arranque.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">version</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">copy</span> <span class="pre">running-config</span> <span class="pre">startup-config</span></code>.</p></li>
+</ul>
+</section>
+<section id="modo-de-configuracion-global">
+<h3>Modo de configuración global:<a class="headerlink" href="#modo-de-configuracion-global" title="Enlazar permanentemente con este título"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hostname</span> <span class="pre">&lt;nombre&gt;</span></code></p></li>
+</ul>
+</section>
+<section id="configuracion-de-contrasenas">
+<h3>Configuración de contraseñas<a class="headerlink" href="#configuracion-de-contrasenas" title="Enlazar permanentemente con este título"></a></h3>
+<p>Se puede poner contraseña a un montón de elementos:
+* Contraseña al cable de consola.
+* Contraseña de administrador para el modo privilegiado.
+* Contraseña al telnet.
+* Contraseña SSH.
+* Contraseña al puerto auxiliar.</p>
+<p>Para poner contraseña a la conexión por cable de consola:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Switch</span><span class="o">&gt;</span><span class="n">enable</span>
+<span class="n">Switch</span><span class="c1">#configure terminal</span>
+<span class="n">Switch</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1">#line console 0</span>
+<span class="n">Switch</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="n">line</span><span class="p">)</span><span class="c1">#password sesamo1234</span>
+<span class="n">Switch</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="n">line</span><span class="p">)</span><span class="c1">#login</span>
+</pre></div>
+</div>
+<p>Para poner una clave al modo de administrador:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Switch</span><span class="o">&gt;</span><span class="n">enable</span>
+<span class="n">Switch</span><span class="c1">#configure terminal</span>
+<span class="n">Switch</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1">#enable secret Admin1234!</span>
+<span class="n">Switch</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1">#exit</span>
+<span class="n">Switch</span><span class="c1">#copy running-config startup-config</span>
+<span class="n">Switch</span><span class="c1">#reload</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>En muchos foros, manuales, tutoriales, vídeos se indica que el comando es «enable password» en lugar de «enable secret». Hace mucho tiempo que eso no es verdad. El comando Cisco fue durante mucho tiempo «enable password» y de hecho <strong>el comando sigue funcionando</strong>. Sin embargo, <code class="docutils literal notranslate"><span class="pre">enable</span> <span class="pre">password</span></code> guarda las claves en la memoria <strong>SIN CIFRAR</strong>.</p>
+</div>
+<p>Configuración estática y dinámica de la tabla de direcciones MAC.
 Diagnóstico de incidencias del conmutador.
 Las tormentas de «broadcast».
 El protocolo Spanning-Tree.</p>
@@ -132,6 +218,14 @@ El protocolo Spanning-Tree.</p>
 <li class="toctree-l3"><a class="reference internal" href="#cables">Cables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#protocolos">Protocolos</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#practica-intercepcion-de-contrasenas">Práctica: intercepción de contraseñas.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#configuracion-del-conmutador">Configuración del conmutador.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#el-sistema-operativo-ios">El sistema operativo IOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#el-modo-usuario">El modo usuario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modo-privilegiado">Modo privilegiado</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modo-de-configuracion-global">Modo de configuración global:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuracion-de-contrasenas">Configuración de contraseñas</a></li>
 </ul>
 </li>
 </ul>
