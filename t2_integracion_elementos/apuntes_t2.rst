@@ -1,5 +1,5 @@
-Integración de elementos en una red
-=========================================
+Tema 2:Integración de elementos en una red
+============================================
 
 Los medios físicos.
 ---------------------------------------------------

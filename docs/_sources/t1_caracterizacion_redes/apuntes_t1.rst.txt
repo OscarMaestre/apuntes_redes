@@ -1,5 +1,5 @@
-Caracterización de redes
-==============================
+Tema 1:Caracterización de redes
+==================================
 
 
 Terminología: redes LAN, MAN y WAN, topologías, arquitecturas, protocolos.

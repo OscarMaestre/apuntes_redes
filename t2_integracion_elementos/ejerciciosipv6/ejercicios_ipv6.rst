@@ -1,5 +1,5 @@
 Anexo: Ejercicios sobre compresión de direcciones IPv6
-=============================================================
+--------------------------------------------------------------------
 
 Comprimir las direcciones IPv6 siguientes según las reglas de compresión del protocolo (las soluciones aparecen al final):
 

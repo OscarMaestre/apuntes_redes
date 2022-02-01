@@ -1,6 +1,6 @@
 
 Anexo: ejercicios sobre clasificación de direcciones IPv6
-=============================================================
+-------------------------------------------------------------------
 
 Dadas las siguientes direcciones IPv6 indica de qué tipo son:
 
