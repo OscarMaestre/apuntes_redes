@@ -233,6 +233,7 @@ Hay que recordar que en este comando se debe usar obligatoriamente la VLAN. Si n
 Borrado de una entrada MAC en la tabla del switch
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
 Diagnóstico de incidencias del conmutador.
 ------------------------------------------------------------------
 En general se puede usar el comando ``show`` en el modo administrador para acceder a diversa información de interés. Así, por ejemplo el comando ``show interfaces`` nos muestra **todos los interfaces uno por uno** con estadísticas detalladas de uso, incluyendo errores que haya podido haber. A continuación se muestra un ejemplo de resultado (solo se muestra un interfaz)::
