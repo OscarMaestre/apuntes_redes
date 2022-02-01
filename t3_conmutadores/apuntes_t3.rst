@@ -212,18 +212,34 @@ Una vez dado el paso anterior haríamos esto::
 Configuración estática y dinámica de la tabla de direcciones MAC.
 ------------------------------------------------------------------
 
-Recordatorio de ARP
-~~~~~~~~~~~~~~~~~~~~~~
+Recordatorio de ARP y funcionamiento de switches
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Los ordenadores no envían datos directamente a una dirección IP. Primero averiguan la dirección MAC del destinatario y despues envian los datos a esa MAC.
+
+Para averiguar la MAC los ordenadores hacen preguntas según un protocolo que llamábamos ARP. Esas preguntas implican difusiones y sabemos que las difusiones son malas para el rendimiento.
+
+Para evitar tantas difusiones los switches pueden "aprender". Usan una tabla en RAM llamada "tabla de MACS" para intentar enviar cada paquete solo al destinatario y así ahorrar difusiones.
+
 
 Ver la tabla de MACs
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
+Es posible examinar el estado actual de la tabla de MACS en memoria usando el comando ``show mac-address-table``.
+
+
+
 Borrado de la tabla de MACs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Para borrar la tabla podemos usar el comando ``clear mac-address-table``
 
 Configuración del "timeout" en la tabla de MACs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Técnicamente el nombre es "aging" (envejecimiento) pero es muy frecuente oír simplemente "timeout de una entrada".
+
+Para configurar el "timeout" se debe pasar al modo de configuración global:
+
+
 
 Asignación estática de una MAC a un puerto
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
