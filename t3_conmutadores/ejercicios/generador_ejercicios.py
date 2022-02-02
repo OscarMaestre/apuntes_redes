@@ -22,6 +22,8 @@ class EjercicioConfiguracion(object):
         return self.modo
 
     def anadir_comando(self, comando):
+        # print("Modo actual:"+str(self.modo))
+        # print("Apilando comando:"+comando)
         if self.modo==EjercicioConfiguracion.MODO_USUARIO:
             self.comandos_con_prompt.append( "{0}>{1}".format(self.nombre, comando ) )
         if self.modo==EjercicioConfiguracion.MODO_ADMIN:
@@ -32,31 +34,48 @@ class EjercicioConfiguracion(object):
 
     def enable(self):
         self.anadir_comando("enable")
-        self.texto_modo=""
-        self.modo=EjercicioConfiguracion.MODO_ADMIN
+        self.activar_modo_admin()
 
     def configure_terminal(self):
-        self.enable()
         self.anadir_comando("configure terminal")
-        self.texto_modo="config"
-        self.modo=EjercicioConfiguracion.MODO_CONFIG
+        self.activar_modo_config()
 
     def exit(self):
         self.anadir_comando("exit")
         
     
+    def activar_modo_config(self):
+        self.texto_modo="config"
+        self.modo=EjercicioConfiguracion.MODO_CONFIG
+    
+    def activar_modo_admin(self):
+        self.texto_modo=""
+        self.modo=EjercicioConfiguracion.MODO_ADMIN
+    
+    def activar_modo_usuario(self):
+        self.texto_modo=""
+        self.modo=EjercicioConfiguracion.MODO_USUARIO
+
     def ir_a_modo_usuario(self):
         if self.modo==EjercicioConfiguracion.MODO_ADMIN:
             self.exit()
+            self.activar_modo_usuario()
         if self.modo==EjercicioConfiguracion.MODO_USUARIO:
             return 
         if self.modo==EjercicioConfiguracion.MODO_CONFIG:
             self.exit()
+            self.activar_modo_admin()
             self.exit()
+            self.activar_modo_usuario()
+
         if self.MODO_4==EjercicioConfiguracion.MODO_4:
             self.exit()
+            self.activar_modo_config()
             self.exit()
+            self.activar_modo_admin()
             self.exit()
+            self.activar_modo_usuario()
+
     def ir_a_modo_admin(self):
         if self.modo==EjercicioConfiguracion.MODO_ADMIN:
             return
@@ -64,11 +83,13 @@ class EjercicioConfiguracion(object):
             self.enable()
         if self.modo==EjercicioConfiguracion.MODO_CONFIG:
             self.exit()
+            self.activar_modo_admin()
         if self.modo==EjercicioConfiguracion.MODO_4:
             self.exit()
+            self.activar_modo_config()
             self.exit()
+            self.activar_modo_admin()
             
-        self.modo=EjercicioConfiguracion.MODO_ADMIN
 
     def ir_a_modo_config(self):
         
@@ -81,10 +102,10 @@ class EjercicioConfiguracion(object):
             self.configure_terminal()
         if self.modo==EjercicioConfiguracion.MODO_4:
             self.exit()
-        self.texto_modo="config"
-        self.modo=EjercicioConfiguracion.MODO_CONFIG
+        self.activar_modo_config()
 
     def ir_a_modo_4(self, comando, texto):
+        print("Yendo a modo 4 desde modo:"+str(self.modo))
         if self.modo==EjercicioConfiguracion.MODO_CONFIG:
             pass
         if self.modo==EjercicioConfiguracion.MODO_ADMIN:
@@ -118,7 +139,6 @@ class EjercicioConfiguracion(object):
         return "\n".join(self.comandos_sin_prompt)
 
     def poner_clave_consola_sin_login(self, clave):
-        self.ir_a_modo_config()
         self.ir_a_modo_4("line console 0", "config-line")
         self.anadir_comando("password " + clave)
     
@@ -126,8 +146,6 @@ class EjercicioConfiguracion(object):
         self.anadir_comando("login")
 
     def poner_clave_consola_con_login(self, clave):
-        print("Poniendo clave consola")
-        print("Yendo a modo config desde modo actual:"+str(self.modo))
         self.ir_a_modo_config()
         self.ir_a_modo_4("line console 0", "config-line")
         self.anadir_comando("password " + clave)
@@ -138,17 +156,34 @@ class EjercicioConfiguracion(object):
         self.anadir_comando("enable secret "+clave)
 
     def poner_clave_telnet(self, clave):
+        self.ir_a_modo_config()
         self.ir_a_modo_4("line vty 0 15", "config-line")
         self.anadir_comando("password "+clave)
         self.login()
 
 
     def poner_ip_gestion(self, ip, mascara):
-        self.ir_a_modo_config()
+        print("Modo actual en IP:"+str(self.modo))
         self.ir_a_modo_4("interface vlan 1", "config-if")
         
         self.anadir_comando("ip address "+ ip + " " + mascara)
         self.anadir_comando("no shutdown")
+
+    def generar_claves_publicas(self, dominio, longitud_clave):
+        self.ir_a_modo_config()
+        self.anadir_comando("ip domain-name "+dominio)
+        self.anadir_comando("crypto key generate rsa general-keys modulus "+str(longitud_clave))
+
+    def configurar_usuario_ssh(self, usuario, clave):
+        self.ir_a_modo_config()
+        self.anadir_comando(
+            "username {0} secret {1}".format(usuario, clave)
+        )
+        self.ir_a_modo_4("line vty 0 15", "line")
+        self.anadir_comando("login local")
+        self.anadir_comando("transport input ssh")
+
+    
 
 
 generador=GeneradorIPV4Azar(num_ejercicio=1)
@@ -156,8 +191,16 @@ direccion=generador.generar()
 print(generador.convertir_a_decimal(direccion))
 #print(dir(generador.direccion))
 e=EjercicioConfiguracion()
-e.poner_ip_gestion("192.168.1.10", "255.255.255.0")
+#e.poner_ip_gestion("192.168.1.10", "255.255.255.0")
 e.poner_clave_admin("claveadmin1234")
 e.hostname("Switch-aula-b09")
 e.poner_clave_consola_con_login("consola1234")
-print(e.get_comandos_con_prompt())
+e.copy_running_startup()
+
+#print("Poniendo ip de gestion")
+e.poner_ip_gestion("172.16.0.1",  "255.255.0.0")
+e.poner_clave_telnet("telnet1234")
+e.generar_claves_publicas("empresa.com", 2048)
+e.configurar_usuario_ssh("adminssh", "ssh1234")
+#print(e.get_comandos_con_prompt())
+print(e.get_comandos_sin_prompt())
