@@ -233,6 +233,7 @@ Borrado de la tabla de MACs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Para borrar la tabla podemos usar el comando ``clear mac-address-table``
 
+
 Configuración del "timeout" en la tabla de MACs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Técnicamente el nombre es "aging" (envejecimiento) pero es muy frecuente oír simplemente "timeout de una entrada".
@@ -243,7 +244,9 @@ Para configurar el "timeout" se debe pasar al modo de configuración global:
 
 Asignación estática de una MAC a un puerto
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Hay que recordar que en este comando se debe usar obligatoriamente la VLAN. Si no hemos creado ninguna se usa la VLAN por defecto que es la 1.
+Hay que recordar que en este comando se debe usar obligatoriamente la VLAN. Si no hemos creado ninguna se usa la VLAN por defecto que es la 1. Si por ejemplo queremos indicar que una cierta MAC va enganchada a un cierto puerto podemos usar::
+
+    mac address-table static 00aa.1122.ccdd vlan 1 interface fastethernet 0/3
 
 
 Borrado de una entrada MAC en la tabla del switch
