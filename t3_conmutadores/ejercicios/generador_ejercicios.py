@@ -22,9 +22,11 @@ class EjercicioConfiguracion(object):
         return self.modo
 
     def anadir_comando(self, comando):
-        if self.modo<=EjercicioConfiguracion.MODO_USUARIO:
+        if self.modo==EjercicioConfiguracion.MODO_USUARIO:
             self.comandos_con_prompt.append( "{0}>{1}".format(self.nombre, comando ) )
-        else:
+        if self.modo==EjercicioConfiguracion.MODO_ADMIN:
+            self.comandos_con_prompt.append( "{0}#{1}".format(self.nombre, comando ) )
+        if self.modo>EjercicioConfiguracion.MODO_ADMIN:
             self.comandos_con_prompt.append( "{0}({2})#{1}".format(self.nombre, comando, self.texto_modo ) )
         self.comandos_sin_prompt.append( "{0}".format( comando ) )
 
@@ -34,6 +36,7 @@ class EjercicioConfiguracion(object):
         self.modo=EjercicioConfiguracion.MODO_ADMIN
 
     def configure_terminal(self):
+        self.enable()
         self.anadir_comando("configure terminal")
         self.texto_modo="config"
         self.modo=EjercicioConfiguracion.MODO_CONFIG
@@ -41,39 +44,70 @@ class EjercicioConfiguracion(object):
     def exit(self):
         self.anadir_comando("exit")
         
+    
+    def ir_a_modo_usuario(self):
+        if self.modo==EjercicioConfiguracion.MODO_ADMIN:
+            self.exit()
+        if self.modo==EjercicioConfiguracion.MODO_USUARIO:
+            return 
+        if self.modo==EjercicioConfiguracion.MODO_CONFIG:
+            self.exit()
+            self.exit()
+        if self.MODO_4==EjercicioConfiguracion.MODO_4:
+            self.exit()
+            self.exit()
+            self.exit()
     def ir_a_modo_admin(self):
         if self.modo==EjercicioConfiguracion.MODO_ADMIN:
             return
         if self.modo==EjercicioConfiguracion.MODO_USUARIO:
             self.enable()
-        if self.MODO_CONFIG==EjercicioConfiguracion.MODO_CONFIG:
+        if self.modo==EjercicioConfiguracion.MODO_CONFIG:
             self.exit()
-        if self.MODO_4==EjercicioConfiguracion.MODO_4:
+        if self.modo==EjercicioConfiguracion.MODO_4:
             self.exit()
             self.exit()
+            
+        self.modo=EjercicioConfiguracion.MODO_ADMIN
 
     def ir_a_modo_config(self):
-        if self.MODO_CONFIG==EjercicioConfiguracion.MODO_CONFIG:
+        
+        if self.modo==EjercicioConfiguracion.MODO_CONFIG:
             return 
         if self.modo==EjercicioConfiguracion.MODO_ADMIN:
             self.configure_terminal()
         if self.modo==EjercicioConfiguracion.MODO_USUARIO:
             self.enable()
             self.configure_terminal()
-        if self.MODO_4==EjercicioConfiguracion.MODO_4:
+        if self.modo==EjercicioConfiguracion.MODO_4:
             self.exit()
+        self.texto_modo="config"
+        self.modo=EjercicioConfiguracion.MODO_CONFIG
 
     def ir_a_modo_4(self, comando, texto):
-        self.configure_terminal()
+        if self.modo==EjercicioConfiguracion.MODO_CONFIG:
+            pass
+        if self.modo==EjercicioConfiguracion.MODO_ADMIN:
+            self.configure_terminal()
+        if self.modo==EjercicioConfiguracion.MODO_USUARIO:
+            self.enable()
+            self.configure_terminal()
+        if self.modo==EjercicioConfiguracion.MODO_4:
+            pass
+        
+        
         self.anadir_comando(comando)
         self.texto_modo=texto
+        self.modo=EjercicioConfiguracion.MODO_4
 
     def copy_running_startup(self):
         self.ir_a_modo_admin()
         self.anadir_comando("copy running-config startup-config")
 
     def hostname(self, nuevo_nombre):
+        
         self.ir_a_modo_config()
+        print("Nuevo modo:"+str(self.modo))
         self.anadir_comando("hostname " + nuevo_nombre)
         self.nombre=nuevo_nombre
         
@@ -92,6 +126,8 @@ class EjercicioConfiguracion(object):
         self.anadir_comando("login")
 
     def poner_clave_consola_con_login(self, clave):
+        print("Poniendo clave consola")
+        print("Yendo a modo config desde modo actual:"+str(self.modo))
         self.ir_a_modo_config()
         self.ir_a_modo_4("line console 0", "config-line")
         self.anadir_comando("password " + clave)
@@ -122,4 +158,6 @@ print(generador.convertir_a_decimal(direccion))
 e=EjercicioConfiguracion()
 e.poner_ip_gestion("192.168.1.10", "255.255.255.0")
 e.poner_clave_admin("claveadmin1234")
+e.hostname("Switch-aula-b09")
+e.poner_clave_consola_con_login("consola1234")
 print(e.get_comandos_con_prompt())
