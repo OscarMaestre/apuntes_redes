@@ -163,7 +163,6 @@ class EjercicioConfiguracion(object):
 
 
     def poner_ip_gestion(self, ip, mascara):
-        print("Modo actual en IP:"+str(self.modo))
         self.ir_a_modo_4("interface vlan 1", "config-if")
         
         self.anadir_comando("ip address "+ ip + " " + mascara)
@@ -183,6 +182,19 @@ class EjercicioConfiguracion(object):
         self.anadir_comando("login local")
         self.anadir_comando("transport input ssh")
 
+    def cambiar_timeout_arp(self, segundos):
+        self.ir_a_modo_4("interface vlan 1", "config-if")
+        self.anadir_comando("arp timeout "+str(segundos))
+        self.anadir_comando("no shutdown")
+
+    def anadir_mac_puerto(self, mac, num_puerto):
+        self.ir_a_modo_config()
+        comando="mac address-table static {0} vlan 1 interface fastEthernet 0/{1}"
+        self.anadir_comando( comando.format(mac, str(num_puerto)) )
+
+    def ver_tabla_macs(self):
+        self.ir_a_modo_admin()
+        self.anadir_comando("show mac-address-table")
     
 
 

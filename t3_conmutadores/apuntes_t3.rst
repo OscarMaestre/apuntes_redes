@@ -238,7 +238,13 @@ Configuración del "timeout" en la tabla de MACs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Técnicamente el nombre es "aging" (envejecimiento) pero es muy frecuente oír simplemente "timeout de una entrada".
 
-Para configurar el "timeout" se debe pasar al modo de configuración global:
+Para configurar el "timeout" se debe pasar al modo de configuración global y despues entrar en la VLAN para la que queramos cambiar el tiempo. Por ahora no hablaremos de VLAN y usaremos la VLAN por defecto en todos los casos, que es la VLAN 1. Así, por ejemplo, para cambiar el tiempo que mantenemos algo en la caché ARP a 60 segundos usaremos esto::
+
+    enable
+    configure terminal
+    interface vlan 1
+    arp timeout 60
+    no shutdown
 
 
 
@@ -251,6 +257,9 @@ Hay que recordar que en este comando se debe usar obligatoriamente la VLAN. Si n
 
 Borrado de una entrada MAC en la tabla del switch
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Es tan sencillo como "negar" el comando anterior. Es decir, tecleamos lo mismo pero poniendo delante un ``no``::
+
+    no mac address-table static 00aa.1122.ccdd vlan 1 interface fastethernet 0/3
 
 
 Diagnóstico de incidencias del conmutador.
@@ -289,6 +298,18 @@ En general se puede usar el comando ``show`` en el modo administrador para acced
 
 Las tormentas de "broadcast".
 ------------------------------------------------------------------
+Las tormentas de paquetes ocurren cuando se dan estas dos condiciones:
+
+1. Se ha formado un ciclo al intentar interconectar salas.
+2. Usamos switches de gama baja o si los hemos puesto de gama alta tienen desactivado STP (explicaremos lo que es un poco más abajo)
+
+Observemos la figura siguiente:
+
+.. figure:: 04-tormenta-broadcast.png
+
+
+Supongamos que está todo recién encendido y un equipo intenta enviar un simple ``ping`` a otro. Ese ``ping`` tendrá que hacer una difusión ARP
+
 
 El protocolo Spanning-Tree.
 ------------------------------------------------------------------
