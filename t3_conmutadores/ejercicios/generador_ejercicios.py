@@ -1,9 +1,10 @@
 #!/usr/bin/python3
  
+from errno import ENETUNREACH
 from matplotlib.pyplot import cla
 from utilidades.ip.ipv4 import GeneradorIPV4Azar
 from string import Template
-from random import choice, shuffle, seed
+from random import choice, shuffle, seed, randint
 
 class EjercicioConfiguracion(object):
     #Estado del switch o router
@@ -135,6 +136,12 @@ class EjercicioConfiguracion(object):
         
     def get_comandos_con_prompt(self):
         return "\n".join(self.comandos_con_prompt)
+
+
+    def cambiar_prioridad_stp(self, prioridad):
+        self.ir_a_modo_config()
+        plantilla="spanning tree vlan 1 priority {0}"
+        self.anadir_comando(plantilla.format(str(prioridad)))
 
     def get_comandos_sin_prompt(self):
         return "\n".join(self.comandos_sin_prompt)
@@ -343,6 +350,13 @@ class GeneradorEjercicioSwitches(object):
         self.enunciados.append("Guardar la configuración hasta este momento.")
         self.ejercicio.copy_running_startup()
 
+    def cambiar_prioridad_stp(self):
+        prioridad_azar=randint(2, 12)
+        nueva_prioridad=prioridad_azar * 4096
+        plantilla="Cambiar la prioridad STP a {0}"
+        self.enunciados.append(plantilla.format(nueva_prioridad))
+        self.ejercicio.cambiar_prioridad_stp(nueva_prioridad)
+
     def generar_ejercicio(self, longitud):
         metodos=[
             self.poner_clave_admin,         self.poner_clave_telnet,
@@ -351,7 +365,7 @@ class GeneradorEjercicioSwitches(object):
             #No tiene mucho sentido poner este
             #self.poner_clave_consola_azar_sin_login
             self.anadir_clave_mac_azar,     self.cambiar_timeout,
-            self.mostrar_la_tabla_de_macs
+            self.mostrar_la_tabla_de_macs,  self.cambiar_prioridad_stp
         ]
         shuffle(metodos)
         for i in range(0, longitud):
