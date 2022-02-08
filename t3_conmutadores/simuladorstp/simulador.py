@@ -1,5 +1,30 @@
 #!/usr/bin/python3 
 
+class Evento(object):
+    def __init__(self) -> None:
+        self.eventos=[]
+    def anadir_evento(self, evento):
+        self.eventos.append(evento)
+    def __str__(self) -> str:
+        return ".".join(self.eventos)
+
+class ListaEventos(object):
+    def __init__(self) -> None:
+        self.lista=[]
+        self.evento_actual=Evento()
+        self.lista.append(self.evento_actual)
+    def anadir_mensaje(self, mensaje):
+        self.evento_actual.anadir_evento(mensaje)
+    def anadir_evento(self):
+        self.evento_actual=Evento()
+        self.lista.append(self.evento_actual)
+    def anadir_evento_con_mensaje(self, mensaje):
+        self.evento_actual=Evento()
+        self.evento_actual.anadir_evento(mensaje)
+        self.lista.append(self.evento_actual)
+    
+
+
 class BPDU(object):
     def __init__(self, raiz, coste, yo, mac) -> None:
         self.raiz=raiz
@@ -7,9 +32,10 @@ class BPDU(object):
         self.yo=yo
         self.mac=mac
     def __str__(self) -> str:
-        textos=map(str, [self.raiz, self.coste, self.yo, self.mac])
-        mensaje=",".join(textos)
-        return "("+mensaje+")"
+        textos=list(map(str, [self.raiz, self.coste, self.yo, self.mac]))
+        plantilla_mensaje="(Raíz:{0}, Coste:{1}, ID:{2}, MAC:{3})"
+        mensaje=plantilla_mensaje.format(textos[0], textos[1], textos[2], textos[3])
+        return mensaje
     def recalcular(self, bpdu):
         if bpdu.raiz<self.raiz:
             nueva_bpdu=BPDU(bpdu.raiz, bpdu.coste+1, self.yo, self.mac)
@@ -33,6 +59,7 @@ class Puerto(object):
         self.switch=None
         self.puerto_asociado=None
         self.estado=Puerto.ESTADO_APRENDIENDO
+        
     def poner_raiz(self):
         self.estado=Puerto.ESTADO_RAIZ
     def poner_designado(self):
@@ -60,12 +87,18 @@ class Puerto(object):
         return self.mac
 
 class Switch(object):
-    def __init__(self, identificador, lista_puertos) -> None:
+    def __init__(self, identificador, lista_puertos, lista_eventos) -> None:
         self.identificador_yo=identificador
         self.coste=0
         self.identificador_raiz=identificador
         self.puertos=lista_puertos
-    
+        self.lista_eventos=lista_eventos
+        self.evento_actual=None
+
+    def anadir_nuevo_evento(self, msg_evento):
+        self.evento_actual=Evento()
+        self.evento_actual.anadir_evento(msg_evento)
+
     def ha_terminado(self):
         for puerto in self.puertos:
             if puerto.estado==Puerto.ESTADO_APRENDIENDO:
@@ -140,10 +173,26 @@ class Switch(object):
         #Examinamos lo que se envió y lo que se ha recibido
         bpdu_enviada=puerto.buffer_envio
         bpdu_recibida=puerto.buffer_recepcion
-        if bpdu_recibida.raiz<self.identificador_raiz:
+        plantilla_mensaje="Switch {0} recibe por el puerto {1} la BPDU {2}"
+        mensaje=plantilla_mensaje.format(self.identificador_yo, puerto.mac, bpdu_recibida)
+        self.lista_eventos.anadir_mensaje(mensaje)
+        
+
+        la_recibida_es_mejor=bpdu_recibida.raiz<self.identificador_raiz
+        la_recibida_tiene_la_misma_prioridad=bpdu_recibida==self.identificador_raiz
+        la_recibida_tiene_mejor_mac=(bpdu_recibida.mac<puerto.mac)
+        hay_nueva_raiz=la_recibida_es_mejor or (la_recibida_tiene_la_misma_prioridad and la_recibida_tiene_mejor_mac)
+        if hay_nueva_raiz:
+            plantilla_mensaje="El switch {0} envió la BPDU {1} y recibió {2}, que es una raíz mejor, así que apunta que la nueva raíz es {3}"
+            mensaje=plantilla_mensaje.format(self.identificador_yo, 
+                    str(bpdu_enviada), str(bpdu_recibida), str(bpdu_recibida.raiz))
+            
+            self.lista_eventos.anadir_mensaje(mensaje)
             print(str(self.identificador_yo)+" recibe una raiz mejor, la "+str(bpdu_recibida.raiz))
             self.identificador_raiz=bpdu_recibida.raiz
             self.coste=bpdu_recibida.coste+1
+        #Fin del if
+        
 
     def get_lista_bids_recibidas(self):
         #Recuperamos todos los BID que hay en los puertos
@@ -171,7 +220,10 @@ class Switch(object):
         bids_recibidas=self.get_lista_bids_recibidas()
         if not self.todas_bids_iguales(bids_recibidas):
             return (-1, False)
-        return (bids_recibidas[0], True)
+        raiz=str(bids_recibidas[0])
+        mensaje="En este punto hay convergencia. Todos los switches coinciden en que la raíz es el "+raiz
+        self.lista_eventos.anadir_mensaje(mensaje)
+        return (raiz, True)
 
 
     def es_raiz(self):
@@ -189,7 +241,11 @@ class Switch(object):
         bpdu=BPDU(self.identificador_raiz, self.coste, self.identificador_yo, puerto.mac)
         id_switch=str(self.identificador_yo)
         #print(id_switch+" enviando por puerto "+puerto.mac)
-        print(bpdu)
+        #print(bpdu)
+        plantilla_mensaje="Switch {0} envía por el puerto {1} la BPDU {2}"
+        mensaje=plantilla_mensaje.format(self.identificador_yo, puerto.mac, bpdu)
+        self.lista_eventos.anadir_evento_con_mensaje(mensaje)
+        
         puerto.enviar(bpdu)
 
 
@@ -201,11 +257,11 @@ class Iteracion(object):
         self.switch.enviar_bpdu(self.puerto)
 
 class Red(object):
-    def __init__(self, switches, puertos, iteraciones) -> None:
+    def __init__(self, switches, puertos, iteraciones, lista_eventos) -> None:
         self.switches=switches
         self.puertos=puertos
         self.iteraciones=iteraciones
-
+        self.lista_eventos=lista_eventos
     def hacer_envios(self):
         for i in self.iteraciones:
             i.ejecutar()
@@ -213,6 +269,7 @@ class Red(object):
     def evaluar_switches(self):
         for s in self.switches:
             for p in s.puertos:
+                self.lista_eventos.anadir_evento()
                 s.reevaluar_raiz(p)
 
             # id_switch=s.identificador_yo
@@ -220,14 +277,23 @@ class Red(object):
             #     print(str(id_switch) + " tiene un acuerdo.")
             #     print()
 
+
     def evaluar_estado_raiz_en_switches(self):
         for s in self.switches:
             (raiz, hay_acuerdo)=s.hay_acuerdo_sobre_la_raiz()
             if hay_acuerdo:
+                
                 print("Hay acuerdo")
                 id_switch=str(s.identificador_yo)
                 print(id_switch + " asume que la raiz es:"+str(raiz))
-                s.establecer_puertos()
+                self.establecer_puertos_en_switches()
+                return 
+                
+
+
+    def establecer_puertos_en_switches(self):
+        for s in self.switches:
+            s.establecer_puertos()
     
 
 
@@ -237,21 +303,22 @@ def asociar_puertos(puerto1, puerto2):
 
 
 
+lista_eventos=ListaEventos()
 puerto_01=Puerto("01")
 puerto_02=Puerto("02")
-Switch1=Switch(1, [puerto_01, puerto_02])
+Switch1=Switch(1, [puerto_01, puerto_02], lista_eventos)
 
 puerto_03=Puerto("03")
 puerto_04=Puerto("04")
-Switch2=Switch(2, [puerto_03, puerto_04])
+Switch2=Switch(2, [puerto_03, puerto_04], lista_eventos)
 
 puerto_05=Puerto("05")
 puerto_06=Puerto("06")
-Switch3=Switch(3, [puerto_05, puerto_06])
+Switch3=Switch(3, [puerto_05, puerto_06], lista_eventos)
 
 puerto_07=Puerto("07")
 puerto_08=Puerto("08")
-Switch4=Switch(4, [puerto_07, puerto_08])
+Switch4=Switch(4, [puerto_07, puerto_08], lista_eventos)
 
 
 asociar_puertos(puerto_01, puerto_08)
@@ -276,7 +343,7 @@ switches=[Switch1, Switch2, Switch3, Switch4]
 puertos=[puerto_01, puerto_02, puerto_03, puerto_04,
          puerto_05, puerto_06, puerto_07, puerto_08]
 
-red=Red(switches, puertos, iteraciones)
+red=Red(switches, puertos, iteraciones, lista_eventos)
 red.hacer_envios()
 red.evaluar_switches()
 red.evaluar_estado_raiz_en_switches()
@@ -285,6 +352,8 @@ red.hacer_envios()
 red.evaluar_switches()
 red.evaluar_estado_raiz_en_switches()
 
+for e in lista_eventos.lista:
+    print(e)
 
 # red.hacer_envios()
 # red.evaluar_switches()
