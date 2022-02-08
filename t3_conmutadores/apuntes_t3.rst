@@ -313,3 +313,21 @@ Supongamos que está todo recién encendido y un equipo intenta enviar un simple
 
 El protocolo Spanning-Tree.
 ------------------------------------------------------------------
+
+Spanning-Tree es un mecanismo que permite a los switches **detectar automáticamente los ciclos y bloquear puertos para evitar las tormentas de broadcast**. En concreto Spanning-Tree funciona mediante un proceso en el que los switches eligen un dispositivo raíz y a partir de él todos los switches irán cambiando sus nodos a uno de tres estados:
+
+* Puerto raíz: es un puerto que indica que es el mejor camino para llegar a la raíz.
+* Puerto designado: es un puerto no raíz que es el mejor del segmento para llegar a la raíz.
+* Puerto bloqueado: en un segmento es un puerto que no se usa.
+
+El proceso converge automáticamente en poco tiempo y resuelve el problema de los ciclos de red. Sin embargo, si la solución que alcanza el proceso no nos gusta, se puede modificar la prioridad de un switch para que tenga una mejor (con un número más bajo) y mejorar su probabilidad de que salga elegido como ganador o al menos que no se le bloqueen muchos puertos. Los comandos necesarios son::
+
+    enable
+    configure terminal
+    spanning-tree vlan 1 priority <numero>
+
+Si queremos ver el estado actual de STP podemos ejecutar este comando en modo administrador::
+    
+    Switch1#show spanning-tree
+    Switch1#show spanning-tree details
+    
