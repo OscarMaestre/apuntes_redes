@@ -314,7 +314,15 @@ Supongamos que está todo recién encendido y un equipo intenta enviar un simple
 El protocolo Spanning-Tree.
 ------------------------------------------------------------------
 
-Spanning-Tree es un mecanismo que permite a los switches **detectar automáticamente los ciclos y bloquear puertos para evitar las tormentas de broadcast**. En concreto Spanning-Tree funciona mediante un proceso en el que los switches eligen un dispositivo raíz y a partir de él todos los switches irán cambiando sus nodos a uno de tres estados:
+Spanning-Tree es un mecanismo que permite a los switches **detectar automáticamente los ciclos y bloquear puertos para evitar las tormentas de broadcast**. 
+
+Para ello debe hacer dos cosas:
+
+1. Elegir un switch al que llamará "switch raíz" y en el que se fijarán todos los switches para tomar decisiones despues. El switch raíz será **aquel que tenga la prioridad más pequeña**. Si hay dos o más switch con la prioridad igual se elige **aquel que tenga la MAC más pequeña**. Por ejemplo la mac 0C-DD va antes que la A2-4F.
+
+2. Tomar decisiones sobre el estado en que quedarán los puertos. El algoritmo bloqueará puertos de manera que en la topología final no haya bucles.
+
+En concreto Spanning-Tree elige a la raíz  proceso en el que los switches empiezan eligiéndose a sí mismos como raíz y comunicando lo que saben por todos los puertos. Cuando un switch ve a otro que tiene una prioridad mejor deja de proclamarse a sí mismo como raíz y anunciará la nueva raíz en pasos siguientes.
 
 * Puerto raíz: es un puerto que indica que es el mejor camino para llegar a la raíz.
 * Puerto designado: es un puerto no raíz que es el mejor del segmento para llegar a la raíz.
@@ -331,3 +339,22 @@ Si queremos ver el estado actual de STP podemos ejecutar este comando en modo ad
     Switch1#show spanning-tree
     Switch1#show spanning-tree details
     
+
+¿Como se decide sobre el estado de los puertos?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Cuando un switch analiza un puerto tiene que decidir sobre si poner un puerto en "raíz", "designado" o "bloqueado". En general, la clave para tomar esta decisión está en varias cosas:
+
+1. El coste en el que incurre ese switch para llegar al switch raíz.
+2. El identificador del switch. Recordemos que está formado por la prioridad y la MAC, aunque en estos apuntes y los ejercicios la prioridad se ha "trucado" para que sea un número simple de entender.
+3. La MAC del puerto en concreto.
+
+Así, el proceso es más o menos este:
+
+*  El switch raíz pone todos sus puertos a **designado**. Es lógico, el switch raíz es el mejor y sus puertos son siempre los mejores de cualquier segmento.
+
+* El resto tienen que ir puerto por puerto examinando lo que han enviado y lo que han recibido. Este proceso es a su vez más complicado y lo desglosamos aparte.
+
+1. Si un puerto tiene un coste mejor que el otro puerto del segmento se pone a "designado".
+2. Si un puerto tiene igual coste que el otro puerto del segmento se examinan las prioridades y se elige el puerto que lleve al switch con la mejor prioridad.
+3. Los puertos que queden son puertos que se ponen a "bloqueado". Han perdido frente a sus competidores, ya sea por coste o por MAC.
