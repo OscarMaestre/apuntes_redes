@@ -1,4 +1,6 @@
 #!/usr/bin/python3 
+from random import randint, shuffle
+
 
 class Evento(object):
     def __init__(self) -> None:
@@ -93,11 +95,9 @@ class Switch(object):
         self.identificador_raiz=identificador
         self.puertos=lista_puertos
         self.lista_eventos=lista_eventos
+        self.lista_decisiones=[]
         self.evento_actual=None
 
-    def anadir_nuevo_evento(self, msg_evento):
-        self.evento_actual=Evento()
-        self.evento_actual.anadir_evento(msg_evento)
 
     def ha_terminado(self):
         for puerto in self.puertos:
@@ -110,10 +110,10 @@ class Switch(object):
     def evaluar_coste(self, puerto):
         coste_puerto=puerto.get_coste_enviado()
         coste_asociado=puerto.get_coste_recibido()
-        informe_envio="El puerto {0} envio un coste de {1}"
-        informe_recep="El puerto {0} recib un coste de {1}"
-        print(informe_envio.format(puerto, coste_puerto))
-        print(informe_recep.format(puerto, coste_asociado))
+        # informe_envio="El puerto {0} envio un coste de {1}"
+        # informe_recep="El puerto {0} recib un coste de {1}"
+        # print(informe_envio.format(puerto, coste_puerto))
+        # print(informe_recep.format(puerto, coste_asociado))
         if coste_puerto>coste_asociado:
             return Puerto.COSTE_MAYOR
         if coste_puerto==coste_asociado:
@@ -124,7 +124,10 @@ class Switch(object):
 
     def establecer_puertos(self):
         if self.identificador_raiz==self.identificador_yo:
-            print(str(self.identificador_raiz) + " es raiz y pone todos sus puertos a designado")
+            self.lista_decisiones.append(
+                str(self.identificador_raiz) + 
+                " es raiz y pone todos sus puertos a designado."
+            )
             for p in self.puertos:
                 p.poner_designado()
             return
@@ -143,27 +146,61 @@ class Switch(object):
             #Caso 1 ¿el coste de este puerto es el mejor del segmento?
             if coste==Puerto.COSTE_MENOR:
                 #Si es asi, este puerto es el designado
-                print("Designado..."+str(p))
+                plantilla="El puerto con la MAC {0} se convierte en designado. "
+                plantilla+="Es el mejor del segmento con un coste de {1} frente "
+                plantilla+="un coste de {1} que ofrece el puerto {2}."
+                mensaje=plantilla.format(
+                    p, p.get_coste_enviado(), p.get_coste_recibido, 
+                    p.get_puerto_asociado()
+                )
+                self.lista_decisiones.append(mensaje)
+                #print("Designado..."+str(p))
                 p.poner_designado()
                 #Pasamos al siguiente puerto
                 continue
             #Caso 3 ¿El coste de este puerto es el peor?
             if coste==Puerto.COSTE_MENOR:
-                print("Bloqueado..."+str(p))
+                plantilla="El puerto con la MAC {0} se bloquea. "
+                plantilla+="Es el peor del segmento con un coste de {1} frente "
+                plantilla+="un coste de {1} que ofrece el puerto {2}."
+                mensaje=plantilla.format(
+                    p, p.get_coste_enviado(), p.get_coste_recibido(), 
+                    p.get_puerto_asociado()
+                )
+                self.lista_decisiones.append(mensaje)
+                #print("Bloqueado..."+str(p))
                 p.poner_bloqueado()
             #Caso 2 ¿El coste de este puerto es el mismo que
             #el otro puerto del segmento=
             if coste==Puerto.COSTE_IGUAL:
-                print("Empate en coste")
+                #print("Empate en coste")
                 #Pues si es así, entonces hay que desempatar
                 #y mirar las macs
                 mac_nuestra=p.mac
                 mac_otro   =p.get_puerto_asociado().mac
                 if mac_nuestra<mac_otro:
-                    print("Designado..."+str(p))
+                    plantilla="El puerto con la MAC {0} se convierte en designado. "
+                    plantilla+="Hay un empate en coste (que es {1}) pero su mac ({2}) es"
+                    plantilla+=" menor que la del otro puerto ({3}) "
+                    
+                    mensaje=plantilla.format(
+                        p, p.get_coste_enviado(), p.mac,
+                        p.get_puerto_asociado()
+                    )
+                    self.lista_decisiones.append(mensaje)
+                    
                     p.poner_designado()
                 else:
-                    print("Bloqueado..."+str(p))
+                    plantilla="El puerto con la MAC {0} se bloquea. "
+                    plantilla+="Hay un empate en coste (que es {1}) pero su mac ({2}) es"
+                    plantilla+=" mayor que la del otro puerto ({3}) "
+                    
+                    mensaje=plantilla.format(
+                        p, p.get_coste_enviado(), p.mac,
+                        p.get_puerto_asociado()
+                    )
+                    self.lista_decisiones.append(mensaje)
+                    
                     p.poner_bloqueado()
 
 
@@ -188,7 +225,7 @@ class Switch(object):
                     str(bpdu_enviada), str(bpdu_recibida), str(bpdu_recibida.raiz))
             
             self.lista_eventos.anadir_mensaje(mensaje)
-            print(str(self.identificador_yo)+" recibe una raiz mejor, la "+str(bpdu_recibida.raiz))
+            
             self.identificador_raiz=bpdu_recibida.raiz
             self.coste=bpdu_recibida.coste+1
         #Fin del if
@@ -282,78 +319,108 @@ class Red(object):
         for s in self.switches:
             (raiz, hay_acuerdo)=s.hay_acuerdo_sobre_la_raiz()
             if hay_acuerdo:
-                
-                print("Hay acuerdo")
                 id_switch=str(s.identificador_yo)
-                print(id_switch + " asume que la raiz es:"+str(raiz))
                 self.establecer_puertos_en_switches()
                 return 
                 
 
+    def get_lista_decisiones(self):
+        lista=[]
+        for s in self. switches:
+            lista.append(s.lista_decisiones)
+        return lista
 
     def establecer_puertos_en_switches(self):
         for s in self.switches:
             s.establecer_puertos()
     
+class ConstructorRedes(object):
+    def __init__(self) -> None:
+        pass
+
+    def get_red(self):
+        pass
+    def generar_macs_azar(self, num_macs):
+        simbolos=["0","1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        macs=[]
+        for s1 in simbolos:
+            for s2 in simbolos:
+                macs.append(s1+s2)
+        shuffle(macs)
+        return macs[0:num_macs]
+    
+
+class ConstructorCuadradoCuatroLados(ConstructorRedes):
+    
+
+    def asociar_puertos(self, puerto1, puerto2):
+        puerto1.asociar_puerto(puerto2)
+        puerto2.asociar_puerto(puerto1)
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.lista_eventos=ListaEventos()
+        macs=self.generar_macs_azar(8)
+        puerto_01=Puerto(macs[0])
+        puerto_02=Puerto(macs[1])
+        Switch1=Switch(randint(1,6), [puerto_01, puerto_02], self.lista_eventos)
+
+        puerto_03=Puerto(macs[2])
+        puerto_04=Puerto(macs[3])
+        Switch2=Switch(randint(1,6), [puerto_03, puerto_04], self.lista_eventos)
+
+        puerto_05=Puerto(macs[4])
+        puerto_06=Puerto(macs[5])
+        Switch3=Switch(randint(1,6), [puerto_05, puerto_06], self.lista_eventos)
+
+        puerto_07=Puerto(macs[6])
+        puerto_08=Puerto(macs[7])
+        Switch4=Switch(randint(1,6), [puerto_07, puerto_08], self.lista_eventos)
 
 
-def asociar_puertos(puerto1, puerto2):
-    puerto1.asociar_puerto(puerto2)
-    puerto2.asociar_puerto(puerto1)
+        self.asociar_puertos(puerto_01, puerto_08)
+        self.asociar_puertos(puerto_02, puerto_03)
+        self.asociar_puertos(puerto_04, puerto_05)
+        self.asociar_puertos(puerto_06, puerto_07)
 
+        self.iteraciones=[]
+        self.iteraciones.append(Iteracion(Switch1, puerto_01))
+        self.iteraciones.append(Iteracion(Switch1, puerto_02))
 
+        self.iteraciones.append(Iteracion(Switch2, puerto_03))
+        self.iteraciones.append(Iteracion(Switch2, puerto_04))
 
-lista_eventos=ListaEventos()
-puerto_01=Puerto("01")
-puerto_02=Puerto("02")
-Switch1=Switch(1, [puerto_01, puerto_02], lista_eventos)
+        self.iteraciones.append(Iteracion(Switch3, puerto_05))
+        self.iteraciones.append(Iteracion(Switch3, puerto_06))
 
-puerto_03=Puerto("03")
-puerto_04=Puerto("04")
-Switch2=Switch(2, [puerto_03, puerto_04], lista_eventos)
+        self.iteraciones.append(Iteracion(Switch4, puerto_07))
+        self.iteraciones.append(Iteracion(Switch4, puerto_08))
 
-puerto_05=Puerto("05")
-puerto_06=Puerto("06")
-Switch3=Switch(3, [puerto_05, puerto_06], lista_eventos)
+        self.switches=[Switch1, Switch2, Switch3, Switch4]
+        self.puertos=[puerto_01, puerto_02, puerto_03, puerto_04,
+                puerto_05, puerto_06, puerto_07, puerto_08]
 
-puerto_07=Puerto("07")
-puerto_08=Puerto("08")
-Switch4=Switch(4, [puerto_07, puerto_08], lista_eventos)
+        self.red=Red(self.switches, self.puertos, self.iteraciones, self.lista_eventos)
+        
 
+    def simular(self):
+        self.red.hacer_envios()
+        self.red.evaluar_switches()
+        self.red.evaluar_estado_raiz_en_switches()
 
-asociar_puertos(puerto_01, puerto_08)
-asociar_puertos(puerto_02, puerto_03)
-asociar_puertos(puerto_04, puerto_05)
-asociar_puertos(puerto_06, puerto_07)
+        self.red.hacer_envios()
+        self.red.evaluar_switches()
+        self.red.evaluar_estado_raiz_en_switches()
 
-iteraciones=[]
-iteraciones.append(Iteracion(Switch1, puerto_01))
-iteraciones.append(Iteracion(Switch1, puerto_02))
-
-iteraciones.append(Iteracion(Switch2, puerto_03))
-iteraciones.append(Iteracion(Switch2, puerto_04))
-
-iteraciones.append(Iteracion(Switch3, puerto_05))
-iteraciones.append(Iteracion(Switch3, puerto_06))
-
-iteraciones.append(Iteracion(Switch4, puerto_07))
-iteraciones.append(Iteracion(Switch4, puerto_08))
-
-switches=[Switch1, Switch2, Switch3, Switch4]
-puertos=[puerto_01, puerto_02, puerto_03, puerto_04,
-         puerto_05, puerto_06, puerto_07, puerto_08]
-
-red=Red(switches, puertos, iteraciones, lista_eventos)
-red.hacer_envios()
-red.evaluar_switches()
-red.evaluar_estado_raiz_en_switches()
-
-red.hacer_envios()
-red.evaluar_switches()
-red.evaluar_estado_raiz_en_switches()
-
+c=ConstructorCuadradoCuatroLados()
+c.simular()
+lista_eventos=c.lista_eventos
 for e in lista_eventos.lista:
     print(e)
+    pass
+
+red=c.red
+print(red.get_lista_decisiones())
 
 # red.hacer_envios()
 # red.evaluar_switches()
