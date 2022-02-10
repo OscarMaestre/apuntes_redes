@@ -4,7 +4,7 @@ from random import randint, shuffle
 
 from creadorimagenes.CreadorImagen import CreadorImagen, CreadorRoutersCuadrados
 from os import mkdir
-from os.path import join, basename
+from os.path import join, basename, sep
 from pathlib import Path
 class Evento(object):
     def __init__(self) -> None:
@@ -48,6 +48,19 @@ class BPDU(object):
             return nueva_bpdu
         else:
             return self
+
+    def __eq__(self, bpdu: object) -> bool:
+        if bpdu==None:
+            return False
+        if self.raiz!=bpdu.raiz:
+            return False
+        if self.coste!=bpdu.coste:
+            return False
+        if self.yo!=bpdu.yo:
+            return False
+        if self.mac!=bpdu.mac:
+            return False
+        return True
 
 class Puerto(object):
     ESTADO_APRENDIENDO=1
@@ -132,7 +145,7 @@ class Switch(object):
         """Devuelve en forma de cadena la lista de decisiones sobre puertos
         que tomó este switch"""
         texto=""
-        texto+="El switch "+ self.identificador_yo+ " toma estas decisiones:\n"
+        texto+="\n\nEl switch "+ self.identificador_yo+ " toma estas decisiones:\n"
         for d in self.lista_decisiones:
             texto+="* "+d+"\n"
         return texto
@@ -340,7 +353,7 @@ class Switch(object):
         
 
         la_recibida_es_mejor=bpdu_recibida.raiz<self.identificador_raiz
-        la_recibida_tiene_la_misma_prioridad=bpdu_recibida==self.identificador_raiz
+        la_recibida_tiene_la_misma_prioridad=(bpdu_recibida.raiz==self.identificador_raiz)
         la_recibida_tiene_mejor_mac=(bpdu_recibida.mac<puerto.mac)
         hay_nueva_raiz=la_recibida_es_mejor or (la_recibida_tiene_la_misma_prioridad and la_recibida_tiene_mejor_mac)
         if hay_nueva_raiz:
@@ -494,9 +507,14 @@ class Red(object):
 class ConstructorRedes(object):
     def __init__(self) -> None:
         pass
+    
+    def asociar_puertos(self, puerto1, puerto2):
+        puerto1.asociar_puerto(puerto2)
+        puerto2.asociar_puerto(puerto1)
 
     def get_red(self):
         pass
+
     def generar_macs_azar(self, num_macs):
         simbolos=["0","1", "2", "3", "4", "5", "6", "7", "8", "9"]
         macs=[]
@@ -510,9 +528,7 @@ class ConstructorRedes(object):
 class ConstructorCuadradoCuatroLados(ConstructorRedes):
     
 
-    def asociar_puertos(self, puerto1, puerto2):
-        puerto1.asociar_puerto(puerto2)
-        puerto2.asociar_puerto(puerto1)
+    
 
     def __init__(self) -> None:
         super().__init__()
@@ -613,7 +629,7 @@ Una vez decidido el switch raíz, los switches toman las siguientes decisiones (
     def generar_imagen(self, num_ejercicio):
         DIRECTORIO_BASE="tipo1"
         
-        DIRECTORIO_EJ=join(DIRECTORIO_BASE, "ej"+str(num_ejercicio)+"/")
+        DIRECTORIO_EJ=join(DIRECTORIO_BASE, "ej"+str(num_ejercicio)+sep)
         FICHERO_TEXTO="ejercicio"+str(num_ejercicio)+".rst"
         RUTA_TEXTO=join(DIRECTORIO_EJ, FICHERO_TEXTO)
         FICHERO_IMAGEN_BASE="base1.png"
@@ -677,7 +693,7 @@ Anexo al tema 3:Ejercicios STP
 
 """
     texto=""
-    NUM_EJERCICIOS=10
+    NUM_EJERCICIOS=2
     for i in range(1, NUM_EJERCICIOS+1):
         c=ConstructorCuadradoCuatroLados()
         print("Generando:"+str(i))
@@ -689,4 +705,5 @@ Anexo al tema 3:Ejercicios STP
         fich.write(PLANTILLA.format(texto))
 
 if __name__=="__main__":
-    prueba_depuracion()
+    #prueba_depuracion()
+    main()
