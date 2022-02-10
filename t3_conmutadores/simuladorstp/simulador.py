@@ -1,7 +1,10 @@
 #!/usr/bin/python3 
 from random import randint, shuffle
-
-
+from tkinter import N
+from creadorimagenes.CreadorImagen import CreadorImagen, CreadorRoutersCuadrados
+from os import mkdir
+from os.path import join, basename
+from pathlib import Path
 class Evento(object):
     def __init__(self) -> None:
         self.eventos=[]
@@ -61,13 +64,20 @@ class Puerto(object):
         self.switch=None
         self.puerto_asociado=None
         self.estado=Puerto.ESTADO_APRENDIENDO
-        
+
+    def __lt__(self, otro_puerto):
+        return self.mac < otro_puerto.mac
     def poner_raiz(self):
         self.estado=Puerto.ESTADO_RAIZ
     def poner_designado(self):
         self.estado=Puerto.ESTADO_DESIGNADO
     def poner_bloqueado(self):
         self.estado=Puerto.ESTADO_BLOQUEADO
+
+    def esta_establecido(self):
+        if self.enviar!=Puerto.ESTADO_APRENDIENDO:
+            return True
+        return False
 
     def enviar(self, bpdu):
         self.buffer_envio=bpdu
@@ -90,15 +100,36 @@ class Puerto(object):
 
 class Switch(object):
     def __init__(self, identificador, lista_puertos, lista_eventos) -> None:
-        self.identificador_yo=identificador
+        
         self.coste=0
-        self.identificador_raiz=identificador
+        
         self.puertos=lista_puertos
         self.lista_eventos=lista_eventos
         self.lista_decisiones=[]
+        self.set_mi_prioridad(identificador)
         self.evento_actual=None
 
 
+    
+    def set_mi_prioridad(self, numero):
+        plantilla="{0}:{1}"
+        prioridad=plantilla.format(str(numero), self.get_menor_mac())
+        self.identificador_yo=prioridad
+        self.identificador_raiz=prioridad
+    
+    def get_decisiones_formateadas(self):
+        texto=""
+        texto+="El switch "+ self.identificador_yo+ " toma estas decisiones:\n"
+        for d in self.lista_decisiones:
+            texto+="* "+d+"\n"
+        return texto
+
+    def get_menor_mac(self):
+        puerto_menor=min(self.puertos)
+        macs=list(map(str, self.puertos))
+        return puerto_menor.mac
+        #print(macs)
+        #print("La menor es:"+puerto_menor.mac)
     def ha_terminado(self):
         for puerto in self.puertos:
             if puerto.estado==Puerto.ESTADO_APRENDIENDO:
@@ -129,7 +160,8 @@ class Switch(object):
                 " es raiz y pone todos sus puertos a designado."
             )
             for p in self.puertos:
-                p.poner_designado()
+                if not p.esta_establecido():
+                    p.poner_designado()
             return
         #Si llegamos aquí, este switch no es raíz y ahora
         #Tiene que ir puerto por puerto y comprobar.
@@ -142,27 +174,27 @@ class Switch(object):
         #3. Si el puerto tiene un coste MAYOR, el puerto pierde
         #y se bloquea
         for p in self.puertos:
+            
             coste=self.evaluar_coste(p)
             #Caso 1 ¿el coste de este puerto es el mejor del segmento?
             if coste==Puerto.COSTE_MENOR:
                 #Si es asi, este puerto es el designado
                 plantilla="El puerto con la MAC {0} se convierte en designado. "
                 plantilla+="Es el mejor del segmento con un coste de {1} frente "
-                plantilla+="un coste de {1} que ofrece el puerto {2}."
+                plantilla+="un coste de {2} que ofrece el puerto {3}."
                 mensaje=plantilla.format(
-                    p, p.get_coste_enviado(), p.get_coste_recibido, 
+                    p, p.get_coste_enviado(), p.get_coste_recibido(), 
                     p.get_puerto_asociado()
                 )
                 self.lista_decisiones.append(mensaje)
                 #print("Designado..."+str(p))
                 p.poner_designado()
                 #Pasamos al siguiente puerto
-                continue
             #Caso 3 ¿El coste de este puerto es el peor?
-            if coste==Puerto.COSTE_MENOR:
+            if coste==Puerto.COSTE_MAYOR:
                 plantilla="El puerto con la MAC {0} se bloquea. "
                 plantilla+="Es el peor del segmento con un coste de {1} frente "
-                plantilla+="un coste de {1} que ofrece el puerto {2}."
+                plantilla+="un coste de {2} que ofrece el puerto {3}."
                 mensaje=plantilla.format(
                     p, p.get_coste_enviado(), p.get_coste_recibido(), 
                     p.get_puerto_asociado()
@@ -202,6 +234,7 @@ class Switch(object):
                     self.lista_decisiones.append(mensaje)
                     
                     p.poner_bloqueado()
+                    
 
 
     def reevaluar_raiz(self, puerto):
@@ -326,7 +359,7 @@ class Red(object):
 
     def get_lista_decisiones(self):
         lista=[]
-        for s in self. switches:
+        for s in self.switches:
             lista.append(s.lista_decisiones)
         return lista
 
@@ -402,7 +435,83 @@ class ConstructorCuadradoCuatroLados(ConstructorRedes):
 
         self.red=Red(self.switches, self.puertos, self.iteraciones, self.lista_eventos)
         
+    def generar_archivo_texto(self, num_ejercicio):
+        self.simular()
+        num_evento=1
+        texto=""
+        for evento in self.lista_eventos.lista:
+            texto+=str(num_evento)+". "+str(evento)+"\n"
+            num_evento+=1
+        
 
+        FICHERO_IMAGEN_FINAL="ejercicio"+str(num_ejercicio)+".png"
+        PLANTILLA="""
+STP Ejercicio {0}, dificultad 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Dada la red de switches que se muestra en la figura:
+
+.. figure:: /t3_conmutadores/simuladorstp/tipo1/ej{0}/ejercicio{0}.png
+
+Indicar el estado final en que quedarán todos los puertos de todos los switches.
+
+Empezando por los eventos de envío, recepción y determinación de cual es el switch raíz la lista de sucesos sería esta:
+
+{2}
+
+
+Una vez decidido el switch raíz, los switches toman las siguientes decisiones:
+
+{3}
+
+"""
+        
+        texto_decisiones=self.formatear_lista_decisiones()
+        print(texto_decisiones)
+        return PLANTILLA.format(num_ejercicio, FICHERO_IMAGEN_FINAL, texto, texto_decisiones)
+
+    def formatear_lista_decisiones(self):
+        texto=""
+        print(self.red.switches[0].lista_decisiones)
+        print(self.red.switches[1].lista_decisiones)
+        print(self.red.switches[2].lista_decisiones)
+        print(self.red.switches[3].lista_decisiones)
+        for s in self.red.switches:
+            texto+="El switch "+s.identificador_yo + " toma estas decisiones:\n\n"
+            for d in s.lista_decisiones:
+                texto+="* "+d+"\n"
+
+        return texto
+    
+
+    def generar_imagen(self, num_ejercicio):
+        DIRECTORIO_BASE="tipo1"
+        
+        DIRECTORIO_EJ=join(DIRECTORIO_BASE, "ej"+str(num_ejercicio)+"/")
+        FICHERO_TEXTO="ejercicio"+str(num_ejercicio)+".rst"
+        RUTA_TEXTO=join(DIRECTORIO_EJ, FICHERO_TEXTO)
+        FICHERO_IMAGEN_BASE="base1.png"
+        FICHERO_IMAGEN_FINAL="ejercicio"+str(num_ejercicio)+".png"
+        print("Fabricando:"+DIRECTORIO_EJ)
+        mkdir(DIRECTORIO_EJ)
+        RUTA_IMAGEN=join(DIRECTORIO_EJ, FICHERO_IMAGEN_FINAL)
+        FICHERO_TTF=basename("Roboto.ttf")
+        macs=[
+            self.switches[0].puertos[0].mac, self.switches[0].puertos[1].mac, 
+            self.switches[1].puertos[0].mac, self.switches[1].puertos[1].mac, 
+            self.switches[2].puertos[0].mac, self.switches[2].puertos[1].mac, 
+            self.switches[3].puertos[0].mac, self.switches[3].puertos[1].mac, 
+        ]
+        c=CreadorRoutersCuadrados(FICHERO_IMAGEN_BASE, RUTA_IMAGEN, FICHERO_TTF)
+        c.poner_macs(macs)
+        c.poner_prioridades(self.switches)
+        c.get_resultado()
+        with open(RUTA_TEXTO, "w") as fich:
+            texto=self.generar_archivo_texto(num_ejercicio)
+            fich.write(texto)
+
+    def generar_ejercicio(self, num_ejercicio):
+        self.generar_archivo_texto(num_ejercicio)
+        self.generar_imagen(num_ejercicio)
     def simular(self):
         self.red.hacer_envios()
         self.red.evaluar_switches()
@@ -416,12 +525,32 @@ c=ConstructorCuadradoCuatroLados()
 c.simular()
 lista_eventos=c.lista_eventos
 for e in lista_eventos.lista:
-    print(e)
-    pass
+     print(e)
+
 
 red=c.red
 print(red.get_lista_decisiones())
 
-# red.hacer_envios()
-# red.evaluar_switches()
-# red.evaluar_estado_raiz_en_switches()
+print (c.switches[0].get_menor_mac())
+red.hacer_envios()
+red.evaluar_switches()
+red.evaluar_estado_raiz_en_switches()
+
+for s in c.switches:
+    print(s.get_decisiones_formateadas())
+#PLANTILLA="""
+# Anexo al tema 3:Ejercicios STP 
+# --------------------------------
+
+# {0}
+# """
+# texto=""
+# NUM_EJERCICIOS=10
+# for i in range(1, NUM_EJERCICIOS+1):
+#     print("Generando:"+str(i))
+#     plantilla=".. include:: tipo1/ej{0}/ejercicio{0}.rst\n\n"
+#     texto=texto+plantilla.format(str(i))
+#     c.generar_ejercicio(i)
+
+# with open("stp1.rst", "w") as fich:
+#     fich.write(PLANTILLA.format(texto))
