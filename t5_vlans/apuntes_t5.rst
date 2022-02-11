@@ -1,6 +1,10 @@
 Tema 5: Configuración de redes virtuales VLAN
 ====================================================
 
+Introducción
+--------------------
+
+
 El diseño de redes locales a tres capas (núcleo, distribución y acceso).
 ----------------------------------------------------------------------------
 
