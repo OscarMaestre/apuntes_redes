@@ -72,6 +72,9 @@ Así, los comandos necesarios serían estos::
     #interfaces...
     interface fastethernet .. 
 
+Definición de enlaces troncales en los conmutadores y routers.
+----------------------------------------------------------------------------
+
 Para configurar el acceso troncal, el proceso es parecido.
 
 1. Entrar en la tarjeta
@@ -99,7 +102,10 @@ En algunos dispositivos se pueden configurar muchas interfaces a la vez, haciend
     switchport mode access
     switchport access vlan 30
     no shutdown
-    
+
+
+.. WARNING:: 
+   Al construir VLANs y enlaces troncales se debe tener cuidado al "copiar y pegar configuraciones" de unos switches a otros. Podría ocurrir que sin querer autorizásemos VLANs en enlaces troncales que no debían permitir ese paso.
 
 El protocolo IEEE802.1Q
 ----------------------------------------------------------------------------
@@ -108,8 +114,7 @@ El protocolo IEEE802.1Q
 Diagnóstico de incidencias en redes virtuales.
 ----------------------------------------------------------------------------
 
-Definición de enlaces troncales en los conmutadores y routers.
-----------------------------------------------------------------------------
+
 
 
 Protocolos para la administración centralizada de redes virtuales; el protocolo VTP
