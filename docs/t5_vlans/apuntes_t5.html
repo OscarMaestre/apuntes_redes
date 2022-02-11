@@ -4,20 +4,20 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tema 5: Configuración de redes virtuales VLAN &#8212; documentación de Apuntes de redes - 1.0</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Tema 4: Configuración de redes virtuales VLAN &#8212; documentación de Apuntes de redes - 1.0</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/translations.js"></script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
     <link rel="next" title="Tema 6:Configuración y administración de protocolos dinámicos" href="../t6_enrutamiento_dinamico/apuntes_t6.html" />
-    <link rel="prev" title="Tema 4: Configuración y administración básica de routers" href="../t4_routers/apuntes_t4.html" />
+    <link rel="prev" title="Tema 5: Configuración y administración básica de routers" href="../t4_routers/apuntes_t4.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -34,27 +34,114 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="tema-5-configuracion-de-redes-virtuales-vlan">
-<h1>Tema 5: Configuración de redes virtuales VLAN<a class="headerlink" href="#tema-5-configuracion-de-redes-virtuales-vlan" title="Enlazar permanentemente con este título">¶</a></h1>
-<div class="section" id="el-diseno-de-redes-locales-a-tres-capas-nucleo-distribucion-y-acceso">
-<h2>El diseño de redes locales a tres capas (núcleo, distribución y acceso).<a class="headerlink" href="#el-diseno-de-redes-locales-a-tres-capas-nucleo-distribucion-y-acceso" title="Enlazar permanentemente con este título">¶</a></h2>
+  <section id="tema-4-configuracion-de-redes-virtuales-vlan">
+<h1>Tema 4: Configuración de redes virtuales VLAN<a class="headerlink" href="#tema-4-configuracion-de-redes-virtuales-vlan" title="Enlazar permanentemente con este título"></a></h1>
+<section id="introduccion">
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Enlazar permanentemente con este título"></a></h2>
+<p>Las VLAN intentan dar solución a un problema consistente en que a veces ordenadores de una misma sala no forman parte de la misma red.</p>
+<p>Es decir, queremos una red virtual formada por ordenadores que están en sitios distintos. La solución a este problema son las VLANs (Virtual Local Area Network).</p>
+</section>
+<section id="el-diseno-de-redes-locales-a-tres-capas-nucleo-distribucion-y-acceso">
+<h2>El diseño de redes locales a tres capas (núcleo, distribución y acceso).<a class="headerlink" href="#el-diseno-de-redes-locales-a-tres-capas-nucleo-distribucion-y-acceso" title="Enlazar permanentemente con este título"></a></h2>
+<p>En general, para diseñar redes grandes se utiliza una topología llamada de tres niveles. Cada nivel va a cumplir funciones distintas del anterior. Estos niveles son núcleo, distribución y acceso.</p>
+<ul class="simple">
+<li><p>Se llama «switches de acceso» a aquellos switches que dan servicio directo a terminales como PCs, impresoras o similares.</p></li>
+<li><p>Se llama «switches de distribución» a <em>switches que interconectan switches de acceso</em>.</p></li>
+<li><p>Se llama «switches de núcleo» a <em>switches que interconectan switches de distribución y que están más cerca del punto de salida (router)</em></p></li>
+</ul>
+<p>En la figura puede verse una organización típica con tres capas.</p>
+<figure class="align-default">
+<img alt="t5_vlans/02-tres-capas.png" src="t5_vlans/02-tres-capas.png" />
+</figure>
+</section>
+<section id="implantacion-y-configuracion-de-redes-virtuales">
+<h2>Implantación y configuración de redes virtuales.<a class="headerlink" href="#implantacion-y-configuracion-de-redes-virtuales" title="Enlazar permanentemente con este título"></a></h2>
+<section id="implantacion">
+<h3>Implantación<a class="headerlink" href="#implantacion" title="Enlazar permanentemente con este título"></a></h3>
+<p>En primer lugar es IMPRESCINDIBLE disponer de hardware que soporte VLANs y a ser posible usando el protocolo estándar 802.1q.</p>
+<ol class="arabic simple">
+<li><p>Se debe entrar en el switch y crear las distintas VLANs (con un número).</p></li>
+<li><p>Se deben asignar puertos del switch a esas VLAN. Estos puertos se denominan «puertos de acceso». Es importante recordar que las VLAN están unidas a los puertos del switch. Si tiramos del cable y se conectar ese cable de ordenador a otro puertos, habremos sacado al ordenador de su VLAN.</p></li>
+<li><p>A menudo las VLAN deben pasar por varios switches. Habrá puertos que transporten tráfico de varias VLANs. Estos puertos se denominan «troncos» o «puertos troncales». Se debe avisar al switch de los puertos que actuarán como troncales.</p></li>
+</ol>
+</section>
+<section id="configuracion">
+<h3>Configuración<a class="headerlink" href="#configuracion" title="Enlazar permanentemente con este título"></a></h3>
+<p>Al crear la arquitectura de redes es <strong>fundamental</strong> que los usuarios no tengan acceso al cableado del switch. Una vez se les asigne una VLAN, dicha VLAN quedará asociada a la interfaz del switch. Si alguien tira del cable del switch y lo conecta a otra interfaz <em>el usuario quedará fuera de la VLAN</em>.</p>
+<p>Para configurar dispositivos Cisco se usan comandos como estos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Permiten convertirse en</span>
+<span class="c1">#administrador y pasar al modo</span>
+<span class="c1">#de configuración global.</span>
+<span class="n">enable</span>
+<span class="n">configure</span> <span class="n">terminal</span>
+</pre></div>
 </div>
-<div class="section" id="implantacion-y-configuracion-de-redes-virtuales">
-<h2>Implantación y configuración de redes virtuales.<a class="headerlink" href="#implantacion-y-configuracion-de-redes-virtuales" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para poner una interfaz del switch en modo acceso solo tenemos que hacer cuatro cosas:</p>
+<ol class="arabic simple">
+<li><p>Entrar en la interfaz correcta (recuérdese que es <strong>fundamental</strong> tomar nota correcta de la interfaz a la que va conectado cada terminal)</p></li>
+<li><p>Poner la interfaz en modo acceso.</p></li>
+<li><p>Asignar una ID de VLAN a ese interfaz.</p></li>
+<li><p>Activar la conexión. En realidad no tiene por qué ser necesario pero debe recordarse que podríamos tener dispositivos en los que las interfaces no se encienden por defecto.</p></li>
+</ol>
+<p>Así, los comandos necesarios serían estos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Entramos en la interfaz</span>
+<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>
+<span class="c1">#Activamos el modo acceso</span>
+<span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
+<span class="c1">#Indicamos la VLAN</span>
+<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">10</span>
+<span class="c1">#Activamos la tarjeta.</span>
+<span class="n">no</span> <span class="n">shutdown</span>
+<span class="c1">#Salimos de esta tarjeta</span>
+<span class="n">exit</span>
+<span class="c1">#Entramos en la siguiente</span>
+<span class="c1">#y configuramos el resto de</span>
+<span class="c1">#interfaces...</span>
+<span class="n">interface</span> <span class="n">fastethernet</span> <span class="o">..</span>
+</pre></div>
 </div>
-<div class="section" id="diagnostico-de-incidencias-en-redes-virtuales">
-<h2>Diagnóstico de incidencias en redes virtuales.<a class="headerlink" href="#diagnostico-de-incidencias-en-redes-virtuales" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para configurar el acceso troncal, el proceso es parecido.</p>
+<ol class="arabic simple">
+<li><p>Entrar en la tarjeta</p></li>
+<li><p>Activar el modo «trunk».</p></li>
+<li><p>Indicar las VLANs que se autorizan</p></li>
+<li><p>Encender la tarjeta</p></li>
+<li><p>Hacer lo mismo en los dos lados del cable.</p></li>
+</ol>
+<p>Los comandos serían:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Para entrar en la tarjeta</span>
+<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>
+<span class="c1">#Activar el modo troncal</span>
+<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
+<span class="c1">#Autorizamos la 10 y la 20</span>
+<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">10</span><span class="p">,</span><span class="mi">20</span>
+
+<span class="c1">#Activamos la conexión</span>
+<span class="n">no</span> <span class="n">shutdown</span>
+</pre></div>
 </div>
-<div class="section" id="definicion-de-enlaces-troncales-en-los-conmutadores-y-routers">
-<h2>Definición de enlaces troncales en los conmutadores y routers.<a class="headerlink" href="#definicion-de-enlaces-troncales-en-los-conmutadores-y-routers" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En algunos dispositivos se pueden configurar muchas interfaces a la vez, haciendo esto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">1</span><span class="o">-</span><span class="mi">12</span>
+<span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
+<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">30</span>
+<span class="n">no</span> <span class="n">shutdown</span>
+</pre></div>
 </div>
-<div class="section" id="el-protocolo-ieee802-1q">
-<h2>El protocolo IEEE802.1Q<a class="headerlink" href="#el-protocolo-ieee802-1q" title="Enlazar permanentemente con este título">¶</a></h2>
-</div>
-<div class="section" id="protocolos-para-la-administracion-centralizada-de-redes-virtuales-el-protocolo-vtp">
-<h2>Protocolos para la administración centralizada de redes virtuales; el protocolo VTP<a class="headerlink" href="#protocolos-para-la-administracion-centralizada-de-redes-virtuales-el-protocolo-vtp" title="Enlazar permanentemente con este título">¶</a></h2>
-</div>
-</div>
+</section>
+</section>
+<section id="el-protocolo-ieee802-1q">
+<h2>El protocolo IEEE802.1Q<a class="headerlink" href="#el-protocolo-ieee802-1q" title="Enlazar permanentemente con este título"></a></h2>
+</section>
+<section id="diagnostico-de-incidencias-en-redes-virtuales">
+<h2>Diagnóstico de incidencias en redes virtuales.<a class="headerlink" href="#diagnostico-de-incidencias-en-redes-virtuales" title="Enlazar permanentemente con este título"></a></h2>
+</section>
+<section id="definicion-de-enlaces-troncales-en-los-conmutadores-y-routers">
+<h2>Definición de enlaces troncales en los conmutadores y routers.<a class="headerlink" href="#definicion-de-enlaces-troncales-en-los-conmutadores-y-routers" title="Enlazar permanentemente con este título"></a></h2>
+</section>
+<section id="protocolos-para-la-administracion-centralizada-de-redes-virtuales-el-protocolo-vtp">
+<h2>Protocolos para la administración centralizada de redes virtuales; el protocolo VTP<a class="headerlink" href="#protocolos-para-la-administracion-centralizada-de-redes-virtuales-el-protocolo-vtp" title="Enlazar permanentemente con este título"></a></h2>
+</section>
+</section>
 
 
           </div>
@@ -73,18 +160,23 @@
 
 
 <h3>Navegación</h3>
-<p class="caption"><span class="caption-text">Índice:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Índice:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../t1_caracterizacion_redes/apuntes_t1.html">Tema 1:Caracterización de redes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/apuntes_t2.html">Tema 2:Integración de elementos en una red</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../t3_conmutadores/apuntes_t3.html">Tema 3:Configuración y administración de conmutadores</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../t4_routers/apuntes_t4.html">Tema 4: Configuración y administración básica de routers</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Tema 5: Configuración de redes virtuales VLAN</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../t4_routers/apuntes_t4.html">Tema 5: Configuración y administración básica de routers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tema 4: Configuración de redes virtuales VLAN</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduccion">Introducción</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#el-diseno-de-redes-locales-a-tres-capas-nucleo-distribucion-y-acceso">El diseño de redes locales a tres capas (núcleo, distribución y acceso).</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#implantacion-y-configuracion-de-redes-virtuales">Implantación y configuración de redes virtuales.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#implantacion-y-configuracion-de-redes-virtuales">Implantación y configuración de redes virtuales.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#implantacion">Implantación</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuracion">Configuración</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#el-protocolo-ieee802-1q">El protocolo IEEE802.1Q</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#diagnostico-de-incidencias-en-redes-virtuales">Diagnóstico de incidencias en redes virtuales.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#definicion-de-enlaces-troncales-en-los-conmutadores-y-routers">Definición de enlaces troncales en los conmutadores y routers.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#el-protocolo-ieee802-1q">El protocolo IEEE802.1Q</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#protocolos-para-la-administracion-centralizada-de-redes-virtuales-el-protocolo-vtp">Protocolos para la administración centralizada de redes virtuales; el protocolo VTP</a></li>
 </ul>
 </li>
@@ -108,7 +200,7 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="../t4_routers/apuntes_t4.html" title="capítulo anterior">Tema 4: Configuración y administración básica de routers</a></li>
+      <li>Previous: <a href="../t4_routers/apuntes_t4.html" title="capítulo anterior">Tema 5: Configuración y administración básica de routers</a></li>
       <li>Next: <a href="../t6_enrutamiento_dinamico/apuntes_t6.html" title="próximo capítulo">Tema 6:Configuración y administración de protocolos dinámicos</a></li>
   </ul></li>
 </ul>
@@ -117,7 +209,7 @@
   <h3 id="searchlabel">Búsqueda rápida</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Ir a" />
     </form>
     </div>
@@ -139,7 +231,7 @@
       &copy;2021, Oscar G. G..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
