@@ -6,6 +6,7 @@ Anexo al tema 3:Ejercicios STP
 
 .. include:: tipo1/ej2/ejercicio2.rst
 
+<<<<<<< HEAD
 .. include:: tipo1/ej3/ejercicio3.rst
 
 .. include:: tipo1/ej4/ejercicio4.rst
@@ -42,5 +43,7 @@ Anexo al tema 3:Ejercicios STP
 
 .. include:: tipo1/ej20/ejercicio20.rst
 
+=======
+>>>>>>> 25764e1b5c1a4c93d8e0a04df81205a68aa46136
 
 

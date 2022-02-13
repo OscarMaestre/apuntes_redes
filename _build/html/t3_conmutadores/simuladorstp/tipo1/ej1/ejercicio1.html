@@ -38,81 +38,6 @@
 <figure class="align-default">
 <img alt="../../../../_images/ejercicio1.png" src="../../../../_images/ejercicio1.png" />
 </figure>
-<<<<<<< HEAD
-<p>Indicar el estado final en que quedarán todos los puertos de todos los switches.</p>
-<p>Empezando por los eventos de envío, recepción y determinación de cual es el switch raíz la lista de sucesos sería esta:</p>
-<ol class="arabic simple">
-<li><p>Switch 4:48 envía por el puerto 48 la BPDU (Raíz:4:48, Coste:0, ID:4:48, MAC:48)</p></li>
-<li><p>Switch 4:48 envía por el puerto 58 la BPDU (Raíz:4:48, Coste:0, ID:4:48, MAC:58)</p></li>
-<li><p>Switch 6:03 envía por el puerto 03 la BPDU (Raíz:6:03, Coste:0, ID:6:03, MAC:03)</p></li>
-<li><p>Switch 6:03 envía por el puerto 76 la BPDU (Raíz:6:03, Coste:0, ID:6:03, MAC:76)</p></li>
-<li><p>Switch 4:00 envía por el puerto 00 la BPDU (Raíz:4:00, Coste:0, ID:4:00, MAC:00)</p></li>
-<li><p>Switch 4:00 envía por el puerto 23 la BPDU (Raíz:4:00, Coste:0, ID:4:00, MAC:23)</p></li>
-<li><p>Switch 6:01 envía por el puerto 01 la BPDU (Raíz:6:01, Coste:0, ID:6:01, MAC:01)</p></li>
-<li><p>Switch 6:01 envía por el puerto 15 la BPDU (Raíz:6:01, Coste:0, ID:6:01, MAC:15)</p></li>
-<li><p>Switch 4:48 recibe por el puerto 48 la BPDU (Raíz:6:01, Coste:0, ID:6:01, MAC:15)</p></li>
-<li><p>Switch 4:48 recibe por el puerto 58 la BPDU (Raíz:6:03, Coste:0, ID:6:03, MAC:03)</p></li>
-<li><p>Switch 6:03 recibe por el puerto 03 la BPDU (Raíz:4:48, Coste:0, ID:4:48, MAC:58). La raíz 4:48 es mejor, así que se anota como nueva raíz.</p></li>
-<li><p>Switch 6:03 recibe por el puerto 76 la BPDU (Raíz:4:00, Coste:0, ID:4:00, MAC:00). La raíz 4:00 es mejor, así que se anota como nueva raíz.</p></li>
-<li><p>Switch 4:00 recibe por el puerto 00 la BPDU (Raíz:6:03, Coste:0, ID:6:03, MAC:76)</p></li>
-<li><p>Switch 4:00 recibe por el puerto 23 la BPDU (Raíz:6:01, Coste:0, ID:6:01, MAC:01)</p></li>
-<li><p>Switch 6:01 recibe por el puerto 01 la BPDU (Raíz:4:00, Coste:0, ID:4:00, MAC:23). La raíz 4:00 es mejor, así que se anota como nueva raíz.</p></li>
-<li><p>Switch 6:01 recibe por el puerto 15 la BPDU (Raíz:4:48, Coste:0, ID:4:48, MAC:48)</p></li>
-<li><p>Switch 4:48 envía por el puerto 48 la BPDU (Raíz:4:48, Coste:0, ID:4:48, MAC:48)</p></li>
-<li><p>Switch 4:48 envía por el puerto 58 la BPDU (Raíz:4:48, Coste:0, ID:4:48, MAC:58)</p></li>
-<li><p>Switch 6:03 envía por el puerto 03 la BPDU (Raíz:4:00, Coste:1, ID:6:03, MAC:03)</p></li>
-<li><p>Switch 6:03 envía por el puerto 76 la BPDU (Raíz:4:00, Coste:1, ID:6:03, MAC:76)</p></li>
-<li><p>Switch 4:00 envía por el puerto 00 la BPDU (Raíz:4:00, Coste:0, ID:4:00, MAC:00)</p></li>
-<li><p>Switch 4:00 envía por el puerto 23 la BPDU (Raíz:4:00, Coste:0, ID:4:00, MAC:23)</p></li>
-<li><p>Switch 6:01 envía por el puerto 01 la BPDU (Raíz:4:00, Coste:1, ID:6:01, MAC:01)</p></li>
-<li><p>Switch 6:01 envía por el puerto 15 la BPDU (Raíz:4:00, Coste:1, ID:6:01, MAC:15)</p></li>
-<li><p>Switch 4:48 recibe por el puerto 48 la BPDU (Raíz:4:00, Coste:1, ID:6:01, MAC:15). La raíz 4:00 es mejor, así que se anota como nueva raíz.</p></li>
-<li><p>Switch 4:48 recibe por el puerto 58 la BPDU (Raíz:4:00, Coste:1, ID:6:03, MAC:03)</p></li>
-<li><p>Switch 6:03 recibe por el puerto 03 la BPDU (Raíz:4:48, Coste:0, ID:4:48, MAC:58)</p></li>
-<li><p>Switch 6:03 recibe por el puerto 76 la BPDU (Raíz:4:00, Coste:0, ID:4:00, MAC:00)</p></li>
-<li><p>Switch 4:00 recibe por el puerto 00 la BPDU (Raíz:4:00, Coste:1, ID:6:03, MAC:76)</p></li>
-<li><p>Switch 4:00 recibe por el puerto 23 la BPDU (Raíz:4:00, Coste:1, ID:6:01, MAC:01)</p></li>
-<li><p>Switch 6:01 recibe por el puerto 01 la BPDU (Raíz:4:00, Coste:0, ID:4:00, MAC:23)</p></li>
-<li><p>Switch 6:01 recibe por el puerto 15 la BPDU (Raíz:4:48, Coste:0, ID:4:48, MAC:48)</p></li>
-<li><p>Switch 4:48 envía por el puerto 48 la BPDU (Raíz:4:00, Coste:2, ID:4:48, MAC:48)</p></li>
-<li><p>Switch 4:48 envía por el puerto 58 la BPDU (Raíz:4:00, Coste:2, ID:4:48, MAC:58)</p></li>
-<li><p>Switch 6:03 envía por el puerto 03 la BPDU (Raíz:4:00, Coste:1, ID:6:03, MAC:03)</p></li>
-<li><p>Switch 6:03 envía por el puerto 76 la BPDU (Raíz:4:00, Coste:1, ID:6:03, MAC:76)</p></li>
-<li><p>Switch 4:00 envía por el puerto 00 la BPDU (Raíz:4:00, Coste:0, ID:4:00, MAC:00)</p></li>
-<li><p>Switch 4:00 envía por el puerto 23 la BPDU (Raíz:4:00, Coste:0, ID:4:00, MAC:23)</p></li>
-<li><p>Switch 6:01 envía por el puerto 01 la BPDU (Raíz:4:00, Coste:1, ID:6:01, MAC:01)</p></li>
-<li><p>Switch 6:01 envía por el puerto 15 la BPDU (Raíz:4:00, Coste:1, ID:6:01, MAC:15)</p></li>
-<li><p>Switch 4:48 recibe por el puerto 48 la BPDU (Raíz:4:00, Coste:1, ID:6:01, MAC:15)</p></li>
-<li><p>Switch 4:48 recibe por el puerto 58 la BPDU (Raíz:4:00, Coste:1, ID:6:03, MAC:03)</p></li>
-<li><p>Switch 6:03 recibe por el puerto 03 la BPDU (Raíz:4:00, Coste:2, ID:4:48, MAC:58)</p></li>
-<li><p>Switch 6:03 recibe por el puerto 76 la BPDU (Raíz:4:00, Coste:0, ID:4:00, MAC:00)</p></li>
-<li><p>Switch 4:00 recibe por el puerto 00 la BPDU (Raíz:4:00, Coste:1, ID:6:03, MAC:76)</p></li>
-<li><p>Switch 4:00 recibe por el puerto 23 la BPDU (Raíz:4:00, Coste:1, ID:6:01, MAC:01)</p></li>
-<li><p>Switch 6:01 recibe por el puerto 01 la BPDU (Raíz:4:00, Coste:0, ID:4:00, MAC:23)</p></li>
-<li><p>Switch 6:01 recibe por el puerto 15 la BPDU (Raíz:4:00, Coste:2, ID:4:48, MAC:48)</p></li>
-</ol>
-<p>Una vez decidido el switch raíz, los switches toman las siguientes decisiones (volvemos a indicar la figura por comodidad):</p>
-<figure class="align-default">
-<img alt="../../../../_images/ejercicio1.png" src="../../../../_images/ejercicio1.png" />
-</figure>
-<p>El switch 4:48 toma estas decisiones:</p>
-<ul class="simple">
-<li><p>El puerto con la MAC 48 se convierte en raíz.</p></li>
-</ul>
-<p>El switch 6:03 toma estas decisiones:</p>
-<ul class="simple">
-<li><p>El puerto con la MAC 76 se convierte en raíz.</p></li>
-<li><p>El puerto con la MAC 03 se convierte en designado. Es el mejor del segmento con un coste de 1 frente un coste de 2 que ofrece el puerto 58.</p></li>
-</ul>
-<p>El switch 4:00 toma estas decisiones:</p>
-<ul class="simple">
-<li><p>4:00 es raiz y pone todos sus puertos a designado.</p></li>
-</ul>
-<p>El switch 6:01 toma estas decisiones:</p>
-<ul class="simple">
-<li><p>El puerto con la MAC 01 se convierte en raíz.</p></li>
-<li><p>El puerto con la MAC 15 se convierte en designado. Es el mejor del segmento con un coste de 1 frente un coste de 2 que ofrece el puerto 48.</p></li>
-=======
 <p>Indicar el estado final en que quedar?n todos los puertos de todos los switches.</p>
 <p>Empezando por los eventos de env?o, recepci?n y determinaci?n de cual es el switch ra?z la lista de sucesos ser?a esta:</p>
 <ol class="arabic simple">
@@ -205,7 +130,6 @@
 <ul class="simple">
 <li><p>El puerto con la MAC 93 se convierte en ra?z. Es el mejor de los puertos con un coste de 2 para llegar al switch ra?z 1:02.</p></li>
 <li><p>El puerto con la MAC 93 se convierte en ra?z. Es el mejor de los puertos con un coste de 2 para llegar al switch ra?z 1:02.</p></li>
->>>>>>> 25764e1b5c1a4c93d8e0a04df81205a68aa46136
 </ul>
 </section>
 
@@ -282,11 +206,7 @@
       &copy;2021, Oscar G. G..
       
       |
-<<<<<<< HEAD
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.0</a>
-=======
       Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
->>>>>>> 25764e1b5c1a4c93d8e0a04df81205a68aa46136
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
