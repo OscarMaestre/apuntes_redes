@@ -359,8 +359,8 @@ Así, el proceso es más o menos este:
 2. Si un puerto tiene igual coste que el otro puerto del segmento se examinan las prioridades y se elige el puerto que lleve al switch con la mejor prioridad.
 3. Los puertos que queden son puertos que se ponen a "bloqueado". Han perdido frente a sus competidores, ya sea por coste o por MAC.
 
-Ejemplo de STP
------------------
+Ejemplo de STP resuelto
+--------------------------
 
 En la figura siguiente se observa una red de switches. Podemos ver en su interior las prioridades que se les han dado y en los cables podemos ver la MAC de cada interfaz. Observando esto, ¿en qué estado quedarán los distintos puertos de los distintos switches?
 
@@ -426,3 +426,23 @@ Estado final
 Si asumimos que los puertos bloqueados anulan el cable al que pertenecen observamos que la topología ha cambiado y queda algo como esto:
 
 .. figure:: pasos/paso06.png
+
+
+
+Ejemplo de STP propuesto
+------------------------------
+
+Observa esta topología, indica el estado final en que quedarán los switches
+
+.. figure:: pasos2/paso00.png
+
+No se da la solución paso por paso pero es importante reseñar que **la topología ha cambiado por completo.** No importa que hayamos añadido solo un switch con una conexión. Su prioridad es tan baja que el árbol STP se desequilibra por completo y toda la red se reorganiza en torno a él.
+
+El estado final de la red es algo como esto:
+
+.. figure:: pasos2/pasofinal.png
+
+
+Y si examinamos como ha dejado la topología el algoritmo la configuración de la red es esta:
+
+.. figure:: pasos2/sincables.png

@@ -367,8 +367,8 @@ login
 </ol>
 </section>
 </section>
-<section id="ejemplo-de-stp">
-<h2>Ejemplo de STP<a class="headerlink" href="#ejemplo-de-stp" title="Enlazar permanentemente con este título"></a></h2>
+<section id="ejemplo-de-stp-resuelto">
+<h2>Ejemplo de STP resuelto<a class="headerlink" href="#ejemplo-de-stp-resuelto" title="Enlazar permanentemente con este título"></a></h2>
 <p>En la figura siguiente se observa una red de switches. Podemos ver en su interior las prioridades que se les han dado y en los cables podemos ver la MAC de cada interfaz. Observando esto, ¿en qué estado quedarán los distintos puertos de los distintos switches?</p>
 <figure class="align-default">
 <img alt="../_images/paso00.png" src="../_images/paso00.png" />
@@ -435,6 +435,22 @@ login
 </figure>
 </section>
 </section>
+<section id="ejemplo-de-stp-propuesto">
+<h2>Ejemplo de STP propuesto<a class="headerlink" href="#ejemplo-de-stp-propuesto" title="Enlazar permanentemente con este título"></a></h2>
+<p>Observa esta topología, indica el estado final en que quedarán los switches</p>
+<figure class="align-default">
+<img alt="../_images/paso001.png" src="../_images/paso001.png" />
+</figure>
+<p>No se da la solución paso por paso pero es importante reseñar que <strong>la topología ha cambiado por completo.</strong> No importa que hayamos añadido solo un switch con una conexión. Su prioridad es tan baja que el árbol STP se desequilibra por completo y toda la red se reorganiza en torno a él.</p>
+<p>El estado final de la red es algo como esto:</p>
+<figure class="align-default">
+<img alt="../_images/pasofinal.png" src="../_images/pasofinal.png" />
+</figure>
+<p>Y si examinamos como ha dejado la topología el algoritmo la configuración de la red es esta:</p>
+<figure class="align-default">
+<img alt="../_images/sincables.png" src="../_images/sincables.png" />
+</figure>
+</section>
 </section>
 
 
@@ -496,7 +512,7 @@ login
 <li class="toctree-l3"><a class="reference internal" href="#como-se-decide-sobre-el-estado-de-los-puertos">¿Como se decide sobre el estado de los puertos?</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#ejemplo-de-stp">Ejemplo de STP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ejemplo-de-stp-resuelto">Ejemplo de STP resuelto</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#switch-1-derecha-raiz">Switch 1 (derecha), raíz</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#switch-2-abajo">Switch 2 (abajo)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#switch-2-centro-arriba">Switch 2 (centro-arriba)</a></li>
@@ -505,6 +521,7 @@ login
 <li class="toctree-l3"><a class="reference internal" href="#estado-final">Estado final</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#ejemplo-de-stp-propuesto">Ejemplo de STP propuesto</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../t4_routers/apuntes_t4.html">Tema 5: Configuración y administración básica de routers</a></li>
