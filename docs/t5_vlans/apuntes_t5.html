@@ -138,7 +138,10 @@
 <section id="reflexion-sobre-ciclos-en-switches-con-vlans">
 <h3>Reflexión sobre ciclos en switches con VLANs<a class="headerlink" href="#reflexion-sobre-ciclos-en-switches-con-vlans" title="Enlazar permanentemente con este título"></a></h3>
 <p>Observa la figura siguiente</p>
-<p>¿Por qué no se han deshabilitado puertos?</p>
+<figure class="align-default">
+<img alt="t5_vlans/03-stp-ciclos.png" src="t5_vlans/03-stp-ciclos.png" />
+</figure>
+<p>¿Por qué no se han deshabilitado puertos? En realidad sí se deshabilitan, pero cuando tenemos ciclos en switches que forman parte de VLANs puede ocurrir que <strong>un puerto esté bloqueado dentro de una VLAN, pero esté activo dentro de otra VLAN distinta</strong>. En realidad lo que ejecutan los switches modernos es PVST (Per-VLAN Spanning Tree)</p>
 </section>
 </section>
 <section id="protocolos-para-la-administracion-centralizada-de-redes-virtuales-el-protocolo-vtp">

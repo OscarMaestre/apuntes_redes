@@ -112,8 +112,9 @@ Reflexión sobre ciclos en switches con VLANs
 
 Observa la figura siguiente
 
+.. figure:: 03-stp-ciclos.png
 
-¿Por qué no se han deshabilitado puertos?
+¿Por qué no se han deshabilitado puertos? En realidad sí se deshabilitan, pero cuando tenemos ciclos en switches que forman parte de VLANs puede ocurrir que **un puerto esté bloqueado dentro de una VLAN, pero esté activo dentro de otra VLAN distinta**. En realidad lo que ejecutan los switches modernos es PVST (Per-VLAN Spanning Tree)
 
 
     

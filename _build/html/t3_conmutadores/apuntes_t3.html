@@ -367,6 +367,74 @@ login
 </ol>
 </section>
 </section>
+<section id="ejemplo-de-stp">
+<h2>Ejemplo de STP<a class="headerlink" href="#ejemplo-de-stp" title="Enlazar permanentemente con este título"></a></h2>
+<p>En la figura siguiente se observa una red de switches. Podemos ver en su interior las prioridades que se les han dado y en los cables podemos ver la MAC de cada interfaz. Observando esto, ¿en qué estado quedarán los distintos puertos de los distintos switches?</p>
+<figure class="align-default">
+<img alt="../_images/paso00.png" src="../_images/paso00.png" />
+</figure>
+<section id="switch-1-derecha-raiz">
+<h3>Switch 1 (derecha), raíz<a class="headerlink" href="#switch-1-derecha-raiz" title="Enlazar permanentemente con este título"></a></h3>
+<p>En primer lugar debemos saber quien actuará como raíz. Despues del proceso de elecciones ocurrirá que el switch 1 de la derecha ganará el proceso, ya que aunque tiene la misma prioridad que otro, el switch 1 de la derecha tiene la menor MAC (tiene la 0a). Esto significa que el proceso empieza declarando al switch 1 de la derecha el switch raíz y poniendo todos sus puertos a «designado». Todos los switches toman nota del coste que les supone llegar a la raíz.</p>
+<figure class="align-default">
+<img alt="../_images/paso01.png" src="../_images/paso01.png" />
+</figure>
+<p>A continuación iremos viendo los distintos switches y las decisiones que toman</p>
+</section>
+<section id="switch-2-abajo">
+<h3>Switch 2 (abajo)<a class="headerlink" href="#switch-2-abajo" title="Enlazar permanentemente con este título"></a></h3>
+<p>Ocurre esto:</p>
+<ul class="simple">
+<li><p>Todos los switches deben empezar indicando su puerto raíz. En este caso, su mejor puerto para llegar a la raíz es el 20.</p></li>
+<li><p>Examinamos el puerto 21. Este switch tiene un coste 1 y el switch de «enfrente» también, pero nuestra mac 21 es mejor que la del vecino (que es 2c), así que ponemos este puerto a «designado».</p></li>
+<li><p>Examinamos el puerto 22. Nuestro coste es mejor que el del vecino de enfrente, así que nuestro puerto «gana» y se pone a «designado».</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/paso02.png" src="../_images/paso02.png" />
+</figure>
+</section>
+<section id="switch-2-centro-arriba">
+<h3>Switch 2 (centro-arriba)<a class="headerlink" href="#switch-2-centro-arriba" title="Enlazar permanentemente con este título"></a></h3>
+<ul class="simple">
+<li><p>El puerto 2d es el mejor. Se declara puerto raíz.</p></li>
+<li><p>El puerto 2c se compara con el vecino de enfrente. El vecino y nosotros tenemos el mismo coste (que es 1) pero nuestra MAC es peor. Perdemos y bloqueamos este puerto con la MAC 2c.</p></li>
+<li><p>El puerto 2b se compara con el vecino de enfrente. El vecino (switch 4) tiene un coste peor, así que él pierde y declaramos este puerto 2b como «designado».</p></li>
+<li><p>El puerto 2a se compara con el vecino de enfrente. El vecino (switch 1, izquierda) tiene un coste peor. Él pierde y declaramos nuestro puerto 2a como «designado».</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/paso03.png" src="../_images/paso03.png" />
+</figure>
+</section>
+<section id="switch-4">
+<h3>Switch 4<a class="headerlink" href="#switch-4" title="Enlazar permanentemente con este título"></a></h3>
+<p>Examina sus propios puertos:</p>
+<ul class="simple">
+<li><p>Su puerto 4a es el mejor, se declara raíz.</p></li>
+<li><p>Examina su puerto 4b. El vecino de enfrente tiene un coste 1 y nosotros 2. Perdemos y declaramos este puerto 4b como «bloqueado».</p></li>
+<li><p>Examina su puerto 4c. El vecino tiene un coste 2 y nosotros también. Nuestra MAC 4c es peor que la suya (que es 1b), así que perdemos y declaramos este puerto como «bloqueado».</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/paso04.png" src="../_images/paso04.png" />
+</figure>
+</section>
+<section id="switch-1-izquierda">
+<h3>Switch 1 (izquierda)<a class="headerlink" href="#switch-1-izquierda" title="Enlazar permanentemente con este título"></a></h3>
+<ul class="simple">
+<li><p>Su puerto 1a es el mejor para llegar a la raíz, así que se declara puerto raíz.</p></li>
+<li><p>Su puerto 1b se compara con el vecino de enfrente. El vecino coste 2 y nosotros también, pero nuestra MAC es menor. Nuestro puerto 1b gana a su MAC 4c así que él pierde y nosotros ponemos nuestro puerto 1b a «designado».</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/paso05.png" src="../_images/paso05.png" />
+</figure>
+</section>
+<section id="estado-final">
+<h3>Estado final<a class="headerlink" href="#estado-final" title="Enlazar permanentemente con este título"></a></h3>
+<p>Si asumimos que los puertos bloqueados anulan el cable al que pertenecen observamos que la topología ha cambiado y queda algo como esto:</p>
+<figure class="align-default">
+<img alt="../_images/paso06.png" src="../_images/paso06.png" />
+</figure>
+</section>
+</section>
 </section>
 
 
@@ -426,6 +494,15 @@ login
 <li class="toctree-l2"><a class="reference internal" href="#las-tormentas-de-broadcast">Las tormentas de «broadcast».</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#el-protocolo-spanning-tree">El protocolo Spanning-Tree.</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#como-se-decide-sobre-el-estado-de-los-puertos">¿Como se decide sobre el estado de los puertos?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ejemplo-de-stp">Ejemplo de STP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#switch-1-derecha-raiz">Switch 1 (derecha), raíz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#switch-2-abajo">Switch 2 (abajo)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#switch-2-centro-arriba">Switch 2 (centro-arriba)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#switch-4">Switch 4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#switch-1-izquierda">Switch 1 (izquierda)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#estado-final">Estado final</a></li>
 </ul>
 </li>
 </ul>

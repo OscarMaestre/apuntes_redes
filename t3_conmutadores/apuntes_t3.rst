@@ -358,3 +358,71 @@ Así, el proceso es más o menos este:
 1. Si un puerto tiene un coste mejor que el otro puerto del segmento se pone a "designado".
 2. Si un puerto tiene igual coste que el otro puerto del segmento se examinan las prioridades y se elige el puerto que lleve al switch con la mejor prioridad.
 3. Los puertos que queden son puertos que se ponen a "bloqueado". Han perdido frente a sus competidores, ya sea por coste o por MAC.
+
+Ejemplo de STP
+-----------------
+
+En la figura siguiente se observa una red de switches. Podemos ver en su interior las prioridades que se les han dado y en los cables podemos ver la MAC de cada interfaz. Observando esto, ¿en qué estado quedarán los distintos puertos de los distintos switches?
+
+
+.. figure:: pasos/paso00.png
+    
+Switch 1 (derecha), raíz
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+En primer lugar debemos saber quien actuará como raíz. Despues del proceso de elecciones ocurrirá que el switch 1 de la derecha ganará el proceso, ya que aunque tiene la misma prioridad que otro, el switch 1 de la derecha tiene la menor MAC (tiene la 0a). Esto significa que el proceso empieza declarando al switch 1 de la derecha el switch raíz y poniendo todos sus puertos a "designado". Todos los switches toman nota del coste que les supone llegar a la raíz.
+
+.. figure:: pasos/paso01.png
+
+A continuación iremos viendo los distintos switches y las decisiones que toman
+
+
+Switch 2 (abajo)
+~~~~~~~~~~~~~~~~~
+
+Ocurre esto:
+
+
+* Todos los switches deben empezar indicando su puerto raíz. En este caso, su mejor puerto para llegar a la raíz es el 20.
+* Examinamos el puerto 21. Este switch tiene un coste 1 y el switch de "enfrente" también, pero nuestra mac 21 es mejor que la del vecino (que es 2c), así que ponemos este puerto a "designado".
+* Examinamos el puerto 22. Nuestro coste es mejor que el del vecino de enfrente, así que nuestro puerto "gana" y se pone a "designado".
+
+
+.. figure:: pasos/paso02.png
+
+Switch 2 (centro-arriba)
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* El puerto 2d es el mejor. Se declara puerto raíz.
+* El puerto 2c se compara con el vecino de enfrente. El vecino y nosotros tenemos el mismo coste (que es 1) pero nuestra MAC es peor. Perdemos y bloqueamos este puerto con la MAC 2c.
+* El puerto 2b se compara con el vecino de enfrente. El vecino (switch 4) tiene un coste peor, así que él pierde y declaramos este puerto 2b como "designado".
+* El puerto 2a se compara con el vecino de enfrente. El vecino (switch 1, izquierda) tiene un coste peor. Él pierde y declaramos nuestro puerto 2a como "designado".
+
+.. figure:: pasos/paso03.png
+
+Switch 4
+~~~~~~~~~~~~~~~~~
+Examina sus propios puertos:
+
+* Su puerto 4a es el mejor, se declara raíz.
+* Examina su puerto 4b. El vecino de enfrente tiene un coste 1 y nosotros 2. Perdemos y declaramos este puerto 4b como "bloqueado".
+* Examina su puerto 4c. El vecino tiene un coste 2 y nosotros también. Nuestra MAC 4c es peor que la suya (que es 1b), así que perdemos y declaramos este puerto como "bloqueado".
+
+
+.. figure:: pasos/paso04.png
+
+
+Switch 1 (izquierda)
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Su puerto 1a es el mejor para llegar a la raíz, así que se declara puerto raíz.
+* Su puerto 1b se compara con el vecino de enfrente. El vecino coste 2 y nosotros también, pero nuestra MAC es menor. Nuestro puerto 1b gana a su MAC 4c así que él pierde y nosotros ponemos nuestro puerto 1b a "designado".
+
+.. figure:: pasos/paso05.png
+
+Estado final
+~~~~~~~~~~~~~~~~
+
+Si asumimos que los puertos bloqueados anulan el cable al que pertenecen observamos que la topología ha cambiado y queda algo como esto:
+
+.. figure:: pasos/paso06.png
