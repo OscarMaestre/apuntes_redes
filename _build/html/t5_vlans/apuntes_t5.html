@@ -100,6 +100,10 @@
 <span class="n">interface</span> <span class="n">fastethernet</span> <span class="o">..</span>
 </pre></div>
 </div>
+</section>
+</section>
+<section id="definicion-de-enlaces-troncales-en-los-conmutadores-y-routers">
+<h2>Definición de enlaces troncales en los conmutadores y routers.<a class="headerlink" href="#definicion-de-enlaces-troncales-en-los-conmutadores-y-routers" title="Enlazar permanentemente con este título"></a></h2>
 <p>Para configurar el acceso troncal, el proceso es parecido.</p>
 <ol class="arabic simple">
 <li><p>Entrar en la tarjeta</p></li>
@@ -127,6 +131,42 @@
 <span class="n">no</span> <span class="n">shutdown</span>
 </pre></div>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>Al construir VLANs y enlaces troncales se debe tener cuidado al «copiar y pegar configuraciones» de unos switches a otros. Podría ocurrir que sin querer autorizásemos VLANs en enlaces troncales que no debían permitir ese paso.</p>
+</div>
+<section id="reflexion-sobre-ciclos-en-switches-con-vlans">
+<h3>Reflexión sobre ciclos en switches con VLANs<a class="headerlink" href="#reflexion-sobre-ciclos-en-switches-con-vlans" title="Enlazar permanentemente con este título"></a></h3>
+<p>Observa la figura siguiente</p>
+<p>¿Por qué no se han deshabilitado puertos?</p>
+</section>
+</section>
+<section id="protocolos-para-la-administracion-centralizada-de-redes-virtuales-el-protocolo-vtp">
+<h2>Protocolos para la administración centralizada de redes virtuales; el protocolo VTP<a class="headerlink" href="#protocolos-para-la-administracion-centralizada-de-redes-virtuales-el-protocolo-vtp" title="Enlazar permanentemente con este título"></a></h2>
+<p>En realidad <strong>las VLAN no se crean «sobre la marcha» a medida que definimos los interfaces</strong>. En redes grandes se establecen muy claramente dos cosas:</p>
+<ul class="simple">
+<li><p>El identificador de VLAN al que van a pertenecer un grupo de usuarios.</p></li>
+<li><p>El <em>nombre de dicha VLAN</em>. Aunque los nombres no son estrictamente obligatorios <strong>sí son muy recomendables</strong>. En redes grandes pueden ser fundamentales para no perdernos en la asignación de interfaces a VLANs.</p></li>
+</ul>
+<p>Este último punto es el que nos interesa. Para crear una VLAN y asociarle un nombre tenemos que dar estos pasos:</p>
+<p>¿Qué ocurre si tenemos una red grande con varias decenas de VLANs? ¿Y si además de vez en cuando algunos nombres cambian o se crean otros nuevos? Evidentemente, conectarse a tantos switches tecleando una y otra vez los mismos comandos y/o cambiar los números o nombres correspondientes no solo es muy tedioso, sino propenso a errores. Para evitar esto tenemos un protocolo llamado VTP (VLAN Trunking Protocol) que nos va a facilitar la operativa.</p>
+<section id="modos-vtp">
+<h3>Modos VTP<a class="headerlink" href="#modos-vtp" title="Enlazar permanentemente con este título"></a></h3>
+<ol class="arabic simple">
+<li><p>Servidor.</p></li>
+<li><p>Cliente.</p></li>
+<li><p>Transparente</p></li>
+</ol>
+</section>
+<section id="proceso-basico">
+<h3>Proceso básico<a class="headerlink" href="#proceso-basico" title="Enlazar permanentemente con este título"></a></h3>
+<p>En el modo de configuración global tenemos que hacer esto:</p>
+<ol class="arabic simple">
+<li><p>Configurar dominio con el comando <code class="docutils literal notranslate"><span class="pre">vtp</span> <span class="pre">domain</span> <span class="pre">acme.com</span></code>.</p></li>
+<li><p>Configurar la clave con <code class="docutils literal notranslate"><span class="pre">vtp</span> <span class="pre">password</span> <span class="pre">abcd1234</span></code>.</p></li>
+<li><p>Configurar el modo con <code class="docutils literal notranslate"><span class="pre">vtp</span> <span class="pre">mode</span> <span class="pre">client</span></code> o <code class="docutils literal notranslate"><span class="pre">vtp</span> <span class="pre">mode</span> <span class="pre">server</span></code></p></li>
+<li><p>Habilitar los interfaces troncales correspondientes.</p></li>
+</ol>
 </section>
 </section>
 <section id="el-protocolo-ieee802-1q">
@@ -134,12 +174,6 @@
 </section>
 <section id="diagnostico-de-incidencias-en-redes-virtuales">
 <h2>Diagnóstico de incidencias en redes virtuales.<a class="headerlink" href="#diagnostico-de-incidencias-en-redes-virtuales" title="Enlazar permanentemente con este título"></a></h2>
-</section>
-<section id="definicion-de-enlaces-troncales-en-los-conmutadores-y-routers">
-<h2>Definición de enlaces troncales en los conmutadores y routers.<a class="headerlink" href="#definicion-de-enlaces-troncales-en-los-conmutadores-y-routers" title="Enlazar permanentemente con este título"></a></h2>
-</section>
-<section id="protocolos-para-la-administracion-centralizada-de-redes-virtuales-el-protocolo-vtp">
-<h2>Protocolos para la administración centralizada de redes virtuales; el protocolo VTP<a class="headerlink" href="#protocolos-para-la-administracion-centralizada-de-redes-virtuales-el-protocolo-vtp" title="Enlazar permanentemente con este título"></a></h2>
 </section>
 </section>
 
@@ -174,10 +208,17 @@
 <li class="toctree-l3"><a class="reference internal" href="#configuracion">Configuración</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#definicion-de-enlaces-troncales-en-los-conmutadores-y-routers">Definición de enlaces troncales en los conmutadores y routers.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#reflexion-sobre-ciclos-en-switches-con-vlans">Reflexión sobre ciclos en switches con VLANs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#protocolos-para-la-administracion-centralizada-de-redes-virtuales-el-protocolo-vtp">Protocolos para la administración centralizada de redes virtuales; el protocolo VTP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#modos-vtp">Modos VTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#proceso-basico">Proceso básico</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#el-protocolo-ieee802-1q">El protocolo IEEE802.1Q</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#diagnostico-de-incidencias-en-redes-virtuales">Diagnóstico de incidencias en redes virtuales.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#definicion-de-enlaces-troncales-en-los-conmutadores-y-routers">Definición de enlaces troncales en los conmutadores y routers.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#protocolos-para-la-administracion-centralizada-de-redes-virtuales-el-protocolo-vtp">Protocolos para la administración centralizada de redes virtuales; el protocolo VTP</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../t6_enrutamiento_dinamico/apuntes_t6.html">Tema 6:Configuración y administración de protocolos dinámicos</a></li>

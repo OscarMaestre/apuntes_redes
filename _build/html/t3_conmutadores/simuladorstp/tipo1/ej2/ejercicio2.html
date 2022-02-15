@@ -38,98 +38,79 @@
 <figure class="align-default">
 <img alt="../../../../_images/ejercicio2.png" src="../../../../_images/ejercicio2.png" />
 </figure>
-<p>Indicar el estado final en que quedar?n todos los puertos de todos los switches.</p>
-<p>Empezando por los eventos de env?o, recepci?n y determinaci?n de cual es el switch ra?z la lista de sucesos ser?a esta:</p>
+<p>Indicar el estado final en que quedarán todos los puertos de todos los switches.</p>
+<p>Empezando por los eventos de envío, recepción y determinación de cual es el switch raíz la lista de sucesos sería esta:</p>
 <ol class="arabic simple">
-<li></li>
-<li><p>Switch 4:18 env?a por el puerto 58 la BPDU (Ra?z:4:18, Coste:0, ID:4:18, MAC:58)</p></li>
-<li><p>Switch 4:18 env?a por el puerto 18 la BPDU (Ra?z:4:18, Coste:0, ID:4:18, MAC:18)</p></li>
-<li><p>Switch 3:42 env?a por el puerto 42 la BPDU (Ra?z:3:42, Coste:0, ID:3:42, MAC:42)</p></li>
-<li><p>Switch 3:42 env?a por el puerto 66 la BPDU (Ra?z:3:42, Coste:0, ID:3:42, MAC:66)</p></li>
-<li><p>Switch 5:09 env?a por el puerto 50 la BPDU (Ra?z:5:09, Coste:0, ID:5:09, MAC:50)</p></li>
-<li><p>Switch 5:09 env?a por el puerto 09 la BPDU (Ra?z:5:09, Coste:0, ID:5:09, MAC:09)</p></li>
-<li><p>Switch 2:08 env?a por el puerto 08 la BPDU (Ra?z:2:08, Coste:0, ID:2:08, MAC:08)</p></li>
-<li><p>Switch 2:08 env?a por el puerto 41 la BPDU (Ra?z:2:08, Coste:0, ID:2:08, MAC:41)</p></li>
-<li><p>Switch 4:18 recibe por el puerto 58 la BPDU (Ra?z:2:08, Coste:0, ID:2:08, MAC:41).El switch 4:18 envi? la BPDU (Ra?z:4:18, Coste:0, ID:4:18, MAC:58) y recibi? (Ra?z:2:08, Coste:0, ID:2:08, MAC:41), que es una ra?z mejor, as? que apunta que la nueva ra?z es 2:08 y que la mejor salida es por la MAC 58</p></li>
-<li><p>Switch 4:18 recibe por el puerto 18 la BPDU (Ra?z:3:42, Coste:0, ID:3:42, MAC:42)</p></li>
-<li><p>Switch 3:42 recibe por el puerto 42 la BPDU (Ra?z:4:18, Coste:0, ID:4:18, MAC:18)</p></li>
-<li><p>Switch 3:42 recibe por el puerto 66 la BPDU (Ra?z:5:09, Coste:0, ID:5:09, MAC:50)</p></li>
-<li><p>Switch 5:09 recibe por el puerto 50 la BPDU (Ra?z:3:42, Coste:0, ID:3:42, MAC:66).El switch 5:09 envi? la BPDU (Ra?z:5:09, Coste:0, ID:5:09, MAC:50) y recibi? (Ra?z:3:42, Coste:0, ID:3:42, MAC:66), que es una ra?z mejor, as? que apunta que la nueva ra?z es 3:42 y que la mejor salida es por la MAC 50</p></li>
-<li><p>Switch 5:09 recibe por el puerto 09 la BPDU (Ra?z:2:08, Coste:0, ID:2:08, MAC:08).El switch 5:09 envi? la BPDU (Ra?z:5:09, Coste:0, ID:5:09, MAC:09) y recibi? (Ra?z:2:08, Coste:0, ID:2:08, MAC:08), que es una ra?z mejor, as? que apunta que la nueva ra?z es 2:08 y que la mejor salida es por la MAC 09</p></li>
-<li><p>Switch 2:08 recibe por el puerto 08 la BPDU (Ra?z:5:09, Coste:0, ID:5:09, MAC:09)</p></li>
-<li><p>Switch 2:08 recibe por el puerto 41 la BPDU (Ra?z:4:18, Coste:0, ID:4:18, MAC:58)</p></li>
-<li><p>Switch 4:18 env?a por el puerto 58 la BPDU (Ra?z:2:08, Coste:1, ID:4:18, MAC:58)</p></li>
-<li><p>Switch 4:18 env?a por el puerto 18 la BPDU (Ra?z:2:08, Coste:1, ID:4:18, MAC:18)</p></li>
-<li><p>Switch 3:42 env?a por el puerto 42 la BPDU (Ra?z:3:42, Coste:0, ID:3:42, MAC:42)</p></li>
-<li><p>Switch 3:42 env?a por el puerto 66 la BPDU (Ra?z:3:42, Coste:0, ID:3:42, MAC:66)</p></li>
-<li><p>Switch 5:09 env?a por el puerto 50 la BPDU (Ra?z:2:08, Coste:1, ID:5:09, MAC:50)</p></li>
-<li><p>Switch 5:09 env?a por el puerto 09 la BPDU (Ra?z:2:08, Coste:1, ID:5:09, MAC:09)</p></li>
-<li><p>Switch 2:08 env?a por el puerto 08 la BPDU (Ra?z:2:08, Coste:0, ID:2:08, MAC:08)</p></li>
-<li><p>Switch 2:08 env?a por el puerto 41 la BPDU (Ra?z:2:08, Coste:0, ID:2:08, MAC:41)</p></li>
-<li><p>Switch 4:18 recibe por el puerto 58 la BPDU (Ra?z:2:08, Coste:0, ID:2:08, MAC:41).El switch 4:18 envi? la BPDU (Ra?z:2:08, Coste:1, ID:4:18, MAC:58) y recibi? (Ra?z:2:08, Coste:0, ID:2:08, MAC:41), que es una ra?z mejor, as? que apunta que la nueva ra?z es 2:08 y que la mejor salida es por la MAC 58</p></li>
-<li><p>Switch 4:18 recibe por el puerto 18 la BPDU (Ra?z:3:42, Coste:0, ID:3:42, MAC:42)</p></li>
-<li><p>Switch 3:42 recibe por el puerto 42 la BPDU (Ra?z:2:08, Coste:1, ID:4:18, MAC:18).El switch 3:42 envi? la BPDU (Ra?z:3:42, Coste:0, ID:3:42, MAC:42) y recibi? (Ra?z:2:08, Coste:1, ID:4:18, MAC:18), que es una ra?z mejor, as? que apunta que la nueva ra?z es 2:08 y que la mejor salida es por la MAC 42</p></li>
-<li><p>Switch 3:42 recibe por el puerto 66 la BPDU (Ra?z:2:08, Coste:1, ID:5:09, MAC:50).El switch 3:42 envi? la BPDU (Ra?z:3:42, Coste:0, ID:3:42, MAC:66) y recibi? (Ra?z:2:08, Coste:1, ID:5:09, MAC:50), que es una ra?z mejor, as? que apunta que la nueva ra?z es 2:08 y que la mejor salida es por la MAC 66</p></li>
-<li><p>Switch 5:09 recibe por el puerto 50 la BPDU (Ra?z:3:42, Coste:0, ID:3:42, MAC:66)</p></li>
-<li><p>Switch 5:09 recibe por el puerto 09 la BPDU (Ra?z:2:08, Coste:0, ID:2:08, MAC:08).El switch 5:09 envi? la BPDU (Ra?z:2:08, Coste:1, ID:5:09, MAC:09) y recibi? (Ra?z:2:08, Coste:0, ID:2:08, MAC:08), que es una ra?z mejor, as? que apunta que la nueva ra?z es 2:08 y que la mejor salida es por la MAC 09</p></li>
-<li><p>Switch 2:08 recibe por el puerto 08 la BPDU (Ra?z:2:08, Coste:1, ID:5:09, MAC:09)</p></li>
-<li><p>Switch 2:08 recibe por el puerto 41 la BPDU (Ra?z:2:08, Coste:1, ID:4:18, MAC:58)</p></li>
-<li><p>Switch 4:18 env?a por el puerto 58 la BPDU (Ra?z:2:08, Coste:1, ID:4:18, MAC:58)</p></li>
-<li><p>Switch 4:18 env?a por el puerto 18 la BPDU (Ra?z:2:08, Coste:1, ID:4:18, MAC:18)</p></li>
-<li><p>Switch 3:42 env?a por el puerto 42 la BPDU (Ra?z:2:08, Coste:2, ID:3:42, MAC:42)</p></li>
-<li><p>Switch 3:42 env?a por el puerto 66 la BPDU (Ra?z:2:08, Coste:2, ID:3:42, MAC:66)</p></li>
-<li><p>Switch 5:09 env?a por el puerto 50 la BPDU (Ra?z:2:08, Coste:1, ID:5:09, MAC:50)</p></li>
-<li><p>Switch 5:09 env?a por el puerto 09 la BPDU (Ra?z:2:08, Coste:1, ID:5:09, MAC:09)</p></li>
-<li><p>Switch 2:08 env?a por el puerto 08 la BPDU (Ra?z:2:08, Coste:0, ID:2:08, MAC:08)</p></li>
-<li><p>Switch 2:08 env?a por el puerto 41 la BPDU (Ra?z:2:08, Coste:0, ID:2:08, MAC:41)</p></li>
-<li><p>Switch 4:18 recibe por el puerto 58 la BPDU (Ra?z:2:08, Coste:0, ID:2:08, MAC:41).El switch 4:18 envi? la BPDU (Ra?z:2:08, Coste:1, ID:4:18, MAC:58) y recibi? (Ra?z:2:08, Coste:0, ID:2:08, MAC:41), que es una ra?z mejor, as? que apunta que la nueva ra?z es 2:08 y que la mejor salida es por la MAC 58</p></li>
-<li><p>Switch 4:18 recibe por el puerto 18 la BPDU (Ra?z:2:08, Coste:2, ID:3:42, MAC:42)</p></li>
-<li><p>Switch 3:42 recibe por el puerto 42 la BPDU (Ra?z:2:08, Coste:1, ID:4:18, MAC:18).El switch 3:42 envi? la BPDU (Ra?z:2:08, Coste:2, ID:3:42, MAC:42) y recibi? (Ra?z:2:08, Coste:1, ID:4:18, MAC:18), que es una ra?z mejor, as? que apunta que la nueva ra?z es 2:08 y que la mejor salida es por la MAC 42</p></li>
-<li><p>Switch 3:42 recibe por el puerto 66 la BPDU (Ra?z:2:08, Coste:1, ID:5:09, MAC:50).El switch 3:42 envi? la BPDU (Ra?z:2:08, Coste:2, ID:3:42, MAC:66) y recibi? (Ra?z:2:08, Coste:1, ID:5:09, MAC:50), que es una ra?z mejor, as? que apunta que la nueva ra?z es 2:08 y que la mejor salida es por la MAC 66</p></li>
-<li><p>Switch 5:09 recibe por el puerto 50 la BPDU (Ra?z:2:08, Coste:2, ID:3:42, MAC:66)</p></li>
-<li><p>Switch 5:09 recibe por el puerto 09 la BPDU (Ra?z:2:08, Coste:0, ID:2:08, MAC:08).El switch 5:09 envi? la BPDU (Ra?z:2:08, Coste:1, ID:5:09, MAC:09) y recibi? (Ra?z:2:08, Coste:0, ID:2:08, MAC:08), que es una ra?z mejor, as? que apunta que la nueva ra?z es 2:08 y que la mejor salida es por la MAC 09</p></li>
-<li><p>Switch 2:08 recibe por el puerto 08 la BPDU (Ra?z:2:08, Coste:1, ID:5:09, MAC:09)</p></li>
-<li><p>Switch 2:08 recibe por el puerto 41 la BPDU (Ra?z:2:08, Coste:1, ID:4:18, MAC:58)</p></li>
-<li><p>Switch 4:18 env?a por el puerto 58 la BPDU (Ra?z:2:08, Coste:1, ID:4:18, MAC:58)</p></li>
-<li><p>Switch 4:18 env?a por el puerto 18 la BPDU (Ra?z:2:08, Coste:1, ID:4:18, MAC:18)</p></li>
-<li><p>Switch 3:42 env?a por el puerto 42 la BPDU (Ra?z:2:08, Coste:2, ID:3:42, MAC:42)</p></li>
-<li><p>Switch 3:42 env?a por el puerto 66 la BPDU (Ra?z:2:08, Coste:2, ID:3:42, MAC:66)</p></li>
-<li><p>Switch 5:09 env?a por el puerto 50 la BPDU (Ra?z:2:08, Coste:1, ID:5:09, MAC:50)</p></li>
-<li><p>Switch 5:09 env?a por el puerto 09 la BPDU (Ra?z:2:08, Coste:1, ID:5:09, MAC:09)</p></li>
-<li><p>Switch 2:08 env?a por el puerto 08 la BPDU (Ra?z:2:08, Coste:0, ID:2:08, MAC:08)</p></li>
-<li><p>Switch 2:08 env?a por el puerto 41 la BPDU (Ra?z:2:08, Coste:0, ID:2:08, MAC:41)</p></li>
-<li><p>Switch 4:18 recibe por el puerto 58 la BPDU (Ra?z:2:08, Coste:0, ID:2:08, MAC:41).El switch 4:18 envi? la BPDU (Ra?z:2:08, Coste:1, ID:4:18, MAC:58) y recibi? (Ra?z:2:08, Coste:0, ID:2:08, MAC:41), que es una ra?z mejor, as? que apunta que la nueva ra?z es 2:08 y que la mejor salida es por la MAC 58</p></li>
-<li><p>Switch 4:18 recibe por el puerto 18 la BPDU (Ra?z:2:08, Coste:2, ID:3:42, MAC:42)</p></li>
-<li><p>Switch 3:42 recibe por el puerto 42 la BPDU (Ra?z:2:08, Coste:1, ID:4:18, MAC:18).El switch 3:42 envi? la BPDU (Ra?z:2:08, Coste:2, ID:3:42, MAC:42) y recibi? (Ra?z:2:08, Coste:1, ID:4:18, MAC:18), que es una ra?z mejor, as? que apunta que la nueva ra?z es 2:08 y que la mejor salida es por la MAC 42</p></li>
-<li><p>Switch 3:42 recibe por el puerto 66 la BPDU (Ra?z:2:08, Coste:1, ID:5:09, MAC:50).El switch 3:42 envi? la BPDU (Ra?z:2:08, Coste:2, ID:3:42, MAC:66) y recibi? (Ra?z:2:08, Coste:1, ID:5:09, MAC:50), que es una ra?z mejor, as? que apunta que la nueva ra?z es 2:08 y que la mejor salida es por la MAC 66</p></li>
-<li><p>Switch 5:09 recibe por el puerto 50 la BPDU (Ra?z:2:08, Coste:2, ID:3:42, MAC:66)</p></li>
-<li><p>Switch 5:09 recibe por el puerto 09 la BPDU (Ra?z:2:08, Coste:0, ID:2:08, MAC:08).El switch 5:09 envi? la BPDU (Ra?z:2:08, Coste:1, ID:5:09, MAC:09) y recibi? (Ra?z:2:08, Coste:0, ID:2:08, MAC:08), que es una ra?z mejor, as? que apunta que la nueva ra?z es 2:08 y que la mejor salida es por la MAC 09</p></li>
-<li><p>Switch 2:08 recibe por el puerto 08 la BPDU (Ra?z:2:08, Coste:1, ID:5:09, MAC:09)</p></li>
-<li><p>Switch 2:08 recibe por el puerto 41 la BPDU (Ra?z:2:08, Coste:1, ID:4:18, MAC:58)</p></li>
+<li><p>Switch 1:54 envía por el puerto 64 la BPDU (Raíz:1:54, Coste:0, ID:1:54, MAC:64)</p></li>
+<li><p>Switch 1:54 envía por el puerto 54 la BPDU (Raíz:1:54, Coste:0, ID:1:54, MAC:54)</p></li>
+<li><p>Switch 5:08 envía por el puerto 08 la BPDU (Raíz:5:08, Coste:0, ID:5:08, MAC:08)</p></li>
+<li><p>Switch 5:08 envía por el puerto 30 la BPDU (Raíz:5:08, Coste:0, ID:5:08, MAC:30)</p></li>
+<li><p>Switch 3:93 envía por el puerto 93 la BPDU (Raíz:3:93, Coste:0, ID:3:93, MAC:93)</p></li>
+<li><p>Switch 3:93 envía por el puerto 97 la BPDU (Raíz:3:93, Coste:0, ID:3:93, MAC:97)</p></li>
+<li><p>Switch 4:23 envía por el puerto 23 la BPDU (Raíz:4:23, Coste:0, ID:4:23, MAC:23)</p></li>
+<li><p>Switch 4:23 envía por el puerto 33 la BPDU (Raíz:4:23, Coste:0, ID:4:23, MAC:33)</p></li>
+<li><p>Switch 1:54 recibe por el puerto 64 la BPDU (Raíz:4:23, Coste:0, ID:4:23, MAC:33)</p></li>
+<li><p>Switch 1:54 recibe por el puerto 54 la BPDU (Raíz:5:08, Coste:0, ID:5:08, MAC:08)</p></li>
+<li><p>Switch 5:08 recibe por el puerto 08 la BPDU (Raíz:1:54, Coste:0, ID:1:54, MAC:54). La raíz 1:54 es mejor, así que se anota como nueva raíz.</p></li>
+<li><p>Switch 5:08 recibe por el puerto 30 la BPDU (Raíz:3:93, Coste:0, ID:3:93, MAC:93)</p></li>
+<li><p>Switch 3:93 recibe por el puerto 93 la BPDU (Raíz:5:08, Coste:0, ID:5:08, MAC:30)</p></li>
+<li><p>Switch 3:93 recibe por el puerto 97 la BPDU (Raíz:4:23, Coste:0, ID:4:23, MAC:23)</p></li>
+<li><p>Switch 4:23 recibe por el puerto 23 la BPDU (Raíz:3:93, Coste:0, ID:3:93, MAC:97). La raíz 3:93 es mejor, así que se anota como nueva raíz.</p></li>
+<li><p>Switch 4:23 recibe por el puerto 33 la BPDU (Raíz:1:54, Coste:0, ID:1:54, MAC:64). La raíz 1:54 es mejor, así que se anota como nueva raíz.</p></li>
+<li><p>Switch 1:54 envía por el puerto 64 la BPDU (Raíz:1:54, Coste:0, ID:1:54, MAC:64)</p></li>
+<li><p>Switch 1:54 envía por el puerto 54 la BPDU (Raíz:1:54, Coste:0, ID:1:54, MAC:54)</p></li>
+<li><p>Switch 5:08 envía por el puerto 08 la BPDU (Raíz:1:54, Coste:1, ID:5:08, MAC:08)</p></li>
+<li><p>Switch 5:08 envía por el puerto 30 la BPDU (Raíz:1:54, Coste:1, ID:5:08, MAC:30)</p></li>
+<li><p>Switch 3:93 envía por el puerto 93 la BPDU (Raíz:3:93, Coste:0, ID:3:93, MAC:93)</p></li>
+<li><p>Switch 3:93 envía por el puerto 97 la BPDU (Raíz:3:93, Coste:0, ID:3:93, MAC:97)</p></li>
+<li><p>Switch 4:23 envía por el puerto 23 la BPDU (Raíz:1:54, Coste:1, ID:4:23, MAC:23)</p></li>
+<li><p>Switch 4:23 envía por el puerto 33 la BPDU (Raíz:1:54, Coste:1, ID:4:23, MAC:33)</p></li>
+<li><p>Switch 1:54 recibe por el puerto 64 la BPDU (Raíz:1:54, Coste:1, ID:4:23, MAC:33)</p></li>
+<li><p>Switch 1:54 recibe por el puerto 54 la BPDU (Raíz:1:54, Coste:1, ID:5:08, MAC:08)</p></li>
+<li><p>Switch 5:08 recibe por el puerto 08 la BPDU (Raíz:1:54, Coste:0, ID:1:54, MAC:54)</p></li>
+<li><p>Switch 5:08 recibe por el puerto 30 la BPDU (Raíz:3:93, Coste:0, ID:3:93, MAC:93)</p></li>
+<li><p>Switch 3:93 recibe por el puerto 93 la BPDU (Raíz:1:54, Coste:1, ID:5:08, MAC:30). La raíz 1:54 es mejor, así que se anota como nueva raíz.</p></li>
+<li><p>Switch 3:93 recibe por el puerto 97 la BPDU (Raíz:1:54, Coste:1, ID:4:23, MAC:23)</p></li>
+<li><p>Switch 4:23 recibe por el puerto 23 la BPDU (Raíz:3:93, Coste:0, ID:3:93, MAC:97)</p></li>
+<li><p>Switch 4:23 recibe por el puerto 33 la BPDU (Raíz:1:54, Coste:0, ID:1:54, MAC:64)</p></li>
+<li><p>Switch 1:54 envía por el puerto 64 la BPDU (Raíz:1:54, Coste:0, ID:1:54, MAC:64)</p></li>
+<li><p>Switch 1:54 envía por el puerto 54 la BPDU (Raíz:1:54, Coste:0, ID:1:54, MAC:54)</p></li>
+<li><p>Switch 5:08 envía por el puerto 08 la BPDU (Raíz:1:54, Coste:1, ID:5:08, MAC:08)</p></li>
+<li><p>Switch 5:08 envía por el puerto 30 la BPDU (Raíz:1:54, Coste:1, ID:5:08, MAC:30)</p></li>
+<li><p>Switch 3:93 envía por el puerto 93 la BPDU (Raíz:1:54, Coste:2, ID:3:93, MAC:93)</p></li>
+<li><p>Switch 3:93 envía por el puerto 97 la BPDU (Raíz:1:54, Coste:2, ID:3:93, MAC:97)</p></li>
+<li><p>Switch 4:23 envía por el puerto 23 la BPDU (Raíz:1:54, Coste:1, ID:4:23, MAC:23)</p></li>
+<li><p>Switch 4:23 envía por el puerto 33 la BPDU (Raíz:1:54, Coste:1, ID:4:23, MAC:33)</p></li>
+<li><p>Switch 1:54 recibe por el puerto 64 la BPDU (Raíz:1:54, Coste:1, ID:4:23, MAC:33)</p></li>
+<li><p>Switch 1:54 recibe por el puerto 54 la BPDU (Raíz:1:54, Coste:1, ID:5:08, MAC:08)</p></li>
+<li><p>Switch 5:08 recibe por el puerto 08 la BPDU (Raíz:1:54, Coste:0, ID:1:54, MAC:54)</p></li>
+<li><p>Switch 5:08 recibe por el puerto 30 la BPDU (Raíz:1:54, Coste:2, ID:3:93, MAC:93)</p></li>
+<li><p>Switch 3:93 recibe por el puerto 93 la BPDU (Raíz:1:54, Coste:1, ID:5:08, MAC:30)</p></li>
+<li><p>Switch 3:93 recibe por el puerto 97 la BPDU (Raíz:1:54, Coste:1, ID:4:23, MAC:23)</p></li>
+<li><p>Switch 4:23 recibe por el puerto 23 la BPDU (Raíz:1:54, Coste:2, ID:3:93, MAC:97)</p></li>
+<li><p>Switch 4:23 recibe por el puerto 33 la BPDU (Raíz:1:54, Coste:0, ID:1:54, MAC:64)</p></li>
 </ol>
-<p>Una vez decidido el switch ra?z, los switches toman las siguientes decisiones (volvemos a indicar la figura por comodidad):</p>
+<p>Una vez decidido el switch raíz, los switches toman las siguientes decisiones (volvemos a indicar la figura por comodidad):</p>
 <figure class="align-default">
 <img alt="../../../../_images/ejercicio2.png" src="../../../../_images/ejercicio2.png" />
 </figure>
-<p>El switch 4:18 toma estas decisiones:</p>
+<p>El switch 1:54 toma estas decisiones:</p>
 <ul class="simple">
-<li><p>El puerto con la MAC 58 se convierte en ra?z. Es el mejor de los puertos con un coste de 1 para llegar al switch ra?z 2:08.</p></li>
-<li><p>El puerto con la MAC 58 se convierte en ra?z. Es el mejor de los puertos con un coste de 1 para llegar al switch ra?z 2:08.</p></li>
+<li><p>1:54 es raiz y pone todos sus puertos a designado.</p></li>
 </ul>
-<p>El switch 3:42 toma estas decisiones:</p>
+<p>El switch 5:08 toma estas decisiones:</p>
 <ul class="simple">
-<li><p>El puerto con la MAC 66 se convierte en ra?z. Es el mejor de los puertos con un coste de 2 para llegar al switch ra?z 2:08.</p></li>
-<li><p>El puerto con la MAC 66 se convierte en ra?z. Es el mejor de los puertos con un coste de 2 para llegar al switch ra?z 2:08.</p></li>
+<li><p>El puerto con la MAC 08 se convierte en raíz.</p></li>
+<li><p>El puerto con la MAC 30 se convierte en designado. Es el mejor del segmento con un coste de 1 frente un coste de 2 que ofrece el puerto 93.</p></li>
 </ul>
-<p>El switch 5:09 toma estas decisiones:</p>
+<p>El switch 3:93 toma estas decisiones:</p>
 <ul class="simple">
-<li><p>El puerto con la MAC 09 se convierte en ra?z. Es el mejor de los puertos con un coste de 1 para llegar al switch ra?z 2:08.</p></li>
-<li><p>El puerto con la MAC 09 se convierte en ra?z. Es el mejor de los puertos con un coste de 1 para llegar al switch ra?z 2:08.</p></li>
+<li><p>El puerto con la MAC 93 se convierte en raíz.</p></li>
 </ul>
-<p>El switch 2:08 toma estas decisiones:</p>
+<p>El switch 4:23 toma estas decisiones:</p>
 <ul class="simple">
-<li><p>2:08 es raiz y pone todos sus puertos a designado.</p></li>
-<li><p>2:08 es raiz y pone todos sus puertos a designado.</p></li>
+<li><p>El puerto con la MAC 33 se convierte en raíz.</p></li>
+<li><p>El puerto con la MAC 23 se convierte en designado. Es el mejor del segmento con un coste de 1 frente un coste de 2 que ofrece el puerto 97.</p></li>
 </ul>
 </section>
 
