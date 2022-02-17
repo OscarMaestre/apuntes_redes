@@ -54,6 +54,18 @@ class TestSwitch(unittest.TestCase) :
 
         return super().setUp()
 
+    def test_menor_mac_en_segmento(self):
+        puerto_01=simulador.Puerto("01")
+        puerto_02=simulador.Puerto("02")
+        puerto_01.asociar_puerto(puerto_02)
+        puerto_02.asociar_puerto(puerto_01)
+
+        esto_debe_ser_true=puerto_01.tiene_menor_mac_que_puerto_enfrente()
+        self.assertEqual(esto_debe_ser_true, True)
+
+        esto_debe_ser_false=puerto_02.tiene_menor_mac_que_puerto_enfrente()
+        self.assertEqual(esto_debe_ser_false, False)
+        
     def get_red_dos_switches(self):
         constructor_redes=simulador.ConstructorCuadradoCuatroLados()
 

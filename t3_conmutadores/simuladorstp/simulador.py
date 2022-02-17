@@ -118,6 +118,16 @@ class Puerto(object):
     def asociar_puerto(self, puerto):
         self.puerto_asociado=puerto
 
+    def tiene_menor_mac_que_puerto_enfrente(self):
+        """Nos dice si este puerto tiene menor MAC
+        que el puerto de enfrente"""
+        nuestra_mac=self.mac
+        mac_del_otro=self.puerto_asociado.mac
+        if nuestra_mac<mac_del_otro:
+            return True
+        else:
+            return False
+
     def get_puerto_asociado(self):
         return self.puerto_asociado
     def get_coste_enviado(self):
@@ -259,6 +269,45 @@ class Switch(object):
             #print("Designado..."+str(p))
             puerto.poner_designado()
 
+    def actuar_si_coste_igual_en_segmento(self, puerto):
+        """Examina si este puerto tiene el mismo coste 
+        que el puerto del switch de enfrente. Si es así
+        se mira la MAC y el que tenga la mejor MAC
+        se pone como designado"""
+        coste=self.evaluar_coste(puerto)
+        print("Comprobando si el coste es igual")
+        #¿el coste de este puerto es igual que el del switch de enfrente?
+        if coste==Puerto.COSTE_IGUAL:
+            #Si es así, miramos si tenemos la mejor MAC o no
+            if puerto.tiene_menor_mac_que_puerto_enfrente():
+                print("Nuestro coste es igual pero con mejor MAC")
+                #Si es así, este puerto es el designado    
+                plantilla="El puerto con la MAC {0} se convierte en designado. "
+                plantilla+="Ambos puertos del segmento tienen un coste de {1}, pero "
+                plantilla+="su MAC ({2}) es menor que la MAC del de enfrente ({3})."
+                mensaje=plantilla.format(
+                    puerto, puerto.get_coste_enviado(), puerto.mac, 
+                    puerto.get_puerto_asociado()
+                )
+                self.lista_decisiones.append(mensaje)
+                #print("Designado..."+str(p))
+                puerto.poner_designado()
+            else:
+                print("Nuestro coste es igual pero con peor MAC")
+                #Si tenemos el mismo coste, pero nuestra MAC es peor, perdemos.
+                plantilla="El puerto con la MAC {0} se convierte en BLOQUEADO. "
+                plantilla+="Ambos puertos del segmento tienen un coste de {1}, pero "
+                plantilla+="su MAC ({2}) es MAYOR que la MAC del de enfrente ({3})."
+                mensaje=plantilla.format(
+                    puerto, puerto.get_coste_enviado(), puerto.mac, 
+                    puerto.get_puerto_asociado()
+                )
+                self.lista_decisiones.append(mensaje)
+                #print("Designado..."+str(p))
+                puerto.poner_bloqueado()
+
+    
+
     def establecer_puertos(self):
         """Repasa todos los puertos del switch decidiendo si los
         tiene que poner a BLOQUEADO, DESIGNADO o RAÍZ"""
@@ -288,68 +337,23 @@ class Switch(object):
             #Ignoramos los puertos que ya estuvieran establecidos
             if p.estado!=Puerto.ESTADO_APRENDIENDO:
                 continue
-            coste=self.evaluar_coste(p)
             self.actuar_si_coste_menor_en_segmento(p)
+            #Si el método anterior no hizo nada, intentamos ver
+            #si el coste es igual o peor
+            self.actuar_si_coste_igual_en_segmento(p)
 
-            # #Caso 1 ¿el coste de este puerto es el mejor del segmento?
-            # if coste==Puerto.COSTE_MENOR:
-            #     #Si es asi, este puerto es el designado
-            #     plantilla="El puerto con la MAC {0} se convierte en designado. "
-            #     plantilla+="Es el mejor del segmento con un coste de {1} frente "
-            #     plantilla+="un coste de {2} que ofrece el puerto {3}."
-            #     mensaje=plantilla.format(
-            #         p, p.get_coste_enviado(), p.get_coste_recibido(), 
-            #         p.get_puerto_asociado()
-            #     )
-            #     self.lista_decisiones.append(mensaje)
-            #     #print("Designado..."+str(p))
-            #     p.poner_designado()
-            #     #Pasamos al siguiente puerto
-            # #Caso 3 ¿El coste de este puerto es el peor?
-            # if coste==Puerto.COSTE_MAYOR:
-            #     plantilla="El puerto con la MAC {0} se bloquea. "
-            #     # plantilla+="Es el peor del segmento con un coste de {1} frente "
-            #     # plantilla+="un coste de {2} que ofrece el puerto {3}."
-            #     mensaje=plantilla.format(
-            #         p, p.get_coste_enviado(), p.get_coste_recibido(), 
-            #         p.get_puerto_asociado()
-            #     )
-            #     self.lista_decisiones.append(mensaje)
-            #     #print("Bloqueado..."+str(p))
-            #     p.poner_bloqueado()
-            # #Caso 2 ¿El coste de este puerto es el mismo que
-            # #el otro puerto del segmento=
-            # if coste==Puerto.COSTE_IGUAL:
-            #     #print("Empate en coste")
-            #     #Pues si es así, entonces hay que desempatar
-            #     #y mirar las macs
-            #     mac_nuestra=p.mac
-            #     mac_otro   =p.get_puerto_asociado().mac
-            #     if mac_nuestra<mac_otro:
-            #         plantilla="El puerto con la MAC {0} se convierte en designado. "
-            #         plantilla+="Hay un empate en coste (que es {1}) pero su mac ({2}) es"
-            #         plantilla+=" menor que la del otro puerto ({3}) "
-                    
-            #         mensaje=plantilla.format(
-            #             p, p.get_coste_enviado(), p.mac,
-            #             p.get_puerto_asociado()
-            #         )
-            #         self.lista_decisiones.append(mensaje)
-                    
-            #         p.poner_designado()
-            #     else:
-            #         plantilla="El puerto con la MAC {0} se bloquea. "
-            #         plantilla+="Hay un empate en coste (que es {1}) pero su mac ({2}) es"
-            #         plantilla+=" mayor que la del otro puerto ({3}) "
-                    
-            #         mensaje=plantilla.format(
-            #             p, p.get_coste_enviado(), p.mac,
-            #             p.get_puerto_asociado()
-            #         )
-            #         self.lista_decisiones.append(mensaje)
-                    
-            #         p.poner_bloqueado()
-                    
+        #Si llegamos aquí, el resto de puertos se bloquean
+        #al no haber sido elegidos raíz, ni designado ni bloqueado por otro método
+        for p in self.puertos:
+            es_raiz=p.estado==Puerto.ESTADO_RAIZ
+            es_designado=p.estado==Puerto.ESTADO_DESIGNADO
+            es_bloqueado=p.estado==Puerto.ESTADO_BLOQUEADO
+            if es_raiz or es_designado or es_bloqueado:
+                continue
+            plantilla="El puerto {0} se marca como bloqueado al no haber sido elegido raíz ni designado."
+            mensaje=plantilla.format(p.mac)
+            self.lista_decisiones.append(mensaje)
+            p.poner_bloqueado()
 
 
     def comprobar_si_puerto_contiene_raiz_mejor(self, puerto):
@@ -593,9 +597,7 @@ class ConstructorRedes(object):
     
 
 class ConstructorCuadradoCuatroLados(ConstructorRedes):
-    
-
-    
+        
 
     def __init__(self) -> None:
         super().__init__()
@@ -850,5 +852,5 @@ Anexo al tema 3:Ejercicios STP
         fich.write(PLANTILLA.format(texto))
 
 if __name__=="__main__":
-    #prueba_depuracion()
-    main()
+    prueba_depuracion()
+    #main()
