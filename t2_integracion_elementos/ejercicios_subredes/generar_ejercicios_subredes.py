@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+
+
 from utilidades.ip.ipv4 import GeneradorIPV4Azar
 from random import randint
 from pytablewriter import RstSimpleTableWriter

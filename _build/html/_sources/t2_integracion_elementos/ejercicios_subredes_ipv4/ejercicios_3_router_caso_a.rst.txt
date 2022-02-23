@@ -10,11 +10,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 102.214.0.0/15 en el área izquierda.
-* Red 142.117.154.160/27 en el área RI-RD
-* Red 38.39.0.0/18 en el área derecha
-* Red 53.128.0.0/10 en el área RD-RC
-* Red 41.128.0.0/10 en el área superior.
+* Red 9.64.0.0/11 en el área izquierda.
+* Red 52.193.230.128/26 en el área RI-RD
+* Red 37.48.228.0/22 en el área derecha
+* Red 123.56.0.0/14 en el área RD-RC
+* Red 37.22.0.0/15 en el área superior.
 
 
 
@@ -34,11 +34,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 180.24.0.0/16 en el área izquierda.
-* Red 8.52.0.0/14 en el área RI-RD
-* Red 99.112.0.0/13 en el área derecha
-* Red 138.9.210.0/23 en el área RD-RC
-* Red 69.27.130.0/23 en el área superior.
+* Red 92.55.55.0/26 en el área izquierda.
+* Red 92.254.0.0/16 en el área RI-RD
+* Red 185.246.255.32/27 en el área derecha
+* Red 147.3.199.128/25 en el área RD-RC
+* Red 175.69.0.0/19 en el área superior.
 
 
 
@@ -58,11 +58,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 136.13.105.0/26 en el área izquierda.
-* Red 86.238.32.0/19 en el área RI-RD
-* Red 29.25.16.0/20 en el área derecha
-* Red 185.173.192.0/21 en el área RD-RC
-* Red 152.70.128.0/17 en el área superior.
+* Red 70.126.100.48/28 en el área izquierda.
+* Red 142.24.0.0/16 en el área RI-RD
+* Red 181.138.0.0/16 en el área derecha
+* Red 91.232.0.0/13 en el área RD-RC
+* Red 50.212.0.0/14 en el área superior.
 
 
 
@@ -82,11 +82,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 72.224.0.0/12 en el área izquierda.
-* Red 182.220.0.0/16 en el área RI-RD
-* Red 6.192.0.0/10 en el área derecha
-* Red 88.96.156.0/22 en el área RD-RC
-* Red 125.35.0.0/17 en el área superior.
+* Red 66.42.240.0/20 en el área izquierda.
+* Red 171.20.203.224/27 en el área RI-RD
+* Red 33.156.128.0/19 en el área derecha
+* Red 57.209.2.128/28 en el área RD-RC
+* Red 31.64.0.0/12 en el área superior.
 
 
 
@@ -106,11 +106,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 209.185.175.128/26 en el área izquierda.
-* Red 213.16.145.0/25 en el área RI-RD
-* Red 69.73.32.0/21 en el área derecha
-* Red 127.170.164.0/23 en el área RD-RC
-* Red 170.167.128.0/17 en el área superior.
+* Red 143.172.232.0/22 en el área izquierda.
+* Red 19.168.0.0/14 en el área RI-RD
+* Red 149.193.47.0/24 en el área derecha
+* Red 56.38.160.0/20 en el área RD-RC
+* Red 139.118.126.192/26 en el área superior.
 
 
 
@@ -130,11 +130,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 187.185.240.0/22 en el área izquierda.
-* Red 18.8.0.0/13 en el área RI-RD
-* Red 13.192.0.0/12 en el área derecha
-* Red 82.72.0.0/13 en el área RD-RC
-* Red 117.0.0.0/11 en el área superior.
+* Red 220.52.113.128/27 en el área izquierda.
+* Red 157.139.204.0/22 en el área RI-RD
+* Red 192.89.63.224/27 en el área derecha
+* Red 122.112.0.0/14 en el área RD-RC
+* Red 160.55.137.128/25 en el área superior.
 
 
 
@@ -154,11 +154,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 145.112.123.224/28 en el área izquierda.
-* Red 121.120.0.0/15 en el área RI-RD
-* Red 124.64.0.0/10 en el área derecha
-* Red 109.211.32.0/20 en el área RD-RC
-* Red 86.191.154.0/23 en el área superior.
+* Red 23.32.0.0/12 en el área izquierda.
+* Red 92.64.0.0/14 en el área RI-RD
+* Red 109.128.0.0/14 en el área derecha
+* Red 143.133.104.0/22 en el área RD-RC
+* Red 45.43.64.0/19 en el área superior.
 
 
 
@@ -178,11 +178,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 56.212.96.0/19 en el área izquierda.
-* Red 93.180.0.0/20 en el área RI-RD
-* Red 54.212.200.0/21 en el área derecha
-* Red 201.117.123.192/28 en el área RD-RC
-* Red 196.175.6.96/28 en el área superior.
+* Red 72.108.0.0/16 en el área izquierda.
+* Red 134.2.0.0/16 en el área RI-RD
+* Red 80.0.0.0/11 en el área derecha
+* Red 189.52.106.0/23 en el área RD-RC
+* Red 55.0.0.0/12 en el área superior.
 
 
 
@@ -202,11 +202,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 104.72.213.192/26 en el área izquierda.
-* Red 112.200.0.0/13 en el área RI-RD
-* Red 9.144.0.0/13 en el área derecha
-* Red 46.0.0.0/10 en el área RD-RC
-* Red 17.157.182.0/23 en el área superior.
+* Red 161.27.32.0/22 en el área izquierda.
+* Red 177.202.0.0/16 en el área RI-RD
+* Red 60.128.0.0/10 en el área derecha
+* Red 5.70.0.0/15 en el área RD-RC
+* Red 99.96.0.0/11 en el área superior.
 
 
 
@@ -226,11 +226,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 18.97.0.0/17 en el área izquierda.
-* Red 158.164.72.0/21 en el área RI-RD
-* Red 86.58.224.0/22 en el área derecha
-* Red 31.32.0.0/16 en el área RD-RC
-* Red 136.127.221.144/28 en el área superior.
+* Red 38.59.64.0/18 en el área izquierda.
+* Red 5.240.0.0/12 en el área RI-RD
+* Red 95.104.128.0/19 en el área derecha
+* Red 87.128.0.0/12 en el área RD-RC
+* Red 153.56.233.128/25 en el área superior.
 
 
 
@@ -250,11 +250,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 203.126.203.192/26 en el área izquierda.
-* Red 1.16.0.0/12 en el área RI-RD
-* Red 50.249.224.0/21 en el área derecha
-* Red 40.147.48.0/22 en el área RD-RC
-* Red 129.45.122.64/26 en el área superior.
+* Red 78.40.0.0/13 en el área izquierda.
+* Red 149.177.151.208/28 en el área RI-RD
+* Red 161.65.128.0/19 en el área derecha
+* Red 85.189.123.0/26 en el área RD-RC
+* Red 95.192.0.0/12 en el área superior.
 
 
 
@@ -274,11 +274,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 66.177.128.0/17 en el área izquierda.
-* Red 46.128.0.0/11 en el área RI-RD
-* Red 190.101.0.0/20 en el área derecha
-* Red 95.127.153.0/26 en el área RD-RC
-* Red 191.210.64.0/18 en el área superior.
+* Red 190.167.128.0/18 en el área izquierda.
+* Red 196.169.45.192/27 en el área RI-RD
+* Red 73.169.231.0/24 en el área derecha
+* Red 94.8.126.160/28 en el área RD-RC
+* Red 23.96.0.0/14 en el área superior.
 
 
 
@@ -298,11 +298,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 89.247.244.0/22 en el área izquierda.
-* Red 116.17.88.0/22 en el área RI-RD
-* Red 98.240.0.0/13 en el área derecha
-* Red 8.132.0.0/16 en el área RD-RC
-* Red 29.171.218.0/23 en el área superior.
+* Red 203.131.12.0/24 en el área izquierda.
+* Red 26.128.0.0/10 en el área RI-RD
+* Red 81.240.0.0/12 en el área derecha
+* Red 166.83.208.0/20 en el área RD-RC
+* Red 77.117.152.0/21 en el área superior.
 
 
 
@@ -322,11 +322,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 17.115.12.0/22 en el área izquierda.
-* Red 75.40.0.0/13 en el área RI-RD
-* Red 88.200.0.0/13 en el área derecha
-* Red 176.29.160.0/19 en el área RD-RC
-* Red 138.165.22.0/24 en el área superior.
+* Red 38.160.0.0/12 en el área izquierda.
+* Red 142.255.128.0/19 en el área RI-RD
+* Red 25.88.0.0/14 en el área derecha
+* Red 123.224.128.0/17 en el área RD-RC
+* Red 169.52.114.0/27 en el área superior.
 
 
 
@@ -346,11 +346,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 108.11.113.224/27 en el área izquierda.
-* Red 4.216.0.0/13 en el área RI-RD
-* Red 123.208.0.0/12 en el área derecha
-* Red 176.82.152.0/21 en el área RD-RC
-* Red 73.82.96.0/20 en el área superior.
+* Red 193.68.184.128/25 en el área izquierda.
+* Red 182.130.120.0/22 en el área RI-RD
+* Red 175.148.0.0/16 en el área derecha
+* Red 30.72.244.0/22 en el área RD-RC
+* Red 0.64.0.0/11 en el área superior.
 
 
 
@@ -370,11 +370,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 47.144.96.0/19 en el área izquierda.
-* Red 126.86.133.0/24 en el área RI-RD
-* Red 178.117.0.0/17 en el área derecha
-* Red 163.252.192.0/25 en el área RD-RC
-* Red 128.249.192.0/18 en el área superior.
+* Red 40.69.56.0/21 en el área izquierda.
+* Red 13.248.0.0/18 en el área RI-RD
+* Red 194.254.167.128/27 en el área derecha
+* Red 60.159.32.0/21 en el área RD-RC
+* Red 185.162.38.0/23 en el área superior.
 
 
 
@@ -394,11 +394,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 78.176.0.0/13 en el área izquierda.
-* Red 130.37.0.0/16 en el área RI-RD
-* Red 24.80.0.0/12 en el área derecha
-* Red 69.196.128.0/18 en el área RD-RC
-* Red 171.76.0.0/16 en el área superior.
+* Red 109.0.0.0/10 en el área izquierda.
+* Red 13.192.0.0/10 en el área RI-RD
+* Red 136.60.128.0/18 en el área derecha
+* Red 195.185.154.0/24 en el área RD-RC
+* Red 76.131.201.160/27 en el área superior.
 
 
 
@@ -418,11 +418,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 160.142.128.0/17 en el área izquierda.
-* Red 81.90.4.0/22 en el área RI-RD
-* Red 51.100.0.0/14 en el área derecha
-* Red 138.164.64.0/18 en el área RD-RC
-* Red 41.224.0.0/11 en el área superior.
+* Red 52.96.0.0/13 en el área izquierda.
+* Red 127.64.0.0/14 en el área RI-RD
+* Red 213.207.251.240/28 en el área derecha
+* Red 121.116.0.0/14 en el área RD-RC
+* Red 91.40.0.0/13 en el área superior.
 
 
 
@@ -442,11 +442,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 99.128.0.0/10 en el área izquierda.
-* Red 88.214.226.0/23 en el área RI-RD
-* Red 19.192.0.0/13 en el área derecha
-* Red 152.254.18.0/23 en el área RD-RC
-* Red 46.128.0.0/10 en el área superior.
+* Red 168.217.0.0/18 en el área izquierda.
+* Red 182.187.152.0/21 en el área RI-RD
+* Red 154.204.247.0/24 en el área derecha
+* Red 11.96.0.0/11 en el área RD-RC
+* Red 131.136.192.0/19 en el área superior.
 
 
 
@@ -466,11 +466,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 30.128.0.0/14 en el área izquierda.
-* Red 77.170.0.0/17 en el área RI-RD
-* Red 5.242.0.0/15 en el área derecha
-* Red 10.137.160.0/19 en el área RD-RC
-* Red 171.232.95.0/26 en el área superior.
+* Red 123.64.0.0/10 en el área izquierda.
+* Red 24.176.0.0/13 en el área RI-RD
+* Red 177.187.0.0/17 en el área derecha
+* Red 123.64.0.0/11 en el área RD-RC
+* Red 0.184.0.0/13 en el área superior.
 
 
 
@@ -498,11 +498,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 102.214.0.0/15 en el área izquierda.
-* Red 142.117.154.160/27 en el área RI-RD
-* Red 38.39.0.0/18 en el área derecha
-* Red 53.128.0.0/10 en el área RD-RC
-* Red 41.128.0.0/10 en el área superior.
+* Red 9.64.0.0/11 en el área izquierda.
+* Red 52.193.230.128/26 en el área RI-RD
+* Red 37.48.228.0/22 en el área derecha
+* Red 123.56.0.0/14 en el área RD-RC
+* Red 37.22.0.0/15 en el área superior.
 
 
 
@@ -519,38 +519,38 @@ Solución
 
 La solución sería:
 
-* PC 1I: IP 102.214.0.1, máscara 255.254.0.0, gateway 102.215.255.254
-* PC 1I: IP 102.214.0.2, máscara 255.254.0.0, gateway 102.215.255.254
-* Router RI: IP:102.215.255.254
-* PC 1D: IP 38.39.0.1, máscara 255.255.192.0, gateway 38.39.63.254
-* PC 1D: IP 38.39.0.2, máscara 255.255.192.0, gateway 38.39.63.254
-* Router RD: IP:38.39.63.254
-* PC 1C: IP 41.128.0.1, máscara 255.192.0.0, gateway 41.191.255.254
-* PC 1C: IP 41.128.0.2, máscara 255.192.0.0, gateway 41.191.255.254
-* Router RC: IP:41.191.255.254
+* PC 1I: IP 9.64.0.1, máscara 255.224.0.0, gateway 9.95.255.254
+* PC 1I: IP 9.64.0.2, máscara 255.224.0.0, gateway 9.95.255.254
+* Router RI: IP:9.95.255.254
+* PC 1D: IP 37.48.228.1, máscara 255.255.252.0, gateway 37.48.231.254
+* PC 1D: IP 37.48.228.2, máscara 255.255.252.0, gateway 37.48.231.254
+* Router RD: IP:37.48.231.254
+* PC 1C: IP 37.22.0.1, máscara 255.254.0.0, gateway 37.23.255.254
+* PC 1C: IP 37.22.0.2, máscara 255.254.0.0, gateway 37.23.255.254
+* Router RC: IP:37.23.255.254
 
-* Dentro de la red 142.117.154.160/27:
+* Dentro de la red 52.193.230.128/26:
 
-    * El router RI tiene la IP 142.117.154.161 y la máscara 255.255.255.224
-    * El router RD tiene la IP 142.117.154.190 y la máscara 255.255.255.224
+    * El router RI tiene la IP 52.193.230.129 y la máscara 255.255.255.192
+    * El router RD tiene la IP 52.193.230.190 y la máscara 255.255.255.192
 
 
-* Dentro de la red 53.128.0.0/10:
+* Dentro de la red 123.56.0.0/14:
 
-    * El router RD tiene la IP 53.128.0.1 y la máscara 255.192.0.0
-    * El router RC tiene la IP 53.191.255.254 y la máscara 255.192.0.0
+    * El router RD tiene la IP 123.56.0.1 y la máscara 255.252.0.0
+    * El router RC tiene la IP 123.59.255.254 y la máscara 255.252.0.0
 
 
 * Para el router RI la tabla de rutas sería:
 
 .. table::
 
-    =============  =============  ===============
-      IP de red       Máscara     Siguiente salto
-    =============  =============  ===============
-    38.39.0.0/18   255.255.192.0  142.117.154.190
-    41.128.0.0/10  255.192.0.0    142.117.154.190
-    =============  =============  ===============
+    ==============  =============  ===============
+      IP de red        Máscara     Siguiente salto
+    ==============  =============  ===============
+    37.48.228.0/22  255.255.252.0  52.193.230.190 
+    37.22.0.0/15    255.254.0.0    52.193.230.190 
+    ==============  =============  ===============
 
 
 
@@ -558,12 +558,12 @@ La solución sería:
 
 .. table::
 
-    ==============  ===========  ===============
-      IP de red       Máscara    Siguiente salto
-    ==============  ===========  ===============
-    102.214.0.0/15  255.254.0.0  142.117.154.161
-    41.128.0.0/10   255.192.0.0  53.191.255.254 
-    ==============  ===========  ===============
+    ============  ===========  ===============
+     IP de red      Máscara    Siguiente salto
+    ============  ===========  ===============
+    9.64.0.0/11   255.224.0.0  52.193.230.129 
+    37.22.0.0/15  255.254.0.0  123.59.255.254 
+    ============  ===========  ===============
 
 
 
@@ -574,8 +574,8 @@ La solución sería:
     ==============  =============  ===============
       IP de red        Máscara     Siguiente salto
     ==============  =============  ===============
-    38.39.0.0/18    255.255.192.0  53.128.0.1     
-    102.214.0.0/15  255.254.0.0    53.128.0.1     
+    37.48.228.0/22  255.255.252.0  123.56.0.1     
+    9.64.0.0/11     255.224.0.0    123.56.0.1     
     ==============  =============  ===============
 
 
@@ -597,11 +597,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 180.24.0.0/16 en el área izquierda.
-* Red 8.52.0.0/14 en el área RI-RD
-* Red 99.112.0.0/13 en el área derecha
-* Red 138.9.210.0/23 en el área RD-RC
-* Red 69.27.130.0/23 en el área superior.
+* Red 92.55.55.0/26 en el área izquierda.
+* Red 92.254.0.0/16 en el área RI-RD
+* Red 185.246.255.32/27 en el área derecha
+* Red 147.3.199.128/25 en el área RD-RC
+* Red 175.69.0.0/19 en el área superior.
 
 
 
@@ -618,38 +618,38 @@ Solución
 
 La solución sería:
 
-* PC 1I: IP 180.24.0.1, máscara 255.255.0.0, gateway 180.24.255.254
-* PC 1I: IP 180.24.0.2, máscara 255.255.0.0, gateway 180.24.255.254
-* Router RI: IP:180.24.255.254
-* PC 1D: IP 99.112.0.1, máscara 255.248.0.0, gateway 99.119.255.254
-* PC 1D: IP 99.112.0.2, máscara 255.248.0.0, gateway 99.119.255.254
-* Router RD: IP:99.119.255.254
-* PC 1C: IP 69.27.130.1, máscara 255.255.254.0, gateway 69.27.131.254
-* PC 1C: IP 69.27.130.2, máscara 255.255.254.0, gateway 69.27.131.254
-* Router RC: IP:69.27.131.254
+* PC 1I: IP 92.55.55.1, máscara 255.255.255.192, gateway 92.55.55.62
+* PC 1I: IP 92.55.55.2, máscara 255.255.255.192, gateway 92.55.55.62
+* Router RI: IP:92.55.55.62
+* PC 1D: IP 185.246.255.33, máscara 255.255.255.224, gateway 185.246.255.62
+* PC 1D: IP 185.246.255.34, máscara 255.255.255.224, gateway 185.246.255.62
+* Router RD: IP:185.246.255.62
+* PC 1C: IP 175.69.0.1, máscara 255.255.224.0, gateway 175.69.31.254
+* PC 1C: IP 175.69.0.2, máscara 255.255.224.0, gateway 175.69.31.254
+* Router RC: IP:175.69.31.254
 
-* Dentro de la red 8.52.0.0/14:
+* Dentro de la red 92.254.0.0/16:
 
-    * El router RI tiene la IP 8.52.0.1 y la máscara 255.252.0.0
-    * El router RD tiene la IP 8.55.255.254 y la máscara 255.252.0.0
+    * El router RI tiene la IP 92.254.0.1 y la máscara 255.255.0.0
+    * El router RD tiene la IP 92.254.255.254 y la máscara 255.255.0.0
 
 
-* Dentro de la red 138.9.210.0/23:
+* Dentro de la red 147.3.199.128/25:
 
-    * El router RD tiene la IP 138.9.210.1 y la máscara 255.255.254.0
-    * El router RC tiene la IP 138.9.211.254 y la máscara 255.255.254.0
+    * El router RD tiene la IP 147.3.199.129 y la máscara 255.255.255.128
+    * El router RC tiene la IP 147.3.199.254 y la máscara 255.255.255.128
 
 
 * Para el router RI la tabla de rutas sería:
 
 .. table::
 
-    ==============  =============  ===============
-      IP de red        Máscara     Siguiente salto
-    ==============  =============  ===============
-    99.112.0.0/13   255.248.0.0    8.55.255.254   
-    69.27.130.0/23  255.255.254.0  8.55.255.254   
-    ==============  =============  ===============
+    =================  ===============  ===============
+        IP de red          Máscara      Siguiente salto
+    =================  ===============  ===============
+    185.246.255.32/27  255.255.255.224  92.254.255.254 
+    175.69.0.0/19      255.255.224.0    92.254.255.254 
+    =================  ===============  ===============
 
 
 
@@ -657,12 +657,12 @@ La solución sería:
 
 .. table::
 
-    ==============  =============  ===============
-      IP de red        Máscara     Siguiente salto
-    ==============  =============  ===============
-    180.24.0.0/16   255.255.0.0    8.52.0.1       
-    69.27.130.0/23  255.255.254.0  138.9.211.254  
-    ==============  =============  ===============
+    =============  ===============  ===============
+      IP de red        Máscara      Siguiente salto
+    =============  ===============  ===============
+    92.55.55.0/26  255.255.255.192  92.254.0.1     
+    175.69.0.0/19  255.255.224.0    147.3.199.254  
+    =============  ===============  ===============
 
 
 
@@ -670,12 +670,12 @@ La solución sería:
 
 .. table::
 
-    =============  ===========  ===============
-      IP de red      Máscara    Siguiente salto
-    =============  ===========  ===============
-    99.112.0.0/13  255.248.0.0  138.9.210.1    
-    180.24.0.0/16  255.255.0.0  138.9.210.1    
-    =============  ===========  ===============
+    =================  ===============  ===============
+        IP de red          Máscara      Siguiente salto
+    =================  ===============  ===============
+    185.246.255.32/27  255.255.255.224  147.3.199.129  
+    92.55.55.0/26      255.255.255.192  147.3.199.129  
+    =================  ===============  ===============
 
 
         
@@ -696,11 +696,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 136.13.105.0/26 en el área izquierda.
-* Red 86.238.32.0/19 en el área RI-RD
-* Red 29.25.16.0/20 en el área derecha
-* Red 185.173.192.0/21 en el área RD-RC
-* Red 152.70.128.0/17 en el área superior.
+* Red 70.126.100.48/28 en el área izquierda.
+* Red 142.24.0.0/16 en el área RI-RD
+* Red 181.138.0.0/16 en el área derecha
+* Red 91.232.0.0/13 en el área RD-RC
+* Red 50.212.0.0/14 en el área superior.
 
 
 
@@ -717,38 +717,38 @@ Solución
 
 La solución sería:
 
-* PC 1I: IP 136.13.105.1, máscara 255.255.255.192, gateway 136.13.105.62
-* PC 1I: IP 136.13.105.2, máscara 255.255.255.192, gateway 136.13.105.62
-* Router RI: IP:136.13.105.62
-* PC 1D: IP 29.25.16.1, máscara 255.255.240.0, gateway 29.25.31.254
-* PC 1D: IP 29.25.16.2, máscara 255.255.240.0, gateway 29.25.31.254
-* Router RD: IP:29.25.31.254
-* PC 1C: IP 152.70.128.1, máscara 255.255.128.0, gateway 152.70.255.254
-* PC 1C: IP 152.70.128.2, máscara 255.255.128.0, gateway 152.70.255.254
-* Router RC: IP:152.70.255.254
+* PC 1I: IP 70.126.100.49, máscara 255.255.255.240, gateway 70.126.100.62
+* PC 1I: IP 70.126.100.50, máscara 255.255.255.240, gateway 70.126.100.62
+* Router RI: IP:70.126.100.62
+* PC 1D: IP 181.138.0.1, máscara 255.255.0.0, gateway 181.138.255.254
+* PC 1D: IP 181.138.0.2, máscara 255.255.0.0, gateway 181.138.255.254
+* Router RD: IP:181.138.255.254
+* PC 1C: IP 50.212.0.1, máscara 255.252.0.0, gateway 50.215.255.254
+* PC 1C: IP 50.212.0.2, máscara 255.252.0.0, gateway 50.215.255.254
+* Router RC: IP:50.215.255.254
 
-* Dentro de la red 86.238.32.0/19:
+* Dentro de la red 142.24.0.0/16:
 
-    * El router RI tiene la IP 86.238.32.1 y la máscara 255.255.224.0
-    * El router RD tiene la IP 86.238.63.254 y la máscara 255.255.224.0
+    * El router RI tiene la IP 142.24.0.1 y la máscara 255.255.0.0
+    * El router RD tiene la IP 142.24.255.254 y la máscara 255.255.0.0
 
 
-* Dentro de la red 185.173.192.0/21:
+* Dentro de la red 91.232.0.0/13:
 
-    * El router RD tiene la IP 185.173.192.1 y la máscara 255.255.248.0
-    * El router RC tiene la IP 185.173.199.254 y la máscara 255.255.248.0
+    * El router RD tiene la IP 91.232.0.1 y la máscara 255.248.0.0
+    * El router RC tiene la IP 91.239.255.254 y la máscara 255.248.0.0
 
 
 * Para el router RI la tabla de rutas sería:
 
 .. table::
 
-    ===============  =============  ===============
-       IP de red        Máscara     Siguiente salto
-    ===============  =============  ===============
-    29.25.16.0/20    255.255.240.0  86.238.63.254  
-    152.70.128.0/17  255.255.128.0  86.238.63.254  
-    ===============  =============  ===============
+    ==============  ===========  ===============
+      IP de red       Máscara    Siguiente salto
+    ==============  ===========  ===============
+    181.138.0.0/16  255.255.0.0  142.24.255.254 
+    50.212.0.0/14   255.252.0.0  142.24.255.254 
+    ==============  ===========  ===============
 
 
 
@@ -756,12 +756,12 @@ La solución sería:
 
 .. table::
 
-    ===============  ===============  ===============
-       IP de red         Máscara      Siguiente salto
-    ===============  ===============  ===============
-    136.13.105.0/26  255.255.255.192  86.238.32.1    
-    152.70.128.0/17  255.255.128.0    185.173.199.254
-    ===============  ===============  ===============
+    ================  ===============  ===============
+       IP de red          Máscara      Siguiente salto
+    ================  ===============  ===============
+    70.126.100.48/28  255.255.255.240  142.24.0.1     
+    50.212.0.0/14     255.252.0.0      91.239.255.254 
+    ================  ===============  ===============
 
 
 
@@ -769,12 +769,12 @@ La solución sería:
 
 .. table::
 
-    ===============  ===============  ===============
-       IP de red         Máscara      Siguiente salto
-    ===============  ===============  ===============
-    29.25.16.0/20    255.255.240.0    185.173.192.1  
-    136.13.105.0/26  255.255.255.192  185.173.192.1  
-    ===============  ===============  ===============
+    ================  ===============  ===============
+       IP de red          Máscara      Siguiente salto
+    ================  ===============  ===============
+    181.138.0.0/16    255.255.0.0      91.232.0.1     
+    70.126.100.48/28  255.255.255.240  91.232.0.1     
+    ================  ===============  ===============
 
 
         
@@ -795,11 +795,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 72.224.0.0/12 en el área izquierda.
-* Red 182.220.0.0/16 en el área RI-RD
-* Red 6.192.0.0/10 en el área derecha
-* Red 88.96.156.0/22 en el área RD-RC
-* Red 125.35.0.0/17 en el área superior.
+* Red 66.42.240.0/20 en el área izquierda.
+* Red 171.20.203.224/27 en el área RI-RD
+* Red 33.156.128.0/19 en el área derecha
+* Red 57.209.2.128/28 en el área RD-RC
+* Red 31.64.0.0/12 en el área superior.
 
 
 
@@ -816,38 +816,38 @@ Solución
 
 La solución sería:
 
-* PC 1I: IP 72.224.0.1, máscara 255.240.0.0, gateway 72.239.255.254
-* PC 1I: IP 72.224.0.2, máscara 255.240.0.0, gateway 72.239.255.254
-* Router RI: IP:72.239.255.254
-* PC 1D: IP 6.192.0.1, máscara 255.192.0.0, gateway 6.255.255.254
-* PC 1D: IP 6.192.0.2, máscara 255.192.0.0, gateway 6.255.255.254
-* Router RD: IP:6.255.255.254
-* PC 1C: IP 125.35.0.1, máscara 255.255.128.0, gateway 125.35.127.254
-* PC 1C: IP 125.35.0.2, máscara 255.255.128.0, gateway 125.35.127.254
-* Router RC: IP:125.35.127.254
+* PC 1I: IP 66.42.240.1, máscara 255.255.240.0, gateway 66.42.255.254
+* PC 1I: IP 66.42.240.2, máscara 255.255.240.0, gateway 66.42.255.254
+* Router RI: IP:66.42.255.254
+* PC 1D: IP 33.156.128.1, máscara 255.255.224.0, gateway 33.156.159.254
+* PC 1D: IP 33.156.128.2, máscara 255.255.224.0, gateway 33.156.159.254
+* Router RD: IP:33.156.159.254
+* PC 1C: IP 31.64.0.1, máscara 255.240.0.0, gateway 31.79.255.254
+* PC 1C: IP 31.64.0.2, máscara 255.240.0.0, gateway 31.79.255.254
+* Router RC: IP:31.79.255.254
 
-* Dentro de la red 182.220.0.0/16:
+* Dentro de la red 171.20.203.224/27:
 
-    * El router RI tiene la IP 182.220.0.1 y la máscara 255.255.0.0
-    * El router RD tiene la IP 182.220.255.254 y la máscara 255.255.0.0
+    * El router RI tiene la IP 171.20.203.225 y la máscara 255.255.255.224
+    * El router RD tiene la IP 171.20.203.254 y la máscara 255.255.255.224
 
 
-* Dentro de la red 88.96.156.0/22:
+* Dentro de la red 57.209.2.128/28:
 
-    * El router RD tiene la IP 88.96.156.1 y la máscara 255.255.252.0
-    * El router RC tiene la IP 88.96.159.254 y la máscara 255.255.252.0
+    * El router RD tiene la IP 57.209.2.129 y la máscara 255.255.255.240
+    * El router RC tiene la IP 57.209.2.142 y la máscara 255.255.255.240
 
 
 * Para el router RI la tabla de rutas sería:
 
 .. table::
 
-    =============  =============  ===============
-      IP de red       Máscara     Siguiente salto
-    =============  =============  ===============
-    6.192.0.0/10   255.192.0.0    182.220.255.254
-    125.35.0.0/17  255.255.128.0  182.220.255.254
-    =============  =============  ===============
+    ===============  =============  ===============
+       IP de red        Máscara     Siguiente salto
+    ===============  =============  ===============
+    33.156.128.0/19  255.255.224.0  171.20.203.254 
+    31.64.0.0/12     255.240.0.0    171.20.203.254 
+    ===============  =============  ===============
 
 
 
@@ -855,12 +855,12 @@ La solución sería:
 
 .. table::
 
-    =============  =============  ===============
-      IP de red       Máscara     Siguiente salto
-    =============  =============  ===============
-    72.224.0.0/12  255.240.0.0    182.220.0.1    
-    125.35.0.0/17  255.255.128.0  88.96.159.254  
-    =============  =============  ===============
+    ==============  =============  ===============
+      IP de red        Máscara     Siguiente salto
+    ==============  =============  ===============
+    66.42.240.0/20  255.255.240.0  171.20.203.225 
+    31.64.0.0/12    255.240.0.0    57.209.2.142   
+    ==============  =============  ===============
 
 
 
@@ -868,12 +868,12 @@ La solución sería:
 
 .. table::
 
-    =============  ===========  ===============
-      IP de red      Máscara    Siguiente salto
-    =============  ===========  ===============
-    6.192.0.0/10   255.192.0.0  88.96.156.1    
-    72.224.0.0/12  255.240.0.0  88.96.156.1    
-    =============  ===========  ===============
+    ===============  =============  ===============
+       IP de red        Máscara     Siguiente salto
+    ===============  =============  ===============
+    33.156.128.0/19  255.255.224.0  57.209.2.129   
+    66.42.240.0/20   255.255.240.0  57.209.2.129   
+    ===============  =============  ===============
 
 
         
@@ -894,11 +894,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 209.185.175.128/26 en el área izquierda.
-* Red 213.16.145.0/25 en el área RI-RD
-* Red 69.73.32.0/21 en el área derecha
-* Red 127.170.164.0/23 en el área RD-RC
-* Red 170.167.128.0/17 en el área superior.
+* Red 143.172.232.0/22 en el área izquierda.
+* Red 19.168.0.0/14 en el área RI-RD
+* Red 149.193.47.0/24 en el área derecha
+* Red 56.38.160.0/20 en el área RD-RC
+* Red 139.118.126.192/26 en el área superior.
 
 
 
@@ -915,38 +915,38 @@ Solución
 
 La solución sería:
 
-* PC 1I: IP 209.185.175.129, máscara 255.255.255.192, gateway 209.185.175.190
-* PC 1I: IP 209.185.175.130, máscara 255.255.255.192, gateway 209.185.175.190
-* Router RI: IP:209.185.175.190
-* PC 1D: IP 69.73.32.1, máscara 255.255.248.0, gateway 69.73.39.254
-* PC 1D: IP 69.73.32.2, máscara 255.255.248.0, gateway 69.73.39.254
-* Router RD: IP:69.73.39.254
-* PC 1C: IP 170.167.128.1, máscara 255.255.128.0, gateway 170.167.255.254
-* PC 1C: IP 170.167.128.2, máscara 255.255.128.0, gateway 170.167.255.254
-* Router RC: IP:170.167.255.254
+* PC 1I: IP 143.172.232.1, máscara 255.255.252.0, gateway 143.172.235.254
+* PC 1I: IP 143.172.232.2, máscara 255.255.252.0, gateway 143.172.235.254
+* Router RI: IP:143.172.235.254
+* PC 1D: IP 149.193.47.1, máscara 255.255.255.0, gateway 149.193.47.254
+* PC 1D: IP 149.193.47.2, máscara 255.255.255.0, gateway 149.193.47.254
+* Router RD: IP:149.193.47.254
+* PC 1C: IP 139.118.126.193, máscara 255.255.255.192, gateway 139.118.126.254
+* PC 1C: IP 139.118.126.194, máscara 255.255.255.192, gateway 139.118.126.254
+* Router RC: IP:139.118.126.254
 
-* Dentro de la red 213.16.145.0/25:
+* Dentro de la red 19.168.0.0/14:
 
-    * El router RI tiene la IP 213.16.145.1 y la máscara 255.255.255.128
-    * El router RD tiene la IP 213.16.145.126 y la máscara 255.255.255.128
+    * El router RI tiene la IP 19.168.0.1 y la máscara 255.252.0.0
+    * El router RD tiene la IP 19.171.255.254 y la máscara 255.252.0.0
 
 
-* Dentro de la red 127.170.164.0/23:
+* Dentro de la red 56.38.160.0/20:
 
-    * El router RD tiene la IP 127.170.164.1 y la máscara 255.255.254.0
-    * El router RC tiene la IP 127.170.165.254 y la máscara 255.255.254.0
+    * El router RD tiene la IP 56.38.160.1 y la máscara 255.255.240.0
+    * El router RC tiene la IP 56.38.175.254 y la máscara 255.255.240.0
 
 
 * Para el router RI la tabla de rutas sería:
 
 .. table::
 
-    ================  =============  ===============
-       IP de red         Máscara     Siguiente salto
-    ================  =============  ===============
-    69.73.32.0/21     255.255.248.0  213.16.145.126 
-    170.167.128.0/17  255.255.128.0  213.16.145.126 
-    ================  =============  ===============
+    ==================  ===============  ===============
+        IP de red           Máscara      Siguiente salto
+    ==================  ===============  ===============
+    149.193.47.0/24     255.255.255.0    19.171.255.254 
+    139.118.126.192/26  255.255.255.192  19.171.255.254 
+    ==================  ===============  ===============
 
 
 
@@ -957,8 +957,8 @@ La solución sería:
     ==================  ===============  ===============
         IP de red           Máscara      Siguiente salto
     ==================  ===============  ===============
-    209.185.175.128/26  255.255.255.192  213.16.145.1   
-    170.167.128.0/17    255.255.128.0    127.170.165.254
+    143.172.232.0/22    255.255.252.0    19.168.0.1     
+    139.118.126.192/26  255.255.255.192  56.38.175.254  
     ==================  ===============  ===============
 
 
@@ -967,12 +967,12 @@ La solución sería:
 
 .. table::
 
-    ==================  ===============  ===============
-        IP de red           Máscara      Siguiente salto
-    ==================  ===============  ===============
-    69.73.32.0/21       255.255.248.0    127.170.164.1  
-    209.185.175.128/26  255.255.255.192  127.170.164.1  
-    ==================  ===============  ===============
+    ================  =============  ===============
+       IP de red         Máscara     Siguiente salto
+    ================  =============  ===============
+    149.193.47.0/24   255.255.255.0  56.38.160.1    
+    143.172.232.0/22  255.255.252.0  56.38.160.1    
+    ================  =============  ===============
 
 
         
@@ -993,11 +993,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 187.185.240.0/22 en el área izquierda.
-* Red 18.8.0.0/13 en el área RI-RD
-* Red 13.192.0.0/12 en el área derecha
-* Red 82.72.0.0/13 en el área RD-RC
-* Red 117.0.0.0/11 en el área superior.
+* Red 220.52.113.128/27 en el área izquierda.
+* Red 157.139.204.0/22 en el área RI-RD
+* Red 192.89.63.224/27 en el área derecha
+* Red 122.112.0.0/14 en el área RD-RC
+* Red 160.55.137.128/25 en el área superior.
 
 
 
@@ -1014,38 +1014,38 @@ Solución
 
 La solución sería:
 
-* PC 1I: IP 187.185.240.1, máscara 255.255.252.0, gateway 187.185.243.254
-* PC 1I: IP 187.185.240.2, máscara 255.255.252.0, gateway 187.185.243.254
-* Router RI: IP:187.185.243.254
-* PC 1D: IP 13.192.0.1, máscara 255.240.0.0, gateway 13.207.255.254
-* PC 1D: IP 13.192.0.2, máscara 255.240.0.0, gateway 13.207.255.254
-* Router RD: IP:13.207.255.254
-* PC 1C: IP 117.0.0.1, máscara 255.224.0.0, gateway 117.31.255.254
-* PC 1C: IP 117.0.0.2, máscara 255.224.0.0, gateway 117.31.255.254
-* Router RC: IP:117.31.255.254
+* PC 1I: IP 220.52.113.129, máscara 255.255.255.224, gateway 220.52.113.158
+* PC 1I: IP 220.52.113.130, máscara 255.255.255.224, gateway 220.52.113.158
+* Router RI: IP:220.52.113.158
+* PC 1D: IP 192.89.63.225, máscara 255.255.255.224, gateway 192.89.63.254
+* PC 1D: IP 192.89.63.226, máscara 255.255.255.224, gateway 192.89.63.254
+* Router RD: IP:192.89.63.254
+* PC 1C: IP 160.55.137.129, máscara 255.255.255.128, gateway 160.55.137.254
+* PC 1C: IP 160.55.137.130, máscara 255.255.255.128, gateway 160.55.137.254
+* Router RC: IP:160.55.137.254
 
-* Dentro de la red 18.8.0.0/13:
+* Dentro de la red 157.139.204.0/22:
 
-    * El router RI tiene la IP 18.8.0.1 y la máscara 255.248.0.0
-    * El router RD tiene la IP 18.15.255.254 y la máscara 255.248.0.0
+    * El router RI tiene la IP 157.139.204.1 y la máscara 255.255.252.0
+    * El router RD tiene la IP 157.139.207.254 y la máscara 255.255.252.0
 
 
-* Dentro de la red 82.72.0.0/13:
+* Dentro de la red 122.112.0.0/14:
 
-    * El router RD tiene la IP 82.72.0.1 y la máscara 255.248.0.0
-    * El router RC tiene la IP 82.79.255.254 y la máscara 255.248.0.0
+    * El router RD tiene la IP 122.112.0.1 y la máscara 255.252.0.0
+    * El router RC tiene la IP 122.115.255.254 y la máscara 255.252.0.0
 
 
 * Para el router RI la tabla de rutas sería:
 
 .. table::
 
-    =============  ===========  ===============
-      IP de red      Máscara    Siguiente salto
-    =============  ===========  ===============
-    13.192.0.0/12  255.240.0.0  18.15.255.254  
-    117.0.0.0/11   255.224.0.0  18.15.255.254  
-    =============  ===========  ===============
+    =================  ===============  ===============
+        IP de red          Máscara      Siguiente salto
+    =================  ===============  ===============
+    192.89.63.224/27   255.255.255.224  157.139.207.254
+    160.55.137.128/25  255.255.255.128  157.139.207.254
+    =================  ===============  ===============
 
 
 
@@ -1053,12 +1053,12 @@ La solución sería:
 
 .. table::
 
-    ================  =============  ===============
-       IP de red         Máscara     Siguiente salto
-    ================  =============  ===============
-    187.185.240.0/22  255.255.252.0  18.8.0.1       
-    117.0.0.0/11      255.224.0.0    82.79.255.254  
-    ================  =============  ===============
+    =================  ===============  ===============
+        IP de red          Máscara      Siguiente salto
+    =================  ===============  ===============
+    220.52.113.128/27  255.255.255.224  157.139.204.1  
+    160.55.137.128/25  255.255.255.128  122.115.255.254
+    =================  ===============  ===============
 
 
 
@@ -1066,12 +1066,12 @@ La solución sería:
 
 .. table::
 
-    ================  =============  ===============
-       IP de red         Máscara     Siguiente salto
-    ================  =============  ===============
-    13.192.0.0/12     255.240.0.0    82.72.0.1      
-    187.185.240.0/22  255.255.252.0  82.72.0.1      
-    ================  =============  ===============
+    =================  ===============  ===============
+        IP de red          Máscara      Siguiente salto
+    =================  ===============  ===============
+    192.89.63.224/27   255.255.255.224  122.112.0.1    
+    220.52.113.128/27  255.255.255.224  122.112.0.1    
+    =================  ===============  ===============
 
 
         
@@ -1092,11 +1092,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 145.112.123.224/28 en el área izquierda.
-* Red 121.120.0.0/15 en el área RI-RD
-* Red 124.64.0.0/10 en el área derecha
-* Red 109.211.32.0/20 en el área RD-RC
-* Red 86.191.154.0/23 en el área superior.
+* Red 23.32.0.0/12 en el área izquierda.
+* Red 92.64.0.0/14 en el área RI-RD
+* Red 109.128.0.0/14 en el área derecha
+* Red 143.133.104.0/22 en el área RD-RC
+* Red 45.43.64.0/19 en el área superior.
 
 
 
@@ -1113,38 +1113,38 @@ Solución
 
 La solución sería:
 
-* PC 1I: IP 145.112.123.225, máscara 255.255.255.240, gateway 145.112.123.238
-* PC 1I: IP 145.112.123.226, máscara 255.255.255.240, gateway 145.112.123.238
-* Router RI: IP:145.112.123.238
-* PC 1D: IP 124.64.0.1, máscara 255.192.0.0, gateway 124.127.255.254
-* PC 1D: IP 124.64.0.2, máscara 255.192.0.0, gateway 124.127.255.254
-* Router RD: IP:124.127.255.254
-* PC 1C: IP 86.191.154.1, máscara 255.255.254.0, gateway 86.191.155.254
-* PC 1C: IP 86.191.154.2, máscara 255.255.254.0, gateway 86.191.155.254
-* Router RC: IP:86.191.155.254
+* PC 1I: IP 23.32.0.1, máscara 255.240.0.0, gateway 23.47.255.254
+* PC 1I: IP 23.32.0.2, máscara 255.240.0.0, gateway 23.47.255.254
+* Router RI: IP:23.47.255.254
+* PC 1D: IP 109.128.0.1, máscara 255.252.0.0, gateway 109.131.255.254
+* PC 1D: IP 109.128.0.2, máscara 255.252.0.0, gateway 109.131.255.254
+* Router RD: IP:109.131.255.254
+* PC 1C: IP 45.43.64.1, máscara 255.255.224.0, gateway 45.43.95.254
+* PC 1C: IP 45.43.64.2, máscara 255.255.224.0, gateway 45.43.95.254
+* Router RC: IP:45.43.95.254
 
-* Dentro de la red 121.120.0.0/15:
+* Dentro de la red 92.64.0.0/14:
 
-    * El router RI tiene la IP 121.120.0.1 y la máscara 255.254.0.0
-    * El router RD tiene la IP 121.121.255.254 y la máscara 255.254.0.0
+    * El router RI tiene la IP 92.64.0.1 y la máscara 255.252.0.0
+    * El router RD tiene la IP 92.67.255.254 y la máscara 255.252.0.0
 
 
-* Dentro de la red 109.211.32.0/20:
+* Dentro de la red 143.133.104.0/22:
 
-    * El router RD tiene la IP 109.211.32.1 y la máscara 255.255.240.0
-    * El router RC tiene la IP 109.211.47.254 y la máscara 255.255.240.0
+    * El router RD tiene la IP 143.133.104.1 y la máscara 255.255.252.0
+    * El router RC tiene la IP 143.133.107.254 y la máscara 255.255.252.0
 
 
 * Para el router RI la tabla de rutas sería:
 
 .. table::
 
-    ===============  =============  ===============
-       IP de red        Máscara     Siguiente salto
-    ===============  =============  ===============
-    124.64.0.0/10    255.192.0.0    121.121.255.254
-    86.191.154.0/23  255.255.254.0  121.121.255.254
-    ===============  =============  ===============
+    ==============  =============  ===============
+      IP de red        Máscara     Siguiente salto
+    ==============  =============  ===============
+    109.128.0.0/14  255.252.0.0    92.67.255.254  
+    45.43.64.0/19   255.255.224.0  92.67.255.254  
+    ==============  =============  ===============
 
 
 
@@ -1152,12 +1152,12 @@ La solución sería:
 
 .. table::
 
-    ==================  ===============  ===============
-        IP de red           Máscara      Siguiente salto
-    ==================  ===============  ===============
-    145.112.123.224/28  255.255.255.240  121.120.0.1    
-    86.191.154.0/23     255.255.254.0    109.211.47.254 
-    ==================  ===============  ===============
+    =============  =============  ===============
+      IP de red       Máscara     Siguiente salto
+    =============  =============  ===============
+    23.32.0.0/12   255.240.0.0    92.64.0.1      
+    45.43.64.0/19  255.255.224.0  143.133.107.254
+    =============  =============  ===============
 
 
 
@@ -1165,12 +1165,12 @@ La solución sería:
 
 .. table::
 
-    ==================  ===============  ===============
-        IP de red           Máscara      Siguiente salto
-    ==================  ===============  ===============
-    124.64.0.0/10       255.192.0.0      109.211.32.1   
-    145.112.123.224/28  255.255.255.240  109.211.32.1   
-    ==================  ===============  ===============
+    ==============  ===========  ===============
+      IP de red       Máscara    Siguiente salto
+    ==============  ===========  ===============
+    109.128.0.0/14  255.252.0.0  143.133.104.1  
+    23.32.0.0/12    255.240.0.0  143.133.104.1  
+    ==============  ===========  ===============
 
 
         
@@ -1191,11 +1191,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 56.212.96.0/19 en el área izquierda.
-* Red 93.180.0.0/20 en el área RI-RD
-* Red 54.212.200.0/21 en el área derecha
-* Red 201.117.123.192/28 en el área RD-RC
-* Red 196.175.6.96/28 en el área superior.
+* Red 72.108.0.0/16 en el área izquierda.
+* Red 134.2.0.0/16 en el área RI-RD
+* Red 80.0.0.0/11 en el área derecha
+* Red 189.52.106.0/23 en el área RD-RC
+* Red 55.0.0.0/12 en el área superior.
 
 
 
@@ -1212,38 +1212,38 @@ Solución
 
 La solución sería:
 
-* PC 1I: IP 56.212.96.1, máscara 255.255.224.0, gateway 56.212.127.254
-* PC 1I: IP 56.212.96.2, máscara 255.255.224.0, gateway 56.212.127.254
-* Router RI: IP:56.212.127.254
-* PC 1D: IP 54.212.200.1, máscara 255.255.248.0, gateway 54.212.207.254
-* PC 1D: IP 54.212.200.2, máscara 255.255.248.0, gateway 54.212.207.254
-* Router RD: IP:54.212.207.254
-* PC 1C: IP 196.175.6.97, máscara 255.255.255.240, gateway 196.175.6.110
-* PC 1C: IP 196.175.6.98, máscara 255.255.255.240, gateway 196.175.6.110
-* Router RC: IP:196.175.6.110
+* PC 1I: IP 72.108.0.1, máscara 255.255.0.0, gateway 72.108.255.254
+* PC 1I: IP 72.108.0.2, máscara 255.255.0.0, gateway 72.108.255.254
+* Router RI: IP:72.108.255.254
+* PC 1D: IP 80.0.0.1, máscara 255.224.0.0, gateway 80.31.255.254
+* PC 1D: IP 80.0.0.2, máscara 255.224.0.0, gateway 80.31.255.254
+* Router RD: IP:80.31.255.254
+* PC 1C: IP 55.0.0.1, máscara 255.240.0.0, gateway 55.15.255.254
+* PC 1C: IP 55.0.0.2, máscara 255.240.0.0, gateway 55.15.255.254
+* Router RC: IP:55.15.255.254
 
-* Dentro de la red 93.180.0.0/20:
+* Dentro de la red 134.2.0.0/16:
 
-    * El router RI tiene la IP 93.180.0.1 y la máscara 255.255.240.0
-    * El router RD tiene la IP 93.180.15.254 y la máscara 255.255.240.0
+    * El router RI tiene la IP 134.2.0.1 y la máscara 255.255.0.0
+    * El router RD tiene la IP 134.2.255.254 y la máscara 255.255.0.0
 
 
-* Dentro de la red 201.117.123.192/28:
+* Dentro de la red 189.52.106.0/23:
 
-    * El router RD tiene la IP 201.117.123.193 y la máscara 255.255.255.240
-    * El router RC tiene la IP 201.117.123.206 y la máscara 255.255.255.240
+    * El router RD tiene la IP 189.52.106.1 y la máscara 255.255.254.0
+    * El router RC tiene la IP 189.52.107.254 y la máscara 255.255.254.0
 
 
 * Para el router RI la tabla de rutas sería:
 
 .. table::
 
-    ===============  ===============  ===============
-       IP de red         Máscara      Siguiente salto
-    ===============  ===============  ===============
-    54.212.200.0/21  255.255.248.0    93.180.15.254  
-    196.175.6.96/28  255.255.255.240  93.180.15.254  
-    ===============  ===============  ===============
+    ===========  ===========  ===============
+     IP de red     Máscara    Siguiente salto
+    ===========  ===========  ===============
+    80.0.0.0/11  255.224.0.0  134.2.255.254  
+    55.0.0.0/12  255.240.0.0  134.2.255.254  
+    ===========  ===========  ===============
 
 
 
@@ -1251,12 +1251,12 @@ La solución sería:
 
 .. table::
 
-    ===============  ===============  ===============
-       IP de red         Máscara      Siguiente salto
-    ===============  ===============  ===============
-    56.212.96.0/19   255.255.224.0    93.180.0.1     
-    196.175.6.96/28  255.255.255.240  201.117.123.206
-    ===============  ===============  ===============
+    =============  ===========  ===============
+      IP de red      Máscara    Siguiente salto
+    =============  ===========  ===============
+    72.108.0.0/16  255.255.0.0  134.2.0.1      
+    55.0.0.0/12    255.240.0.0  189.52.107.254 
+    =============  ===========  ===============
 
 
 
@@ -1264,12 +1264,12 @@ La solución sería:
 
 .. table::
 
-    ===============  =============  ===============
-       IP de red        Máscara     Siguiente salto
-    ===============  =============  ===============
-    54.212.200.0/21  255.255.248.0  201.117.123.193
-    56.212.96.0/19   255.255.224.0  201.117.123.193
-    ===============  =============  ===============
+    =============  ===========  ===============
+      IP de red      Máscara    Siguiente salto
+    =============  ===========  ===============
+    80.0.0.0/11    255.224.0.0  189.52.106.1   
+    72.108.0.0/16  255.255.0.0  189.52.106.1   
+    =============  ===========  ===============
 
 
         
@@ -1290,11 +1290,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 104.72.213.192/26 en el área izquierda.
-* Red 112.200.0.0/13 en el área RI-RD
-* Red 9.144.0.0/13 en el área derecha
-* Red 46.0.0.0/10 en el área RD-RC
-* Red 17.157.182.0/23 en el área superior.
+* Red 161.27.32.0/22 en el área izquierda.
+* Red 177.202.0.0/16 en el área RI-RD
+* Red 60.128.0.0/10 en el área derecha
+* Red 5.70.0.0/15 en el área RD-RC
+* Red 99.96.0.0/11 en el área superior.
 
 
 
@@ -1311,38 +1311,38 @@ Solución
 
 La solución sería:
 
-* PC 1I: IP 104.72.213.193, máscara 255.255.255.192, gateway 104.72.213.254
-* PC 1I: IP 104.72.213.194, máscara 255.255.255.192, gateway 104.72.213.254
-* Router RI: IP:104.72.213.254
-* PC 1D: IP 9.144.0.1, máscara 255.248.0.0, gateway 9.151.255.254
-* PC 1D: IP 9.144.0.2, máscara 255.248.0.0, gateway 9.151.255.254
-* Router RD: IP:9.151.255.254
-* PC 1C: IP 17.157.182.1, máscara 255.255.254.0, gateway 17.157.183.254
-* PC 1C: IP 17.157.182.2, máscara 255.255.254.0, gateway 17.157.183.254
-* Router RC: IP:17.157.183.254
+* PC 1I: IP 161.27.32.1, máscara 255.255.252.0, gateway 161.27.35.254
+* PC 1I: IP 161.27.32.2, máscara 255.255.252.0, gateway 161.27.35.254
+* Router RI: IP:161.27.35.254
+* PC 1D: IP 60.128.0.1, máscara 255.192.0.0, gateway 60.191.255.254
+* PC 1D: IP 60.128.0.2, máscara 255.192.0.0, gateway 60.191.255.254
+* Router RD: IP:60.191.255.254
+* PC 1C: IP 99.96.0.1, máscara 255.224.0.0, gateway 99.127.255.254
+* PC 1C: IP 99.96.0.2, máscara 255.224.0.0, gateway 99.127.255.254
+* Router RC: IP:99.127.255.254
 
-* Dentro de la red 112.200.0.0/13:
+* Dentro de la red 177.202.0.0/16:
 
-    * El router RI tiene la IP 112.200.0.1 y la máscara 255.248.0.0
-    * El router RD tiene la IP 112.207.255.254 y la máscara 255.248.0.0
+    * El router RI tiene la IP 177.202.0.1 y la máscara 255.255.0.0
+    * El router RD tiene la IP 177.202.255.254 y la máscara 255.255.0.0
 
 
-* Dentro de la red 46.0.0.0/10:
+* Dentro de la red 5.70.0.0/15:
 
-    * El router RD tiene la IP 46.0.0.1 y la máscara 255.192.0.0
-    * El router RC tiene la IP 46.63.255.254 y la máscara 255.192.0.0
+    * El router RD tiene la IP 5.70.0.1 y la máscara 255.254.0.0
+    * El router RC tiene la IP 5.71.255.254 y la máscara 255.254.0.0
 
 
 * Para el router RI la tabla de rutas sería:
 
 .. table::
 
-    ===============  =============  ===============
-       IP de red        Máscara     Siguiente salto
-    ===============  =============  ===============
-    9.144.0.0/13     255.248.0.0    112.207.255.254
-    17.157.182.0/23  255.255.254.0  112.207.255.254
-    ===============  =============  ===============
+    =============  ===========  ===============
+      IP de red      Máscara    Siguiente salto
+    =============  ===========  ===============
+    60.128.0.0/10  255.192.0.0  177.202.255.254
+    99.96.0.0/11   255.224.0.0  177.202.255.254
+    =============  ===========  ===============
 
 
 
@@ -1350,12 +1350,12 @@ La solución sería:
 
 .. table::
 
-    =================  ===============  ===============
-        IP de red          Máscara      Siguiente salto
-    =================  ===============  ===============
-    104.72.213.192/26  255.255.255.192  112.200.0.1    
-    17.157.182.0/23    255.255.254.0    46.63.255.254  
-    =================  ===============  ===============
+    ==============  =============  ===============
+      IP de red        Máscara     Siguiente salto
+    ==============  =============  ===============
+    161.27.32.0/22  255.255.252.0  177.202.0.1    
+    99.96.0.0/11    255.224.0.0    5.71.255.254   
+    ==============  =============  ===============
 
 
 
@@ -1363,12 +1363,12 @@ La solución sería:
 
 .. table::
 
-    =================  ===============  ===============
-        IP de red          Máscara      Siguiente salto
-    =================  ===============  ===============
-    9.144.0.0/13       255.248.0.0      46.0.0.1       
-    104.72.213.192/26  255.255.255.192  46.0.0.1       
-    =================  ===============  ===============
+    ==============  =============  ===============
+      IP de red        Máscara     Siguiente salto
+    ==============  =============  ===============
+    60.128.0.0/10   255.192.0.0    5.70.0.1       
+    161.27.32.0/22  255.255.252.0  5.70.0.1       
+    ==============  =============  ===============
 
 
         
@@ -1389,11 +1389,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 18.97.0.0/17 en el área izquierda.
-* Red 158.164.72.0/21 en el área RI-RD
-* Red 86.58.224.0/22 en el área derecha
-* Red 31.32.0.0/16 en el área RD-RC
-* Red 136.127.221.144/28 en el área superior.
+* Red 38.59.64.0/18 en el área izquierda.
+* Red 5.240.0.0/12 en el área RI-RD
+* Red 95.104.128.0/19 en el área derecha
+* Red 87.128.0.0/12 en el área RD-RC
+* Red 153.56.233.128/25 en el área superior.
 
 
 
@@ -1410,38 +1410,38 @@ Solución
 
 La solución sería:
 
-* PC 1I: IP 18.97.0.1, máscara 255.255.128.0, gateway 18.97.127.254
-* PC 1I: IP 18.97.0.2, máscara 255.255.128.0, gateway 18.97.127.254
-* Router RI: IP:18.97.127.254
-* PC 1D: IP 86.58.224.1, máscara 255.255.252.0, gateway 86.58.227.254
-* PC 1D: IP 86.58.224.2, máscara 255.255.252.0, gateway 86.58.227.254
-* Router RD: IP:86.58.227.254
-* PC 1C: IP 136.127.221.145, máscara 255.255.255.240, gateway 136.127.221.158
-* PC 1C: IP 136.127.221.146, máscara 255.255.255.240, gateway 136.127.221.158
-* Router RC: IP:136.127.221.158
+* PC 1I: IP 38.59.64.1, máscara 255.255.192.0, gateway 38.59.127.254
+* PC 1I: IP 38.59.64.2, máscara 255.255.192.0, gateway 38.59.127.254
+* Router RI: IP:38.59.127.254
+* PC 1D: IP 95.104.128.1, máscara 255.255.224.0, gateway 95.104.159.254
+* PC 1D: IP 95.104.128.2, máscara 255.255.224.0, gateway 95.104.159.254
+* Router RD: IP:95.104.159.254
+* PC 1C: IP 153.56.233.129, máscara 255.255.255.128, gateway 153.56.233.254
+* PC 1C: IP 153.56.233.130, máscara 255.255.255.128, gateway 153.56.233.254
+* Router RC: IP:153.56.233.254
 
-* Dentro de la red 158.164.72.0/21:
+* Dentro de la red 5.240.0.0/12:
 
-    * El router RI tiene la IP 158.164.72.1 y la máscara 255.255.248.0
-    * El router RD tiene la IP 158.164.79.254 y la máscara 255.255.248.0
+    * El router RI tiene la IP 5.240.0.1 y la máscara 255.240.0.0
+    * El router RD tiene la IP 5.255.255.254 y la máscara 255.240.0.0
 
 
-* Dentro de la red 31.32.0.0/16:
+* Dentro de la red 87.128.0.0/12:
 
-    * El router RD tiene la IP 31.32.0.1 y la máscara 255.255.0.0
-    * El router RC tiene la IP 31.32.255.254 y la máscara 255.255.0.0
+    * El router RD tiene la IP 87.128.0.1 y la máscara 255.240.0.0
+    * El router RC tiene la IP 87.143.255.254 y la máscara 255.240.0.0
 
 
 * Para el router RI la tabla de rutas sería:
 
 .. table::
 
-    ==================  ===============  ===============
-        IP de red           Máscara      Siguiente salto
-    ==================  ===============  ===============
-    86.58.224.0/22      255.255.252.0    158.164.79.254 
-    136.127.221.144/28  255.255.255.240  158.164.79.254 
-    ==================  ===============  ===============
+    =================  ===============  ===============
+        IP de red          Máscara      Siguiente salto
+    =================  ===============  ===============
+    95.104.128.0/19    255.255.224.0    5.255.255.254  
+    153.56.233.128/25  255.255.255.128  5.255.255.254  
+    =================  ===============  ===============
 
 
 
@@ -1449,12 +1449,12 @@ La solución sería:
 
 .. table::
 
-    ==================  ===============  ===============
-        IP de red           Máscara      Siguiente salto
-    ==================  ===============  ===============
-    18.97.0.0/17        255.255.128.0    158.164.72.1   
-    136.127.221.144/28  255.255.255.240  31.32.255.254  
-    ==================  ===============  ===============
+    =================  ===============  ===============
+        IP de red          Máscara      Siguiente salto
+    =================  ===============  ===============
+    38.59.64.0/18      255.255.192.0    5.240.0.1      
+    153.56.233.128/25  255.255.255.128  87.143.255.254 
+    =================  ===============  ===============
 
 
 
@@ -1462,12 +1462,12 @@ La solución sería:
 
 .. table::
 
-    ==============  =============  ===============
-      IP de red        Máscara     Siguiente salto
-    ==============  =============  ===============
-    86.58.224.0/22  255.255.252.0  31.32.0.1      
-    18.97.0.0/17    255.255.128.0  31.32.0.1      
-    ==============  =============  ===============
+    ===============  =============  ===============
+       IP de red        Máscara     Siguiente salto
+    ===============  =============  ===============
+    95.104.128.0/19  255.255.224.0  87.128.0.1     
+    38.59.64.0/18    255.255.192.0  87.128.0.1     
+    ===============  =============  ===============
 
 
         
@@ -1488,11 +1488,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 203.126.203.192/26 en el área izquierda.
-* Red 1.16.0.0/12 en el área RI-RD
-* Red 50.249.224.0/21 en el área derecha
-* Red 40.147.48.0/22 en el área RD-RC
-* Red 129.45.122.64/26 en el área superior.
+* Red 78.40.0.0/13 en el área izquierda.
+* Red 149.177.151.208/28 en el área RI-RD
+* Red 161.65.128.0/19 en el área derecha
+* Red 85.189.123.0/26 en el área RD-RC
+* Red 95.192.0.0/12 en el área superior.
 
 
 
@@ -1509,38 +1509,38 @@ Solución
 
 La solución sería:
 
-* PC 1I: IP 203.126.203.193, máscara 255.255.255.192, gateway 203.126.203.254
-* PC 1I: IP 203.126.203.194, máscara 255.255.255.192, gateway 203.126.203.254
-* Router RI: IP:203.126.203.254
-* PC 1D: IP 50.249.224.1, máscara 255.255.248.0, gateway 50.249.231.254
-* PC 1D: IP 50.249.224.2, máscara 255.255.248.0, gateway 50.249.231.254
-* Router RD: IP:50.249.231.254
-* PC 1C: IP 129.45.122.65, máscara 255.255.255.192, gateway 129.45.122.126
-* PC 1C: IP 129.45.122.66, máscara 255.255.255.192, gateway 129.45.122.126
-* Router RC: IP:129.45.122.126
+* PC 1I: IP 78.40.0.1, máscara 255.248.0.0, gateway 78.47.255.254
+* PC 1I: IP 78.40.0.2, máscara 255.248.0.0, gateway 78.47.255.254
+* Router RI: IP:78.47.255.254
+* PC 1D: IP 161.65.128.1, máscara 255.255.224.0, gateway 161.65.159.254
+* PC 1D: IP 161.65.128.2, máscara 255.255.224.0, gateway 161.65.159.254
+* Router RD: IP:161.65.159.254
+* PC 1C: IP 95.192.0.1, máscara 255.240.0.0, gateway 95.207.255.254
+* PC 1C: IP 95.192.0.2, máscara 255.240.0.0, gateway 95.207.255.254
+* Router RC: IP:95.207.255.254
 
-* Dentro de la red 1.16.0.0/12:
+* Dentro de la red 149.177.151.208/28:
 
-    * El router RI tiene la IP 1.16.0.1 y la máscara 255.240.0.0
-    * El router RD tiene la IP 1.31.255.254 y la máscara 255.240.0.0
+    * El router RI tiene la IP 149.177.151.209 y la máscara 255.255.255.240
+    * El router RD tiene la IP 149.177.151.222 y la máscara 255.255.255.240
 
 
-* Dentro de la red 40.147.48.0/22:
+* Dentro de la red 85.189.123.0/26:
 
-    * El router RD tiene la IP 40.147.48.1 y la máscara 255.255.252.0
-    * El router RC tiene la IP 40.147.51.254 y la máscara 255.255.252.0
+    * El router RD tiene la IP 85.189.123.1 y la máscara 255.255.255.192
+    * El router RC tiene la IP 85.189.123.62 y la máscara 255.255.255.192
 
 
 * Para el router RI la tabla de rutas sería:
 
 .. table::
 
-    ================  ===============  ===============
-       IP de red          Máscara      Siguiente salto
-    ================  ===============  ===============
-    50.249.224.0/21   255.255.248.0    1.31.255.254   
-    129.45.122.64/26  255.255.255.192  1.31.255.254   
-    ================  ===============  ===============
+    ===============  =============  ===============
+       IP de red        Máscara     Siguiente salto
+    ===============  =============  ===============
+    161.65.128.0/19  255.255.224.0  149.177.151.222
+    95.192.0.0/12    255.240.0.0    149.177.151.222
+    ===============  =============  ===============
 
 
 
@@ -1548,12 +1548,12 @@ La solución sería:
 
 .. table::
 
-    ==================  ===============  ===============
-        IP de red           Máscara      Siguiente salto
-    ==================  ===============  ===============
-    203.126.203.192/26  255.255.255.192  1.16.0.1       
-    129.45.122.64/26    255.255.255.192  40.147.51.254  
-    ==================  ===============  ===============
+    =============  ===========  ===============
+      IP de red      Máscara    Siguiente salto
+    =============  ===========  ===============
+    78.40.0.0/13   255.248.0.0  149.177.151.209
+    95.192.0.0/12  255.240.0.0  85.189.123.62  
+    =============  ===========  ===============
 
 
 
@@ -1561,12 +1561,12 @@ La solución sería:
 
 .. table::
 
-    ==================  ===============  ===============
-        IP de red           Máscara      Siguiente salto
-    ==================  ===============  ===============
-    50.249.224.0/21     255.255.248.0    40.147.48.1    
-    203.126.203.192/26  255.255.255.192  40.147.48.1    
-    ==================  ===============  ===============
+    ===============  =============  ===============
+       IP de red        Máscara     Siguiente salto
+    ===============  =============  ===============
+    161.65.128.0/19  255.255.224.0  85.189.123.1   
+    78.40.0.0/13     255.248.0.0    85.189.123.1   
+    ===============  =============  ===============
 
 
         
@@ -1587,11 +1587,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 66.177.128.0/17 en el área izquierda.
-* Red 46.128.0.0/11 en el área RI-RD
-* Red 190.101.0.0/20 en el área derecha
-* Red 95.127.153.0/26 en el área RD-RC
-* Red 191.210.64.0/18 en el área superior.
+* Red 190.167.128.0/18 en el área izquierda.
+* Red 196.169.45.192/27 en el área RI-RD
+* Red 73.169.231.0/24 en el área derecha
+* Red 94.8.126.160/28 en el área RD-RC
+* Red 23.96.0.0/14 en el área superior.
 
 
 
@@ -1608,26 +1608,26 @@ Solución
 
 La solución sería:
 
-* PC 1I: IP 66.177.128.1, máscara 255.255.128.0, gateway 66.177.255.254
-* PC 1I: IP 66.177.128.2, máscara 255.255.128.0, gateway 66.177.255.254
-* Router RI: IP:66.177.255.254
-* PC 1D: IP 190.101.0.1, máscara 255.255.240.0, gateway 190.101.15.254
-* PC 1D: IP 190.101.0.2, máscara 255.255.240.0, gateway 190.101.15.254
-* Router RD: IP:190.101.15.254
-* PC 1C: IP 191.210.64.1, máscara 255.255.192.0, gateway 191.210.127.254
-* PC 1C: IP 191.210.64.2, máscara 255.255.192.0, gateway 191.210.127.254
-* Router RC: IP:191.210.127.254
+* PC 1I: IP 190.167.128.1, máscara 255.255.192.0, gateway 190.167.191.254
+* PC 1I: IP 190.167.128.2, máscara 255.255.192.0, gateway 190.167.191.254
+* Router RI: IP:190.167.191.254
+* PC 1D: IP 73.169.231.1, máscara 255.255.255.0, gateway 73.169.231.254
+* PC 1D: IP 73.169.231.2, máscara 255.255.255.0, gateway 73.169.231.254
+* Router RD: IP:73.169.231.254
+* PC 1C: IP 23.96.0.1, máscara 255.252.0.0, gateway 23.99.255.254
+* PC 1C: IP 23.96.0.2, máscara 255.252.0.0, gateway 23.99.255.254
+* Router RC: IP:23.99.255.254
 
-* Dentro de la red 46.128.0.0/11:
+* Dentro de la red 196.169.45.192/27:
 
-    * El router RI tiene la IP 46.128.0.1 y la máscara 255.224.0.0
-    * El router RD tiene la IP 46.159.255.254 y la máscara 255.224.0.0
+    * El router RI tiene la IP 196.169.45.193 y la máscara 255.255.255.224
+    * El router RD tiene la IP 196.169.45.222 y la máscara 255.255.255.224
 
 
-* Dentro de la red 95.127.153.0/26:
+* Dentro de la red 94.8.126.160/28:
 
-    * El router RD tiene la IP 95.127.153.1 y la máscara 255.255.255.192
-    * El router RC tiene la IP 95.127.153.62 y la máscara 255.255.255.192
+    * El router RD tiene la IP 94.8.126.161 y la máscara 255.255.255.240
+    * El router RC tiene la IP 94.8.126.174 y la máscara 255.255.255.240
 
 
 * Para el router RI la tabla de rutas sería:
@@ -1637,8 +1637,8 @@ La solución sería:
     ===============  =============  ===============
        IP de red        Máscara     Siguiente salto
     ===============  =============  ===============
-    190.101.0.0/20   255.255.240.0  46.159.255.254 
-    191.210.64.0/18  255.255.192.0  46.159.255.254 
+    73.169.231.0/24  255.255.255.0  196.169.45.222 
+    23.96.0.0/14     255.252.0.0    196.169.45.222 
     ===============  =============  ===============
 
 
@@ -1647,12 +1647,12 @@ La solución sería:
 
 .. table::
 
-    ===============  =============  ===============
-       IP de red        Máscara     Siguiente salto
-    ===============  =============  ===============
-    66.177.128.0/17  255.255.128.0  46.128.0.1     
-    191.210.64.0/18  255.255.192.0  95.127.153.62  
-    ===============  =============  ===============
+    ================  =============  ===============
+       IP de red         Máscara     Siguiente salto
+    ================  =============  ===============
+    190.167.128.0/18  255.255.192.0  196.169.45.193 
+    23.96.0.0/14      255.252.0.0    94.8.126.174   
+    ================  =============  ===============
 
 
 
@@ -1660,12 +1660,12 @@ La solución sería:
 
 .. table::
 
-    ===============  =============  ===============
-       IP de red        Máscara     Siguiente salto
-    ===============  =============  ===============
-    190.101.0.0/20   255.255.240.0  95.127.153.1   
-    66.177.128.0/17  255.255.128.0  95.127.153.1   
-    ===============  =============  ===============
+    ================  =============  ===============
+       IP de red         Máscara     Siguiente salto
+    ================  =============  ===============
+    73.169.231.0/24   255.255.255.0  94.8.126.161   
+    190.167.128.0/18  255.255.192.0  94.8.126.161   
+    ================  =============  ===============
 
 
         
@@ -1686,11 +1686,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 89.247.244.0/22 en el área izquierda.
-* Red 116.17.88.0/22 en el área RI-RD
-* Red 98.240.0.0/13 en el área derecha
-* Red 8.132.0.0/16 en el área RD-RC
-* Red 29.171.218.0/23 en el área superior.
+* Red 203.131.12.0/24 en el área izquierda.
+* Red 26.128.0.0/10 en el área RI-RD
+* Red 81.240.0.0/12 en el área derecha
+* Red 166.83.208.0/20 en el área RD-RC
+* Red 77.117.152.0/21 en el área superior.
 
 
 
@@ -1707,26 +1707,26 @@ Solución
 
 La solución sería:
 
-* PC 1I: IP 89.247.244.1, máscara 255.255.252.0, gateway 89.247.247.254
-* PC 1I: IP 89.247.244.2, máscara 255.255.252.0, gateway 89.247.247.254
-* Router RI: IP:89.247.247.254
-* PC 1D: IP 98.240.0.1, máscara 255.248.0.0, gateway 98.247.255.254
-* PC 1D: IP 98.240.0.2, máscara 255.248.0.0, gateway 98.247.255.254
-* Router RD: IP:98.247.255.254
-* PC 1C: IP 29.171.218.1, máscara 255.255.254.0, gateway 29.171.219.254
-* PC 1C: IP 29.171.218.2, máscara 255.255.254.0, gateway 29.171.219.254
-* Router RC: IP:29.171.219.254
+* PC 1I: IP 203.131.12.1, máscara 255.255.255.0, gateway 203.131.12.254
+* PC 1I: IP 203.131.12.2, máscara 255.255.255.0, gateway 203.131.12.254
+* Router RI: IP:203.131.12.254
+* PC 1D: IP 81.240.0.1, máscara 255.240.0.0, gateway 81.255.255.254
+* PC 1D: IP 81.240.0.2, máscara 255.240.0.0, gateway 81.255.255.254
+* Router RD: IP:81.255.255.254
+* PC 1C: IP 77.117.152.1, máscara 255.255.248.0, gateway 77.117.159.254
+* PC 1C: IP 77.117.152.2, máscara 255.255.248.0, gateway 77.117.159.254
+* Router RC: IP:77.117.159.254
 
-* Dentro de la red 116.17.88.0/22:
+* Dentro de la red 26.128.0.0/10:
 
-    * El router RI tiene la IP 116.17.88.1 y la máscara 255.255.252.0
-    * El router RD tiene la IP 116.17.91.254 y la máscara 255.255.252.0
+    * El router RI tiene la IP 26.128.0.1 y la máscara 255.192.0.0
+    * El router RD tiene la IP 26.191.255.254 y la máscara 255.192.0.0
 
 
-* Dentro de la red 8.132.0.0/16:
+* Dentro de la red 166.83.208.0/20:
 
-    * El router RD tiene la IP 8.132.0.1 y la máscara 255.255.0.0
-    * El router RC tiene la IP 8.132.255.254 y la máscara 255.255.0.0
+    * El router RD tiene la IP 166.83.208.1 y la máscara 255.255.240.0
+    * El router RC tiene la IP 166.83.223.254 y la máscara 255.255.240.0
 
 
 * Para el router RI la tabla de rutas sería:
@@ -1736,8 +1736,8 @@ La solución sería:
     ===============  =============  ===============
        IP de red        Máscara     Siguiente salto
     ===============  =============  ===============
-    98.240.0.0/13    255.248.0.0    116.17.91.254  
-    29.171.218.0/23  255.255.254.0  116.17.91.254  
+    81.240.0.0/12    255.240.0.0    26.191.255.254 
+    77.117.152.0/21  255.255.248.0  26.191.255.254 
     ===============  =============  ===============
 
 
@@ -1749,8 +1749,8 @@ La solución sería:
     ===============  =============  ===============
        IP de red        Máscara     Siguiente salto
     ===============  =============  ===============
-    89.247.244.0/22  255.255.252.0  116.17.88.1    
-    29.171.218.0/23  255.255.254.0  8.132.255.254  
+    203.131.12.0/24  255.255.255.0  26.128.0.1     
+    77.117.152.0/21  255.255.248.0  166.83.223.254 
     ===============  =============  ===============
 
 
@@ -1762,8 +1762,8 @@ La solución sería:
     ===============  =============  ===============
        IP de red        Máscara     Siguiente salto
     ===============  =============  ===============
-    98.240.0.0/13    255.248.0.0    8.132.0.1      
-    89.247.244.0/22  255.255.252.0  8.132.0.1      
+    81.240.0.0/12    255.240.0.0    166.83.208.1   
+    203.131.12.0/24  255.255.255.0  166.83.208.1   
     ===============  =============  ===============
 
 
@@ -1785,11 +1785,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 17.115.12.0/22 en el área izquierda.
-* Red 75.40.0.0/13 en el área RI-RD
-* Red 88.200.0.0/13 en el área derecha
-* Red 176.29.160.0/19 en el área RD-RC
-* Red 138.165.22.0/24 en el área superior.
+* Red 38.160.0.0/12 en el área izquierda.
+* Red 142.255.128.0/19 en el área RI-RD
+* Red 25.88.0.0/14 en el área derecha
+* Red 123.224.128.0/17 en el área RD-RC
+* Red 169.52.114.0/27 en el área superior.
 
 
 
@@ -1806,38 +1806,38 @@ Solución
 
 La solución sería:
 
-* PC 1I: IP 17.115.12.1, máscara 255.255.252.0, gateway 17.115.15.254
-* PC 1I: IP 17.115.12.2, máscara 255.255.252.0, gateway 17.115.15.254
-* Router RI: IP:17.115.15.254
-* PC 1D: IP 88.200.0.1, máscara 255.248.0.0, gateway 88.207.255.254
-* PC 1D: IP 88.200.0.2, máscara 255.248.0.0, gateway 88.207.255.254
-* Router RD: IP:88.207.255.254
-* PC 1C: IP 138.165.22.1, máscara 255.255.255.0, gateway 138.165.22.254
-* PC 1C: IP 138.165.22.2, máscara 255.255.255.0, gateway 138.165.22.254
-* Router RC: IP:138.165.22.254
+* PC 1I: IP 38.160.0.1, máscara 255.240.0.0, gateway 38.175.255.254
+* PC 1I: IP 38.160.0.2, máscara 255.240.0.0, gateway 38.175.255.254
+* Router RI: IP:38.175.255.254
+* PC 1D: IP 25.88.0.1, máscara 255.252.0.0, gateway 25.91.255.254
+* PC 1D: IP 25.88.0.2, máscara 255.252.0.0, gateway 25.91.255.254
+* Router RD: IP:25.91.255.254
+* PC 1C: IP 169.52.114.1, máscara 255.255.255.224, gateway 169.52.114.30
+* PC 1C: IP 169.52.114.2, máscara 255.255.255.224, gateway 169.52.114.30
+* Router RC: IP:169.52.114.30
 
-* Dentro de la red 75.40.0.0/13:
+* Dentro de la red 142.255.128.0/19:
 
-    * El router RI tiene la IP 75.40.0.1 y la máscara 255.248.0.0
-    * El router RD tiene la IP 75.47.255.254 y la máscara 255.248.0.0
+    * El router RI tiene la IP 142.255.128.1 y la máscara 255.255.224.0
+    * El router RD tiene la IP 142.255.159.254 y la máscara 255.255.224.0
 
 
-* Dentro de la red 176.29.160.0/19:
+* Dentro de la red 123.224.128.0/17:
 
-    * El router RD tiene la IP 176.29.160.1 y la máscara 255.255.224.0
-    * El router RC tiene la IP 176.29.191.254 y la máscara 255.255.224.0
+    * El router RD tiene la IP 123.224.128.1 y la máscara 255.255.128.0
+    * El router RC tiene la IP 123.224.255.254 y la máscara 255.255.128.0
 
 
 * Para el router RI la tabla de rutas sería:
 
 .. table::
 
-    ===============  =============  ===============
-       IP de red        Máscara     Siguiente salto
-    ===============  =============  ===============
-    88.200.0.0/13    255.248.0.0    75.47.255.254  
-    138.165.22.0/24  255.255.255.0  75.47.255.254  
-    ===============  =============  ===============
+    ===============  ===============  ===============
+       IP de red         Máscara      Siguiente salto
+    ===============  ===============  ===============
+    25.88.0.0/14     255.252.0.0      142.255.159.254
+    169.52.114.0/27  255.255.255.224  142.255.159.254
+    ===============  ===============  ===============
 
 
 
@@ -1845,12 +1845,12 @@ La solución sería:
 
 .. table::
 
-    ===============  =============  ===============
-       IP de red        Máscara     Siguiente salto
-    ===============  =============  ===============
-    17.115.12.0/22   255.255.252.0  75.40.0.1      
-    138.165.22.0/24  255.255.255.0  176.29.191.254 
-    ===============  =============  ===============
+    ===============  ===============  ===============
+       IP de red         Máscara      Siguiente salto
+    ===============  ===============  ===============
+    38.160.0.0/12    255.240.0.0      142.255.128.1  
+    169.52.114.0/27  255.255.255.224  123.224.255.254
+    ===============  ===============  ===============
 
 
 
@@ -1858,12 +1858,12 @@ La solución sería:
 
 .. table::
 
-    ==============  =============  ===============
-      IP de red        Máscara     Siguiente salto
-    ==============  =============  ===============
-    88.200.0.0/13   255.248.0.0    176.29.160.1   
-    17.115.12.0/22  255.255.252.0  176.29.160.1   
-    ==============  =============  ===============
+    =============  ===========  ===============
+      IP de red      Máscara    Siguiente salto
+    =============  ===========  ===============
+    25.88.0.0/14   255.252.0.0  123.224.128.1  
+    38.160.0.0/12  255.240.0.0  123.224.128.1  
+    =============  ===========  ===============
 
 
         
@@ -1884,11 +1884,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 108.11.113.224/27 en el área izquierda.
-* Red 4.216.0.0/13 en el área RI-RD
-* Red 123.208.0.0/12 en el área derecha
-* Red 176.82.152.0/21 en el área RD-RC
-* Red 73.82.96.0/20 en el área superior.
+* Red 193.68.184.128/25 en el área izquierda.
+* Red 182.130.120.0/22 en el área RI-RD
+* Red 175.148.0.0/16 en el área derecha
+* Red 30.72.244.0/22 en el área RD-RC
+* Red 0.64.0.0/11 en el área superior.
 
 
 
@@ -1905,38 +1905,38 @@ Solución
 
 La solución sería:
 
-* PC 1I: IP 108.11.113.225, máscara 255.255.255.224, gateway 108.11.113.254
-* PC 1I: IP 108.11.113.226, máscara 255.255.255.224, gateway 108.11.113.254
-* Router RI: IP:108.11.113.254
-* PC 1D: IP 123.208.0.1, máscara 255.240.0.0, gateway 123.223.255.254
-* PC 1D: IP 123.208.0.2, máscara 255.240.0.0, gateway 123.223.255.254
-* Router RD: IP:123.223.255.254
-* PC 1C: IP 73.82.96.1, máscara 255.255.240.0, gateway 73.82.111.254
-* PC 1C: IP 73.82.96.2, máscara 255.255.240.0, gateway 73.82.111.254
-* Router RC: IP:73.82.111.254
+* PC 1I: IP 193.68.184.129, máscara 255.255.255.128, gateway 193.68.184.254
+* PC 1I: IP 193.68.184.130, máscara 255.255.255.128, gateway 193.68.184.254
+* Router RI: IP:193.68.184.254
+* PC 1D: IP 175.148.0.1, máscara 255.255.0.0, gateway 175.148.255.254
+* PC 1D: IP 175.148.0.2, máscara 255.255.0.0, gateway 175.148.255.254
+* Router RD: IP:175.148.255.254
+* PC 1C: IP 0.64.0.1, máscara 255.224.0.0, gateway 0.95.255.254
+* PC 1C: IP 0.64.0.2, máscara 255.224.0.0, gateway 0.95.255.254
+* Router RC: IP:0.95.255.254
 
-* Dentro de la red 4.216.0.0/13:
+* Dentro de la red 182.130.120.0/22:
 
-    * El router RI tiene la IP 4.216.0.1 y la máscara 255.248.0.0
-    * El router RD tiene la IP 4.223.255.254 y la máscara 255.248.0.0
+    * El router RI tiene la IP 182.130.120.1 y la máscara 255.255.252.0
+    * El router RD tiene la IP 182.130.123.254 y la máscara 255.255.252.0
 
 
-* Dentro de la red 176.82.152.0/21:
+* Dentro de la red 30.72.244.0/22:
 
-    * El router RD tiene la IP 176.82.152.1 y la máscara 255.255.248.0
-    * El router RC tiene la IP 176.82.159.254 y la máscara 255.255.248.0
+    * El router RD tiene la IP 30.72.244.1 y la máscara 255.255.252.0
+    * El router RC tiene la IP 30.72.247.254 y la máscara 255.255.252.0
 
 
 * Para el router RI la tabla de rutas sería:
 
 .. table::
 
-    ==============  =============  ===============
-      IP de red        Máscara     Siguiente salto
-    ==============  =============  ===============
-    123.208.0.0/12  255.240.0.0    4.223.255.254  
-    73.82.96.0/20   255.255.240.0  4.223.255.254  
-    ==============  =============  ===============
+    ==============  ===========  ===============
+      IP de red       Máscara    Siguiente salto
+    ==============  ===========  ===============
+    175.148.0.0/16  255.255.0.0  182.130.123.254
+    0.64.0.0/11     255.224.0.0  182.130.123.254
+    ==============  ===========  ===============
 
 
 
@@ -1947,8 +1947,8 @@ La solución sería:
     =================  ===============  ===============
         IP de red          Máscara      Siguiente salto
     =================  ===============  ===============
-    108.11.113.224/27  255.255.255.224  4.216.0.1      
-    73.82.96.0/20      255.255.240.0    176.82.159.254 
+    193.68.184.128/25  255.255.255.128  182.130.120.1  
+    0.64.0.0/11        255.224.0.0      30.72.247.254  
     =================  ===============  ===============
 
 
@@ -1960,8 +1960,8 @@ La solución sería:
     =================  ===============  ===============
         IP de red          Máscara      Siguiente salto
     =================  ===============  ===============
-    123.208.0.0/12     255.240.0.0      176.82.152.1   
-    108.11.113.224/27  255.255.255.224  176.82.152.1   
+    175.148.0.0/16     255.255.0.0      30.72.244.1    
+    193.68.184.128/25  255.255.255.128  30.72.244.1    
     =================  ===============  ===============
 
 
@@ -1983,11 +1983,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 47.144.96.0/19 en el área izquierda.
-* Red 126.86.133.0/24 en el área RI-RD
-* Red 178.117.0.0/17 en el área derecha
-* Red 163.252.192.0/25 en el área RD-RC
-* Red 128.249.192.0/18 en el área superior.
+* Red 40.69.56.0/21 en el área izquierda.
+* Red 13.248.0.0/18 en el área RI-RD
+* Red 194.254.167.128/27 en el área derecha
+* Red 60.159.32.0/21 en el área RD-RC
+* Red 185.162.38.0/23 en el área superior.
 
 
 
@@ -2004,38 +2004,38 @@ Solución
 
 La solución sería:
 
-* PC 1I: IP 47.144.96.1, máscara 255.255.224.0, gateway 47.144.127.254
-* PC 1I: IP 47.144.96.2, máscara 255.255.224.0, gateway 47.144.127.254
-* Router RI: IP:47.144.127.254
-* PC 1D: IP 178.117.0.1, máscara 255.255.128.0, gateway 178.117.127.254
-* PC 1D: IP 178.117.0.2, máscara 255.255.128.0, gateway 178.117.127.254
-* Router RD: IP:178.117.127.254
-* PC 1C: IP 128.249.192.1, máscara 255.255.192.0, gateway 128.249.255.254
-* PC 1C: IP 128.249.192.2, máscara 255.255.192.0, gateway 128.249.255.254
-* Router RC: IP:128.249.255.254
+* PC 1I: IP 40.69.56.1, máscara 255.255.248.0, gateway 40.69.63.254
+* PC 1I: IP 40.69.56.2, máscara 255.255.248.0, gateway 40.69.63.254
+* Router RI: IP:40.69.63.254
+* PC 1D: IP 194.254.167.129, máscara 255.255.255.224, gateway 194.254.167.158
+* PC 1D: IP 194.254.167.130, máscara 255.255.255.224, gateway 194.254.167.158
+* Router RD: IP:194.254.167.158
+* PC 1C: IP 185.162.38.1, máscara 255.255.254.0, gateway 185.162.39.254
+* PC 1C: IP 185.162.38.2, máscara 255.255.254.0, gateway 185.162.39.254
+* Router RC: IP:185.162.39.254
 
-* Dentro de la red 126.86.133.0/24:
+* Dentro de la red 13.248.0.0/18:
 
-    * El router RI tiene la IP 126.86.133.1 y la máscara 255.255.255.0
-    * El router RD tiene la IP 126.86.133.254 y la máscara 255.255.255.0
+    * El router RI tiene la IP 13.248.0.1 y la máscara 255.255.192.0
+    * El router RD tiene la IP 13.248.63.254 y la máscara 255.255.192.0
 
 
-* Dentro de la red 163.252.192.0/25:
+* Dentro de la red 60.159.32.0/21:
 
-    * El router RD tiene la IP 163.252.192.1 y la máscara 255.255.255.128
-    * El router RC tiene la IP 163.252.192.126 y la máscara 255.255.255.128
+    * El router RD tiene la IP 60.159.32.1 y la máscara 255.255.248.0
+    * El router RC tiene la IP 60.159.39.254 y la máscara 255.255.248.0
 
 
 * Para el router RI la tabla de rutas sería:
 
 .. table::
 
-    ================  =============  ===============
-       IP de red         Máscara     Siguiente salto
-    ================  =============  ===============
-    178.117.0.0/17    255.255.128.0  126.86.133.254 
-    128.249.192.0/18  255.255.192.0  126.86.133.254 
-    ================  =============  ===============
+    ==================  ===============  ===============
+        IP de red           Máscara      Siguiente salto
+    ==================  ===============  ===============
+    194.254.167.128/27  255.255.255.224  13.248.63.254  
+    185.162.38.0/23     255.255.254.0    13.248.63.254  
+    ==================  ===============  ===============
 
 
 
@@ -2043,12 +2043,12 @@ La solución sería:
 
 .. table::
 
-    ================  =============  ===============
-       IP de red         Máscara     Siguiente salto
-    ================  =============  ===============
-    47.144.96.0/19    255.255.224.0  126.86.133.1   
-    128.249.192.0/18  255.255.192.0  163.252.192.126
-    ================  =============  ===============
+    ===============  =============  ===============
+       IP de red        Máscara     Siguiente salto
+    ===============  =============  ===============
+    40.69.56.0/21    255.255.248.0  13.248.0.1     
+    185.162.38.0/23  255.255.254.0  60.159.39.254  
+    ===============  =============  ===============
 
 
 
@@ -2056,12 +2056,12 @@ La solución sería:
 
 .. table::
 
-    ==============  =============  ===============
-      IP de red        Máscara     Siguiente salto
-    ==============  =============  ===============
-    178.117.0.0/17  255.255.128.0  163.252.192.1  
-    47.144.96.0/19  255.255.224.0  163.252.192.1  
-    ==============  =============  ===============
+    ==================  ===============  ===============
+        IP de red           Máscara      Siguiente salto
+    ==================  ===============  ===============
+    194.254.167.128/27  255.255.255.224  60.159.32.1    
+    40.69.56.0/21       255.255.248.0    60.159.32.1    
+    ==================  ===============  ===============
 
 
         
@@ -2082,11 +2082,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 78.176.0.0/13 en el área izquierda.
-* Red 130.37.0.0/16 en el área RI-RD
-* Red 24.80.0.0/12 en el área derecha
-* Red 69.196.128.0/18 en el área RD-RC
-* Red 171.76.0.0/16 en el área superior.
+* Red 109.0.0.0/10 en el área izquierda.
+* Red 13.192.0.0/10 en el área RI-RD
+* Red 136.60.128.0/18 en el área derecha
+* Red 195.185.154.0/24 en el área RD-RC
+* Red 76.131.201.160/27 en el área superior.
 
 
 
@@ -2103,38 +2103,38 @@ Solución
 
 La solución sería:
 
-* PC 1I: IP 78.176.0.1, máscara 255.248.0.0, gateway 78.183.255.254
-* PC 1I: IP 78.176.0.2, máscara 255.248.0.0, gateway 78.183.255.254
-* Router RI: IP:78.183.255.254
-* PC 1D: IP 24.80.0.1, máscara 255.240.0.0, gateway 24.95.255.254
-* PC 1D: IP 24.80.0.2, máscara 255.240.0.0, gateway 24.95.255.254
-* Router RD: IP:24.95.255.254
-* PC 1C: IP 171.76.0.1, máscara 255.255.0.0, gateway 171.76.255.254
-* PC 1C: IP 171.76.0.2, máscara 255.255.0.0, gateway 171.76.255.254
-* Router RC: IP:171.76.255.254
+* PC 1I: IP 109.0.0.1, máscara 255.192.0.0, gateway 109.63.255.254
+* PC 1I: IP 109.0.0.2, máscara 255.192.0.0, gateway 109.63.255.254
+* Router RI: IP:109.63.255.254
+* PC 1D: IP 136.60.128.1, máscara 255.255.192.0, gateway 136.60.191.254
+* PC 1D: IP 136.60.128.2, máscara 255.255.192.0, gateway 136.60.191.254
+* Router RD: IP:136.60.191.254
+* PC 1C: IP 76.131.201.161, máscara 255.255.255.224, gateway 76.131.201.190
+* PC 1C: IP 76.131.201.162, máscara 255.255.255.224, gateway 76.131.201.190
+* Router RC: IP:76.131.201.190
 
-* Dentro de la red 130.37.0.0/16:
+* Dentro de la red 13.192.0.0/10:
 
-    * El router RI tiene la IP 130.37.0.1 y la máscara 255.255.0.0
-    * El router RD tiene la IP 130.37.255.254 y la máscara 255.255.0.0
+    * El router RI tiene la IP 13.192.0.1 y la máscara 255.192.0.0
+    * El router RD tiene la IP 13.255.255.254 y la máscara 255.192.0.0
 
 
-* Dentro de la red 69.196.128.0/18:
+* Dentro de la red 195.185.154.0/24:
 
-    * El router RD tiene la IP 69.196.128.1 y la máscara 255.255.192.0
-    * El router RC tiene la IP 69.196.191.254 y la máscara 255.255.192.0
+    * El router RD tiene la IP 195.185.154.1 y la máscara 255.255.255.0
+    * El router RC tiene la IP 195.185.154.254 y la máscara 255.255.255.0
 
 
 * Para el router RI la tabla de rutas sería:
 
 .. table::
 
-    =============  ===========  ===============
-      IP de red      Máscara    Siguiente salto
-    =============  ===========  ===============
-    24.80.0.0/12   255.240.0.0  130.37.255.254 
-    171.76.0.0/16  255.255.0.0  130.37.255.254 
-    =============  ===========  ===============
+    =================  ===============  ===============
+        IP de red          Máscara      Siguiente salto
+    =================  ===============  ===============
+    136.60.128.0/18    255.255.192.0    13.255.255.254 
+    76.131.201.160/27  255.255.255.224  13.255.255.254 
+    =================  ===============  ===============
 
 
 
@@ -2142,12 +2142,12 @@ La solución sería:
 
 .. table::
 
-    =============  ===========  ===============
-      IP de red      Máscara    Siguiente salto
-    =============  ===========  ===============
-    78.176.0.0/13  255.248.0.0  130.37.0.1     
-    171.76.0.0/16  255.255.0.0  69.196.191.254 
-    =============  ===========  ===============
+    =================  ===============  ===============
+        IP de red          Máscara      Siguiente salto
+    =================  ===============  ===============
+    109.0.0.0/10       255.192.0.0      13.192.0.1     
+    76.131.201.160/27  255.255.255.224  195.185.154.254
+    =================  ===============  ===============
 
 
 
@@ -2155,12 +2155,12 @@ La solución sería:
 
 .. table::
 
-    =============  ===========  ===============
-      IP de red      Máscara    Siguiente salto
-    =============  ===========  ===============
-    24.80.0.0/12   255.240.0.0  69.196.128.1   
-    78.176.0.0/13  255.248.0.0  69.196.128.1   
-    =============  ===========  ===============
+    ===============  =============  ===============
+       IP de red        Máscara     Siguiente salto
+    ===============  =============  ===============
+    136.60.128.0/18  255.255.192.0  195.185.154.1  
+    109.0.0.0/10     255.192.0.0    195.185.154.1  
+    ===============  =============  ===============
 
 
         
@@ -2181,11 +2181,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 160.142.128.0/17 en el área izquierda.
-* Red 81.90.4.0/22 en el área RI-RD
-* Red 51.100.0.0/14 en el área derecha
-* Red 138.164.64.0/18 en el área RD-RC
-* Red 41.224.0.0/11 en el área superior.
+* Red 52.96.0.0/13 en el área izquierda.
+* Red 127.64.0.0/14 en el área RI-RD
+* Red 213.207.251.240/28 en el área derecha
+* Red 121.116.0.0/14 en el área RD-RC
+* Red 91.40.0.0/13 en el área superior.
 
 
 
@@ -2202,38 +2202,38 @@ Solución
 
 La solución sería:
 
-* PC 1I: IP 160.142.128.1, máscara 255.255.128.0, gateway 160.142.255.254
-* PC 1I: IP 160.142.128.2, máscara 255.255.128.0, gateway 160.142.255.254
-* Router RI: IP:160.142.255.254
-* PC 1D: IP 51.100.0.1, máscara 255.252.0.0, gateway 51.103.255.254
-* PC 1D: IP 51.100.0.2, máscara 255.252.0.0, gateway 51.103.255.254
-* Router RD: IP:51.103.255.254
-* PC 1C: IP 41.224.0.1, máscara 255.224.0.0, gateway 41.255.255.254
-* PC 1C: IP 41.224.0.2, máscara 255.224.0.0, gateway 41.255.255.254
-* Router RC: IP:41.255.255.254
+* PC 1I: IP 52.96.0.1, máscara 255.248.0.0, gateway 52.103.255.254
+* PC 1I: IP 52.96.0.2, máscara 255.248.0.0, gateway 52.103.255.254
+* Router RI: IP:52.103.255.254
+* PC 1D: IP 213.207.251.241, máscara 255.255.255.240, gateway 213.207.251.254
+* PC 1D: IP 213.207.251.242, máscara 255.255.255.240, gateway 213.207.251.254
+* Router RD: IP:213.207.251.254
+* PC 1C: IP 91.40.0.1, máscara 255.248.0.0, gateway 91.47.255.254
+* PC 1C: IP 91.40.0.2, máscara 255.248.0.0, gateway 91.47.255.254
+* Router RC: IP:91.47.255.254
 
-* Dentro de la red 81.90.4.0/22:
+* Dentro de la red 127.64.0.0/14:
 
-    * El router RI tiene la IP 81.90.4.1 y la máscara 255.255.252.0
-    * El router RD tiene la IP 81.90.7.254 y la máscara 255.255.252.0
+    * El router RI tiene la IP 127.64.0.1 y la máscara 255.252.0.0
+    * El router RD tiene la IP 127.67.255.254 y la máscara 255.252.0.0
 
 
-* Dentro de la red 138.164.64.0/18:
+* Dentro de la red 121.116.0.0/14:
 
-    * El router RD tiene la IP 138.164.64.1 y la máscara 255.255.192.0
-    * El router RC tiene la IP 138.164.127.254 y la máscara 255.255.192.0
+    * El router RD tiene la IP 121.116.0.1 y la máscara 255.252.0.0
+    * El router RC tiene la IP 121.119.255.254 y la máscara 255.252.0.0
 
 
 * Para el router RI la tabla de rutas sería:
 
 .. table::
 
-    =============  ===========  ===============
-      IP de red      Máscara    Siguiente salto
-    =============  ===========  ===============
-    51.100.0.0/14  255.252.0.0  81.90.7.254    
-    41.224.0.0/11  255.224.0.0  81.90.7.254    
-    =============  ===========  ===============
+    ==================  ===============  ===============
+        IP de red           Máscara      Siguiente salto
+    ==================  ===============  ===============
+    213.207.251.240/28  255.255.255.240  127.67.255.254 
+    91.40.0.0/13        255.248.0.0      127.67.255.254 
+    ==================  ===============  ===============
 
 
 
@@ -2241,12 +2241,12 @@ La solución sería:
 
 .. table::
 
-    ================  =============  ===============
-       IP de red         Máscara     Siguiente salto
-    ================  =============  ===============
-    160.142.128.0/17  255.255.128.0  81.90.4.1      
-    41.224.0.0/11     255.224.0.0    138.164.127.254
-    ================  =============  ===============
+    ============  ===========  ===============
+     IP de red      Máscara    Siguiente salto
+    ============  ===========  ===============
+    52.96.0.0/13  255.248.0.0  127.64.0.1     
+    91.40.0.0/13  255.248.0.0  121.119.255.254
+    ============  ===========  ===============
 
 
 
@@ -2254,12 +2254,12 @@ La solución sería:
 
 .. table::
 
-    ================  =============  ===============
-       IP de red         Máscara     Siguiente salto
-    ================  =============  ===============
-    51.100.0.0/14     255.252.0.0    138.164.64.1   
-    160.142.128.0/17  255.255.128.0  138.164.64.1   
-    ================  =============  ===============
+    ==================  ===============  ===============
+        IP de red           Máscara      Siguiente salto
+    ==================  ===============  ===============
+    213.207.251.240/28  255.255.255.240  121.116.0.1    
+    52.96.0.0/13        255.248.0.0      121.116.0.1    
+    ==================  ===============  ===============
 
 
         
@@ -2280,11 +2280,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 99.128.0.0/10 en el área izquierda.
-* Red 88.214.226.0/23 en el área RI-RD
-* Red 19.192.0.0/13 en el área derecha
-* Red 152.254.18.0/23 en el área RD-RC
-* Red 46.128.0.0/10 en el área superior.
+* Red 168.217.0.0/18 en el área izquierda.
+* Red 182.187.152.0/21 en el área RI-RD
+* Red 154.204.247.0/24 en el área derecha
+* Red 11.96.0.0/11 en el área RD-RC
+* Red 131.136.192.0/19 en el área superior.
 
 
 
@@ -2301,38 +2301,38 @@ Solución
 
 La solución sería:
 
-* PC 1I: IP 99.128.0.1, máscara 255.192.0.0, gateway 99.191.255.254
-* PC 1I: IP 99.128.0.2, máscara 255.192.0.0, gateway 99.191.255.254
-* Router RI: IP:99.191.255.254
-* PC 1D: IP 19.192.0.1, máscara 255.248.0.0, gateway 19.199.255.254
-* PC 1D: IP 19.192.0.2, máscara 255.248.0.0, gateway 19.199.255.254
-* Router RD: IP:19.199.255.254
-* PC 1C: IP 46.128.0.1, máscara 255.192.0.0, gateway 46.191.255.254
-* PC 1C: IP 46.128.0.2, máscara 255.192.0.0, gateway 46.191.255.254
-* Router RC: IP:46.191.255.254
+* PC 1I: IP 168.217.0.1, máscara 255.255.192.0, gateway 168.217.63.254
+* PC 1I: IP 168.217.0.2, máscara 255.255.192.0, gateway 168.217.63.254
+* Router RI: IP:168.217.63.254
+* PC 1D: IP 154.204.247.1, máscara 255.255.255.0, gateway 154.204.247.254
+* PC 1D: IP 154.204.247.2, máscara 255.255.255.0, gateway 154.204.247.254
+* Router RD: IP:154.204.247.254
+* PC 1C: IP 131.136.192.1, máscara 255.255.224.0, gateway 131.136.223.254
+* PC 1C: IP 131.136.192.2, máscara 255.255.224.0, gateway 131.136.223.254
+* Router RC: IP:131.136.223.254
 
-* Dentro de la red 88.214.226.0/23:
+* Dentro de la red 182.187.152.0/21:
 
-    * El router RI tiene la IP 88.214.226.1 y la máscara 255.255.254.0
-    * El router RD tiene la IP 88.214.227.254 y la máscara 255.255.254.0
+    * El router RI tiene la IP 182.187.152.1 y la máscara 255.255.248.0
+    * El router RD tiene la IP 182.187.159.254 y la máscara 255.255.248.0
 
 
-* Dentro de la red 152.254.18.0/23:
+* Dentro de la red 11.96.0.0/11:
 
-    * El router RD tiene la IP 152.254.18.1 y la máscara 255.255.254.0
-    * El router RC tiene la IP 152.254.19.254 y la máscara 255.255.254.0
+    * El router RD tiene la IP 11.96.0.1 y la máscara 255.224.0.0
+    * El router RC tiene la IP 11.127.255.254 y la máscara 255.224.0.0
 
 
 * Para el router RI la tabla de rutas sería:
 
 .. table::
 
-    =============  ===========  ===============
-      IP de red      Máscara    Siguiente salto
-    =============  ===========  ===============
-    19.192.0.0/13  255.248.0.0  88.214.227.254 
-    46.128.0.0/10  255.192.0.0  88.214.227.254 
-    =============  ===========  ===============
+    ================  =============  ===============
+       IP de red         Máscara     Siguiente salto
+    ================  =============  ===============
+    154.204.247.0/24  255.255.255.0  182.187.159.254
+    131.136.192.0/19  255.255.224.0  182.187.159.254
+    ================  =============  ===============
 
 
 
@@ -2340,12 +2340,12 @@ La solución sería:
 
 .. table::
 
-    =============  ===========  ===============
-      IP de red      Máscara    Siguiente salto
-    =============  ===========  ===============
-    99.128.0.0/10  255.192.0.0  88.214.226.1   
-    46.128.0.0/10  255.192.0.0  152.254.19.254 
-    =============  ===========  ===============
+    ================  =============  ===============
+       IP de red         Máscara     Siguiente salto
+    ================  =============  ===============
+    168.217.0.0/18    255.255.192.0  182.187.152.1  
+    131.136.192.0/19  255.255.224.0  11.127.255.254 
+    ================  =============  ===============
 
 
 
@@ -2353,12 +2353,12 @@ La solución sería:
 
 .. table::
 
-    =============  ===========  ===============
-      IP de red      Máscara    Siguiente salto
-    =============  ===========  ===============
-    19.192.0.0/13  255.248.0.0  152.254.18.1   
-    99.128.0.0/10  255.192.0.0  152.254.18.1   
-    =============  ===========  ===============
+    ================  =============  ===============
+       IP de red         Máscara     Siguiente salto
+    ================  =============  ===============
+    154.204.247.0/24  255.255.255.0  11.96.0.1      
+    168.217.0.0/18    255.255.192.0  11.96.0.1      
+    ================  =============  ===============
 
 
         
@@ -2379,11 +2379,11 @@ los nodos de la red. Se desean utilizar las siguientes redes:
 .. figure:: RedTresRouters.png
 
 
-* Red 30.128.0.0/14 en el área izquierda.
-* Red 77.170.0.0/17 en el área RI-RD
-* Red 5.242.0.0/15 en el área derecha
-* Red 10.137.160.0/19 en el área RD-RC
-* Red 171.232.95.0/26 en el área superior.
+* Red 123.64.0.0/10 en el área izquierda.
+* Red 24.176.0.0/13 en el área RI-RD
+* Red 177.187.0.0/17 en el área derecha
+* Red 123.64.0.0/11 en el área RD-RC
+* Red 0.184.0.0/13 en el área superior.
 
 
 
@@ -2400,38 +2400,38 @@ Solución
 
 La solución sería:
 
-* PC 1I: IP 30.128.0.1, máscara 255.252.0.0, gateway 30.131.255.254
-* PC 1I: IP 30.128.0.2, máscara 255.252.0.0, gateway 30.131.255.254
-* Router RI: IP:30.131.255.254
-* PC 1D: IP 5.242.0.1, máscara 255.254.0.0, gateway 5.243.255.254
-* PC 1D: IP 5.242.0.2, máscara 255.254.0.0, gateway 5.243.255.254
-* Router RD: IP:5.243.255.254
-* PC 1C: IP 171.232.95.1, máscara 255.255.255.192, gateway 171.232.95.62
-* PC 1C: IP 171.232.95.2, máscara 255.255.255.192, gateway 171.232.95.62
-* Router RC: IP:171.232.95.62
+* PC 1I: IP 123.64.0.1, máscara 255.192.0.0, gateway 123.127.255.254
+* PC 1I: IP 123.64.0.2, máscara 255.192.0.0, gateway 123.127.255.254
+* Router RI: IP:123.127.255.254
+* PC 1D: IP 177.187.0.1, máscara 255.255.128.0, gateway 177.187.127.254
+* PC 1D: IP 177.187.0.2, máscara 255.255.128.0, gateway 177.187.127.254
+* Router RD: IP:177.187.127.254
+* PC 1C: IP 0.184.0.1, máscara 255.248.0.0, gateway 0.191.255.254
+* PC 1C: IP 0.184.0.2, máscara 255.248.0.0, gateway 0.191.255.254
+* Router RC: IP:0.191.255.254
 
-* Dentro de la red 77.170.0.0/17:
+* Dentro de la red 24.176.0.0/13:
 
-    * El router RI tiene la IP 77.170.0.1 y la máscara 255.255.128.0
-    * El router RD tiene la IP 77.170.127.254 y la máscara 255.255.128.0
+    * El router RI tiene la IP 24.176.0.1 y la máscara 255.248.0.0
+    * El router RD tiene la IP 24.183.255.254 y la máscara 255.248.0.0
 
 
-* Dentro de la red 10.137.160.0/19:
+* Dentro de la red 123.64.0.0/11:
 
-    * El router RD tiene la IP 10.137.160.1 y la máscara 255.255.224.0
-    * El router RC tiene la IP 10.137.191.254 y la máscara 255.255.224.0
+    * El router RD tiene la IP 123.64.0.1 y la máscara 255.224.0.0
+    * El router RC tiene la IP 123.95.255.254 y la máscara 255.224.0.0
 
 
 * Para el router RI la tabla de rutas sería:
 
 .. table::
 
-    ===============  ===============  ===============
-       IP de red         Máscara      Siguiente salto
-    ===============  ===============  ===============
-    5.242.0.0/15     255.254.0.0      77.170.127.254 
-    171.232.95.0/26  255.255.255.192  77.170.127.254 
-    ===============  ===============  ===============
+    ==============  =============  ===============
+      IP de red        Máscara     Siguiente salto
+    ==============  =============  ===============
+    177.187.0.0/17  255.255.128.0  24.183.255.254 
+    0.184.0.0/13    255.248.0.0    24.183.255.254 
+    ==============  =============  ===============
 
 
 
@@ -2439,12 +2439,12 @@ La solución sería:
 
 .. table::
 
-    ===============  ===============  ===============
-       IP de red         Máscara      Siguiente salto
-    ===============  ===============  ===============
-    30.128.0.0/14    255.252.0.0      77.170.0.1     
-    171.232.95.0/26  255.255.255.192  10.137.191.254 
-    ===============  ===============  ===============
+    =============  ===========  ===============
+      IP de red      Máscara    Siguiente salto
+    =============  ===========  ===============
+    123.64.0.0/10  255.192.0.0  24.176.0.1     
+    0.184.0.0/13   255.248.0.0  123.95.255.254 
+    =============  ===========  ===============
 
 
 
@@ -2452,12 +2452,12 @@ La solución sería:
 
 .. table::
 
-    =============  ===========  ===============
-      IP de red      Máscara    Siguiente salto
-    =============  ===========  ===============
-    5.242.0.0/15   255.254.0.0  10.137.160.1   
-    30.128.0.0/14  255.252.0.0  10.137.160.1   
-    =============  ===========  ===============
+    ==============  =============  ===============
+      IP de red        Máscara     Siguiente salto
+    ==============  =============  ===============
+    177.187.0.0/17  255.255.128.0  123.64.0.1     
+    123.64.0.0/10   255.192.0.0    123.64.0.1     
+    ==============  =============  ===============
 
 
         

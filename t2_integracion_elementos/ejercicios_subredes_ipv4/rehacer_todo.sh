@@ -1,0 +1,1 @@
+./generar_enrutamientos.py > ejercicios_dos_router.rst;./generar_enrutamientos_2_router.py > ejercicios_3_router_caso_a.rst;./generar_subredes_ipv4.py > rangos_direcciones.rst

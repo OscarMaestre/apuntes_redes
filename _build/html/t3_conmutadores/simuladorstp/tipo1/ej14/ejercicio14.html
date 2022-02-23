@@ -4,15 +4,15 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>STP Ejercicio 14, dificultad 1 &#8212; documentación de Apuntes de redes - 1.0</title>
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/alabaster.css" />
-    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
     <script src="../../../../_static/jquery.js"></script>
     <script src="../../../../_static/underscore.js"></script>
     <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
     <script src="../../../../_static/translations.js"></script>
     <link rel="index" title="Índice" href="../../../../genindex.html" />
     <link rel="search" title="Búsqueda" href="../../../../search.html" />
@@ -32,12 +32,12 @@
 
           <div class="body" role="main">
             
-  <section id="stp-ejercicio-14-dificultad-1">
-<h1>STP Ejercicio 14, dificultad 1<a class="headerlink" href="#stp-ejercicio-14-dificultad-1" title="Enlazar permanentemente con este título"></a></h1>
+  <div class="section" id="stp-ejercicio-14-dificultad-1">
+<h1>STP Ejercicio 14, dificultad 1<a class="headerlink" href="#stp-ejercicio-14-dificultad-1" title="Enlazar permanentemente con este título">¶</a></h1>
 <p>Dada la red de switches que se muestra en la figura:</p>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="../../../../_images/ejercicio14.png" src="../../../../_images/ejercicio14.png" />
-</figure>
+</div>
 <p>Indicar el estado final en que quedarán todos los puertos de todos los switches.</p>
 <p>Empezando por los eventos de envío, recepción y determinación de cual es el switch raíz la lista de sucesos sería esta:</p>
 <ol class="arabic simple">
@@ -91,9 +91,9 @@
 <li><p>Switch 2:75 recibe por el puerto 82 la BPDU (Raíz:2:33, Coste:2, ID:3:47, MAC:47)</p></li>
 </ol>
 <p>Una vez decidido el switch raíz, los switches toman las siguientes decisiones (volvemos a indicar la figura por comodidad):</p>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="../../../../_images/ejercicio14.png" src="../../../../_images/ejercicio14.png" />
-</figure>
+</div>
 <p>El switch 3:47 toma estas decisiones:</p>
 <ul class="simple">
 <li><p>El puerto con la MAC 47 se convierte en raíz.</p></li>
@@ -112,7 +112,7 @@
 <li><p>El puerto con la MAC 75 se convierte en raíz.</p></li>
 <li><p>El puerto con la MAC 82 se convierte en designado. Es el mejor del segmento con un coste de 1 frente un coste de 2 que ofrece el puerto 47.</p></li>
 </ul>
-</section>
+</div>
 
 
           </div>
@@ -131,13 +131,13 @@
 
 
 <h3>Navegación</h3>
-<p class="caption" role="heading"><span class="caption-text">Índice:</span></p>
+<p class="caption"><span class="caption-text">Índice:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../t1_caracterizacion_redes/apuntes_t1.html">Tema 1:Caracterización de redes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../t2_integracion_elementos/apuntes_t2.html">Tema 2:Integración de elementos en una red</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../apuntes_t3.html">Tema 3:Configuración y administración de conmutadores</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../t4_routers/apuntes_t4.html">Tema 5: Configuración y administración básica de routers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../t5_vlans/apuntes_t5.html">Tema 4: Configuración de redes virtuales VLAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../t4_routers/apuntes_t4.html">Tema 5: Configuración y administración básica de routers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../t6_enrutamiento_dinamico/apuntes_t6.html">Tema 6:Configuración y administración de protocolos dinámicos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../t7_acceso_internet/apuntes_t7.html">Tema 7: Configuración del acceso a Internet desde una LAN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../anexos/t1_ejercicios.html">Anexo: Ejercicios propuestos para el tema 1</a></li>
@@ -152,6 +152,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../t2_integracion_elementos/ejercicios_ips/clasificacion_ipv6.html#soluciones-a-la-clasificaciones-de-direcciones-ipv6">Soluciones a la clasificaciones de direcciones IPv6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../ejercicios/ejercicios_switches.html">Anexo al tema 3: Ejercicios sobre comandos Cisco en switches</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../stp1.html">Anexo al tema 3:Ejercicios STP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../t5_vlans/ejercicios_vlans/ejercicios_vlans.html">Ejercicios con VLANS y VTP</a></li>
 </ul>
 
 <div class="relations">
@@ -165,7 +166,7 @@
   <h3 id="searchlabel">Búsqueda rápida</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Ir a" />
     </form>
     </div>
@@ -187,7 +188,7 @@
       &copy;2021, Oscar G. G..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

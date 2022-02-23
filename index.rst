@@ -29,6 +29,7 @@ Apuntes de Planificación y Administración de Redes
    t2_integracion_elementos/ejercicios_ips/clasificacion_ipv6.rst
    t3_conmutadores/ejercicios/ejercicios_switches.rst
    t3_conmutadores/simuladorstp/stp1.rst
+   t5_vlans/ejercicios_vlans/ejercicios_vlans.rst
 
 
 

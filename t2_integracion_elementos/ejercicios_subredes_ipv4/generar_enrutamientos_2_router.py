@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from generar_subredes_ipv4 import Generador
 from generar_enrutamientos import GeneradorEjercicioEnrutamiento
 
