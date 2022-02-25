@@ -222,7 +222,24 @@ Recordemos que al formar VLANs los distintos grupos de ordenadores quedan *total
 
 Con solo una cualquiera de estas ventajas ya tendríamos suficiente para justificar la implantación de las VLANs, pero el hecho de obtener las dos hace que esta tecnología sea mucho más interesante aún.
 
-Analicemos ahora las VLANs y los enlaces.
+Analicemos ahora las VLANs y los enlaces. Empecemos por ver los equipos 0 y 2, que pertenecen a la VLAN 100 (USUARIOS). 
+
+.. figure:: img/04b-vlans-y-vtp
+
+Los puertos de los PC van a ser de acceso y van a usar la VLAN 100, pero ¿qué puertos vamos a poner como troncales usando la VLAN 100?
+
+1. Una posibilidad sería poner como troncal para la VLAN 100 los enlaces 1 y 3. Esto implicaría que todo el tráfico iría primero al switch de distribución.
+2. Podemos decidir poner troncal los enlaces 2 y 3. De esta manera no todo el tráfico va al switch de distribución. Lo malo es que esta solución hace que cuando el ordenador PC0 quiere salir siempre va a tener que dar un salto de más.
+3. Podríamos decidir poner troncal los enlaces 1 y 2. Esto es simplemente lo mismo que el punto anterior pero desde otro punto de vista.
+
+En realidad, debemos recordar que tenemos un gran aliado: el protocolo STP. Este protocolo resolverá automáticamente los ciclos por lo que en realidad la mejor solución sería **poner los tres enlaces 1,2 y 3 como troncales y manipular la prioridad del switch Distribución1 para que tenga una prioridad mejor y consiga ser elegido como raíz antes que los de acceso**. STP decidirá cerrar un enlace para la VLAN10 y volverá a activarlo si fuese necesario con lo que conseguimos una alta disponibilidad y además de manera automática.
+
+Por tanto, haremos lo siguiente (de momento, la configuración necesitará más comandos más adelante):
+
+1. En el switch Acceso1 el puerto 0/1 será de acceso para la VLAN 100. Los puertos 0/4 y 0/10 serán troncales para la VLAN 100.
+2. En el switch Acceso2 el puerto 0/1 será de acceso para la VLAN 100.  Los puertos 0/5 y 0/10 serán troncales para la 100.
+3. En el switch Distribucion1 los puertos 0/4, 0/5 y 0/1 serán troncales para la 100. Tengamos en cuenta que el 0/1 es el puerto que lleva hacia el switch de núcleo. Si no ponemos troncal con la 100 este puerto 0/1 los ordenadores *no serán capaces de salir al exterior.* Aunque en este ejemplo no lo hemos puesto para simplificar, el switch de núcleo va conectado a un router que nos dará conectividad con el exterior.
+
 
 El protocolo IEEE802.1Q
 ----------------------------------------------------------------------------
