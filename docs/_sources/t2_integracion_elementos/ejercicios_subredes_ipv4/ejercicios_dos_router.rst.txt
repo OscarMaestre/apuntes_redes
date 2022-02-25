@@ -11,9 +11,9 @@ Ejercicio 1
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 168.215.251.192/26 en el área izquierda.
-* Red 73.208.0.0/12 en el área central.
-* Red 22.170.0.0/15 en el área derecha
+* Red 133.225.128.0/20 en el área izquierda.
+* Red 142.104.81.64/28 en el área central.
+* Red 78.51.90.0/23 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -33,9 +33,9 @@ Ejercicio 2
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 146.187.241.96/27 en el área izquierda.
-* Red 78.199.0.0/16 en el área central.
-* Red 96.56.0.0/13 en el área derecha
+* Red 165.241.64.0/18 en el área izquierda.
+* Red 22.248.0.0/14 en el área central.
+* Red 121.17.128.0/18 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -55,9 +55,9 @@ Ejercicio 3
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 153.203.22.192/28 en el área izquierda.
-* Red 159.188.64.0/21 en el área central.
-* Red 25.192.0.0/10 en el área derecha
+* Red 56.176.0.0/12 en el área izquierda.
+* Red 163.65.99.208/28 en el área central.
+* Red 15.51.243.128/27 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -77,9 +77,9 @@ Ejercicio 4
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 69.147.167.128/26 en el área izquierda.
-* Red 156.214.176.0/24 en el área central.
-* Red 221.197.71.224/28 en el área derecha
+* Red 151.7.16.0/22 en el área izquierda.
+* Red 84.32.0.0/11 en el área central.
+* Red 63.39.200.192/26 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -99,9 +99,9 @@ Ejercicio 5
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 184.206.210.128/26 en el área izquierda.
-* Red 107.192.0.0/11 en el área central.
-* Red 155.235.144.0/20 en el área derecha
+* Red 33.48.0.0/12 en el área izquierda.
+* Red 80.0.0.0/11 en el área central.
+* Red 218.173.130.64/26 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -121,9 +121,9 @@ Ejercicio 6
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 13.246.224.0/21 en el área izquierda.
-* Red 109.123.84.0/23 en el área central.
-* Red 79.94.0.0/16 en el área derecha
+* Red 149.251.206.224/27 en el área izquierda.
+* Red 47.224.0.0/14 en el área central.
+* Red 145.133.198.0/25 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -143,9 +143,9 @@ Ejercicio 7
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 92.64.0.0/10 en el área izquierda.
-* Red 143.42.22.128/25 en el área central.
-* Red 69.146.120.0/21 en el área derecha
+* Red 5.32.226.0/23 en el área izquierda.
+* Red 35.0.0.0/13 en el área central.
+* Red 181.174.229.32/27 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -165,9 +165,9 @@ Ejercicio 8
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 31.192.0.0/11 en el área izquierda.
-* Red 102.176.0.0/12 en el área central.
-* Red 60.22.167.64/26 en el área derecha
+* Red 164.122.0.0/16 en el área izquierda.
+* Red 71.192.0.0/11 en el área central.
+* Red 91.128.0.0/10 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -187,9 +187,9 @@ Ejercicio 9
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 14.36.128.0/17 en el área izquierda.
-* Red 18.215.176.0/20 en el área central.
-* Red 71.64.0.0/11 en el área derecha
+* Red 110.240.0.0/12 en el área izquierda.
+* Red 140.131.224.0/19 en el área central.
+* Red 30.170.0.0/16 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -209,9 +209,9 @@ Ejercicio 10
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 121.110.128.0/18 en el área izquierda.
-* Red 164.28.176.0/20 en el área central.
-* Red 44.104.128.0/22 en el área derecha
+* Red 7.192.0.0/11 en el área izquierda.
+* Red 220.190.42.0/27 en el área central.
+* Red 79.215.237.0/25 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -231,9 +231,9 @@ Ejercicio 11
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 128.27.232.0/21 en el área izquierda.
-* Red 158.86.128.0/19 en el área central.
-* Red 89.128.0.0/10 en el área derecha
+* Red 74.224.0.0/13 en el área izquierda.
+* Red 125.160.0.0/12 en el área central.
+* Red 25.104.160.0/19 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -253,9 +253,9 @@ Ejercicio 12
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 17.47.176.0/20 en el área izquierda.
-* Red 28.154.118.0/23 en el área central.
-* Red 53.17.128.0/18 en el área derecha
+* Red 189.229.0.0/16 en el área izquierda.
+* Red 150.73.80.0/20 en el área central.
+* Red 182.0.0.0/17 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -275,9 +275,9 @@ Ejercicio 13
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 163.208.208.0/20 en el área izquierda.
-* Red 171.49.64.0/18 en el área central.
-* Red 51.53.224.0/21 en el área derecha
+* Red 182.23.38.176/28 en el área izquierda.
+* Red 131.55.128.0/20 en el área central.
+* Red 50.33.132.208/28 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -297,9 +297,9 @@ Ejercicio 14
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 52.112.136.0/21 en el área izquierda.
-* Red 47.64.0.0/10 en el área central.
-* Red 28.208.0.0/14 en el área derecha
+* Red 29.75.104.208/28 en el área izquierda.
+* Red 179.249.12.0/24 en el área central.
+* Red 81.159.0.0/16 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -319,9 +319,9 @@ Ejercicio 15
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 133.166.208.0/22 en el área izquierda.
-* Red 35.137.26.0/23 en el área central.
-* Red 153.75.2.0/25 en el área derecha
+* Red 218.249.112.0/24 en el área izquierda.
+* Red 106.247.173.160/28 en el área central.
+* Red 71.160.0.0/11 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -341,9 +341,9 @@ Ejercicio 16
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 38.152.0.0/14 en el área izquierda.
-* Red 72.32.0.0/11 en el área central.
-* Red 204.175.86.80/28 en el área derecha
+* Red 185.202.128.0/17 en el área izquierda.
+* Red 132.160.168.0/21 en el área central.
+* Red 198.54.10.64/26 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -363,9 +363,9 @@ Ejercicio 17
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 94.248.0.0/13 en el área izquierda.
-* Red 57.128.0.0/10 en el área central.
-* Red 100.4.0.0/15 en el área derecha
+* Red 147.127.0.0/18 en el área izquierda.
+* Red 0.224.0.0/11 en el área central.
+* Red 212.6.63.128/25 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -385,9 +385,9 @@ Ejercicio 18
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 176.234.44.0/22 en el área izquierda.
-* Red 215.54.62.128/26 en el área central.
-* Red 132.130.128.0/17 en el área derecha
+* Red 83.225.202.0/24 en el área izquierda.
+* Red 40.43.224.0/19 en el área central.
+* Red 166.4.160.0/19 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -407,9 +407,9 @@ Ejercicio 19
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 49.227.144.0/23 en el área izquierda.
-* Red 75.216.0.0/13 en el área central.
-* Red 204.243.234.144/28 en el área derecha
+* Red 180.74.0.0/18 en el área izquierda.
+* Red 208.23.147.96/28 en el área central.
+* Red 142.197.0.0/16 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -429,9 +429,9 @@ Ejercicio 20
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 4.147.96.128/26 en el área izquierda.
-* Red 196.238.79.32/28 en el área central.
-* Red 133.58.128.0/17 en el área derecha
+* Red 165.191.28.0/22 en el área izquierda.
+* Red 0.110.16.0/20 en el área central.
+* Red 126.128.0.0/11 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -452,9 +452,9 @@ Solución al ejercicio 1 de enrutamiento
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 168.215.251.192/26 en el área izquierda.
-* Red 73.208.0.0/12 en el área central.
-* Red 22.170.0.0/15 en el área derecha
+* Red 133.225.128.0/20 en el área izquierda.
+* Red 142.104.81.64/28 en el área central.
+* Red 78.51.90.0/23 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -470,22 +470,22 @@ Aparte de eso, se desean respetar unos ciertos estándares:
 
 Las direcciones serían estas:
 
-* PC 1I: IP 168.215.251.193, máscara 255.255.255.192, gateway 168.215.251.254
-* PC 2I: IP 168.215.251.194, máscara 255.255.255.192, gateway 168.215.251.254
-* Router I, interfaz izquierda: IP 168.215.251.254, máscara 255.255.255.192
-* Router I, interfaz derecha: IP 73.208.0.1, máscara 255.240.0.0
-* PC 1D: IP 22.170.0.1, máscara 255.254.0.0, gateway 22.171.255.254
-* PC 2D: IP 22.170.0.2, máscara 255.254.0.0, gateway 22.171.255.254
-* Router D, interfaz derecha: IP 22.171.255.254, máscara 255.254.0.0
-* Router D, interfaz izquierda: IP 73.223.255.254, máscara 255.240.0.0
+* PC 1I: IP 133.225.128.1, máscara 255.255.240.0, gateway 133.225.143.254
+* PC 2I: IP 133.225.128.2, máscara 255.255.240.0, gateway 133.225.143.254
+* Router I, interfaz izquierda: IP 133.225.143.254, máscara 255.255.240.0
+* Router I, interfaz derecha: IP 142.104.81.65, máscara 255.255.255.240
+* PC 1D: IP 78.51.90.1, máscara 255.255.254.0, gateway 78.51.91.254
+* PC 2D: IP 78.51.90.2, máscara 255.255.254.0, gateway 78.51.91.254
+* Router D, interfaz derecha: IP 78.51.91.254, máscara 255.255.254.0
+* Router D, interfaz izquierda: IP 142.104.81.78, máscara 255.255.255.240
 
 La tabla de rutas del Router I debería tener la entrada siguiente:
 
-* Red 22.170.0.0/15, máscara 255.254.0.0, siguiente salto: 73.223.255.254
+* Red 78.51.90.0/23, máscara 255.255.254.0, siguiente salto: 142.104.81.78
 
 La tabla de rutas del Router D debería tener la entrada siguiente:
 
-* Red 168.215.251.192/26, máscara 255.255.255.192, siguiente salto 73.208.0.1
+* Red 133.225.128.0/20, máscara 255.255.240.0, siguiente salto 142.104.81.65
         
 
 Solución al ejercicio 2 de enrutamiento
@@ -496,9 +496,9 @@ Solución al ejercicio 2 de enrutamiento
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 146.187.241.96/27 en el área izquierda.
-* Red 78.199.0.0/16 en el área central.
-* Red 96.56.0.0/13 en el área derecha
+* Red 165.241.64.0/18 en el área izquierda.
+* Red 22.248.0.0/14 en el área central.
+* Red 121.17.128.0/18 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -514,22 +514,22 @@ Aparte de eso, se desean respetar unos ciertos estándares:
 
 Las direcciones serían estas:
 
-* PC 1I: IP 146.187.241.97, máscara 255.255.255.224, gateway 146.187.241.126
-* PC 2I: IP 146.187.241.98, máscara 255.255.255.224, gateway 146.187.241.126
-* Router I, interfaz izquierda: IP 146.187.241.126, máscara 255.255.255.224
-* Router I, interfaz derecha: IP 78.199.0.1, máscara 255.255.0.0
-* PC 1D: IP 96.56.0.1, máscara 255.248.0.0, gateway 96.63.255.254
-* PC 2D: IP 96.56.0.2, máscara 255.248.0.0, gateway 96.63.255.254
-* Router D, interfaz derecha: IP 96.63.255.254, máscara 255.248.0.0
-* Router D, interfaz izquierda: IP 78.199.255.254, máscara 255.255.0.0
+* PC 1I: IP 165.241.64.1, máscara 255.255.192.0, gateway 165.241.127.254
+* PC 2I: IP 165.241.64.2, máscara 255.255.192.0, gateway 165.241.127.254
+* Router I, interfaz izquierda: IP 165.241.127.254, máscara 255.255.192.0
+* Router I, interfaz derecha: IP 22.248.0.1, máscara 255.252.0.0
+* PC 1D: IP 121.17.128.1, máscara 255.255.192.0, gateway 121.17.191.254
+* PC 2D: IP 121.17.128.2, máscara 255.255.192.0, gateway 121.17.191.254
+* Router D, interfaz derecha: IP 121.17.191.254, máscara 255.255.192.0
+* Router D, interfaz izquierda: IP 22.251.255.254, máscara 255.252.0.0
 
 La tabla de rutas del Router I debería tener la entrada siguiente:
 
-* Red 96.56.0.0/13, máscara 255.248.0.0, siguiente salto: 78.199.255.254
+* Red 121.17.128.0/18, máscara 255.255.192.0, siguiente salto: 22.251.255.254
 
 La tabla de rutas del Router D debería tener la entrada siguiente:
 
-* Red 146.187.241.96/27, máscara 255.255.255.224, siguiente salto 78.199.0.1
+* Red 165.241.64.0/18, máscara 255.255.192.0, siguiente salto 22.248.0.1
         
 
 Solución al ejercicio 3 de enrutamiento
@@ -540,9 +540,9 @@ Solución al ejercicio 3 de enrutamiento
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 153.203.22.192/28 en el área izquierda.
-* Red 159.188.64.0/21 en el área central.
-* Red 25.192.0.0/10 en el área derecha
+* Red 56.176.0.0/12 en el área izquierda.
+* Red 163.65.99.208/28 en el área central.
+* Red 15.51.243.128/27 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -558,22 +558,22 @@ Aparte de eso, se desean respetar unos ciertos estándares:
 
 Las direcciones serían estas:
 
-* PC 1I: IP 153.203.22.193, máscara 255.255.255.240, gateway 153.203.22.206
-* PC 2I: IP 153.203.22.194, máscara 255.255.255.240, gateway 153.203.22.206
-* Router I, interfaz izquierda: IP 153.203.22.206, máscara 255.255.255.240
-* Router I, interfaz derecha: IP 159.188.64.1, máscara 255.255.248.0
-* PC 1D: IP 25.192.0.1, máscara 255.192.0.0, gateway 25.255.255.254
-* PC 2D: IP 25.192.0.2, máscara 255.192.0.0, gateway 25.255.255.254
-* Router D, interfaz derecha: IP 25.255.255.254, máscara 255.192.0.0
-* Router D, interfaz izquierda: IP 159.188.71.254, máscara 255.255.248.0
+* PC 1I: IP 56.176.0.1, máscara 255.240.0.0, gateway 56.191.255.254
+* PC 2I: IP 56.176.0.2, máscara 255.240.0.0, gateway 56.191.255.254
+* Router I, interfaz izquierda: IP 56.191.255.254, máscara 255.240.0.0
+* Router I, interfaz derecha: IP 163.65.99.209, máscara 255.255.255.240
+* PC 1D: IP 15.51.243.129, máscara 255.255.255.224, gateway 15.51.243.158
+* PC 2D: IP 15.51.243.130, máscara 255.255.255.224, gateway 15.51.243.158
+* Router D, interfaz derecha: IP 15.51.243.158, máscara 255.255.255.224
+* Router D, interfaz izquierda: IP 163.65.99.222, máscara 255.255.255.240
 
 La tabla de rutas del Router I debería tener la entrada siguiente:
 
-* Red 25.192.0.0/10, máscara 255.192.0.0, siguiente salto: 159.188.71.254
+* Red 15.51.243.128/27, máscara 255.255.255.224, siguiente salto: 163.65.99.222
 
 La tabla de rutas del Router D debería tener la entrada siguiente:
 
-* Red 153.203.22.192/28, máscara 255.255.255.240, siguiente salto 159.188.64.1
+* Red 56.176.0.0/12, máscara 255.240.0.0, siguiente salto 163.65.99.209
         
 
 Solución al ejercicio 4 de enrutamiento
@@ -584,9 +584,9 @@ Solución al ejercicio 4 de enrutamiento
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 69.147.167.128/26 en el área izquierda.
-* Red 156.214.176.0/24 en el área central.
-* Red 221.197.71.224/28 en el área derecha
+* Red 151.7.16.0/22 en el área izquierda.
+* Red 84.32.0.0/11 en el área central.
+* Red 63.39.200.192/26 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -602,22 +602,22 @@ Aparte de eso, se desean respetar unos ciertos estándares:
 
 Las direcciones serían estas:
 
-* PC 1I: IP 69.147.167.129, máscara 255.255.255.192, gateway 69.147.167.190
-* PC 2I: IP 69.147.167.130, máscara 255.255.255.192, gateway 69.147.167.190
-* Router I, interfaz izquierda: IP 69.147.167.190, máscara 255.255.255.192
-* Router I, interfaz derecha: IP 156.214.176.1, máscara 255.255.255.0
-* PC 1D: IP 221.197.71.225, máscara 255.255.255.240, gateway 221.197.71.238
-* PC 2D: IP 221.197.71.226, máscara 255.255.255.240, gateway 221.197.71.238
-* Router D, interfaz derecha: IP 221.197.71.238, máscara 255.255.255.240
-* Router D, interfaz izquierda: IP 156.214.176.254, máscara 255.255.255.0
+* PC 1I: IP 151.7.16.1, máscara 255.255.252.0, gateway 151.7.19.254
+* PC 2I: IP 151.7.16.2, máscara 255.255.252.0, gateway 151.7.19.254
+* Router I, interfaz izquierda: IP 151.7.19.254, máscara 255.255.252.0
+* Router I, interfaz derecha: IP 84.32.0.1, máscara 255.224.0.0
+* PC 1D: IP 63.39.200.193, máscara 255.255.255.192, gateway 63.39.200.254
+* PC 2D: IP 63.39.200.194, máscara 255.255.255.192, gateway 63.39.200.254
+* Router D, interfaz derecha: IP 63.39.200.254, máscara 255.255.255.192
+* Router D, interfaz izquierda: IP 84.63.255.254, máscara 255.224.0.0
 
 La tabla de rutas del Router I debería tener la entrada siguiente:
 
-* Red 221.197.71.224/28, máscara 255.255.255.240, siguiente salto: 156.214.176.254
+* Red 63.39.200.192/26, máscara 255.255.255.192, siguiente salto: 84.63.255.254
 
 La tabla de rutas del Router D debería tener la entrada siguiente:
 
-* Red 69.147.167.128/26, máscara 255.255.255.192, siguiente salto 156.214.176.1
+* Red 151.7.16.0/22, máscara 255.255.252.0, siguiente salto 84.32.0.1
         
 
 Solución al ejercicio 5 de enrutamiento
@@ -628,9 +628,9 @@ Solución al ejercicio 5 de enrutamiento
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 184.206.210.128/26 en el área izquierda.
-* Red 107.192.0.0/11 en el área central.
-* Red 155.235.144.0/20 en el área derecha
+* Red 33.48.0.0/12 en el área izquierda.
+* Red 80.0.0.0/11 en el área central.
+* Red 218.173.130.64/26 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -646,22 +646,22 @@ Aparte de eso, se desean respetar unos ciertos estándares:
 
 Las direcciones serían estas:
 
-* PC 1I: IP 184.206.210.129, máscara 255.255.255.192, gateway 184.206.210.190
-* PC 2I: IP 184.206.210.130, máscara 255.255.255.192, gateway 184.206.210.190
-* Router I, interfaz izquierda: IP 184.206.210.190, máscara 255.255.255.192
-* Router I, interfaz derecha: IP 107.192.0.1, máscara 255.224.0.0
-* PC 1D: IP 155.235.144.1, máscara 255.255.240.0, gateway 155.235.159.254
-* PC 2D: IP 155.235.144.2, máscara 255.255.240.0, gateway 155.235.159.254
-* Router D, interfaz derecha: IP 155.235.159.254, máscara 255.255.240.0
-* Router D, interfaz izquierda: IP 107.223.255.254, máscara 255.224.0.0
+* PC 1I: IP 33.48.0.1, máscara 255.240.0.0, gateway 33.63.255.254
+* PC 2I: IP 33.48.0.2, máscara 255.240.0.0, gateway 33.63.255.254
+* Router I, interfaz izquierda: IP 33.63.255.254, máscara 255.240.0.0
+* Router I, interfaz derecha: IP 80.0.0.1, máscara 255.224.0.0
+* PC 1D: IP 218.173.130.65, máscara 255.255.255.192, gateway 218.173.130.126
+* PC 2D: IP 218.173.130.66, máscara 255.255.255.192, gateway 218.173.130.126
+* Router D, interfaz derecha: IP 218.173.130.126, máscara 255.255.255.192
+* Router D, interfaz izquierda: IP 80.31.255.254, máscara 255.224.0.0
 
 La tabla de rutas del Router I debería tener la entrada siguiente:
 
-* Red 155.235.144.0/20, máscara 255.255.240.0, siguiente salto: 107.223.255.254
+* Red 218.173.130.64/26, máscara 255.255.255.192, siguiente salto: 80.31.255.254
 
 La tabla de rutas del Router D debería tener la entrada siguiente:
 
-* Red 184.206.210.128/26, máscara 255.255.255.192, siguiente salto 107.192.0.1
+* Red 33.48.0.0/12, máscara 255.240.0.0, siguiente salto 80.0.0.1
         
 
 Solución al ejercicio 6 de enrutamiento
@@ -672,9 +672,9 @@ Solución al ejercicio 6 de enrutamiento
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 13.246.224.0/21 en el área izquierda.
-* Red 109.123.84.0/23 en el área central.
-* Red 79.94.0.0/16 en el área derecha
+* Red 149.251.206.224/27 en el área izquierda.
+* Red 47.224.0.0/14 en el área central.
+* Red 145.133.198.0/25 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -690,22 +690,22 @@ Aparte de eso, se desean respetar unos ciertos estándares:
 
 Las direcciones serían estas:
 
-* PC 1I: IP 13.246.224.1, máscara 255.255.248.0, gateway 13.246.231.254
-* PC 2I: IP 13.246.224.2, máscara 255.255.248.0, gateway 13.246.231.254
-* Router I, interfaz izquierda: IP 13.246.231.254, máscara 255.255.248.0
-* Router I, interfaz derecha: IP 109.123.84.1, máscara 255.255.254.0
-* PC 1D: IP 79.94.0.1, máscara 255.255.0.0, gateway 79.94.255.254
-* PC 2D: IP 79.94.0.2, máscara 255.255.0.0, gateway 79.94.255.254
-* Router D, interfaz derecha: IP 79.94.255.254, máscara 255.255.0.0
-* Router D, interfaz izquierda: IP 109.123.85.254, máscara 255.255.254.0
+* PC 1I: IP 149.251.206.225, máscara 255.255.255.224, gateway 149.251.206.254
+* PC 2I: IP 149.251.206.226, máscara 255.255.255.224, gateway 149.251.206.254
+* Router I, interfaz izquierda: IP 149.251.206.254, máscara 255.255.255.224
+* Router I, interfaz derecha: IP 47.224.0.1, máscara 255.252.0.0
+* PC 1D: IP 145.133.198.1, máscara 255.255.255.128, gateway 145.133.198.126
+* PC 2D: IP 145.133.198.2, máscara 255.255.255.128, gateway 145.133.198.126
+* Router D, interfaz derecha: IP 145.133.198.126, máscara 255.255.255.128
+* Router D, interfaz izquierda: IP 47.227.255.254, máscara 255.252.0.0
 
 La tabla de rutas del Router I debería tener la entrada siguiente:
 
-* Red 79.94.0.0/16, máscara 255.255.0.0, siguiente salto: 109.123.85.254
+* Red 145.133.198.0/25, máscara 255.255.255.128, siguiente salto: 47.227.255.254
 
 La tabla de rutas del Router D debería tener la entrada siguiente:
 
-* Red 13.246.224.0/21, máscara 255.255.248.0, siguiente salto 109.123.84.1
+* Red 149.251.206.224/27, máscara 255.255.255.224, siguiente salto 47.224.0.1
         
 
 Solución al ejercicio 7 de enrutamiento
@@ -716,9 +716,9 @@ Solución al ejercicio 7 de enrutamiento
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 92.64.0.0/10 en el área izquierda.
-* Red 143.42.22.128/25 en el área central.
-* Red 69.146.120.0/21 en el área derecha
+* Red 5.32.226.0/23 en el área izquierda.
+* Red 35.0.0.0/13 en el área central.
+* Red 181.174.229.32/27 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -734,22 +734,22 @@ Aparte de eso, se desean respetar unos ciertos estándares:
 
 Las direcciones serían estas:
 
-* PC 1I: IP 92.64.0.1, máscara 255.192.0.0, gateway 92.127.255.254
-* PC 2I: IP 92.64.0.2, máscara 255.192.0.0, gateway 92.127.255.254
-* Router I, interfaz izquierda: IP 92.127.255.254, máscara 255.192.0.0
-* Router I, interfaz derecha: IP 143.42.22.129, máscara 255.255.255.128
-* PC 1D: IP 69.146.120.1, máscara 255.255.248.0, gateway 69.146.127.254
-* PC 2D: IP 69.146.120.2, máscara 255.255.248.0, gateway 69.146.127.254
-* Router D, interfaz derecha: IP 69.146.127.254, máscara 255.255.248.0
-* Router D, interfaz izquierda: IP 143.42.22.254, máscara 255.255.255.128
+* PC 1I: IP 5.32.226.1, máscara 255.255.254.0, gateway 5.32.227.254
+* PC 2I: IP 5.32.226.2, máscara 255.255.254.0, gateway 5.32.227.254
+* Router I, interfaz izquierda: IP 5.32.227.254, máscara 255.255.254.0
+* Router I, interfaz derecha: IP 35.0.0.1, máscara 255.248.0.0
+* PC 1D: IP 181.174.229.33, máscara 255.255.255.224, gateway 181.174.229.62
+* PC 2D: IP 181.174.229.34, máscara 255.255.255.224, gateway 181.174.229.62
+* Router D, interfaz derecha: IP 181.174.229.62, máscara 255.255.255.224
+* Router D, interfaz izquierda: IP 35.7.255.254, máscara 255.248.0.0
 
 La tabla de rutas del Router I debería tener la entrada siguiente:
 
-* Red 69.146.120.0/21, máscara 255.255.248.0, siguiente salto: 143.42.22.254
+* Red 181.174.229.32/27, máscara 255.255.255.224, siguiente salto: 35.7.255.254
 
 La tabla de rutas del Router D debería tener la entrada siguiente:
 
-* Red 92.64.0.0/10, máscara 255.192.0.0, siguiente salto 143.42.22.129
+* Red 5.32.226.0/23, máscara 255.255.254.0, siguiente salto 35.0.0.1
         
 
 Solución al ejercicio 8 de enrutamiento
@@ -760,9 +760,9 @@ Solución al ejercicio 8 de enrutamiento
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 31.192.0.0/11 en el área izquierda.
-* Red 102.176.0.0/12 en el área central.
-* Red 60.22.167.64/26 en el área derecha
+* Red 164.122.0.0/16 en el área izquierda.
+* Red 71.192.0.0/11 en el área central.
+* Red 91.128.0.0/10 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -778,22 +778,22 @@ Aparte de eso, se desean respetar unos ciertos estándares:
 
 Las direcciones serían estas:
 
-* PC 1I: IP 31.192.0.1, máscara 255.224.0.0, gateway 31.223.255.254
-* PC 2I: IP 31.192.0.2, máscara 255.224.0.0, gateway 31.223.255.254
-* Router I, interfaz izquierda: IP 31.223.255.254, máscara 255.224.0.0
-* Router I, interfaz derecha: IP 102.176.0.1, máscara 255.240.0.0
-* PC 1D: IP 60.22.167.65, máscara 255.255.255.192, gateway 60.22.167.126
-* PC 2D: IP 60.22.167.66, máscara 255.255.255.192, gateway 60.22.167.126
-* Router D, interfaz derecha: IP 60.22.167.126, máscara 255.255.255.192
-* Router D, interfaz izquierda: IP 102.191.255.254, máscara 255.240.0.0
+* PC 1I: IP 164.122.0.1, máscara 255.255.0.0, gateway 164.122.255.254
+* PC 2I: IP 164.122.0.2, máscara 255.255.0.0, gateway 164.122.255.254
+* Router I, interfaz izquierda: IP 164.122.255.254, máscara 255.255.0.0
+* Router I, interfaz derecha: IP 71.192.0.1, máscara 255.224.0.0
+* PC 1D: IP 91.128.0.1, máscara 255.192.0.0, gateway 91.191.255.254
+* PC 2D: IP 91.128.0.2, máscara 255.192.0.0, gateway 91.191.255.254
+* Router D, interfaz derecha: IP 91.191.255.254, máscara 255.192.0.0
+* Router D, interfaz izquierda: IP 71.223.255.254, máscara 255.224.0.0
 
 La tabla de rutas del Router I debería tener la entrada siguiente:
 
-* Red 60.22.167.64/26, máscara 255.255.255.192, siguiente salto: 102.191.255.254
+* Red 91.128.0.0/10, máscara 255.192.0.0, siguiente salto: 71.223.255.254
 
 La tabla de rutas del Router D debería tener la entrada siguiente:
 
-* Red 31.192.0.0/11, máscara 255.224.0.0, siguiente salto 102.176.0.1
+* Red 164.122.0.0/16, máscara 255.255.0.0, siguiente salto 71.192.0.1
         
 
 Solución al ejercicio 9 de enrutamiento
@@ -804,9 +804,9 @@ Solución al ejercicio 9 de enrutamiento
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 14.36.128.0/17 en el área izquierda.
-* Red 18.215.176.0/20 en el área central.
-* Red 71.64.0.0/11 en el área derecha
+* Red 110.240.0.0/12 en el área izquierda.
+* Red 140.131.224.0/19 en el área central.
+* Red 30.170.0.0/16 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -822,22 +822,22 @@ Aparte de eso, se desean respetar unos ciertos estándares:
 
 Las direcciones serían estas:
 
-* PC 1I: IP 14.36.128.1, máscara 255.255.128.0, gateway 14.36.255.254
-* PC 2I: IP 14.36.128.2, máscara 255.255.128.0, gateway 14.36.255.254
-* Router I, interfaz izquierda: IP 14.36.255.254, máscara 255.255.128.0
-* Router I, interfaz derecha: IP 18.215.176.1, máscara 255.255.240.0
-* PC 1D: IP 71.64.0.1, máscara 255.224.0.0, gateway 71.95.255.254
-* PC 2D: IP 71.64.0.2, máscara 255.224.0.0, gateway 71.95.255.254
-* Router D, interfaz derecha: IP 71.95.255.254, máscara 255.224.0.0
-* Router D, interfaz izquierda: IP 18.215.191.254, máscara 255.255.240.0
+* PC 1I: IP 110.240.0.1, máscara 255.240.0.0, gateway 110.255.255.254
+* PC 2I: IP 110.240.0.2, máscara 255.240.0.0, gateway 110.255.255.254
+* Router I, interfaz izquierda: IP 110.255.255.254, máscara 255.240.0.0
+* Router I, interfaz derecha: IP 140.131.224.1, máscara 255.255.224.0
+* PC 1D: IP 30.170.0.1, máscara 255.255.0.0, gateway 30.170.255.254
+* PC 2D: IP 30.170.0.2, máscara 255.255.0.0, gateway 30.170.255.254
+* Router D, interfaz derecha: IP 30.170.255.254, máscara 255.255.0.0
+* Router D, interfaz izquierda: IP 140.131.255.254, máscara 255.255.224.0
 
 La tabla de rutas del Router I debería tener la entrada siguiente:
 
-* Red 71.64.0.0/11, máscara 255.224.0.0, siguiente salto: 18.215.191.254
+* Red 30.170.0.0/16, máscara 255.255.0.0, siguiente salto: 140.131.255.254
 
 La tabla de rutas del Router D debería tener la entrada siguiente:
 
-* Red 14.36.128.0/17, máscara 255.255.128.0, siguiente salto 18.215.176.1
+* Red 110.240.0.0/12, máscara 255.240.0.0, siguiente salto 140.131.224.1
         
 
 Solución al ejercicio 10 de enrutamiento
@@ -848,9 +848,9 @@ Solución al ejercicio 10 de enrutamiento
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 121.110.128.0/18 en el área izquierda.
-* Red 164.28.176.0/20 en el área central.
-* Red 44.104.128.0/22 en el área derecha
+* Red 7.192.0.0/11 en el área izquierda.
+* Red 220.190.42.0/27 en el área central.
+* Red 79.215.237.0/25 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -866,22 +866,22 @@ Aparte de eso, se desean respetar unos ciertos estándares:
 
 Las direcciones serían estas:
 
-* PC 1I: IP 121.110.128.1, máscara 255.255.192.0, gateway 121.110.191.254
-* PC 2I: IP 121.110.128.2, máscara 255.255.192.0, gateway 121.110.191.254
-* Router I, interfaz izquierda: IP 121.110.191.254, máscara 255.255.192.0
-* Router I, interfaz derecha: IP 164.28.176.1, máscara 255.255.240.0
-* PC 1D: IP 44.104.128.1, máscara 255.255.252.0, gateway 44.104.131.254
-* PC 2D: IP 44.104.128.2, máscara 255.255.252.0, gateway 44.104.131.254
-* Router D, interfaz derecha: IP 44.104.131.254, máscara 255.255.252.0
-* Router D, interfaz izquierda: IP 164.28.191.254, máscara 255.255.240.0
+* PC 1I: IP 7.192.0.1, máscara 255.224.0.0, gateway 7.223.255.254
+* PC 2I: IP 7.192.0.2, máscara 255.224.0.0, gateway 7.223.255.254
+* Router I, interfaz izquierda: IP 7.223.255.254, máscara 255.224.0.0
+* Router I, interfaz derecha: IP 220.190.42.1, máscara 255.255.255.224
+* PC 1D: IP 79.215.237.1, máscara 255.255.255.128, gateway 79.215.237.126
+* PC 2D: IP 79.215.237.2, máscara 255.255.255.128, gateway 79.215.237.126
+* Router D, interfaz derecha: IP 79.215.237.126, máscara 255.255.255.128
+* Router D, interfaz izquierda: IP 220.190.42.30, máscara 255.255.255.224
 
 La tabla de rutas del Router I debería tener la entrada siguiente:
 
-* Red 44.104.128.0/22, máscara 255.255.252.0, siguiente salto: 164.28.191.254
+* Red 79.215.237.0/25, máscara 255.255.255.128, siguiente salto: 220.190.42.30
 
 La tabla de rutas del Router D debería tener la entrada siguiente:
 
-* Red 121.110.128.0/18, máscara 255.255.192.0, siguiente salto 164.28.176.1
+* Red 7.192.0.0/11, máscara 255.224.0.0, siguiente salto 220.190.42.1
         
 
 Solución al ejercicio 11 de enrutamiento
@@ -892,9 +892,9 @@ Solución al ejercicio 11 de enrutamiento
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 128.27.232.0/21 en el área izquierda.
-* Red 158.86.128.0/19 en el área central.
-* Red 89.128.0.0/10 en el área derecha
+* Red 74.224.0.0/13 en el área izquierda.
+* Red 125.160.0.0/12 en el área central.
+* Red 25.104.160.0/19 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -910,22 +910,22 @@ Aparte de eso, se desean respetar unos ciertos estándares:
 
 Las direcciones serían estas:
 
-* PC 1I: IP 128.27.232.1, máscara 255.255.248.0, gateway 128.27.239.254
-* PC 2I: IP 128.27.232.2, máscara 255.255.248.0, gateway 128.27.239.254
-* Router I, interfaz izquierda: IP 128.27.239.254, máscara 255.255.248.0
-* Router I, interfaz derecha: IP 158.86.128.1, máscara 255.255.224.0
-* PC 1D: IP 89.128.0.1, máscara 255.192.0.0, gateway 89.191.255.254
-* PC 2D: IP 89.128.0.2, máscara 255.192.0.0, gateway 89.191.255.254
-* Router D, interfaz derecha: IP 89.191.255.254, máscara 255.192.0.0
-* Router D, interfaz izquierda: IP 158.86.159.254, máscara 255.255.224.0
+* PC 1I: IP 74.224.0.1, máscara 255.248.0.0, gateway 74.231.255.254
+* PC 2I: IP 74.224.0.2, máscara 255.248.0.0, gateway 74.231.255.254
+* Router I, interfaz izquierda: IP 74.231.255.254, máscara 255.248.0.0
+* Router I, interfaz derecha: IP 125.160.0.1, máscara 255.240.0.0
+* PC 1D: IP 25.104.160.1, máscara 255.255.224.0, gateway 25.104.191.254
+* PC 2D: IP 25.104.160.2, máscara 255.255.224.0, gateway 25.104.191.254
+* Router D, interfaz derecha: IP 25.104.191.254, máscara 255.255.224.0
+* Router D, interfaz izquierda: IP 125.175.255.254, máscara 255.240.0.0
 
 La tabla de rutas del Router I debería tener la entrada siguiente:
 
-* Red 89.128.0.0/10, máscara 255.192.0.0, siguiente salto: 158.86.159.254
+* Red 25.104.160.0/19, máscara 255.255.224.0, siguiente salto: 125.175.255.254
 
 La tabla de rutas del Router D debería tener la entrada siguiente:
 
-* Red 128.27.232.0/21, máscara 255.255.248.0, siguiente salto 158.86.128.1
+* Red 74.224.0.0/13, máscara 255.248.0.0, siguiente salto 125.160.0.1
         
 
 Solución al ejercicio 12 de enrutamiento
@@ -936,9 +936,9 @@ Solución al ejercicio 12 de enrutamiento
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 17.47.176.0/20 en el área izquierda.
-* Red 28.154.118.0/23 en el área central.
-* Red 53.17.128.0/18 en el área derecha
+* Red 189.229.0.0/16 en el área izquierda.
+* Red 150.73.80.0/20 en el área central.
+* Red 182.0.0.0/17 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -954,22 +954,22 @@ Aparte de eso, se desean respetar unos ciertos estándares:
 
 Las direcciones serían estas:
 
-* PC 1I: IP 17.47.176.1, máscara 255.255.240.0, gateway 17.47.191.254
-* PC 2I: IP 17.47.176.2, máscara 255.255.240.0, gateway 17.47.191.254
-* Router I, interfaz izquierda: IP 17.47.191.254, máscara 255.255.240.0
-* Router I, interfaz derecha: IP 28.154.118.1, máscara 255.255.254.0
-* PC 1D: IP 53.17.128.1, máscara 255.255.192.0, gateway 53.17.191.254
-* PC 2D: IP 53.17.128.2, máscara 255.255.192.0, gateway 53.17.191.254
-* Router D, interfaz derecha: IP 53.17.191.254, máscara 255.255.192.0
-* Router D, interfaz izquierda: IP 28.154.119.254, máscara 255.255.254.0
+* PC 1I: IP 189.229.0.1, máscara 255.255.0.0, gateway 189.229.255.254
+* PC 2I: IP 189.229.0.2, máscara 255.255.0.0, gateway 189.229.255.254
+* Router I, interfaz izquierda: IP 189.229.255.254, máscara 255.255.0.0
+* Router I, interfaz derecha: IP 150.73.80.1, máscara 255.255.240.0
+* PC 1D: IP 182.0.0.1, máscara 255.255.128.0, gateway 182.0.127.254
+* PC 2D: IP 182.0.0.2, máscara 255.255.128.0, gateway 182.0.127.254
+* Router D, interfaz derecha: IP 182.0.127.254, máscara 255.255.128.0
+* Router D, interfaz izquierda: IP 150.73.95.254, máscara 255.255.240.0
 
 La tabla de rutas del Router I debería tener la entrada siguiente:
 
-* Red 53.17.128.0/18, máscara 255.255.192.0, siguiente salto: 28.154.119.254
+* Red 182.0.0.0/17, máscara 255.255.128.0, siguiente salto: 150.73.95.254
 
 La tabla de rutas del Router D debería tener la entrada siguiente:
 
-* Red 17.47.176.0/20, máscara 255.255.240.0, siguiente salto 28.154.118.1
+* Red 189.229.0.0/16, máscara 255.255.0.0, siguiente salto 150.73.80.1
         
 
 Solución al ejercicio 13 de enrutamiento
@@ -980,9 +980,9 @@ Solución al ejercicio 13 de enrutamiento
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 163.208.208.0/20 en el área izquierda.
-* Red 171.49.64.0/18 en el área central.
-* Red 51.53.224.0/21 en el área derecha
+* Red 182.23.38.176/28 en el área izquierda.
+* Red 131.55.128.0/20 en el área central.
+* Red 50.33.132.208/28 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -998,22 +998,22 @@ Aparte de eso, se desean respetar unos ciertos estándares:
 
 Las direcciones serían estas:
 
-* PC 1I: IP 163.208.208.1, máscara 255.255.240.0, gateway 163.208.223.254
-* PC 2I: IP 163.208.208.2, máscara 255.255.240.0, gateway 163.208.223.254
-* Router I, interfaz izquierda: IP 163.208.223.254, máscara 255.255.240.0
-* Router I, interfaz derecha: IP 171.49.64.1, máscara 255.255.192.0
-* PC 1D: IP 51.53.224.1, máscara 255.255.248.0, gateway 51.53.231.254
-* PC 2D: IP 51.53.224.2, máscara 255.255.248.0, gateway 51.53.231.254
-* Router D, interfaz derecha: IP 51.53.231.254, máscara 255.255.248.0
-* Router D, interfaz izquierda: IP 171.49.127.254, máscara 255.255.192.0
+* PC 1I: IP 182.23.38.177, máscara 255.255.255.240, gateway 182.23.38.190
+* PC 2I: IP 182.23.38.178, máscara 255.255.255.240, gateway 182.23.38.190
+* Router I, interfaz izquierda: IP 182.23.38.190, máscara 255.255.255.240
+* Router I, interfaz derecha: IP 131.55.128.1, máscara 255.255.240.0
+* PC 1D: IP 50.33.132.209, máscara 255.255.255.240, gateway 50.33.132.222
+* PC 2D: IP 50.33.132.210, máscara 255.255.255.240, gateway 50.33.132.222
+* Router D, interfaz derecha: IP 50.33.132.222, máscara 255.255.255.240
+* Router D, interfaz izquierda: IP 131.55.143.254, máscara 255.255.240.0
 
 La tabla de rutas del Router I debería tener la entrada siguiente:
 
-* Red 51.53.224.0/21, máscara 255.255.248.0, siguiente salto: 171.49.127.254
+* Red 50.33.132.208/28, máscara 255.255.255.240, siguiente salto: 131.55.143.254
 
 La tabla de rutas del Router D debería tener la entrada siguiente:
 
-* Red 163.208.208.0/20, máscara 255.255.240.0, siguiente salto 171.49.64.1
+* Red 182.23.38.176/28, máscara 255.255.255.240, siguiente salto 131.55.128.1
         
 
 Solución al ejercicio 14 de enrutamiento
@@ -1024,9 +1024,9 @@ Solución al ejercicio 14 de enrutamiento
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 52.112.136.0/21 en el área izquierda.
-* Red 47.64.0.0/10 en el área central.
-* Red 28.208.0.0/14 en el área derecha
+* Red 29.75.104.208/28 en el área izquierda.
+* Red 179.249.12.0/24 en el área central.
+* Red 81.159.0.0/16 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -1042,22 +1042,22 @@ Aparte de eso, se desean respetar unos ciertos estándares:
 
 Las direcciones serían estas:
 
-* PC 1I: IP 52.112.136.1, máscara 255.255.248.0, gateway 52.112.143.254
-* PC 2I: IP 52.112.136.2, máscara 255.255.248.0, gateway 52.112.143.254
-* Router I, interfaz izquierda: IP 52.112.143.254, máscara 255.255.248.0
-* Router I, interfaz derecha: IP 47.64.0.1, máscara 255.192.0.0
-* PC 1D: IP 28.208.0.1, máscara 255.252.0.0, gateway 28.211.255.254
-* PC 2D: IP 28.208.0.2, máscara 255.252.0.0, gateway 28.211.255.254
-* Router D, interfaz derecha: IP 28.211.255.254, máscara 255.252.0.0
-* Router D, interfaz izquierda: IP 47.127.255.254, máscara 255.192.0.0
+* PC 1I: IP 29.75.104.209, máscara 255.255.255.240, gateway 29.75.104.222
+* PC 2I: IP 29.75.104.210, máscara 255.255.255.240, gateway 29.75.104.222
+* Router I, interfaz izquierda: IP 29.75.104.222, máscara 255.255.255.240
+* Router I, interfaz derecha: IP 179.249.12.1, máscara 255.255.255.0
+* PC 1D: IP 81.159.0.1, máscara 255.255.0.0, gateway 81.159.255.254
+* PC 2D: IP 81.159.0.2, máscara 255.255.0.0, gateway 81.159.255.254
+* Router D, interfaz derecha: IP 81.159.255.254, máscara 255.255.0.0
+* Router D, interfaz izquierda: IP 179.249.12.254, máscara 255.255.255.0
 
 La tabla de rutas del Router I debería tener la entrada siguiente:
 
-* Red 28.208.0.0/14, máscara 255.252.0.0, siguiente salto: 47.127.255.254
+* Red 81.159.0.0/16, máscara 255.255.0.0, siguiente salto: 179.249.12.254
 
 La tabla de rutas del Router D debería tener la entrada siguiente:
 
-* Red 52.112.136.0/21, máscara 255.255.248.0, siguiente salto 47.64.0.1
+* Red 29.75.104.208/28, máscara 255.255.255.240, siguiente salto 179.249.12.1
         
 
 Solución al ejercicio 15 de enrutamiento
@@ -1068,9 +1068,9 @@ Solución al ejercicio 15 de enrutamiento
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 133.166.208.0/22 en el área izquierda.
-* Red 35.137.26.0/23 en el área central.
-* Red 153.75.2.0/25 en el área derecha
+* Red 218.249.112.0/24 en el área izquierda.
+* Red 106.247.173.160/28 en el área central.
+* Red 71.160.0.0/11 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -1086,22 +1086,22 @@ Aparte de eso, se desean respetar unos ciertos estándares:
 
 Las direcciones serían estas:
 
-* PC 1I: IP 133.166.208.1, máscara 255.255.252.0, gateway 133.166.211.254
-* PC 2I: IP 133.166.208.2, máscara 255.255.252.0, gateway 133.166.211.254
-* Router I, interfaz izquierda: IP 133.166.211.254, máscara 255.255.252.0
-* Router I, interfaz derecha: IP 35.137.26.1, máscara 255.255.254.0
-* PC 1D: IP 153.75.2.1, máscara 255.255.255.128, gateway 153.75.2.126
-* PC 2D: IP 153.75.2.2, máscara 255.255.255.128, gateway 153.75.2.126
-* Router D, interfaz derecha: IP 153.75.2.126, máscara 255.255.255.128
-* Router D, interfaz izquierda: IP 35.137.27.254, máscara 255.255.254.0
+* PC 1I: IP 218.249.112.1, máscara 255.255.255.0, gateway 218.249.112.254
+* PC 2I: IP 218.249.112.2, máscara 255.255.255.0, gateway 218.249.112.254
+* Router I, interfaz izquierda: IP 218.249.112.254, máscara 255.255.255.0
+* Router I, interfaz derecha: IP 106.247.173.161, máscara 255.255.255.240
+* PC 1D: IP 71.160.0.1, máscara 255.224.0.0, gateway 71.191.255.254
+* PC 2D: IP 71.160.0.2, máscara 255.224.0.0, gateway 71.191.255.254
+* Router D, interfaz derecha: IP 71.191.255.254, máscara 255.224.0.0
+* Router D, interfaz izquierda: IP 106.247.173.174, máscara 255.255.255.240
 
 La tabla de rutas del Router I debería tener la entrada siguiente:
 
-* Red 153.75.2.0/25, máscara 255.255.255.128, siguiente salto: 35.137.27.254
+* Red 71.160.0.0/11, máscara 255.224.0.0, siguiente salto: 106.247.173.174
 
 La tabla de rutas del Router D debería tener la entrada siguiente:
 
-* Red 133.166.208.0/22, máscara 255.255.252.0, siguiente salto 35.137.26.1
+* Red 218.249.112.0/24, máscara 255.255.255.0, siguiente salto 106.247.173.161
         
 
 Solución al ejercicio 16 de enrutamiento
@@ -1112,9 +1112,9 @@ Solución al ejercicio 16 de enrutamiento
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 38.152.0.0/14 en el área izquierda.
-* Red 72.32.0.0/11 en el área central.
-* Red 204.175.86.80/28 en el área derecha
+* Red 185.202.128.0/17 en el área izquierda.
+* Red 132.160.168.0/21 en el área central.
+* Red 198.54.10.64/26 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -1130,22 +1130,22 @@ Aparte de eso, se desean respetar unos ciertos estándares:
 
 Las direcciones serían estas:
 
-* PC 1I: IP 38.152.0.1, máscara 255.252.0.0, gateway 38.155.255.254
-* PC 2I: IP 38.152.0.2, máscara 255.252.0.0, gateway 38.155.255.254
-* Router I, interfaz izquierda: IP 38.155.255.254, máscara 255.252.0.0
-* Router I, interfaz derecha: IP 72.32.0.1, máscara 255.224.0.0
-* PC 1D: IP 204.175.86.81, máscara 255.255.255.240, gateway 204.175.86.94
-* PC 2D: IP 204.175.86.82, máscara 255.255.255.240, gateway 204.175.86.94
-* Router D, interfaz derecha: IP 204.175.86.94, máscara 255.255.255.240
-* Router D, interfaz izquierda: IP 72.63.255.254, máscara 255.224.0.0
+* PC 1I: IP 185.202.128.1, máscara 255.255.128.0, gateway 185.202.255.254
+* PC 2I: IP 185.202.128.2, máscara 255.255.128.0, gateway 185.202.255.254
+* Router I, interfaz izquierda: IP 185.202.255.254, máscara 255.255.128.0
+* Router I, interfaz derecha: IP 132.160.168.1, máscara 255.255.248.0
+* PC 1D: IP 198.54.10.65, máscara 255.255.255.192, gateway 198.54.10.126
+* PC 2D: IP 198.54.10.66, máscara 255.255.255.192, gateway 198.54.10.126
+* Router D, interfaz derecha: IP 198.54.10.126, máscara 255.255.255.192
+* Router D, interfaz izquierda: IP 132.160.175.254, máscara 255.255.248.0
 
 La tabla de rutas del Router I debería tener la entrada siguiente:
 
-* Red 204.175.86.80/28, máscara 255.255.255.240, siguiente salto: 72.63.255.254
+* Red 198.54.10.64/26, máscara 255.255.255.192, siguiente salto: 132.160.175.254
 
 La tabla de rutas del Router D debería tener la entrada siguiente:
 
-* Red 38.152.0.0/14, máscara 255.252.0.0, siguiente salto 72.32.0.1
+* Red 185.202.128.0/17, máscara 255.255.128.0, siguiente salto 132.160.168.1
         
 
 Solución al ejercicio 17 de enrutamiento
@@ -1156,9 +1156,9 @@ Solución al ejercicio 17 de enrutamiento
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 94.248.0.0/13 en el área izquierda.
-* Red 57.128.0.0/10 en el área central.
-* Red 100.4.0.0/15 en el área derecha
+* Red 147.127.0.0/18 en el área izquierda.
+* Red 0.224.0.0/11 en el área central.
+* Red 212.6.63.128/25 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -1174,22 +1174,22 @@ Aparte de eso, se desean respetar unos ciertos estándares:
 
 Las direcciones serían estas:
 
-* PC 1I: IP 94.248.0.1, máscara 255.248.0.0, gateway 94.255.255.254
-* PC 2I: IP 94.248.0.2, máscara 255.248.0.0, gateway 94.255.255.254
-* Router I, interfaz izquierda: IP 94.255.255.254, máscara 255.248.0.0
-* Router I, interfaz derecha: IP 57.128.0.1, máscara 255.192.0.0
-* PC 1D: IP 100.4.0.1, máscara 255.254.0.0, gateway 100.5.255.254
-* PC 2D: IP 100.4.0.2, máscara 255.254.0.0, gateway 100.5.255.254
-* Router D, interfaz derecha: IP 100.5.255.254, máscara 255.254.0.0
-* Router D, interfaz izquierda: IP 57.191.255.254, máscara 255.192.0.0
+* PC 1I: IP 147.127.0.1, máscara 255.255.192.0, gateway 147.127.63.254
+* PC 2I: IP 147.127.0.2, máscara 255.255.192.0, gateway 147.127.63.254
+* Router I, interfaz izquierda: IP 147.127.63.254, máscara 255.255.192.0
+* Router I, interfaz derecha: IP 0.224.0.1, máscara 255.224.0.0
+* PC 1D: IP 212.6.63.129, máscara 255.255.255.128, gateway 212.6.63.254
+* PC 2D: IP 212.6.63.130, máscara 255.255.255.128, gateway 212.6.63.254
+* Router D, interfaz derecha: IP 212.6.63.254, máscara 255.255.255.128
+* Router D, interfaz izquierda: IP 0.255.255.254, máscara 255.224.0.0
 
 La tabla de rutas del Router I debería tener la entrada siguiente:
 
-* Red 100.4.0.0/15, máscara 255.254.0.0, siguiente salto: 57.191.255.254
+* Red 212.6.63.128/25, máscara 255.255.255.128, siguiente salto: 0.255.255.254
 
 La tabla de rutas del Router D debería tener la entrada siguiente:
 
-* Red 94.248.0.0/13, máscara 255.248.0.0, siguiente salto 57.128.0.1
+* Red 147.127.0.0/18, máscara 255.255.192.0, siguiente salto 0.224.0.1
         
 
 Solución al ejercicio 18 de enrutamiento
@@ -1200,9 +1200,9 @@ Solución al ejercicio 18 de enrutamiento
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 176.234.44.0/22 en el área izquierda.
-* Red 215.54.62.128/26 en el área central.
-* Red 132.130.128.0/17 en el área derecha
+* Red 83.225.202.0/24 en el área izquierda.
+* Red 40.43.224.0/19 en el área central.
+* Red 166.4.160.0/19 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -1218,22 +1218,22 @@ Aparte de eso, se desean respetar unos ciertos estándares:
 
 Las direcciones serían estas:
 
-* PC 1I: IP 176.234.44.1, máscara 255.255.252.0, gateway 176.234.47.254
-* PC 2I: IP 176.234.44.2, máscara 255.255.252.0, gateway 176.234.47.254
-* Router I, interfaz izquierda: IP 176.234.47.254, máscara 255.255.252.0
-* Router I, interfaz derecha: IP 215.54.62.129, máscara 255.255.255.192
-* PC 1D: IP 132.130.128.1, máscara 255.255.128.0, gateway 132.130.255.254
-* PC 2D: IP 132.130.128.2, máscara 255.255.128.0, gateway 132.130.255.254
-* Router D, interfaz derecha: IP 132.130.255.254, máscara 255.255.128.0
-* Router D, interfaz izquierda: IP 215.54.62.190, máscara 255.255.255.192
+* PC 1I: IP 83.225.202.1, máscara 255.255.255.0, gateway 83.225.202.254
+* PC 2I: IP 83.225.202.2, máscara 255.255.255.0, gateway 83.225.202.254
+* Router I, interfaz izquierda: IP 83.225.202.254, máscara 255.255.255.0
+* Router I, interfaz derecha: IP 40.43.224.1, máscara 255.255.224.0
+* PC 1D: IP 166.4.160.1, máscara 255.255.224.0, gateway 166.4.191.254
+* PC 2D: IP 166.4.160.2, máscara 255.255.224.0, gateway 166.4.191.254
+* Router D, interfaz derecha: IP 166.4.191.254, máscara 255.255.224.0
+* Router D, interfaz izquierda: IP 40.43.255.254, máscara 255.255.224.0
 
 La tabla de rutas del Router I debería tener la entrada siguiente:
 
-* Red 132.130.128.0/17, máscara 255.255.128.0, siguiente salto: 215.54.62.190
+* Red 166.4.160.0/19, máscara 255.255.224.0, siguiente salto: 40.43.255.254
 
 La tabla de rutas del Router D debería tener la entrada siguiente:
 
-* Red 176.234.44.0/22, máscara 255.255.252.0, siguiente salto 215.54.62.129
+* Red 83.225.202.0/24, máscara 255.255.255.0, siguiente salto 40.43.224.1
         
 
 Solución al ejercicio 19 de enrutamiento
@@ -1244,9 +1244,9 @@ Solución al ejercicio 19 de enrutamiento
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 49.227.144.0/23 en el área izquierda.
-* Red 75.216.0.0/13 en el área central.
-* Red 204.243.234.144/28 en el área derecha
+* Red 180.74.0.0/18 en el área izquierda.
+* Red 208.23.147.96/28 en el área central.
+* Red 142.197.0.0/16 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -1262,22 +1262,22 @@ Aparte de eso, se desean respetar unos ciertos estándares:
 
 Las direcciones serían estas:
 
-* PC 1I: IP 49.227.144.1, máscara 255.255.254.0, gateway 49.227.145.254
-* PC 2I: IP 49.227.144.2, máscara 255.255.254.0, gateway 49.227.145.254
-* Router I, interfaz izquierda: IP 49.227.145.254, máscara 255.255.254.0
-* Router I, interfaz derecha: IP 75.216.0.1, máscara 255.248.0.0
-* PC 1D: IP 204.243.234.145, máscara 255.255.255.240, gateway 204.243.234.158
-* PC 2D: IP 204.243.234.146, máscara 255.255.255.240, gateway 204.243.234.158
-* Router D, interfaz derecha: IP 204.243.234.158, máscara 255.255.255.240
-* Router D, interfaz izquierda: IP 75.223.255.254, máscara 255.248.0.0
+* PC 1I: IP 180.74.0.1, máscara 255.255.192.0, gateway 180.74.63.254
+* PC 2I: IP 180.74.0.2, máscara 255.255.192.0, gateway 180.74.63.254
+* Router I, interfaz izquierda: IP 180.74.63.254, máscara 255.255.192.0
+* Router I, interfaz derecha: IP 208.23.147.97, máscara 255.255.255.240
+* PC 1D: IP 142.197.0.1, máscara 255.255.0.0, gateway 142.197.255.254
+* PC 2D: IP 142.197.0.2, máscara 255.255.0.0, gateway 142.197.255.254
+* Router D, interfaz derecha: IP 142.197.255.254, máscara 255.255.0.0
+* Router D, interfaz izquierda: IP 208.23.147.110, máscara 255.255.255.240
 
 La tabla de rutas del Router I debería tener la entrada siguiente:
 
-* Red 204.243.234.144/28, máscara 255.255.255.240, siguiente salto: 75.223.255.254
+* Red 142.197.0.0/16, máscara 255.255.0.0, siguiente salto: 208.23.147.110
 
 La tabla de rutas del Router D debería tener la entrada siguiente:
 
-* Red 49.227.144.0/23, máscara 255.255.254.0, siguiente salto 75.216.0.1
+* Red 180.74.0.0/18, máscara 255.255.192.0, siguiente salto 208.23.147.97
         
 
 Solución al ejercicio 20 de enrutamiento
@@ -1288,9 +1288,9 @@ Solución al ejercicio 20 de enrutamiento
 Dada la arquitectura de la red de la figura, asignar direcciones IP, máscaras, puertas de enlace y tablas de rutas de manera que haya conectividad entre todos
 los nodos de la red. Se desean utilizar las siguientes redes:
 
-* Red 4.147.96.128/26 en el área izquierda.
-* Red 196.238.79.32/28 en el área central.
-* Red 133.58.128.0/17 en el área derecha
+* Red 165.191.28.0/22 en el área izquierda.
+* Red 0.110.16.0/20 en el área central.
+* Red 126.128.0.0/11 en el área derecha
 
 .. figure:: RedDosRouters.png
 
@@ -1306,20 +1306,20 @@ Aparte de eso, se desean respetar unos ciertos estándares:
 
 Las direcciones serían estas:
 
-* PC 1I: IP 4.147.96.129, máscara 255.255.255.192, gateway 4.147.96.190
-* PC 2I: IP 4.147.96.130, máscara 255.255.255.192, gateway 4.147.96.190
-* Router I, interfaz izquierda: IP 4.147.96.190, máscara 255.255.255.192
-* Router I, interfaz derecha: IP 196.238.79.33, máscara 255.255.255.240
-* PC 1D: IP 133.58.128.1, máscara 255.255.128.0, gateway 133.58.255.254
-* PC 2D: IP 133.58.128.2, máscara 255.255.128.0, gateway 133.58.255.254
-* Router D, interfaz derecha: IP 133.58.255.254, máscara 255.255.128.0
-* Router D, interfaz izquierda: IP 196.238.79.46, máscara 255.255.255.240
+* PC 1I: IP 165.191.28.1, máscara 255.255.252.0, gateway 165.191.31.254
+* PC 2I: IP 165.191.28.2, máscara 255.255.252.0, gateway 165.191.31.254
+* Router I, interfaz izquierda: IP 165.191.31.254, máscara 255.255.252.0
+* Router I, interfaz derecha: IP 0.110.16.1, máscara 255.255.240.0
+* PC 1D: IP 126.128.0.1, máscara 255.224.0.0, gateway 126.159.255.254
+* PC 2D: IP 126.128.0.2, máscara 255.224.0.0, gateway 126.159.255.254
+* Router D, interfaz derecha: IP 126.159.255.254, máscara 255.224.0.0
+* Router D, interfaz izquierda: IP 0.110.31.254, máscara 255.255.240.0
 
 La tabla de rutas del Router I debería tener la entrada siguiente:
 
-* Red 133.58.128.0/17, máscara 255.255.128.0, siguiente salto: 196.238.79.46
+* Red 126.128.0.0/11, máscara 255.224.0.0, siguiente salto: 0.110.31.254
 
 La tabla de rutas del Router D debería tener la entrada siguiente:
 
-* Red 4.147.96.128/26, máscara 255.255.255.192, siguiente salto 196.238.79.33
+* Red 165.191.28.0/22, máscara 255.255.252.0, siguiente salto 0.110.16.1
         

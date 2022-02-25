@@ -4,15 +4,15 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Tema 4: Configuración de redes virtuales VLAN &#8212; documentación de Apuntes de redes - 1.0</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/translations.js"></script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
@@ -34,15 +34,15 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="tema-4-configuracion-de-redes-virtuales-vlan">
-<h1>Tema 4: Configuración de redes virtuales VLAN<a class="headerlink" href="#tema-4-configuracion-de-redes-virtuales-vlan" title="Enlazar permanentemente con este título">¶</a></h1>
-<div class="section" id="introduccion">
-<h2>Introducción<a class="headerlink" href="#introduccion" title="Enlazar permanentemente con este título">¶</a></h2>
+  <section id="tema-4-configuracion-de-redes-virtuales-vlan">
+<h1>Tema 4: Configuración de redes virtuales VLAN<a class="headerlink" href="#tema-4-configuracion-de-redes-virtuales-vlan" title="Enlazar permanentemente con este título"></a></h1>
+<section id="introduccion">
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Enlazar permanentemente con este título"></a></h2>
 <p>Las VLAN intentan dar solución a un problema consistente en que a veces ordenadores de una misma sala no forman parte de la misma red.</p>
 <p>Es decir, queremos una red virtual formada por ordenadores que están en sitios distintos. La solución a este problema son las VLANs (Virtual Local Area Network).</p>
-</div>
-<div class="section" id="el-diseno-de-redes-locales-a-tres-capas-nucleo-distribucion-y-acceso">
-<h2>El diseño de redes locales a tres capas (núcleo, distribución y acceso).<a class="headerlink" href="#el-diseno-de-redes-locales-a-tres-capas-nucleo-distribucion-y-acceso" title="Enlazar permanentemente con este título">¶</a></h2>
+</section>
+<section id="el-diseno-de-redes-locales-a-tres-capas-nucleo-distribucion-y-acceso">
+<h2>El diseño de redes locales a tres capas (núcleo, distribución y acceso).<a class="headerlink" href="#el-diseno-de-redes-locales-a-tres-capas-nucleo-distribucion-y-acceso" title="Enlazar permanentemente con este título"></a></h2>
 <p>En general, para diseñar redes grandes se utiliza una topología llamada de tres niveles. Cada nivel va a cumplir funciones distintas del anterior. Estos niveles son núcleo, distribución y acceso.</p>
 <ul class="simple">
 <li><p>Se llama «switches de acceso» a aquellos switches que dan servicio directo a terminales como PCs, impresoras o similares.</p></li>
@@ -50,23 +50,23 @@
 <li><p>Se llama «switches de núcleo» a <em>switches que interconectan switches de distribución y que están más cerca del punto de salida (router)</em></p></li>
 </ul>
 <p>En la figura puede verse una organización típica con tres capas.</p>
-<div class="figure align-default">
+<figure class="align-default">
 <img alt="../_images/02-tres-capas.png" src="../_images/02-tres-capas.png" />
-</div>
-</div>
-<div class="section" id="implantacion-y-configuracion-de-redes-virtuales">
-<h2>Implantación y configuración de redes virtuales.<a class="headerlink" href="#implantacion-y-configuracion-de-redes-virtuales" title="Enlazar permanentemente con este título">¶</a></h2>
-<div class="section" id="implantacion">
-<h3>Implantación<a class="headerlink" href="#implantacion" title="Enlazar permanentemente con este título">¶</a></h3>
+</figure>
+</section>
+<section id="implantacion-y-configuracion-de-redes-virtuales">
+<h2>Implantación y configuración de redes virtuales.<a class="headerlink" href="#implantacion-y-configuracion-de-redes-virtuales" title="Enlazar permanentemente con este título"></a></h2>
+<section id="implantacion">
+<h3>Implantación<a class="headerlink" href="#implantacion" title="Enlazar permanentemente con este título"></a></h3>
 <p>En primer lugar es IMPRESCINDIBLE disponer de hardware que soporte VLANs y a ser posible usando el protocolo estándar 802.1q.</p>
 <ol class="arabic simple">
 <li><p>Se debe entrar en el switch y crear las distintas VLANs (con un número).</p></li>
 <li><p>Se deben asignar puertos del switch a esas VLAN. Estos puertos se denominan «puertos de acceso». Es importante recordar que las VLAN están unidas a los puertos del switch. Si tiramos del cable y se conectar ese cable de ordenador a otro puertos, habremos sacado al ordenador de su VLAN.</p></li>
 <li><p>A menudo las VLAN deben pasar por varios switches. Habrá puertos que transporten tráfico de varias VLANs. Estos puertos se denominan «troncos» o «puertos troncales». Se debe avisar al switch de los puertos que actuarán como troncales.</p></li>
 </ol>
-</div>
-<div class="section" id="configuracion">
-<h3>Configuración<a class="headerlink" href="#configuracion" title="Enlazar permanentemente con este título">¶</a></h3>
+</section>
+<section id="configuracion">
+<h3>Configuración<a class="headerlink" href="#configuracion" title="Enlazar permanentemente con este título"></a></h3>
 <p>Al crear la arquitectura de redes es <strong>fundamental</strong> que los usuarios no tengan acceso al cableado del switch. Una vez se les asigne una VLAN, dicha VLAN quedará asociada a la interfaz del switch. Si alguien tira del cable del switch y lo conecta a otra interfaz <em>el usuario quedará fuera de la VLAN</em>.</p>
 <p>Para configurar dispositivos Cisco se usan comandos como estos:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Permiten convertirse en</span>
@@ -100,10 +100,10 @@
 <span class="n">interface</span> <span class="n">fastethernet</span> <span class="o">..</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="definicion-de-enlaces-troncales-en-los-conmutadores-y-routers">
-<h2>Definición de enlaces troncales en los conmutadores y routers.<a class="headerlink" href="#definicion-de-enlaces-troncales-en-los-conmutadores-y-routers" title="Enlazar permanentemente con este título">¶</a></h2>
+</section>
+</section>
+<section id="definicion-de-enlaces-troncales-en-los-conmutadores-y-routers">
+<h2>Definición de enlaces troncales en los conmutadores y routers.<a class="headerlink" href="#definicion-de-enlaces-troncales-en-los-conmutadores-y-routers" title="Enlazar permanentemente con este título"></a></h2>
 <p>Para configurar el acceso troncal, el proceso es parecido.</p>
 <ol class="arabic simple">
 <li><p>Entrar en la tarjeta</p></li>
@@ -135,17 +135,17 @@
 <p class="admonition-title">Advertencia</p>
 <p>Al construir VLANs y enlaces troncales se debe tener cuidado al «copiar y pegar configuraciones» de unos switches a otros. Podría ocurrir que sin querer autorizásemos VLANs en enlaces troncales que no debían permitir ese paso.</p>
 </div>
-<div class="section" id="reflexion-sobre-ciclos-en-switches-con-vlans">
-<h3>Reflexión sobre ciclos en switches con VLANs<a class="headerlink" href="#reflexion-sobre-ciclos-en-switches-con-vlans" title="Enlazar permanentemente con este título">¶</a></h3>
+<section id="reflexion-sobre-ciclos-en-switches-con-vlans">
+<h3>Reflexión sobre ciclos en switches con VLANs<a class="headerlink" href="#reflexion-sobre-ciclos-en-switches-con-vlans" title="Enlazar permanentemente con este título"></a></h3>
 <p>Observa la figura siguiente</p>
-<div class="figure align-default">
+<figure class="align-default">
 <img alt="../_images/03-stp-ciclos.png" src="../_images/03-stp-ciclos.png" />
-</div>
+</figure>
 <p>¿Por qué no se han deshabilitado puertos? En realidad sí se deshabilitan, pero cuando tenemos ciclos en switches que forman parte de VLANs puede ocurrir que <strong>un puerto esté bloqueado dentro de una VLAN, pero esté activo dentro de otra VLAN distinta</strong>. En realidad lo que ejecutan los switches modernos es PVST (Per-VLAN Spanning Tree)</p>
-</div>
-</div>
-<div class="section" id="protocolos-para-la-administracion-centralizada-de-redes-virtuales-el-protocolo-vtp">
-<h2>Protocolos para la administración centralizada de redes virtuales; el protocolo VTP<a class="headerlink" href="#protocolos-para-la-administracion-centralizada-de-redes-virtuales-el-protocolo-vtp" title="Enlazar permanentemente con este título">¶</a></h2>
+</section>
+</section>
+<section id="protocolos-para-la-administracion-centralizada-de-redes-virtuales-el-protocolo-vtp">
+<h2>Protocolos para la administración centralizada de redes virtuales; el protocolo VTP<a class="headerlink" href="#protocolos-para-la-administracion-centralizada-de-redes-virtuales-el-protocolo-vtp" title="Enlazar permanentemente con este título"></a></h2>
 <p>En realidad <strong>las VLAN no se crean «sobre la marcha» a medida que definimos los interfaces</strong>. En redes grandes se establecen muy claramente dos cosas:</p>
 <ul class="simple">
 <li><p>El identificador de VLAN al que van a pertenecer un grupo de usuarios.</p></li>
@@ -153,16 +153,16 @@
 </ul>
 <p>Este último punto es el que nos interesa. Para crear una VLAN y asociarle un nombre tenemos que dar estos pasos:</p>
 <p>¿Qué ocurre si tenemos una red grande con varias decenas de VLANs? ¿Y si además de vez en cuando algunos nombres cambian o se crean otros nuevos? Evidentemente, conectarse a tantos switches tecleando una y otra vez los mismos comandos y/o cambiar los números o nombres correspondientes no solo es muy tedioso, sino propenso a errores. Para evitar esto tenemos un protocolo llamado VTP (VLAN Trunking Protocol) que nos va a facilitar la operativa.</p>
-<div class="section" id="modos-vtp">
-<h3>Modos VTP<a class="headerlink" href="#modos-vtp" title="Enlazar permanentemente con este título">¶</a></h3>
+<section id="modos-vtp">
+<h3>Modos VTP<a class="headerlink" href="#modos-vtp" title="Enlazar permanentemente con este título"></a></h3>
 <ol class="arabic simple">
 <li><p>Servidor.</p></li>
 <li><p>Cliente.</p></li>
 <li><p>Transparente</p></li>
 </ol>
-</div>
-<div class="section" id="proceso-basico">
-<h3>Proceso básico<a class="headerlink" href="#proceso-basico" title="Enlazar permanentemente con este título">¶</a></h3>
+</section>
+<section id="proceso-basico">
+<h3>Proceso básico<a class="headerlink" href="#proceso-basico" title="Enlazar permanentemente con este título"></a></h3>
 <p>En el modo de configuración global tenemos que hacer esto:</p>
 <ol class="arabic simple">
 <li><p>Configurar dominio con el comando <code class="docutils literal notranslate"><span class="pre">vtp</span> <span class="pre">domain</span> <span class="pre">acme.com</span></code>.</p></li>
@@ -170,15 +170,61 @@
 <li><p>Configurar el modo con <code class="docutils literal notranslate"><span class="pre">vtp</span> <span class="pre">mode</span> <span class="pre">client</span></code> o <code class="docutils literal notranslate"><span class="pre">vtp</span> <span class="pre">mode</span> <span class="pre">server</span></code></p></li>
 <li><p>Habilitar los interfaces troncales correspondientes.</p></li>
 </ol>
-</div>
-</div>
-<div class="section" id="el-protocolo-ieee802-1q">
-<h2>El protocolo IEEE802.1Q<a class="headerlink" href="#el-protocolo-ieee802-1q" title="Enlazar permanentemente con este título">¶</a></h2>
-</div>
-<div class="section" id="diagnostico-de-incidencias-en-redes-virtuales">
-<h2>Diagnóstico de incidencias en redes virtuales.<a class="headerlink" href="#diagnostico-de-incidencias-en-redes-virtuales" title="Enlazar permanentemente con este título">¶</a></h2>
-</div>
-</div>
+</section>
+</section>
+<section id="ejercicio-completo-con-vlans-y-vtp">
+<h2>Ejercicio completo con VLANs y VTP<a class="headerlink" href="#ejercicio-completo-con-vlans-y-vtp" title="Enlazar permanentemente con este título"></a></h2>
+<p>Observa la red de la figura:</p>
+<figure class="align-default">
+<img alt="../_images/04-vlans-y-vtp.png" src="../_images/04-vlans-y-vtp.png" />
+</figure>
+<p>Las conexiones son las siguientes:</p>
+<ul class="simple">
+<li><p>Puerto 0/1 de Nucleo con puerto 0/1 de Distribucion1.</p></li>
+<li><p>Puerto 0/2 de Nucleo con puerto 0/2 de Distribucion2.</p></li>
+<li><p>Puerto 0/3 de Nucleo con puerto 0/1 de Distribucion3.</p></li>
+<li><p>Puerto 0/4 de Distribucion1 con puerto 0/4 de Acceso1.</p></li>
+<li><p>Puerto 0/5 de Distribucion1 con puerto 0/5 de Acceso2.</p></li>
+<li><p>Puerto 0/6 de Distribucion2 con puerto 0/6 de Acceso3.</p></li>
+<li><p>Puerto 0/7 de Distribucion2 con puerto 0/7 de Acceso4.</p></li>
+<li><p>Puerto 0/8 de Distribucion1 con puerto 0/8 de Acceso5.</p></li>
+<li><p>Puerto 0/9 de Distribucion1 con puerto 0/9 de Acceso6.</p></li>
+<li><p>PC 0 va conectado a puerto 0/1 de Acceso1.</p></li>
+<li><p>PC 1 va conectado a puerto 0/2 de Acceso1.</p></li>
+<li><p>PC 2 va conectado a puerto 0/1 de Acceso2.</p></li>
+<li><p>PC 3 va conectado a puerto 0/2 de Acceso2.</p></li>
+<li><p>PC 4 va conectado a puerto 0/1 de Acceso3.</p></li>
+<li><p>PC 5 va conectado a puerto 0/2 de Acceso3.</p></li>
+<li><p>PC 6 va conectado a puerto 0/1 de Acceso4.</p></li>
+<li><p>PC 7 va conectado a puerto 0/2 de Acceso4.</p></li>
+<li><p>PC 8 va conectado a puerto 0/1 de Acceso5.</p></li>
+<li><p>PC 9 va conectado a puerto 0/2 de Acceso5.</p></li>
+<li><p>PC 10 va conectado a puerto 0/1 de Acceso6.</p></li>
+<li><p>PC 11 va conectado a puerto 0/2 de Acceso6.</p></li>
+<li><p>Puerto 0/11 de Acceso1 va conectado a puerto 0/11 de Acceso2.</p></li>
+<li><p>Puerto 0/12 de Acceso2 va conectado a puerto 0/12 de Acceso3.</p></li>
+<li><p>Puerto 0/12 de Acceso1 va conectado a puerto 0/12 de Acceso5.</p></li>
+<li><p>Puerto 0/12 de Acceso5 va conectado a puerto 0/13 de Acceso6.</p></li>
+</ul>
+<p>En esta red se desea lo siguiente:</p>
+<ol class="arabic simple">
+<li><p>Usando VTP se desea tener centralizada la información sobre VLANs en un único switch, en este caso el switch Nucleo. El dominio de la empresa es <code class="docutils literal notranslate"><span class="pre">empresa.com</span></code> y la clave que se va a usar es <code class="docutils literal notranslate"><span class="pre">vtpadmin1234</span></code>.</p></li>
+<li><p>La empresa va a tener estas VLANS con estos nombres: 10 (GESTIONVTP), 100 (USUARIOS), 200 (TECNICOS), 300 (GERENCIA)</p></li>
+<li><p>El switch Acceso2 va a ser gestionado por sus propios técnicos y se desea que IGNORE por completo toda la información sobre VLANS.</p></li>
+<li><p>Dentro de la VLAN USUARIOS están los ordenadores 0 y 2.</p></li>
+<li><p>Dentro de la VLAN TECNICOS están los ordenadores 1 y 5.</p></li>
+<li><p>Dentro de la VLAN GERENCIA están los ordenadores 6 y 8.</p></li>
+<li><p>La empresa dispone de la red 10.0.0.0/8 para configurar direcciones IP y se desea que la VLAN USUARIOS esté en la red 10.1.0.0/16, que la VLAN TECNICOS esté en la 10.2.0.0/16 y que la VLAN GERENCIA esté en la 10.3.0.0/16</p></li>
+</ol>
+<p>Configurar las direcciones IP, máscaras, enlaces de acceso, enlaces troncales y modos VTP para conseguir que la conectividad funcione según los requisitos pedidos.</p>
+</section>
+<section id="el-protocolo-ieee802-1q">
+<h2>El protocolo IEEE802.1Q<a class="headerlink" href="#el-protocolo-ieee802-1q" title="Enlazar permanentemente con este título"></a></h2>
+</section>
+<section id="diagnostico-de-incidencias-en-redes-virtuales">
+<h2>Diagnóstico de incidencias en redes virtuales.<a class="headerlink" href="#diagnostico-de-incidencias-en-redes-virtuales" title="Enlazar permanentemente con este título"></a></h2>
+</section>
+</section>
 
 
           </div>
@@ -197,7 +243,7 @@
 
 
 <h3>Navegación</h3>
-<p class="caption"><span class="caption-text">Índice:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Índice:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../t1_caracterizacion_redes/apuntes_t1.html">Tema 1:Caracterización de redes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/apuntes_t2.html">Tema 2:Integración de elementos en una red</a></li>
@@ -219,6 +265,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#proceso-basico">Proceso básico</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#ejercicio-completo-con-vlans-y-vtp">Ejercicio completo con VLANs y VTP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#el-protocolo-ieee802-1q">El protocolo IEEE802.1Q</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#diagnostico-de-incidencias-en-redes-virtuales">Diagnóstico de incidencias en redes virtuales.</a></li>
 </ul>
@@ -254,7 +301,7 @@
   <h3 id="searchlabel">Búsqueda rápida</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Ir a" />
     </form>
     </div>
@@ -276,7 +323,7 @@
       &copy;2021, Oscar G. G..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

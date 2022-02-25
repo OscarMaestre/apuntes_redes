@@ -20,6 +20,5 @@ Configuración del enrutamiento estático.
 ----------------------------------------------------------------------------
 
 Definición y ubicación de listas de control de acceso (ACLs).
-
 ----------------------------------------------------------------------------
 
