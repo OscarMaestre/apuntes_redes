@@ -224,15 +224,15 @@ Con solo una cualquiera de estas ventajas ya tendríamos suficiente para justifi
 
 Analicemos ahora las VLANs y los enlaces. Empecemos por ver los equipos 0 y 2, que pertenecen a la VLAN 100 (USUARIOS). 
 
-.. figure:: img/04b-vlans-y-vtp
+.. figure:: img/04b-vlans-y-vtp.png
 
 Los puertos de los PC van a ser de acceso y van a usar la VLAN 100, pero ¿qué puertos vamos a poner como troncales usando la VLAN 100?
 
-1. Una posibilidad sería poner como troncal para la VLAN 100 los enlaces 1 y 3. Esto implicaría que todo el tráfico iría primero al switch de distribución.
+1. Una posibilidad sería poner como troncal para la VLAN 100 los enlaces 1 y 3. Esto implicaría que todo el tráfico iría primero al switch de distribución y si el PC0 quisiese pasar algo al 2 no podría hacerlo directamente.
 2. Podemos decidir poner troncal los enlaces 2 y 3. De esta manera no todo el tráfico va al switch de distribución. Lo malo es que esta solución hace que cuando el ordenador PC0 quiere salir siempre va a tener que dar un salto de más.
 3. Podríamos decidir poner troncal los enlaces 1 y 2. Esto es simplemente lo mismo que el punto anterior pero desde otro punto de vista.
 
-En realidad, debemos recordar que tenemos un gran aliado: el protocolo STP. Este protocolo resolverá automáticamente los ciclos por lo que en realidad la mejor solución sería **poner los tres enlaces 1,2 y 3 como troncales y manipular la prioridad del switch Distribución1 para que tenga una prioridad mejor y consiga ser elegido como raíz antes que los de acceso**. STP decidirá cerrar un enlace para la VLAN10 y volverá a activarlo si fuese necesario con lo que conseguimos una alta disponibilidad y además de manera automática.
+En realidad, debemos recordar que tenemos un gran aliado: el protocolo STP. Este protocolo resolverá automáticamente los ciclos por lo que en realidad la mejor solución sería **poner los tres enlaces 1,2 y 3 como troncales con la 10 y manipular la prioridad del switch Distribución1 para que tenga una prioridad mejor. Así, el switch Distribucion1 conseguirá ser elegido como raíz antes que los de acceso**. STP decidirá cerrar un enlace para la VLAN10 y volverá a activarlo si fuese necesario con lo que conseguimos una alta disponibilidad y además de manera automática.
 
 Por tanto, haremos lo siguiente (de momento, la configuración necesitará más comandos más adelante):
 
