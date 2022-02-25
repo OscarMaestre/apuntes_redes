@@ -204,6 +204,26 @@ En esta red se desea lo siguiente:
 
 Configurar las direcciones IP, máscaras, enlaces de acceso, enlaces troncales y modos VTP para conseguir que la conectividad funcione según los requisitos pedidos.
 
+Solución
+~~~~~~~~~~~~~
+
+Empecemos por las direcciones IP.
+
+* Las direcciones de USUARIOS deben ser algo como 10.1.xxx.xxx con máscara 255.255.0.0. Usaremos las IP 10.1.0.1 y la 10.1.0.2 para los dos ordenadores de esta VLAN.
+* Para TECNICOS usaremos las IP 10.2.0.1 y 10.2.0.2. También llevarán la máscara 255.255.0.0
+* Para GERENCIA usaremos las IP 10.3.0.1 y 10.3.0.2 con máscara 255.255.0.0
+
+Una vez hecho esto, los distintos ordenadores se pueden hacer ping solo con los de su subred. En este punto cabe preguntarse **¿para qué queremos entonces las VLAN?**.
+
+Recordemos que al formar VLANs los distintos grupos de ordenadores quedan *totalmente aislados*. Esto significa que 
+
+* Los de la VLAN USUARIOS **no reciben las difusiones Ethernet de ninguna otra VLAN** con lo que el rendimiento mejora. Recordemos que hemos dividido un dominio de colisiones grande en varios dominios de colisión pequeños.
+* La seguridad también mejora porque nadie puede recibir tramas ni mensajes IP de ningún otra VLAN. 
+
+Con solo una cualquiera de estas ventajas ya tendríamos suficiente para justificar la implantación de las VLANs, pero el hecho de obtener las dos hace que esta tecnología sea mucho más interesante aún.
+
+Analicemos ahora las VLANs y los enlaces.
+
 El protocolo IEEE802.1Q
 ----------------------------------------------------------------------------
 

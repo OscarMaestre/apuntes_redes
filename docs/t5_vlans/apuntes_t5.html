@@ -217,6 +217,23 @@
 <li><p>La empresa dispone de la red 10.0.0.0/8 para configurar direcciones IP y se desea que la VLAN USUARIOS esté en la red 10.1.0.0/16, que la VLAN TECNICOS esté en la 10.2.0.0/16 y que la VLAN GERENCIA esté en la 10.3.0.0/16</p></li>
 </ol>
 <p>Configurar las direcciones IP, máscaras, enlaces de acceso, enlaces troncales y modos VTP para conseguir que la conectividad funcione según los requisitos pedidos.</p>
+<section id="solucion">
+<h3>Solución<a class="headerlink" href="#solucion" title="Enlazar permanentemente con este título"></a></h3>
+<p>Empecemos por las direcciones IP.</p>
+<ul class="simple">
+<li><p>Las direcciones de USUARIOS deben ser algo como 10.1.xxx.xxx con máscara 255.255.0.0. Usaremos las IP 10.1.0.1 y la 10.1.0.2 para los dos ordenadores de esta VLAN.</p></li>
+<li><p>Para TECNICOS usaremos las IP 10.2.0.1 y 10.2.0.2. También llevarán la máscara 255.255.0.0</p></li>
+<li><p>Para GERENCIA usaremos las IP 10.3.0.1 y 10.3.0.2 con máscara 255.255.0.0</p></li>
+</ul>
+<p>Una vez hecho esto, los distintos ordenadores se pueden hacer ping solo con los de su subred. En este punto cabe preguntarse <strong>¿para qué queremos entonces las VLAN?</strong>.</p>
+<p>Recordemos que al formar VLANs los distintos grupos de ordenadores quedan <em>totalmente aislados</em>. Esto significa que</p>
+<ul class="simple">
+<li><p>Los de la VLAN USUARIOS <strong>no reciben las difusiones Ethernet de ninguna otra VLAN</strong> con lo que el rendimiento mejora. Recordemos que hemos dividido un dominio de colisiones grande en varios dominios de colisión pequeños.</p></li>
+<li><p>La seguridad también mejora porque nadie puede recibir tramas ni mensajes IP de ningún otra VLAN.</p></li>
+</ul>
+<p>Con solo una cualquiera de estas ventajas ya tendríamos suficiente para justificar la implantación de las VLANs, pero el hecho de obtener las dos hace que esta tecnología sea mucho más interesante aún.</p>
+<p>Analicemos ahora las VLANs y los enlaces.</p>
+</section>
 </section>
 <section id="el-protocolo-ieee802-1q">
 <h2>El protocolo IEEE802.1Q<a class="headerlink" href="#el-protocolo-ieee802-1q" title="Enlazar permanentemente con este título"></a></h2>
@@ -265,7 +282,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#proceso-basico">Proceso básico</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#ejercicio-completo-con-vlans-y-vtp">Ejercicio completo con VLANs y VTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ejercicio-completo-con-vlans-y-vtp">Ejercicio completo con VLANs y VTP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#solucion">Solución</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#el-protocolo-ieee802-1q">El protocolo IEEE802.1Q</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#diagnostico-de-incidencias-en-redes-virtuales">Diagnóstico de incidencias en redes virtuales.</a></li>
 </ul>
