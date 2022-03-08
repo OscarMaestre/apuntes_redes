@@ -240,13 +240,117 @@ Por tanto, haremos lo siguiente (de momento, la configuración necesitará más 
 2. En el switch Acceso2 el puerto 0/1 será de acceso para la VLAN 100.  Los puertos 0/5 y 0/10 serán troncales para la 100.
 3. En el switch Distribucion1 los puertos 0/4, 0/5 y 0/1 serán troncales para la 100. Tengamos en cuenta que el 0/1 es el puerto que lleva hacia el switch de núcleo. Si no ponemos troncal con la 100 este puerto 0/1 los ordenadores *no serán capaces de salir al exterior.* Aunque en este ejemplo no lo hemos puesto para simplificar, el switch de núcleo va conectado a un router que nos dará conectividad con el exterior.
 
+En la figura siguiente hemos creado un esquema que facilite el identificar que VLANs transitan por qué puertos.
+
+.. figure:: img/04-vlans-y-vtp-solucion.png
+
+
 
 El protocolo IEEE802.1Q
 ----------------------------------------------------------------------------
+Es el protocolo estándar para construir tramas de datos que viajan entre enlaces troncales. No nos hemos preguntado una cosa ¿como sabe un switch con un enlace troncal que un paquete es de una VLAN y/o que va a otra VLAN?
 
+Recordemos la cabecera Ethernet
+1. Primero tenemos la MAC de destino.
+2. Tenemos la MAC de origen.
+3. Despues la longitud de la trama.
+4. Y otros campos....
+
+Sin embargo los switches que usan VLANs **alteran** la trama añadiendo un *identificador de VLAN*. Esto es imprescindible para que los switches sepan qué hacer con la trama. A este nuevo formato de trama se le da el nombre IEEE 802.1Q. La nueva estructura es:
+
+1. MAC de destino.
+2. MAC de origen.
+3. Identificador de VLAN
+4. Longitud...
+
+
+Se puede activar el uso de este protocolo en dispositivos Cisco con ``encapsulation dot1q``
+
+Etherchannel
+---------------
+
+Es la capacidad que tienen los switches de gama alta de "agrupar" o "agregar" varios interfaces de manera que se comporten como si fuesen uno solo incluso **sumando el ancho de banda**.
+
+Para crear lo que Etherchannel llama un "grupo", tenemos que entrar en los distintos interfaces y usar el comando ``channel-group <numero> mode active``. Esto debe hacerse en todos los interfaces de los dos lados de un enlace, es decir en los dos switches.
+
+En la figura siguiente tenemos un ejemplo. El ordenador izquierdo está conectado al puerto 0/1 del Switch 0. El ordenador derecho está conectado al puerto 0/1 del Switch 1. Deseamos que los switches agreguen sus enlaces y ofrezcan un ancho de banda sumado. Así, si cada conexión es de 100 Mbits/s dispondremos de un ancho de banda de 300 Mbits/s
+
+.. figure:: img/05-etherchannel.png
+
+Configuremos los enlaces. En el switch 0 tendremos que activar las interfaces 2,3 y 4 como pertenecientes a un grupo. Todo grupo debe llevar un número y por ejemplo usaremos el 1. Evidentemente, todos los enlaces que estén en el mismo grupo deben llevar el mismo número de grupo.
+
+Comandos para el switch 0::
+
+    enable
+    configure terminal
+    interface fastethernet 0/2
+    channel-group 1 mode active
+    exit
+    interface fastethernet 0/3
+    channel-group 1 mode active
+    exit
+    interface fastethernet 0/4 
+    channel-group 1 mode active
+    exit
+
+Como casualmente, los mismos interfaces del switch 1 forman parte del Etherchannel podemos enviar los mismos comandos al switch derechoñ
+
+Etherchannel y VLANs
+~~~~~~~~~~~~~~~~~~~~~~~~~
+Etherchannel ofrece soporte a las VLANs de la misma manera que si fuese un enlace normal. Examinemos la figura de abajo
+
+.. figure:: img/06-etherchannel-vlan.png
+
+En el diagrama puede verse que los ordenadores de arriba pertenecen a la VLAN 100. Los de abajo a la 200. Cada máquina deber a los de su VLAN **y solo a los de su VLAN**. 
+
+Para resolver esto debemos crear los interfaces de acceso correspondientes y luego configurar el Etherchannel para que que acepte tráfico solo de las VLAN 100 y 200. Para ello entraremos en los interfaces llamados ``port-channel <numero>``, los pondremos en modo troncal y añadiremos las VLAN pedidas. Los comandos para estas VLAN son iguales en ambos switches porque casualmente los interfaces coinciden. Así, los comandos serían estos::
+
+    enable
+    configure terminal
+    interface fastethernet 0/1
+    switchport mode access
+    switchport access vlan 100
+    exit
+    interface fastethernet 0/5
+    switchport mode access 
+    switchport access vlan 200
+    exit
+    interface port-channel 1
+    switchport mode trunk
+    switchport trunk allowed vlan 100,200
+    no shutdown
+    exit
+
+Copias de seguridad
+------------------------
+
+Todos los switches modernos tienen la capacidad de exportar su configuración a un servidor de ficheros TFTP (Trivial File Transfer Protocol). Para ello solo tenemos que ejecutar esto::
+
+    Switch#copy running-config tftp:
+    Address or name of remote host []? 10.3.0.1
+    Destination filename [Switch-confg]? 
+
+    Writing running-config...!!
+    [OK - 1090 bytes]
+
+    1090 bytes copied in 0.001 secs (1090000 bytes/sec)
 
 Diagnóstico de incidencias en redes virtuales.
 ----------------------------------------------------------------------------
+
+El diagnóstico de incidencias en VLAN implica una serie de acciones muy sencillas pero muy laboriosas:
+
+1. Comprobar que nadie ha tirado de los cables y luego los ha enchufado a un puerto distinto del switch. Los cables deben estar etiquetados.
+2. Si los nombres de las VLANs no llegan a todos los switches, es probable que un switch en modo VTP transparente se haya convertido en el único enlace de salida porque otro enlace se ha roto.
+3. Otro motivo típico de errores en VTP es confundir la contraseña y/o cambiarla sin modificarla en todos los switches.
+4. Cuando se montan enlaces redundantes, los errores más típicos son equivocarse de interface. Si nos equivocamos de interfaz habrá conexiones que pensamos que forman parte del Etherchannel y en realidad no lo hacen. Sin embargo, esto puede verse fácilmente porque probablemente ese diodo estará en naranja.
+5. Si interconectamos dispositivos de distintas marcas/fabricantes, comprobar que usamos 802.1q.
+6. Cuando hay tráfico que se mueven entre ciertas áreas de una VLAN ocurre que a menudo hemos escrito mal los números de VLAN en el comando ``switchport trunk allowed vlan <números de VLAN>``.
+
+
+
+
+
 
 
 
