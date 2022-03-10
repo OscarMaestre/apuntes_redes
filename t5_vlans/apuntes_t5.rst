@@ -245,6 +245,253 @@ En la figura siguiente hemos creado un esquema que facilite el identificar que V
 .. figure:: img/04-vlans-y-vtp-solucion.png
 
 
+Para VTP haremos esto en el switch Nucleo 1::
+
+    enable
+    configure terminal
+    vtp domain empresa.com 
+    vtp password vtpadmin1234
+    vtp mode server
+    vlan 100
+    name USUARIOS
+    vlan 200
+    name TECNICOS
+    vlan 300
+    name GERENCIA
+    vlan 10
+    name GESTIONVTP
+
+En todos los demás switches **excepto "Acceso 2"** pondremos esto::
+
+    enable
+    configure terminal
+    vtp domain empresa.com 
+    vtp password vtpadmin1234
+    vtp mode client
+
+En "Acceso 2"::
+
+    enable
+    configure terminal
+    vtp domain empresa.com 
+    vtp password vtpadmin1234
+    vtp mode transparent
+
+Y en todos los switches habilitaremos todos los enlaces troncales con la VLAN 10 si deseamos que reciban por ese interfaz las actualizaciones VTP
+
+
+Switch Nucleo 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Los comandos serían::
+
+    enable
+    configure terminal
+    interface fastethernet 0/1
+    switchport mode trunk
+    switchport trunk allowed vlan 100,200
+    exit
+    interface fastethernet 0/2
+    switchport mode trunk
+    switchport trunk allowed vlan 200,300
+    exit
+    interface fastethernet 0/3
+    switchport mode trunk
+    switchport trunk allowed vlan 300
+    exit
+
+Switch Distribución 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Los comandos serían::
+
+    enable
+    configure terminal
+    interface fastethernet 0/1
+    switchport mode trunk
+    switchport trunk allowed vlan 100,200
+    exit
+    interface fastethernet 0/4
+    switchport mode trunk
+    switchport trunk allowed vlan 100,200
+    exit
+    interface fastethernet 0/5
+    switchport mode trunk
+    switchport trunk allowed vlan 100,200
+    exit
+
+Switch Distribución 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Los comandos serían::
+
+    enable
+    configure terminal
+    interface fastethernet 0/2
+    switchport mode trunk
+    switchport trunk allowed vlan 200,300
+    exit
+    interface fastethernet 0/6
+    switchport mode trunk
+    switchport trunk allowed vlan 200
+    exit
+    interface fastethernet 0/7
+    switchport mode trunk
+    switchport trunk allowed vlan 300
+    exit
+
+Switch Distribución 3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Los comandos serían::
+
+    enable
+    configure terminal
+    interface fastethernet 0/3
+    switchport mode trunk
+    switchport trunk allowed vlan 300
+    exit
+    interface fastethernet 0/8
+    switchport mode trunk
+    switchport trunk allowed vlan 300
+    exit
+    
+Switch Acceso 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Los comandos serían::
+
+    enable
+    configure terminal
+    interface fastethernet 0/4
+    switchport mode trunk
+    switchport trunk allowed vlan 100,200
+    exit
+    interface fastethernet 0/10
+    switchport mode trunk
+    switchport trunk allowed vlan 100,200
+    exit
+    interface fastethernet 0/1
+    switchport mode access
+    switchport access vlan 10
+    exit
+    interface fastethernet 0/2
+    switchport mode access
+    switchport access vlan 20
+    exit
+    
+Switch Acceso 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Los comandos serían::
+
+    enable
+    configure terminal
+    interface fastethernet 0/5
+    switchport mode trunk
+    switchport trunk allowed vlan 100,200
+    exit
+    interface fastethernet 0/10
+    switchport mode trunk
+    switchport trunk allowed vlan 100,200
+    exit
+    interface fastethernet 0/12
+    switchport mode trunk
+    switchport trunk allowed vlan 100,200
+    exit
+    interface fastethernet 0/1
+    switchport mode access
+    switchport access vlan 10
+    exit
+    interface fastethernet 0/2
+    switchport mode access
+    switchport access vlan 20
+    exit
+
+Switch Acceso 3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Los comandos serían::
+
+    enable
+    configure terminal
+    interface fastethernet 0/6
+    switchport mode trunk
+    switchport trunk allowed vlan 200
+    exit
+    interface fastethernet 0/12
+    switchport mode trunk
+    switchport trunk allowed vlan 100,200
+    exit
+    interface fastethernet 0/1
+    switchport mode access
+    switchport access vlan 10
+    exit
+    interface fastethernet 0/2
+    switchport mode access
+    switchport access vlan 20
+    exit
+
+Switch Acceso 4
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Los comandos serían::
+
+    enable
+    configure terminal
+    interface fastethernet 0/7
+    switchport mode trunk
+    switchport trunk allowed vlan 300
+    exit
+    interface fastethernet 0/12
+    switchport mode trunk
+    switchport trunk allowed vlan 300
+    exit
+    interface fastethernet 0/1
+    switchport mode access
+    switchport access vlan 10
+    exit
+    interface fastethernet 0/2
+    switchport mode access
+    switchport access vlan 20
+    exit
+
+
+Switch Acceso 5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Los comandos serían::
+
+    enable
+    configure terminal
+    interface fastethernet 0/8
+    switchport mode trunk
+    switchport trunk allowed vlan 300
+    exit
+    interface fastethernet 0/12
+    switchport mode trunk
+    switchport trunk allowed vlan 300
+    exit
+    interface fastethernet 0/1
+    switchport mode access
+    switchport access vlan 10
+    exit
+    interface fastethernet 0/2
+    switchport mode access
+    switchport access vlan 20
+    exit
+
+Switch Acceso 6
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+En este ejercicio concreto, no tiene ninguna función.
+
+
+    
+    
+    
+    
+    
 
 El protocolo IEEE802.1Q
 ----------------------------------------------------------------------------
