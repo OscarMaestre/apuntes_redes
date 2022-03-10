@@ -249,13 +249,105 @@
 <li><p>En el switch Acceso2 el puerto 0/1 será de acceso para la VLAN 100.  Los puertos 0/5 y 0/10 serán troncales para la 100.</p></li>
 <li><p>En el switch Distribucion1 los puertos 0/4, 0/5 y 0/1 serán troncales para la 100. Tengamos en cuenta que el 0/1 es el puerto que lleva hacia el switch de núcleo. Si no ponemos troncal con la 100 este puerto 0/1 los ordenadores <em>no serán capaces de salir al exterior.</em> Aunque en este ejemplo no lo hemos puesto para simplificar, el switch de núcleo va conectado a un router que nos dará conectividad con el exterior.</p></li>
 </ol>
+<p>En la figura siguiente hemos creado un esquema que facilite el identificar que VLANs transitan por qué puertos.</p>
+<figure class="align-default">
+<img alt="../_images/04-vlans-y-vtp-solucion.png" src="../_images/04-vlans-y-vtp-solucion.png" />
+</figure>
 </section>
 </section>
 <section id="el-protocolo-ieee802-1q">
 <h2>El protocolo IEEE802.1Q<a class="headerlink" href="#el-protocolo-ieee802-1q" title="Enlazar permanentemente con este título"></a></h2>
+<p>Es el protocolo estándar para construir tramas de datos que viajan entre enlaces troncales. No nos hemos preguntado una cosa ¿como sabe un switch con un enlace troncal que un paquete es de una VLAN y/o que va a otra VLAN?</p>
+<p>Recordemos la cabecera Ethernet
+1. Primero tenemos la MAC de destino.
+2. Tenemos la MAC de origen.
+3. Despues la longitud de la trama.
+4. Y otros campos….</p>
+<p>Sin embargo los switches que usan VLANs <strong>alteran</strong> la trama añadiendo un <em>identificador de VLAN</em>. Esto es imprescindible para que los switches sepan qué hacer con la trama. A este nuevo formato de trama se le da el nombre IEEE 802.1Q. La nueva estructura es:</p>
+<ol class="arabic simple">
+<li><p>MAC de destino.</p></li>
+<li><p>MAC de origen.</p></li>
+<li><p>Identificador de VLAN</p></li>
+<li><p>Longitud…</p></li>
+</ol>
+<p>Se puede activar el uso de este protocolo en dispositivos Cisco con <code class="docutils literal notranslate"><span class="pre">encapsulation</span> <span class="pre">dot1q</span></code></p>
+</section>
+<section id="etherchannel">
+<h2>Etherchannel<a class="headerlink" href="#etherchannel" title="Enlazar permanentemente con este título"></a></h2>
+<p>Es la capacidad que tienen los switches de gama alta de «agrupar» o «agregar» varios interfaces de manera que se comporten como si fuesen uno solo incluso <strong>sumando el ancho de banda</strong>.</p>
+<p>Para crear lo que Etherchannel llama un «grupo», tenemos que entrar en los distintos interfaces y usar el comando <code class="docutils literal notranslate"><span class="pre">channel-group</span> <span class="pre">&lt;numero&gt;</span> <span class="pre">mode</span> <span class="pre">active</span></code>. Esto debe hacerse en todos los interfaces de los dos lados de un enlace, es decir en los dos switches.</p>
+<p>En la figura siguiente tenemos un ejemplo. El ordenador izquierdo está conectado al puerto 0/1 del Switch 0. El ordenador derecho está conectado al puerto 0/1 del Switch 1. Deseamos que los switches agreguen sus enlaces y ofrezcan un ancho de banda sumado. Así, si cada conexión es de 100 Mbits/s dispondremos de un ancho de banda de 300 Mbits/s</p>
+<figure class="align-default">
+<img alt="../_images/05-etherchannel.png" src="../_images/05-etherchannel.png" />
+</figure>
+<p>Configuremos los enlaces. En el switch 0 tendremos que activar las interfaces 2,3 y 4 como pertenecientes a un grupo. Todo grupo debe llevar un número y por ejemplo usaremos el 1. Evidentemente, todos los enlaces que estén en el mismo grupo deben llevar el mismo número de grupo.</p>
+<p>Comandos para el switch 0:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
+<span class="n">configure</span> <span class="n">terminal</span>
+<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">channel</span><span class="o">-</span><span class="n">group</span> <span class="mi">1</span> <span class="n">mode</span> <span class="n">active</span>
+<span class="n">exit</span>
+<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">3</span>
+<span class="n">channel</span><span class="o">-</span><span class="n">group</span> <span class="mi">1</span> <span class="n">mode</span> <span class="n">active</span>
+<span class="n">exit</span>
+<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">4</span>
+<span class="n">channel</span><span class="o">-</span><span class="n">group</span> <span class="mi">1</span> <span class="n">mode</span> <span class="n">active</span>
+<span class="n">exit</span>
+</pre></div>
+</div>
+<p>Como casualmente, los mismos interfaces del switch 1 forman parte del Etherchannel podemos enviar los mismos comandos al switch derechoñ</p>
+<section id="etherchannel-y-vlans">
+<h3>Etherchannel y VLANs<a class="headerlink" href="#etherchannel-y-vlans" title="Enlazar permanentemente con este título"></a></h3>
+<p>Etherchannel ofrece soporte a las VLANs de la misma manera que si fuese un enlace normal. Examinemos la figura de abajo</p>
+<figure class="align-default">
+<img alt="../_images/06-etherchannel-vlan.png" src="../_images/06-etherchannel-vlan.png" />
+</figure>
+<p>En el diagrama puede verse que los ordenadores de arriba pertenecen a la VLAN 100. Los de abajo a la 200. Cada máquina deber a los de su VLAN <strong>y solo a los de su VLAN</strong>.</p>
+<p>Para resolver esto debemos crear los interfaces de acceso correspondientes y luego configurar el Etherchannel para que que acepte tráfico solo de las VLAN 100 y 200. Para ello entraremos en los interfaces llamados <code class="docutils literal notranslate"><span class="pre">port-channel</span> <span class="pre">&lt;numero&gt;</span></code>, los pondremos en modo troncal y añadiremos las VLAN pedidas. Los comandos para estas VLAN son iguales en ambos switches porque casualmente los interfaces coinciden. Así, los comandos serían estos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
+<span class="n">configure</span> <span class="n">terminal</span>
+<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>
+<span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
+<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">100</span>
+<span class="n">exit</span>
+<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">5</span>
+<span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
+<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">200</span>
+<span class="n">exit</span>
+<span class="n">interface</span> <span class="n">port</span><span class="o">-</span><span class="n">channel</span> <span class="mi">1</span>
+<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
+<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">100</span><span class="p">,</span><span class="mi">200</span>
+<span class="n">no</span> <span class="n">shutdown</span>
+<span class="n">exit</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="copias-de-seguridad">
+<h2>Copias de seguridad<a class="headerlink" href="#copias-de-seguridad" title="Enlazar permanentemente con este título"></a></h2>
+<p>Todos los switches modernos tienen la capacidad de exportar su configuración a un servidor de ficheros TFTP (Trivial File Transfer Protocol). Para ello solo tenemos que ejecutar esto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Switch#copy running-config tftp:
+Address or name of remote host []? 10.3.0.1
+Destination filename [Switch-confg]?
+
+Writing running-config...!!
+[OK - 1090 bytes]
+
+1090 bytes copied in 0.001 secs (1090000 bytes/sec)
+</pre></div>
+</div>
 </section>
 <section id="diagnostico-de-incidencias-en-redes-virtuales">
 <h2>Diagnóstico de incidencias en redes virtuales.<a class="headerlink" href="#diagnostico-de-incidencias-en-redes-virtuales" title="Enlazar permanentemente con este título"></a></h2>
+<p>El diagnóstico de incidencias en VLAN implica una serie de acciones muy sencillas pero muy laboriosas:</p>
+<ol class="arabic simple">
+<li><p>Comprobar que nadie ha tirado de los cables y luego los ha enchufado a un puerto distinto del switch. Los cables deben estar etiquetados.</p></li>
+<li><p>Si los nombres de las VLANs no llegan a todos los switches, es probable que un switch en modo VTP transparente se haya convertido en el único enlace de salida porque otro enlace se ha roto.</p></li>
+<li><p>Otro motivo típico de errores en VTP es confundir la contraseña y/o cambiarla sin modificarla en todos los switches.</p></li>
+<li><p>Cuando se montan enlaces redundantes, los errores más típicos son equivocarse de interface. Si nos equivocamos de interfaz habrá conexiones que pensamos que forman parte del Etherchannel y en realidad no lo hacen. Sin embargo, esto puede verse fácilmente porque probablemente ese diodo estará en naranja.</p></li>
+<li><p>Si interconectamos dispositivos de distintas marcas/fabricantes, comprobar que usamos 802.1q.</p></li>
+<li><p>Cuando hay tráfico que se mueven entre ciertas áreas de una VLAN ocurre que a menudo hemos escrito mal los números de VLAN en el comando <code class="docutils literal notranslate"><span class="pre">switchport</span> <span class="pre">trunk</span> <span class="pre">allowed</span> <span class="pre">vlan</span> <span class="pre">&lt;números</span> <span class="pre">de</span> <span class="pre">VLAN&gt;</span></code>.</p></li>
+</ol>
 </section>
 </section>
 
@@ -303,6 +395,11 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#el-protocolo-ieee802-1q">El protocolo IEEE802.1Q</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#etherchannel">Etherchannel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#etherchannel-y-vlans">Etherchannel y VLANs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#copias-de-seguridad">Copias de seguridad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#diagnostico-de-incidencias-en-redes-virtuales">Diagnóstico de incidencias en redes virtuales.</a></li>
 </ul>
 </li>
