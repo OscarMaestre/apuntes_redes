@@ -289,15 +289,15 @@ Los comandos serían::
     configure terminal
     interface fastethernet 0/1
     switchport mode trunk
-    switchport trunk allowed vlan 100,200
+    switchport trunk allowed vlan 100,200,10
     exit
     interface fastethernet 0/2
     switchport mode trunk
-    switchport trunk allowed vlan 200,300
+    switchport trunk allowed vlan 200,300,10
     exit
     interface fastethernet 0/3
     switchport mode trunk
-    switchport trunk allowed vlan 300
+    switchport trunk allowed vlan 300,10
     exit
 
 Switch Distribución 1
@@ -309,15 +309,15 @@ Los comandos serían::
     configure terminal
     interface fastethernet 0/1
     switchport mode trunk
-    switchport trunk allowed vlan 100,200
+    switchport trunk allowed vlan 100,200,10
     exit
     interface fastethernet 0/4
     switchport mode trunk
-    switchport trunk allowed vlan 100,200
+    switchport trunk allowed vlan 100,200,10
     exit
     interface fastethernet 0/5
     switchport mode trunk
-    switchport trunk allowed vlan 100,200
+    switchport trunk allowed vlan 100,200,10
     exit
 
 Switch Distribución 2
@@ -329,15 +329,15 @@ Los comandos serían::
     configure terminal
     interface fastethernet 0/2
     switchport mode trunk
-    switchport trunk allowed vlan 200,300
+    switchport trunk allowed vlan 200,300,10
     exit
     interface fastethernet 0/6
     switchport mode trunk
-    switchport trunk allowed vlan 200
+    switchport trunk allowed vlan 200,10
     exit
     interface fastethernet 0/7
     switchport mode trunk
-    switchport trunk allowed vlan 300
+    switchport trunk allowed vlan 300,10
     exit
 
 Switch Distribución 3
@@ -349,11 +349,11 @@ Los comandos serían::
     configure terminal
     interface fastethernet 0/3
     switchport mode trunk
-    switchport trunk allowed vlan 300
+    switchport trunk allowed vlan 300,10
     exit
     interface fastethernet 0/8
     switchport mode trunk
-    switchport trunk allowed vlan 300
+    switchport trunk allowed vlan 300,10
     exit
     
 Switch Acceso 1
@@ -365,11 +365,11 @@ Los comandos serían::
     configure terminal
     interface fastethernet 0/4
     switchport mode trunk
-    switchport trunk allowed vlan 100,200
+    switchport trunk allowed vlan 100,200,10
     exit
     interface fastethernet 0/10
     switchport mode trunk
-    switchport trunk allowed vlan 100,200
+    switchport trunk allowed vlan 100,200,10
     exit
     interface fastethernet 0/1
     switchport mode access
@@ -389,15 +389,15 @@ Los comandos serían::
     configure terminal
     interface fastethernet 0/5
     switchport mode trunk
-    switchport trunk allowed vlan 100,200
+    switchport trunk allowed vlan 100,200,10
     exit
     interface fastethernet 0/10
     switchport mode trunk
-    switchport trunk allowed vlan 100,200
+    switchport trunk allowed vlan 100,200,10
     exit
     interface fastethernet 0/12
     switchport mode trunk
-    switchport trunk allowed vlan 100,200
+    switchport trunk allowed vlan 100,200,10
     exit
     interface fastethernet 0/1
     switchport mode access
@@ -417,11 +417,11 @@ Los comandos serían::
     configure terminal
     interface fastethernet 0/6
     switchport mode trunk
-    switchport trunk allowed vlan 200
+    switchport trunk allowed vlan 200,10
     exit
     interface fastethernet 0/12
     switchport mode trunk
-    switchport trunk allowed vlan 100,200
+    switchport trunk allowed vlan 100,200,10
     exit
     interface fastethernet 0/1
     switchport mode access
@@ -441,11 +441,11 @@ Los comandos serían::
     configure terminal
     interface fastethernet 0/7
     switchport mode trunk
-    switchport trunk allowed vlan 300
+    switchport trunk allowed vlan 300,10
     exit
     interface fastethernet 0/12
     switchport mode trunk
-    switchport trunk allowed vlan 300
+    switchport trunk allowed vlan 300,10
     exit
     interface fastethernet 0/1
     switchport mode access
@@ -466,11 +466,11 @@ Los comandos serían::
     configure terminal
     interface fastethernet 0/8
     switchport mode trunk
-    switchport trunk allowed vlan 300
+    switchport trunk allowed vlan 300,10
     exit
     interface fastethernet 0/12
     switchport mode trunk
-    switchport trunk allowed vlan 300
+    switchport trunk allowed vlan 300,10
     exit
     interface fastethernet 0/1
     switchport mode access
