@@ -349,11 +349,157 @@ El diagnóstico de incidencias en VLAN implica una serie de acciones muy sencill
 
 
 
+Anexo: primeros pasos con un switch Cisco
+--------------------------------------------------------------------------------
+
+En la imagen siguiente podemos ver el frontal de un switch Cisco Catalyst 2960-S.
+
+
+
+.. figure:: img/07-switch01.jpg
+   :scale: 50%
+   :align: center
+   :alt: Frontal de un switch Cisco 
+
+   Frontal de un switch Cisco 
+
+Estos dispositivos son muy parecidos a un ordenador normal. De hecho, al encenderlos ejecutan un proceso de autocomprobación bastante exhaustivo que dura aproximadamente 5 minutos. Como puede verse, no solo hay varios puertos sino también unos cuantos indicadores y un botón con el texto "MODE".
+
+
+
+.. figure:: img/08-indicadores.jpg
+   :scale: 50%
+   :align: center
+   :alt: Indicadores de un switch Cisco
+
+   Indicadores de un switch Cisco
 
 
 
 
 
+El botón MODE puede pulsarse de dos maneras: una pulsación corta y una larga. Cuando el switch está funcionando normalmente podemos hacer pulsaciones cortas sobre el botón MODE y veremos como el switch enciende uno de estos diodos:
+
+* Diodo SYST. 
+
+    * Si está en verde y no parpadea indica que está funcionando con normalidad.
+    * Si está en ámbar indica que hay un error en la conexión a la corriente.
+
+* Diodo RPS. Informa del estado del RPS (Redundant Power Supply, el SAI).
+
+    * Si está en verde fijo, el RPS funciona con normalidad.
+    * Si está apagado, no hay RPS.
+    * Un verde parpadeante indica que hay RPS pero la corriente está siendo entregada a otro dispositivo.
+    * Si está en ámbar, el RPS está en *standby*.
+
+* Diodo STATUS. En este modo las luces de los puertos indican lo siguiente:
+
+    * Si la luz de un puerto está en verde, el puerto está activo.
+    * Si la luz de un puerto está en ambar, el puerto está desactivado (por un error, por decisión de STP...)
+
+* Diodo DPLX. En este modo los puertos indican lo siguiente:
+
+    * Los puertos con diodo verde están en modo DUPLEX (envían y reciben a la vez)
+    * Los puertos apagados están en modo HALF-DUPLEX (solo hacen una operación en un cierto instante, enviar o recibir)
+
+* Diodo MSTR. Cuando está en verde y el switch está en un rack indica que este switch es el "maestro" o principal.
+* Diodo SPEED. En este modo, los diodos de los puertos indican lo siguiente (el significado y la velocidad exactas dependen del modelo):
+
+    * Un diodo verde fijo indica que el puerto está operando a 100Mbits/s.
+    * Un diodo verde parpadeante indica que el puerto opera a 1000Mbits/s.
 
 
+Como entrar en un switch del que hemos perdido la contraseña
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Si se dispone de un cable de consola, se usa el procedimiento indicado anteriormente (usar un programa como HyperTerminal o Putty) y arrancar el dispositivo. En este modelo podemos hacer lo siguiente:
+
+1. Dejar pulsado el botón MODE hasta que los diodos que hay encima del botón MODE parpadeen y luego se queden fijos. Esperar 5 minutos hasta que el switch se reinicie por completo y el diodo del puerto al que hayamos conectado nuestro ordenador esté en verde y funcionando normalmente. El switch **realmente tarda varios minutos** por lo que se debe tener paciencia.
+2. Una vez se haya reiniciado podemos volver a dejar pulsado el botón MODE hasta que los diodos se queden fijos. El switch entrará en un modo especial de recuperación en el que ocurrirá lo siguiente:
+
+    1. El switch activará un servidor DHCP. Debemos poner la tarjeta de red en modo DHCP (en Windows "Obtener una IP automáticamente"). El servidor DHCP tarda entre 15 segundos y un minuto por lo que de nuevo **se debe tener paciencia**
+    2. El switch desactiva la contraseña de Telnet. Podremos hacer ``telnet 10.0.2.1`` y entrar al switch con normalidad.
+
+En este switch al mostrar la configuración vemos esto (se han omitido algunos detalles por brevedad)::
+
+    Switch#show running-config 
+    Building configuration...
+
+    Current configuration : 2952 bytes
+    !
+    ! Last configuration change at 00:11:52 UTC Mon Jan 2 2006
+    !
+    version 15.0
+    no service pad
+    service timestamps debug datetime msec
+    service timestamps log datetime msec
+    no service password-encryption
+    !
+    hostname Switch
+    !
+    boot-start-marker
+    boot-end-marker
+    !
+    enable secret 5 $1$2mI5$.T/t2ci7yYylhyW/ym1Fy.
+    !
+    no aaa new-model
+    switch 4 provision ws-c2960s-48td-l
+    !
+    ip dhcp pool 10.0.01.0
+    network 10.0.1.0 255.255.255.0
+    default-router 10.0.1.1 
+    lease 0 0 10
+    !
+    ip dhcp pool 10.0.02.0
+    network 10.0.2.0 255.255.255.0
+    default-router 10.0.2.1 
+    lease 0 0 10
+    !         
+    vlan internal allocation policy ascending
+    !
+    interface Loopback11000
+    ip address 10.0.0.1 255.255.255.0 secondary
+    ip address 10.0.0.3 255.255.255.0
+    !
+    interface FastEthernet0
+    ip address 10.0.1.1 255.255.255.0 secondary
+    ip address 10.0.1.3 255.255.255.0
+    !
+    interface Vlan1
+    ip address 10.0.2.1 255.255.255.0 secondary
+    ip address 10.0.2.3 255.255.255.0
+    !
+    ip http server
+    ip http secure-server
+    !
+    !
+    !
+    !
+    line con 0
+    line vty 0 4
+    privilege level 15
+    no login 
+    line vty 5 15
+    privilege level 15
+    no login
+    !
+    end
+
+
+Como vemos, la VLAN 1 tiene una dirección IP que puede que no sea la que queramos. Vamos a cambiarla, por ejemplo a 10.15.0.192/24 y borrar la que tenía. Aprovecharemos y pondremos una contraseña al acceso telnet y al modo administrador (si estás usando los switch del centro, por favor usa la clave ``cisco``, todo en minúscula )::
+    
+    enable
+    configure terminal
+    enable secret cisco
+    line vty 0 15
+    password cisco
+    login
+    exit
+
+    interface vlan 1
+    ip address 10.15.0.192 255.255.255.0
+    no ip address 10.0.2.1 255.255.255.0 secondary
+
+Tan pronto como hagamos esto **perderemos la conexión con el switch**. Sin embargo no pasa nada. El switch tiene una IP de una red y nuestro equipo está en otra. Si cambiamos la IP de nuestro equipo podremos volver a conectar con él (por ejemplo pongamos la 10.15.0.200 y volvamos a hacer telnet)
+
+Una vez que tengamos conexión con el switch podemos ejecutar ``copy running-config startup-config`` y tendremos restaurado el acceso básico por telnet al switch. 
