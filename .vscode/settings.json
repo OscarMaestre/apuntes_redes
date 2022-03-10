@@ -1,5 +1,7 @@
 {
     "restructuredtext.linter.disabled": true,
     "restructuredtext.confPath": "${workspaceFolder}",
-    "restructuredtext.preview.sphinx.disabled": true
+    "restructuredtext.preview.sphinx.disabled": true,
+    "esbonio.server.enabled": true,
+    "esbonio.sphinx.confDir": "/home/usuario/repos/apuntes_redes"
 }
