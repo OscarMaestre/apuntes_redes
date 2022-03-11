@@ -74,9 +74,19 @@ El diagrama de bloques sería más o menos así:
 .. figure:: img/04-descomposicion.png
 
 
+Los router domésticos a nivel interno no solamente tienen un sistema operativo sino también algunos parámetros configurables:
+
+* IP y máscara. Por defecto, en muchos hogares es la 192.168.1.1 con máscara 255.255.255.0
+* Rango de direcciones DHCP. DHCP se explicará en profundidad en segundo curso, en el módulo "Servicios de red".
+
+
+
 
 Los routers en las LAN y en las WAN.
 ----------------------------------------------------------------------------
+
+
+
 
 Formas de conexión al router para su configuración inicial.
 ----------------------------------------------------------------------------
