@@ -373,11 +373,11 @@ Los comandos serían::
     exit
     interface fastethernet 0/1
     switchport mode access
-    switchport access vlan 10
+    switchport access vlan 100
     exit
     interface fastethernet 0/2
     switchport mode access
-    switchport access vlan 20
+    switchport access vlan 202
     exit
     
 Switch Acceso 2
@@ -401,11 +401,7 @@ Los comandos serían::
     exit
     interface fastethernet 0/1
     switchport mode access
-    switchport access vlan 10
-    exit
-    interface fastethernet 0/2
-    switchport mode access
-    switchport access vlan 20
+    switchport access vlan 100
     exit
 
 Switch Acceso 3
@@ -423,13 +419,9 @@ Los comandos serían::
     switchport mode trunk
     switchport trunk allowed vlan 100,200,10
     exit
-    interface fastethernet 0/1
-    switchport mode access
-    switchport access vlan 10
-    exit
     interface fastethernet 0/2
     switchport mode access
-    switchport access vlan 20
+    switchport access vlan 200
     exit
 
 Switch Acceso 4
@@ -449,11 +441,7 @@ Los comandos serían::
     exit
     interface fastethernet 0/1
     switchport mode access
-    switchport access vlan 10
-    exit
-    interface fastethernet 0/2
-    switchport mode access
-    switchport access vlan 20
+    switchport access vlan 300
     exit
 
 
@@ -474,7 +462,7 @@ Los comandos serían::
     exit
     interface fastethernet 0/1
     switchport mode access
-    switchport access vlan 10
+    switchport access vlan 300
     exit
     interface fastethernet 0/2
     switchport mode access

@@ -4,15 +4,15 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Tema 4: Configuración de redes virtuales VLAN &#8212; documentación de Apuntes de redes - 1.0</title>
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/translations.js"></script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
@@ -34,15 +34,15 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="tema-4-configuracion-de-redes-virtuales-vlan">
-<h1>Tema 4: Configuración de redes virtuales VLAN<a class="headerlink" href="#tema-4-configuracion-de-redes-virtuales-vlan" title="Enlazar permanentemente con este título">¶</a></h1>
-<div class="section" id="introduccion">
-<h2>Introducción<a class="headerlink" href="#introduccion" title="Enlazar permanentemente con este título">¶</a></h2>
+  <section id="tema-4-configuracion-de-redes-virtuales-vlan">
+<h1>Tema 4: Configuración de redes virtuales VLAN<a class="headerlink" href="#tema-4-configuracion-de-redes-virtuales-vlan" title="Enlazar permanentemente con este título"></a></h1>
+<section id="introduccion">
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Enlazar permanentemente con este título"></a></h2>
 <p>Las VLAN intentan dar solución a un problema consistente en que a veces ordenadores de una misma sala no forman parte de la misma red.</p>
 <p>Es decir, queremos una red virtual formada por ordenadores que están en sitios distintos. La solución a este problema son las VLANs (Virtual Local Area Network).</p>
-</div>
-<div class="section" id="el-diseno-de-redes-locales-a-tres-capas-nucleo-distribucion-y-acceso">
-<h2>El diseño de redes locales a tres capas (núcleo, distribución y acceso).<a class="headerlink" href="#el-diseno-de-redes-locales-a-tres-capas-nucleo-distribucion-y-acceso" title="Enlazar permanentemente con este título">¶</a></h2>
+</section>
+<section id="el-diseno-de-redes-locales-a-tres-capas-nucleo-distribucion-y-acceso">
+<h2>El diseño de redes locales a tres capas (núcleo, distribución y acceso).<a class="headerlink" href="#el-diseno-de-redes-locales-a-tres-capas-nucleo-distribucion-y-acceso" title="Enlazar permanentemente con este título"></a></h2>
 <p>En general, para diseñar redes grandes se utiliza una topología llamada de tres niveles. Cada nivel va a cumplir funciones distintas del anterior. Estos niveles son núcleo, distribución y acceso.</p>
 <ul class="simple">
 <li><p>Se llama «switches de acceso» a aquellos switches que dan servicio directo a terminales como PCs, impresoras o similares.</p></li>
@@ -50,23 +50,23 @@
 <li><p>Se llama «switches de núcleo» a <em>switches que interconectan switches de distribución y que están más cerca del punto de salida (router)</em></p></li>
 </ul>
 <p>En la figura puede verse una organización típica con tres capas.</p>
-<div class="figure align-default">
+<figure class="align-default">
 <img alt="../_images/02-tres-capas.png" src="../_images/02-tres-capas.png" />
-</div>
-</div>
-<div class="section" id="implantacion-y-configuracion-de-redes-virtuales">
-<h2>Implantación y configuración de redes virtuales.<a class="headerlink" href="#implantacion-y-configuracion-de-redes-virtuales" title="Enlazar permanentemente con este título">¶</a></h2>
-<div class="section" id="implantacion">
-<h3>Implantación<a class="headerlink" href="#implantacion" title="Enlazar permanentemente con este título">¶</a></h3>
+</figure>
+</section>
+<section id="implantacion-y-configuracion-de-redes-virtuales">
+<h2>Implantación y configuración de redes virtuales.<a class="headerlink" href="#implantacion-y-configuracion-de-redes-virtuales" title="Enlazar permanentemente con este título"></a></h2>
+<section id="implantacion">
+<h3>Implantación<a class="headerlink" href="#implantacion" title="Enlazar permanentemente con este título"></a></h3>
 <p>En primer lugar es IMPRESCINDIBLE disponer de hardware que soporte VLANs y a ser posible usando el protocolo estándar 802.1q.</p>
 <ol class="arabic simple">
 <li><p>Se debe entrar en el switch y crear las distintas VLANs (con un número).</p></li>
 <li><p>Se deben asignar puertos del switch a esas VLAN. Estos puertos se denominan «puertos de acceso». Es importante recordar que las VLAN están unidas a los puertos del switch. Si tiramos del cable y se conectar ese cable de ordenador a otro puertos, habremos sacado al ordenador de su VLAN.</p></li>
 <li><p>A menudo las VLAN deben pasar por varios switches. Habrá puertos que transporten tráfico de varias VLANs. Estos puertos se denominan «troncos» o «puertos troncales». Se debe avisar al switch de los puertos que actuarán como troncales.</p></li>
 </ol>
-</div>
-<div class="section" id="configuracion">
-<h3>Configuración<a class="headerlink" href="#configuracion" title="Enlazar permanentemente con este título">¶</a></h3>
+</section>
+<section id="configuracion">
+<h3>Configuración<a class="headerlink" href="#configuracion" title="Enlazar permanentemente con este título"></a></h3>
 <p>Al crear la arquitectura de redes es <strong>fundamental</strong> que los usuarios no tengan acceso al cableado del switch. Una vez se les asigne una VLAN, dicha VLAN quedará asociada a la interfaz del switch. Si alguien tira del cable del switch y lo conecta a otra interfaz <em>el usuario quedará fuera de la VLAN</em>.</p>
 <p>Para configurar dispositivos Cisco se usan comandos como estos:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Permiten convertirse en</span>
@@ -100,10 +100,10 @@
 <span class="n">interface</span> <span class="n">fastethernet</span> <span class="o">..</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="definicion-de-enlaces-troncales-en-los-conmutadores-y-routers">
-<h2>Definición de enlaces troncales en los conmutadores y routers.<a class="headerlink" href="#definicion-de-enlaces-troncales-en-los-conmutadores-y-routers" title="Enlazar permanentemente con este título">¶</a></h2>
+</section>
+</section>
+<section id="definicion-de-enlaces-troncales-en-los-conmutadores-y-routers">
+<h2>Definición de enlaces troncales en los conmutadores y routers.<a class="headerlink" href="#definicion-de-enlaces-troncales-en-los-conmutadores-y-routers" title="Enlazar permanentemente con este título"></a></h2>
 <p>Para configurar el acceso troncal, el proceso es parecido.</p>
 <ol class="arabic simple">
 <li><p>Entrar en la tarjeta</p></li>
@@ -135,17 +135,17 @@
 <p class="admonition-title">Advertencia</p>
 <p>Al construir VLANs y enlaces troncales se debe tener cuidado al «copiar y pegar configuraciones» de unos switches a otros. Podría ocurrir que sin querer autorizásemos VLANs en enlaces troncales que no debían permitir ese paso.</p>
 </div>
-<div class="section" id="reflexion-sobre-ciclos-en-switches-con-vlans">
-<h3>Reflexión sobre ciclos en switches con VLANs<a class="headerlink" href="#reflexion-sobre-ciclos-en-switches-con-vlans" title="Enlazar permanentemente con este título">¶</a></h3>
+<section id="reflexion-sobre-ciclos-en-switches-con-vlans">
+<h3>Reflexión sobre ciclos en switches con VLANs<a class="headerlink" href="#reflexion-sobre-ciclos-en-switches-con-vlans" title="Enlazar permanentemente con este título"></a></h3>
 <p>Observa la figura siguiente</p>
-<div class="figure align-default">
+<figure class="align-default">
 <img alt="../_images/03-stp-ciclos.png" src="../_images/03-stp-ciclos.png" />
-</div>
+</figure>
 <p>¿Por qué no se han deshabilitado puertos? En realidad sí se deshabilitan, pero cuando tenemos ciclos en switches que forman parte de VLANs puede ocurrir que <strong>un puerto esté bloqueado dentro de una VLAN, pero esté activo dentro de otra VLAN distinta</strong>. En realidad lo que ejecutan los switches modernos es PVST (Per-VLAN Spanning Tree)</p>
-</div>
-</div>
-<div class="section" id="protocolos-para-la-administracion-centralizada-de-redes-virtuales-el-protocolo-vtp">
-<h2>Protocolos para la administración centralizada de redes virtuales; el protocolo VTP<a class="headerlink" href="#protocolos-para-la-administracion-centralizada-de-redes-virtuales-el-protocolo-vtp" title="Enlazar permanentemente con este título">¶</a></h2>
+</section>
+</section>
+<section id="protocolos-para-la-administracion-centralizada-de-redes-virtuales-el-protocolo-vtp">
+<h2>Protocolos para la administración centralizada de redes virtuales; el protocolo VTP<a class="headerlink" href="#protocolos-para-la-administracion-centralizada-de-redes-virtuales-el-protocolo-vtp" title="Enlazar permanentemente con este título"></a></h2>
 <p>En realidad <strong>las VLAN no se crean «sobre la marcha» a medida que definimos los interfaces</strong>. En redes grandes se establecen muy claramente dos cosas:</p>
 <ul class="simple">
 <li><p>El identificador de VLAN al que van a pertenecer un grupo de usuarios.</p></li>
@@ -153,16 +153,16 @@
 </ul>
 <p>Este último punto es el que nos interesa. Para crear una VLAN y asociarle un nombre tenemos que dar estos pasos:</p>
 <p>¿Qué ocurre si tenemos una red grande con varias decenas de VLANs? ¿Y si además de vez en cuando algunos nombres cambian o se crean otros nuevos? Evidentemente, conectarse a tantos switches tecleando una y otra vez los mismos comandos y/o cambiar los números o nombres correspondientes no solo es muy tedioso, sino propenso a errores. Para evitar esto tenemos un protocolo llamado VTP (VLAN Trunking Protocol) que nos va a facilitar la operativa.</p>
-<div class="section" id="modos-vtp">
-<h3>Modos VTP<a class="headerlink" href="#modos-vtp" title="Enlazar permanentemente con este título">¶</a></h3>
+<section id="modos-vtp">
+<h3>Modos VTP<a class="headerlink" href="#modos-vtp" title="Enlazar permanentemente con este título"></a></h3>
 <ol class="arabic simple">
 <li><p>Servidor.</p></li>
 <li><p>Cliente.</p></li>
 <li><p>Transparente</p></li>
 </ol>
-</div>
-<div class="section" id="proceso-basico">
-<h3>Proceso básico<a class="headerlink" href="#proceso-basico" title="Enlazar permanentemente con este título">¶</a></h3>
+</section>
+<section id="proceso-basico">
+<h3>Proceso básico<a class="headerlink" href="#proceso-basico" title="Enlazar permanentemente con este título"></a></h3>
 <p>En el modo de configuración global tenemos que hacer esto:</p>
 <ol class="arabic simple">
 <li><p>Configurar dominio con el comando <code class="docutils literal notranslate"><span class="pre">vtp</span> <span class="pre">domain</span> <span class="pre">acme.com</span></code>.</p></li>
@@ -170,14 +170,14 @@
 <li><p>Configurar el modo con <code class="docutils literal notranslate"><span class="pre">vtp</span> <span class="pre">mode</span> <span class="pre">client</span></code> o <code class="docutils literal notranslate"><span class="pre">vtp</span> <span class="pre">mode</span> <span class="pre">server</span></code></p></li>
 <li><p>Habilitar los interfaces troncales correspondientes.</p></li>
 </ol>
-</div>
-</div>
-<div class="section" id="ejercicio-completo-con-vlans-y-vtp">
-<h2>Ejercicio completo con VLANs y VTP<a class="headerlink" href="#ejercicio-completo-con-vlans-y-vtp" title="Enlazar permanentemente con este título">¶</a></h2>
+</section>
+</section>
+<section id="ejercicio-completo-con-vlans-y-vtp">
+<h2>Ejercicio completo con VLANs y VTP<a class="headerlink" href="#ejercicio-completo-con-vlans-y-vtp" title="Enlazar permanentemente con este título"></a></h2>
 <p>Observa la red de la figura:</p>
-<div class="figure align-default">
+<figure class="align-default">
 <img alt="../_images/04-vlans-y-vtp.png" src="../_images/04-vlans-y-vtp.png" />
-</div>
+</figure>
 <p>Las conexiones son las siguientes:</p>
 <ul class="simple">
 <li><p>Puerto 0/1 de Nucleo con puerto 0/1 de Distribucion1.</p></li>
@@ -217,8 +217,8 @@
 <li><p>La empresa dispone de la red 10.0.0.0/8 para configurar direcciones IP y se desea que la VLAN USUARIOS esté en la red 10.1.0.0/16, que la VLAN TECNICOS esté en la 10.2.0.0/16 y que la VLAN GERENCIA esté en la 10.3.0.0/16</p></li>
 </ol>
 <p>Configurar las direcciones IP, máscaras, enlaces de acceso, enlaces troncales y modos VTP para conseguir que la conectividad funcione según los requisitos pedidos.</p>
-<div class="section" id="solucion">
-<h3>Solución<a class="headerlink" href="#solucion" title="Enlazar permanentemente con este título">¶</a></h3>
+<section id="solucion">
+<h3>Solución<a class="headerlink" href="#solucion" title="Enlazar permanentemente con este título"></a></h3>
 <p>Empecemos por las direcciones IP.</p>
 <ul class="simple">
 <li><p>Las direcciones de USUARIOS deben ser algo como 10.1.xxx.xxx con máscara 255.255.0.0. Usaremos las IP 10.1.0.1 y la 10.1.0.2 para los dos ordenadores de esta VLAN.</p></li>
@@ -233,9 +233,9 @@
 </ul>
 <p>Con solo una cualquiera de estas ventajas ya tendríamos suficiente para justificar la implantación de las VLANs, pero el hecho de obtener las dos hace que esta tecnología sea mucho más interesante aún.</p>
 <p>Analicemos ahora las VLANs y los enlaces. Empecemos por ver los equipos 0 y 2, que pertenecen a la VLAN 100 (USUARIOS).</p>
-<div class="figure align-default">
+<figure class="align-default">
 <img alt="../_images/04b-vlans-y-vtp.png" src="../_images/04b-vlans-y-vtp.png" />
-</div>
+</figure>
 <p>Los puertos de los PC van a ser de acceso y van a usar la VLAN 100, pero ¿qué puertos vamos a poner como troncales usando la VLAN 100?</p>
 <ol class="arabic simple">
 <li><p>Una posibilidad sería poner como troncal para la VLAN 100 los enlaces 1 y 3. Esto implicaría que todo el tráfico iría primero al switch de distribución y si el PC0 quisiese pasar algo al 2 no podría hacerlo directamente.</p></li>
@@ -250,9 +250,9 @@
 <li><p>En el switch Distribucion1 los puertos 0/4, 0/5 y 0/1 serán troncales para la 100. Tengamos en cuenta que el 0/1 es el puerto que lleva hacia el switch de núcleo. Si no ponemos troncal con la 100 este puerto 0/1 los ordenadores <em>no serán capaces de salir al exterior.</em> Aunque en este ejemplo no lo hemos puesto para simplificar, el switch de núcleo va conectado a un router que nos dará conectividad con el exterior.</p></li>
 </ol>
 <p>En la figura siguiente hemos creado un esquema que facilite el identificar que VLANs transitan por qué puertos.</p>
-<div class="figure align-default">
+<figure class="align-default">
 <img alt="../_images/04-vlans-y-vtp-solucion.png" src="../_images/04-vlans-y-vtp-solucion.png" />
-</div>
+</figure>
 <p>Para VTP haremos esto en el switch Nucleo 1:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
@@ -286,9 +286,9 @@
 </pre></div>
 </div>
 <p>Y en todos los switches habilitaremos todos los enlaces troncales con la VLAN 10 si deseamos que reciban por ese interfaz las actualizaciones VTP</p>
-</div>
-<div class="section" id="switch-nucleo-1">
-<h3>Switch Nucleo 1<a class="headerlink" href="#switch-nucleo-1" title="Enlazar permanentemente con este título">¶</a></h3>
+</section>
+<section id="switch-nucleo-1">
+<h3>Switch Nucleo 1<a class="headerlink" href="#switch-nucleo-1" title="Enlazar permanentemente con este título"></a></h3>
 <p>Los comandos serían:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
@@ -306,9 +306,9 @@
 <span class="n">exit</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="switch-distribucion-1">
-<h3>Switch Distribución 1<a class="headerlink" href="#switch-distribucion-1" title="Enlazar permanentemente con este título">¶</a></h3>
+</section>
+<section id="switch-distribucion-1">
+<h3>Switch Distribución 1<a class="headerlink" href="#switch-distribucion-1" title="Enlazar permanentemente con este título"></a></h3>
 <p>Los comandos serían:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
@@ -326,9 +326,9 @@
 <span class="n">exit</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="switch-distribucion-2">
-<h3>Switch Distribución 2<a class="headerlink" href="#switch-distribucion-2" title="Enlazar permanentemente con este título">¶</a></h3>
+</section>
+<section id="switch-distribucion-2">
+<h3>Switch Distribución 2<a class="headerlink" href="#switch-distribucion-2" title="Enlazar permanentemente con este título"></a></h3>
 <p>Los comandos serían:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
@@ -346,9 +346,9 @@
 <span class="n">exit</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="switch-distribucion-3">
-<h3>Switch Distribución 3<a class="headerlink" href="#switch-distribucion-3" title="Enlazar permanentemente con este título">¶</a></h3>
+</section>
+<section id="switch-distribucion-3">
+<h3>Switch Distribución 3<a class="headerlink" href="#switch-distribucion-3" title="Enlazar permanentemente con este título"></a></h3>
 <p>Los comandos serían:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
@@ -362,9 +362,9 @@
 <span class="n">exit</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="switch-acceso-1">
-<h3>Switch Acceso 1<a class="headerlink" href="#switch-acceso-1" title="Enlazar permanentemente con este título">¶</a></h3>
+</section>
+<section id="switch-acceso-1">
+<h3>Switch Acceso 1<a class="headerlink" href="#switch-acceso-1" title="Enlazar permanentemente con este título"></a></h3>
 <p>Los comandos serían:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
@@ -378,17 +378,17 @@
 <span class="n">exit</span>
 <span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>
 <span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
-<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">10</span>
+<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">100</span>
 <span class="n">exit</span>
 <span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">2</span>
 <span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
-<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">20</span>
+<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">202</span>
 <span class="n">exit</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="switch-acceso-2">
-<h3>Switch Acceso 2<a class="headerlink" href="#switch-acceso-2" title="Enlazar permanentemente con este título">¶</a></h3>
+</section>
+<section id="switch-acceso-2">
+<h3>Switch Acceso 2<a class="headerlink" href="#switch-acceso-2" title="Enlazar permanentemente con este título"></a></h3>
 <p>Los comandos serían:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
@@ -406,17 +406,13 @@
 <span class="n">exit</span>
 <span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>
 <span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
-<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">10</span>
-<span class="n">exit</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">2</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
-<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">20</span>
+<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">100</span>
 <span class="n">exit</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="switch-acceso-3">
-<h3>Switch Acceso 3<a class="headerlink" href="#switch-acceso-3" title="Enlazar permanentemente con este título">¶</a></h3>
+</section>
+<section id="switch-acceso-3">
+<h3>Switch Acceso 3<a class="headerlink" href="#switch-acceso-3" title="Enlazar permanentemente con este título"></a></h3>
 <p>Los comandos serían:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
@@ -428,19 +424,15 @@
 <span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
 <span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">10</span>
 <span class="n">exit</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
-<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">10</span>
-<span class="n">exit</span>
 <span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">2</span>
 <span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
-<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">20</span>
+<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">200</span>
 <span class="n">exit</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="switch-acceso-4">
-<h3>Switch Acceso 4<a class="headerlink" href="#switch-acceso-4" title="Enlazar permanentemente con este título">¶</a></h3>
+</section>
+<section id="switch-acceso-4">
+<h3>Switch Acceso 4<a class="headerlink" href="#switch-acceso-4" title="Enlazar permanentemente con este título"></a></h3>
 <p>Los comandos serían:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
@@ -454,17 +446,13 @@
 <span class="n">exit</span>
 <span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>
 <span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
-<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">10</span>
-<span class="n">exit</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">2</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
-<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">20</span>
+<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">300</span>
 <span class="n">exit</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="switch-acceso-5">
-<h3>Switch Acceso 5<a class="headerlink" href="#switch-acceso-5" title="Enlazar permanentemente con este título">¶</a></h3>
+</section>
+<section id="switch-acceso-5">
+<h3>Switch Acceso 5<a class="headerlink" href="#switch-acceso-5" title="Enlazar permanentemente con este título"></a></h3>
 <p>Los comandos serían:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
@@ -478,7 +466,7 @@
 <span class="n">exit</span>
 <span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>
 <span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
-<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">10</span>
+<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">300</span>
 <span class="n">exit</span>
 <span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">2</span>
 <span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
@@ -486,14 +474,14 @@
 <span class="n">exit</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="switch-acceso-6">
-<h3>Switch Acceso 6<a class="headerlink" href="#switch-acceso-6" title="Enlazar permanentemente con este título">¶</a></h3>
+</section>
+<section id="switch-acceso-6">
+<h3>Switch Acceso 6<a class="headerlink" href="#switch-acceso-6" title="Enlazar permanentemente con este título"></a></h3>
 <p>En este ejercicio concreto, no tiene ninguna función.</p>
-</div>
-</div>
-<div class="section" id="el-protocolo-ieee802-1q">
-<h2>El protocolo IEEE802.1Q<a class="headerlink" href="#el-protocolo-ieee802-1q" title="Enlazar permanentemente con este título">¶</a></h2>
+</section>
+</section>
+<section id="el-protocolo-ieee802-1q">
+<h2>El protocolo IEEE802.1Q<a class="headerlink" href="#el-protocolo-ieee802-1q" title="Enlazar permanentemente con este título"></a></h2>
 <p>Es el protocolo estándar para construir tramas de datos que viajan entre enlaces troncales. No nos hemos preguntado una cosa ¿como sabe un switch con un enlace troncal que un paquete es de una VLAN y/o que va a otra VLAN?</p>
 <p>Recordemos la cabecera Ethernet
 1. Primero tenemos la MAC de destino.
@@ -508,15 +496,15 @@
 <li><p>Longitud…</p></li>
 </ol>
 <p>Se puede activar el uso de este protocolo en dispositivos Cisco con <code class="docutils literal notranslate"><span class="pre">encapsulation</span> <span class="pre">dot1q</span></code></p>
-</div>
-<div class="section" id="etherchannel">
-<h2>Etherchannel<a class="headerlink" href="#etherchannel" title="Enlazar permanentemente con este título">¶</a></h2>
+</section>
+<section id="etherchannel">
+<h2>Etherchannel<a class="headerlink" href="#etherchannel" title="Enlazar permanentemente con este título"></a></h2>
 <p>Es la capacidad que tienen los switches de gama alta de «agrupar» o «agregar» varios interfaces de manera que se comporten como si fuesen uno solo incluso <strong>sumando el ancho de banda</strong>.</p>
 <p>Para crear lo que Etherchannel llama un «grupo», tenemos que entrar en los distintos interfaces y usar el comando <code class="docutils literal notranslate"><span class="pre">channel-group</span> <span class="pre">&lt;numero&gt;</span> <span class="pre">mode</span> <span class="pre">active</span></code>. Esto debe hacerse en todos los interfaces de los dos lados de un enlace, es decir en los dos switches.</p>
 <p>En la figura siguiente tenemos un ejemplo. El ordenador izquierdo está conectado al puerto 0/1 del Switch 0. El ordenador derecho está conectado al puerto 0/1 del Switch 1. Deseamos que los switches agreguen sus enlaces y ofrezcan un ancho de banda sumado. Así, si cada conexión es de 100 Mbits/s dispondremos de un ancho de banda de 300 Mbits/s</p>
-<div class="figure align-default">
+<figure class="align-default">
 <img alt="../_images/05-etherchannel.png" src="../_images/05-etherchannel.png" />
-</div>
+</figure>
 <p>Configuremos los enlaces. En el switch 0 tendremos que activar las interfaces 2,3 y 4 como pertenecientes a un grupo. Todo grupo debe llevar un número y por ejemplo usaremos el 1. Evidentemente, todos los enlaces que estén en el mismo grupo deben llevar el mismo número de grupo.</p>
 <p>Comandos para el switch 0:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
@@ -533,12 +521,12 @@
 </pre></div>
 </div>
 <p>Como casualmente, los mismos interfaces del switch 1 forman parte del Etherchannel podemos enviar los mismos comandos al switch derechoñ</p>
-<div class="section" id="etherchannel-y-vlans">
-<h3>Etherchannel y VLANs<a class="headerlink" href="#etherchannel-y-vlans" title="Enlazar permanentemente con este título">¶</a></h3>
+<section id="etherchannel-y-vlans">
+<h3>Etherchannel y VLANs<a class="headerlink" href="#etherchannel-y-vlans" title="Enlazar permanentemente con este título"></a></h3>
 <p>Etherchannel ofrece soporte a las VLANs de la misma manera que si fuese un enlace normal. Examinemos la figura de abajo</p>
-<div class="figure align-default">
+<figure class="align-default">
 <img alt="../_images/06-etherchannel-vlan.png" src="../_images/06-etherchannel-vlan.png" />
-</div>
+</figure>
 <p>En el diagrama puede verse que los ordenadores de arriba pertenecen a la VLAN 100. Los de abajo a la 200. Cada máquina deber a los de su VLAN <strong>y solo a los de su VLAN</strong>.</p>
 <p>Para resolver esto debemos crear los interfaces de acceso correspondientes y luego configurar el Etherchannel para que que acepte tráfico solo de las VLAN 100 y 200. Para ello entraremos en los interfaces llamados <code class="docutils literal notranslate"><span class="pre">port-channel</span> <span class="pre">&lt;numero&gt;</span></code>, los pondremos en modo troncal y añadiremos las VLAN pedidas. Los comandos para estas VLAN son iguales en ambos switches porque casualmente los interfaces coinciden. Así, los comandos serían estos:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
@@ -558,10 +546,10 @@
 <span class="n">exit</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="copias-de-seguridad">
-<h2>Copias de seguridad<a class="headerlink" href="#copias-de-seguridad" title="Enlazar permanentemente con este título">¶</a></h2>
+</section>
+</section>
+<section id="copias-de-seguridad">
+<h2>Copias de seguridad<a class="headerlink" href="#copias-de-seguridad" title="Enlazar permanentemente con este título"></a></h2>
 <p>Todos los switches modernos tienen la capacidad de exportar su configuración a un servidor de ficheros TFTP (Trivial File Transfer Protocol). Para ello solo tenemos que ejecutar esto:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Switch#copy running-config tftp:
 Address or name of remote host []? 10.3.0.1
@@ -573,9 +561,9 @@ Writing running-config...!!
 1090 bytes copied in 0.001 secs (1090000 bytes/sec)
 </pre></div>
 </div>
-</div>
-<div class="section" id="diagnostico-de-incidencias-en-redes-virtuales">
-<h2>Diagnóstico de incidencias en redes virtuales.<a class="headerlink" href="#diagnostico-de-incidencias-en-redes-virtuales" title="Enlazar permanentemente con este título">¶</a></h2>
+</section>
+<section id="diagnostico-de-incidencias-en-redes-virtuales">
+<h2>Diagnóstico de incidencias en redes virtuales.<a class="headerlink" href="#diagnostico-de-incidencias-en-redes-virtuales" title="Enlazar permanentemente con este título"></a></h2>
 <p>El diagnóstico de incidencias en VLAN implica una serie de acciones muy sencillas pero muy laboriosas:</p>
 <ol class="arabic simple">
 <li><p>Comprobar que nadie ha tirado de los cables y luego los ha enchufado a un puerto distinto del switch. Los cables deben estar etiquetados.</p></li>
@@ -585,8 +573,167 @@ Writing running-config...!!
 <li><p>Si interconectamos dispositivos de distintas marcas/fabricantes, comprobar que usamos 802.1q.</p></li>
 <li><p>Cuando hay tráfico que se mueven entre ciertas áreas de una VLAN ocurre que a menudo hemos escrito mal los números de VLAN en el comando <code class="docutils literal notranslate"><span class="pre">switchport</span> <span class="pre">trunk</span> <span class="pre">allowed</span> <span class="pre">vlan</span> <span class="pre">&lt;números</span> <span class="pre">de</span> <span class="pre">VLAN&gt;</span></code>.</p></li>
 </ol>
+</section>
+<section id="anexo-primeros-pasos-con-un-switch-cisco">
+<h2>Anexo: primeros pasos con un switch Cisco<a class="headerlink" href="#anexo-primeros-pasos-con-un-switch-cisco" title="Enlazar permanentemente con este título"></a></h2>
+<p>En la imagen siguiente podemos ver el frontal de un switch Cisco Catalyst 2960-S.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/07-switch01.jpg"><img alt="Frontal de un switch Cisco" src="../_images/07-switch01.jpg" style="width: 648.0px; height: 170.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Frontal de un switch Cisco</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen"></a></p>
+</figcaption>
+</figure>
+<p>Estos dispositivos son muy parecidos a un ordenador normal. De hecho, al encenderlos ejecutan un proceso de autocomprobación bastante exhaustivo que dura aproximadamente 5 minutos. Como puede verse, no solo hay varios puertos sino también unos cuantos indicadores y un botón con el texto «MODE».</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/08-indicadores.jpg"><img alt="Indicadores de un switch Cisco" src="../_images/08-indicadores.jpg" style="width: 400.0px; height: 300.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Indicadores de un switch Cisco</span><a class="headerlink" href="#id2" title="Enlace permanente a esta imagen"></a></p>
+</figcaption>
+</figure>
+<p>El botón MODE puede pulsarse de dos maneras: una pulsación corta y una larga. Cuando el switch está funcionando normalmente podemos hacer pulsaciones cortas sobre el botón MODE y veremos como el switch enciende uno de estos diodos:</p>
+<ul>
+<li><p>Diodo SYST.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Si está en verde y no parpadea indica que está funcionando con normalidad.</p></li>
+<li><p>Si está en ámbar indica que hay un error en la conexión a la corriente.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Diodo RPS. Informa del estado del RPS (Redundant Power Supply, el SAI).</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Si está en verde fijo, el RPS funciona con normalidad.</p></li>
+<li><p>Si está apagado, no hay RPS.</p></li>
+<li><p>Un verde parpadeante indica que hay RPS pero la corriente está siendo entregada a otro dispositivo.</p></li>
+<li><p>Si está en ámbar, el RPS está en <em>standby</em>.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Diodo STATUS. En este modo las luces de los puertos indican lo siguiente:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Si la luz de un puerto está en verde, el puerto está activo.</p></li>
+<li><p>Si la luz de un puerto está en ambar, el puerto está desactivado (por un error, por decisión de STP…)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Diodo DPLX. En este modo los puertos indican lo siguiente:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Los puertos con diodo verde están en modo DUPLEX (envían y reciben a la vez)</p></li>
+<li><p>Los puertos apagados están en modo HALF-DUPLEX (solo hacen una operación en un cierto instante, enviar o recibir)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Diodo MSTR. Cuando está en verde y el switch está en un rack indica que este switch es el «maestro» o principal.</p></li>
+<li><p>Diodo SPEED. En este modo, los diodos de los puertos indican lo siguiente (el significado y la velocidad exactas dependen del modelo):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Un diodo verde fijo indica que el puerto está operando a 100Mbits/s.</p></li>
+<li><p>Un diodo verde parpadeante indica que el puerto opera a 1000Mbits/s.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<section id="como-entrar-en-un-switch-del-que-hemos-perdido-la-contrasena">
+<h3>Como entrar en un switch del que hemos perdido la contraseña<a class="headerlink" href="#como-entrar-en-un-switch-del-que-hemos-perdido-la-contrasena" title="Enlazar permanentemente con este título"></a></h3>
+<p>Si se dispone de un cable de consola, se usa el procedimiento indicado anteriormente (usar un programa como HyperTerminal o Putty) y arrancar el dispositivo. En este modelo podemos hacer lo siguiente:</p>
+<ol class="arabic">
+<li><p>Dejar pulsado el botón MODE hasta que los diodos que hay encima del botón MODE parpadeen y luego se queden fijos. Esperar 5 minutos hasta que el switch se reinicie por completo y el diodo del puerto al que hayamos conectado nuestro ordenador esté en verde y funcionando normalmente. El switch <strong>realmente tarda varios minutos</strong> por lo que se debe tener paciencia.</p></li>
+<li><p>Una vez se haya reiniciado podemos volver a dejar pulsado el botón MODE hasta que los diodos se queden fijos. El switch entrará en un modo especial de recuperación en el que ocurrirá lo siguiente:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>El switch activará un servidor DHCP. Debemos poner la tarjeta de red en modo DHCP (en Windows «Obtener una IP automáticamente»). El servidor DHCP tarda entre 15 segundos y un minuto por lo que de nuevo <strong>se debe tener paciencia</strong></p></li>
+<li><p>El switch desactiva la contraseña de Telnet. Podremos hacer <code class="docutils literal notranslate"><span class="pre">telnet</span> <span class="pre">10.0.2.1</span></code> y entrar al switch con normalidad.</p></li>
+</ol>
+</div></blockquote>
+</li>
+</ol>
+<p>En este switch al mostrar la configuración vemos esto (se han omitido algunos detalles por brevedad):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Switch#show running-config
+Building configuration...
+
+Current configuration : 2952 bytes
+!
+! Last configuration change at 00:11:52 UTC Mon Jan 2 2006
+!
+version 15.0
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Switch
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$2mI5$.T/t2ci7yYylhyW/ym1Fy.
+!
+no aaa new-model
+switch 4 provision ws-c2960s-48td-l
+!
+ip dhcp pool 10.0.01.0
+network 10.0.1.0 255.255.255.0
+default-router 10.0.1.1
+lease 0 0 10
+!
+ip dhcp pool 10.0.02.0
+network 10.0.2.0 255.255.255.0
+default-router 10.0.2.1
+lease 0 0 10
+!
+vlan internal allocation policy ascending
+!
+interface Loopback11000
+ip address 10.0.0.1 255.255.255.0 secondary
+ip address 10.0.0.3 255.255.255.0
+!
+interface FastEthernet0
+ip address 10.0.1.1 255.255.255.0 secondary
+ip address 10.0.1.3 255.255.255.0
+!
+interface Vlan1
+ip address 10.0.2.1 255.255.255.0 secondary
+ip address 10.0.2.3 255.255.255.0
+!
+ip http server
+ip http secure-server
+!
+!
+!
+!
+line con 0
+line vty 0 4
+privilege level 15
+no login
+line vty 5 15
+privilege level 15
+no login
+!
+end
+</pre></div>
 </div>
+<p>Como vemos, la VLAN 1 tiene una dirección IP que puede que no sea la que queramos. Vamos a cambiarla, por ejemplo a 10.15.0.192/24 y borrar la que tenía. Aprovecharemos y pondremos una contraseña al acceso telnet y al modo administrador (si estás usando los switch del centro, por favor usa la clave <code class="docutils literal notranslate"><span class="pre">cisco</span></code>, todo en minúscula ):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
+<span class="n">configure</span> <span class="n">terminal</span>
+<span class="n">enable</span> <span class="n">secret</span> <span class="n">cisco</span>
+<span class="n">line</span> <span class="n">vty</span> <span class="mi">0</span> <span class="mi">15</span>
+<span class="n">password</span> <span class="n">cisco</span>
+<span class="n">login</span>
+<span class="n">exit</span>
+
+<span class="n">interface</span> <span class="n">vlan</span> <span class="mi">1</span>
+<span class="n">ip</span> <span class="n">address</span> <span class="mf">10.15.0.192</span> <span class="mf">255.255.255.0</span>
+<span class="n">no</span> <span class="n">ip</span> <span class="n">address</span> <span class="mf">10.0.2.1</span> <span class="mf">255.255.255.0</span> <span class="n">secondary</span>
+</pre></div>
 </div>
+<p>Tan pronto como hagamos esto <strong>perderemos la conexión con el switch</strong>. Sin embargo no pasa nada. El switch tiene una IP de una red y nuestro equipo está en otra. Si cambiamos la IP de nuestro equipo podremos volver a conectar con él (por ejemplo pongamos la 10.15.0.200 y volvamos a hacer telnet)</p>
+<p>Una vez que tengamos conexión con el switch podemos ejecutar <code class="docutils literal notranslate"><span class="pre">copy</span> <span class="pre">running-config</span> <span class="pre">startup-config</span></code> y tendremos restaurado el acceso básico por telnet al switch.</p>
+</section>
+</section>
+</section>
 
 
           </div>
@@ -605,7 +752,7 @@ Writing running-config...!!
 
 
 <h3>Navegación</h3>
-<p class="caption"><span class="caption-text">Índice:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Índice:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../t1_caracterizacion_redes/apuntes_t1.html">Tema 1:Caracterización de redes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/apuntes_t2.html">Tema 2:Integración de elementos en una red</a></li>
@@ -648,6 +795,10 @@ Writing running-config...!!
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#copias-de-seguridad">Copias de seguridad</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#diagnostico-de-incidencias-en-redes-virtuales">Diagnóstico de incidencias en redes virtuales.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#anexo-primeros-pasos-con-un-switch-cisco">Anexo: primeros pasos con un switch Cisco</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#como-entrar-en-un-switch-del-que-hemos-perdido-la-contrasena">Como entrar en un switch del que hemos perdido la contraseña</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../t4_routers/apuntes_t4.html">Tema 5: Configuración y administración básica de routers</a></li>
@@ -681,7 +832,7 @@ Writing running-config...!!
   <h3 id="searchlabel">Búsqueda rápida</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Ir a" />
     </form>
     </div>
@@ -703,7 +854,7 @@ Writing running-config...!!
       &copy;2021, Oscar G. G..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
