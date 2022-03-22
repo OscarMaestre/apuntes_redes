@@ -91,11 +91,43 @@ Los routers en las LAN y en las WAN.
 Formas de conexión al router para su configuración inicial.
 ----------------------------------------------------------------------------
 
+Routers domésticos
+~~~~~~~~~~~~~~~~~~~~
+
+Routers de gama alta
+~~~~~~~~~~~~~~~~~~~~~~
+
 Comandos para configuración del router.
 ----------------------------------------------------------------------------
 
+Poner clave al modo administrador
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Poner clave al acceso por telnet
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Poner clave al acceso por cable de consola
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Quitar una clave o valor de configuración
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 Comandos para administración del router.
 ----------------------------------------------------------------------------
+
+Poner una IP a una interfaz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Configurar DHCP
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Excluir direcciones de la asignación DHCP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Activar NAT en un router
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Configuración del enrutamiento estático.
 ----------------------------------------------------------------------------
