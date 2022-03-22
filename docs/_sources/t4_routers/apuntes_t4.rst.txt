@@ -111,9 +111,11 @@ Paso 4: el paquete (con la IP de origen cambiada) viaja por la red y llega al ro
 .. figure:: img/nat04.png
 
 Paso 5: si hubiera la regla correcta, el paquete entrará pero con la IP de destino modificada.
+
 .. figure:: img/nat05.png    
 
 Paso 6: el paquete que intentaba iniciar la conexión **llega correctamente a su destino**.
+
 .. figure:: img/nat06.png    
 
 Paso 7: el servidor va a responder y genera un paquete de respuesta.
@@ -130,6 +132,7 @@ Paso 9: el paquete intenta entrar. Lo primero que podríamos pensar es que el pa
 .. figure:: img/nat09.png    
 
 Paso 10: el router observa que el paquete **coincide perfectamente** con la información de una traducción que se hizo en el pasado. Es decir **el paquete puede pasar**. De nuevo, se vuelve a cambiar la IP de destino y el paquete se inyecta en la red izquierda.
+
 .. figure:: img/nat10.png    
 
 Paso 10b: se modifica la IP y se envía al interior.
