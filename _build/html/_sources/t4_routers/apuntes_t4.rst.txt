@@ -93,28 +93,50 @@ En redes WAN, los routers tienen conexión con muchas otras redes. Al tener much
 El proceso de NAT paso a paso
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Paso 1: un usuario quiere iniciar una conexión y conectarse a un servidor en otro lugar remoto.
+
 .. figure:: img/nat01.png
+
+Paso 2: el usuario pide al servidor la IP pública de su router y usando su programa intenta conectarse a la IP pública del otro router y al puerto del juego o servicio. El puerto de origen se elige al azar.
+
 
 .. figure:: img/nat02.png
 
+Paso 3: el paquete llega al router. El router observa que el paquete va al exterior. Como no se pueden usar IPs privadas en el exterior, el router **CAMBIA LA IP DE ORIGEN Y TOMA NOTA DE ESA TRADUCCIÓN POR SI EN EL FUTURO SE NECESITA ESA INFORMACIÓN**.
+
 .. figure:: img/nat03.png
 
+Paso 4: el paquete (con la IP de origen cambiada) viaja por la red y llega al router de destino. Como los router **por defecto no aceptan conexiones entrantes, en principio el paquete no entraría** Es necesario que primero el router derecho tenga *el puerto 6003 abierto.* Abrir un puerto consiste en poner una regla que indique que si llega una conexión entrante iniciada en el exterior se va a dejar pasar enviando el paquete a una cierta IP.
 
 .. figure:: img/nat04.png
 
+Paso 5: si hubiera la regla correcta, el paquete entrará pero con la IP de destino modificada.
 .. figure:: img/nat05.png    
 
+Paso 6: el paquete que intentaba iniciar la conexión **llega correctamente a su destino**.
 .. figure:: img/nat06.png    
+
+Paso 7: el servidor va a responder y genera un paquete de respuesta.
 
 .. figure:: img/nat07.png    
 
+Paso 8: el paquete llega al router **que vuelve a modificar la IP de origen porque no se aceptan IPs privadas en Internet.** Por supuesto, el router vuelve a apuntar esa traducción.
+
 .. figure:: img/nat08.png    
+
+
+Paso 9: el paquete intenta entrar. Lo primero que podríamos pensar es que el paquete no entrará, sin embargo **SÍ VA A CONSEGUIR ENTRAR**
 
 .. figure:: img/nat09.png    
 
+Paso 10: el router observa que el paquete **coincide perfectamente** con la información de una traducción que se hizo en el pasado. Es decir **el paquete puede pasar**. De nuevo, se vuelve a cambiar la IP de destino y el paquete se inyecta en la red izquierda.
 .. figure:: img/nat10.png    
 
+Paso 10b: se modifica la IP y se envía al interior.
+
 .. figure:: img/nat11.png    
+
+Paso 11: el paquete **llega a su destino**
 
 .. figure:: img/nat12.png    
 

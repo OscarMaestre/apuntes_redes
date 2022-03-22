@@ -110,39 +110,45 @@
 <p>En redes WAN, los routers tienen conexión con muchas otras redes. Al tener muchas redes, estos routers tienen que «intentar averiguar todas las conexiones y decidir cuales son los mejores caminos».</p>
 <section id="el-proceso-de-nat-paso-a-paso">
 <h3>El proceso de NAT paso a paso<a class="headerlink" href="#el-proceso-de-nat-paso-a-paso" title="Enlazar permanentemente con este título"></a></h3>
+<p>Paso 1: un usuario quiere iniciar una conexión y conectarse a un servidor en otro lugar remoto.</p>
 <figure class="align-default">
 <img alt="../_images/nat01.png" src="../_images/nat01.png" />
 </figure>
+<p>Paso 2: el usuario pide al servidor la IP pública de su router y usando su programa intenta conectarse a la IP pública del otro router y al puerto del juego o servicio. El puerto de origen se elige al azar.</p>
 <figure class="align-default">
 <img alt="../_images/nat02.png" src="../_images/nat02.png" />
 </figure>
+<p>Paso 3: el paquete llega al router. El router observa que el paquete va al exterior. Como no se pueden usar IPs privadas en el exterior, el router <strong>CAMBIA LA IP DE ORIGEN Y TOMA NOTA DE ESA TRADUCCIÓN POR SI EN EL FUTURO SE NECESITA ESA INFORMACIÓN</strong>.</p>
 <figure class="align-default">
 <img alt="../_images/nat03.png" src="../_images/nat03.png" />
 </figure>
+<p>Paso 4: el paquete (con la IP de origen cambiada) viaja por la red y llega al router de destino. Como los router <strong>por defecto no aceptan conexiones entrantes, en principio el paquete no entraría</strong> Es necesario que primero el router derecho tenga <em>el puerto 6003 abierto.</em> Abrir un puerto consiste en poner una regla que indique que si llega una conexión entrante iniciada en el exterior se va a dejar pasar enviando el paquete a una cierta IP.</p>
 <figure class="align-default">
 <img alt="../_images/nat04.png" src="../_images/nat04.png" />
 </figure>
-<figure class="align-default">
-<img alt="../_images/nat05.png" src="../_images/nat05.png" />
-</figure>
-<figure class="align-default">
-<img alt="../_images/nat06.png" src="../_images/nat06.png" />
-</figure>
+<p>Paso 5: si hubiera la regla correcta, el paquete entrará pero con la IP de destino modificada.
+.. figure:: img/nat05.png</p>
+<p>Paso 6: el paquete que intentaba iniciar la conexión <strong>llega correctamente a su destino</strong>.
+.. figure:: img/nat06.png</p>
+<p>Paso 7: el servidor va a responder y genera un paquete de respuesta.</p>
 <figure class="align-default">
 <img alt="../_images/nat07.png" src="../_images/nat07.png" />
 </figure>
+<p>Paso 8: el paquete llega al router <strong>que vuelve a modificar la IP de origen porque no se aceptan IPs privadas en Internet.</strong> Por supuesto, el router vuelve a apuntar esa traducción.</p>
 <figure class="align-default">
 <img alt="../_images/nat08.png" src="../_images/nat08.png" />
 </figure>
+<p>Paso 9: el paquete intenta entrar. Lo primero que podríamos pensar es que el paquete no entrará, sin embargo <strong>SÍ VA A CONSEGUIR ENTRAR</strong></p>
 <figure class="align-default">
 <img alt="../_images/nat09.png" src="../_images/nat09.png" />
 </figure>
-<figure class="align-default">
-<img alt="../_images/nat10.png" src="../_images/nat10.png" />
-</figure>
+<p>Paso 10: el router observa que el paquete <strong>coincide perfectamente</strong> con la información de una traducción que se hizo en el pasado. Es decir <strong>el paquete puede pasar</strong>. De nuevo, se vuelve a cambiar la IP de destino y el paquete se inyecta en la red izquierda.
+.. figure:: img/nat10.png</p>
+<p>Paso 10b: se modifica la IP y se envía al interior.</p>
 <figure class="align-default">
 <img alt="../_images/nat11.png" src="../_images/nat11.png" />
 </figure>
+<p>Paso 11: el paquete <strong>llega a su destino</strong></p>
 <figure class="align-default">
 <img alt="../_images/nat12.png" src="../_images/nat12.png" />
 </figure>
