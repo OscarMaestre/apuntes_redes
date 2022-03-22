@@ -85,7 +85,38 @@ Los router domésticos a nivel interno no solamente tienen un sistema operativo 
 Los routers en las LAN y en las WAN.
 ----------------------------------------------------------------------------
 
+En las redes LAN el router toma decisiones sencillas. En líneas generales solo deciden "¿se envía este paquete al otro lado o no?".
 
+En redes WAN, los routers tienen conexión con muchas otras redes. Al tener muchas redes, estos routers tienen que "intentar averiguar todas las conexiones y decidir cuales son los mejores caminos".
+
+
+El proceso de NAT paso a paso
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: img/nat01.png
+
+.. figure:: img/nat02.png
+
+.. figure:: img/nat03.png
+
+
+.. figure:: img/nat04.png
+
+.. figure:: img/nat05.png    
+
+.. figure:: img/nat06.png    
+
+.. figure:: img/nat07.png    
+
+.. figure:: img/nat08.png    
+
+.. figure:: img/nat09.png    
+
+.. figure:: img/nat10.png    
+
+.. figure:: img/nat11.png    
+
+.. figure:: img/nat12.png    
 
 
 Formas de conexión al router para su configuración inicial.

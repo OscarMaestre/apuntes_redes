@@ -106,15 +106,86 @@
 </section>
 <section id="los-routers-en-las-lan-y-en-las-wan">
 <h2>Los routers en las LAN y en las WAN.<a class="headerlink" href="#los-routers-en-las-lan-y-en-las-wan" title="Enlazar permanentemente con este título"></a></h2>
+<p>En las redes LAN el router toma decisiones sencillas. En líneas generales solo deciden «¿se envía este paquete al otro lado o no?».</p>
+<p>En redes WAN, los routers tienen conexión con muchas otras redes. Al tener muchas redes, estos routers tienen que «intentar averiguar todas las conexiones y decidir cuales son los mejores caminos».</p>
+<section id="el-proceso-de-nat-paso-a-paso">
+<h3>El proceso de NAT paso a paso<a class="headerlink" href="#el-proceso-de-nat-paso-a-paso" title="Enlazar permanentemente con este título"></a></h3>
+<figure class="align-default">
+<img alt="../_images/nat01.png" src="../_images/nat01.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/nat02.png" src="../_images/nat02.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/nat03.png" src="../_images/nat03.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/nat04.png" src="../_images/nat04.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/nat05.png" src="../_images/nat05.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/nat06.png" src="../_images/nat06.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/nat07.png" src="../_images/nat07.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/nat08.png" src="../_images/nat08.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/nat09.png" src="../_images/nat09.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/nat10.png" src="../_images/nat10.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/nat11.png" src="../_images/nat11.png" />
+</figure>
+<figure class="align-default">
+<img alt="../_images/nat12.png" src="../_images/nat12.png" />
+</figure>
+</section>
 </section>
 <section id="formas-de-conexion-al-router-para-su-configuracion-inicial">
 <h2>Formas de conexión al router para su configuración inicial.<a class="headerlink" href="#formas-de-conexion-al-router-para-su-configuracion-inicial" title="Enlazar permanentemente con este título"></a></h2>
+<section id="routers-domesticos">
+<h3>Routers domésticos<a class="headerlink" href="#routers-domesticos" title="Enlazar permanentemente con este título"></a></h3>
+</section>
+<section id="routers-de-gama-alta">
+<h3>Routers de gama alta<a class="headerlink" href="#routers-de-gama-alta" title="Enlazar permanentemente con este título"></a></h3>
+</section>
 </section>
 <section id="comandos-para-configuracion-del-router">
 <h2>Comandos para configuración del router.<a class="headerlink" href="#comandos-para-configuracion-del-router" title="Enlazar permanentemente con este título"></a></h2>
+<section id="poner-clave-al-modo-administrador">
+<h3>Poner clave al modo administrador<a class="headerlink" href="#poner-clave-al-modo-administrador" title="Enlazar permanentemente con este título"></a></h3>
+</section>
+<section id="poner-clave-al-acceso-por-telnet">
+<h3>Poner clave al acceso por telnet<a class="headerlink" href="#poner-clave-al-acceso-por-telnet" title="Enlazar permanentemente con este título"></a></h3>
+</section>
+<section id="poner-clave-al-acceso-por-cable-de-consola">
+<h3>Poner clave al acceso por cable de consola<a class="headerlink" href="#poner-clave-al-acceso-por-cable-de-consola" title="Enlazar permanentemente con este título"></a></h3>
+</section>
+<section id="quitar-una-clave-o-valor-de-configuracion">
+<h3>Quitar una clave o valor de configuración<a class="headerlink" href="#quitar-una-clave-o-valor-de-configuracion" title="Enlazar permanentemente con este título"></a></h3>
+</section>
 </section>
 <section id="comandos-para-administracion-del-router">
 <h2>Comandos para administración del router.<a class="headerlink" href="#comandos-para-administracion-del-router" title="Enlazar permanentemente con este título"></a></h2>
+<section id="poner-una-ip-a-una-interfaz">
+<h3>Poner una IP a una interfaz<a class="headerlink" href="#poner-una-ip-a-una-interfaz" title="Enlazar permanentemente con este título"></a></h3>
+</section>
+<section id="configurar-dhcp">
+<h3>Configurar DHCP<a class="headerlink" href="#configurar-dhcp" title="Enlazar permanentemente con este título"></a></h3>
+</section>
+<section id="excluir-direcciones-de-la-asignacion-dhcp">
+<h3>Excluir direcciones de la asignación DHCP<a class="headerlink" href="#excluir-direcciones-de-la-asignacion-dhcp" title="Enlazar permanentemente con este título"></a></h3>
+</section>
+<section id="activar-nat-en-un-router">
+<h3>Activar NAT en un router<a class="headerlink" href="#activar-nat-en-un-router" title="Enlazar permanentemente con este título"></a></h3>
+</section>
 </section>
 <section id="configuracion-del-enrutamiento-estatico">
 <h2>Configuración del enrutamiento estático.<a class="headerlink" href="#configuracion-del-enrutamiento-estatico" title="Enlazar permanentemente con este título"></a></h2>
@@ -150,10 +221,29 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tema 5: Configuración y administración básica de routers</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#la-capa-de-transporte">La capa de transporte</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#componentes-del-router">Componentes del router.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#los-routers-en-las-lan-y-en-las-wan">Los routers en las LAN y en las WAN.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#formas-de-conexion-al-router-para-su-configuracion-inicial">Formas de conexión al router para su configuración inicial.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#comandos-para-configuracion-del-router">Comandos para configuración del router.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#comandos-para-administracion-del-router">Comandos para administración del router.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#los-routers-en-las-lan-y-en-las-wan">Los routers en las LAN y en las WAN.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#el-proceso-de-nat-paso-a-paso">El proceso de NAT paso a paso</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#formas-de-conexion-al-router-para-su-configuracion-inicial">Formas de conexión al router para su configuración inicial.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#routers-domesticos">Routers domésticos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#routers-de-gama-alta">Routers de gama alta</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#comandos-para-configuracion-del-router">Comandos para configuración del router.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#poner-clave-al-modo-administrador">Poner clave al modo administrador</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#poner-clave-al-acceso-por-telnet">Poner clave al acceso por telnet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#poner-clave-al-acceso-por-cable-de-consola">Poner clave al acceso por cable de consola</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quitar-una-clave-o-valor-de-configuracion">Quitar una clave o valor de configuración</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#comandos-para-administracion-del-router">Comandos para administración del router.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#poner-una-ip-a-una-interfaz">Poner una IP a una interfaz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configurar-dhcp">Configurar DHCP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#excluir-direcciones-de-la-asignacion-dhcp">Excluir direcciones de la asignación DHCP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#activar-nat-en-un-router">Activar NAT en un router</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#configuracion-del-enrutamiento-estatico">Configuración del enrutamiento estático.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#definicion-y-ubicacion-de-listas-de-control-de-acceso-acls">Definición y ubicación de listas de control de acceso (ACLs).</a></li>
 </ul>
@@ -210,7 +300,7 @@
       &copy;2021, Oscar G. G..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
