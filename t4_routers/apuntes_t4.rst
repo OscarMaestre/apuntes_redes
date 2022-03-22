@@ -150,8 +150,16 @@ Formas de conexión al router para su configuración inicial.
 Routers domésticos
 ~~~~~~~~~~~~~~~~~~~~
 
+Los routers domésticos (también se encuentran en PYMES y pequeñas instituciones) se configuran mediante un interfaz web. Basta con abrir el navegador y conectarse a su IP de gestión, que en la mayoría de casos es la http://192.168.1.1
+
 Routers de gama alta
 ~~~~~~~~~~~~~~~~~~~~~~
+
+El proceso es el mismo que en los switches
+* Cable de consola.
+* Conexión Telnet (insegura).
+* Conexión SSH (segura pero requiere algunos pasos más).
+
 
 Comandos para configuración del router.
 ----------------------------------------------------------------------------
@@ -159,28 +167,85 @@ Comandos para configuración del router.
 Poner clave al modo administrador
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Para poner una clave::
+    Router>enable
+    Router#configure terminal
+    Router(config)#enable secret admin1234
+    Router(config)#exit
+    Router#exit
+    Router>enable
+    Password:
+
 Poner clave al acceso por telnet
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+El proceso era::
+    Router>enable
+    Router#configure terminal
+    Router(config)#line vty 0 4
+    Router(config-line)#password telnet1234
+    Router(config-line)#login
 
 Poner clave al acceso por cable de consola
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+El proceso era el siguiente::
 
+    Router>enable
+    Router#configure terminal
+    Router(config)#line console 0
+    Router(config-line)#password consola1234
+    Router(config-line)#login
 
 Quitar una clave o valor de configuración
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Supongamos que queremos quitar la clave del modo administrador. Lo único que se necesita es ir al modo correcto y escribir **no** y despues el comando que ejecutaba la operación. Por ejemplo, para quitar la clave ``admin1234`` que hemos puesto antes haríamos esto::
 
+    Router>enable
+    Password:****
+    Router#configure terminal
+    Router(config)#no enable secret 
 
 Comandos para administración del router.
 ----------------------------------------------------------------------------
 
 Poner una IP a una interfaz
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Para poner una IP se debe entrar en el interfaz correspondiente y luego usar el comando ``ip address <IP> <máscara>``. Por ejemplo, para poner la IP 192.168.1.1 con máscara 255.255.255.0 al interfaz ``GigabitEthernet 0/0`` hacemos esto::
+
+    Router>enable
+    Router#configure terminal
+    Router(config)#interface GigabitEthernet 0/0
+    Router(config-if)#ip address 192.168.1.1 255.255.255.0
+    Router(config-if)#no shutdown
 
 Configurar DHCP
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
+DHCP (Dynamic Host Configuration Protocol) es un protocolo que permite que los host de una red se configuren automáticamente. Solo se necesita definir una serie de parámetros en alguna máquina que hará de *servidor DHCP* y que escuchará peticiones. Cuando un ordenador se encienda y esté configurado en modo DHCP **difundirá una petición** y si esa petición la recibe el servidor le contestará indicando la IP, máscara y otros datos que puede usar.
+
+Los parámetros que se necesitan son estos:
+
+* Dirección IP y máscara. Absolutamente imprescindibles.
+* Gateway (dirección del router que nos permite salir a otras redes).
+* Otros parámetros, dirección de servidores DNS.
+
+Los comandos son estos::
+
+    Router>enable
+    Router#configure terminal
+    Router(config)#ip dhcp pool pool_contables
+    Router(dhcp-config)#network 192.168.1.0 255.255.255.0
+
 Excluir direcciones de la asignación DHCP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Una vez estemos en un DHCP, como teníamos antes, podemos *excluir direcciones.* Se puede excluir solo una o excluir un rango de direcciones::
+
+    Router>enable
+    Router#configure terminal
+    Router(config)#ip dhcp pool pool_contables
+    Router(dhcp-config)#network 192.168.1.0 255.255.255.0
+    Router(dhcp-config)#exit
+    Router(config)#ip dhcp excluded-address 192.168.1.1
+    Router(config)#ip dhcp excluded-address 192.168.1.20 192.168.1.30
 
 Activar NAT en un router
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

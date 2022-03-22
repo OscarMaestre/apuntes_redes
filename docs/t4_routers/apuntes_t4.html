@@ -164,36 +164,106 @@
 <h2>Formas de conexión al router para su configuración inicial.<a class="headerlink" href="#formas-de-conexion-al-router-para-su-configuracion-inicial" title="Enlazar permanentemente con este título"></a></h2>
 <section id="routers-domesticos">
 <h3>Routers domésticos<a class="headerlink" href="#routers-domesticos" title="Enlazar permanentemente con este título"></a></h3>
+<p>Los routers domésticos (también se encuentran en PYMES y pequeñas instituciones) se configuran mediante un interfaz web. Basta con abrir el navegador y conectarse a su IP de gestión, que en la mayoría de casos es la <a class="reference external" href="http://192.168.1.1">http://192.168.1.1</a></p>
 </section>
 <section id="routers-de-gama-alta">
 <h3>Routers de gama alta<a class="headerlink" href="#routers-de-gama-alta" title="Enlazar permanentemente con este título"></a></h3>
+<p>El proceso es el mismo que en los switches
+* Cable de consola.
+* Conexión Telnet (insegura).
+* Conexión SSH (segura pero requiere algunos pasos más).</p>
 </section>
 </section>
 <section id="comandos-para-configuracion-del-router">
 <h2>Comandos para configuración del router.<a class="headerlink" href="#comandos-para-configuracion-del-router" title="Enlazar permanentemente con este título"></a></h2>
 <section id="poner-clave-al-modo-administrador">
 <h3>Poner clave al modo administrador<a class="headerlink" href="#poner-clave-al-modo-administrador" title="Enlazar permanentemente con este título"></a></h3>
+<dl class="simple">
+<dt>Para poner una clave::</dt><dd><p>Router&gt;enable
+Router#configure terminal
+Router(config)#enable secret admin1234
+Router(config)#exit
+Router#exit
+Router&gt;enable
+Password:</p>
+</dd>
+</dl>
 </section>
 <section id="poner-clave-al-acceso-por-telnet">
 <h3>Poner clave al acceso por telnet<a class="headerlink" href="#poner-clave-al-acceso-por-telnet" title="Enlazar permanentemente con este título"></a></h3>
+<dl class="simple">
+<dt>El proceso era::</dt><dd><p>Router&gt;enable
+Router#configure terminal
+Router(config)#line vty 0 4
+Router(config-line)#password telnet1234
+Router(config-line)#login</p>
+</dd>
+</dl>
 </section>
 <section id="poner-clave-al-acceso-por-cable-de-consola">
 <h3>Poner clave al acceso por cable de consola<a class="headerlink" href="#poner-clave-al-acceso-por-cable-de-consola" title="Enlazar permanentemente con este título"></a></h3>
+<p>El proceso era el siguiente:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Router</span><span class="o">&gt;</span><span class="n">enable</span>
+<span class="n">Router</span><span class="c1">#configure terminal</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1">#line console 0</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="n">line</span><span class="p">)</span><span class="c1">#password consola1234</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="n">line</span><span class="p">)</span><span class="c1">#login</span>
+</pre></div>
+</div>
 </section>
 <section id="quitar-una-clave-o-valor-de-configuracion">
 <h3>Quitar una clave o valor de configuración<a class="headerlink" href="#quitar-una-clave-o-valor-de-configuracion" title="Enlazar permanentemente con este título"></a></h3>
+<p>Supongamos que queremos quitar la clave del modo administrador. Lo único que se necesita es ir al modo correcto y escribir <strong>no</strong> y despues el comando que ejecutaba la operación. Por ejemplo, para quitar la clave <code class="docutils literal notranslate"><span class="pre">admin1234</span></code> que hemos puesto antes haríamos esto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Router</span><span class="o">&gt;</span><span class="n">enable</span>
+<span class="n">Password</span><span class="p">:</span><span class="o">****</span>
+<span class="n">Router</span><span class="c1">#configure terminal</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1">#no enable secret</span>
+</pre></div>
+</div>
 </section>
 </section>
 <section id="comandos-para-administracion-del-router">
 <h2>Comandos para administración del router.<a class="headerlink" href="#comandos-para-administracion-del-router" title="Enlazar permanentemente con este título"></a></h2>
 <section id="poner-una-ip-a-una-interfaz">
 <h3>Poner una IP a una interfaz<a class="headerlink" href="#poner-una-ip-a-una-interfaz" title="Enlazar permanentemente con este título"></a></h3>
+<p>Para poner una IP se debe entrar en el interfaz correspondiente y luego usar el comando <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">address</span> <span class="pre">&lt;IP&gt;</span> <span class="pre">&lt;máscara&gt;</span></code>. Por ejemplo, para poner la IP 192.168.1.1 con máscara 255.255.255.0 al interfaz <code class="docutils literal notranslate"><span class="pre">GigabitEthernet</span> <span class="pre">0/0</span></code> hacemos esto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Router</span><span class="o">&gt;</span><span class="n">enable</span>
+<span class="n">Router</span><span class="c1">#configure terminal</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1">#interface GigabitEthernet 0/0</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="c1">#ip address 192.168.1.1 255.255.255.0</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="c1">#no shutdown</span>
+</pre></div>
+</div>
 </section>
 <section id="configurar-dhcp">
 <h3>Configurar DHCP<a class="headerlink" href="#configurar-dhcp" title="Enlazar permanentemente con este título"></a></h3>
+<p>DHCP (Dynamic Host Configuration Protocol) es un protocolo que permite que los host de una red se configuren automáticamente. Solo se necesita definir una serie de parámetros en alguna máquina que hará de <em>servidor DHCP</em> y que escuchará peticiones. Cuando un ordenador se encienda y esté configurado en modo DHCP <strong>difundirá una petición</strong> y si esa petición la recibe el servidor le contestará indicando la IP, máscara y otros datos que puede usar.</p>
+<p>Los parámetros que se necesitan son estos:</p>
+<ul class="simple">
+<li><p>Dirección IP y máscara. Absolutamente imprescindibles.</p></li>
+<li><p>Gateway (dirección del router que nos permite salir a otras redes).</p></li>
+<li><p>Otros parámetros, dirección de servidores DNS.</p></li>
+</ul>
+<p>Los comandos son estos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Router</span><span class="o">&gt;</span><span class="n">enable</span>
+<span class="n">Router</span><span class="c1">#configure terminal</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1">#ip dhcp pool pool_contables</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">dhcp</span><span class="o">-</span><span class="n">config</span><span class="p">)</span><span class="c1">#network 192.168.1.0 255.255.255.0</span>
+</pre></div>
+</div>
 </section>
 <section id="excluir-direcciones-de-la-asignacion-dhcp">
 <h3>Excluir direcciones de la asignación DHCP<a class="headerlink" href="#excluir-direcciones-de-la-asignacion-dhcp" title="Enlazar permanentemente con este título"></a></h3>
+<p>Una vez estemos en un DHCP, como teníamos antes, podemos <em>excluir direcciones.</em> Se puede excluir solo una o excluir un rango de direcciones:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Router</span><span class="o">&gt;</span><span class="n">enable</span>
+<span class="n">Router</span><span class="c1">#configure terminal</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1">#ip dhcp pool pool_contables</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">dhcp</span><span class="o">-</span><span class="n">config</span><span class="p">)</span><span class="c1">#network 192.168.1.0 255.255.255.0</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">dhcp</span><span class="o">-</span><span class="n">config</span><span class="p">)</span><span class="c1">#exit</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1">#ip dhcp excluded-address 192.168.1.1</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1">#ip dhcp excluded-address 192.168.1.20 192.168.1.30</span>
+</pre></div>
+</div>
 </section>
 <section id="activar-nat-en-un-router">
 <h3>Activar NAT en un router<a class="headerlink" href="#activar-nat-en-un-router" title="Enlazar permanentemente con este título"></a></h3>
