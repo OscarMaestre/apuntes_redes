@@ -250,6 +250,11 @@ Una vez estemos en un DHCP, como teníamos antes, podemos *excluir direcciones.*
 Activar NAT en un router
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+En los router de gama alta, solo hay que identificar qué tarjeta va conectada a la red interna y qué tarjeta va a la red externa.
+
+* La tarjeta interna debe recibir el comando ``ip nat inside``.
+* La tarjeta externa el comando ``ip nat outside``.
+
 Configuración del enrutamiento estático.
 ----------------------------------------------------------------------------
 
