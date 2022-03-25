@@ -1,0 +1,11 @@
+enable
+configure terminal
+ip dhcp pool pool_direcciones
+network 192.168.1.0 255.255.255.0
+default-router 192.168.1.1
+dns-server 8.8.8.8
+exit
+ip dhcp excluded-address 192.168.1.1
+ip dhcp excluded-address 192.168.1.10 192.168.1.20
+exit
+copy running-config startup-config
