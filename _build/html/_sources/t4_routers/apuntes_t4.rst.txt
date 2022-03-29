@@ -168,6 +168,7 @@ Poner clave al modo administrador
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Para poner una clave::
+
     Router>enable
     Router#configure terminal
     Router(config)#enable secret admin1234
@@ -179,6 +180,7 @@ Para poner una clave::
 Poner clave al acceso por telnet
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 El proceso era::
+
     Router>enable
     Router#configure terminal
     Router(config)#line vty 0 4
@@ -234,6 +236,9 @@ Los comandos son estos::
     Router#configure terminal
     Router(config)#ip dhcp pool pool_contables
     Router(dhcp-config)#network 192.168.1.0 255.255.255.0
+    Router(dhcp-config)#default-router 192.168.1.1
+    Router(dhcp-config)#dns-server 8.8.8.8
+    
 
 Excluir direcciones de la asignación DHCP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -250,9 +255,117 @@ Una vez estemos en un DHCP, como teníamos antes, podemos *excluir direcciones.*
 Activar NAT en un router
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+En los router de gama alta, solo hay que identificar qué tarjeta va conectada a la red interna y qué tarjeta va a la red externa.
+
+* La tarjeta interna debe recibir el comando ``ip nat inside``.
+* La tarjeta externa el comando ``ip nat outside``.
+
 Configuración del enrutamiento estático.
 ----------------------------------------------------------------------------
+
+Se debe empezar por ir al modo de configuración globa. En líneas generales el comando tiene estas partes:
+
+1. En primer lugar se escribe ``ip route``.
+2. Despues se escribe **la dirección IP de red** de la red a la cual queremos que el router pueda enviar paquetas.
+3. Despues se escribe **la máscara de dicha red**.
+4. Después se escribe **la IP del siguiente router** al que vamos a enviar el paquete.
+
+Así, para enseñarle a un router que si necesita enviar paquetes a la red 10.0.0.0/16 debe enviarlo al router con la IP 80.26.118.200 escribiremos ``ip router 10.0.0.0 255.255.0.0 80.26.118.200``
 
 Definición y ubicación de listas de control de acceso (ACLs).
 ----------------------------------------------------------------------------
 
+
+
+Ejercicio completo de configuración de routers
+----------------------------------------------------------------------
+
+Observa la figura siguiente. En ella hay tres router que interconectan tres redes. En ellas ocurre lo siguiente:
+
+* Todas las redes usan direccionamiento con IPs privadas del tipo 192.168.1.0/255.255.255.0.
+* Todos los equipos "PC"  se configuran mediante direccionamiento dinámico con DHCP en los respectivos router. Se desea que estos equipos adopten una IP al azar, que usen siempre como router por defecto a su router (que tendrá la IP 192.168.1.1) y que usen como servidor DNS a la IP 8.8.8.8.
+* Todos los "Server" tienen la dirección 192.168.1.25/255.255.255.0. Su router y su DNS serán los mismos valores que en los PC pero en los "Server" todos los parámetros son estáticos, se deben configurar a mano.
+* Todos los router tienen una tarjeta llamada "GigabitEthernet 0/0" que les conectan con las redes internas. Esta tarjeta **siempre** tiene la IP 192.168.1.1/255.255.255.0
+* Todos los router tienen tarjetas "Serial" que les conecta con otros router. En concreto:
+
+    * El router "Router0" tiene una tarjeta "Serial 0/3/0" que le conecta con una tarjeta "Serial 0/3/0" de "Router1".
+    * El router "Router0" tiene una tarjeta "Serial 0/3/1" que le conecta con una tarjeta "Serial 0/3/0" de "Router2".
+    * El router "Router1" tiene una tarjeta "Serial 0/3/1" que le conecta con una tarjeta "Serial 0/3/1" de "Router2"
+    
+* Los router están interconectados entre sí usando direcciones públicas. En concreto:
+
+    * "Router0" y "Router1" están conectados por la red 1.0.0.0/8. "Router0" tendrá la 1.1.1.1 y "Router1" la 1.1.1.2
+    * "Router0" y "Router2" están conectados por la red 2.0.0.0/8. "Router0" tendrá la 2.2.2.1 y "Router2" la 2.2.2.2
+    * "Router1" y "Router2" están conectados por la red 3.0.0.0/8. "Router1" tendrá la 3.3.3.1 y "Router2" la 3.3.3.2
+    
+    
+  En los siguientes párrafos se desglosa la solución.
+  
+  
+  
+Direccionamiento, DHCP y NAT interno
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Todos los routers están configurados exactamente igual::
+
+	enable
+	configure terminal
+	ip dhcp pool pool_direcciones
+	network 192.168.1.0 255.255.255.0
+	default-router 192.168.1.1
+	dns-server 8.8.8.8
+	exit
+	ip dhcp excluded-address 192.168.1.1
+	ip dhcp excluded-address 192.168.1.10 192.168.1.20
+	interface gigabitethernet 0/0 
+	ip address 192.168.1.1 255.255.255.0
+	ip nat inside
+	no shutdown
+	exit
+	exit
+	copy running-config startup-config
+
+
+NAT Externo y direcciones públicas
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Habrá que entrar en las distintas tarjetas y activar el NAT correcto. Para Router0 sería así::
+
+	enable
+	configure terminal
+	interface serial 0/3/0
+	ip address 1.1.1.1 255.0.0.0
+	ip nat outside
+	no shutdown
+	interface serial 0/3/1
+	ip address 2.2.2.1 255.0.0.0
+	ip nat outside
+	no shutdown
+	
+	
+Para Router1 sería muy parecido::
+
+	enable
+	configure terminal
+	interface serial 0/3/0
+	ip address 1.1.1.2 255.0.0.0
+	ip nat outside
+	no shutdown
+	interface serial 0/3/1
+	ip address 3.3.3.1 255.0.0.0
+	ip nat outside
+	no shutdown
+	
+Y para Router2 también muy similar::
+
+	enable
+	configure terminal
+	interface serial 0/3/0
+	ip address 3.3.3.2 255.0.0.0
+	ip nat outside
+	no shutdown
+	interface serial 0/3/1
+	ip address 2.2.2.2 255.0.0.0
+	ip nat outside
+	no shutdown
+	
