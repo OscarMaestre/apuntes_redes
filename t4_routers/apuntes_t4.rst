@@ -263,6 +263,15 @@ En los router de gama alta, solo hay que identificar qué tarjeta va conectada a
 Configuración del enrutamiento estático.
 ----------------------------------------------------------------------------
 
+Se debe empezar por ir al modo de configuración globa. En líneas generales el comando tiene estas partes:
+
+1. En primer lugar se escribe ``ip route``.
+2. Despues se escribe **la dirección IP de red** de la red a la cual queremos que el router pueda enviar paquetas.
+3. Despues se escribe **la máscara de dicha red**.
+4. Después se escribe **la IP del siguiente router** al que vamos a enviar el paquete.
+
+Así, para enseñarle a un router que si necesita enviar paquetes a la red 10.0.0.0/16 debe enviarlo al router con la IP 80.26.118.200 escribiremos ``ip router 10.0.0.0 255.255.0.0 80.26.118.200``
+
 Definición y ubicación de listas de control de acceso (ACLs).
 ----------------------------------------------------------------------------
 
