@@ -304,38 +304,46 @@ Con esto, la configuración de las rutas sería algo como lo que mostramos en lo
 
 Redes en Router 1
 ~~~~~~~~~~~~~~~~~~
-enable
-configure terminal
-ip route 20.0.0.0 255.0.0.0 1.1.1.2
-ip route 30.0.0.0 255.0.0.0 2.2.2.2
-ip route 40.0.0.0 255.0.0.0 1.1.1.2
-exit
+Comandos necesarios::
+
+    enable
+    configure terminal
+    ip route 20.0.0.0 255.0.0.0 1.1.1.2
+    ip route 30.0.0.0 255.0.0.0 2.2.2.2
+    ip route 40.0.0.0 255.0.0.0 1.1.1.2
+    exit
 
 Redes en Router 2
 ~~~~~~~~~~~~~~~~~~~~~~
-enable
-configure terminal
-ip route 10.0.0.0 255.0.0.0 1.1.1.1
-ip route 40.0.0.0 255.0.0.0 4.4.4.2
-ip route 20.0.0.0 255.0.0.0 4.4.4.2
+Comandos necesarios::
+
+    enable
+    configure terminal
+    ip route 10.0.0.0 255.0.0.0 1.1.1.1
+    ip route 40.0.0.0 255.0.0.0 4.4.4.2
+    ip route 20.0.0.0 255.0.0.0 4.4.4.2
 
 
 
 Redes en Router 3
 ~~~~~~~~~~~~~~~~~~~~~~
-enable
-configure terminal
-ip route 10.0.0.0 255.0.0.0 2.2.2.1
-ip route 40.0.0.0 255.0.0.0 3.3.3.2
-ip route 30.0.0.0 255.0.0.0 2.2.2.1
+Comandos necesarios::
+
+    enable
+    configure terminal
+    ip route 10.0.0.0 255.0.0.0 2.2.2.1
+    ip route 40.0.0.0 255.0.0.0 3.3.3.2
+    ip route 30.0.0.0 255.0.0.0 2.2.2.1
 
 Redes en Router 4
 ~~~~~~~~~~~~~~~~~~~~~~
-enable
-configure terminal
-ip route 20.0.0.0 255.0.0.0 4.4.4.1
-ip route 30.0.0.0 255.0.0.0 3.3.3.1
-ip route 10.0.0.0 255.0.0.0 3.3.3.1
+Comandos necesarios::
+
+    enable
+    configure terminal
+    ip route 20.0.0.0 255.0.0.0 4.4.4.1
+    ip route 30.0.0.0 255.0.0.0 3.3.3.1
+    ip route 10.0.0.0 255.0.0.0 3.3.3.1
 
 
 
