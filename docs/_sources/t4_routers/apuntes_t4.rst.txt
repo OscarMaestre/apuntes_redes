@@ -273,6 +273,21 @@ Se debe empezar por ir al modo de configuración globa. En líneas generales el 
 
 Así, para enseñarle a un router que si necesita enviar paquetes a la red 10.0.0.0/16 debe enviarlo al router con la IP 80.26.118.200 escribiremos ``ip router 10.0.0.0 255.255.0.0 80.26.118.200``
 
+Examina la figura siguiente:
+
+
+.. figure:: img/05-ej-enrutamiento.png
+
+
+En ella hay cuatro redes, que son respectivamente:
+
+* La 10.0.0.0, arriba a la izquierda. Tiene un solo nodo, un PC con la IP 10.0.0.10.
+* La 20.0.0.0, arriba a la derecha. Tiene un solo nodo, un PC con la IP 20.0.0.20.
+* La 30.0.0.0, abajo a la izquierda. Tiene un solo nodo, un PC con la IP 30.0.0.30.
+* La 40.0.0.0, abajo a la derecha. Tiene un solo nodo, un PC con la IP 40.0.0.40.
+
+Configura todo lo necesario para que todos los equipos puedan conectar con todos los demás.
+
 Definición y ubicación de listas de control de acceso (ACLs).
 ----------------------------------------------------------------------------
 
@@ -284,9 +299,7 @@ Ejercicio completo de configuración de routers
 Observa la figura siguiente. En ella hay tres router que interconectan tres redes. En ellas ocurre lo siguiente:
 
 
-.. figure:: img/05-ej-enrutamiento.png
 
-    
 * Todas las redes usan direccionamiento con IPs privadas del tipo 192.168.1.0/255.255.255.0.
 * Todos los equipos "PC"  se configuran mediante direccionamiento dinámico con DHCP en los respectivos router. Se desea que estos equipos adopten una IP al azar, que usen siempre como router por defecto a su router (que tendrá la IP 192.168.1.1) y que usen como servidor DNS a la IP 8.8.8.8.
 * Todos los "Server" tienen la dirección 192.168.1.25/255.255.255.0. Su router y su DNS serán los mismos valores que en los PC pero en los "Server" todos los parámetros son estáticos, se deben configurar a mano.

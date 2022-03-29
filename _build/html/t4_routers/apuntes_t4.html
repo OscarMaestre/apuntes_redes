@@ -288,6 +288,18 @@
 <li><p>Después se escribe <strong>la IP del siguiente router</strong> al que vamos a enviar el paquete.</p></li>
 </ol>
 <p>Así, para enseñarle a un router que si necesita enviar paquetes a la red 10.0.0.0/16 debe enviarlo al router con la IP 80.26.118.200 escribiremos <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">router</span> <span class="pre">10.0.0.0</span> <span class="pre">255.255.0.0</span> <span class="pre">80.26.118.200</span></code></p>
+<p>Examina la figura siguiente:</p>
+<figure class="align-default">
+<img alt="../_images/05-ej-enrutamiento.png" src="../_images/05-ej-enrutamiento.png" />
+</figure>
+<p>En ella hay cuatro redes, que son respectivamente:</p>
+<ul class="simple">
+<li><p>La 10.0.0.0, arriba a la izquierda. Tiene un solo nodo, un PC con la IP 10.0.0.10.</p></li>
+<li><p>La 20.0.0.0, arriba a la derecha. Tiene un solo nodo, un PC con la IP 20.0.0.20.</p></li>
+<li><p>La 30.0.0.0, abajo a la izquierda. Tiene un solo nodo, un PC con la IP 30.0.0.30.</p></li>
+<li><p>La 40.0.0.0, abajo a la derecha. Tiene un solo nodo, un PC con la IP 40.0.0.40.</p></li>
+</ul>
+<p>Configura todo lo necesario para que todos los equipos puedan conectar con todos los demás.</p>
 </section>
 <section id="definicion-y-ubicacion-de-listas-de-control-de-acceso-acls">
 <h2>Definición y ubicación de listas de control de acceso (ACLs).<a class="headerlink" href="#definicion-y-ubicacion-de-listas-de-control-de-acceso-acls" title="Enlazar permanentemente con este título"></a></h2>
@@ -295,9 +307,6 @@
 <section id="ejercicio-completo-de-configuracion-de-routers">
 <h2>Ejercicio completo de configuración de routers<a class="headerlink" href="#ejercicio-completo-de-configuracion-de-routers" title="Enlazar permanentemente con este título"></a></h2>
 <p>Observa la figura siguiente. En ella hay tres router que interconectan tres redes. En ellas ocurre lo siguiente:</p>
-<figure class="align-default">
-<img alt="../_images/05-ej-enrutamiento.png" src="../_images/05-ej-enrutamiento.png" />
-</figure>
 <ul>
 <li><p>Todas las redes usan direccionamiento con IPs privadas del tipo 192.168.1.0/255.255.255.0.</p></li>
 <li><p>Todos los equipos «PC»  se configuran mediante direccionamiento dinámico con DHCP en los respectivos router. Se desea que estos equipos adopten una IP al azar, que usen siempre como router por defecto a su router (que tendrá la IP 192.168.1.1) y que usen como servidor DNS a la IP 8.8.8.8.</p></li>
