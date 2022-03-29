@@ -236,6 +236,9 @@ Los comandos son estos::
     Router#configure terminal
     Router(config)#ip dhcp pool pool_contables
     Router(dhcp-config)#network 192.168.1.0 255.255.255.0
+    Router(dhcp-config)#default-router 192.168.1.1
+    Router(dhcp-config)#dns-server 8.8.8.8
+    
 
 Excluir direcciones de la asignación DHCP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -262,4 +265,22 @@ Configuración del enrutamiento estático.
 
 Definición y ubicación de listas de control de acceso (ACLs).
 ----------------------------------------------------------------------------
+
+
+
+Ejercicio completo de configuración de routers
+----------------------------------------------------------------------
+
+Observa la figura siguiente. En ella hay tres router que interconectan tres redes. En ellas ocurre lo siguiente:
+
+* Todas las redes usan direccionamiento con IPs privadas del tipo 192.168.1.0/255.255.255.0.
+* Todos los equipos "PC"  se configuran mediante direccionamiento dinámico con DHCP en los respectivos router. Se desea que estos equipos adopten una IP al azar, que usen siempre como router por defecto a su router (que tendrá la IP 192.168.1.1) y que usen como servidor DNS a la IP 8.8.8.8.
+* Todos los "Server" tienen la dirección 192.168.1.25/255.255.255.0. Su router y su DNS serán los mismos valores que en los PC pero en los "Server" todos los parámetros son estáticos, se deben configurar a mano.
+* Todos los router tienen una tarjeta llamada "GigabitEthernet 0/0" que les conectan con las redes internas. Esta tarjeta **siempre** tiene la IP 192.168.1.1/255.255.255.0
+* Todos los router tienen tarjetas "Serial" que les conecta con otros router. En concreto:
+
+    ** El router "Router0" tiene una tarjeta "Serial 0/3/0" que le conecta con una tarjeta "Serial 0/3/0" de "Router1".
+    ** El router "Router0" tiene una tarjeta "Serial 0/3/1" que le conecta con una tarjeta "Serial 0/3/0" de "Router2".
+    ** El router "Router1" tiene una tarjeta "Serial 0/3/1" que le conecta con una tarjeta "Serial 0/3/1" de "Router2"
+    
 
