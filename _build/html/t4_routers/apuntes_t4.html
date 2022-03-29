@@ -300,34 +300,6 @@
 <li><p>La 40.0.0.0, abajo a la derecha. Tiene un solo nodo, un PC con la IP 40.0.0.40.</p></li>
 </ul>
 <p>Configura todo lo necesario para que todos los equipos puedan conectar con todos los demás.</p>
-</section>
-<section id="ejercicio-completo-de-configuracion-de-routers">
-<h2>Ejercicio completo de configuración de routers<a class="headerlink" href="#ejercicio-completo-de-configuracion-de-routers" title="Enlazar permanentemente con este título"></a></h2>
-<p>Observa la figura siguiente. En ella hay tres router que interconectan tres redes. En ellas ocurre lo siguiente:</p>
-<ul>
-<li><p>Todas las redes usan direccionamiento con IPs privadas del tipo 192.168.1.0/255.255.255.0.</p></li>
-<li><p>Todos los equipos «PC»  se configuran mediante direccionamiento dinámico con DHCP en los respectivos router. Se desea que estos equipos adopten una IP al azar, que usen siempre como router por defecto a su router (que tendrá la IP 192.168.1.1) y que usen como servidor DNS a la IP 8.8.8.8.</p></li>
-<li><p>Todos los «Server» tienen la dirección 192.168.1.25/255.255.255.0. Su router y su DNS serán los mismos valores que en los PC pero en los «Server» todos los parámetros son estáticos, se deben configurar a mano.</p></li>
-<li><p>Todos los router tienen una tarjeta llamada «GigabitEthernet 0/0» que les conectan con las redes internas. Esta tarjeta <strong>siempre</strong> tiene la IP 192.168.1.1/255.255.255.0</p></li>
-<li><p>Todos los router tienen tarjetas «Serial» que les conecta con otros router. En concreto:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>El router «Router0» tiene una tarjeta «Serial 0/3/0» que le conecta con una tarjeta «Serial 0/3/0» de «Router1».</p></li>
-<li><p>El router «Router0» tiene una tarjeta «Serial 0/3/1» que le conecta con una tarjeta «Serial 0/3/0» de «Router2».</p></li>
-<li><p>El router «Router1» tiene una tarjeta «Serial 0/3/1» que le conecta con una tarjeta «Serial 0/3/1» de «Router2»</p></li>
-</ul>
-</div></blockquote>
-</li>
-<li><p>Los router están interconectados entre sí usando direcciones públicas. En concreto:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>«Router0» y «Router1» están conectados por la red 1.0.0.0/8. «Router0» tendrá la 1.1.1.1 y «Router1» la 1.1.1.2</p></li>
-<li><p>«Router0» y «Router2» están conectados por la red 2.0.0.0/8. «Router0» tendrá la 2.2.2.1 y «Router2» la 2.2.2.2</p></li>
-<li><p>«Router1» y «Router2» están conectados por la red 3.0.0.0/8. «Router1» tendrá la 3.3.3.1 y «Router2» la 3.3.3.2</p></li>
-</ul>
-</div></blockquote>
-</li>
-</ul>
 <p>En los siguientes párrafos se desglosa la solución.</p>
 <section id="boceto-general-de-la-solucion-al-enrutamiento">
 <h3>Boceto general de la solución al enrutamiento<a class="headerlink" href="#boceto-general-de-la-solucion-al-enrutamiento" title="Enlazar permanentemente con este título"></a></h3>
@@ -372,6 +344,34 @@ ip route 20.0.0.0 255.0.0.0 4.4.4.1
 ip route 30.0.0.0 255.0.0.0 3.3.3.1
 ip route 10.0.0.0 255.0.0.0 3.3.3.1</p>
 </section>
+</section>
+<section id="ejercicio-completo-de-configuracion-de-routers">
+<h2>Ejercicio completo de configuración de routers<a class="headerlink" href="#ejercicio-completo-de-configuracion-de-routers" title="Enlazar permanentemente con este título"></a></h2>
+<p>Observa la figura siguiente. En ella hay tres router que interconectan tres redes. En ellas ocurre lo siguiente:</p>
+<ul>
+<li><p>Todas las redes usan direccionamiento con IPs privadas del tipo 192.168.1.0/255.255.255.0.</p></li>
+<li><p>Todos los equipos «PC»  se configuran mediante direccionamiento dinámico con DHCP en los respectivos router. Se desea que estos equipos adopten una IP al azar, que usen siempre como router por defecto a su router (que tendrá la IP 192.168.1.1) y que usen como servidor DNS a la IP 8.8.8.8.</p></li>
+<li><p>Todos los «Server» tienen la dirección 192.168.1.25/255.255.255.0. Su router y su DNS serán los mismos valores que en los PC pero en los «Server» todos los parámetros son estáticos, se deben configurar a mano.</p></li>
+<li><p>Todos los router tienen una tarjeta llamada «GigabitEthernet 0/0» que les conectan con las redes internas. Esta tarjeta <strong>siempre</strong> tiene la IP 192.168.1.1/255.255.255.0</p></li>
+<li><p>Todos los router tienen tarjetas «Serial» que les conecta con otros router. En concreto:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>El router «Router0» tiene una tarjeta «Serial 0/3/0» que le conecta con una tarjeta «Serial 0/3/0» de «Router1».</p></li>
+<li><p>El router «Router0» tiene una tarjeta «Serial 0/3/1» que le conecta con una tarjeta «Serial 0/3/0» de «Router2».</p></li>
+<li><p>El router «Router1» tiene una tarjeta «Serial 0/3/1» que le conecta con una tarjeta «Serial 0/3/1» de «Router2»</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Los router están interconectados entre sí usando direcciones públicas. En concreto:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>«Router0» y «Router1» están conectados por la red 1.0.0.0/8. «Router0» tendrá la 1.1.1.1 y «Router1» la 1.1.1.2</p></li>
+<li><p>«Router0» y «Router2» están conectados por la red 2.0.0.0/8. «Router0» tendrá la 2.2.2.1 y «Router2» la 2.2.2.2</p></li>
+<li><p>«Router1» y «Router2» están conectados por la red 3.0.0.0/8. «Router1» tendrá la 3.3.3.1 y «Router2» la 3.3.3.2</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
 <section id="direccionamiento-dhcp-y-nat-interno">
 <h3>Direccionamiento, DHCP y NAT interno<a class="headerlink" href="#direccionamiento-dhcp-y-nat-interno" title="Enlazar permanentemente con este título"></a></h3>
 <p>Todos los routers están configurados exactamente igual:</p>
@@ -679,13 +679,15 @@ exit</p>
 <li class="toctree-l3"><a class="reference internal" href="#activar-nat-en-un-router">Activar NAT en un router</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#configuracion-del-enrutamiento-estatico">Configuración del enrutamiento estático.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ejercicio-completo-de-configuracion-de-routers">Ejercicio completo de configuración de routers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuracion-del-enrutamiento-estatico">Configuración del enrutamiento estático.</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#boceto-general-de-la-solucion-al-enrutamiento">Boceto general de la solución al enrutamiento</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#redes-en-router-1">Redes en Router 1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#redes-en-router-2">Redes en Router 2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#redes-en-router-3">Redes en Router 3</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#redes-en-router-4">Redes en Router 4</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ejercicio-completo-de-configuracion-de-routers">Ejercicio completo de configuración de routers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#direccionamiento-dhcp-y-nat-interno">Direccionamiento, DHCP y NAT interno</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nat-externo-y-direcciones-publicas">NAT Externo y direcciones públicas</a></li>
 </ul>
