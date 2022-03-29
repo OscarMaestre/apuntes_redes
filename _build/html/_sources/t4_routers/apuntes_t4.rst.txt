@@ -314,9 +314,59 @@ Observa la figura siguiente. En ella hay tres router que interconectan tres rede
     * "Router1" y "Router2" están conectados por la red 3.0.0.0/8. "Router1" tendrá la 3.3.3.1 y "Router2" la 3.3.3.2
     
     
-  En los siguientes párrafos se desglosa la solución.
-  
-  
+En los siguientes párrafos se desglosa la solución.
+
+Boceto general de la solución al enrutamiento
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+En primer lugar se debe tener presente que *si no definimos un conjunto claro de rutas podemos hacer que sin querer los paquetes se enruten mal y den vueltas dentro de la red sin llegar nunca a nuestro destino.*
+
+Por ello, adoptaremos esta política.
+
+* Si podemos entregar un paquete justo al router responsable de esa red lo haremos usando la ruta directa y más corta.
+* Si hay que enviar un paquete a través de varios router definiremos un "sentido de giro". Por ejemplo, cuando tengamos dudas tomaremos la decisión de enviar los paquetes de forma que recorran la red en sentido horario, es decir, el sentido en que giran las agujas del reloj.
+
+Con esto, la configuración de las rutas sería algo como lo que mostramos en los párrafos siguientes.
+
+Redes en Router 1
+~~~~~~~~~~~~~~~~~~
+enable
+configure terminal
+ip route 20.0.0.0 255.0.0.0 1.1.1.2
+ip route 30.0.0.0 255.0.0.0 2.2.2.2
+ip route 40.0.0.0 255.0.0.0 1.1.1.2
+exit
+
+Redes en Router 2
+~~~~~~~~~~~~~~~~~~~~~~
+enable
+configure terminal
+ip route 10.0.0.0 255.0.0.0 1.1.1.1
+ip route 40.0.0.0 255.0.0.0 4.4.4.2
+ip route 20.0.0.0 255.0.0.0 4.4.4.2
+
+
+
+Redes en Router 3
+~~~~~~~~~~~~~~~~~~~~~~
+enable
+configure terminal
+ip route 10.0.0.0 255.0.0.0 2.2.2.1
+ip route 40.0.0.0 255.0.0.0 3.3.3.2
+ip route 30.0.0.0 255.0.0.0 2.2.2.1
+
+Redes en Router 4
+~~~~~~~~~~~~~~~~~~~~~~
+enable
+configure terminal
+ip route 20.0.0.0 255.0.0.0 4.4.4.1
+ip route 30.0.0.0 255.0.0.0 3.3.3.1
+ip route 10.0.0.0 255.0.0.0 3.3.3.1
+
+
+
+
+
   
 Direccionamiento, DHCP y NAT interno
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

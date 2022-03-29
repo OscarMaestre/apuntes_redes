@@ -326,9 +326,52 @@
 <li><p>«Router1» y «Router2» están conectados por la red 3.0.0.0/8. «Router1» tendrá la 3.3.3.1 y «Router2» la 3.3.3.2</p></li>
 </ul>
 </div></blockquote>
-<p>En los siguientes párrafos se desglosa la solución.</p>
 </li>
 </ul>
+<p>En los siguientes párrafos se desglosa la solución.</p>
+<section id="boceto-general-de-la-solucion-al-enrutamiento">
+<h3>Boceto general de la solución al enrutamiento<a class="headerlink" href="#boceto-general-de-la-solucion-al-enrutamiento" title="Enlazar permanentemente con este título"></a></h3>
+<p>En primer lugar se debe tener presente que <em>si no definimos un conjunto claro de rutas podemos hacer que sin querer los paquetes se enruten mal y den vueltas dentro de la red sin llegar nunca a nuestro destino.</em></p>
+<p>Por ello, adoptaremos esta política.</p>
+<ul class="simple">
+<li><p>Si podemos entregar un paquete justo al router responsable de esa red lo haremos usando la ruta directa y más corta.</p></li>
+<li><p>Si hay que enviar un paquete a través de varios router definiremos un «sentido de giro». Por ejemplo, cuando tengamos dudas tomaremos la decisión de enviar los paquetes de forma que recorran la red en sentido horario, es decir, el sentido en que giran las agujas del reloj.</p></li>
+</ul>
+<p>Con esto, la configuración de las rutas sería algo como lo que mostramos en los párrafos siguientes.</p>
+</section>
+<section id="redes-en-router-1">
+<h3>Redes en Router 1<a class="headerlink" href="#redes-en-router-1" title="Enlazar permanentemente con este título"></a></h3>
+<p>enable
+configure terminal
+ip route 20.0.0.0 255.0.0.0 1.1.1.2
+ip route 30.0.0.0 255.0.0.0 2.2.2.2
+ip route 40.0.0.0 255.0.0.0 1.1.1.2
+exit</p>
+</section>
+<section id="redes-en-router-2">
+<h3>Redes en Router 2<a class="headerlink" href="#redes-en-router-2" title="Enlazar permanentemente con este título"></a></h3>
+<p>enable
+configure terminal
+ip route 10.0.0.0 255.0.0.0 1.1.1.1
+ip route 40.0.0.0 255.0.0.0 4.4.4.2
+ip route 20.0.0.0 255.0.0.0 4.4.4.2</p>
+</section>
+<section id="redes-en-router-3">
+<h3>Redes en Router 3<a class="headerlink" href="#redes-en-router-3" title="Enlazar permanentemente con este título"></a></h3>
+<p>enable
+configure terminal
+ip route 10.0.0.0 255.0.0.0 2.2.2.1
+ip route 40.0.0.0 255.0.0.0 3.3.3.2
+ip route 30.0.0.0 255.0.0.0 2.2.2.1</p>
+</section>
+<section id="redes-en-router-4">
+<h3>Redes en Router 4<a class="headerlink" href="#redes-en-router-4" title="Enlazar permanentemente con este título"></a></h3>
+<p>enable
+configure terminal
+ip route 20.0.0.0 255.0.0.0 4.4.4.1
+ip route 30.0.0.0 255.0.0.0 3.3.3.1
+ip route 10.0.0.0 255.0.0.0 3.3.3.1</p>
+</section>
 <section id="direccionamiento-dhcp-y-nat-interno">
 <h3>Direccionamiento, DHCP y NAT interno<a class="headerlink" href="#direccionamiento-dhcp-y-nat-interno" title="Enlazar permanentemente con este título"></a></h3>
 <p>Todos los routers están configurados exactamente igual:</p>
@@ -638,6 +681,11 @@ exit</p>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#configuracion-del-enrutamiento-estatico">Configuración del enrutamiento estático.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ejercicio-completo-de-configuracion-de-routers">Ejercicio completo de configuración de routers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#boceto-general-de-la-solucion-al-enrutamiento">Boceto general de la solución al enrutamiento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#redes-en-router-1">Redes en Router 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#redes-en-router-2">Redes en Router 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#redes-en-router-3">Redes en Router 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#redes-en-router-4">Redes en Router 4</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#direccionamiento-dhcp-y-nat-interno">Direccionamiento, DHCP y NAT interno</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nat-externo-y-direcciones-publicas">NAT Externo y direcciones públicas</a></li>
 </ul>
