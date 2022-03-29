@@ -168,37 +168,39 @@
 </section>
 <section id="routers-de-gama-alta">
 <h3>Routers de gama alta<a class="headerlink" href="#routers-de-gama-alta" title="Enlazar permanentemente con este título"></a></h3>
-<p>El proceso es el mismo que en los switches
-* Cable de consola.
-* Conexión Telnet (insegura).
-* Conexión SSH (segura pero requiere algunos pasos más).</p>
+<p>El proceso es el mismo que en los switches:</p>
+<ul class="simple">
+<li><p>Cable de consola.</p></li>
+<li><p>Conexión Telnet (insegura).</p></li>
+<li><p>Conexión SSH (segura pero requiere algunos pasos más).</p></li>
+</ul>
 </section>
 </section>
 <section id="comandos-para-configuracion-del-router">
 <h2>Comandos para configuración del router.<a class="headerlink" href="#comandos-para-configuracion-del-router" title="Enlazar permanentemente con este título"></a></h2>
 <section id="poner-clave-al-modo-administrador">
 <h3>Poner clave al modo administrador<a class="headerlink" href="#poner-clave-al-modo-administrador" title="Enlazar permanentemente con este título"></a></h3>
-<dl class="simple">
-<dt>Para poner una clave::</dt><dd><p>Router&gt;enable
-Router#configure terminal
-Router(config)#enable secret admin1234
-Router(config)#exit
-Router#exit
-Router&gt;enable
-Password:</p>
-</dd>
-</dl>
+<p>Para poner una clave:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Router</span><span class="o">&gt;</span><span class="n">enable</span>
+<span class="n">Router</span><span class="c1">#configure terminal</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1">#enable secret admin1234</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1">#exit</span>
+<span class="n">Router</span><span class="c1">#exit</span>
+<span class="n">Router</span><span class="o">&gt;</span><span class="n">enable</span>
+<span class="n">Password</span><span class="p">:</span>
+</pre></div>
+</div>
 </section>
 <section id="poner-clave-al-acceso-por-telnet">
 <h3>Poner clave al acceso por telnet<a class="headerlink" href="#poner-clave-al-acceso-por-telnet" title="Enlazar permanentemente con este título"></a></h3>
-<dl class="simple">
-<dt>El proceso era::</dt><dd><p>Router&gt;enable
-Router#configure terminal
-Router(config)#line vty 0 4
-Router(config-line)#password telnet1234
-Router(config-line)#login</p>
-</dd>
-</dl>
+<p>El proceso era:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Router</span><span class="o">&gt;</span><span class="n">enable</span>
+<span class="n">Router</span><span class="c1">#configure terminal</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1">#line vty 0 4</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="n">line</span><span class="p">)</span><span class="c1">#password telnet1234</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="n">line</span><span class="p">)</span><span class="c1">#login</span>
+</pre></div>
+</div>
 </section>
 <section id="poner-clave-al-acceso-por-cable-de-consola">
 <h3>Poner clave al acceso por cable de consola<a class="headerlink" href="#poner-clave-al-acceso-por-cable-de-consola" title="Enlazar permanentemente con este título"></a></h3>
@@ -249,6 +251,8 @@ Router(config-line)#login</p>
 <span class="n">Router</span><span class="c1">#configure terminal</span>
 <span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1">#ip dhcp pool pool_contables</span>
 <span class="n">Router</span><span class="p">(</span><span class="n">dhcp</span><span class="o">-</span><span class="n">config</span><span class="p">)</span><span class="c1">#network 192.168.1.0 255.255.255.0</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">dhcp</span><span class="o">-</span><span class="n">config</span><span class="p">)</span><span class="c1">#default-router 192.168.1.1</span>
+<span class="n">Router</span><span class="p">(</span><span class="n">dhcp</span><span class="o">-</span><span class="n">config</span><span class="p">)</span><span class="c1">#dns-server 8.8.8.8</span>
 </pre></div>
 </div>
 </section>
@@ -267,13 +271,119 @@ Router(config-line)#login</p>
 </section>
 <section id="activar-nat-en-un-router">
 <h3>Activar NAT en un router<a class="headerlink" href="#activar-nat-en-un-router" title="Enlazar permanentemente con este título"></a></h3>
+<p>En los router de gama alta, solo hay que identificar qué tarjeta va conectada a la red interna y qué tarjeta va a la red externa.</p>
+<ul class="simple">
+<li><p>La tarjeta interna debe recibir el comando <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">nat</span> <span class="pre">inside</span></code>.</p></li>
+<li><p>La tarjeta externa el comando <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">nat</span> <span class="pre">outside</span></code>.</p></li>
+</ul>
 </section>
 </section>
 <section id="configuracion-del-enrutamiento-estatico">
 <h2>Configuración del enrutamiento estático.<a class="headerlink" href="#configuracion-del-enrutamiento-estatico" title="Enlazar permanentemente con este título"></a></h2>
+<p>Se debe empezar por ir al modo de configuración globa. En líneas generales el comando tiene estas partes:</p>
+<ol class="arabic simple">
+<li><p>En primer lugar se escribe <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">route</span></code>.</p></li>
+<li><p>Despues se escribe <strong>la dirección IP de red</strong> de la red a la cual queremos que el router pueda enviar paquetas.</p></li>
+<li><p>Despues se escribe <strong>la máscara de dicha red</strong>.</p></li>
+<li><p>Después se escribe <strong>la IP del siguiente router</strong> al que vamos a enviar el paquete.</p></li>
+</ol>
+<p>Así, para enseñarle a un router que si necesita enviar paquetes a la red 10.0.0.0/16 debe enviarlo al router con la IP 80.26.118.200 escribiremos <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">router</span> <span class="pre">10.0.0.0</span> <span class="pre">255.255.0.0</span> <span class="pre">80.26.118.200</span></code></p>
 </section>
 <section id="definicion-y-ubicacion-de-listas-de-control-de-acceso-acls">
 <h2>Definición y ubicación de listas de control de acceso (ACLs).<a class="headerlink" href="#definicion-y-ubicacion-de-listas-de-control-de-acceso-acls" title="Enlazar permanentemente con este título"></a></h2>
+</section>
+<section id="ejercicio-completo-de-configuracion-de-routers">
+<h2>Ejercicio completo de configuración de routers<a class="headerlink" href="#ejercicio-completo-de-configuracion-de-routers" title="Enlazar permanentemente con este título"></a></h2>
+<p>Observa la figura siguiente. En ella hay tres router que interconectan tres redes. En ellas ocurre lo siguiente:</p>
+<ul>
+<li><p>Todas las redes usan direccionamiento con IPs privadas del tipo 192.168.1.0/255.255.255.0.</p></li>
+<li><p>Todos los equipos «PC»  se configuran mediante direccionamiento dinámico con DHCP en los respectivos router. Se desea que estos equipos adopten una IP al azar, que usen siempre como router por defecto a su router (que tendrá la IP 192.168.1.1) y que usen como servidor DNS a la IP 8.8.8.8.</p></li>
+<li><p>Todos los «Server» tienen la dirección 192.168.1.25/255.255.255.0. Su router y su DNS serán los mismos valores que en los PC pero en los «Server» todos los parámetros son estáticos, se deben configurar a mano.</p></li>
+<li><p>Todos los router tienen una tarjeta llamada «GigabitEthernet 0/0» que les conectan con las redes internas. Esta tarjeta <strong>siempre</strong> tiene la IP 192.168.1.1/255.255.255.0</p></li>
+<li><p>Todos los router tienen tarjetas «Serial» que les conecta con otros router. En concreto:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>El router «Router0» tiene una tarjeta «Serial 0/3/0» que le conecta con una tarjeta «Serial 0/3/0» de «Router1».</p></li>
+<li><p>El router «Router0» tiene una tarjeta «Serial 0/3/1» que le conecta con una tarjeta «Serial 0/3/0» de «Router2».</p></li>
+<li><p>El router «Router1» tiene una tarjeta «Serial 0/3/1» que le conecta con una tarjeta «Serial 0/3/1» de «Router2»</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Los router están interconectados entre sí usando direcciones públicas. En concreto:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>«Router0» y «Router1» están conectados por la red 1.0.0.0/8. «Router0» tendrá la 1.1.1.1 y «Router1» la 1.1.1.2</p></li>
+<li><p>«Router0» y «Router2» están conectados por la red 2.0.0.0/8. «Router0» tendrá la 2.2.2.1 y «Router2» la 2.2.2.2</p></li>
+<li><p>«Router1» y «Router2» están conectados por la red 3.0.0.0/8. «Router1» tendrá la 3.3.3.1 y «Router2» la 3.3.3.2</p></li>
+</ul>
+</div></blockquote>
+<p>En los siguientes párrafos se desglosa la solución.</p>
+</li>
+</ul>
+<section id="direccionamiento-dhcp-y-nat-interno">
+<h3>Direccionamiento, DHCP y NAT interno<a class="headerlink" href="#direccionamiento-dhcp-y-nat-interno" title="Enlazar permanentemente con este título"></a></h3>
+<p>Todos los routers están configurados exactamente igual:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
+<span class="n">configure</span> <span class="n">terminal</span>
+<span class="n">ip</span> <span class="n">dhcp</span> <span class="n">pool</span> <span class="n">pool_direcciones</span>
+<span class="n">network</span> <span class="mf">192.168.1.0</span> <span class="mf">255.255.255.0</span>
+<span class="n">default</span><span class="o">-</span><span class="n">router</span> <span class="mf">192.168.1.1</span>
+<span class="n">dns</span><span class="o">-</span><span class="n">server</span> <span class="mf">8.8.8.8</span>
+<span class="n">exit</span>
+<span class="n">ip</span> <span class="n">dhcp</span> <span class="n">excluded</span><span class="o">-</span><span class="n">address</span> <span class="mf">192.168.1.1</span>
+<span class="n">ip</span> <span class="n">dhcp</span> <span class="n">excluded</span><span class="o">-</span><span class="n">address</span> <span class="mf">192.168.1.10</span> <span class="mf">192.168.1.20</span>
+<span class="n">interface</span> <span class="n">gigabitethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">0</span>
+<span class="n">ip</span> <span class="n">address</span> <span class="mf">192.168.1.1</span> <span class="mf">255.255.255.0</span>
+<span class="n">ip</span> <span class="n">nat</span> <span class="n">inside</span>
+<span class="n">no</span> <span class="n">shutdown</span>
+<span class="n">exit</span>
+<span class="n">exit</span>
+<span class="n">copy</span> <span class="n">running</span><span class="o">-</span><span class="n">config</span> <span class="n">startup</span><span class="o">-</span><span class="n">config</span>
+</pre></div>
+</div>
+</section>
+<section id="nat-externo-y-direcciones-publicas">
+<h3>NAT Externo y direcciones públicas<a class="headerlink" href="#nat-externo-y-direcciones-publicas" title="Enlazar permanentemente con este título"></a></h3>
+<p>Habrá que entrar en las distintas tarjetas y activar el NAT correcto. Para Router0 sería así:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
+<span class="n">configure</span> <span class="n">terminal</span>
+<span class="n">interface</span> <span class="n">serial</span> <span class="mi">0</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">0</span>
+<span class="n">ip</span> <span class="n">address</span> <span class="mf">1.1.1.1</span> <span class="mf">255.0.0.0</span>
+<span class="n">ip</span> <span class="n">nat</span> <span class="n">outside</span>
+<span class="n">no</span> <span class="n">shutdown</span>
+<span class="n">interface</span> <span class="n">serial</span> <span class="mi">0</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">1</span>
+<span class="n">ip</span> <span class="n">address</span> <span class="mf">2.2.2.1</span> <span class="mf">255.0.0.0</span>
+<span class="n">ip</span> <span class="n">nat</span> <span class="n">outside</span>
+<span class="n">no</span> <span class="n">shutdown</span>
+</pre></div>
+</div>
+<p>Para Router1 sería muy parecido:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
+<span class="n">configure</span> <span class="n">terminal</span>
+<span class="n">interface</span> <span class="n">serial</span> <span class="mi">0</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">0</span>
+<span class="n">ip</span> <span class="n">address</span> <span class="mf">1.1.1.2</span> <span class="mf">255.0.0.0</span>
+<span class="n">ip</span> <span class="n">nat</span> <span class="n">outside</span>
+<span class="n">no</span> <span class="n">shutdown</span>
+<span class="n">interface</span> <span class="n">serial</span> <span class="mi">0</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">1</span>
+<span class="n">ip</span> <span class="n">address</span> <span class="mf">3.3.3.1</span> <span class="mf">255.0.0.0</span>
+<span class="n">ip</span> <span class="n">nat</span> <span class="n">outside</span>
+<span class="n">no</span> <span class="n">shutdown</span>
+</pre></div>
+</div>
+<p>Y para Router2 también muy similar:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
+<span class="n">configure</span> <span class="n">terminal</span>
+<span class="n">interface</span> <span class="n">serial</span> <span class="mi">0</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">0</span>
+<span class="n">ip</span> <span class="n">address</span> <span class="mf">3.3.3.2</span> <span class="mf">255.0.0.0</span>
+<span class="n">ip</span> <span class="n">nat</span> <span class="n">outside</span>
+<span class="n">no</span> <span class="n">shutdown</span>
+<span class="n">interface</span> <span class="n">serial</span> <span class="mi">0</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">1</span>
+<span class="n">ip</span> <span class="n">address</span> <span class="mf">2.2.2.2</span> <span class="mf">255.0.0.0</span>
+<span class="n">ip</span> <span class="n">nat</span> <span class="n">outside</span>
+<span class="n">no</span> <span class="n">shutdown</span>
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
@@ -328,6 +438,11 @@ Router(config-line)#login</p>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#configuracion-del-enrutamiento-estatico">Configuración del enrutamiento estático.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#definicion-y-ubicacion-de-listas-de-control-de-acceso-acls">Definición y ubicación de listas de control de acceso (ACLs).</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ejercicio-completo-de-configuracion-de-routers">Ejercicio completo de configuración de routers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#direccionamiento-dhcp-y-nat-interno">Direccionamiento, DHCP y NAT interno</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nat-externo-y-direcciones-publicas">NAT Externo y direcciones públicas</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../t6_enrutamiento_dinamico/apuntes_t6.html">Tema 6:Configuración y administración de protocolos dinámicos</a></li>

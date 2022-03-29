@@ -155,7 +155,8 @@ Los routers domésticos (también se encuentran en PYMES y pequeñas institucion
 Routers de gama alta
 ~~~~~~~~~~~~~~~~~~~~~~
 
-El proceso es el mismo que en los switches
+El proceso es el mismo que en los switches:
+
 * Cable de consola.
 * Conexión Telnet (insegura).
 * Conexión SSH (segura pero requiere algunos pasos más).
