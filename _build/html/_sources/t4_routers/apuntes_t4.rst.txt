@@ -469,29 +469,24 @@ Suponiendo que administramos la red 20.0.0.0/8, prohibir que el host  10.0.0.100
 
 Solución:
 
-Forzaremos la prohibición tan pronto como los datos lleguen al router 1, su tarjeta de red es la Fa0/0 que es la que le conecta con el router 0.
-
-¿Quien es el origen? Es un host y tiene la IP 10.0.0.100
-
-¿Qué puerto de origen usará? Uno dinámico pero a partir de TCP 49152
-
-¿Quien es el destino? La regla se aplicará a otro host y en concreto es el host 20.0.0.200
-
-¿Qué puerto es el destino?  El TCP 80
-
-¿Qué acción se va a tomar? "Deny"
+* Forzaremos la prohibición tan pronto como los datos lleguen al router 1, su tarjeta de red es la Fa0/0 que es la que le conecta con el router 0.
+* ¿Quien es el origen? Es un host y tiene la IP 10.0.0.100
+* ¿Qué puerto de origen usará? Uno dinámico pero a partir de TCP 49152
+* ¿Quien es el destino? La regla se aplicará a otro host y en concreto es el host 20.0.0.200
+* ¿Qué puerto es el destino?  El TCP 80
+* ¿Qué acción se va a tomar? "Deny"
 
 
-Los comandos serán como sigue:
+Los comandos serán como sigue::
 
-enable
-configure terminal
-access-list 100 deny tcp 	host 10.0.0.100 gt 49152 host 20.0.0.200 eq 80
-interface fastethernet 0/0
-ip access-group 100 in 
-exit
-exit
-exit
+    enable
+    configure terminal
+    access-list 100 deny tcp host 10.0.0.100 gt 49152 host 20.0.0.200 eq 80
+    interface fastethernet 0/0
+    ip access-group 100 in 
+    exit
+    exit
+    exit
 
 
 
@@ -500,21 +495,20 @@ Escenario 2
 
 Suponiendo que administramos la red 20.0.0.0/8, prohibir que el host  10.0.0.100 acceda al servidor FTP 20.0.0.200
 
-Solución al escenario 2:
 
-Nos aseguramos de borrar todo lo anterior
+Nos aseguramos de borrar todo lo anterior y ejecutamos esto::
 
-enable
-reload
-enable
-configure terminal
-access-list 100 deny tcp host 10.0.0.100 gt 49152 host 20.0.0.200 eq 20 
-access-list 100 deny tcp host 10.0.0.100 gt 49152 host 20.0.0.200 eq 21
-interface fastethernet 0/0
-ip access-group 100 in
-exit
-exit
-exit
+    enable
+    reload
+    enable
+    configure terminal
+    access-list 100 deny tcp host 10.0.0.100 gt 49152 host 20.0.0.200 eq 20 
+    access-list 100 deny tcp host 10.0.0.100 gt 49152 host 20.0.0.200 eq 21
+    interface fastethernet 0/0
+    ip access-group 100 in
+    exit
+    exit
+    exit
 
 
 Escenario 3
@@ -536,34 +530,27 @@ La wildcard Cisco es así
 00000000.11111111.11111111.11111111
   0         255      255     255
 
-Solución al escenario 3:
+Solución al escenario 3::
 
-
-enable
-reload
-
-enable
-configure terminal
-access-list 100 deny tcp 10.0.0.0 0.255.255.255 gt 49152 host 20.0.0.200 eq 80
-
-access-list 101 permit tcp 10.0.0.0 0.255.255.255 gt 49152 host 20.0.0.200 eq 20
-access-list 102 permit tcp 10.0.0.0 0.255.255.255 gt 49152 host 20.0.0.200 eq 21
-
-access-list 103 permit tcp any gt 0 any gt 0
-interface fastethernet 0/0
-
-access-list 104 permit icmp any any
-interface fastethernet 0/0
-
-ip access-group 100 in
-ip access-group 101 in
-ip access-group 102 in
-ip access-group 103 in
-ip access-group 104 in
-
-exit
-exit
-exit
+    enable
+    reload
+    enable
+    configure terminal
+    access-list 100 deny tcp 10.0.0.0 0.255.255.255 gt 49152 host 20.0.0.200 eq 80
+    access-list 101 permit tcp 10.0.0.0 0.255.255.255 gt 49152 host 20.0.0.200 eq 20
+    access-list 102 permit tcp 10.0.0.0 0.255.255.255 gt 49152 host 20.0.0.200 eq 21
+    access-list 103 permit tcp any gt 0 any gt 0
+    interface fastethernet 0/0
+    access-list 104 permit icmp any any
+    interface fastethernet 0/0
+    ip access-group 100 in
+    ip access-group 101 in
+    ip access-group 102 in
+    ip access-group 103 in
+    ip access-group 104 in
+    exit
+    exit
+    exit
 
 Escenario 4
 --------------
@@ -574,32 +561,32 @@ Suponiendo que administramos el router 1 (derecha):
 * Se desea prohibir el FTP solo al host 10.0.0.101
 * Permitir el resto de casos.
 
-enable
-reload
+Solución::
 
-enable
-configure terminal
-access-list 100 permit tcp 10.0.0.0 0.255.255.255 gt 0 host 20.0.0.200 eq 80
-
-access-list 101 permit tcp host 10.0.0.100 gt 0 host 20.0.0.200 eq 20
-access-list 102 permit tcp host 10.0.0.100 gt 0 host 20.0.0.200 eq 21
-access-list 103 deny tcp host 10.0.0.101 gt 0 host 20.0.0.200 eq 20
-access-list 104 deny tcp host 10.0.0.101 gt 0 host 20.0.0.200 eq 21
-access-list 105 permit tcp any any
-access-list 106 permit udp any any
-access-list 107 permit icmp any any
-interface fastethernet 0/0
-ip access-group 100 in
-ip access-group 101 in
-ip access-group 102 in
-ip access-group 103 in
-ip access-group 104 in
-ip access-group 105 in
-ip access-group 106 in
-ip access-group 107 in
-exit
-exit
-exit
+    enable
+    reload
+    enable
+    configure terminal
+    access-list 100 permit tcp 10.0.0.0 0.255.255.255 gt 0 host 20.0.0.200 eq 80
+    access-list 101 permit tcp host 10.0.0.100 gt 0 host 20.0.0.200 eq 20
+    access-list 102 permit tcp host 10.0.0.100 gt 0 host 20.0.0.200 eq 21
+    access-list 103 deny tcp host 10.0.0.101 gt 0 host 20.0.0.200 eq 20
+    access-list 104 deny tcp host 10.0.0.101 gt 0 host 20.0.0.200 eq 21
+    access-list 105 permit tcp any any
+    access-list 106 permit udp any any
+    access-list 107 permit icmp any any
+    interface fastethernet 0/0
+    ip access-group 100 in
+    ip access-group 101 in
+    ip access-group 102 in
+    ip access-group 103 in
+    ip access-group 104 in
+    ip access-group 105 in
+    ip access-group 106 in
+    ip access-group 107 in
+    exit
+    exit
+    exit
 
 
 Escenario 5
@@ -610,19 +597,18 @@ Ahora administramos el router 0 (izquierda) y  se desea conseguir lo siguiente:
 * Permitir el tráfico de salida HTTP destinado a la derecha.
 * Denegar el resto de casos.
 
-Por cuestiones de rendimiento se desean tomar las decisiones tan pronto como se pueda y cortar el tráfico tan pronto como lo descubramos.
+Por cuestiones de rendimiento se desean tomar las decisiones tan pronto como se pueda y cortar el tráfico tan pronto como lo descubramos::
 
-enable
-reload
-
-enable
-configure terminal
-access-list 100 permit tcp 10.0.0.0 0.255.255.255 gt 0 host 20.0.0.200 eq 80
-interface fastethernet 0/0
-ip access-group 100 out
-exit
-exit
-exit
+    enable
+    reload
+    enable
+    configure terminal
+    access-list 100 permit tcp 10.0.0.0 0.255.255.255 gt 0 host 20.0.0.200 eq 80
+    interface fastethernet 0/0
+    ip access-group 100 out
+    exit
+    exit
+    exit
 
 
 
@@ -635,36 +621,33 @@ No nos dicen donde "tomar la decisión", haremos los dos.
 
 Caso 1: decidir en la tarjeta 0/0
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Para la tarjeta 0/0 este requisito es una REGLA DE ENTRADA, es decir, que usaremos "in"
+Para la tarjeta 0/0 este requisito es una REGLA DE ENTRADA, es decir, que usaremos "in"::
 
-enable
-reload
-enable
-configure terminal
-access-list 100 permit tcp host 20.0.0.101 gt 0 host 10.0.0.200 eq 80 
-interface fastethernet 0/0
-ip access-group 100 in
-exit
-exit
-exit
+    enable
+    reload
+    enable
+    configure terminal
+    access-list 100 permit tcp host 20.0.0.101 gt 0 host 10.0.0.200 eq 80 
+    interface fastethernet 0/0
+    ip access-group 100 in
+    exit
+    exit
+    exit
+
 Caso 2: decidir en la tarjeta 0/1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Aunque el tráfico es ENTRANTE, desde el punto de vista de la tarjeta 0/1 el tráfico es SALIENTE, así que habrá que usar "out".
+Aunque el tráfico es ENTRANTE, desde el punto de vista de la tarjeta 0/1 el tráfico es SALIENTE, así que habrá que usar "out"::
 
-
-enable
-reload
-
-enable
-configure terminal
-access-list 100 permit tcp host 20.0.0.101 gt 0 host 10.0.0.200 eq 80 
-interface fastethernet 0/1
-ip access-group 100 out
-exit
-exit
-exit
-
-
+    enable
+    reload
+    enable
+    configure terminal
+    access-list 100 permit tcp host 20.0.0.101 gt 0 host 10.0.0.200 eq 80 
+    interface fastethernet 0/1
+    ip access-group 100 out
+    exit
+    exit
+    exit
 
 
 
@@ -677,18 +660,23 @@ También se desea permitir el tráfico HTTP que viene del 20.0.0.100. Denegar el
 
 Caso 1: decidir en la tarjeta 0/0
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-enable
-configure terminal
-access-list 100 permit tcp 20.0.0.0 0.255.255.255 gt 0 host 10.0.0.200 eq 443
-access-list 100 permit tcp host 20.0.0.100 gt 0 host 10.0.0.200 eq 80
-interface fastethernet 0/0
-ip access-group 100 in
-exit
-exit
-exit
 
+Los comandos serían::
 
+    enable
+    configure terminal
+    access-list 100 permit tcp 20.0.0.0 0.255.255.255 gt 0 host 10.0.0.200 eq 443
+    access-list 100 permit tcp host 20.0.0.100 gt 0 host 10.0.0.200 eq 80
+    interface fastethernet 0/0
+    ip access-group 100 in
+    exit
+    exit
+    exit
 
+Caso 2: decidir en la otra tarjeta
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Se queda como ejercicio, ¡inténtalo!
 
 
 
