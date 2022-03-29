@@ -283,6 +283,10 @@ Ejercicio completo de configuración de routers
 
 Observa la figura siguiente. En ella hay tres router que interconectan tres redes. En ellas ocurre lo siguiente:
 
+
+.. figure:: img/05-ej-enrutamiento.png
+
+    
 * Todas las redes usan direccionamiento con IPs privadas del tipo 192.168.1.0/255.255.255.0.
 * Todos los equipos "PC"  se configuran mediante direccionamiento dinámico con DHCP en los respectivos router. Se desea que estos equipos adopten una IP al azar, que usen siempre como router por defecto a su router (que tendrá la IP 192.168.1.1) y que usen como servidor DNS a la IP 8.8.8.8.
 * Todos los "Server" tienen la dirección 192.168.1.25/255.255.255.0. Su router y su DNS serán los mismos valores que en los PC pero en los "Server" todos los parámetros son estáticos, se deben configurar a mano.
