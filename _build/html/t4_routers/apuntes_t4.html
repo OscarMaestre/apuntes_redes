@@ -301,9 +301,6 @@
 </ul>
 <p>Configura todo lo necesario para que todos los equipos puedan conectar con todos los demás.</p>
 </section>
-<section id="definicion-y-ubicacion-de-listas-de-control-de-acceso-acls">
-<h2>Definición y ubicación de listas de control de acceso (ACLs).<a class="headerlink" href="#definicion-y-ubicacion-de-listas-de-control-de-acceso-acls" title="Enlazar permanentemente con este título"></a></h2>
-</section>
 <section id="ejercicio-completo-de-configuracion-de-routers">
 <h2>Ejercicio completo de configuración de routers<a class="headerlink" href="#ejercicio-completo-de-configuracion-de-routers" title="Enlazar permanentemente con este título"></a></h2>
 <p>Observa la figura siguiente. En ella hay tres router que interconectan tres redes. En ellas ocurre lo siguiente:</p>
@@ -397,6 +394,197 @@
 </div>
 </section>
 </section>
+<section id="definicion-y-ubicacion-de-listas-de-control-de-acceso-acls">
+<h2>Definición y ubicación de listas de control de acceso (ACLs).<a class="headerlink" href="#definicion-y-ubicacion-de-listas-de-control-de-acceso-acls" title="Enlazar permanentemente con este título"></a></h2>
+</section>
+<section id="ejercicios-acls">
+<h2>Ejercicios ACLs<a class="headerlink" href="#ejercicios-acls" title="Enlazar permanentemente con este título"></a></h2>
+<p>Dadas dos redes (puedes ver la topología abajo) con las direcciones 10.0.0.0/8 y 20.0.0.0/8 ocurre lo siguiente:</p>
+<ul class="simple">
+<li><p>En la red 10 hay un servidor con la IP 10.0.0.200 que sirve webs y FTP</p></li>
+<li><p>En la red 20 hay un servidor con la IP 20.0.0.200 que sirve webs y FTP</p></li>
+</ul>
+<figure class="align-default">
+<img alt="../_images/06-ej-acls.png" src="../_images/06-ej-acls.png" />
+</figure>
+<p>Se nos pide poner en marcha los escenarios siguientes (cada escenario es independiente, reinicia los routers o borra las reglas antes de pasar de un escenario a otro):</p>
+</section>
+<section id="escenario-1">
+<h2>Escenario 1<a class="headerlink" href="#escenario-1" title="Enlazar permanentemente con este título"></a></h2>
+<p>Suponiendo que administramos la red 20.0.0.0/8, prohibir que el host  10.0.0.100 acceda al servidor HTTP 20.0.0.200</p>
+<p>Solución:</p>
+<p>Forzaremos la prohibición tan pronto como los datos lleguen al router 1, su tarjeta de red es la Fa0/0 que es la que le conecta con el router 0.</p>
+<p>¿Quien es el origen? Es un host y tiene la IP 10.0.0.100</p>
+<p>¿Qué puerto de origen usará? Uno dinámico pero a partir de TCP 49152</p>
+<p>¿Quien es el destino? La regla se aplicará a otro host y en concreto es el host 20.0.0.200</p>
+<p>¿Qué puerto es el destino?  El TCP 80</p>
+<p>¿Qué acción se va a tomar? «Deny»</p>
+<p>Los comandos serán como sigue:</p>
+<p>enable
+configure terminal
+access-list 100 deny tcp        host 10.0.0.100 gt 49152 host 20.0.0.200 eq 80
+interface fastethernet 0/0
+ip access-group 100 in
+exit
+exit
+exit</p>
+</section>
+<section id="escenario-2">
+<h2>Escenario 2<a class="headerlink" href="#escenario-2" title="Enlazar permanentemente con este título"></a></h2>
+<p>Suponiendo que administramos la red 20.0.0.0/8, prohibir que el host  10.0.0.100 acceda al servidor FTP 20.0.0.200</p>
+<p>Solución al escenario 2:</p>
+<p>Nos aseguramos de borrar todo lo anterior</p>
+<p>enable
+reload
+enable
+configure terminal
+access-list 100 deny tcp host 10.0.0.100 gt 49152 host 20.0.0.200 eq 20
+access-list 100 deny tcp host 10.0.0.100 gt 49152 host 20.0.0.200 eq 21
+interface fastethernet 0/0
+ip access-group 100 in
+exit
+exit
+exit</p>
+</section>
+<section id="escenario-3">
+<h2>Escenario 3<a class="headerlink" href="#escenario-3" title="Enlazar permanentemente con este título"></a></h2>
+<p>Prohibir el acceso al HTTP de 20.0.0.200 para cualquier máquina de la red 10.0.0.0/8
+(no vale escribir una regla para cada host, debe haber una sola regla para toda la red 10)</p>
+<p>Pista: Cisco no entiende cosas como 10.0.0.0/8 ni cosas como 10.0.0.0 255.0.0.0. Cisco usa un concepto denominado «wildcards»</p>
+<p>Una wildcard es como una máscara pero cambiando los bits 0 por bits 1 y los bits 1 por bits 0. Es decir, es una especie de «máscara inversa» (no «máscara al revés»)</p>
+<p>Si la máscara IP es</p>
+<dl class="simple">
+<dt>11111111.00000000.00000000.00000000</dt><dd><p>255       0        0           0</p>
+</dd>
+</dl>
+<p>La wildcard Cisco es así</p>
+<dl class="simple">
+<dt>00000000.11111111.11111111.11111111</dt><dd><p>0         255      255     255</p>
+</dd>
+</dl>
+<p>Solución al escenario 3:</p>
+<p>enable
+reload</p>
+<p>enable
+configure terminal
+access-list 100 deny tcp 10.0.0.0 0.255.255.255 gt 49152 host 20.0.0.200 eq 80</p>
+<p>access-list 101 permit tcp 10.0.0.0 0.255.255.255 gt 49152 host 20.0.0.200 eq 20
+access-list 102 permit tcp 10.0.0.0 0.255.255.255 gt 49152 host 20.0.0.200 eq 21</p>
+<p>access-list 103 permit tcp any gt 0 any gt 0
+interface fastethernet 0/0</p>
+<p>access-list 104 permit icmp any any
+interface fastethernet 0/0</p>
+<p>ip access-group 100 in
+ip access-group 101 in
+ip access-group 102 in
+ip access-group 103 in
+ip access-group 104 in</p>
+<p>exit
+exit
+exit</p>
+</section>
+<section id="escenario-4">
+<h2>Escenario 4<a class="headerlink" href="#escenario-4" title="Enlazar permanentemente con este título"></a></h2>
+<p>Suponiendo que administramos el router 1 (derecha):</p>
+<ul class="simple">
+<li><p>Se desea permitir el tráfico HTTP a cualquiera que provenga de la red 10.0.0.0.</p></li>
+<li><p>Se desea permitir el FTP al host 10.0.0.100</p></li>
+<li><p>Se desea prohibir el FTP solo al host 10.0.0.101</p></li>
+<li><p>Permitir el resto de casos.</p></li>
+</ul>
+<p>enable
+reload</p>
+<p>enable
+configure terminal
+access-list 100 permit tcp 10.0.0.0 0.255.255.255 gt 0 host 20.0.0.200 eq 80</p>
+<p>access-list 101 permit tcp host 10.0.0.100 gt 0 host 20.0.0.200 eq 20
+access-list 102 permit tcp host 10.0.0.100 gt 0 host 20.0.0.200 eq 21
+access-list 103 deny tcp host 10.0.0.101 gt 0 host 20.0.0.200 eq 20
+access-list 104 deny tcp host 10.0.0.101 gt 0 host 20.0.0.200 eq 21
+access-list 105 permit tcp any any
+access-list 106 permit udp any any
+access-list 107 permit icmp any any
+interface fastethernet 0/0
+ip access-group 100 in
+ip access-group 101 in
+ip access-group 102 in
+ip access-group 103 in
+ip access-group 104 in
+ip access-group 105 in
+ip access-group 106 in
+ip access-group 107 in
+exit
+exit
+exit</p>
+</section>
+<section id="escenario-5">
+<h2>Escenario 5<a class="headerlink" href="#escenario-5" title="Enlazar permanentemente con este título"></a></h2>
+<p>Ahora administramos el router 0 (izquierda) y  se desea conseguir lo siguiente:</p>
+<ul class="simple">
+<li><p>Permitir el tráfico de salida HTTP destinado a la derecha.</p></li>
+<li><p>Denegar el resto de casos.</p></li>
+</ul>
+<p>Por cuestiones de rendimiento se desean tomar las decisiones tan pronto como se pueda y cortar el tráfico tan pronto como lo descubramos.</p>
+<p>enable
+reload</p>
+<p>enable
+configure terminal
+access-list 100 permit tcp 10.0.0.0 0.255.255.255 gt 0 host 20.0.0.200 eq 80
+interface fastethernet 0/0
+ip access-group 100 out
+exit
+exit
+exit</p>
+</section>
+<section id="escenario-7">
+<h2>Escenario 7<a class="headerlink" href="#escenario-7" title="Enlazar permanentemente con este título"></a></h2>
+<p>Siendo los administradores del router 0 (izquierda) se desea permitir la entrada de tráfico HTTP del ordenador 20.0.0.101 y denegar todos los demás casos.</p>
+<p>No nos dicen donde «tomar la decisión», haremos los dos.</p>
+<section id="caso-1-decidir-en-la-tarjeta-0-0">
+<h3>Caso 1: decidir en la tarjeta 0/0<a class="headerlink" href="#caso-1-decidir-en-la-tarjeta-0-0" title="Enlazar permanentemente con este título"></a></h3>
+<p>Para la tarjeta 0/0 este requisito es una REGLA DE ENTRADA, es decir, que usaremos «in»</p>
+<p>enable
+reload
+enable
+configure terminal
+access-list 100 permit tcp host 20.0.0.101 gt 0 host 10.0.0.200 eq 80
+interface fastethernet 0/0
+ip access-group 100 in
+exit
+exit
+exit
+Caso 2: decidir en la tarjeta 0/1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Aunque el tráfico es ENTRANTE, desde el punto de vista de la tarjeta 0/1 el tráfico es SALIENTE, así que habrá que usar «out».</p>
+<p>enable
+reload</p>
+<p>enable
+configure terminal
+access-list 100 permit tcp host 20.0.0.101 gt 0 host 10.0.0.200 eq 80
+interface fastethernet 0/1
+ip access-group 100 out
+exit
+exit
+exit</p>
+</section>
+</section>
+<section id="escenario-8">
+<h2>Escenario 8<a class="headerlink" href="#escenario-8" title="Enlazar permanentemente con este título"></a></h2>
+<p>Administramos el router izquierdo y deseamos permitir el tráfico HTTPS que viene de la red derecha.
+También se desea permitir el tráfico HTTP que viene del 20.0.0.100. Denegar el resto de casos.</p>
+<section id="id1">
+<h3>Caso 1: decidir en la tarjeta 0/0<a class="headerlink" href="#id1" title="Enlazar permanentemente con este título"></a></h3>
+<p>enable
+configure terminal
+access-list 100 permit tcp 20.0.0.0 0.255.255.255 gt 0 host 10.0.0.200 eq 443
+access-list 100 permit tcp host 20.0.0.100 gt 0 host 10.0.0.200 eq 80
+interface fastethernet 0/0
+ip access-group 100 in
+exit
+exit
+exit</p>
+</section>
+</section>
 </section>
 
 
@@ -449,10 +637,24 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#configuracion-del-enrutamiento-estatico">Configuración del enrutamiento estático.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#definicion-y-ubicacion-de-listas-de-control-de-acceso-acls">Definición y ubicación de listas de control de acceso (ACLs).</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ejercicio-completo-de-configuracion-de-routers">Ejercicio completo de configuración de routers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#direccionamiento-dhcp-y-nat-interno">Direccionamiento, DHCP y NAT interno</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nat-externo-y-direcciones-publicas">NAT Externo y direcciones públicas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#definicion-y-ubicacion-de-listas-de-control-de-acceso-acls">Definición y ubicación de listas de control de acceso (ACLs).</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ejercicios-acls">Ejercicios ACLs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#escenario-1">Escenario 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#escenario-2">Escenario 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#escenario-3">Escenario 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#escenario-4">Escenario 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#escenario-5">Escenario 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#escenario-7">Escenario 7</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#caso-1-decidir-en-la-tarjeta-0-0">Caso 1: decidir en la tarjeta 0/0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#escenario-8">Escenario 8</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Caso 1: decidir en la tarjeta 0/0</a></li>
 </ul>
 </li>
 </ul>
