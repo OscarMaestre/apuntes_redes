@@ -168,6 +168,7 @@ Poner clave al modo administrador
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Para poner una clave::
+
     Router>enable
     Router#configure terminal
     Router(config)#enable secret admin1234
@@ -179,6 +180,7 @@ Para poner una clave::
 Poner clave al acceso por telnet
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 El proceso era::
+
     Router>enable
     Router#configure terminal
     Router(config)#line vty 0 4
