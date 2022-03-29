@@ -279,8 +279,15 @@ Observa la figura siguiente. En ella hay tres router que interconectan tres rede
 * Todos los router tienen una tarjeta llamada "GigabitEthernet 0/0" que les conectan con las redes internas. Esta tarjeta **siempre** tiene la IP 192.168.1.1/255.255.255.0
 * Todos los router tienen tarjetas "Serial" que les conecta con otros router. En concreto:
 
-    ** El router "Router0" tiene una tarjeta "Serial 0/3/0" que le conecta con una tarjeta "Serial 0/3/0" de "Router1".
-    ** El router "Router0" tiene una tarjeta "Serial 0/3/1" que le conecta con una tarjeta "Serial 0/3/0" de "Router2".
-    ** El router "Router1" tiene una tarjeta "Serial 0/3/1" que le conecta con una tarjeta "Serial 0/3/1" de "Router2"
+    * El router "Router0" tiene una tarjeta "Serial 0/3/0" que le conecta con una tarjeta "Serial 0/3/0" de "Router1".
+    * El router "Router0" tiene una tarjeta "Serial 0/3/1" que le conecta con una tarjeta "Serial 0/3/0" de "Router2".
+    * El router "Router1" tiene una tarjeta "Serial 0/3/1" que le conecta con una tarjeta "Serial 0/3/1" de "Router2"
     
+* Los router están interconectados entre sí usando direcciones públicas. En concreto:
 
+    * "Router0" y "Router1" están conectados por la red 1.0.0.0/8. "Router0" tendrá la 1.1.1.1 y "Router1" la 1.1.1.2
+    * "Router0" y "Router2" están conectados por la red 2.0.0.0/8. "Router0" tendrá la 2.2.2.1 y "Router2" la 2.2.2.2
+    * "Router1" y "Router2" están conectados por la red 3.0.0.0/8. "Router1" tendrá la 3.3.3.1 y "Router2" la 3.3.3.2
+    
+    
+    
