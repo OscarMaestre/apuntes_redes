@@ -293,7 +293,8 @@ Observa la figura siguiente. En ella hay tres router que interconectan tres rede
   En los siguientes párrafos se desglosa la solución.
   
   
-  Direccionamiento, DHCP y NAT interno
+  
+Direccionamiento, DHCP y NAT interno
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Todos los routers están configurados exactamente igual::
