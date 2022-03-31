@@ -1,0 +1,66 @@
+Direccionamiento, DHCP y NAT interno
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Todos los routers están configurados exactamente igual::
+
+	enable
+	configure terminal
+	ip dhcp pool pool_direcciones
+	network 192.168.1.0 255.255.255.0
+	default-router 192.168.1.1
+	dns-server 8.8.8.8
+	exit
+	ip dhcp excluded-address 192.168.1.1
+	ip dhcp excluded-address 192.168.1.10 192.168.1.20
+	interface gigabitethernet 0/0 
+	ip address 192.168.1.1 255.255.255.0
+	ip nat inside
+	no shutdown
+	exit
+	exit
+	copy running-config startup-config
+
+
+NAT Externo y direcciones públicas
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Habrá que entrar en las distintas tarjetas y activar el NAT correcto. Para Router0 sería así::
+
+	enable
+	configure terminal
+	interface serial 0/3/0
+	ip address 1.1.1.1 255.0.0.0
+	ip nat outside
+	no shutdown
+	interface serial 0/3/1
+	ip address 2.2.2.1 255.0.0.0
+	ip nat outside
+	no shutdown
+	
+	
+Para Router1 sería muy parecido::
+
+	enable
+	configure terminal
+	interface serial 0/3/0
+	ip address 1.1.1.2 255.0.0.0
+	ip nat outside
+	no shutdown
+	interface serial 0/3/1
+	ip address 3.3.3.1 255.0.0.0
+	ip nat outside
+	no shutdown
+	
+Y para Router2 también muy similar::
+
+	enable
+	configure terminal
+	interface serial 0/3/0
+	ip address 3.3.3.2 255.0.0.0
+	ip nat outside
+	no shutdown
+	interface serial 0/3/1
+	ip address 2.2.2.2 255.0.0.0
+	ip nat outside
+	no shutdown
+	

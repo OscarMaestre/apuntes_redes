@@ -4,15 +4,15 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Apuntes de Planificación y Administración de Redes &#8212; documentación de Apuntes de redes - 1.0</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <script src="_static/translations.js"></script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -33,10 +33,10 @@
 
           <div class="body" role="main">
             
-  <section id="apuntes-de-planificacion-y-administracion-de-redes">
-<h1>Apuntes de Planificación y Administración de Redes<a class="headerlink" href="#apuntes-de-planificacion-y-administracion-de-redes" title="Enlazar permanentemente con este título"></a></h1>
+  <div class="section" id="apuntes-de-planificacion-y-administracion-de-redes">
+<h1>Apuntes de Planificación y Administración de Redes<a class="headerlink" href="#apuntes-de-planificacion-y-administracion-de-redes" title="Enlazar permanentemente con este título">¶</a></h1>
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Índice:</span></p>
+<p class="caption"><span class="caption-text">Índice:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="t1_caracterizacion_redes/apuntes_t1.html">Tema 1:Caracterización de redes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="t1_caracterizacion_redes/apuntes_t1.html#terminologia-redes-lan-man-y-wan-topologias-arquitecturas-protocolos">Terminología: redes LAN, MAN y WAN, topologías, arquitecturas, protocolos.</a></li>
@@ -209,12 +209,59 @@
 <li class="toctree-l1"><a class="reference internal" href="t4_routers/apuntes_t4.html">Tema 5: Configuración y administración básica de routers</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="t4_routers/apuntes_t4.html#la-capa-de-transporte">La capa de transporte</a></li>
 <li class="toctree-l2"><a class="reference internal" href="t4_routers/apuntes_t4.html#componentes-del-router">Componentes del router.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="t4_routers/apuntes_t4.html#los-routers-en-las-lan-y-en-las-wan">Los routers en las LAN y en las WAN.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="t4_routers/apuntes_t4.html#formas-de-conexion-al-router-para-su-configuracion-inicial">Formas de conexión al router para su configuración inicial.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="t4_routers/apuntes_t4.html#comandos-para-configuracion-del-router">Comandos para configuración del router.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="t4_routers/apuntes_t4.html#comandos-para-administracion-del-router">Comandos para administración del router.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="t4_routers/apuntes_t4.html#configuracion-del-enrutamiento-estatico">Configuración del enrutamiento estático.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="t4_routers/apuntes_t4.html#los-routers-en-las-lan-y-en-las-wan">Los routers en las LAN y en las WAN.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="t4_routers/apuntes_t4.html#el-proceso-de-nat-paso-a-paso">El proceso de NAT paso a paso</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="t4_routers/apuntes_t4.html#formas-de-conexion-al-router-para-su-configuracion-inicial">Formas de conexión al router para su configuración inicial.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="t4_routers/apuntes_t4.html#routers-domesticos">Routers domésticos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="t4_routers/apuntes_t4.html#routers-de-gama-alta">Routers de gama alta</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="t4_routers/apuntes_t4.html#comandos-para-configuracion-del-router">Comandos para configuración del router.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="t4_routers/apuntes_t4.html#poner-clave-al-modo-administrador">Poner clave al modo administrador</a></li>
+<li class="toctree-l3"><a class="reference internal" href="t4_routers/apuntes_t4.html#poner-clave-al-acceso-por-telnet">Poner clave al acceso por telnet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="t4_routers/apuntes_t4.html#poner-clave-al-acceso-por-cable-de-consola">Poner clave al acceso por cable de consola</a></li>
+<li class="toctree-l3"><a class="reference internal" href="t4_routers/apuntes_t4.html#quitar-una-clave-o-valor-de-configuracion">Quitar una clave o valor de configuración</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="t4_routers/apuntes_t4.html#comandos-para-administracion-del-router">Comandos para administración del router.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="t4_routers/apuntes_t4.html#poner-una-ip-a-una-interfaz">Poner una IP a una interfaz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="t4_routers/apuntes_t4.html#configurar-dhcp">Configurar DHCP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="t4_routers/apuntes_t4.html#excluir-direcciones-de-la-asignacion-dhcp">Excluir direcciones de la asignación DHCP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="t4_routers/apuntes_t4.html#activar-nat-en-un-router">Activar NAT en un router</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="t4_routers/apuntes_t4.html#configuracion-del-enrutamiento-estatico">Configuración del enrutamiento estático.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="t4_routers/apuntes_t4.html#boceto-general-de-la-solucion-al-enrutamiento">Boceto general de la solución al enrutamiento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="t4_routers/apuntes_t4.html#redes-en-router-1">Redes en Router 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="t4_routers/apuntes_t4.html#redes-en-router-2">Redes en Router 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="t4_routers/apuntes_t4.html#redes-en-router-3">Redes en Router 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="t4_routers/apuntes_t4.html#redes-en-router-4">Redes en Router 4</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="t4_routers/apuntes_t4.html#ejercicio-completo-de-configuracion-de-routers">Ejercicio completo de configuración de routers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="t4_routers/apuntes_t4.html#direccionamiento-dhcp-y-nat-interno">Direccionamiento, DHCP y NAT interno</a></li>
+<li class="toctree-l3"><a class="reference internal" href="t4_routers/apuntes_t4.html#nat-externo-y-direcciones-publicas">NAT Externo y direcciones públicas</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="t4_routers/apuntes_t4.html#definicion-y-ubicacion-de-listas-de-control-de-acceso-acls">Definición y ubicación de listas de control de acceso (ACLs).</a></li>
+<li class="toctree-l2"><a class="reference internal" href="t4_routers/apuntes_t4.html#ejercicios-acls">Ejercicios ACLs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="t4_routers/apuntes_t4.html#escenario-1">Escenario 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="t4_routers/apuntes_t4.html#escenario-2">Escenario 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="t4_routers/apuntes_t4.html#escenario-3">Escenario 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="t4_routers/apuntes_t4.html#escenario-4">Escenario 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="t4_routers/apuntes_t4.html#escenario-5">Escenario 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="t4_routers/apuntes_t4.html#escenario-7">Escenario 7</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="t4_routers/apuntes_t4.html#caso-1-decidir-en-la-tarjeta-0-0">Caso 1: decidir en la tarjeta 0/0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="t4_routers/apuntes_t4.html#caso-2-decidir-en-la-tarjeta-0-1">Caso 2: decidir en la tarjeta 0/1</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="t4_routers/apuntes_t4.html#escenario-8">Escenario 8</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="t4_routers/apuntes_t4.html#id1">Caso 1: decidir en la tarjeta 0/0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="t4_routers/apuntes_t4.html#caso-2-decidir-en-la-otra-tarjeta">Caso 2: decidir en la otra tarjeta</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="t6_enrutamiento_dinamico/apuntes_t6.html">Tema 6:Configuración y administración de protocolos dinámicos</a><ul>
@@ -663,7 +710,7 @@
 </li>
 </ul>
 </div>
-</section>
+</div>
 
 
           </div>
@@ -682,7 +729,7 @@
 
 
 <h3>Navegación</h3>
-<p class="caption" role="heading"><span class="caption-text">Índice:</span></p>
+<p class="caption"><span class="caption-text">Índice:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="t1_caracterizacion_redes/apuntes_t1.html">Tema 1:Caracterización de redes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="t2_integracion_elementos/apuntes_t2.html">Tema 2:Integración de elementos en una red</a></li>
@@ -718,7 +765,7 @@
   <h3 id="searchlabel">Búsqueda rápida</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Ir a" />
     </form>
     </div>
@@ -740,7 +787,7 @@
       &copy;2021, Oscar G. G..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
