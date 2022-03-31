@@ -3,5 +3,5 @@
     "restructuredtext.confPath": "${workspaceFolder}",
     "restructuredtext.preview.sphinx.disabled": true,
     "esbonio.server.enabled": true,
-    "esbonio.sphinx.confDir": "/home/usuario/repos/apuntes_redes"
+    "esbonio.sphinx.confDir": "${workspaceFolder}"
 }
