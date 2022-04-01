@@ -447,7 +447,66 @@ Y para Router2 también muy similar::
 
 Definición y ubicación de listas de control de acceso (ACLs).
 ----------------------------------------------------------------------------
+Cisco define las listas de control de acceso como *una herramienta para hacer definir perfiles en el tráfico de red que luego puedan utilizarse para operaciones como filtrado de paquetes u ordenación del tráfico.* 
 
+Para realizar operaciones de filtrado necesitaremos hacer lo siguiente:
+
+1. Definir la lista de control de acceso y añadir alguna acción. Se debe hacer en el modo de configuración global.
+2. Añadir todas las acciones que queramos.
+3. Entrar en un interfaz.
+4. Aplicar la lista indicando si es para el tráfico de entrada (in) o de salida (out)
+
+Definiendo ACLs y añadiendo acciones
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+El comando básico tiene esta estructura::
+
+    access-list <numero_de_lista> permit/deny <origen> <destino>
+
+Si por ejemplo queremos crear una lista con el número 100 y poner en ella tres condiciones haríamos esto::
+
+    access-list 100 permit <condicion 1>
+    access-list 100 deny <condicion 2>
+    access-list 100 permit <condicion 3>
+
+Si luego queremos poner otras condiciones en otra lista haríamos esto::
+
+    access-list 101 permit <condicion 4>
+    access-list 101 deny <condicion 5>
+    access-list 101 permit <condicion 6>
+
+
+
+Cuando llegue la hora de examinar el tráfico IOS irá primero a la lista 100 e irá examinando lo que hay que hacer. Si no hay nada examinará despues la lista 101. Esto implica lo siguiente: **¿Qué ocurre si la condición 1 permite cierto tipo de tráfico y resulta que en la condición 5 queríamos denegar justo ese tráfico?** Pasará que sin querer lo hemos autorizado por lo que se debe revisar con cuidado el orden de las condiciones.
+
+Definición de condiciones
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Se pueden definir condiciones con estos parámetros
+
+* Se puede indicar como IP origen tanto un host como una red entera como la palabra ``any`` Para indicar una red entera se debe indicar la máscara en formato *wildcard* que es como la máscara pero con los bits invertidos: una IP como 192.168.1.0 con máscara 255.255.255.0 se pone en formato *wildcard* como 192.168.1.0 0.255.255.255. Para indicar un host exacto se usa ``host 192.168.1.23``
+* Se debe indicar el protocolo (tcp, udp...)
+* Se puede indicar como puerto de origen tanto un número exacto como condiciones:
+
+    * ``eq 80`` significa "exactamente el puerto 80".
+    * ``neq 443`` significa "distinto del puerto 443"
+    * ``gt 49151`` significa "puertos mayores que el 49151". Es decir, 49152 o más.
+    * ``lt 49153`` significa "puertos menores que 49153". Es decir, 49152 o menos.
+
+Aplicación de reglas
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+En realidad es tan sencillo como hacer esto::
+
+    interface fastethernet 0/0
+    ip access-group 100 in
+
+Esto entra en la tarjeta 0/0 y aplica la lista de acceso 100 al tráfico de entrada.
+
+.. DANGER:: 
+   Esto que es aparentemente fácil se puede volver muy confuso si no tenemos claro como se definió la regla **en relación con el sentido del tráfico.** Si definimos la regla bien, pero nos equivocamos y lo aplicamos en la tarjeta incorrecta o confundiendo "in" con "out" veremos que nuestras reglas no funcionan.
+
+En los apartados siguientes veremos de manera práctica como crear algunas reglas para restringir el tráfico.
 
 Ejercicios ACLs
 -------------------
@@ -677,75 +736,3 @@ Caso 2: decidir en la otra tarjeta
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Se queda como ejercicio, ¡inténtalo!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
