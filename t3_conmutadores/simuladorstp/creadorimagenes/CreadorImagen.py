@@ -5,20 +5,8 @@
 
 from PIL import Image, ImageDraw, ImageFont
 
-class CreadorImagen(object):
-    def __init__(self, archivo_imagen, archivo_resultado, archivo_fuente) -> None:
-        self.imagen=Image.open(archivo_imagen).convert("RGBA")
-        self.font= ImageFont.truetype(archivo_fuente, 40)
-        self.contexto=ImageDraw.Draw(self.imagen)
-        self.archivo_resultado=archivo_resultado    
-
-    def poner_texto(self, texto, x, y, color=(0, 0, 0)):
-        self.contexto.text( (x, y), text=texto, font=self.font, fill=color)
-        
-    def get_resultado(self):
-        self.imagen.save(self.archivo_resultado)
-
-class CreadorRoutersCuadrados(CreadorImagen):
+#Aquí falta el import de CreadorImagenes de libutilidades
+class CreadorRoutersCuadrados(CreadorImagenes):
     def __init__(self, archivo_imagen, archivo_resultado, archivo_ttf) -> None:
         self.coordenadas=[
             (210, 114), (876,128), 
