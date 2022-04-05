@@ -42,7 +42,7 @@ Como puedes ver tenemos 6 máquinas:
 * Tres router que llamaremos "Izquierda", "Arriba" y "Abajo".
 
 
-Cliente 1 y Cliente 2 solo van a usar **una tarjeta de red en modo puente**, la ``enp0s3``. Sin embargo  los router van a tener **tres tarjetas de red en modo puente**. A continuación se te indican las direcciones IP y las tarjetas en las que hay que asignarlas.
+Cliente 1 y Cliente 2 solo van a usar **una tarjeta de red en modo puente**, la ``enp0s3``. Sin embargo  los router van a tener **tres tarjetas de red en modo puente**. Si estás usando máquinas virtuales clonadas o importadas recuerda **reiniciar las MAC de todas las tarjetas.** A continuación se te indican las direcciones IP y las tarjetas en las que hay que asignarlas.
 
 * Cliente 1: {1}
 * Cliente 2: {2}
