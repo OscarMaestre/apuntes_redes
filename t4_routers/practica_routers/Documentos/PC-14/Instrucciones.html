@@ -611,7 +611,7 @@ enrutamiento estático.</p>
 <li><p>Un cliente llamado &quot;Cliente 2&quot;.</p></li>
 <li><p>Tres router que llamaremos &quot;Izquierda&quot;, &quot;Arriba&quot; y &quot;Abajo&quot;.</p></li>
 </ul>
-<p>Cliente 1 y Cliente 2 solo van a usar <strong>una tarjeta de red en modo puente</strong>, la <span class="docutils literal">enp0s3</span>. Sin embargo  los router van a tener <strong>tres tarjetas de red en modo puente</strong>. A continuación se te indican las direcciones IP y las tarjetas en las que hay que asignarlas.</p>
+<p>Cliente 1 y Cliente 2 solo van a usar <strong>una tarjeta de red en modo puente</strong>, la <span class="docutils literal">enp0s3</span>. Sin embargo  los router van a tener <strong>tres tarjetas de red en modo puente</strong>. Si estás usando máquinas virtuales clonadas o importadas recuerda <strong>reiniciar las MAC de todas las tarjetas.</strong> A continuación se te indican las direcciones IP y las tarjetas en las que hay que asignarlas.</p>
 <ul class="simple">
 <li><p>Cliente 1: la tarjeta enp0s3 tiene la IP <strong>1.14.101.10/16</strong></p></li>
 <li><p>Cliente 2: la tarjeta enp0s3 tiene la IP <strong>6.14.101.10/16</strong></p></li>
@@ -629,7 +629,18 @@ enrutamiento estático.</p>
 </div>
 <div class="section" id="ejercicio-3">
 <h1>Ejercicio 3</h1>
-<p>En el router de arriba hemos dejado una tarjeta sin usar. Ponle la dirección 10.9.0.214/24 y reconfigura las rutas para que Cliente 1 pueda hacer ping al router del instituto (10.9.0.254).</p>
+<p>En el router de arriba hemos dejado una tarjeta sin usar. Intenta conectar con las redes de algún compañero. Para ello, tanto tu compañero como tú tendréis que hacer lo siguiente:</p>
+<ul class="simple">
+<li><p>Poneros de acuerdo en una red IP para ese segmento. Examinad vuestros números de puesto y usad la dirección de red 30.&lt;numeromayor&gt;.&lt;numeromenor&gt;.0/24. Es decir, si tenéis los números de puesto 7 y 24 deberíais usar la 30.24.7.0/24.</p></li>
+<li><p>Pasáos el uno al otro las direcciones de red de vuestros respectivos &quot;Cliente 1&quot; y &quot;Cliente 2&quot;</p></li>
+<li><p>Poneros de acuerdo en qué IP usar cada uno en vuestro router de arriba.</p></li>
+<li><p>Reconfigura <strong>todos tus router</strong> para añadir en ellos rutas para llegar a las redes de los clientes de tu compañero.</p></li>
+</ul>
+<p>Este ejercicio demuestra que la configuración estática de rutas solo es razonable para pequeñas redes y con pocos cambios. En el ejercicio siguiente verás como ahorrarte todo este trabajo.</p>
+</div>
+<div class="section" id="ejercicio-4">
+<h1>Ejercicio 4</h1>
+<p>Reinicia todos los router, lo que borrará todas las rutas. En todos tus router tienes instalado un servicio que permite usar protocolos dinámicos de enrutamientos. Configúralos para que calculen todas las rutas automáticamente.</p>
 </div>
 <div class="section" id="solucion-al-ejercicio-1">
 <h1>Solución al ejercicio 1</h1>
@@ -670,6 +681,7 @@ enrutamiento estático.</p>
       addresses: [3.114.0.2/16]
     enp0s9:
       addresses: [5.114.0.2/16]</pre>
+<p>Una vez configuradas todas las direcciones IP repasalo todo ejecutando <span class="docutils literal">ip addr</span> <strong>en todas las máquinas</strong> y comprueba que <strong>todo el mundo puede hacer ping a su vecino inmediato</strong>. Si no es así repasa las direcciones y tarjetas y si no ves el error llama al profesor.</p>
 </div>
 <div class="section" id="enrutamiento">
 <h2>Enrutamiento</h2>
@@ -708,6 +720,28 @@ sudo ip route add 6.14.101.0/16 via 5.114.0.2/16</pre>
 <div class="section" id="solucion-al-ejercicio-3">
 <h1>Solución al ejercicio 3</h1>
 <p>No se da</p>
+</div>
+<div class="section" id="solucion-al-ejercicio-4">
+<h1>Solución al ejercicio 4</h1>
+<p>En todos los router tendrás que hacer esto:</p>
+<ol class="arabic simple">
+<li><p>Editar el fichero de configuracion <span class="docutils literal">/etc/frr/daemons</span></p></li>
+<li><p>Activar OSPF poniendo <span class="docutils literal">yes</span>  en lugar de <span class="docutils literal">no</span> en esta línea <span class="docutils literal">ospfd=no</span></p></li>
+<li><p>Reiniciar el servicio con <span class="docutils literal">sudo service frr restart</span></p></li>
+<li><p>Arranca la configuración del router con <span class="docutils literal">sudo vtysh</span></p></li>
+<li><p>Introduce los comandos correspondientes a cada router.</p></li>
+</ol>
+<p>Router izquierda:</p>
+<pre class="literal-block">network 1.114.0.0/16 area 1
+network 2.114.0.0/16 area 1
+network 3.114.0.0/16 area 1</pre>
+<p>Router Arriba:</p>
+<pre class="literal-block">network 2.114.0.0/16 area 1
+network 5.114.0.0/16 area 1</pre>
+<p>Router Abajo:</p>
+<pre class="literal-block">network 6.114.0.0/16 area 1
+network 3.114.0.0/16 area 1
+network 5.114.0.0/16 area 1</pre>
 </div>
 </div>
 </body>

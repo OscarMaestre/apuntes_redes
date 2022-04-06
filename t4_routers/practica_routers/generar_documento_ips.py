@@ -8,7 +8,7 @@ TARJETA_1="enp0s3"
 TARJETA_2="enp0s8"
 TARJETA_3="enp0s9"
 
-MAX_EQUIPOS=33
+MAX_EQUIPOS=24
 IP_RESERVADA="Reservada"
 
 FICHERO_NETPLAN="""
@@ -63,7 +63,20 @@ Modifica las rutas de manera que Cliente1 pueda hacer ping a Cliente2 enviando l
 
 Ejercicio 3
 --------------
-En el router de arriba hemos dejado una tarjeta sin usar. Ponle la dirección {6} y reconfigura las rutas para que Cliente 1 pueda hacer ping al router del instituto (10.9.0.254).
+En el router de arriba hemos dejado una tarjeta sin usar. Intenta conectar con las redes de algún compañero. Para ello, tanto tu compañero como tú tendréis que hacer lo siguiente:
+
+* Poneros de acuerdo en una red IP para ese segmento. Examinad vuestros números de puesto y usad la dirección de red 30.<numeromayor>.<numeromenor>.0/24. Es decir, si tenéis los números de puesto 7 y 24 deberíais usar la 30.24.7.0/24. 
+* Pasáos el uno al otro las direcciones de red de vuestros respectivos "Cliente 1" y "Cliente 2"
+* Poneros de acuerdo en qué IP usar cada uno en vuestro router de arriba.
+* Reconfigura **todos tus router** para añadir en ellos rutas para llegar a las redes de los clientes de tu compañero.
+
+Este ejercicio demuestra que la configuración estática de rutas solo es razonable para pequeñas redes y con pocos cambios. En el ejercicio siguiente verás como ahorrarte todo este trabajo.
+
+
+
+Ejercicio 4
+-------------
+Reinicia todos los router, lo que borrará todas las rutas. En todos tus router tienes instalado un servicio que permite usar protocolos dinámicos de enrutamientos. Configúralos para que calculen todas las rutas automáticamente.
 
 {7}
 
@@ -74,6 +87,28 @@ En el router de arriba hemos dejado una tarjeta sin usar. Ponle la dirección {6
 Solución al ejercicio 3
 -------------------------
 No se da
+
+Solución al ejercicio 4
+------------------------
+En todos los router tendrás que hacer esto:
+
+1. Editar el fichero de configuracion ``/etc/frr/daemons``
+2. Activar OSPF poniendo ``yes``  en lugar de ``no`` en esta línea ``ospfd=no``
+3. Reiniciar el servicio con ``sudo service frr restart``
+4. Arranca la configuración del router con ``sudo vtysh``
+5. Introduce los comandos correspondientes a cada router.
+
+Router izquierda::
+
+{9}
+
+Router Arriba::
+
+{10}
+
+Router Abajo::
+
+{11}
 """
 
 class Router(object):
@@ -81,15 +116,26 @@ class Router(object):
         self.tarjetas=dict()
         self.gateways=dict()
         self.rutas=[]
+        self.redes_conectadas=[]
     def asignar_ip_tarjeta(self, tarjeta, ip):
         self.tarjetas[tarjeta]=ip
     def asignar_gateway(self, tarjeta, ip_gateway):
         self.gateways[tarjeta]=ip_gateway
-
+    def anadir_red(self, red):
+        self.redes_conectadas.append(red)
     def anadir_ruta(self, ip_red, siguiente_salto):
         self.rutas.append( (ip_red, siguiente_salto))
     def limpiar_rutas(self):
         self.rutas=[]
+
+    def get_comandos_ospf(self):
+        comandos=[]
+        plantilla="\tnetwork {0} area 1"
+        for red in self.redes_conectadas:
+            comandos.append(plantilla.format(red))
+        texto= "\n".join(comandos)
+        return texto
+        #print(texto)
 
     def get_comandos_rutas(self, con_tabulador=True):
         comandos=[]
@@ -168,25 +214,48 @@ def generar_lista_routers(num_equipo):
     T8=TARJETA_2
     T9=TARJETA_3
     red_base=100+num_equipo
+    PRIMER_BYTE=1
+    ULTIMO_BYTE=2
+    RED_1="1.{0}.0.{1}/16"
+    RED_2="2.{0}.0.{1}/16"
+    RED_3="3.{0}.0.{1}/16"
+    RED_4="4.{0}.0.{1}/16"
+    RED_5="5.{0}.0.{1}/16"
+    RED_6="6.{0}.0.{1}/16"
+
     cad_red_base=str(red_base)
     r1=Router()
     r2=Router()
     r3=Router()
     
-    r1.asignar_ip_tarjeta(T3, "1."+cad_red_base+".0.1/16")
-    r1.asignar_ip_tarjeta(T8, "2."+cad_red_base+".0.1/16")
-    r1.asignar_ip_tarjeta(T9, "3."+cad_red_base+".0.1/16")
-
+    r1.asignar_ip_tarjeta(T3, RED_1.format(cad_red_base, PRIMER_BYTE))
+    r1.asignar_ip_tarjeta(T8, RED_2.format(cad_red_base, PRIMER_BYTE))
+    r1.asignar_ip_tarjeta(T9, RED_3.format(cad_red_base, PRIMER_BYTE))
+    
+    r1.anadir_red(RED_1.format(cad_red_base, "0"))
+    r1.anadir_red(RED_2.format(cad_red_base, "0"))
+    r1.anadir_red(RED_3.format(cad_red_base, "0"))
 
     #r2.asignar_ip_tarjeta(T3, "4."+cad_red_base+".0.1/16")
     r2.asignar_ip_tarjeta(T3, IP_RESERVADA)
-    r2.asignar_ip_tarjeta(T8, "2."+cad_red_base+".0.2/16")
-    r2.asignar_ip_tarjeta(T9, "5."+cad_red_base+".0.1/16")
+    #r2.asignar_ip_tarjeta(T8, "2."+cad_red_base+".0.2/16")
+    r2.asignar_ip_tarjeta(T8, RED_2.format(cad_red_base, ULTIMO_BYTE))
+    #r2.asignar_ip_tarjeta(T9, "5."+cad_red_base+".0.1/16")
+    r2.asignar_ip_tarjeta(T9, RED_5.format(cad_red_base, PRIMER_BYTE))
+    r2.anadir_red(RED_2.format(cad_red_base, "0"))
+    r2.anadir_red(RED_5.format(cad_red_base, "0"))
 
-    r3.asignar_ip_tarjeta(T3, "6."+cad_red_base+".0.1/16")
-    r3.asignar_ip_tarjeta(T8, "3."+cad_red_base+".0.2/16")
-    r3.asignar_ip_tarjeta(T9, "5."+cad_red_base+".0.2/16")
+    # r3.asignar_ip_tarjeta(T3, "6."+cad_red_base+".0.1/16")
+    # r3.asignar_ip_tarjeta(T8, "3."+cad_red_base+".0.2/16")
+    # r3.asignar_ip_tarjeta(T9, "5."+cad_red_base+".0.2/16")
 
+    r3.asignar_ip_tarjeta(T3, RED_6.format(cad_red_base, PRIMER_BYTE))
+    r3.asignar_ip_tarjeta(T8, RED_3.format(cad_red_base, ULTIMO_BYTE))
+    r3.asignar_ip_tarjeta(T9, RED_5.format(cad_red_base, ULTIMO_BYTE))
+    
+    r3.anadir_red(RED_6.format(cad_red_base, "0"))
+    r3.anadir_red(RED_3.format(cad_red_base, "0"))
+    r3.anadir_red(RED_5.format(cad_red_base, "0"))
 
     # print(r1.get_fichero_netplan())    
     # print(r2.get_fichero_netplan())    
@@ -225,6 +294,8 @@ Solución al ejercicio 1
 Direccionamiento
 ~~~~~~~~~~~~~~~~~~~~~
 {0}
+
+Una vez configuradas todas las direcciones IP repasalo todo ejecutando ``ip addr`` **en todas las máquinas** y comprueba que **todo el mundo puede hacer ping a su vecino inmediato**. Si no es así repasa las direcciones y tarjetas y si no ves el error llama al profesor.
 
 Enrutamiento
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -377,8 +448,12 @@ def generar_instrucciones(num_equipo, datos_ips):
 
     tupla_maquinas=(router_cliente_1, (r1,r2,r3), router_cliente_2)
     solucion1=get_solucion_1(num_equipo, tupla_maquinas)
-
     solucion2=get_solucion_2(num_equipo, tupla_maquinas)
+
+    comandos_ospf_router1=r1.get_comandos_ospf()
+    comandos_ospf_router2=r2.get_comandos_ospf()
+    comandos_ospf_router3=r3.get_comandos_ospf()
+
     texto=INSTRUCCIONES.format(num_equipo, 
         router_cliente_1.get_puntos_informacion_ips(),
         router_cliente_2.get_puntos_informacion_ips(),
@@ -387,7 +462,8 @@ def generar_instrucciones(num_equipo, datos_ips):
         r3.get_puntos_informacion_ips(),
         IP_SALIDA_CLASE,
         solucion1,
-        solucion2
+        solucion2, 
+        comandos_ospf_router1, comandos_ospf_router2, comandos_ospf_router3
     )
     with open(join(directorio, "Instrucciones.rst"), "w") as fich:
         fich.write(texto)

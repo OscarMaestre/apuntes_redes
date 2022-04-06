@@ -16,7 +16,7 @@ Como puedes ver tenemos 6 máquinas:
 * Tres router que llamaremos "Izquierda", "Arriba" y "Abajo".
 
 
-Cliente 1 y Cliente 2 solo van a usar **una tarjeta de red en modo puente**, la ``enp0s3``. Sin embargo  los router van a tener **tres tarjetas de red en modo puente**. A continuación se te indican las direcciones IP y las tarjetas en las que hay que asignarlas.
+Cliente 1 y Cliente 2 solo van a usar **una tarjeta de red en modo puente**, la ``enp0s3``. Sin embargo  los router van a tener **tres tarjetas de red en modo puente**. Si estás usando máquinas virtuales clonadas o importadas recuerda **reiniciar las MAC de todas las tarjetas.** A continuación se te indican las direcciones IP y las tarjetas en las que hay que asignarlas.
 
 * Cliente 1: la tarjeta enp0s3 tiene la IP **1.1.101.10/16**
 * Cliente 2: la tarjeta enp0s3 tiene la IP **6.1.101.10/16**
@@ -37,7 +37,20 @@ Modifica las rutas de manera que Cliente1 pueda hacer ping a Cliente2 enviando l
 
 Ejercicio 3
 --------------
-En el router de arriba hemos dejado una tarjeta sin usar. Ponle la dirección 10.9.0.201/24 y reconfigura las rutas para que Cliente 1 pueda hacer ping al router del instituto (10.9.0.254).
+En el router de arriba hemos dejado una tarjeta sin usar. Intenta conectar con las redes de algún compañero. Para ello, tanto tu compañero como tú tendréis que hacer lo siguiente:
+
+* Poneros de acuerdo en una red IP para ese segmento. Examinad vuestros números de puesto y usad la dirección de red 30.<numeromayor>.<numeromenor>.0/24. Es decir, si tenéis los números de puesto 7 y 24 deberíais usar la 30.24.7.0/24. 
+* Pasáos el uno al otro las direcciones de red de vuestros respectivos "Cliente 1" y "Cliente 2"
+* Poneros de acuerdo en qué IP usar cada uno en vuestro router de arriba.
+* Reconfigura **todos tus router** para añadir en ellos rutas para llegar a las redes de los clientes de tu compañero.
+
+Este ejercicio demuestra que la configuración estática de rutas solo es razonable para pequeñas redes y con pocos cambios. En el ejercicio siguiente verás como ahorrarte todo este trabajo.
+
+
+
+Ejercicio 4
+-------------
+Reinicia todos los router, lo que borrará todas las rutas. En todos tus router tienes instalado un servicio que permite usar protocolos dinámicos de enrutamientos. Configúralos para que calculen todas las rutas automáticamente.
 
 
 Solución al ejercicio 1
@@ -95,6 +108,8 @@ Abajo tendría un fichero de ``netplan`` como este::
 	
 	
 
+Una vez configuradas todas las direcciones IP repasalo todo ejecutando ``ip addr`` **en todas las máquinas** y comprueba que **todo el mundo puede hacer ping a su vecino inmediato**. Si no es así repasa las direcciones y tarjetas y si no ves el error llama al profesor.
+
 Enrutamiento
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Antes de empezar, en Linux se debe habilitar el enrutamiento.
@@ -148,3 +163,30 @@ En Abajo podemos ejecutar esto::
 Solución al ejercicio 3
 -------------------------
 No se da
+
+Solución al ejercicio 4
+------------------------
+En todos los router tendrás que hacer esto:
+
+1. Editar el fichero de configuracion ``/etc/frr/daemons``
+2. Activar OSPF poniendo ``yes``  en lugar de ``no`` en esta línea ``ospfd=no``
+3. Reiniciar el servicio con ``sudo service frr restart``
+4. Arranca la configuración del router con ``sudo vtysh``
+5. Introduce los comandos correspondientes a cada router.
+
+Router izquierda::
+
+	network 1.101.0.0/16 area 1
+	network 2.101.0.0/16 area 1
+	network 3.101.0.0/16 area 1
+
+Router Arriba::
+
+	network 2.101.0.0/16 area 1
+	network 5.101.0.0/16 area 1
+
+Router Abajo::
+
+	network 6.101.0.0/16 area 1
+	network 3.101.0.0/16 area 1
+	network 5.101.0.0/16 area 1
