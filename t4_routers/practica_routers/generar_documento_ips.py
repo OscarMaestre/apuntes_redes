@@ -475,14 +475,17 @@ def generar_make(num_equipo):
         fich.write(FICHERO_MAKE)
 
 def get_ip_cliente_1(num_equipo):
-    ip="1."+str(num_equipo)+".101.10/16"
+    nuevo_num=100+num_equipo
+    
+    ip="1."+str(nuevo_num)+".101.10/16"
     return ip
 def get_red_cliente_1(num_equipo):
     ip="1."+str(num_equipo)+".101.0/16"
     return ip
 
 def get_ip_cliente_2(num_equipo):
-    ip="6."+str(num_equipo)+".101.10/16"
+    nuevo_num=100+num_equipo
+    ip="6."+str(nuevo_num)+".101.10/16"
     return ip
 
 def get_red_cliente_2(num_equipo):
