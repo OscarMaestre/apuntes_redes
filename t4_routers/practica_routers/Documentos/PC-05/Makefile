@@ -1,4 +1,4 @@
 
 all:
-	rst2html5 Instrucciones.rst > Instrucciones.html
+	rst2html5.py Instrucciones.rst > Instrucciones.html
 

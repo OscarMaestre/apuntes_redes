@@ -20,7 +20,7 @@ network:
 
 FICHERO_MAKE="""
 all:
-\trst2html5 Instrucciones.rst > Instrucciones.html
+\trst2html5.py Instrucciones.rst > Instrucciones.html
 
 """
 
@@ -213,7 +213,7 @@ def generar_lista_routers(num_equipo):
     T3=TARJETA_1
     T8=TARJETA_2
     T9=TARJETA_3
-    red_base=100+num_equipo
+    red_base=num_equipo
     PRIMER_BYTE=1
     ULTIMO_BYTE=2
     RED_1="1.{0}.0.{1}/16"
@@ -354,7 +354,7 @@ Los ficheros de ``netplan`` **NO CAMBIAN**
 
 Enrutamiento
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-Si ya tienes el enrutamiento activa (ver más arriba) **no hace falta que vuelvas a hacerlo**.
+Si ya tienes el enrutamiento activado (ver más arriba) **no hace falta que vuelvas a hacerlo**.
 
 En primer lugar **debemos borrar las rutas anteriores en los router Izquierda y Abajo**. Ademas, de nuevo en todos los router debemos recordar poner tanto las rutas de ida *como las rutas de vuelta*. 
 
@@ -475,21 +475,21 @@ def generar_make(num_equipo):
         fich.write(FICHERO_MAKE)
 
 def get_ip_cliente_1(num_equipo):
-    nuevo_num=100+num_equipo
+    nuevo_num=num_equipo
     
-    ip="1."+str(nuevo_num)+".101.10/16"
+    ip="1."+str(nuevo_num)+".0.2/16"
     return ip
 def get_red_cliente_1(num_equipo):
-    ip="1."+str(num_equipo)+".101.0/16"
+    ip="1."+str(num_equipo)+".0.0/16"
     return ip
 
 def get_ip_cliente_2(num_equipo):
-    nuevo_num=100+num_equipo
-    ip="6."+str(nuevo_num)+".101.10/16"
+    nuevo_num=num_equipo
+    ip="6."+str(nuevo_num)+".0.10/16"
     return ip
 
 def get_red_cliente_2(num_equipo):
-    ip="6."+str(num_equipo)+".101.0/16"
+    ip="6."+str(num_equipo)+".0.0/16"
     return ip
 
 def generar_para_equipo(num_equipo):
