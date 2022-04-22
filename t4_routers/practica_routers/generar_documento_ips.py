@@ -145,7 +145,7 @@ class Router(object):
             plantilla="sudo ip route add {0} via {1}"
 
         for ruta in self.rutas:
-            texto=plantilla.format(ruta[0], ruta[1])
+            texto=plantilla.format(ruta[0], ruta[1][:-3])
             comandos.append(texto)
         return "\n".join(comandos)
 
@@ -157,7 +157,7 @@ class Router(object):
         gw=""
         try:
             gateway=self.gateways[tarjeta]
-            gw="      gateway4:  {0}".format(gateway)
+            gw="      gateway4:  {0}".format(gateway[:-3])
             #print("He puesto esto:"+gw)
         except KeyError:
             gw=""
@@ -284,7 +284,7 @@ def get_solucion_1(equipo, datos_ips):
     (cliente1, routers, cliente2)=datos_ips
     (izquierda, arriba, abajo) = routers
 
-    nombres=["Cliente 1", "Izquierda", "Arriba", "Abajo"]
+    nombres=["Cliente 1", "Izquierda", "Arriba", "Abajo", "Cliente 2"]
     maquinas=[cliente1, izquierda, arriba, abajo, cliente2]
 
     SOLUCION="""
