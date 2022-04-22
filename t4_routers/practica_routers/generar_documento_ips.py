@@ -30,7 +30,7 @@ Instrucciones para el ordenador PC-{0}
 
 Junto con este documento se te ha dado una imagen con la topología de una red y una máquina virtual que puedes importar. Importa la máquina y haz 4 clones de manera que tengas en total 5 máquinas virtuales. Es muy recomendable que a cada máquina le pongas un nombre como vamos a ver a continuación. 
 
-Obsérva la imagen con detenimiento porque vamos a construir una topologia de red con varios routers y con 
+Observa la imagen con detenimiento porque vamos a construir una topologia de red con varios routers y con 
 enrutamiento estático. 
 
 .. figure:: Red.png
