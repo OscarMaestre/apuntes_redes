@@ -50,7 +50,7 @@ Estos protocolos suelen llamarse a veces IGPs (Interior Gateway Protocols)
 
 Protocolos de enrutamiento externo
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-También son dinámicos pero están pensados para **interconectar nuestro AS con otros AS**.Estos protocolos suelen llamarse a veces eGPs (Exterior Gateway Protocols)
+También son dinámicos pero están pensados para **interconectar nuestro AS con otros AS**.Estos protocolos suelen llamarse a veces EGPs (Exterior Gateway Protocols)
 
 
 El enrutamiento sin clase.
@@ -65,7 +65,7 @@ Este proceso de construcción de redes IP surgió por la necesidad de aprovechar
 Observemos la figura siguiente:
 
 
-.. figure:: img/vlsm.ping
+.. figure:: img/vlsm.png
 
 Supongamos que queremos comprobar un bloque de direcciones IP y que además queremos hacer dos subredes separadas, tal y como indica la figura. Si además resulta que no hay muchas direcciones IP y queremos ahorrar resulta que ocurre lo siguiente (nótese que en el ejemplo todo está ajustadísimo):
 
@@ -76,12 +76,22 @@ Supongamos que queremos comprobar un bloque de direcciones IP y que además quer
 
 El protocolo RIPv2; comparación con RIPv1.
 ----------------------------------------------------------------------------
+RIPv1 y RIPv2 se caracterizan por:
+
+* Ambos son protocolos de enrutamiento interior.
+* Se basan en un mecanismo llamado "vector distancia" que básicamente cuenta la cantidad de saltos para llegar a una ruta. 
+* En los protocolos basados en vector distancia ocurre lo siguiente: si para ir a una red hay dos caminos y uno implica pasar por 3 router y otro camino implica pasar por 6 routers se asume que el segundo camino es peor por tener una "distancia" mayor. Sin embargo esto podría ser falso: imaginemos que el camino con métrica 3 está basado en líneas ADSL de 3Mb/s y el de métrica 6 pasa por fibras ópticas de 800Mb/s.
+
+RIPv1 no soportaba subredes, lo que a día de hoy lo hace prácticamente inútil.  Además estaba pensado para usar clases A, B y C, y de hecho *no envía máscaras de red*.
 
 Configuración y administración de RIPv1.
 ----------------------------------------------------------------------------
+Debido al inminente final del curso, se ha decidido ignorar este punto para ahorrar tiempo y dedicarlo a puntos más actuales del temario.
 
 Configuración y administración de RIPv2.
 ----------------------------------------------------------------------------
+La operativa básica sería la siguiente:
+
 
 Diagnóstico de incidencias en Ripv2.
 ----------------------------------------------------------------------------
