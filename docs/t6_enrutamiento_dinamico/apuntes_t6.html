@@ -4,8 +4,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tema 6:Configuración y administración de protocolos dinámicos &#8212; documentación de Apuntes de redes - 1.0</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
@@ -34,45 +33,102 @@
 
           <div class="body" role="main">
             
-  <section id="tema-6-configuracion-y-administracion-de-protocolos-dinamicos">
-<h1>Tema 6:Configuración y administración de protocolos dinámicos<a class="headerlink" href="#tema-6-configuracion-y-administracion-de-protocolos-dinamicos" title="Enlazar permanentemente con este título"></a></h1>
-<section id="protocolos-enrutables-y-protocolos-de-enrutamiento">
-<h2>Protocolos enrutables y protocolos de enrutamiento.<a class="headerlink" href="#protocolos-enrutables-y-protocolos-de-enrutamiento" title="Enlazar permanentemente con este título"></a></h2>
-</section>
-<section id="protocolos-de-enrutamiento-interior-y-exterior">
-<h2>Protocolos de enrutamiento interior y exterior.<a class="headerlink" href="#protocolos-de-enrutamiento-interior-y-exterior" title="Enlazar permanentemente con este título"></a></h2>
-</section>
-<section id="el-enrutamiento-sin-clase">
-<h2>El enrutamiento sin clase.<a class="headerlink" href="#el-enrutamiento-sin-clase" title="Enlazar permanentemente con este título"></a></h2>
-</section>
-<section id="la-subdivision-de-redes-y-el-uso-de-mascaras-de-longitud-variable-vlsm">
-<h2>La subdivisión de redes y el uso de máscaras de longitud variable (VLSM).<a class="headerlink" href="#la-subdivision-de-redes-y-el-uso-de-mascaras-de-longitud-variable-vlsm" title="Enlazar permanentemente con este título"></a></h2>
-</section>
-<section id="el-protocolo-ripv2-comparacion-con-ripv1">
-<h2>El protocolo RIPv2; comparación con RIPv1.<a class="headerlink" href="#el-protocolo-ripv2-comparacion-con-ripv1" title="Enlazar permanentemente con este título"></a></h2>
-</section>
-<section id="configuracion-y-administracion-de-ripv1">
-<h2>Configuración y administración de RIPv1.<a class="headerlink" href="#configuracion-y-administracion-de-ripv1" title="Enlazar permanentemente con este título"></a></h2>
-</section>
-<section id="configuracion-y-administracion-de-ripv2">
-<h2>Configuración y administración de RIPv2.<a class="headerlink" href="#configuracion-y-administracion-de-ripv2" title="Enlazar permanentemente con este título"></a></h2>
-</section>
-<section id="diagnostico-de-incidencias-en-ripv2">
-<h2>Diagnóstico de incidencias en Ripv2.<a class="headerlink" href="#diagnostico-de-incidencias-en-ripv2" title="Enlazar permanentemente con este título"></a></h2>
-</section>
-<section id="los-protocolos-de-enrutamiento-estado-enlace">
-<h2>Los protocolos de enrutamiento estado-enlace<a class="headerlink" href="#los-protocolos-de-enrutamiento-estado-enlace" title="Enlazar permanentemente con este título"></a></h2>
-</section>
-<section id="configuracion-y-administracion-en-ospf">
-<h2>Configuración y administración en OSPF.<a class="headerlink" href="#configuracion-y-administracion-en-ospf" title="Enlazar permanentemente con este título"></a></h2>
-</section>
-<section id="diagnostico-de-incidencias-en-ospf">
-<h2>Diagnóstico de incidencias en OSPF.<a class="headerlink" href="#diagnostico-de-incidencias-en-ospf" title="Enlazar permanentemente con este título"></a></h2>
-</section>
-<section id="configuracion-y-administracion-de-protocolos-de-enrutamiento-propietarios">
-<h2>Configuración y administración de protocolos de enrutamiento propietarios.<a class="headerlink" href="#configuracion-y-administracion-de-protocolos-de-enrutamiento-propietarios" title="Enlazar permanentemente con este título"></a></h2>
-</section>
-</section>
+  <div class="section" id="tema-6-configuracion-y-administracion-de-protocolos-dinamicos">
+<h1>Tema 6:Configuración y administración de protocolos dinámicos<a class="headerlink" href="#tema-6-configuracion-y-administracion-de-protocolos-dinamicos" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="protocolos-enrutables-y-protocolos-de-enrutamiento">
+<h2>Protocolos enrutables y protocolos de enrutamiento.<a class="headerlink" href="#protocolos-enrutables-y-protocolos-de-enrutamiento" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En las redes hemos usado muy a menudo el concepto de protocolo:</p>
+<ul class="simple">
+<li><p>Por ejemplo IP establece que las direcciones tienen que tener un cierto formato, que tienen que tener una máscara y que no debe haber dos nodos con la misma IP (aparte de muchas otras reglas).</p></li>
+<li><p>Protocolos como HTTP dicen que para descargar un archivo se debe enviar la cadena <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/archivo.html</span></code></p></li>
+</ul>
+<p>En principio tendemos a pensar que un protocolo nos permite comunicar <em>con cualquier máquina</em> pero esto no es así: no todos los protocolos están pensados para comunicar con máquinas más alla de nuestro router. A estos protocolos se les llama <strong>protocolos no enrutables</strong>.</p>
+<p>Un buen ejemplo de esto es el protocolo para carpetas compartidas en Windows o para descubrir otros equipos en la red (lo que usamos al «explorar la red de Windows»).</p>
+<p>Por supuesto, los protocolos de nivel de enlace (también llamado de capa 2 o L2) no son enrutados por los routers. De hecho, si lo fueran, el más minimo <code class="docutils literal notranslate"><span class="pre">ping</span></code> podría generar difusiones que alcanzarían a todo Internet (lo cual es un buen motivo para no enrutarlos).</p>
+<p>En suma, cuando trabajamos con redes, especialmente con redes «Windows» debemos tener presente que en principio no podremos contactar con otras redes remotas Windows.</p>
+</div>
+<div class="section" id="protocolos-de-enrutamiento-interior-y-exterior">
+<h2>Protocolos de enrutamiento interior y exterior.<a class="headerlink" href="#protocolos-de-enrutamiento-interior-y-exterior" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="concepto-de-sistema-autonomo">
+<h3>Concepto de sistema autónomo<a class="headerlink" href="#concepto-de-sistema-autonomo" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>El RFC 1930 define un sistema autónomo como:</p>
+<blockquote class="pull-quote">
+<div><p>An AS is a connected group of one or more IP prefixes run by one
+or more network operators which has a SINGLE and CLEARLY DEFINED
+routing policy.</p>
+</div></blockquote>
+<p>Que más o menos sería:</p>
+<blockquote class="pull-quote">
+<div><p>Un sistema autónomo AS es un grupo de uno o más prefijos de red controlados
+por uno o más operadores de red que tiene una ÚNICA política de enrutamiento
+que además está CLARAMENTE DEFINIDA.</p>
+</div></blockquote>
+<p>Una definición más simple sería «una empresa u organización que tiene un conjunto de redes».</p>
+<p>Los sistemas autónomos suelen tener asignado un número por parte del IANA que se utiliza en muchas operaciones administrativas y que (lógicamente) se llama <em>número de sistema autónomo</em>. Estos números tienen 32 bits y se escriben como un solo número decimal, el cual puede ir de 0 a (2 a la 32)-1.</p>
+</div>
+<div class="section" id="protocolos-de-enrutamiento-interno">
+<h3>Protocolos de enrutamiento interno<a class="headerlink" href="#protocolos-de-enrutamiento-interno" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Son protocolos dinámicos, es decir, que configuran automáticamente todas las rutas liberando al administrador del trabajo. Los protocolos de enrutamiento interno están pensados <strong>para usarse dentro de un sistema autónomo</strong>. Esto es así porque están pensados para entornos en los que conocemos toda la red, precisamente por ser nuestra red.</p>
+<p>Estos protocolos suelen llamarse a veces IGPs (Interior Gateway Protocols)</p>
+</div>
+<div class="section" id="protocolos-de-enrutamiento-externo">
+<h3>Protocolos de enrutamiento externo<a class="headerlink" href="#protocolos-de-enrutamiento-externo" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>También son dinámicos pero están pensados para <strong>interconectar nuestro AS con otros AS</strong>.Estos protocolos suelen llamarse a veces EGPs (Exterior Gateway Protocols)</p>
+</div>
+</div>
+<div class="section" id="el-enrutamiento-sin-clase">
+<h2>El enrutamiento sin clase.<a class="headerlink" href="#el-enrutamiento-sin-clase" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Se llama enrutamiento sin clase o CIDR (Classless InterDomain Routing) al enrutamiento que no tiene en cuenta para nada si una dirección es de clase A, B o C. Durante todo este curso no le hemos dado ninguna importancia y de hecho hemos trabajado con máscaras como /18 o /23. Sin embargo, en el pasado las clases A,B o C tenían muchísima importancia, por lo que a veces en los temarios se resalta esta diferencia, pero esto es solo por motivos históricos. Los protocolos modernos de enrutamiento no tienen en cuenta para nada la clase de una IP y podemos tener direcciones como 10.65.128.0/28 (a esta forma de escribir la IP, la barra y los bits de la máscara se le denomina «notación CIDR»).</p>
+</div>
+<div class="section" id="la-subdivision-de-redes-y-el-uso-de-mascaras-de-longitud-variable-vlsm">
+<h2>La subdivisión de redes y el uso de máscaras de longitud variable (VLSM).<a class="headerlink" href="#la-subdivision-de-redes-y-el-uso-de-mascaras-de-longitud-variable-vlsm" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Este proceso de construcción de redes IP surgió por la necesidad de aprovechar al máximo las direcciones IP. Hoy en día se consideran algo a extinguir aunque en su momento fue una técnica utilizadísima para aprovechar al máximo las asignaciones.</p>
+<p>Observemos la figura siguiente:</p>
+<div class="figure align-default">
+<img alt="../_images/vlsm.png" src="../_images/vlsm.png" />
+</div>
+<p>Supongamos que queremos comprobar un bloque de direcciones IP y que además queremos hacer dos subredes separadas, tal y como indica la figura. Si además resulta que no hay muchas direcciones IP y queremos ahorrar resulta que ocurre lo siguiente (nótese que en el ejemplo todo está ajustadísimo):</p>
+<ul class="simple">
+<li><p>Supongamos que compramos el prefijo 161.1.1.0/24. Tenemos 8 bits de host y podemos direccionar 254 equipos.</p></li>
+<li><p>Dividimos en subredes y entonces a la izquierda tendremos 161.1.1.&lt;01&gt;xxxxxx/26 y la derecha 161.1.1&lt;10&gt;xxxxxx/26. Obsérvese que el último byte lo hemos puesto en binario y hemos asignado 01 a la subred izquierda y 10 a la subred derecha.</p></li>
+<li><p>Al hacer la división en la parte izquierda tenemos 6 bits que nos da para direccionar hasta 2 a la 6 (-2) o sea 62 equipos, que es más que suficiente.</p></li>
+<li><p>Al hacer la división ocurre que en la parte derecha también tenemos hasta 62 posibles equipos, sin embargo <strong>nos sobran muchísimas direcciones</strong>. Si necesitásemos más equipos no tendríamos mucho margen para meterlos en la subred izquierda y es posible que no nos interese ponerlos en la subred derecha. Conclusión: se desperdician direcciones en la zona derecha.</p></li>
+</ul>
+</div>
+<div class="section" id="el-protocolo-ripv2-comparacion-con-ripv1">
+<h2>El protocolo RIPv2; comparación con RIPv1.<a class="headerlink" href="#el-protocolo-ripv2-comparacion-con-ripv1" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>RIPv1 y RIPv2 se caracterizan por:</p>
+<ul class="simple">
+<li><p>Ambos son protocolos de enrutamiento interior.</p></li>
+<li><p>Se basan en un mecanismo llamado «vector distancia» que básicamente cuenta la cantidad de saltos para llegar a una ruta.</p></li>
+<li><p>En los protocolos basados en vector distancia ocurre lo siguiente: si para ir a una red hay dos caminos y uno implica pasar por 3 router y otro camino implica pasar por 6 routers se asume que el segundo camino es peor por tener una «distancia» mayor. Sin embargo esto podría ser falso: imaginemos que el camino con métrica 3 está basado en líneas ADSL de 3Mb/s y el de métrica 6 pasa por fibras ópticas de 800Mb/s.</p></li>
+</ul>
+<p>RIPv1 no soportaba subredes, lo que a día de hoy lo hace prácticamente inútil.  Además estaba pensado para usar clases A, B y C, y de hecho <em>no envía máscaras de red</em>.</p>
+</div>
+<div class="section" id="configuracion-y-administracion-de-ripv1">
+<h2>Configuración y administración de RIPv1.<a class="headerlink" href="#configuracion-y-administracion-de-ripv1" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Debido al inminente final del curso, se ha decidido ignorar este punto para ahorrar tiempo y dedicarlo a puntos más actuales del temario.</p>
+</div>
+<div class="section" id="configuracion-y-administracion-de-ripv2">
+<h2>Configuración y administración de RIPv2.<a class="headerlink" href="#configuracion-y-administracion-de-ripv2" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>La operativa básica sería la siguiente:</p>
+</div>
+<div class="section" id="diagnostico-de-incidencias-en-ripv2">
+<h2>Diagnóstico de incidencias en Ripv2.<a class="headerlink" href="#diagnostico-de-incidencias-en-ripv2" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="los-protocolos-de-enrutamiento-estado-enlace">
+<h2>Los protocolos de enrutamiento estado-enlace<a class="headerlink" href="#los-protocolos-de-enrutamiento-estado-enlace" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="configuracion-y-administracion-en-ospf">
+<h2>Configuración y administración en OSPF.<a class="headerlink" href="#configuracion-y-administracion-en-ospf" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="diagnostico-de-incidencias-en-ospf">
+<h2>Diagnóstico de incidencias en OSPF.<a class="headerlink" href="#diagnostico-de-incidencias-en-ospf" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="configuracion-y-administracion-de-protocolos-de-enrutamiento-propietarios">
+<h2>Configuración y administración de protocolos de enrutamiento propietarios.<a class="headerlink" href="#configuracion-y-administracion-de-protocolos-de-enrutamiento-propietarios" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+</div>
 
 
           </div>
@@ -100,7 +156,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../t4_routers/apuntes_t4.html">Tema 5: Configuración y administración básica de routers</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tema 6:Configuración y administración de protocolos dinámicos</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#protocolos-enrutables-y-protocolos-de-enrutamiento">Protocolos enrutables y protocolos de enrutamiento.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#protocolos-de-enrutamiento-interior-y-exterior">Protocolos de enrutamiento interior y exterior.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#protocolos-de-enrutamiento-interior-y-exterior">Protocolos de enrutamiento interior y exterior.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#concepto-de-sistema-autonomo">Concepto de sistema autónomo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#protocolos-de-enrutamiento-interno">Protocolos de enrutamiento interno</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#protocolos-de-enrutamiento-externo">Protocolos de enrutamiento externo</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#el-enrutamiento-sin-clase">El enrutamiento sin clase.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#la-subdivision-de-redes-y-el-uso-de-mascaras-de-longitud-variable-vlsm">La subdivisión de redes y el uso de máscaras de longitud variable (VLSM).</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#el-protocolo-ripv2-comparacion-con-ripv1">El protocolo RIPv2; comparación con RIPv1.</a></li>
@@ -164,7 +225,7 @@
       &copy;2021, Oscar G. G..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
