@@ -17,6 +17,60 @@ Por supuesto, los protocolos de nivel de enlace (también llamado de capa 2 o L2
 
 En suma, cuando trabajamos con redes, especialmente con redes "Windows" debemos tener presente que en principio no podremos contactar con otras redes remotas Windows.
 
+Funcionamiento de los protocolos de enrutamiento dinámico.
+------------------------------------------------------------
+Este punto no es estrictamente parte del temario. Sin embargo, se incluye para entender mejor como funcionan los procesos por los cuales un router puede "aprender" rutas a redes remotas.
+
+En primer lugar, todos los router anuncian todo lo que saben. Normalmente, al principio solo conocen a las redes con las que tienen conexión directa. En la figura ponemos solo un router, pero esto ocurre con *la mayor parte* de procesos de enrutamiento dinámico (de hecho hay pequeños casos en los que un router configurado con enrutamiento dinámico no haría nada)
+
+.. figure:: img/dinamico-paso-01.png
+
+Esta información llega a los router "Router 2" y "Router 3", los cuales se apuntan la información en sus tablas de rutas. Ahora "Router 2" tiene esto
+
++----------+-----------+-----------------+---------+
+| Red      | Máscara   | Siguiente salto | Métrica |
++==========+===========+=================+=========+
+| 10.0.0.0 | 255.0.0.0 | 1.1.1.1         | 1       |
++----------+-----------+-----------------+---------+
+
+
+Y "Router 3" tiene esto:
+
++----------+-----------+-----------------+---------+
+| Red      | Máscara   | Siguiente salto | Métrica |
++==========+===========+=================+=========+
+| 10.0.0.0 | 255.0.0.0 | 2.2.2.1         | 1       |
++----------+-----------+-----------------+---------+
+
+Es evidente que en el primer paso, todos los router aprenderán como llegar a redes que estén **a un "salto" de distancia**. Pasado un cierto tiempo, todos los router vuelven a anunciar todo lo que saben. Fijémenos en lo que anuncia "Router 2"
+
+.. figure:: img/dinamico-paso-02.png
+
+Sin embargo, ahora "Router 1" recibe una información que no necesitaba:
+
+.. figure:: img/dinamico-paso-03.png
+
+Por el contrario "Router 4" recibe información nueva que no tenía, cosa de la que tomará nota en su tabla de rutas
+
+.. figure:: img/dinamico-paso-04.png
+
+De hecho, en solo dos pasos, la tabla de "Router 4" será más o menos así. En la tabla siguiente NO PONEMOS todas las rutas a todos los sitios, ya que algunas eran "peores". Recalcamos sin embargo, que ahora hay dos caminos para la 10.0.0.0:
+
++----------+-----------+-----------------+---------+--------------------+
+| Red      | Máscara   | Siguiente salto | Métrica | Aprendida mediante |
++==========+===========+=================+=========+====================+
+| 10.0.0.0 | 255.0.0.0 | 3.3.3.1         | 2       | Router3            |
++----------+-----------+-----------------+---------+--------------------+
+| 10.0.0.0 | 255.0.0.0 | 4.4.4.1         | 2       | Router2            |
++----------+-----------+-----------------+---------+--------------------+
+| 20.0.0.0 | 255.0.0.0 | 4.4.4.1         | 1       | Router2            |
++----------+-----------+-----------------+---------+--------------------+
+| 30.0.0.0 | 255.0.0.0 | 3.3.3.1         | 1       | Router3            |
++----------+-----------+-----------------+---------+--------------------+
+
+
+
+
 Protocolos de enrutamiento interior y exterior.
 ----------------------------------------------------------------------------
 
@@ -90,7 +144,16 @@ Debido al inminente final del curso, se ha decidido ignorar este punto para ahor
 
 Configuración y administración de RIPv2.
 ----------------------------------------------------------------------------
-La operativa básica sería la siguiente:
+La operativa básica consiste en ejecutar dos cosas en cada uno de los router:
+
+* El comando ``router rip``
+* El comando ``network`` para cada una de las redes que el router va a anunciar a sus vecinos.
+
+Observa la figura siguiente
+
+.. figure:: img/red-cuadrada.png
+
+
 
 
 Diagnóstico de incidencias en Ripv2.
