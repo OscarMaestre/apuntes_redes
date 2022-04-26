@@ -4,15 +4,15 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tema 5: Configuración y administración básica de routers &#8212; documentación de Apuntes de redes - 1.0</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <script src="../_static/translations.js"></script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
@@ -34,14 +34,14 @@
 
           <div class="body" role="main">
             
-  <section id="tema-5-configuracion-y-administracion-basica-de-routers">
-<h1>Tema 5: Configuración y administración básica de routers<a class="headerlink" href="#tema-5-configuracion-y-administracion-basica-de-routers" title="Enlazar permanentemente con este título"></a></h1>
-<section id="la-capa-de-transporte">
-<h2>La capa de transporte<a class="headerlink" href="#la-capa-de-transporte" title="Enlazar permanentemente con este título"></a></h2>
+  <div class="section" id="tema-5-configuracion-y-administracion-basica-de-routers">
+<h1>Tema 5: Configuración y administración básica de routers<a class="headerlink" href="#tema-5-configuracion-y-administracion-basica-de-routers" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="la-capa-de-transporte">
+<h2>La capa de transporte<a class="headerlink" href="#la-capa-de-transporte" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Recordemos la arquitectura de las redes:</p>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="../_images/01-osi.png" src="../_images/01-osi.png" />
-</figure>
+</div>
 <p>En el dibujo vemos las distintas capas y sabemos que:</p>
 <ul class="simple">
 <li><p>Las direcciones Ethernet son fijas. Hay una dirección por tarjeta de red.</p></li>
@@ -59,9 +59,9 @@
 <li><p>Puerto de destino</p></li>
 </ol>
 <p>Tenemos que tener presente que a partir de ahora, la estructura de cualquier paquete es algo como esto:</p>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="../_images/02-puertos.png" src="../_images/02-puertos.png" />
-</figure>
+</div>
 <p>Un puerto, en realidad es un número. El sistema operativo usa ese número para saber a qué programa tiene que darle un paquete entrante. Cuando un programa servidor (como Apache) arranca intenta que el sistema operativo le dé un puerto fijo. Si ningún otro programa lo usa, el sistema operativo se lo dará y a partir de ese momento, los paquetes entrantes cuyo puerto de destino sea ese se entregarán al software de Apache.</p>
 <ul class="simple">
 <li><p>Los servidores que aceptan conexiones <strong>siempre escuchan en el mismo puerto</strong>. De hecho hay algunos números de puerto estandarizados. Por ejemplo el 80 TCP es de HTTP y el 443 TCP es de HTTPS.</p></li>
@@ -78,9 +78,9 @@
 <li><p>Aparte de las IP, los puertos y los orígenes y destino, <strong>el sentido del tráfico importa</strong>.</p></li>
 <li><p>En las redes, los estándares son públicos, abiertos y gratuitos. Estos estándares se denominan RFCs (Request For Comments)</p></li>
 </ul>
-</section>
-<section id="componentes-del-router">
-<h2>Componentes del router.<a class="headerlink" href="#componentes-del-router" title="Enlazar permanentemente con este título"></a></h2>
+</div>
+<div class="section" id="componentes-del-router">
+<h2>Componentes del router.<a class="headerlink" href="#componentes-del-router" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Los router modernos son verdaderos ordenadores en sí mismos:</p>
 <ul class="simple">
 <li><p>Microprocesador: Los Cisco llevan MPC (PowerPC). En los domésticos se ve procesadores embebidos en muchos casos MIPS.</p></li>
@@ -91,95 +91,95 @@
 <li><p>E/S: normalmente solo a través de los puertos de red.</p></li>
 </ul>
 <p>En la figura siguiente podemos ver un router doméstico abierto:</p>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="../_images/03-router-abierto.jpg" src="../_images/03-router-abierto.jpg" />
-</figure>
+</div>
 <p>El diagrama de bloques sería más o menos así:</p>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="../_images/04-descomposicion.png" src="../_images/04-descomposicion.png" />
-</figure>
+</div>
 <p>Los router domésticos a nivel interno no solamente tienen un sistema operativo sino también algunos parámetros configurables:</p>
 <ul class="simple">
 <li><p>IP y máscara. Por defecto, en muchos hogares es la 192.168.1.1 con máscara 255.255.255.0</p></li>
 <li><p>Rango de direcciones DHCP. DHCP se explicará en profundidad en segundo curso, en el módulo «Servicios de red».</p></li>
 </ul>
-</section>
-<section id="los-routers-en-las-lan-y-en-las-wan">
-<h2>Los routers en las LAN y en las WAN.<a class="headerlink" href="#los-routers-en-las-lan-y-en-las-wan" title="Enlazar permanentemente con este título"></a></h2>
+</div>
+<div class="section" id="los-routers-en-las-lan-y-en-las-wan">
+<h2>Los routers en las LAN y en las WAN.<a class="headerlink" href="#los-routers-en-las-lan-y-en-las-wan" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>En las redes LAN el router toma decisiones sencillas. En líneas generales solo deciden «¿se envía este paquete al otro lado o no?».</p>
 <p>En redes WAN, los routers tienen conexión con muchas otras redes. Al tener muchas redes, estos routers tienen que «intentar averiguar todas las conexiones y decidir cuales son los mejores caminos».</p>
-<section id="el-proceso-de-nat-paso-a-paso">
-<h3>El proceso de NAT paso a paso<a class="headerlink" href="#el-proceso-de-nat-paso-a-paso" title="Enlazar permanentemente con este título"></a></h3>
+<div class="section" id="el-proceso-de-nat-paso-a-paso">
+<h3>El proceso de NAT paso a paso<a class="headerlink" href="#el-proceso-de-nat-paso-a-paso" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Paso 1: un usuario quiere iniciar una conexión y conectarse a un servidor en otro lugar remoto.</p>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="../_images/nat01.png" src="../_images/nat01.png" />
-</figure>
+</div>
 <p>Paso 2: el usuario pide al servidor la IP pública de su router y usando su programa intenta conectarse a la IP pública del otro router y al puerto del juego o servicio. El puerto de origen se elige al azar.</p>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="../_images/nat02.png" src="../_images/nat02.png" />
-</figure>
+</div>
 <p>Paso 3: el paquete llega al router. El router observa que el paquete va al exterior. Como no se pueden usar IPs privadas en el exterior, el router <strong>CAMBIA LA IP DE ORIGEN Y TOMA NOTA DE ESA TRADUCCIÓN POR SI EN EL FUTURO SE NECESITA ESA INFORMACIÓN</strong>.</p>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="../_images/nat03.png" src="../_images/nat03.png" />
-</figure>
+</div>
 <p>Paso 4: el paquete (con la IP de origen cambiada) viaja por la red y llega al router de destino. Como los router <strong>por defecto no aceptan conexiones entrantes, en principio el paquete no entraría</strong> Es necesario que primero el router derecho tenga <em>el puerto 6003 abierto.</em> Abrir un puerto consiste en poner una regla que indique que si llega una conexión entrante iniciada en el exterior se va a dejar pasar enviando el paquete a una cierta IP.</p>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="../_images/nat04.png" src="../_images/nat04.png" />
-</figure>
+</div>
 <p>Paso 5: si hubiera la regla correcta, el paquete entrará pero con la IP de destino modificada.</p>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="../_images/nat05.png" src="../_images/nat05.png" />
-</figure>
+</div>
 <p>Paso 6: el paquete que intentaba iniciar la conexión <strong>llega correctamente a su destino</strong>.</p>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="../_images/nat06.png" src="../_images/nat06.png" />
-</figure>
+</div>
 <p>Paso 7: el servidor va a responder y genera un paquete de respuesta.</p>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="../_images/nat07.png" src="../_images/nat07.png" />
-</figure>
+</div>
 <p>Paso 8: el paquete llega al router <strong>que vuelve a modificar la IP de origen porque no se aceptan IPs privadas en Internet.</strong> Por supuesto, el router vuelve a apuntar esa traducción.</p>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="../_images/nat08.png" src="../_images/nat08.png" />
-</figure>
+</div>
 <p>Paso 9: el paquete intenta entrar. Lo primero que podríamos pensar es que el paquete no entrará, sin embargo <strong>SÍ VA A CONSEGUIR ENTRAR</strong></p>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="../_images/nat09.png" src="../_images/nat09.png" />
-</figure>
+</div>
 <p>Paso 10: el router observa que el paquete <strong>coincide perfectamente</strong> con la información de una traducción que se hizo en el pasado. Es decir <strong>el paquete puede pasar</strong>. De nuevo, se vuelve a cambiar la IP de destino y el paquete se inyecta en la red izquierda.</p>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="../_images/nat10.png" src="../_images/nat10.png" />
-</figure>
+</div>
 <p>Paso 10b: se modifica la IP y se envía al interior.</p>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="../_images/nat11.png" src="../_images/nat11.png" />
-</figure>
+</div>
 <p>Paso 11: el paquete <strong>llega a su destino</strong></p>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="../_images/nat12.png" src="../_images/nat12.png" />
-</figure>
-</section>
-</section>
-<section id="formas-de-conexion-al-router-para-su-configuracion-inicial">
-<h2>Formas de conexión al router para su configuración inicial.<a class="headerlink" href="#formas-de-conexion-al-router-para-su-configuracion-inicial" title="Enlazar permanentemente con este título"></a></h2>
-<section id="routers-domesticos">
-<h3>Routers domésticos<a class="headerlink" href="#routers-domesticos" title="Enlazar permanentemente con este título"></a></h3>
+</div>
+</div>
+</div>
+<div class="section" id="formas-de-conexion-al-router-para-su-configuracion-inicial">
+<h2>Formas de conexión al router para su configuración inicial.<a class="headerlink" href="#formas-de-conexion-al-router-para-su-configuracion-inicial" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="routers-domesticos">
+<h3>Routers domésticos<a class="headerlink" href="#routers-domesticos" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Los routers domésticos (también se encuentran en PYMES y pequeñas instituciones) se configuran mediante un interfaz web. Basta con abrir el navegador y conectarse a su IP de gestión, que en la mayoría de casos es la <a class="reference external" href="http://192.168.1.1">http://192.168.1.1</a></p>
-</section>
-<section id="routers-de-gama-alta">
-<h3>Routers de gama alta<a class="headerlink" href="#routers-de-gama-alta" title="Enlazar permanentemente con este título"></a></h3>
+</div>
+<div class="section" id="routers-de-gama-alta">
+<h3>Routers de gama alta<a class="headerlink" href="#routers-de-gama-alta" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>El proceso es el mismo que en los switches:</p>
 <ul class="simple">
 <li><p>Cable de consola.</p></li>
 <li><p>Conexión Telnet (insegura).</p></li>
 <li><p>Conexión SSH (segura pero requiere algunos pasos más).</p></li>
 </ul>
-</section>
-</section>
-<section id="comandos-para-configuracion-del-router">
-<h2>Comandos para configuración del router.<a class="headerlink" href="#comandos-para-configuracion-del-router" title="Enlazar permanentemente con este título"></a></h2>
-<section id="poner-clave-al-modo-administrador">
-<h3>Poner clave al modo administrador<a class="headerlink" href="#poner-clave-al-modo-administrador" title="Enlazar permanentemente con este título"></a></h3>
+</div>
+</div>
+<div class="section" id="comandos-para-configuracion-del-router">
+<h2>Comandos para configuración del router.<a class="headerlink" href="#comandos-para-configuracion-del-router" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="poner-clave-al-modo-administrador">
+<h3>Poner clave al modo administrador<a class="headerlink" href="#poner-clave-al-modo-administrador" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Para poner una clave:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Router</span><span class="o">&gt;</span><span class="n">enable</span>
 <span class="n">Router</span><span class="c1">#configure terminal</span>
@@ -190,9 +190,9 @@
 <span class="n">Password</span><span class="p">:</span>
 </pre></div>
 </div>
-</section>
-<section id="poner-clave-al-acceso-por-telnet">
-<h3>Poner clave al acceso por telnet<a class="headerlink" href="#poner-clave-al-acceso-por-telnet" title="Enlazar permanentemente con este título"></a></h3>
+</div>
+<div class="section" id="poner-clave-al-acceso-por-telnet">
+<h3>Poner clave al acceso por telnet<a class="headerlink" href="#poner-clave-al-acceso-por-telnet" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>El proceso era:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Router</span><span class="o">&gt;</span><span class="n">enable</span>
 <span class="n">Router</span><span class="c1">#configure terminal</span>
@@ -201,9 +201,9 @@
 <span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="n">line</span><span class="p">)</span><span class="c1">#login</span>
 </pre></div>
 </div>
-</section>
-<section id="poner-clave-al-acceso-por-cable-de-consola">
-<h3>Poner clave al acceso por cable de consola<a class="headerlink" href="#poner-clave-al-acceso-por-cable-de-consola" title="Enlazar permanentemente con este título"></a></h3>
+</div>
+<div class="section" id="poner-clave-al-acceso-por-cable-de-consola">
+<h3>Poner clave al acceso por cable de consola<a class="headerlink" href="#poner-clave-al-acceso-por-cable-de-consola" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>El proceso era el siguiente:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Router</span><span class="o">&gt;</span><span class="n">enable</span>
 <span class="n">Router</span><span class="c1">#configure terminal</span>
@@ -212,9 +212,9 @@
 <span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="n">line</span><span class="p">)</span><span class="c1">#login</span>
 </pre></div>
 </div>
-</section>
-<section id="quitar-una-clave-o-valor-de-configuracion">
-<h3>Quitar una clave o valor de configuración<a class="headerlink" href="#quitar-una-clave-o-valor-de-configuracion" title="Enlazar permanentemente con este título"></a></h3>
+</div>
+<div class="section" id="quitar-una-clave-o-valor-de-configuracion">
+<h3>Quitar una clave o valor de configuración<a class="headerlink" href="#quitar-una-clave-o-valor-de-configuracion" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Supongamos que queremos quitar la clave del modo administrador. Lo único que se necesita es ir al modo correcto y escribir <strong>no</strong> y despues el comando que ejecutaba la operación. Por ejemplo, para quitar la clave <code class="docutils literal notranslate"><span class="pre">admin1234</span></code> que hemos puesto antes haríamos esto:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Router</span><span class="o">&gt;</span><span class="n">enable</span>
 <span class="n">Password</span><span class="p">:</span><span class="o">****</span>
@@ -222,12 +222,12 @@
 <span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1">#no enable secret</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="comandos-para-administracion-del-router">
-<h2>Comandos para administración del router.<a class="headerlink" href="#comandos-para-administracion-del-router" title="Enlazar permanentemente con este título"></a></h2>
-<section id="poner-una-ip-a-una-interfaz">
-<h3>Poner una IP a una interfaz<a class="headerlink" href="#poner-una-ip-a-una-interfaz" title="Enlazar permanentemente con este título"></a></h3>
+</div>
+</div>
+<div class="section" id="comandos-para-administracion-del-router">
+<h2>Comandos para administración del router.<a class="headerlink" href="#comandos-para-administracion-del-router" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="poner-una-ip-a-una-interfaz">
+<h3>Poner una IP a una interfaz<a class="headerlink" href="#poner-una-ip-a-una-interfaz" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Para poner una IP se debe entrar en el interfaz correspondiente y luego usar el comando <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">address</span> <span class="pre">&lt;IP&gt;</span> <span class="pre">&lt;máscara&gt;</span></code>. Por ejemplo, para poner la IP 192.168.1.1 con máscara 255.255.255.0 al interfaz <code class="docutils literal notranslate"><span class="pre">GigabitEthernet</span> <span class="pre">0/0</span></code> hacemos esto:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Router</span><span class="o">&gt;</span><span class="n">enable</span>
 <span class="n">Router</span><span class="c1">#configure terminal</span>
@@ -236,9 +236,9 @@
 <span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="c1">#no shutdown</span>
 </pre></div>
 </div>
-</section>
-<section id="configurar-dhcp">
-<h3>Configurar DHCP<a class="headerlink" href="#configurar-dhcp" title="Enlazar permanentemente con este título"></a></h3>
+</div>
+<div class="section" id="configurar-dhcp">
+<h3>Configurar DHCP<a class="headerlink" href="#configurar-dhcp" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>DHCP (Dynamic Host Configuration Protocol) es un protocolo que permite que los host de una red se configuren automáticamente. Solo se necesita definir una serie de parámetros en alguna máquina que hará de <em>servidor DHCP</em> y que escuchará peticiones. Cuando un ordenador se encienda y esté configurado en modo DHCP <strong>difundirá una petición</strong> y si esa petición la recibe el servidor le contestará indicando la IP, máscara y otros datos que puede usar.</p>
 <p>Los parámetros que se necesitan son estos:</p>
 <ul class="simple">
@@ -255,9 +255,9 @@
 <span class="n">Router</span><span class="p">(</span><span class="n">dhcp</span><span class="o">-</span><span class="n">config</span><span class="p">)</span><span class="c1">#dns-server 8.8.8.8</span>
 </pre></div>
 </div>
-</section>
-<section id="excluir-direcciones-de-la-asignacion-dhcp">
-<h3>Excluir direcciones de la asignación DHCP<a class="headerlink" href="#excluir-direcciones-de-la-asignacion-dhcp" title="Enlazar permanentemente con este título"></a></h3>
+</div>
+<div class="section" id="excluir-direcciones-de-la-asignacion-dhcp">
+<h3>Excluir direcciones de la asignación DHCP<a class="headerlink" href="#excluir-direcciones-de-la-asignacion-dhcp" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Una vez estemos en un DHCP, como teníamos antes, podemos <em>excluir direcciones.</em> Se puede excluir solo una o excluir un rango de direcciones:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Router</span><span class="o">&gt;</span><span class="n">enable</span>
 <span class="n">Router</span><span class="c1">#configure terminal</span>
@@ -268,18 +268,18 @@
 <span class="n">Router</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1">#ip dhcp excluded-address 192.168.1.20 192.168.1.30</span>
 </pre></div>
 </div>
-</section>
-<section id="activar-nat-en-un-router">
-<h3>Activar NAT en un router<a class="headerlink" href="#activar-nat-en-un-router" title="Enlazar permanentemente con este título"></a></h3>
+</div>
+<div class="section" id="activar-nat-en-un-router">
+<h3>Activar NAT en un router<a class="headerlink" href="#activar-nat-en-un-router" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>En los router de gama alta, solo hay que identificar qué tarjeta va conectada a la red interna y qué tarjeta va a la red externa.</p>
 <ul class="simple">
 <li><p>La tarjeta interna debe recibir el comando <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">nat</span> <span class="pre">inside</span></code>.</p></li>
 <li><p>La tarjeta externa el comando <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">nat</span> <span class="pre">outside</span></code>.</p></li>
 </ul>
-</section>
-</section>
-<section id="configuracion-del-enrutamiento-estatico">
-<h2>Configuración del enrutamiento estático.<a class="headerlink" href="#configuracion-del-enrutamiento-estatico" title="Enlazar permanentemente con este título"></a></h2>
+</div>
+</div>
+<div class="section" id="configuracion-del-enrutamiento-estatico">
+<h2>Configuración del enrutamiento estático.<a class="headerlink" href="#configuracion-del-enrutamiento-estatico" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Se debe empezar por ir al modo de configuración globa. En líneas generales el comando tiene estas partes:</p>
 <ol class="arabic simple">
 <li><p>En primer lugar se escribe <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">route</span></code>.</p></li>
@@ -289,9 +289,9 @@
 </ol>
 <p>Así, para enseñarle a un router que si necesita enviar paquetes a la red 10.0.0.0/16 debe enviarlo al router con la IP 80.26.118.200 escribiremos <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">router</span> <span class="pre">10.0.0.0</span> <span class="pre">255.255.0.0</span> <span class="pre">80.26.118.200</span></code></p>
 <p>Examina la figura siguiente:</p>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="../_images/05-ej-enrutamiento.png" src="../_images/05-ej-enrutamiento.png" />
-</figure>
+</div>
 <p>En ella hay cuatro redes, que son respectivamente:</p>
 <ul class="simple">
 <li><p>La 10.0.0.0, arriba a la izquierda. Tiene un solo nodo, un PC con la IP 10.0.0.10.</p></li>
@@ -301,8 +301,8 @@
 </ul>
 <p>Configura todo lo necesario para que todos los equipos puedan conectar con todos los demás.</p>
 <p>En los siguientes párrafos se desglosa la solución.</p>
-<section id="boceto-general-de-la-solucion-al-enrutamiento">
-<h3>Boceto general de la solución al enrutamiento<a class="headerlink" href="#boceto-general-de-la-solucion-al-enrutamiento" title="Enlazar permanentemente con este título"></a></h3>
+<div class="section" id="boceto-general-de-la-solucion-al-enrutamiento">
+<h3>Boceto general de la solución al enrutamiento<a class="headerlink" href="#boceto-general-de-la-solucion-al-enrutamiento" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>En primer lugar se debe tener presente que <em>si no definimos un conjunto claro de rutas podemos hacer que sin querer los paquetes se enruten mal y den vueltas dentro de la red sin llegar nunca a nuestro destino.</em></p>
 <p>Por ello, adoptaremos esta política.</p>
 <ul class="simple">
@@ -310,55 +310,55 @@
 <li><p>Si hay que enviar un paquete a través de varios router definiremos un «sentido de giro». Por ejemplo, cuando tengamos dudas tomaremos la decisión de enviar los paquetes de forma que recorran la red en sentido horario, es decir, el sentido en que giran las agujas del reloj.</p></li>
 </ul>
 <p>Con esto, la configuración de las rutas sería algo como lo que mostramos en los párrafos siguientes.</p>
-</section>
-<section id="redes-en-router-1">
-<h3>Redes en Router 1<a class="headerlink" href="#redes-en-router-1" title="Enlazar permanentemente con este título"></a></h3>
+</div>
+<div class="section" id="redes-en-router-1">
+<h3>Redes en Router 1<a class="headerlink" href="#redes-en-router-1" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Comandos necesarios:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
-<span class="n">ip</span> <span class="n">route</span> <span class="mf">20.0.0.0</span> <span class="mf">255.0.0.0</span> <span class="mf">1.1.1.2</span>
-<span class="n">ip</span> <span class="n">route</span> <span class="mf">30.0.0.0</span> <span class="mf">255.0.0.0</span> <span class="mf">2.2.2.2</span>
-<span class="n">ip</span> <span class="n">route</span> <span class="mf">40.0.0.0</span> <span class="mf">255.0.0.0</span> <span class="mf">1.1.1.2</span>
+<span class="n">ip</span> <span class="n">route</span> <span class="mf">20.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">255.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">1.1</span><span class="o">.</span><span class="mf">1.2</span>
+<span class="n">ip</span> <span class="n">route</span> <span class="mf">30.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">255.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">2.2</span><span class="o">.</span><span class="mf">2.2</span>
+<span class="n">ip</span> <span class="n">route</span> <span class="mf">40.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">255.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">1.1</span><span class="o">.</span><span class="mf">1.2</span>
 <span class="n">exit</span>
 </pre></div>
 </div>
-</section>
-<section id="redes-en-router-2">
-<h3>Redes en Router 2<a class="headerlink" href="#redes-en-router-2" title="Enlazar permanentemente con este título"></a></h3>
+</div>
+<div class="section" id="redes-en-router-2">
+<h3>Redes en Router 2<a class="headerlink" href="#redes-en-router-2" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Comandos necesarios:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
-<span class="n">ip</span> <span class="n">route</span> <span class="mf">10.0.0.0</span> <span class="mf">255.0.0.0</span> <span class="mf">1.1.1.1</span>
-<span class="n">ip</span> <span class="n">route</span> <span class="mf">40.0.0.0</span> <span class="mf">255.0.0.0</span> <span class="mf">4.4.4.2</span>
-<span class="n">ip</span> <span class="n">route</span> <span class="mf">30.0.0.0</span> <span class="mf">255.0.0.0</span> <span class="mf">4.4.4.2</span>
+<span class="n">ip</span> <span class="n">route</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">255.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">1.1</span><span class="o">.</span><span class="mf">1.1</span>
+<span class="n">ip</span> <span class="n">route</span> <span class="mf">40.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">255.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">4.4</span><span class="o">.</span><span class="mf">4.2</span>
+<span class="n">ip</span> <span class="n">route</span> <span class="mf">30.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">255.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">4.4</span><span class="o">.</span><span class="mf">4.2</span>
 </pre></div>
 </div>
-</section>
-<section id="redes-en-router-3">
-<h3>Redes en Router 3<a class="headerlink" href="#redes-en-router-3" title="Enlazar permanentemente con este título"></a></h3>
+</div>
+<div class="section" id="redes-en-router-3">
+<h3>Redes en Router 3<a class="headerlink" href="#redes-en-router-3" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Comandos necesarios:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
-<span class="n">ip</span> <span class="n">route</span> <span class="mf">10.0.0.0</span> <span class="mf">255.0.0.0</span> <span class="mf">2.2.2.1</span>
-<span class="n">ip</span> <span class="n">route</span> <span class="mf">20.0.0.0</span> <span class="mf">255.0.0.0</span> <span class="mf">2.2.2.1</span>
-<span class="n">ip</span> <span class="n">route</span> <span class="mf">40.0.0.0</span> <span class="mf">255.0.0.0</span> <span class="mf">3.3.3.2</span>
+<span class="n">ip</span> <span class="n">route</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">255.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">2.2</span><span class="o">.</span><span class="mf">2.1</span>
+<span class="n">ip</span> <span class="n">route</span> <span class="mf">20.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">255.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">2.2</span><span class="o">.</span><span class="mf">2.1</span>
+<span class="n">ip</span> <span class="n">route</span> <span class="mf">40.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">255.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">3.3</span><span class="o">.</span><span class="mf">3.2</span>
 </pre></div>
 </div>
-</section>
-<section id="redes-en-router-4">
-<h3>Redes en Router 4<a class="headerlink" href="#redes-en-router-4" title="Enlazar permanentemente con este título"></a></h3>
+</div>
+<div class="section" id="redes-en-router-4">
+<h3>Redes en Router 4<a class="headerlink" href="#redes-en-router-4" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Comandos necesarios:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
-<span class="n">ip</span> <span class="n">route</span> <span class="mf">20.0.0.0</span> <span class="mf">255.0.0.0</span> <span class="mf">4.4.4.1</span>
-<span class="n">ip</span> <span class="n">route</span> <span class="mf">30.0.0.0</span> <span class="mf">255.0.0.0</span> <span class="mf">3.3.3.1</span>
-<span class="n">ip</span> <span class="n">route</span> <span class="mf">10.0.0.0</span> <span class="mf">255.0.0.0</span> <span class="mf">3.3.3.1</span>
+<span class="n">ip</span> <span class="n">route</span> <span class="mf">20.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">255.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">4.4</span><span class="o">.</span><span class="mf">4.1</span>
+<span class="n">ip</span> <span class="n">route</span> <span class="mf">30.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">255.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">3.3</span><span class="o">.</span><span class="mf">3.1</span>
+<span class="n">ip</span> <span class="n">route</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">255.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">3.3</span><span class="o">.</span><span class="mf">3.1</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="ejercicio-completo-de-configuracion-de-routers">
-<h2>Ejercicio completo de configuración de routers<a class="headerlink" href="#ejercicio-completo-de-configuracion-de-routers" title="Enlazar permanentemente con este título"></a></h2>
+</div>
+</div>
+<div class="section" id="ejercicio-completo-de-configuracion-de-routers">
+<h2>Ejercicio completo de configuración de routers<a class="headerlink" href="#ejercicio-completo-de-configuracion-de-routers" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Observa la figura siguiente. En ella hay tres router que interconectan tres redes. En ellas ocurre lo siguiente:</p>
 <ul>
 <li><p>Todas las redes usan direccionamiento con IPs privadas del tipo 192.168.1.0/255.255.255.0.</p></li>
@@ -384,20 +384,20 @@
 </div></blockquote>
 </li>
 </ul>
-<section id="direccionamiento-dhcp-y-nat-interno">
-<h3>Direccionamiento, DHCP y NAT interno<a class="headerlink" href="#direccionamiento-dhcp-y-nat-interno" title="Enlazar permanentemente con este título"></a></h3>
+<div class="section" id="direccionamiento-dhcp-y-nat-interno">
+<h3>Direccionamiento, DHCP y NAT interno<a class="headerlink" href="#direccionamiento-dhcp-y-nat-interno" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Todos los routers están configurados exactamente igual:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
 <span class="n">ip</span> <span class="n">dhcp</span> <span class="n">pool</span> <span class="n">pool_direcciones</span>
-<span class="n">network</span> <span class="mf">192.168.1.0</span> <span class="mf">255.255.255.0</span>
-<span class="n">default</span><span class="o">-</span><span class="n">router</span> <span class="mf">192.168.1.1</span>
-<span class="n">dns</span><span class="o">-</span><span class="n">server</span> <span class="mf">8.8.8.8</span>
+<span class="n">network</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.0</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span>
+<span class="n">default</span><span class="o">-</span><span class="n">router</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.1</span>
+<span class="n">dns</span><span class="o">-</span><span class="n">server</span> <span class="mf">8.8</span><span class="o">.</span><span class="mf">8.8</span>
 <span class="n">exit</span>
-<span class="n">ip</span> <span class="n">dhcp</span> <span class="n">excluded</span><span class="o">-</span><span class="n">address</span> <span class="mf">192.168.1.1</span>
-<span class="n">ip</span> <span class="n">dhcp</span> <span class="n">excluded</span><span class="o">-</span><span class="n">address</span> <span class="mf">192.168.1.10</span> <span class="mf">192.168.1.20</span>
+<span class="n">ip</span> <span class="n">dhcp</span> <span class="n">excluded</span><span class="o">-</span><span class="n">address</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.1</span>
+<span class="n">ip</span> <span class="n">dhcp</span> <span class="n">excluded</span><span class="o">-</span><span class="n">address</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.10</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.20</span>
 <span class="n">interface</span> <span class="n">gigabitethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">0</span>
-<span class="n">ip</span> <span class="n">address</span> <span class="mf">192.168.1.1</span> <span class="mf">255.255.255.0</span>
+<span class="n">ip</span> <span class="n">address</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.1</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span>
 <span class="n">ip</span> <span class="n">nat</span> <span class="n">inside</span>
 <span class="n">no</span> <span class="n">shutdown</span>
 <span class="n">exit</span>
@@ -405,18 +405,18 @@
 <span class="n">copy</span> <span class="n">running</span><span class="o">-</span><span class="n">config</span> <span class="n">startup</span><span class="o">-</span><span class="n">config</span>
 </pre></div>
 </div>
-</section>
-<section id="nat-externo-y-direcciones-publicas">
-<h3>NAT Externo y direcciones públicas<a class="headerlink" href="#nat-externo-y-direcciones-publicas" title="Enlazar permanentemente con este título"></a></h3>
+</div>
+<div class="section" id="nat-externo-y-direcciones-publicas">
+<h3>NAT Externo y direcciones públicas<a class="headerlink" href="#nat-externo-y-direcciones-publicas" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Habrá que entrar en las distintas tarjetas y activar el NAT correcto. Para Router0 sería así:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
 <span class="n">interface</span> <span class="n">serial</span> <span class="mi">0</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">0</span>
-<span class="n">ip</span> <span class="n">address</span> <span class="mf">1.1.1.1</span> <span class="mf">255.0.0.0</span>
+<span class="n">ip</span> <span class="n">address</span> <span class="mf">1.1</span><span class="o">.</span><span class="mf">1.1</span> <span class="mf">255.0</span><span class="o">.</span><span class="mf">0.0</span>
 <span class="n">ip</span> <span class="n">nat</span> <span class="n">outside</span>
 <span class="n">no</span> <span class="n">shutdown</span>
 <span class="n">interface</span> <span class="n">serial</span> <span class="mi">0</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">1</span>
-<span class="n">ip</span> <span class="n">address</span> <span class="mf">2.2.2.1</span> <span class="mf">255.0.0.0</span>
+<span class="n">ip</span> <span class="n">address</span> <span class="mf">2.2</span><span class="o">.</span><span class="mf">2.1</span> <span class="mf">255.0</span><span class="o">.</span><span class="mf">0.0</span>
 <span class="n">ip</span> <span class="n">nat</span> <span class="n">outside</span>
 <span class="n">no</span> <span class="n">shutdown</span>
 </pre></div>
@@ -425,11 +425,11 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
 <span class="n">interface</span> <span class="n">serial</span> <span class="mi">0</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">0</span>
-<span class="n">ip</span> <span class="n">address</span> <span class="mf">1.1.1.2</span> <span class="mf">255.0.0.0</span>
+<span class="n">ip</span> <span class="n">address</span> <span class="mf">1.1</span><span class="o">.</span><span class="mf">1.2</span> <span class="mf">255.0</span><span class="o">.</span><span class="mf">0.0</span>
 <span class="n">ip</span> <span class="n">nat</span> <span class="n">outside</span>
 <span class="n">no</span> <span class="n">shutdown</span>
 <span class="n">interface</span> <span class="n">serial</span> <span class="mi">0</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">1</span>
-<span class="n">ip</span> <span class="n">address</span> <span class="mf">3.3.3.1</span> <span class="mf">255.0.0.0</span>
+<span class="n">ip</span> <span class="n">address</span> <span class="mf">3.3</span><span class="o">.</span><span class="mf">3.1</span> <span class="mf">255.0</span><span class="o">.</span><span class="mf">0.0</span>
 <span class="n">ip</span> <span class="n">nat</span> <span class="n">outside</span>
 <span class="n">no</span> <span class="n">shutdown</span>
 </pre></div>
@@ -438,19 +438,19 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
 <span class="n">interface</span> <span class="n">serial</span> <span class="mi">0</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">0</span>
-<span class="n">ip</span> <span class="n">address</span> <span class="mf">3.3.3.2</span> <span class="mf">255.0.0.0</span>
+<span class="n">ip</span> <span class="n">address</span> <span class="mf">3.3</span><span class="o">.</span><span class="mf">3.2</span> <span class="mf">255.0</span><span class="o">.</span><span class="mf">0.0</span>
 <span class="n">ip</span> <span class="n">nat</span> <span class="n">outside</span>
 <span class="n">no</span> <span class="n">shutdown</span>
 <span class="n">interface</span> <span class="n">serial</span> <span class="mi">0</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">1</span>
-<span class="n">ip</span> <span class="n">address</span> <span class="mf">2.2.2.2</span> <span class="mf">255.0.0.0</span>
+<span class="n">ip</span> <span class="n">address</span> <span class="mf">2.2</span><span class="o">.</span><span class="mf">2.2</span> <span class="mf">255.0</span><span class="o">.</span><span class="mf">0.0</span>
 <span class="n">ip</span> <span class="n">nat</span> <span class="n">outside</span>
 <span class="n">no</span> <span class="n">shutdown</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="definicion-y-ubicacion-de-listas-de-control-de-acceso-acls">
-<h2>Definición y ubicación de listas de control de acceso (ACLs).<a class="headerlink" href="#definicion-y-ubicacion-de-listas-de-control-de-acceso-acls" title="Enlazar permanentemente con este título"></a></h2>
+</div>
+</div>
+<div class="section" id="definicion-y-ubicacion-de-listas-de-control-de-acceso-acls">
+<h2>Definición y ubicación de listas de control de acceso (ACLs).<a class="headerlink" href="#definicion-y-ubicacion-de-listas-de-control-de-acceso-acls" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Cisco define las listas de control de acceso como <em>una herramienta para hacer definir perfiles en el tráfico de red que luego puedan utilizarse para operaciones como filtrado de paquetes u ordenación del tráfico.</em></p>
 <p>Para realizar operaciones de filtrado necesitaremos hacer lo siguiente:</p>
 <ol class="arabic simple">
@@ -459,8 +459,8 @@
 <li><p>Entrar en un interfaz.</p></li>
 <li><p>Aplicar la lista indicando si es para el tráfico de entrada (in) o de salida (out)</p></li>
 </ol>
-<section id="definiendo-acls-y-anadiendo-acciones">
-<h3>Definiendo ACLs y añadiendo acciones<a class="headerlink" href="#definiendo-acls-y-anadiendo-acciones" title="Enlazar permanentemente con este título"></a></h3>
+<div class="section" id="definiendo-acls-y-anadiendo-acciones">
+<h3>Definiendo ACLs y añadiendo acciones<a class="headerlink" href="#definiendo-acls-y-anadiendo-acciones" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>El comando básico tiene esta estructura:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="o">&lt;</span><span class="n">numero_de_lista</span><span class="o">&gt;</span> <span class="n">permit</span><span class="o">/</span><span class="n">deny</span> <span class="o">&lt;</span><span class="n">origen</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">destino</span><span class="o">&gt;</span>
 </pre></div>
@@ -478,12 +478,12 @@
 </pre></div>
 </div>
 <p>Cuando llegue la hora de examinar el tráfico IOS irá primero a la lista 100 e irá examinando lo que hay que hacer. Si no hay nada examinará despues la lista 101. Esto implica lo siguiente: <strong>¿Qué ocurre si la condición 1 permite cierto tipo de tráfico y resulta que en la condición 5 queríamos denegar justo ese tráfico?</strong> Pasará que sin querer lo hemos autorizado por lo que se debe revisar con cuidado el orden de las condiciones.</p>
-</section>
-<section id="definicion-de-condiciones">
-<h3>Definición de condiciones<a class="headerlink" href="#definicion-de-condiciones" title="Enlazar permanentemente con este título"></a></h3>
+</div>
+<div class="section" id="definicion-de-condiciones">
+<h3>Definición de condiciones<a class="headerlink" href="#definicion-de-condiciones" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Se pueden definir condiciones con estos parámetros</p>
 <ul>
-<li><p>Se puede indicar como IP origen tanto un host como una red entera como la palabra <code class="docutils literal notranslate"><span class="pre">any</span></code> Para indicar una red entera se debe indicar la máscara en formato <em>wildcard</em> que es como la máscara pero con los bits invertidos: una IP como 192.168.1.0 con máscara 255.255.255.0 se pone en formato <em>wildcard</em> como 192.168.1.0 0.255.255.255. Para indicar un host exacto se usa <code class="docutils literal notranslate"><span class="pre">host</span> <span class="pre">192.168.1.23</span></code></p></li>
+<li><p>Se puede indicar como IP origen tanto un host como una red entera como la palabra <code class="docutils literal notranslate"><span class="pre">any</span></code> Para indicar una red entera se debe indicar la máscara en formato <em>wildcard</em> que es como la máscara pero con los bits invertidos: una IP como 192.168.1.0 con máscara 255.255.255.0 se pone en formato <em>wildcard</em> como 192.168.1.0 0.0.0.255. Para indicar un host exacto se usa <code class="docutils literal notranslate"><span class="pre">host</span> <span class="pre">192.168.1.23</span></code></p></li>
 <li><p>Se debe indicar el protocolo (tcp, udp…)</p></li>
 <li><p>Se puede indicar como puerto de origen tanto un número exacto como condiciones:</p>
 <blockquote>
@@ -496,9 +496,9 @@
 </div></blockquote>
 </li>
 </ul>
-</section>
-<section id="aplicacion-de-reglas">
-<h3>Aplicación de reglas<a class="headerlink" href="#aplicacion-de-reglas" title="Enlazar permanentemente con este título"></a></h3>
+</div>
+<div class="section" id="aplicacion-de-reglas">
+<h3>Aplicación de reglas<a class="headerlink" href="#aplicacion-de-reglas" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>En realidad es tan sencillo como hacer esto:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">0</span>
 <span class="n">ip</span> <span class="n">access</span><span class="o">-</span><span class="n">group</span> <span class="mi">100</span> <span class="ow">in</span>
@@ -510,22 +510,22 @@
 <p>Esto que es aparentemente fácil se puede volver muy confuso si no tenemos claro como se definió la regla <strong>en relación con el sentido del tráfico.</strong> Si definimos la regla bien, pero nos equivocamos y lo aplicamos en la tarjeta incorrecta o confundiendo «in» con «out» veremos que nuestras reglas no funcionan.</p>
 </div>
 <p>En los apartados siguientes veremos de manera práctica como crear algunas reglas para restringir el tráfico. Se debe recordar que una vez construidas las reglas <em>la política por defecto es denegar el tráfico.</em> Por tanto para estos ejercicios añadiremos reglas extras que autoricen el resto del tráfico.</p>
-</section>
-</section>
-<section id="ejercicios-acls">
-<h2>Ejercicios ACLs<a class="headerlink" href="#ejercicios-acls" title="Enlazar permanentemente con este título"></a></h2>
+</div>
+</div>
+<div class="section" id="ejercicios-acls">
+<h2>Ejercicios ACLs<a class="headerlink" href="#ejercicios-acls" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Dadas dos redes (puedes ver la topología abajo) con las direcciones 10.0.0.0/8 y 20.0.0.0/8 ocurre lo siguiente:</p>
 <ul class="simple">
 <li><p>En la red 10 hay un servidor con la IP 10.0.0.200 que sirve webs y FTP</p></li>
 <li><p>En la red 20 hay un servidor con la IP 20.0.0.200 que sirve webs y FTP</p></li>
 </ul>
-<figure class="align-default">
+<div class="figure align-default">
 <img alt="../_images/06-ej-acls.png" src="../_images/06-ej-acls.png" />
-</figure>
+</div>
 <p>Se nos pide poner en marcha los escenarios siguientes (cada escenario es independiente, reinicia los routers o borra las reglas antes de pasar de un escenario a otro):</p>
-</section>
-<section id="escenario-1">
-<h2>Escenario 1<a class="headerlink" href="#escenario-1" title="Enlazar permanentemente con este título"></a></h2>
+</div>
+<div class="section" id="escenario-1">
+<h2>Escenario 1<a class="headerlink" href="#escenario-1" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Suponiendo que administramos la red 20.0.0.0/8, prohibir que el host  10.0.0.100 acceda al servidor HTTP 20.0.0.200</p>
 <p>Solución:</p>
 <ul class="simple">
@@ -539,23 +539,23 @@
 <p>Los comandos serán como sigue:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
-<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">deny</span> <span class="n">tcp</span> <span class="n">host</span> <span class="mf">10.0.0.100</span> <span class="n">gt</span> <span class="mi">1</span> <span class="n">host</span> <span class="mf">20.0.0.200</span> <span class="n">eq</span> <span class="mi">80</span>
+<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">deny</span> <span class="n">tcp</span> <span class="n">host</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.100</span> <span class="n">gt</span> <span class="mi">1</span> <span class="n">host</span> <span class="mf">20.0</span><span class="o">.</span><span class="mf">0.200</span> <span class="n">eq</span> <span class="mi">80</span>
 <span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">permit</span> <span class="n">tcp</span> <span class="nb">any</span> <span class="nb">any</span>
 <span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">0</span>
 <span class="n">ip</span> <span class="n">access</span><span class="o">-</span><span class="n">group</span> <span class="mi">100</span> <span class="ow">in</span>
 </pre></div>
 </div>
-</section>
-<section id="escenario-2">
-<h2>Escenario 2<a class="headerlink" href="#escenario-2" title="Enlazar permanentemente con este título"></a></h2>
+</div>
+<div class="section" id="escenario-2">
+<h2>Escenario 2<a class="headerlink" href="#escenario-2" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Suponiendo que administramos la red 20.0.0.0/8, prohibir que el host  10.0.0.100 acceda al servidor FTP 20.0.0.200</p>
 <p>Nos aseguramos de borrar todo lo anterior y ejecutamos esto:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">reload</span>
 <span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
-<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">deny</span> <span class="n">tcp</span> <span class="n">host</span> <span class="mf">10.0.0.100</span> <span class="n">gt</span> <span class="mi">1</span> <span class="n">host</span> <span class="mf">20.0.0.200</span> <span class="n">eq</span> <span class="mi">20</span>
-<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">deny</span> <span class="n">tcp</span> <span class="n">host</span> <span class="mf">10.0.0.100</span> <span class="n">gt</span> <span class="mi">1</span> <span class="n">host</span> <span class="mf">20.0.0.200</span> <span class="n">eq</span> <span class="mi">21</span>
+<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">deny</span> <span class="n">tcp</span> <span class="n">host</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.100</span> <span class="n">gt</span> <span class="mi">1</span> <span class="n">host</span> <span class="mf">20.0</span><span class="o">.</span><span class="mf">0.200</span> <span class="n">eq</span> <span class="mi">20</span>
+<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">deny</span> <span class="n">tcp</span> <span class="n">host</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.100</span> <span class="n">gt</span> <span class="mi">1</span> <span class="n">host</span> <span class="mf">20.0</span><span class="o">.</span><span class="mf">0.200</span> <span class="n">eq</span> <span class="mi">21</span>
 <span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">permit</span> <span class="n">tcp</span> <span class="nb">any</span> <span class="nb">any</span>
 <span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">permit</span> <span class="n">icmp</span> <span class="nb">any</span> <span class="nb">any</span>
 <span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">0</span>
@@ -565,9 +565,9 @@
 <span class="n">exit</span>
 </pre></div>
 </div>
-</section>
-<section id="escenario-3">
-<h2>Escenario 3<a class="headerlink" href="#escenario-3" title="Enlazar permanentemente con este título"></a></h2>
+</div>
+<div class="section" id="escenario-3">
+<h2>Escenario 3<a class="headerlink" href="#escenario-3" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Prohibir el acceso al HTTP de 20.0.0.200 para cualquier máquina de la red 10.0.0.0/8
 (no vale escribir una regla para cada host, debe haber una sola regla para toda la red 10)</p>
 <p>Pista: Cisco no entiende cosas como 10.0.0.0/8 ni cosas como 10.0.0.0 255.0.0.0. Cisco usa un concepto denominado «wildcards»</p>
@@ -585,16 +585,17 @@
 <p>Solución al escenario 3:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
-<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">deny</span> <span class="n">tcp</span> <span class="mf">10.0.0.0</span> <span class="mf">0.255.255.255</span> <span class="n">gt</span> <span class="mi">1</span> <span class="n">host</span> <span class="mf">20.0.0.200</span> <span class="n">eq</span> <span class="mi">80</span>
+<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">deny</span> <span class="n">tcp</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">0.255</span><span class="o">.</span><span class="mf">255.255</span> <span class="n">gt</span> <span class="mi">1</span> <span class="n">host</span> <span class="mf">20.0</span><span class="o">.</span><span class="mf">0.200</span> <span class="n">eq</span> <span class="mi">80</span>
 <span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">permit</span> <span class="n">tcp</span> <span class="nb">any</span> <span class="nb">any</span>
+<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">permit</span> <span class="n">udp</span> <span class="nb">any</span> <span class="nb">any</span>
 <span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">permit</span> <span class="n">icmp</span> <span class="nb">any</span> <span class="nb">any</span>
 <span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">0</span>
 <span class="n">ip</span> <span class="n">access</span><span class="o">-</span><span class="n">group</span> <span class="mi">100</span> <span class="ow">in</span>
 </pre></div>
 </div>
-</section>
-<section id="escenario-4">
-<h2>Escenario 4<a class="headerlink" href="#escenario-4" title="Enlazar permanentemente con este título"></a></h2>
+</div>
+<div class="section" id="escenario-4">
+<h2>Escenario 4<a class="headerlink" href="#escenario-4" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Suponiendo que administramos el router 1 (derecha):</p>
 <ul class="simple">
 <li><p>Se desea permitir el tráfico HTTP a cualquiera que provenga de la red 10.0.0.0.</p></li>
@@ -607,11 +608,11 @@
 <span class="n">reload</span>
 <span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
-<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">permit</span> <span class="n">tcp</span> <span class="mf">10.0.0.0</span> <span class="mf">0.255.255.255</span> <span class="n">gt</span> <span class="mi">0</span> <span class="n">host</span> <span class="mf">20.0.0.200</span> <span class="n">eq</span> <span class="mi">80</span>
-<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">101</span> <span class="n">permit</span> <span class="n">tcp</span> <span class="n">host</span> <span class="mf">10.0.0.100</span> <span class="n">gt</span> <span class="mi">0</span> <span class="n">host</span> <span class="mf">20.0.0.200</span> <span class="n">eq</span> <span class="mi">20</span>
-<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">102</span> <span class="n">permit</span> <span class="n">tcp</span> <span class="n">host</span> <span class="mf">10.0.0.100</span> <span class="n">gt</span> <span class="mi">0</span> <span class="n">host</span> <span class="mf">20.0.0.200</span> <span class="n">eq</span> <span class="mi">21</span>
-<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">103</span> <span class="n">deny</span> <span class="n">tcp</span> <span class="n">host</span> <span class="mf">10.0.0.101</span> <span class="n">gt</span> <span class="mi">0</span> <span class="n">host</span> <span class="mf">20.0.0.200</span> <span class="n">eq</span> <span class="mi">20</span>
-<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">104</span> <span class="n">deny</span> <span class="n">tcp</span> <span class="n">host</span> <span class="mf">10.0.0.101</span> <span class="n">gt</span> <span class="mi">0</span> <span class="n">host</span> <span class="mf">20.0.0.200</span> <span class="n">eq</span> <span class="mi">21</span>
+<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">permit</span> <span class="n">tcp</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">0.255</span><span class="o">.</span><span class="mf">255.255</span> <span class="n">gt</span> <span class="mi">0</span> <span class="n">host</span> <span class="mf">20.0</span><span class="o">.</span><span class="mf">0.200</span> <span class="n">eq</span> <span class="mi">80</span>
+<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">101</span> <span class="n">permit</span> <span class="n">tcp</span> <span class="n">host</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.100</span> <span class="n">gt</span> <span class="mi">0</span> <span class="n">host</span> <span class="mf">20.0</span><span class="o">.</span><span class="mf">0.200</span> <span class="n">eq</span> <span class="mi">20</span>
+<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">102</span> <span class="n">permit</span> <span class="n">tcp</span> <span class="n">host</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.100</span> <span class="n">gt</span> <span class="mi">0</span> <span class="n">host</span> <span class="mf">20.0</span><span class="o">.</span><span class="mf">0.200</span> <span class="n">eq</span> <span class="mi">21</span>
+<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">103</span> <span class="n">deny</span> <span class="n">tcp</span> <span class="n">host</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.101</span> <span class="n">gt</span> <span class="mi">0</span> <span class="n">host</span> <span class="mf">20.0</span><span class="o">.</span><span class="mf">0.200</span> <span class="n">eq</span> <span class="mi">20</span>
+<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">104</span> <span class="n">deny</span> <span class="n">tcp</span> <span class="n">host</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.101</span> <span class="n">gt</span> <span class="mi">0</span> <span class="n">host</span> <span class="mf">20.0</span><span class="o">.</span><span class="mf">0.200</span> <span class="n">eq</span> <span class="mi">21</span>
 <span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">105</span> <span class="n">permit</span> <span class="n">tcp</span> <span class="nb">any</span> <span class="nb">any</span>
 <span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">106</span> <span class="n">permit</span> <span class="n">udp</span> <span class="nb">any</span> <span class="nb">any</span>
 <span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">107</span> <span class="n">permit</span> <span class="n">icmp</span> <span class="nb">any</span> <span class="nb">any</span>
@@ -629,9 +630,9 @@
 <span class="n">exit</span>
 </pre></div>
 </div>
-</section>
-<section id="escenario-5">
-<h2>Escenario 5<a class="headerlink" href="#escenario-5" title="Enlazar permanentemente con este título"></a></h2>
+</div>
+<div class="section" id="escenario-5">
+<h2>Escenario 5<a class="headerlink" href="#escenario-5" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Ahora administramos el router 0 (izquierda) y  se desea conseguir lo siguiente:</p>
 <ul class="simple">
 <li><p>Permitir el tráfico de salida HTTP destinado a la derecha.</p></li>
@@ -642,7 +643,7 @@
 <span class="n">reload</span>
 <span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
-<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">permit</span> <span class="n">tcp</span> <span class="mf">10.0.0.0</span> <span class="mf">0.255.255.255</span> <span class="n">gt</span> <span class="mi">0</span> <span class="n">host</span> <span class="mf">20.0.0.200</span> <span class="n">eq</span> <span class="mi">80</span>
+<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">permit</span> <span class="n">tcp</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">0.255</span><span class="o">.</span><span class="mf">255.255</span> <span class="n">gt</span> <span class="mi">0</span> <span class="n">host</span> <span class="mf">20.0</span><span class="o">.</span><span class="mf">0.200</span> <span class="n">eq</span> <span class="mi">80</span>
 <span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">0</span>
 <span class="n">ip</span> <span class="n">access</span><span class="o">-</span><span class="n">group</span> <span class="mi">100</span> <span class="n">out</span>
 <span class="n">exit</span>
@@ -650,19 +651,19 @@
 <span class="n">exit</span>
 </pre></div>
 </div>
-</section>
-<section id="escenario-7">
-<h2>Escenario 7<a class="headerlink" href="#escenario-7" title="Enlazar permanentemente con este título"></a></h2>
+</div>
+<div class="section" id="escenario-7">
+<h2>Escenario 7<a class="headerlink" href="#escenario-7" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Siendo los administradores del router 0 (izquierda) se desea permitir la entrada de tráfico HTTP del ordenador 20.0.0.101 y denegar todos los demás casos.</p>
 <p>No nos dicen donde «tomar la decisión», haremos los dos.</p>
-<section id="caso-1-decidir-en-la-tarjeta-0-0">
-<h3>Caso 1: decidir en la tarjeta 0/0<a class="headerlink" href="#caso-1-decidir-en-la-tarjeta-0-0" title="Enlazar permanentemente con este título"></a></h3>
+<div class="section" id="caso-1-decidir-en-la-tarjeta-0-0">
+<h3>Caso 1: decidir en la tarjeta 0/0<a class="headerlink" href="#caso-1-decidir-en-la-tarjeta-0-0" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Para la tarjeta 0/0 este requisito es una REGLA DE ENTRADA, es decir, que usaremos «in»:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">reload</span>
 <span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
-<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">permit</span> <span class="n">tcp</span> <span class="n">host</span> <span class="mf">20.0.0.101</span> <span class="n">gt</span> <span class="mi">0</span> <span class="n">host</span> <span class="mf">10.0.0.200</span> <span class="n">eq</span> <span class="mi">80</span>
+<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">permit</span> <span class="n">tcp</span> <span class="n">host</span> <span class="mf">20.0</span><span class="o">.</span><span class="mf">0.101</span> <span class="n">gt</span> <span class="mi">0</span> <span class="n">host</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.200</span> <span class="n">eq</span> <span class="mi">80</span>
 <span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">0</span>
 <span class="n">ip</span> <span class="n">access</span><span class="o">-</span><span class="n">group</span> <span class="mi">100</span> <span class="ow">in</span>
 <span class="n">exit</span>
@@ -670,15 +671,15 @@
 <span class="n">exit</span>
 </pre></div>
 </div>
-</section>
-<section id="caso-2-decidir-en-la-tarjeta-0-1">
-<h3>Caso 2: decidir en la tarjeta 0/1<a class="headerlink" href="#caso-2-decidir-en-la-tarjeta-0-1" title="Enlazar permanentemente con este título"></a></h3>
+</div>
+<div class="section" id="caso-2-decidir-en-la-tarjeta-0-1">
+<h3>Caso 2: decidir en la tarjeta 0/1<a class="headerlink" href="#caso-2-decidir-en-la-tarjeta-0-1" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Aunque el tráfico es ENTRANTE, desde el punto de vista de la tarjeta 0/1 el tráfico es SALIENTE, así que habrá que usar «out»:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">reload</span>
 <span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
-<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">permit</span> <span class="n">tcp</span> <span class="n">host</span> <span class="mf">20.0.0.101</span> <span class="n">gt</span> <span class="mi">0</span> <span class="n">host</span> <span class="mf">10.0.0.200</span> <span class="n">eq</span> <span class="mi">80</span>
+<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">permit</span> <span class="n">tcp</span> <span class="n">host</span> <span class="mf">20.0</span><span class="o">.</span><span class="mf">0.101</span> <span class="n">gt</span> <span class="mi">0</span> <span class="n">host</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.200</span> <span class="n">eq</span> <span class="mi">80</span>
 <span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>
 <span class="n">ip</span> <span class="n">access</span><span class="o">-</span><span class="n">group</span> <span class="mi">100</span> <span class="n">out</span>
 <span class="n">exit</span>
@@ -686,19 +687,19 @@
 <span class="n">exit</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="escenario-8">
-<h2>Escenario 8<a class="headerlink" href="#escenario-8" title="Enlazar permanentemente con este título"></a></h2>
+</div>
+</div>
+<div class="section" id="escenario-8">
+<h2>Escenario 8<a class="headerlink" href="#escenario-8" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Administramos el router izquierdo y deseamos permitir el tráfico HTTPS que viene de la red derecha.
 También se desea permitir el tráfico HTTP que viene del 20.0.0.100. Denegar el resto de casos.</p>
-<section id="caso-1-decidir-en-tarjeta-0-0">
-<h3>Caso 1: decidir en tarjeta 0/0<a class="headerlink" href="#caso-1-decidir-en-tarjeta-0-0" title="Enlazar permanentemente con este título"></a></h3>
+<div class="section" id="caso-1-decidir-en-tarjeta-0-0">
+<h3>Caso 1: decidir en tarjeta 0/0<a class="headerlink" href="#caso-1-decidir-en-tarjeta-0-0" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Los comandos serían:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
-<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">permit</span> <span class="n">tcp</span> <span class="mf">20.0.0.0</span> <span class="mf">0.255.255.255</span> <span class="n">gt</span> <span class="mi">0</span> <span class="n">host</span> <span class="mf">10.0.0.200</span> <span class="n">eq</span> <span class="mi">443</span>
-<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">permit</span> <span class="n">tcp</span> <span class="n">host</span> <span class="mf">20.0.0.100</span> <span class="n">gt</span> <span class="mi">0</span> <span class="n">host</span> <span class="mf">10.0.0.200</span> <span class="n">eq</span> <span class="mi">80</span>
+<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">permit</span> <span class="n">tcp</span> <span class="mf">20.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">0.255</span><span class="o">.</span><span class="mf">255.255</span> <span class="n">gt</span> <span class="mi">0</span> <span class="n">host</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.200</span> <span class="n">eq</span> <span class="mi">443</span>
+<span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">permit</span> <span class="n">tcp</span> <span class="n">host</span> <span class="mf">20.0</span><span class="o">.</span><span class="mf">0.100</span> <span class="n">gt</span> <span class="mi">0</span> <span class="n">host</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.200</span> <span class="n">eq</span> <span class="mi">80</span>
 <span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">0</span>
 <span class="n">ip</span> <span class="n">access</span><span class="o">-</span><span class="n">group</span> <span class="mi">100</span> <span class="ow">in</span>
 <span class="n">exit</span>
@@ -706,13 +707,13 @@ También se desea permitir el tráfico HTTP que viene del 20.0.0.100. Denegar el
 <span class="n">exit</span>
 </pre></div>
 </div>
-</section>
-<section id="caso-2-decidir-en-la-otra-tarjeta">
-<h3>Caso 2: decidir en la otra tarjeta<a class="headerlink" href="#caso-2-decidir-en-la-otra-tarjeta" title="Enlazar permanentemente con este título"></a></h3>
+</div>
+<div class="section" id="caso-2-decidir-en-la-otra-tarjeta">
+<h3>Caso 2: decidir en la otra tarjeta<a class="headerlink" href="#caso-2-decidir-en-la-otra-tarjeta" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Se queda como ejercicio, ¡inténtalo!</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -731,7 +732,7 @@ También se desea permitir el tráfico HTTP que viene del 20.0.0.100. Denegar el
 
 
 <h3>Navegación</h3>
-<p class="caption" role="heading"><span class="caption-text">Índice:</span></p>
+<p class="caption"><span class="caption-text">Índice:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../t1_caracterizacion_redes/apuntes_t1.html">Tema 1:Caracterización de redes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/apuntes_t2.html">Tema 2:Integración de elementos en una red</a></li>
@@ -830,7 +831,7 @@ También se desea permitir el tráfico HTTP que viene del 20.0.0.100. Denegar el
   <h3 id="searchlabel">Búsqueda rápida</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Ir a" />
     </form>
     </div>
@@ -852,7 +853,7 @@ También se desea permitir el tráfico HTTP que viene del 20.0.0.100. Denegar el
       &copy;2021, Oscar G. G..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

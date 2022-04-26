@@ -484,7 +484,7 @@ Definición de condiciones
 
 Se pueden definir condiciones con estos parámetros
 
-* Se puede indicar como IP origen tanto un host como una red entera como la palabra ``any`` Para indicar una red entera se debe indicar la máscara en formato *wildcard* que es como la máscara pero con los bits invertidos: una IP como 192.168.1.0 con máscara 255.255.255.0 se pone en formato *wildcard* como 192.168.1.0 0.255.255.255. Para indicar un host exacto se usa ``host 192.168.1.23``
+* Se puede indicar como IP origen tanto un host como una red entera como la palabra ``any`` Para indicar una red entera se debe indicar la máscara en formato *wildcard* que es como la máscara pero con los bits invertidos: una IP como 192.168.1.0 con máscara 255.255.255.0 se pone en formato *wildcard* como 192.168.1.0 0.0.0.255. Para indicar un host exacto se usa ``host 192.168.1.23``
 * Se debe indicar el protocolo (tcp, udp...)
 * Se puede indicar como puerto de origen tanto un número exacto como condiciones:
 
@@ -595,6 +595,7 @@ Solución al escenario 3::
     configure terminal
     access-list 100 deny tcp 10.0.0.0 0.255.255.255 gt 1 host 20.0.0.200 eq 80
     access-list 100 permit tcp any any
+    access-list 100 permit udp any any
     access-list 100 permit icmp any any
     interface fastethernet 0/0
     ip access-group 100 in
