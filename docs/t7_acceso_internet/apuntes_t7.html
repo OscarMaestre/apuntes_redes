@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tema 7: Configuración del acceso a Internet desde una LAN &#8212; documentación de Apuntes de redes - 1.0</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Anexo: Ejercicios propuestos para el tema 1" href="../anexos/t1_ejercicios.html" />
+    <link rel="prev" title="Tema 6:Configuración y administración de protocolos dinámicos" href="../t6_enrutamiento_dinamico/apuntes_t6.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="tema-7-configuracion-del-acceso-a-internet-desde-una-lan">
+<h1>Tema 7: Configuración del acceso a Internet desde una LAN<a class="headerlink" href="#tema-7-configuracion-del-acceso-a-internet-desde-una-lan" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="direccionamiento-interno-y-direccionamiento-externo">
+<h2>Direccionamiento interno y direccionamiento externo.<a class="headerlink" href="#direccionamiento-interno-y-direccionamiento-externo" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="nat-origen-y-nat-destino-nat-estatico-dinamico-de-sobrecarga-pat-e-inverso">
+<h2>NAT origen y NAT destino.NAT estático, dinámico, de sobrecarga (PAT) e inverso.<a class="headerlink" href="#nat-origen-y-nat-destino-nat-estatico-dinamico-de-sobrecarga-pat-e-inverso" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="configuracion-de-nat">
+<h2>Configuración de NAT.<a class="headerlink" href="#configuracion-de-nat" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="diagnostico-de-incidencias-de-nat">
+<h2>Diagnostico de incidencias de NAT.<a class="headerlink" href="#diagnostico-de-incidencias-de-nat" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="configuracion-de-pat">
+<h2>Configuración de PAT.<a class="headerlink" href="#configuracion-de-pat" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="diagnostico-de-fallos-de-pat">
+<h2>Diagnóstico de fallos de PAT.<a class="headerlink" href="#diagnostico-de-fallos-de-pat" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="introduccion-a-las-tecnologias-wan-frame-relay-rdsi-adsl">
+<h2>Introducción a las tecnologías WAN: Frame Relay, RDSI, ADSL.<a class="headerlink" href="#introduccion-a-las-tecnologias-wan-frame-relay-rdsi-adsl" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="las-tecnologias-wifi-y-wimax">
+<h2>Las tecnologías Wifi y Wimax.<a class="headerlink" href="#las-tecnologias-wifi-y-wimax" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="las-tecnologias-umts-y-hsdpa">
+<h2>Las tecnologías UMTS y HSDPA.<a class="headerlink" href="#las-tecnologias-umts-y-hsdpa" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="tecnologias-emergentes-basadas-en-cable-e-inalambricas">
+<h2>Tecnologías emergentes basadas en cable e inalámbricas.<a class="headerlink" href="#tecnologias-emergentes-basadas-en-cable-e-inalambricas" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Apuntes de redes</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegación</h3>
+<p class="caption" role="heading"><span class="caption-text">Índice:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../t1_caracterizacion_redes/apuntes_t1.html">Tema 1:Caracterización de redes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/apuntes_t2.html">Tema 2:Integración de elementos en una red</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t3_conmutadores/apuntes_t3.html">Tema 3:Configuración y administración de conmutadores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t5_vlans/apuntes_t5.html">Tema 4: Configuración de redes virtuales VLAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t4_routers/apuntes_t4.html">Tema 5: Configuración y administración básica de routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t6_enrutamiento_dinamico/apuntes_t6.html">Tema 6:Configuración y administración de protocolos dinámicos</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tema 7: Configuración del acceso a Internet desde una LAN</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#direccionamiento-interno-y-direccionamiento-externo">Direccionamiento interno y direccionamiento externo.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nat-origen-y-nat-destino-nat-estatico-dinamico-de-sobrecarga-pat-e-inverso">NAT origen y NAT destino.NAT estático, dinámico, de sobrecarga (PAT) e inverso.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuracion-de-nat">Configuración de NAT.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#diagnostico-de-incidencias-de-nat">Diagnostico de incidencias de NAT.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuracion-de-pat">Configuración de PAT.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#diagnostico-de-fallos-de-pat">Diagnóstico de fallos de PAT.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#introduccion-a-las-tecnologias-wan-frame-relay-rdsi-adsl">Introducción a las tecnologías WAN: Frame Relay, RDSI, ADSL.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#las-tecnologias-wifi-y-wimax">Las tecnologías Wifi y Wimax.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#las-tecnologias-umts-y-hsdpa">Las tecnologías UMTS y HSDPA.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tecnologias-emergentes-basadas-en-cable-e-inalambricas">Tecnologías emergentes basadas en cable e inalámbricas.</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../anexos/t1_ejercicios.html">Anexo: Ejercicios propuestos para el tema 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejercicios_switches/ejercicios_dos_switches.html">Anexo: ejercicios con tablas MAC de switches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejercicios_subredes_ipv4/rangos_direcciones.html">Anexo: ejercicios sobre rangos de direcciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejercicios_subredes/ejercicios_calculo_subredes.html">Anexo: cálculo de subredes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejercicios_subredes_ipv4/ejercicios_dos_router.html">Anexo: ejercicios de enrutamiento</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejercicios_subredes_ipv4/ejercicios_3_router_caso_a.html">Anexo: ejercicios de enrutamiento con 3 routers (caso 1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejerciciosipv6/ejercicios_ipv6.html">Anexo: Ejercicios sobre compresión de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejerciciosipv6/ejercicios_ipv6.html#soluciones-a-compresion-de-direcciones-ipv6">Soluciones a compresión de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejercicios_ips/clasificacion_ipv6.html">Anexo: ejercicios sobre clasificación de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejercicios_ips/clasificacion_ipv6.html#soluciones-a-la-clasificaciones-de-direcciones-ipv6">Soluciones a la clasificaciones de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t3_conmutadores/ejercicios/ejercicios_switches.html">Anexo al tema 3: Ejercicios sobre comandos Cisco en switches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t3_conmutadores/simuladorstp/stp1.html">Anexo al tema 3:Ejercicios STP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t5_vlans/ejercicios_vlans/ejercicios_vlans.html">Ejercicios con VLANS y VTP</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../t6_enrutamiento_dinamico/apuntes_t6.html" title="capítulo anterior">Tema 6:Configuración y administración de protocolos dinámicos</a></li>
+      <li>Next: <a href="../anexos/t1_ejercicios.html" title="próximo capítulo">Anexo: Ejercicios propuestos para el tema 1</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Oscar G. G..
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/t7_acceso_internet/apuntes_t7.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

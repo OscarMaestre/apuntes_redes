@@ -1,0 +1,858 @@
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tema 6:Configuración y administración de protocolos dinámicos &#8212; documentación de Apuntes de redes - 1.0</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Tema 7: Configuración del acceso a Internet desde una LAN" href="../t7_acceso_internet/apuntes_t7.html" />
+    <link rel="prev" title="Tema 5: Configuración y administración básica de routers" href="../t4_routers/apuntes_t4.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="tema-6-configuracion-y-administracion-de-protocolos-dinamicos">
+<h1>Tema 6:Configuración y administración de protocolos dinámicos<a class="headerlink" href="#tema-6-configuracion-y-administracion-de-protocolos-dinamicos" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="protocolos-enrutables-y-protocolos-de-enrutamiento">
+<h2>Protocolos enrutables y protocolos de enrutamiento.<a class="headerlink" href="#protocolos-enrutables-y-protocolos-de-enrutamiento" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En las redes hemos usado muy a menudo el concepto de protocolo:</p>
+<ul class="simple">
+<li><p>Por ejemplo IP establece que las direcciones tienen que tener un cierto formato, que tienen que tener una máscara y que no debe haber dos nodos con la misma IP (aparte de muchas otras reglas).</p></li>
+<li><p>Protocolos como HTTP dicen que para descargar un archivo se debe enviar la cadena <code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/archivo.html</span></code></p></li>
+</ul>
+<p>En principio tendemos a pensar que un protocolo nos permite comunicar <em>con cualquier máquina</em> pero esto no es así: no todos los protocolos están pensados para comunicar con máquinas más alla de nuestro router. A estos protocolos se les llama <strong>protocolos no enrutables</strong>.</p>
+<p>Un buen ejemplo de esto es el protocolo para carpetas compartidas en Windows o para descubrir otros equipos en la red (lo que usamos al «explorar la red de Windows»).</p>
+<p>Por supuesto, los protocolos de nivel de enlace (también llamado de capa 2 o L2) no son enrutados por los routers. De hecho, si lo fueran, el más minimo <code class="docutils literal notranslate"><span class="pre">ping</span></code> podría generar difusiones que alcanzarían a todo Internet (lo cual es un buen motivo para no enrutarlos).</p>
+<p>En suma, cuando trabajamos con redes, especialmente con redes «Windows» debemos tener presente que en principio no podremos contactar con otras redes remotas Windows.</p>
+</div>
+<div class="section" id="funcionamiento-de-los-protocolos-de-enrutamiento-dinamico">
+<h2>Funcionamiento de los protocolos de enrutamiento dinámico.<a class="headerlink" href="#funcionamiento-de-los-protocolos-de-enrutamiento-dinamico" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Este punto no es estrictamente parte del temario. Sin embargo, se incluye para entender mejor como funcionan los procesos por los cuales un router puede «aprender» rutas a redes remotas.</p>
+<p>En primer lugar, todos los router anuncian todo lo que saben. Normalmente, al principio solo conocen a las redes con las que tienen conexión directa. En la figura ponemos solo un router, pero esto ocurre con <em>la mayor parte</em> de procesos de enrutamiento dinámico (de hecho hay pequeños casos en los que un router configurado con enrutamiento dinámico no haría nada)</p>
+<div class="figure align-default">
+<img alt="../_images/dinamico-paso-01.png" src="../_images/dinamico-paso-01.png" />
+</div>
+<p>Esta información llega a los router «Router 2» y «Router 3», los cuales se apuntan la información en sus tablas de rutas. Ahora «Router 2» tiene esto</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 23%" />
+<col style="width: 36%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Red</p></th>
+<th class="head"><p>Máscara</p></th>
+<th class="head"><p>Siguiente salto</p></th>
+<th class="head"><p>Métrica</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>10.0.0.0</p></td>
+<td><p>255.0.0.0</p></td>
+<td><p>1.1.1.1</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<p>Y «Router 3» tiene esto:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 23%" />
+<col style="width: 36%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Red</p></th>
+<th class="head"><p>Máscara</p></th>
+<th class="head"><p>Siguiente salto</p></th>
+<th class="head"><p>Métrica</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>10.0.0.0</p></td>
+<td><p>255.0.0.0</p></td>
+<td><p>2.2.2.1</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<p>Es evidente que en el primer paso, todos los router aprenderán como llegar a redes que estén <strong>a un «salto» de distancia</strong>. Pasado un cierto tiempo, todos los router vuelven a anunciar todo lo que saben. Fijémenos en lo que anuncia «Router 2»</p>
+<div class="figure align-default">
+<img alt="../_images/dinamico-paso-02.png" src="../_images/dinamico-paso-02.png" />
+</div>
+<p>Sin embargo, ahora «Router 1» recibe una información que no necesitaba:</p>
+<div class="figure align-default">
+<img alt="../_images/dinamico-paso-03.png" src="../_images/dinamico-paso-03.png" />
+</div>
+<p>Por el contrario «Router 4» recibe información nueva que no tenía, cosa de la que tomará nota en su tabla de rutas</p>
+<div class="figure align-default">
+<img alt="../_images/dinamico-paso-04.png" src="../_images/dinamico-paso-04.png" />
+</div>
+<p>De hecho, en solo dos pasos, la tabla de «Router 4» será más o menos así. En la tabla siguiente NO PONEMOS todas las rutas a todos los sitios, ya que algunas eran «peores». Recalcamos sin embargo, que ahora hay dos caminos para la 10.0.0.0:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 16%" />
+<col style="width: 25%" />
+<col style="width: 13%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Red</p></th>
+<th class="head"><p>Máscara</p></th>
+<th class="head"><p>Siguiente salto</p></th>
+<th class="head"><p>Métrica</p></th>
+<th class="head"><p>Aprendida mediante</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>10.0.0.0</p></td>
+<td><p>255.0.0.0</p></td>
+<td><p>3.3.3.1</p></td>
+<td><p>2</p></td>
+<td><p>Router3</p></td>
+</tr>
+<tr class="row-odd"><td><p>10.0.0.0</p></td>
+<td><p>255.0.0.0</p></td>
+<td><p>4.4.4.1</p></td>
+<td><p>2</p></td>
+<td><p>Router2</p></td>
+</tr>
+<tr class="row-even"><td><p>20.0.0.0</p></td>
+<td><p>255.0.0.0</p></td>
+<td><p>4.4.4.1</p></td>
+<td><p>1</p></td>
+<td><p>Router2</p></td>
+</tr>
+<tr class="row-odd"><td><p>30.0.0.0</p></td>
+<td><p>255.0.0.0</p></td>
+<td><p>3.3.3.1</p></td>
+<td><p>1</p></td>
+<td><p>Router3</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="protocolos-de-enrutamiento-interior-y-exterior">
+<h2>Protocolos de enrutamiento interior y exterior.<a class="headerlink" href="#protocolos-de-enrutamiento-interior-y-exterior" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="concepto-de-sistema-autonomo">
+<h3>Concepto de sistema autónomo<a class="headerlink" href="#concepto-de-sistema-autonomo" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>El RFC 1930 define un sistema autónomo como:</p>
+<blockquote class="pull-quote">
+<div><p>An AS is a connected group of one or more IP prefixes run by one
+or more network operators which has a SINGLE and CLEARLY DEFINED
+routing policy.</p>
+</div></blockquote>
+<p>Que más o menos sería:</p>
+<blockquote class="pull-quote">
+<div><p>Un sistema autónomo AS es un grupo de uno o más prefijos de red controlados
+por uno o más operadores de red que tiene una ÚNICA política de enrutamiento
+que además está CLARAMENTE DEFINIDA.</p>
+</div></blockquote>
+<p>Una definición más simple sería «una empresa u organización que tiene un conjunto de redes».</p>
+<p>Los sistemas autónomos suelen tener asignado un número por parte del IANA que se utiliza en muchas operaciones administrativas y que (lógicamente) se llama <em>número de sistema autónomo</em>. Estos números tienen 32 bits y se escriben como un solo número decimal, el cual puede ir de 0 a (2 a la 32)-1.</p>
+</div>
+<div class="section" id="protocolos-de-enrutamiento-interno">
+<h3>Protocolos de enrutamiento interno<a class="headerlink" href="#protocolos-de-enrutamiento-interno" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Son protocolos dinámicos, es decir, que configuran automáticamente todas las rutas liberando al administrador del trabajo. Los protocolos de enrutamiento interno están pensados <strong>para usarse dentro de un sistema autónomo</strong>. Esto es así porque están pensados para entornos en los que conocemos toda la red, precisamente por ser nuestra red.</p>
+<p>Estos protocolos suelen llamarse a veces IGPs (Interior Gateway Protocols)</p>
+</div>
+<div class="section" id="protocolos-de-enrutamiento-externo">
+<h3>Protocolos de enrutamiento externo<a class="headerlink" href="#protocolos-de-enrutamiento-externo" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>También son dinámicos pero están pensados para <strong>interconectar nuestro AS con otros AS</strong>.Estos protocolos suelen llamarse a veces EGPs (Exterior Gateway Protocols)</p>
+</div>
+</div>
+<div class="section" id="el-enrutamiento-sin-clase">
+<h2>El enrutamiento sin clase.<a class="headerlink" href="#el-enrutamiento-sin-clase" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Se llama enrutamiento sin clase o CIDR (Classless InterDomain Routing) al enrutamiento que no tiene en cuenta para nada si una dirección es de clase A, B o C. Durante todo este curso no le hemos dado ninguna importancia y de hecho hemos trabajado con máscaras como /18 o /23. Sin embargo, en el pasado las clases A,B o C tenían muchísima importancia, por lo que a veces en los temarios se resalta esta diferencia, pero esto es solo por motivos históricos. Los protocolos modernos de enrutamiento no tienen en cuenta para nada la clase de una IP y podemos tener direcciones como 10.65.128.0/28 (a esta forma de escribir la IP, la barra y los bits de la máscara se le denomina «notación CIDR»).</p>
+</div>
+<div class="section" id="la-subdivision-de-redes-y-el-uso-de-mascaras-de-longitud-variable-vlsm">
+<h2>La subdivisión de redes y el uso de máscaras de longitud variable (VLSM).<a class="headerlink" href="#la-subdivision-de-redes-y-el-uso-de-mascaras-de-longitud-variable-vlsm" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Este proceso de construcción de redes IP surgió por la necesidad de aprovechar al máximo las direcciones IP. Hoy en día se consideran algo a extinguir aunque en su momento fue una técnica utilizadísima para aprovechar al máximo las asignaciones.</p>
+<p>Observemos la figura siguiente:</p>
+<div class="figure align-default">
+<img alt="../_images/vlsm.png" src="../_images/vlsm.png" />
+</div>
+<p>Supongamos que queremos comprobar un bloque de direcciones IP y que además queremos hacer dos subredes separadas, tal y como indica la figura. Si además resulta que no hay muchas direcciones IP y queremos ahorrar resulta que ocurre lo siguiente (nótese que en el ejemplo todo está ajustadísimo):</p>
+<ul class="simple">
+<li><p>Supongamos que compramos el prefijo 161.1.1.0/24. Tenemos 8 bits de host y podemos direccionar 254 equipos.</p></li>
+<li><p>Dividimos en subredes y entonces a la izquierda tendremos 161.1.1.&lt;01&gt;xxxxxx/26 y la derecha 161.1.1&lt;10&gt;xxxxxx/26. Obsérvese que el último byte lo hemos puesto en binario y hemos asignado 01 a la subred izquierda y 10 a la subred derecha.</p></li>
+<li><p>Al hacer la división en la parte izquierda tenemos 6 bits que nos da para direccionar hasta 2 a la 6 (-2) o sea 62 equipos, que es más que suficiente.</p></li>
+<li><p>Al hacer la división ocurre que en la parte derecha también tenemos hasta 62 posibles equipos, sin embargo <strong>nos sobran muchísimas direcciones</strong>. Si necesitásemos más equipos no tendríamos mucho margen para meterlos en la subred izquierda y es posible que no nos interese ponerlos en la subred derecha. Conclusión: se desperdician direcciones en la zona derecha.</p></li>
+</ul>
+<div class="section" id="resolucion-de-subredes-con-vlsm">
+<h3>Resolución de subredes con VLSM<a class="headerlink" href="#resolucion-de-subredes-con-vlsm" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Una vez que hemos visto que determinadas situaciones pueden dar lugar a desperdicios, vamos a ver como usar máscaras de longitud variable nos ayuda a reducir el desperdicio a la vez que aprovechamos mejor el espacio de direcciones.</p>
+<p>Supóngase el mismo prefijo de antes: 161.1.1.0/24. Supongamos ahora que necesitamos crear 4 subredes que tienen respectivamente 10, 45, 29 y 70 hosts, con un total de 154 host. Se debe empezar ordenando las subredes por tamaño, lo que daría a empezar a resolver primero la red de 60 hosts, despues la de 45, luego 29 y finalmente 10.</p>
+<p>Cabe destacar que ahora en el proceso va a ocurrir que <strong>en cada paso nos vamos a apoyar en la IP del paso anterior</strong>.</p>
+</div>
+<div class="section" id="subred-de-70-host">
+<h3>Subred de 70 host<a class="headerlink" href="#subred-de-70-host" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Tenemos la IP 161.1.1.0 y vamos a fabricar la subred para alojar a 60 host. Esto implica que necesitamos 7 bits (recordemos que 2 a la 7 es 128 y restando 2 nos quedan hasta 126 host) . A continuación ponemos el prefijo y la máscara tanto en decimal como en binario:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 26%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Primer byte</p></th>
+<th class="head"><p>Segundo byte</p></th>
+<th class="head"><p>Tercer byte</p></th>
+<th class="head"><p>Cuarto byte</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>161</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>10100001</p></td>
+<td><p>00000001</p></td>
+<td><p>00000001</p></td>
+<td><p>00000000</p></td>
+</tr>
+<tr class="row-even"><td><p>255</p></td>
+<td><p>255</p></td>
+<td><p>255</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>11111111</p></td>
+<td><p>11111111</p></td>
+<td><p>11111111</p></td>
+<td><p>00000000</p></td>
+</tr>
+</tbody>
+</table>
+<p>Como vemos, nos han dejado el cuarto byte. Todas nuestras operaciones estarán entonces en el cuarto byte, lo que implica que todas las IP empezarán por 161.1.1.xxx y todas las máscaras empezarán por 255.255.255.xxx.</p>
+<p>Esta primera red es la más grande así que se queda con un bit más de prefijo (en vez de /24 será /25) y utilizará los 7 bits restantes para poder poner direcciones. En la tabla siguiente indicamos el último byte de la máscara y como queda este último byte:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 41%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>0</p></th>
+<th class="head"><p>x</p></th>
+<th class="head"><p>x</p></th>
+<th class="head"><p>x</p></th>
+<th class="head"><p>x</p></th>
+<th class="head"><p>x</p></th>
+<th class="head"><p>x</p></th>
+<th class="head"><p>x</p></th>
+<th class="head"><p>Decimal</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>Máscara</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>126 (Última)</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>127 (Broadcast)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Esto significa que esta primera red tiene estos parámetros:</p>
+<ul class="simple">
+<li><p>Dirección de red 161.1.1.0</p></li>
+<li><p>Máscara 255.255.255.128 o /25</p></li>
+<li><p>Primera IP asignable 161.1.1.1</p></li>
+<li><p>Última IP asignable: 161.1.1.126</p></li>
+<li><p>Dirección de broadcast: 161.1.1.127</p></li>
+<li><p>Como vemos, se necesitaban 60 IPs y se han asignado 128.</p></li>
+</ul>
+<p>Obsérvese que la última IP es la 161.1.1.127, da igual que sea la de broadcast. En el paso siguiente empezaremos por la siguiente IP que es la 161.1.1.128.</p>
+</div>
+<div class="section" id="subred-de-45-hosts">
+<h3>Subred de 45 hosts<a class="headerlink" href="#subred-de-45-hosts" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Partimos de la IP 161.1.1.128/25 (o 255.255.255.128). Como necesitamos 45 nodos reservaremos 6 bits de
+host y nos queda uno de subred. Ahora dividimos dicha IP 161.1.1.128 en una nueva subred. La tabla siguiente ilustra el proceso de como manejamos los últimos 8 bits para conseguir lo que queremos:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Fijado</p></th>
+<th class="head"><p>Subred</p></th>
+<th class="head"><p>H</p></th>
+<th class="head"><p>H</p></th>
+<th class="head"><p>H</p></th>
+<th class="head"><p>H</p></th>
+<th class="head"><p>H</p></th>
+<th class="head"><p>H</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>Ultimo byte
+de la IP</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>Último byte
+de la másc.(192)</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>Direc. de red</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>Primera IP asignable</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>x</p></td>
+<td><p>x</p></td>
+<td><p>x</p></td>
+<td><p>x</p></td>
+<td><p>x</p></td>
+<td><p>x</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>Última IP asignable</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>Broadcast</p></td>
+</tr>
+</tbody>
+</table>
+<p>Esta red tiene estos parámetros:</p>
+<ul class="simple">
+<li><p>Dirección de red: 161.1.1.128</p></li>
+<li><p>Máscara de red 255.255.255.192 o /26</p></li>
+<li><p>Primera IP asignable: 161.1.1.129</p></li>
+<li><p>Última IP asignable: 161.1.1.190</p></li>
+<li><p>Dirección de broadcast: 161.1.1.191</p></li>
+<li><p>Se necesitaban 45 hosts y se han asignado 64.</p></li>
+</ul>
+<p>El siguiente paso lo haremos partiendo de la siguiente IP que es la 161.1.1.192</p>
+</div>
+<div class="section" id="subred-de-29-hosts">
+<h3>Subred de 29 hosts<a class="headerlink" href="#subred-de-29-hosts" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Partimos de la IP 161.1.1.192/26 y necesitamos 29 hosts, lo que requiere 5 bits de host y uno de subred. De  nuevo indicamos a continuación como queda el último byte en esta red:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Fijado</p></th>
+<th class="head"><p>Fijado</p></th>
+<th class="head"><p>Subred</p></th>
+<th class="head"><p>H</p></th>
+<th class="head"><p>H</p></th>
+<th class="head"><p>H</p></th>
+<th class="head"><p>H</p></th>
+<th class="head"><p>H</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>Ultimo byte
+de la IP</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>Último byte
+de la másc.(224)</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>Direc. de red</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>Primera IP
+asignable (193)</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>x</p></td>
+<td><p>x</p></td>
+<td><p>x</p></td>
+<td><p>x</p></td>
+<td><p>x</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>Última IP
+asignable (222)</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>Broadcast (223)</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>Dirección de red: 161.1.1.192</p></li>
+<li><p>Máscara de red 255.255.255.224 o /27</p></li>
+<li><p>Primera IP asignable: 161.1.1.193</p></li>
+<li><p>Última IP asignable: 161.1.1.222</p></li>
+<li><p>Dirección de broadcast: 161.1.1.223</p></li>
+<li><p>Se necesitaban 29 IPs y se han asignado 32.</p></li>
+</ul>
+<p>El siguiente paso lo empezaremos a partir de la siguiente IP, que es 161.1.1.224.</p>
+</div>
+<div class="section" id="subred-de-10-hosts">
+<h3>Subred de 10 hosts<a class="headerlink" href="#subred-de-10-hosts" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Partimos de 161.1.1.224/27 y necesitamos 10 hosts, así que tomaremos 4 bits de host. En la tabla siguiente vemos como queda el último byte:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Fijado</p></th>
+<th class="head"><p>Fijado</p></th>
+<th class="head"><p>Fijado</p></th>
+<th class="head"><p>Subred</p></th>
+<th class="head"><p>H</p></th>
+<th class="head"><p>H</p></th>
+<th class="head"><p>H</p></th>
+<th class="head"><p>H</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>Ultimo byte
+de la IP (224)</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>Último byte
+de la másc.(240)</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>Direc. de red</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>Primera IP
+asignable (225)</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>x</p></td>
+<td><p>x</p></td>
+<td><p>x</p></td>
+<td><p>x</p></td>
+<td><p>x</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>Última IP
+asignable (239)</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>Broadcast (240)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Así que ésta ultima red tiene estos parámetros:</p>
+<ul class="simple">
+<li><p>Dirección de red 161.1.1.224.</p></li>
+<li><p>Máscara 255.255.255.240 o /28</p></li>
+<li><p>Primera IP asignable 161.1.1.225.</p></li>
+<li><p>Ultima IP asignable 161.1.1.239</p></li>
+<li><p>Dirección de broadcast 161.1.1.240</p></li>
+<li><p>Se necesitaban 10 IPs y se han asignado 16.</p></li>
+</ul>
+</div>
+<div class="section" id="calculo-del-desperdicio-y-comparacion-con-subredes">
+<h3>Cálculo del desperdicio y comparación con subredes<a class="headerlink" href="#calculo-del-desperdicio-y-comparacion-con-subredes" title="Enlazar permanentemente con este título">¶</a></h3>
+</div>
+</div>
+<div class="section" id="el-protocolo-ripv2-comparacion-con-ripv1">
+<h2>El protocolo RIPv2; comparación con RIPv1.<a class="headerlink" href="#el-protocolo-ripv2-comparacion-con-ripv1" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>RIPv1 y RIPv2 se caracterizan por:</p>
+<ul class="simple">
+<li><p>Ambos son protocolos de enrutamiento interior.</p></li>
+<li><p>Se basan en un mecanismo llamado «vector distancia» que básicamente cuenta la cantidad de saltos para llegar a una ruta.</p></li>
+<li><p>En los protocolos basados en vector distancia ocurre lo siguiente: si para ir a una red hay dos caminos y uno implica pasar por 3 router y otro camino implica pasar por 6 routers se asume que el segundo camino es peor por tener una «distancia» mayor. Sin embargo esto podría ser falso: imaginemos que el camino con métrica 3 está basado en líneas ADSL de 3Mb/s y el de métrica 6 pasa por fibras ópticas de 800Mb/s.</p></li>
+</ul>
+<p>RIPv1 no soportaba subredes, lo que a día de hoy lo hace prácticamente inútil.  Además estaba pensado para usar clases A, B y C, y de hecho <em>no envía máscaras de red</em>.</p>
+</div>
+<div class="section" id="configuracion-y-administracion-de-ripv1">
+<h2>Configuración y administración de RIPv1.<a class="headerlink" href="#configuracion-y-administracion-de-ripv1" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Debido al inminente final del curso, se ha decidido ignorar este punto para ahorrar tiempo y dedicarlo a puntos más actuales del temario. Un factor fundamental para su obsolescencia es que <strong>RIP exige usar máscaras de clase A, B o C (es decir /8, /16 y /24) para sus rutas, lo que hoy en día lo hace completamente inútil</strong></p>
+</div>
+<div class="section" id="configuracion-y-administracion-de-ripv2">
+<h2>Configuración y administración de RIPv2.<a class="headerlink" href="#configuracion-y-administracion-de-ripv2" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>La operativa básica consiste en ejecutar dos cosas en cada uno de los router:</p>
+<ul class="simple">
+<li><p>El comando <code class="docutils literal notranslate"><span class="pre">router</span> <span class="pre">rip</span></code></p></li>
+<li><p>El comando <code class="docutils literal notranslate"><span class="pre">network</span></code> para cada una de las redes que el router va a anunciar a sus vecinos.</p></li>
+</ul>
+<p>Observa la figura siguiente</p>
+<div class="figure align-default">
+<img alt="../_images/red-cuadrada.png" src="../_images/red-cuadrada.png" />
+</div>
+</div>
+<div class="section" id="diagnostico-de-incidencias-en-rippv2">
+<h2>Diagnóstico de incidencias en RIPpv2.<a class="headerlink" href="#diagnostico-de-incidencias-en-rippv2" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="los-protocolos-de-enrutamiento-estado-enlace">
+<h2>Los protocolos de enrutamiento estado-enlace<a class="headerlink" href="#los-protocolos-de-enrutamiento-estado-enlace" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="configuracion-y-administracion-en-ospf">
+<h2>Configuración y administración en OSPF.<a class="headerlink" href="#configuracion-y-administracion-en-ospf" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="diagnostico-de-incidencias-en-ospf">
+<h2>Diagnóstico de incidencias en OSPF.<a class="headerlink" href="#diagnostico-de-incidencias-en-ospf" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="configuracion-y-administracion-de-protocolos-de-enrutamiento-propietarios">
+<h2>Configuración y administración de protocolos de enrutamiento propietarios.<a class="headerlink" href="#configuracion-y-administracion-de-protocolos-de-enrutamiento-propietarios" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Apuntes de redes</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegación</h3>
+<p class="caption" role="heading"><span class="caption-text">Índice:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../t1_caracterizacion_redes/apuntes_t1.html">Tema 1:Caracterización de redes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/apuntes_t2.html">Tema 2:Integración de elementos en una red</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t3_conmutadores/apuntes_t3.html">Tema 3:Configuración y administración de conmutadores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t5_vlans/apuntes_t5.html">Tema 4: Configuración de redes virtuales VLAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t4_routers/apuntes_t4.html">Tema 5: Configuración y administración básica de routers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tema 6:Configuración y administración de protocolos dinámicos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#protocolos-enrutables-y-protocolos-de-enrutamiento">Protocolos enrutables y protocolos de enrutamiento.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funcionamiento-de-los-protocolos-de-enrutamiento-dinamico">Funcionamiento de los protocolos de enrutamiento dinámico.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#protocolos-de-enrutamiento-interior-y-exterior">Protocolos de enrutamiento interior y exterior.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#concepto-de-sistema-autonomo">Concepto de sistema autónomo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#protocolos-de-enrutamiento-interno">Protocolos de enrutamiento interno</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#protocolos-de-enrutamiento-externo">Protocolos de enrutamiento externo</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#el-enrutamiento-sin-clase">El enrutamiento sin clase.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#la-subdivision-de-redes-y-el-uso-de-mascaras-de-longitud-variable-vlsm">La subdivisión de redes y el uso de máscaras de longitud variable (VLSM).</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#resolucion-de-subredes-con-vlsm">Resolución de subredes con VLSM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subred-de-70-host">Subred de 70 host</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subred-de-45-hosts">Subred de 45 hosts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subred-de-29-hosts">Subred de 29 hosts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subred-de-10-hosts">Subred de 10 hosts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calculo-del-desperdicio-y-comparacion-con-subredes">Cálculo del desperdicio y comparación con subredes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#el-protocolo-ripv2-comparacion-con-ripv1">El protocolo RIPv2; comparación con RIPv1.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuracion-y-administracion-de-ripv1">Configuración y administración de RIPv1.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuracion-y-administracion-de-ripv2">Configuración y administración de RIPv2.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#diagnostico-de-incidencias-en-rippv2">Diagnóstico de incidencias en RIPpv2.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#los-protocolos-de-enrutamiento-estado-enlace">Los protocolos de enrutamiento estado-enlace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuracion-y-administracion-en-ospf">Configuración y administración en OSPF.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#diagnostico-de-incidencias-en-ospf">Diagnóstico de incidencias en OSPF.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuracion-y-administracion-de-protocolos-de-enrutamiento-propietarios">Configuración y administración de protocolos de enrutamiento propietarios.</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../t7_acceso_internet/apuntes_t7.html">Tema 7: Configuración del acceso a Internet desde una LAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../anexos/t1_ejercicios.html">Anexo: Ejercicios propuestos para el tema 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejercicios_switches/ejercicios_dos_switches.html">Anexo: ejercicios con tablas MAC de switches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejercicios_subredes_ipv4/rangos_direcciones.html">Anexo: ejercicios sobre rangos de direcciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejercicios_subredes/ejercicios_calculo_subredes.html">Anexo: cálculo de subredes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejercicios_subredes_ipv4/ejercicios_dos_router.html">Anexo: ejercicios de enrutamiento</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejercicios_subredes_ipv4/ejercicios_3_router_caso_a.html">Anexo: ejercicios de enrutamiento con 3 routers (caso 1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejerciciosipv6/ejercicios_ipv6.html">Anexo: Ejercicios sobre compresión de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejerciciosipv6/ejercicios_ipv6.html#soluciones-a-compresion-de-direcciones-ipv6">Soluciones a compresión de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejercicios_ips/clasificacion_ipv6.html">Anexo: ejercicios sobre clasificación de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejercicios_ips/clasificacion_ipv6.html#soluciones-a-la-clasificaciones-de-direcciones-ipv6">Soluciones a la clasificaciones de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t3_conmutadores/ejercicios/ejercicios_switches.html">Anexo al tema 3: Ejercicios sobre comandos Cisco en switches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t3_conmutadores/simuladorstp/stp1.html">Anexo al tema 3:Ejercicios STP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t5_vlans/ejercicios_vlans/ejercicios_vlans.html">Ejercicios con VLANS y VTP</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../t4_routers/apuntes_t4.html" title="capítulo anterior">Tema 5: Configuración y administración básica de routers</a></li>
+      <li>Next: <a href="../t7_acceso_internet/apuntes_t7.html" title="próximo capítulo">Tema 7: Configuración del acceso a Internet desde una LAN</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Oscar G. G..
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/t6_enrutamiento_dinamico/apuntes_t6.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
