@@ -696,6 +696,135 @@ asignable (239)</p></td>
 <h3>Cálculo del desperdicio y comparación con subredes<a class="headerlink" href="#calculo-del-desperdicio-y-comparacion-con-subredes" title="Enlazar permanentemente con este título">¶</a></h3>
 </div>
 </div>
+<div class="section" id="otro-vlsm-resuelto">
+<h2>Otro VLSM resuelto<a class="headerlink" href="#otro-vlsm-resuelto" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Dada una subred con prefijo 64.1.1.0/24 construir un esquema de direcciones para 4 subredes que tienen respectivamente 41, 19, 12 y 3.</p>
+<p>Partimos de esto:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Byte 3</p></th>
+<th class="head"><p>Byte 2</p></th>
+<th class="head"><p>Byte 1</p></th>
+<th class="head"><p>Byte 0</p></th>
+<th class="head"><p>Concepto</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>64</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>Dirección IP de base</p></td>
+</tr>
+<tr class="row-odd"><td><p>01000000</p></td>
+<td><p>00000001</p></td>
+<td><p>00000001</p></td>
+<td><p>00000000</p></td>
+<td><p>Dirección IP binaria</p></td>
+</tr>
+<tr class="row-even"><td><p>RRRRRRRR</p></td>
+<td><p>RRRRRRRR</p></td>
+<td><p>RRRRRRRR</p></td>
+<td><p>HHHHHHHH</p></td>
+<td><p>División de base</p></td>
+</tr>
+<tr class="row-odd"><td><p>11111111</p></td>
+<td><p>11111111</p></td>
+<td><p>11111111</p></td>
+<td><p>00000000</p></td>
+<td><p>Máscara de base</p></td>
+</tr>
+</tbody>
+</table>
+<p>La primera sala requiere 6 bits, así que en esta sala la situación es así:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 22%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Byte 3</p></th>
+<th class="head"><p>Byte 2</p></th>
+<th class="head"><p>Byte 1</p></th>
+<th class="head"><p>Byte 0</p></th>
+<th class="head"><p>Concepto</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>64</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>Dirección IP de base</p></td>
+</tr>
+<tr class="row-odd"><td><p>01000000</p></td>
+<td><p>00000001</p></td>
+<td><p>00000001</p></td>
+<td><p>00000000</p></td>
+<td><p>Dirección IP binaria</p></td>
+</tr>
+<tr class="row-even"><td><p>RRRRRRRR</p></td>
+<td><p>RRRRRRRR</p></td>
+<td><p>RRRRRRRR</p></td>
+<td><p><strong>SS</strong> HHHHHH</p></td>
+<td><p>División de base</p></td>
+</tr>
+<tr class="row-odd"><td><p>11111111</p></td>
+<td><p>11111111</p></td>
+<td><p>11111111</p></td>
+<td><p>00000000</p></td>
+<td><p>Máscara anterior</p></td>
+</tr>
+<tr class="row-even"><td><p>11111111</p></td>
+<td><p>11111111</p></td>
+<td><p>11111111</p></td>
+<td><p><a href="#id1"><span class="problematic" id="id2">**</span></a>11**000000</p></td>
+<td><p><strong>Nueva máscara</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>01000000</p></td>
+<td><p>00000001</p></td>
+<td><p>00000001</p></td>
+<td><p>00 000000</p></td>
+<td><p>IP red: 64.1.1.0</p></td>
+</tr>
+<tr class="row-even"><td><p>01000000</p></td>
+<td><p>00000001</p></td>
+<td><p>00000001</p></td>
+<td><p>00 000001</p></td>
+<td><p>IP 1: 64.1.1.1</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-even"><td><p>01000000</p></td>
+<td><p>00000001</p></td>
+<td><p>00000001</p></td>
+<td><p>00 111110</p></td>
+<td><p>Últ IP: 64.1.1.62</p></td>
+</tr>
+<tr class="row-odd"><td><p>01000000</p></td>
+<td><p>00000001</p></td>
+<td><p>00000001</p></td>
+<td><p>00 111111</p></td>
+<td><p>Broadcast: 64.1.1.63</p></td>
+</tr>
+</tbody>
+</table>
+<p>Debemos continuar a partir de la 64.1.1.64/26 y necesitamos asignar IP a 19 equipos. Nos basta con 5 bits. Indicamos solo la solución a las restantes salas y se deja como ejercicio el calcular si se ha hecho bien.</p>
+</div>
 <div class="section" id="el-protocolo-ripv2-comparacion-con-ripv1">
 <h2>El protocolo RIPv2; comparación con RIPv1.<a class="headerlink" href="#el-protocolo-ripv2-comparacion-con-ripv1" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>RIPv1 y RIPv2 se caracterizan por:</p>
@@ -782,6 +911,7 @@ asignable (239)</p></td>
 <li class="toctree-l3"><a class="reference internal" href="#calculo-del-desperdicio-y-comparacion-con-subredes">Cálculo del desperdicio y comparación con subredes</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#otro-vlsm-resuelto">Otro VLSM resuelto</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#el-protocolo-ripv2-comparacion-con-ripv1">El protocolo RIPv2; comparación con RIPv1.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configuracion-y-administracion-de-ripv1">Configuración y administración de RIPv1.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configuracion-y-administracion-de-ripv2">Configuración y administración de RIPv2.</a></li>
@@ -806,6 +936,8 @@ asignable (239)</p></td>
 <li class="toctree-l1"><a class="reference internal" href="../t3_conmutadores/ejercicios/ejercicios_switches.html">Anexo al tema 3: Ejercicios sobre comandos Cisco en switches</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../t3_conmutadores/simuladorstp/stp1.html">Anexo al tema 3:Ejercicios STP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../t5_vlans/ejercicios_vlans/ejercicios_vlans.html">Ejercicios con VLANS y VTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generador_ejercicios_vlsm/EjerciciosVLSM.html">Anexo:Ejercicios VLSM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generador_ejercicios_vlsm/EjerciciosVLSM.html#soluciones-ejercicios-vlsm">Soluciones ejercicios VLSM</a></li>
 </ul>
 
 <div class="relations">

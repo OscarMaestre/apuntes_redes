@@ -30,6 +30,7 @@ Apuntes de Planificación y Administración de Redes
    t3_conmutadores/ejercicios/ejercicios_switches.rst
    t3_conmutadores/simuladorstp/stp1.rst
    t5_vlans/ejercicios_vlans/ejercicios_vlans.rst
+   t6_enrutamiento_dinamico/generador_ejercicios_vlsm/EjerciciosVLSM.rst
 
 
 
