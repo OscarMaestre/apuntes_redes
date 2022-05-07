@@ -2,6 +2,8 @@ NOMBRE_ARCHIVO=tabla_binario
 NOMBRE_TXT=$(NOMBRE_ARCHIVO).txt
 NOMBRE_PS=$(NOMBRE_ARCHIVO).ps
 NOMBRE_PDF=$(NOMBRE_ARCHIVO).pdf
+
+#Cuidado, enscript no soporta UTF-8, así que mejor evitar las tildes
 TEXTO_CABECERA="                        Tabla de binarios y decimales"
 
 all:

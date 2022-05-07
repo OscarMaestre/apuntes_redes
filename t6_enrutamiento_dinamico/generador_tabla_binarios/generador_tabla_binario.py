@@ -9,6 +9,7 @@ def generar_tabla(filas, columnas):
             cad_numero=str(numero).rjust(4, " ")
             binario=bin(numero)
             binario=binario[2:].zfill(8)
+            binario=binario[0:4]+"."+binario[4:]
             vector_fila=vector_fila+[cad_numero, binario]
         tabla.append(vector_fila)
     return tabla
