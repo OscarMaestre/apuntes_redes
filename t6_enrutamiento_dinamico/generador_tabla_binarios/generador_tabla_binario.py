@@ -1,31 +1,29 @@
 #!/usr/bin/python3
 
-
 def generar_tabla(filas, columnas):
     tabla=[]
-    salto=int(256/columnas)+1
-    for num in range(0, salto):
-        fila=[]
-        for i in range(0, columnas):
-            numero=(num*(i+1))
+    for fila in range(0, filas):
+        vector_fila=[]
+        for columna in range(0, columnas):
+            numero=fila+(filas*columna)
             cad_numero=str(numero).rjust(4, " ")
             binario=bin(numero)
             binario=binario[2:].zfill(8)
-            fila=fila+[cad_numero, binario]
-        tabla.append(fila)
-
+            vector_fila=vector_fila+[cad_numero, binario]
+        tabla.append(vector_fila)
     return tabla
+
 
 def mostrar_ascii(tabla):
     texto=""
-    separador="---"
+    separador_interno="---"
     for fila in tabla:
         for pos in range(0, len(fila), 2):
             num=fila[pos]
             binario=fila[pos+1]
-            texto_fila="{0}{1}{2}".format(num, separador, binario)
+            texto_fila="|  {0}{1}{2}   ".format(num, separador_interno, binario)
             texto=texto+texto_fila
-        texto=texto+"\n"
+        texto=texto+"  |\n"
     return texto
         
 
