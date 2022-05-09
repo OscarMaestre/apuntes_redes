@@ -366,17 +366,28 @@ Debido al inminente final del curso, se ha decidido ignorar este punto para ahor
 
 Configuración y administración de RIPv2.
 ----------------------------------------------------------------------------
+RIP es un protocolo basado en un algoritmo de "vector-distancia". Básicamente, lo que hace este algoritmo es "contar saltos": esto significa que si hay varios caminos a una cierta red y un camino conlleva "3 saltos" se dice que dicha ruta es mejor que una que necesite "5 saltos".
+
+
 La operativa básica consiste en ejecutar dos cosas en cada uno de los router:
 
-* El comando ``router rip``
+* El comando ``router rip.``
 * El comando ``network`` para cada una de las redes que el router va a anunciar a sus vecinos.
 
-Observa la figura siguiente
+Observa la figura siguiente:
 
-.. figure:: img/red-cuadrada.png
+.. figure:: img/rip01.png
+
+En dicha red hay una interconexión compleja de routers. Calcular todos los posibles caminos sería demasiado laborioso. Observa como podemos usar los comandos apropiados para que los routers se autoconfiguren.
 
 
 
+Mostrar el uso de estos comandos:
+
+* ``debug ip routing`` 
+* ``passive-interface <interfaz>`` 
+* ``redistribute static`` 
+* ``ip router 0.0.0.0 0.0.0.0 <interfaz>`` 
 
 Diagnóstico de incidencias en RIPpv2.
 ----------------------------------------------------------------------------
