@@ -380,7 +380,102 @@ Observa la figura siguiente:
 
 En dicha red hay una interconexión compleja de routers. Calcular todos los posibles caminos sería demasiado laborioso. Observa como podemos usar los comandos apropiados para que los routers se autoconfiguren.
 
+En primer lugar, el router 5 no necesita aprender la topología de la derecha, podemos ponerle una **ruta por defecto** de esta manera::
 
+   enable
+   configure terminal
+   ip route 0.0.0.0 0.0.0.0 4.1.1.2
+
+Podemos hacer **exactamente lo mismo con el router 6** y hacer esto::
+
+   enable
+   configure terminal 
+   ip route 0.0.0.0 0.0.0.0 4.1.1.1
+
+También podríamos configurar RIP de la manera normal y lo indicamos a continuación. Empezaremos por el "área" izquierda, que contiene los router 1, 3 y 5
+
+Router 1 con RIP
+~~~~~~~~~~~~~~~~~~
+Comandos necesarios::
+
+   enable
+   configure terminal
+   router rip
+   version 2
+   network 1.0.0.0
+   network 2.0.0.0
+   network 10.0.0.0
+
+Router 3 con RIP
+~~~~~~~~~~~~~~~~~~
+Comandos necesarios::
+
+   enable
+   configure terminal
+   router rip
+   version 2
+   network 2.0.0.0
+   network 3.0.0.0
+   network 30.0.0.0
+
+Router 5 con RIP
+~~~~~~~~~~~~~~~~~~
+Comandos necesarios::
+
+   enable
+   configure terminal
+   router rip
+   version 2
+   network 1.0.0.0
+   network 3.0.0.0
+   
+
+En este punto el área izquierda debe tener autoconfiguradas sus rutas. A continuación configuramos el "área" derecha, que involucra a los router 2, 4 y 6
+
+Router 2 con RIP
+~~~~~~~~~~~~~~~~~~
+Comandos necesarios::
+
+   enable
+   configure terminal
+   router rip
+   version 2
+   network 20.0.0.0
+   network 5.0.0.0
+   network 7.0.0.0
+
+Router 4 con RIP
+~~~~~~~~~~~~~~~~~~
+Comandos necesarios::
+
+   enable
+   configure terminal
+   router rip
+   version 2
+   network 40.0.0.0
+   network 6.0.0.0
+   network 7.0.0.0
+
+Router 6 con RIP
+~~~~~~~~~~~~~~~~~~
+Comandos necesarios::
+
+   enable
+   configure terminal
+   router rip
+   version 2
+   network 5.0.0.0
+   network 6.0.0.0
+
+Y llegado este punto, el área derecha también funciona y permite que la información fluya dentro de esa zona. Sin embargo **¿qué ocurre si intentamos hacer ping desde un ordenador del área izquierda a uno del área derecha?** Ocurre que **NO FUNCIONA**
+
+Como ocurre que los router centrales usan rutas estáticas necesitamos que dicha información sobre rutas estáticas **SE PROPAGUE** para que otros router en la red usen los router 5 y 6 como routers por defecto. Para ello, hacemos lo siguiente en ambos router 5 y 6:
+
+   enable
+   configure terminal
+   router rip
+   version 2
+   redistribute static
 
 Mostrar el uso de estos comandos:
 
