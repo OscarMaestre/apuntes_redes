@@ -479,13 +479,18 @@ Como ocurre que los router centrales usan rutas estáticas necesitamos que dicha
 
 Mostrar el uso de estos comandos:
 
-* ``debug ip routing`` 
+
 * ``passive-interface <interfaz>`` 
 * ``redistribute static`` 
 * ``ip router 0.0.0.0 0.0.0.0 <interfaz>`` 
 
 Diagnóstico de incidencias en RIPpv2.
 ----------------------------------------------------------------------------
+Lo habitual es que todo funcione correctamente. Sin embargo, existen varios comandos que nos van a permitir comprobar si hay errores de cualquier tipo:
+
+* ``debug ip routing`` Este comando activa el modo depuración. Una vez lanzado, podremos ver los distintos mensajes de actualización de rutas que afectan a este router (lo cual nos permitirá ver si otros router o este mismo están propagando rutas incorrectas)
+* ``show ip route`` Al lanzarlo veremos en la consola las distintas rutas que este router conoce. Además se nos informará de si son rutas aprendidas, configuradas estáticamente y si tenemos interfaces conectadas a dichas redes.
+* ``show log`` Muestra el registro general de actividad lo que puede permitir detectar otros errores que sin ser problemas de enrutamiento sí den lugar a errores de comunicación.
 
 Los protocolos de enrutamiento estado-enlace
 ----------------------------------------------------------------------------
@@ -493,10 +498,42 @@ Los protocolos de enrutamiento estado-enlace
 Configuración y administración en OSPF.
 ----------------------------------------------------------------------------
 
+Áreas
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+LSDB
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+LSA
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Adyacencias
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Recordar que hay diferencias entre redes con acceso múltiple y redes punto a punto
+
+Router designado, de backup y DROthers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Router ASBR
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Router ABR
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
 Diagnóstico de incidencias en OSPF.
 ----------------------------------------------------------------------------
+Podemos usar **exactamente los mismos comandos que hemos visto antes** y que volvemos a reproducir a continuación.
+
+* ``debug ip routing`` Este comando activa el modo depuración. Una vez lanzado, podremos ver los distintos mensajes de actualización de rutas que afectan a este router (lo cual nos permitirá ver si otros router o este mismo están propagando rutas incorrectas)
+* ``show ip route`` Al lanzarlo veremos en la consola las distintas rutas que este router conoce. Además se nos informará de si son rutas aprendidas, configuradas estáticamente y si tenemos interfaces conectadas a dichas redes.
+* ``show log`` Muestra el registro general de actividad lo que puede permitir detectar otros errores que sin ser problemas de enrutamiento sí den lugar a errores de comunicación.
+
 
 Configuración y administración de protocolos de enrutamiento propietarios.
 ----------------------------------------------------------------------------
 
-
+Existen otros protocolos como EIGRP que son propiedad específica de Cisco. Aunque pueden ser muy eficientes esta clase de protocolos nos vincula por completo a un solo fabricante y suele ser preferible ceñirse a protocolos abiertos. En este curso no hemos impartido EIGRP por falta de tiempo.
