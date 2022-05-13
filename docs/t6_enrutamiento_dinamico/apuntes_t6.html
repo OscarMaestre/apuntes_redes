@@ -953,7 +953,6 @@ redistribute static</p>
 </div></blockquote>
 <p>Mostrar el uso de estos comandos:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">debug</span> <span class="pre">ip</span> <span class="pre">routing</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">passive-interface</span> <span class="pre">&lt;interfaz&gt;</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">redistribute</span> <span class="pre">static</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">router</span> <span class="pre">0.0.0.0</span> <span class="pre">0.0.0.0</span> <span class="pre">&lt;interfaz&gt;</span></code></p></li>
@@ -962,18 +961,73 @@ redistribute static</p>
 </section>
 <section id="diagnostico-de-incidencias-en-rippv2">
 <h2>Diagnóstico de incidencias en RIPpv2.<a class="headerlink" href="#diagnostico-de-incidencias-en-rippv2" title="Enlazar permanentemente con este título"></a></h2>
+<p>Lo habitual es que todo funcione correctamente. Sin embargo, existen varios comandos que nos van a permitir comprobar si hay errores de cualquier tipo:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">debug</span> <span class="pre">ip</span> <span class="pre">routing</span></code> Este comando activa el modo depuración. Una vez lanzado, podremos ver los distintos mensajes de actualización de rutas que afectan a este router (lo cual nos permitirá ver si otros router o este mismo están propagando rutas incorrectas)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">ip</span> <span class="pre">route</span></code> Al lanzarlo veremos en la consola las distintas rutas que este router conoce. Además se nos informará de si son rutas aprendidas, configuradas estáticamente y si tenemos interfaces conectadas a dichas redes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">log</span></code> Muestra el registro general de actividad lo que puede permitir detectar otros errores que sin ser problemas de enrutamiento sí den lugar a errores de comunicación.</p></li>
+</ul>
 </section>
 <section id="los-protocolos-de-enrutamiento-estado-enlace">
 <h2>Los protocolos de enrutamiento estado-enlace<a class="headerlink" href="#los-protocolos-de-enrutamiento-estado-enlace" title="Enlazar permanentemente con este título"></a></h2>
 </section>
 <section id="configuracion-y-administracion-en-ospf">
 <h2>Configuración y administración en OSPF.<a class="headerlink" href="#configuracion-y-administracion-en-ospf" title="Enlazar permanentemente con este título"></a></h2>
+<section id="areas">
+<h3>Áreas<a class="headerlink" href="#areas" title="Enlazar permanentemente con este título"></a></h3>
+<p>En RIP veíamos que si interconectamos un conjunto grande de routers puede ocurrir que haya:</p>
+<ol class="arabic simple">
+<li><p>Muchas actualizaciones, lo que colapsa la red.</p></li>
+<li><p>Puede ocurrir que dependiendo de la topología se pasen grandes tablas de enrutamiento hacia «zonas» o «áreas» que no la necesitan.</p></li>
+</ol>
+<p>OSPF integra el concepto de áreas. Así que podremos configurar redes como pertenecientes a un cierto «número de área»</p>
+</section>
+<section id="lsdb">
+<h3>LSDB<a class="headerlink" href="#lsdb" title="Enlazar permanentemente con este título"></a></h3>
+<p>Es la Link State DataBase, o base de datos del estado del enlace. OSPF tiene en cuenta los anchos de banda de los enlaces y esa información viaja siempre junto con la tabla de rutas.</p>
+<p>Esta base de datos puede ser grande, pero contiene todos los detalles que necesitan todos los router para autoconfigurarse.</p>
+</section>
+<section id="lsa">
+<h3>LSA<a class="headerlink" href="#lsa" title="Enlazar permanentemente con este título"></a></h3>
+<p>Link State Advertisement o «Anuncio del estado del enlace». Son mensajes que se intercambian periódicamente los routers para comprobar si todo funciona y a qué velocidad.</p>
+</section>
+<section id="adyacencias">
+<h3>Adyacencias<a class="headerlink" href="#adyacencias" title="Enlazar permanentemente con este título"></a></h3>
+<ul class="simple">
+<li><p>Se dice que un enlace es «punto a punto» cuando un router solo tiene un vecino al otro lado del enlace.</p></li>
+<li><p>Se dice que un enlace es «de acceso múltiple» cuando en un enlace un router puede tener varios vecinos.</p></li>
+</ul>
+</section>
+<section id="router-designado-de-backup-y-drothers">
+<h3>Router designado, de backup y DROthers<a class="headerlink" href="#router-designado-de-backup-y-drothers" title="Enlazar permanentemente con este título"></a></h3>
+<ul class="simple">
+<li><p>Router designado es el router ganador en las elecciones OSPF de un enlace multiacceso que se va a convertir en el que controla la información de ese enlace.</p></li>
+<li><p>Router backup es el router que tomará el control si observa que el designado cae.</p></li>
+<li><p>DROther son todos aquellos routers que han perdido las elecciones y que por tanto no propagan información dentro del área (salvo los mensajes HELLO)</p></li>
+</ul>
+<p>Es posible ver el estado de un router usando el comando (desde el modo administrador) <code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">ip</span> <span class="pre">ospf</span> <span class="pre">interfaces</span></code></p>
+</section>
+<section id="router-asbr">
+<h3>Router ASBR<a class="headerlink" href="#router-asbr" title="Enlazar permanentemente con este título"></a></h3>
+<p>OSPF también puede usar para enrutar hacia otros sistemas autónomos. En ese caso, el router ASBR es el Autonomous System Border Router o «router frontera».</p>
+</section>
+<section id="router-abr">
+<h3>Router ABR<a class="headerlink" href="#router-abr" title="Enlazar permanentemente con este título"></a></h3>
+<p>Se llama Area Border Router al router que interconecta dos áreas.</p>
+</section>
 </section>
 <section id="diagnostico-de-incidencias-en-ospf">
 <h2>Diagnóstico de incidencias en OSPF.<a class="headerlink" href="#diagnostico-de-incidencias-en-ospf" title="Enlazar permanentemente con este título"></a></h2>
+<p>Podemos usar <strong>exactamente los mismos comandos que hemos visto antes</strong> y que volvemos a reproducir a continuación.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">debug</span> <span class="pre">ip</span> <span class="pre">routing</span></code> Este comando activa el modo depuración. Una vez lanzado, podremos ver los distintos mensajes de actualización de rutas que afectan a este router (lo cual nos permitirá ver si otros router o este mismo están propagando rutas incorrectas)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">ip</span> <span class="pre">route</span></code> Al lanzarlo veremos en la consola las distintas rutas que este router conoce. Además se nos informará de si son rutas aprendidas, configuradas estáticamente y si tenemos interfaces conectadas a dichas redes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">log</span></code> Muestra el registro general de actividad lo que puede permitir detectar otros errores que sin ser problemas de enrutamiento sí den lugar a errores de comunicación.</p></li>
+</ul>
 </section>
 <section id="configuracion-y-administracion-de-protocolos-de-enrutamiento-propietarios">
 <h2>Configuración y administración de protocolos de enrutamiento propietarios.<a class="headerlink" href="#configuracion-y-administracion-de-protocolos-de-enrutamiento-propietarios" title="Enlazar permanentemente con este título"></a></h2>
+<p>Existen otros protocolos como EIGRP que son propiedad específica de Cisco. Aunque pueden ser muy eficientes esta clase de protocolos nos vincula por completo a un solo fabricante y suele ser preferible ceñirse a protocolos abiertos. En este curso no hemos impartido EIGRP por falta de tiempo.</p>
 </section>
 </section>
 
@@ -1034,7 +1088,16 @@ redistribute static</p>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#diagnostico-de-incidencias-en-rippv2">Diagnóstico de incidencias en RIPpv2.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#los-protocolos-de-enrutamiento-estado-enlace">Los protocolos de enrutamiento estado-enlace</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configuracion-y-administracion-en-ospf">Configuración y administración en OSPF.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuracion-y-administracion-en-ospf">Configuración y administración en OSPF.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#areas">Áreas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lsdb">LSDB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lsa">LSA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adyacencias">Adyacencias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#router-designado-de-backup-y-drothers">Router designado, de backup y DROthers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#router-asbr">Router ASBR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#router-abr">Router ABR</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#diagnostico-de-incidencias-en-ospf">Diagnóstico de incidencias en OSPF.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configuracion-y-administracion-de-protocolos-de-enrutamiento-propietarios">Configuración y administración de protocolos de enrutamiento propietarios.</a></li>
 </ul>
