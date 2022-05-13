@@ -500,28 +500,47 @@ Configuración y administración en OSPF.
 
 Áreas
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+En RIP veíamos que si interconectamos un conjunto grande de routers puede ocurrir que haya:
 
+1. Muchas actualizaciones, lo que colapsa la red.
+2. Puede ocurrir que dependiendo de la topología se pasen grandes tablas de enrutamiento hacia "zonas" o "áreas" que no la necesitan.
+
+OSPF integra el concepto de áreas. Así que podremos configurar redes como pertenecientes a un cierto "número de área"
 
 LSDB
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Es la Link State DataBase, o base de datos del estado del enlace. OSPF tiene en cuenta los anchos de banda de los enlaces y esa información viaja siempre junto con la tabla de rutas.
+
+Esta base de datos puede ser grande, pero contiene todos los detalles que necesitan todos los router para autoconfigurarse.
+
 
 LSA
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Link State Advertisement o "Anuncio del estado del enlace". Son mensajes que se intercambian periódicamente los routers para comprobar si todo funciona y a qué velocidad.
+
 
 Adyacencias
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Se dice que un enlace es "punto a punto" cuando un router solo tiene un vecino al otro lado del enlace.
+* Se dice que un enlace es "de acceso múltiple" cuando en un enlace un router puede tener varios vecinos.
 
-Recordar que hay diferencias entre redes con acceso múltiple y redes punto a punto
 
 Router designado, de backup y DROthers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+* Router designado es el router ganador en las elecciones OSPF de un enlace multiacceso que se va a convertir en el que controla la información de ese enlace.
+* Router backup es el router que tomará el control si observa que el designado cae.
+* DROther son todos aquellos routers que han perdido las elecciones y que por tanto no propagan información dentro del área (salvo los mensajes HELLO)
+
+Es posible ver el estado de un router usando el comando (desde el modo administrador) ``show ip ospf interfaces``
+
 Router ASBR
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+OSPF también puede usar para enrutar hacia otros sistemas autónomos. En ese caso, el router ASBR es el Autonomous System Border Router o "router frontera".
 
 Router ABR
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+Se llama Area Border Router al router que interconecta dos áreas.
 
 
 Diagnóstico de incidencias en OSPF.
