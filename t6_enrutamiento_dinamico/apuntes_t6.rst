@@ -380,17 +380,117 @@ Observa la figura siguiente:
 
 En dicha red hay una interconexión compleja de routers. Calcular todos los posibles caminos sería demasiado laborioso. Observa como podemos usar los comandos apropiados para que los routers se autoconfiguren.
 
+En primer lugar, el router 5 no necesita aprender la topología de la derecha, podemos ponerle una **ruta por defecto** de esta manera::
 
+   enable
+   configure terminal
+   ip route 0.0.0.0 0.0.0.0 4.1.1.2
+
+Podemos hacer **exactamente lo mismo con el router 6** y hacer esto::
+
+   enable
+   configure terminal 
+   ip route 0.0.0.0 0.0.0.0 4.1.1.1
+
+También podríamos configurar RIP de la manera normal y lo indicamos a continuación. Empezaremos por el "área" izquierda, que contiene los router 1, 3 y 5
+
+Router 1 con RIP
+~~~~~~~~~~~~~~~~~~
+Comandos necesarios::
+
+   enable
+   configure terminal
+   router rip
+   version 2
+   network 1.0.0.0
+   network 2.0.0.0
+   network 10.0.0.0
+
+Router 3 con RIP
+~~~~~~~~~~~~~~~~~~
+Comandos necesarios::
+
+   enable
+   configure terminal
+   router rip
+   version 2
+   network 2.0.0.0
+   network 3.0.0.0
+   network 30.0.0.0
+
+Router 5 con RIP
+~~~~~~~~~~~~~~~~~~
+Comandos necesarios::
+
+   enable
+   configure terminal
+   router rip
+   version 2
+   network 1.0.0.0
+   network 3.0.0.0
+   
+
+En este punto el área izquierda debe tener autoconfiguradas sus rutas. A continuación configuramos el "área" derecha, que involucra a los router 2, 4 y 6
+
+Router 2 con RIP
+~~~~~~~~~~~~~~~~~~
+Comandos necesarios::
+
+   enable
+   configure terminal
+   router rip
+   version 2
+   network 20.0.0.0
+   network 5.0.0.0
+   network 7.0.0.0
+
+Router 4 con RIP
+~~~~~~~~~~~~~~~~~~
+Comandos necesarios::
+
+   enable
+   configure terminal
+   router rip
+   version 2
+   network 40.0.0.0
+   network 6.0.0.0
+   network 7.0.0.0
+
+Router 6 con RIP
+~~~~~~~~~~~~~~~~~~
+Comandos necesarios::
+
+   enable
+   configure terminal
+   router rip
+   version 2
+   network 5.0.0.0
+   network 6.0.0.0
+
+Y llegado este punto, el área derecha también funciona y permite que la información fluya dentro de esa zona. Sin embargo **¿qué ocurre si intentamos hacer ping desde un ordenador del área izquierda a uno del área derecha?** Ocurre que **NO FUNCIONA**
+
+Como ocurre que los router centrales usan rutas estáticas necesitamos que dicha información sobre rutas estáticas **SE PROPAGUE** para que otros router en la red usen los router 5 y 6 como routers por defecto. Para ello, hacemos lo siguiente en ambos router 5 y 6:
+
+   enable
+   configure terminal
+   router rip
+   version 2
+   redistribute static
 
 Mostrar el uso de estos comandos:
 
-* ``debug ip routing`` 
+
 * ``passive-interface <interfaz>`` 
 * ``redistribute static`` 
 * ``ip router 0.0.0.0 0.0.0.0 <interfaz>`` 
 
 Diagnóstico de incidencias en RIPpv2.
 ----------------------------------------------------------------------------
+Lo habitual es que todo funcione correctamente. Sin embargo, existen varios comandos que nos van a permitir comprobar si hay errores de cualquier tipo:
+
+* ``debug ip routing`` Este comando activa el modo depuración. Una vez lanzado, podremos ver los distintos mensajes de actualización de rutas que afectan a este router (lo cual nos permitirá ver si otros router o este mismo están propagando rutas incorrectas)
+* ``show ip route`` Al lanzarlo veremos en la consola las distintas rutas que este router conoce. Además se nos informará de si son rutas aprendidas, configuradas estáticamente y si tenemos interfaces conectadas a dichas redes.
+* ``show log`` Muestra el registro general de actividad lo que puede permitir detectar otros errores que sin ser problemas de enrutamiento sí den lugar a errores de comunicación.
 
 Los protocolos de enrutamiento estado-enlace
 ----------------------------------------------------------------------------
@@ -398,10 +498,61 @@ Los protocolos de enrutamiento estado-enlace
 Configuración y administración en OSPF.
 ----------------------------------------------------------------------------
 
+Áreas
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+En RIP veíamos que si interconectamos un conjunto grande de routers puede ocurrir que haya:
+
+1. Muchas actualizaciones, lo que colapsa la red.
+2. Puede ocurrir que dependiendo de la topología se pasen grandes tablas de enrutamiento hacia "zonas" o "áreas" que no la necesitan.
+
+OSPF integra el concepto de áreas. Así que podremos configurar redes como pertenecientes a un cierto "número de área"
+
+LSDB
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Es la Link State DataBase, o base de datos del estado del enlace. OSPF tiene en cuenta los anchos de banda de los enlaces y esa información viaja siempre junto con la tabla de rutas.
+
+Esta base de datos puede ser grande, pero contiene todos los detalles que necesitan todos los router para autoconfigurarse.
+
+
+LSA
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Link State Advertisement o "Anuncio del estado del enlace". Son mensajes que se intercambian periódicamente los routers para comprobar si todo funciona y a qué velocidad.
+
+
+Adyacencias
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Se dice que un enlace es "punto a punto" cuando un router solo tiene un vecino al otro lado del enlace.
+* Se dice que un enlace es "de acceso múltiple" cuando en un enlace un router puede tener varios vecinos.
+
+
+Router designado, de backup y DROthers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Router designado es el router ganador en las elecciones OSPF de un enlace multiacceso que se va a convertir en el que controla la información de ese enlace.
+* Router backup es el router que tomará el control si observa que el designado cae.
+* DROther son todos aquellos routers que han perdido las elecciones y que por tanto no propagan información dentro del área (salvo los mensajes HELLO)
+
+Es posible ver el estado de un router usando el comando (desde el modo administrador) ``show ip ospf interfaces``
+
+Router ASBR
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+OSPF también puede usar para enrutar hacia otros sistemas autónomos. En ese caso, el router ASBR es el Autonomous System Border Router o "router frontera".
+
+Router ABR
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Se llama Area Border Router al router que interconecta dos áreas.
+
+
 Diagnóstico de incidencias en OSPF.
 ----------------------------------------------------------------------------
+Podemos usar **exactamente los mismos comandos que hemos visto antes** y que volvemos a reproducir a continuación.
+
+* ``debug ip routing`` Este comando activa el modo depuración. Una vez lanzado, podremos ver los distintos mensajes de actualización de rutas que afectan a este router (lo cual nos permitirá ver si otros router o este mismo están propagando rutas incorrectas)
+* ``show ip route`` Al lanzarlo veremos en la consola las distintas rutas que este router conoce. Además se nos informará de si son rutas aprendidas, configuradas estáticamente y si tenemos interfaces conectadas a dichas redes.
+* ``show log`` Muestra el registro general de actividad lo que puede permitir detectar otros errores que sin ser problemas de enrutamiento sí den lugar a errores de comunicación.
+
 
 Configuración y administración de protocolos de enrutamiento propietarios.
 ----------------------------------------------------------------------------
 
-
+Existen otros protocolos como EIGRP que son propiedad específica de Cisco. Aunque pueden ser muy eficientes esta clase de protocolos nos vincula por completo a un solo fabricante y suele ser preferible ceñirse a protocolos abiertos. En este curso no hemos impartido EIGRP por falta de tiempo.
