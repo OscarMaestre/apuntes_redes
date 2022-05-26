@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instrucciones para el ordenador PC-7 &#8212; documentación de Apuntes de redes - 1.0</title>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/translations.js"></script>
+    <link rel="index" title="Índice" href="../../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="instrucciones-para-el-ordenador-pc-7">
+<h1>Instrucciones para el ordenador PC-7<a class="headerlink" href="#instrucciones-para-el-ordenador-pc-7" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Junto con este documento se te ha dado una imagen con la topología de una red y una máquina virtual que puedes importar. Importa la máquina y haz 4 clones de manera que tengas en total 5 máquinas virtuales. Es muy recomendable que a cada máquina le pongas un nombre como vamos a ver a continuación.</p>
+<p>Observa la imagen con detenimiento porque vamos a construir una topologia de red con varios routers y con
+enrutamiento estático.</p>
+<div class="figure align-default">
+<img alt="../../../../_images/Red6.png" src="../../../../_images/Red6.png" />
+</div>
+<p>Como puedes ver tenemos 6 máquinas:</p>
+<ul class="simple">
+<li><p>Un cliente llamado «Cliente 1».</p></li>
+<li><p>Un cliente llamado «Cliente 2».</p></li>
+<li><p>Tres router que llamaremos «Izquierda», «Arriba» y «Abajo».</p></li>
+</ul>
+<p>Cliente 1 y Cliente 2 solo van a usar <strong>una tarjeta de red en modo puente</strong>, la <code class="docutils literal notranslate"><span class="pre">enp0s3</span></code>. Sin embargo  los router van a tener <strong>tres tarjetas de red en modo puente</strong>. Si estás usando máquinas virtuales clonadas o importadas recuerda <strong>reiniciar las MAC de todas las tarjetas.</strong> A continuación se te indican las direcciones IP y las tarjetas en las que hay que asignarlas.</p>
+<ul class="simple">
+<li><p>Cliente 1: la tarjeta enp0s3 tiene la IP <strong>1.7.0.2/16</strong></p></li>
+<li><p>Cliente 2: la tarjeta enp0s3 tiene la IP <strong>6.7.0.10/16</strong></p></li>
+<li><p>Izquierda: la tarjeta enp0s3 tiene la IP <strong>1.7.0.1/16</strong>,la tarjeta enp0s8 tiene la IP <strong>2.7.0.1/16</strong>,la tarjeta enp0s9 tiene la IP <strong>3.7.0.1/16</strong></p></li>
+<li><p>Arriba: la tarjeta enp0s3 tiene la IP <strong>Reservada</strong>,la tarjeta enp0s8 tiene la IP <strong>2.7.0.2/16</strong>,la tarjeta enp0s9 tiene la IP <strong>5.7.0.1/16</strong></p></li>
+<li><p>Abajo: la tarjeta enp0s3 tiene la IP <strong>6.7.0.1/16</strong>,la tarjeta enp0s8 tiene la IP <strong>3.7.0.2/16</strong>,la tarjeta enp0s9 tiene la IP <strong>5.7.0.2/16</strong></p></li>
+</ul>
+<div class="section" id="ejercicio-1">
+<h2>Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Configurar las IP, máscaras, gateways y rutas en todas las máquinas de manera que Cliente1 pueda hacer ping a Cliente2 enviando los paquetes por abajo, es decir el camino directo.</p>
+</div>
+<div class="section" id="ejercicio-2">
+<h2>Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Modifica las rutas de manera que Cliente1 pueda hacer ping a Cliente2 enviando los paquetes por arriba, es decir el camino más largo.</p>
+</div>
+<div class="section" id="ejercicio-3">
+<h2>Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En el router de arriba hemos dejado una tarjeta sin usar. Intenta conectar con las redes de algún compañero. Para ello, tanto tu compañero como tú tendréis que hacer lo siguiente:</p>
+<ul class="simple">
+<li><p>Poneros de acuerdo en una red IP para ese segmento. Examinad vuestros números de puesto y usad la dirección de red 30.&lt;numeromayor&gt;.&lt;numeromenor&gt;.0/24. Es decir, si tenéis los números de puesto 7 y 24 deberíais usar la 30.24.7.0/24.</p></li>
+<li><p>Pasáos el uno al otro las direcciones de red de vuestros respectivos «Cliente 1» y «Cliente 2»</p></li>
+<li><p>Poneros de acuerdo en qué IP usar cada uno en vuestro router de arriba.</p></li>
+<li><p>Reconfigura <strong>todos tus router</strong> para añadir en ellos rutas para llegar a las redes de los clientes de tu compañero.</p></li>
+</ul>
+<p>Este ejercicio demuestra que la configuración estática de rutas solo es razonable para pequeñas redes y con pocos cambios. En el ejercicio siguiente verás como ahorrarte todo este trabajo.</p>
+</div>
+<div class="section" id="ejercicio-4">
+<h2>Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Reinicia todos los router, lo que borrará todas las rutas. En todos tus router tienes instalado un servicio que permite usar protocolos dinámicos de enrutamientos. Configúralos para que calculen todas las rutas automáticamente.</p>
+</div>
+<div class="section" id="solucion-al-ejercicio-1">
+<h2>Solución al ejercicio 1<a class="headerlink" href="#solucion-al-ejercicio-1" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="direccionamiento">
+<h3>Direccionamiento<a class="headerlink" href="#direccionamiento" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Cliente 1 tendría un fichero de <code class="docutils literal notranslate"><span class="pre">netplan</span></code> como este:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">network</span><span class="p">:</span>
+  <span class="n">version</span><span class="p">:</span> <span class="mi">2</span>
+  <span class="n">ethernets</span><span class="p">:</span>
+    <span class="n">enp0s3</span><span class="p">:</span>
+      <span class="n">addresses</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.7.0.2</span><span class="o">/</span><span class="mi">16</span><span class="p">]</span>
+      <span class="n">gateway4</span><span class="p">:</span>  <span class="mf">1.7.0.1</span>
+</pre></div>
+</div>
+<p>Izquierda tendría un fichero de <code class="docutils literal notranslate"><span class="pre">netplan</span></code> como este:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">network</span><span class="p">:</span>
+  <span class="n">version</span><span class="p">:</span> <span class="mi">2</span>
+  <span class="n">ethernets</span><span class="p">:</span>
+    <span class="n">enp0s3</span><span class="p">:</span>
+      <span class="n">addresses</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.7.0.1</span><span class="o">/</span><span class="mi">16</span><span class="p">]</span>
+    <span class="n">enp0s8</span><span class="p">:</span>
+      <span class="n">addresses</span><span class="p">:</span> <span class="p">[</span><span class="mf">2.7.0.1</span><span class="o">/</span><span class="mi">16</span><span class="p">]</span>
+    <span class="n">enp0s9</span><span class="p">:</span>
+      <span class="n">addresses</span><span class="p">:</span> <span class="p">[</span><span class="mf">3.7.0.1</span><span class="o">/</span><span class="mi">16</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Arriba tendría un fichero de <code class="docutils literal notranslate"><span class="pre">netplan</span></code> como este:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">network</span><span class="p">:</span>
+  <span class="n">version</span><span class="p">:</span> <span class="mi">2</span>
+  <span class="n">ethernets</span><span class="p">:</span>
+    <span class="n">enp0s8</span><span class="p">:</span>
+      <span class="n">addresses</span><span class="p">:</span> <span class="p">[</span><span class="mf">2.7.0.2</span><span class="o">/</span><span class="mi">16</span><span class="p">]</span>
+    <span class="n">enp0s9</span><span class="p">:</span>
+      <span class="n">addresses</span><span class="p">:</span> <span class="p">[</span><span class="mf">5.7.0.1</span><span class="o">/</span><span class="mi">16</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Abajo tendría un fichero de <code class="docutils literal notranslate"><span class="pre">netplan</span></code> como este:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">network</span><span class="p">:</span>
+  <span class="n">version</span><span class="p">:</span> <span class="mi">2</span>
+  <span class="n">ethernets</span><span class="p">:</span>
+    <span class="n">enp0s3</span><span class="p">:</span>
+      <span class="n">addresses</span><span class="p">:</span> <span class="p">[</span><span class="mf">6.7.0.1</span><span class="o">/</span><span class="mi">16</span><span class="p">]</span>
+    <span class="n">enp0s8</span><span class="p">:</span>
+      <span class="n">addresses</span><span class="p">:</span> <span class="p">[</span><span class="mf">3.7.0.2</span><span class="o">/</span><span class="mi">16</span><span class="p">]</span>
+    <span class="n">enp0s9</span><span class="p">:</span>
+      <span class="n">addresses</span><span class="p">:</span> <span class="p">[</span><span class="mf">5.7.0.2</span><span class="o">/</span><span class="mi">16</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Cliente 2 tendría un fichero de <code class="docutils literal notranslate"><span class="pre">netplan</span></code> como este:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">network</span><span class="p">:</span>
+  <span class="n">version</span><span class="p">:</span> <span class="mi">2</span>
+  <span class="n">ethernets</span><span class="p">:</span>
+    <span class="n">enp0s3</span><span class="p">:</span>
+      <span class="n">addresses</span><span class="p">:</span> <span class="p">[</span><span class="mf">6.7.0.10</span><span class="o">/</span><span class="mi">16</span><span class="p">]</span>
+      <span class="n">gateway4</span><span class="p">:</span>  <span class="n">Reserv</span>
+</pre></div>
+</div>
+<p>Una vez configuradas todas las direcciones IP repasalo todo ejecutando <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">addr</span></code> <strong>en todas las máquinas</strong> y comprueba que <strong>todo el mundo puede hacer ping a su vecino inmediato</strong>. Si no es así repasa las direcciones y tarjetas y si no ves el error llama al profesor.</p>
+</div>
+<div class="section" id="enrutamiento">
+<h3>Enrutamiento<a class="headerlink" href="#enrutamiento" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Antes de empezar, en Linux se debe habilitar el enrutamiento.</p>
+<ol class="arabic simple">
+<li><p>Escribe <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">nano</span> <span class="pre">/etc/sysctl.conf</span></code>.</p></li>
+<li><p>Busca una línea con el texto <code class="docutils literal notranslate"><span class="pre">net.ipv4.ip_forward=1</span></code>.</p></li>
+<li><p>Si tiene una almohadilla delante es porque esa línea está comentada y no está activada. Borra el símbolo #, <strong>guarda los cambios</strong> y despues ejecuta <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">sysctl</span> <span class="pre">-p</span></code> que forzará la recarga del fichero y activará el enrutamiento.</p></li>
+</ol>
+<p>En todos los router debemos recordar poner tanto las rutas de ida <em>como las rutas de vuelta</em>, así, los comandos a ejecutar serían algo como esto:</p>
+<p>En Izquierda podemos ejecutar esto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ip</span> <span class="n">route</span> <span class="n">add</span> <span class="mf">6.7.0.0</span><span class="o">/</span><span class="mi">16</span> <span class="n">via</span> <span class="mf">3.7.0.2</span>
+</pre></div>
+</div>
+<p>En Abajo podemos ejecutar esto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ip</span> <span class="n">route</span> <span class="n">add</span> <span class="mf">1.7.0.0</span><span class="o">/</span><span class="mi">16</span> <span class="n">via</span> <span class="mf">3.7.0.1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="solucion-al-ejercicio-2">
+<h2>Solución al ejercicio 2<a class="headerlink" href="#solucion-al-ejercicio-2" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="id1">
+<h3>Direccionamiento<a class="headerlink" href="#id1" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Los ficheros de <code class="docutils literal notranslate"><span class="pre">netplan</span></code> <strong>NO CAMBIAN</strong></p>
+</div>
+<div class="section" id="id2">
+<h3>Enrutamiento<a class="headerlink" href="#id2" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Si ya tienes el enrutamiento activado (ver más arriba) <strong>no hace falta que vuelvas a hacerlo</strong>.</p>
+<p>En primer lugar <strong>debemos borrar las rutas anteriores en los router Izquierda y Abajo</strong>. Ademas, de nuevo en todos los router debemos recordar poner tanto las rutas de ida <em>como las rutas de vuelta</em>.</p>
+<p>En Izquierda podemos ejecutar esto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ip</span> <span class="n">route</span> <span class="n">add</span> <span class="mf">6.7.0.0</span><span class="o">/</span><span class="mi">16</span> <span class="n">via</span> <span class="mf">2.7.0.2</span>
+</pre></div>
+</div>
+<p>En Arriba podemos ejecutar esto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ip</span> <span class="n">route</span> <span class="n">add</span> <span class="mf">1.7.0.0</span><span class="o">/</span><span class="mi">16</span> <span class="n">via</span> <span class="mf">2.7.0.1</span>
+<span class="n">sudo</span> <span class="n">ip</span> <span class="n">route</span> <span class="n">add</span> <span class="mf">6.7.0.0</span><span class="o">/</span><span class="mi">16</span> <span class="n">via</span> <span class="mf">5.7.0.2</span>
+</pre></div>
+</div>
+<p>En Abajo podemos ejecutar esto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">ip</span> <span class="n">route</span> <span class="n">add</span> <span class="mf">1.7.0.0</span><span class="o">/</span><span class="mi">16</span> <span class="n">via</span> <span class="mf">5.7.0.1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="solucion-al-ejercicio-3">
+<h2>Solución al ejercicio 3<a class="headerlink" href="#solucion-al-ejercicio-3" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>No se da</p>
+</div>
+<div class="section" id="solucion-al-ejercicio-4">
+<h2>Solución al ejercicio 4<a class="headerlink" href="#solucion-al-ejercicio-4" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En todos los router tendrás que hacer esto:</p>
+<ol class="arabic simple">
+<li><p>Editar el fichero de configuracion <code class="docutils literal notranslate"><span class="pre">/etc/frr/daemons</span></code></p></li>
+<li><p>Activar OSPF poniendo <code class="docutils literal notranslate"><span class="pre">yes</span></code>  en lugar de <code class="docutils literal notranslate"><span class="pre">no</span></code> en esta línea <code class="docutils literal notranslate"><span class="pre">ospfd=no</span></code></p></li>
+<li><p>Reiniciar el servicio con <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">service</span> <span class="pre">frr</span> <span class="pre">restart</span></code></p></li>
+<li><p>Arranca la configuración del router con <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">vtysh</span></code></p></li>
+<li><p>Introduce los comandos correspondientes a cada router.</p></li>
+</ol>
+<p>Router izquierda:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">network</span> <span class="mf">1.7.0.0</span><span class="o">/</span><span class="mi">16</span> <span class="n">area</span> <span class="mi">1</span>
+<span class="n">network</span> <span class="mf">2.7.0.0</span><span class="o">/</span><span class="mi">16</span> <span class="n">area</span> <span class="mi">1</span>
+<span class="n">network</span> <span class="mf">3.7.0.0</span><span class="o">/</span><span class="mi">16</span> <span class="n">area</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Router Arriba:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">network</span> <span class="mf">2.7.0.0</span><span class="o">/</span><span class="mi">16</span> <span class="n">area</span> <span class="mi">1</span>
+<span class="n">network</span> <span class="mf">5.7.0.0</span><span class="o">/</span><span class="mi">16</span> <span class="n">area</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Router Abajo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">network</span> <span class="mf">6.7.0.0</span><span class="o">/</span><span class="mi">16</span> <span class="n">area</span> <span class="mi">1</span>
+<span class="n">network</span> <span class="mf">3.7.0.0</span><span class="o">/</span><span class="mi">16</span> <span class="n">area</span> <span class="mi">1</span>
+<span class="n">network</span> <span class="mf">5.7.0.0</span><span class="o">/</span><span class="mi">16</span> <span class="n">area</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../index.html">Apuntes de redes</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegación</h3>
+<p class="caption" role="heading"><span class="caption-text">Índice:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../t1_caracterizacion_redes/apuntes_t1.html">Tema 1:Caracterización de redes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../t2_integracion_elementos/apuntes_t2.html">Tema 2:Integración de elementos en una red</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../t3_conmutadores/apuntes_t3.html">Tema 3:Configuración y administración de conmutadores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../t5_vlans/apuntes_t5.html">Tema 4: Configuración de redes virtuales VLAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../apuntes_t4.html">Tema 5: Configuración y administración básica de routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../t6_enrutamiento_dinamico/apuntes_t6.html">Tema 6:Configuración y administración de protocolos dinámicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../t7_acceso_internet/apuntes_t7.html">Tema 7: Configuración del acceso a Internet desde una LAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../anexos/t1_ejercicios.html">Anexo: Ejercicios propuestos para el tema 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../t2_integracion_elementos/ejercicios_switches/ejercicios_dos_switches.html">Anexo: ejercicios con tablas MAC de switches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../t2_integracion_elementos/ejercicios_subredes_ipv4/rangos_direcciones.html">Anexo: ejercicios sobre rangos de direcciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../t2_integracion_elementos/ejercicios_subredes/ejercicios_calculo_subredes.html">Anexo: cálculo de subredes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../t2_integracion_elementos/ejercicios_subredes_ipv4/ejercicios_dos_router.html">Anexo: ejercicios de enrutamiento</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../t2_integracion_elementos/ejercicios_subredes_ipv4/ejercicios_3_router_caso_a.html">Anexo: ejercicios de enrutamiento con 3 routers (caso 1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../t2_integracion_elementos/ejerciciosipv6/ejercicios_ipv6.html">Anexo: Ejercicios sobre compresión de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../t2_integracion_elementos/ejerciciosipv6/ejercicios_ipv6.html#soluciones-a-compresion-de-direcciones-ipv6">Soluciones a compresión de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../t2_integracion_elementos/ejercicios_ips/clasificacion_ipv6.html">Anexo: ejercicios sobre clasificación de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../t2_integracion_elementos/ejercicios_ips/clasificacion_ipv6.html#soluciones-a-la-clasificaciones-de-direcciones-ipv6">Soluciones a la clasificaciones de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../t3_conmutadores/ejercicios/ejercicios_switches.html">Anexo al tema 3: Ejercicios sobre comandos Cisco en switches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../t3_conmutadores/simuladorstp/stp1.html">Anexo al tema 3:Ejercicios STP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../t5_vlans/ejercicios_vlans/ejercicios_vlans.html">Ejercicios con VLANS y VTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../t6_enrutamiento_dinamico/generador_ejercicios_vlsm/EjerciciosVLSM.html">Anexo:Ejercicios VLSM</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Oscar G. G..
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../../../_sources/t4_routers/practica_routers/Documentos/PC-07/Instrucciones.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

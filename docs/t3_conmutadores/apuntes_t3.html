@@ -1,0 +1,593 @@
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tema 3:Configuración y administración de conmutadores &#8212; documentación de Apuntes de redes - 1.0</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Tema 4: Configuración de redes virtuales VLAN" href="../t5_vlans/apuntes_t5.html" />
+    <link rel="prev" title="Tema 2:Integración de elementos en una red" href="../t2_integracion_elementos/apuntes_t2.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="tema-3-configuracion-y-administracion-de-conmutadores">
+<h1>Tema 3:Configuración y administración de conmutadores<a class="headerlink" href="#tema-3-configuracion-y-administracion-de-conmutadores" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="segmentacion-de-la-red">
+<h2>Segmentación de la red.<a class="headerlink" href="#segmentacion-de-la-red" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En primer lugar analicemos una red grande.</p>
+<div class="figure align-default">
+<img alt="../_images/01-red-grande.png" src="../_images/01-red-grande.png" />
+</div>
+<p>En una red como la que mostramos, puede haber muchos enviando y recibiendo a la vez. ¿Qué ocurre si un nodo genera una difusión? En redes tan grandes, la cantidad de «perjudicados» por una difusión, aumenta mucho. De hecho aumenta más cuanto más ordenadores hay en un switch.</p>
+</div>
+<div class="section" id="ventajas-que-presenta">
+<h2>Ventajas que presenta.<a class="headerlink" href="#ventajas-que-presenta" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En este sentido, los switches pueden ayudar a aliviar problemas de congestión usandolos como divisores de redes. Una red grande se puede dividir en dos redes más pequeñas y mejorar el rendimiento. Por desgracia esto implica dos cosas:</p>
+<ul class="simple">
+<li><p>Coste. Donde antes había un switch ahora hay dos.</p></li>
+<li><p>Trabajo. Recablear toda una sala es algo lento.</p></li>
+</ul>
+</div>
+<div class="section" id="conmutadores-y-dominios-de-colision-y-broadcast">
+<h2>Conmutadores y dominios de colisión y «broadcast».<a class="headerlink" href="#conmutadores-y-dominios-de-colision-y-broadcast" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Se denomina «dominio de colisión» al conjunto de máquinas que pertenecen a un mismo enlace o red local y en el que una de esas máquinas puede perjudicar a las demás sin querer.</p>
+<p>Se denomina «dominio de broadcast» al conjunto de máquinas en las que UNA DIFUSIÓN IP (es decir, un paquete en el que la IP de destino es algo como 192.168.1.255) puede perjudicar a las demás sin querer. Un dominio de broadcast puede abarcar muchas redes Ethernet, o lo que es lo mismo, un dominio de broadcast puede abarcar muchos dominios de colisión. En la imagen siguiente puede verse una red muy grande compuesta por varias redes más pequeñas. Una difusión IP generada por una máquina cualquiera <em>podría ser recibida por todos los equipos de esa red</em></p>
+<div class="figure align-default">
+<img alt="../_images/02-dominio-broadcast.png" src="../_images/02-dominio-broadcast.png" />
+</div>
+</div>
+<div class="section" id="formas-de-conexion-al-conmutador-para-su-configuracion">
+<h2>Formas de conexión al conmutador para su configuración.<a class="headerlink" href="#formas-de-conexion-al-conmutador-para-su-configuracion" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="cables">
+<h3>Cables<a class="headerlink" href="#cables" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Los switches Cisco aceptan varios tipos de cable para conectar un PC con ellos y enviarles comandos:</p>
+<ol class="arabic simple">
+<li><p>Cable de red típico. Muchos switches por defecto <strong>traen deshabilitado el acceso por medio de este tipo de cable</strong>.</p></li>
+<li><p>Cable de consola.</p></li>
+<li><p>Cable auxiliar. Cada vez menos utilizado.</p></li>
+</ol>
+</div>
+<div class="section" id="protocolos">
+<h3>Protocolos<a class="headerlink" href="#protocolos" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><p>Telnet: un protocolo muy simple que <strong>no cifra los datos</strong></p></li>
+<li><p>SSH: es el que debería usarse siempre porque entre otras ventajas SSH <strong>cifra datos</strong>.</p></li>
+</ul>
+</div>
+<div class="section" id="practica-intercepcion-de-contrasenas">
+<h3>Práctica: intercepción de contraseñas.<a class="headerlink" href="#practica-intercepcion-de-contrasenas" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Descarga Putty en tu Windows e instala los siguientes páquetes en tu máquina virtual Ubuntu:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span> <span class="o">-</span><span class="n">y</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">wireshark</span> <span class="n">openssh</span><span class="o">-</span><span class="n">server</span> <span class="n">telnetd</span>
+</pre></div>
+</div>
+<p>Ve a tu máquina Ubuntu y crea un usuario para él que además pertenezca al grupo administrador (grupo <code class="docutils literal notranslate"><span class="pre">sudo</span></code>). Usa estos comandos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">adduser</span> <span class="n">pepe</span>
+<span class="n">sudo</span> <span class="n">usermod</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">G</span> <span class="n">sudo</span> <span class="n">pepe</span>
+</pre></div>
+</div>
+<p>Asegúrate de tener la tarjeta de tu máquina virtual en modo puente, arranca Wireshark y despues pide a tu compañero que use tanto Telnet como SSH para conectar con tu máquina. Intenta ver como envía la contraseña.</p>
+</div>
+</div>
+<div class="section" id="configuracion-del-conmutador">
+<h2>Configuración del conmutador.<a class="headerlink" href="#configuracion-del-conmutador" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="el-sistema-operativo-ios">
+<h3>El sistema operativo IOS<a class="headerlink" href="#el-sistema-operativo-ios" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>IOS es el S.O de Cisco se maneja fundamentalmente por comandos. Sin embargo, cuando encendemos un switch/router por primera vez, no es posible acceder a ese sistema. Necesitamos proporcionar una configuración inicial. Y para ello, usaremos casi con toda seguridad el cable de consola.</p>
+<p>El cable de consola es un cable propio de Cisco y por un lado usa una conexión propia de Cisco y en el otro extremos puede ser:</p>
+<ul class="simple">
+<li><p>USB (hoy en día lo más probable)</p></li>
+<li><p>RS-232 (aún muy utilizado, pero está cayendo en desuso)</p></li>
+<li><p>RJ-45 (depende del dispositivo)</p></li>
+</ul>
+<p>Para acceder al sistema operativo necesitaremos un ordenador en el que haya algún programa de tipo «Terminal». Este programa enviará los datos directamente al dispositivo (sin direcciones de origen ni de destino ni nada). Es vital saber qué velocidades acepta el dispositivo al que nos conectamos. En el caso Cisco, es casi sin excepción:</p>
+<ul class="simple">
+<li><p>Velocidad: 9600 bits por segundo.</p></li>
+<li><p>Tamaño de los caracteres de datos: 8 bits.</p></li>
+<li><p>Paridad. Es un mecanismo de comprobación de comprobación de errores. Los dispositivos Cisco no usan paridad.</p></li>
+<li><p>Bits de stop. En Cisco se usa 1 bits de stop.</p></li>
+<li><p>Control de flujo/velocidad. No se usará ninguno.</p></li>
+</ul>
+<p>En ocasiones se puede ver algo como 96008N1N. Esto significa «9600 bits/seg», «8 bits de datos», «No paridad», «1 bit de stop» y «No control de flujo».</p>
+<p>Una vez que tenemos acceso al sistema operativo, debemos recordar que IOS es un sistema operativo modal.</p>
+<ol class="arabic simple">
+<li><p>El sistema operativo arranca en modo usuario. En ese modo lo único que se suele poder hacer es «visualizar», pero no «cambiar» ni «configurar». En suma, se usa el comando «show»</p></li>
+<li><p>Para pasar al modo «privilegiado» se usa el comando <code class="docutils literal notranslate"><span class="pre">enable</span></code>. Lo normal es que dicho modo tenga una clave. Para volver al modo usuario podemos usar <code class="docutils literal notranslate"><span class="pre">disable</span></code>.</p></li>
+<li><p>Para pasar al modo «configuración» se usa <code class="docutils literal notranslate"><span class="pre">configure</span> <span class="pre">terminal</span></code> desde el modo privilegiado.</p></li>
+</ol>
+<p>La figura siguiente, tomada de Cisco, muestra los distintos modos:</p>
+<div class="figure align-default">
+<img alt="../_images/03-modos-cisco.png" src="../_images/03-modos-cisco.png" />
+</div>
+</div>
+<div class="section" id="el-modo-usuario">
+<h3>El modo usuario<a class="headerlink" href="#el-modo-usuario" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>En este modo solo se pueden usar unos pocos comandos show. Por ejemplo:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">interfaces</span></code> muestra la información de todos los interfaces.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">interfaces</span> <span class="pre">Fastethernet</span> <span class="pre">0/1</span></code> muestra solo la tarjeta 0/1</p></li>
+</ul>
+</div>
+<div class="section" id="modo-privilegiado">
+<h3>Modo privilegiado<a class="headerlink" href="#modo-privilegiado" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Comandos muy típicos:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">running-config</span></code> muestra la configuración en RAM.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">startup-config</span></code> muestra la configuración de arranque.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">version</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">copy</span> <span class="pre">running-config</span> <span class="pre">startup-config</span></code>.</p></li>
+</ul>
+</div>
+<div class="section" id="modo-de-configuracion-global">
+<h3>Modo de configuración global:<a class="headerlink" href="#modo-de-configuracion-global" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hostname</span> <span class="pre">&lt;nombre&gt;</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="configuracion-de-contrasenas">
+<h3>Configuración de contraseñas<a class="headerlink" href="#configuracion-de-contrasenas" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Se puede poner contraseña a un montón de elementos:</p>
+<ul class="simple">
+<li><p>Contraseña al cable de consola.</p></li>
+<li><p>Contraseña de administrador para el modo privilegiado.</p></li>
+<li><p>Contraseña al telnet.</p></li>
+<li><p>Contraseña SSH.</p></li>
+<li><p>Contraseña al puerto auxiliar.</p></li>
+</ul>
+<p>Para poner contraseña a la conexión por cable de consola:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Switch</span><span class="o">&gt;</span><span class="n">enable</span>
+<span class="n">Switch</span><span class="c1">#configure terminal</span>
+<span class="n">Switch</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1">#line console 0</span>
+<span class="n">Switch</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="n">line</span><span class="p">)</span><span class="c1">#password sesamo1234</span>
+<span class="n">Switch</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="n">line</span><span class="p">)</span><span class="c1">#login</span>
+</pre></div>
+</div>
+<p>Para poner una clave al modo de administrador:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Switch</span><span class="o">&gt;</span><span class="n">enable</span>
+<span class="n">Switch</span><span class="c1">#configure terminal</span>
+<span class="n">Switch</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1">#enable secret Admin1234!</span>
+<span class="n">Switch</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1">#exit</span>
+<span class="n">Switch</span><span class="c1">#copy running-config startup-config</span>
+<span class="n">Switch</span><span class="c1">#reload</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>En muchos foros, manuales, tutoriales, vídeos se indica que el comando es «enable password» en lugar de «enable secret». Hace mucho tiempo que eso no es verdad. El comando Cisco fue durante mucho tiempo «enable password» y de hecho <strong>el comando sigue funcionando</strong>. Sin embargo, <code class="docutils literal notranslate"><span class="pre">enable</span> <span class="pre">password</span></code> guarda las claves en la memoria <strong>SIN CIFRAR</strong>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="poner-una-ip-de-gestion-a-un-switch">
+<h2>Poner una IP de gestión a un switch<a class="headerlink" href="#poner-una-ip-de-gestion-a-un-switch" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Los comandos serían algo como esto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Nos convertimos en administrador</span>
+<span class="n">Switch</span><span class="o">&gt;</span><span class="n">enable</span>
+<span class="c1">#Pasamos al modo de configuración global</span>
+<span class="n">Switch</span><span class="c1">#configure terminal</span>
+<span class="c1">#Entramos en la VLAN nativa</span>
+<span class="n">Switch</span><span class="p">(</span><span class="n">config</span><span class="p">)</span><span class="c1">#interface vlan 1</span>
+<span class="c1">#Ponemos una IP</span>
+<span class="n">Switch</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="c1">#ip address 192.168.1.2 255.255.255.0</span>
+<span class="c1">#Y activamos este interfaz</span>
+<span class="n">Switch</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="c1">#no shutdown</span>
+</pre></div>
+</div>
+<p>Para poner contraseña a Telnet y SSH el procedimiento es bastante parecido:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#Nos convertimos en administrador
+Switch&gt;enable
+#Pasamos al modo de configuración global
+Switch#configure terminal
+#Seleccionamos las conexiones
+Switch(config)#line vty 0 15
+#Ponemos una clave de acceso a estas conexiones
+password clave1234!
+#Con esto se exigirá el uso de la clave
+login
+</pre></div>
+</div>
+<p>Para SSH hay que hacer dos cosas:</p>
+<ol class="arabic simple">
+<li><p>Generar las claves del nodo.</p></li>
+<li><p>Configurar el acceso ssh.</p></li>
+</ol>
+<div class="section" id="configurar-claves-publicas-de-un-nodo">
+<h3>Configurar claves públicas de un nodo<a class="headerlink" href="#configurar-claves-publicas-de-un-nodo" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Los comandos serían estos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ip</span> <span class="n">domain</span><span class="o">-</span><span class="n">name</span> <span class="n">midominio</span><span class="o">.</span><span class="n">com</span>
+<span class="n">crypto</span> <span class="n">key</span> <span class="n">generate</span> <span class="n">rsa</span> <span class="n">general</span><span class="o">-</span><span class="n">keys</span> <span class="n">modulus</span> <span class="mi">2048</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="configurar-el-acceso-ssh">
+<h3>Configurar el acceso SSH<a class="headerlink" href="#configurar-el-acceso-ssh" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Una vez dado el paso anterior haríamos esto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">username</span> <span class="n">admin</span><span class="o">-</span><span class="n">ssh</span> <span class="n">secret</span> <span class="n">clavessh1234</span>
+<span class="n">line</span> <span class="n">vty</span> <span class="mi">0</span> <span class="mi">15</span>
+<span class="n">login</span> <span class="n">local</span>
+<span class="n">transport</span> <span class="nb">input</span> <span class="n">ssh</span>
+<span class="n">exit</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="configuracion-estatica-y-dinamica-de-la-tabla-de-direcciones-mac">
+<h2>Configuración estática y dinámica de la tabla de direcciones MAC.<a class="headerlink" href="#configuracion-estatica-y-dinamica-de-la-tabla-de-direcciones-mac" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="recordatorio-de-arp-y-funcionamiento-de-switches">
+<h3>Recordatorio de ARP y funcionamiento de switches<a class="headerlink" href="#recordatorio-de-arp-y-funcionamiento-de-switches" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Los ordenadores no envían datos directamente a una dirección IP. Primero averiguan la dirección MAC del destinatario y despues envian los datos a esa MAC.</p>
+<p>Para averiguar la MAC los ordenadores hacen preguntas según un protocolo que llamábamos ARP. Esas preguntas implican difusiones y sabemos que las difusiones son malas para el rendimiento.</p>
+<p>Para evitar tantas difusiones los switches pueden «aprender». Usan una tabla en RAM llamada «tabla de MACS» para intentar enviar cada paquete solo al destinatario y así ahorrar difusiones.</p>
+</div>
+<div class="section" id="ver-la-tabla-de-macs">
+<h3>Ver la tabla de MACs<a class="headerlink" href="#ver-la-tabla-de-macs" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Es posible examinar el estado actual de la tabla de MACS en memoria usando el comando <code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">mac-address-table</span></code>.</p>
+</div>
+<div class="section" id="borrado-de-la-tabla-de-macs">
+<h3>Borrado de la tabla de MACs<a class="headerlink" href="#borrado-de-la-tabla-de-macs" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Para borrar la tabla podemos usar el comando <code class="docutils literal notranslate"><span class="pre">clear</span> <span class="pre">mac-address-table</span></code></p>
+</div>
+<div class="section" id="configuracion-del-timeout-en-la-tabla-de-macs">
+<h3>Configuración del «timeout» en la tabla de MACs<a class="headerlink" href="#configuracion-del-timeout-en-la-tabla-de-macs" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Técnicamente el nombre es «aging» (envejecimiento) pero es muy frecuente oír simplemente «timeout de una entrada».</p>
+<p>Para configurar el «timeout» se debe pasar al modo de configuración global y despues entrar en la VLAN para la que queramos cambiar el tiempo. Por ahora no hablaremos de VLAN y usaremos la VLAN por defecto en todos los casos, que es la VLAN 1. Así, por ejemplo, para cambiar el tiempo que mantenemos algo en la caché ARP a 60 segundos usaremos esto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
+<span class="n">configure</span> <span class="n">terminal</span>
+<span class="n">interface</span> <span class="n">vlan</span> <span class="mi">1</span>
+<span class="n">arp</span> <span class="n">timeout</span> <span class="mi">60</span>
+<span class="n">no</span> <span class="n">shutdown</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="asignacion-estatica-de-una-mac-a-un-puerto">
+<h3>Asignación estática de una MAC a un puerto<a class="headerlink" href="#asignacion-estatica-de-una-mac-a-un-puerto" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Hay que recordar que en este comando se debe usar obligatoriamente la VLAN. Si no hemos creado ninguna se usa la VLAN por defecto que es la 1. Si por ejemplo queremos indicar que una cierta MAC va enganchada a un cierto puerto podemos usar:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mac</span> <span class="n">address</span><span class="o">-</span><span class="n">table</span> <span class="n">static</span> <span class="mi">00</span><span class="n">aa</span><span class="mf">.1122</span><span class="o">.</span><span class="n">ccdd</span> <span class="n">vlan</span> <span class="mi">1</span> <span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="borrado-de-una-entrada-mac-en-la-tabla-del-switch">
+<h3>Borrado de una entrada MAC en la tabla del switch<a class="headerlink" href="#borrado-de-una-entrada-mac-en-la-tabla-del-switch" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Es tan sencillo como «negar» el comando anterior. Es decir, tecleamos lo mismo pero poniendo delante un <code class="docutils literal notranslate"><span class="pre">no</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">no</span> <span class="n">mac</span> <span class="n">address</span><span class="o">-</span><span class="n">table</span> <span class="n">static</span> <span class="mi">00</span><span class="n">aa</span><span class="mf">.1122</span><span class="o">.</span><span class="n">ccdd</span> <span class="n">vlan</span> <span class="mi">1</span> <span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="diagnostico-de-incidencias-del-conmutador">
+<h2>Diagnóstico de incidencias del conmutador.<a class="headerlink" href="#diagnostico-de-incidencias-del-conmutador" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En general se puede usar el comando <code class="docutils literal notranslate"><span class="pre">show</span></code> en el modo administrador para acceder a diversa información de interés. Así, por ejemplo el comando <code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">interfaces</span></code> nos muestra <strong>todos los interfaces uno por uno</strong> con estadísticas detalladas de uso, incluyendo errores que haya podido haber. A continuación se muestra un ejemplo de resultado (solo se muestra un interfaz):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FastEthernet0</span><span class="o">/</span><span class="mi">1</span> <span class="ow">is</span> <span class="n">up</span><span class="p">,</span> <span class="n">line</span> <span class="n">protocol</span> <span class="ow">is</span> <span class="n">up</span> <span class="p">(</span><span class="n">connected</span><span class="p">)</span>
+<span class="n">Hardware</span> <span class="ow">is</span> <span class="n">Lance</span><span class="p">,</span> <span class="n">address</span> <span class="ow">is</span> <span class="mf">0090.0</span><span class="n">cad</span><span class="o">.</span><span class="n">ae01</span> <span class="p">(</span><span class="n">bia</span> <span class="mf">0090.0</span><span class="n">cad</span><span class="o">.</span><span class="n">ae01</span><span class="p">)</span>
+<span class="n">BW</span> <span class="mi">100000</span> <span class="n">Kbit</span><span class="p">,</span> <span class="n">DLY</span> <span class="mi">1000</span> <span class="n">usec</span><span class="p">,</span>
+    <span class="n">reliability</span> <span class="mi">255</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span> <span class="n">txload</span> <span class="mi">1</span><span class="o">/</span><span class="mi">255</span><span class="p">,</span> <span class="n">rxload</span> <span class="mi">1</span><span class="o">/</span><span class="mi">255</span>
+<span class="n">Encapsulation</span> <span class="n">ARPA</span><span class="p">,</span> <span class="n">loopback</span> <span class="ow">not</span> <span class="nb">set</span>
+<span class="n">Keepalive</span> <span class="nb">set</span> <span class="p">(</span><span class="mi">10</span> <span class="n">sec</span><span class="p">)</span>
+<span class="n">Full</span><span class="o">-</span><span class="n">duplex</span><span class="p">,</span> <span class="mi">100</span><span class="n">Mb</span><span class="o">/</span><span class="n">s</span>
+<span class="nb">input</span> <span class="n">flow</span><span class="o">-</span><span class="n">control</span> <span class="ow">is</span> <span class="n">off</span><span class="p">,</span> <span class="n">output</span> <span class="n">flow</span><span class="o">-</span><span class="n">control</span> <span class="ow">is</span> <span class="n">off</span>
+<span class="n">ARP</span> <span class="nb">type</span><span class="p">:</span> <span class="n">ARPA</span><span class="p">,</span> <span class="n">ARP</span> <span class="n">Timeout</span> <span class="mi">04</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">Last</span> <span class="nb">input</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">08</span><span class="p">,</span> <span class="n">output</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">05</span><span class="p">,</span> <span class="n">output</span> <span class="n">hang</span> <span class="n">never</span>
+<span class="n">Last</span> <span class="n">clearing</span> <span class="n">of</span> <span class="s2">&quot;show interface&quot;</span> <span class="n">counters</span> <span class="n">never</span>
+<span class="n">Input</span> <span class="n">queue</span><span class="p">:</span> <span class="mi">0</span><span class="o">/</span><span class="mi">75</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">0</span> <span class="p">(</span><span class="n">size</span><span class="o">/</span><span class="nb">max</span><span class="o">/</span><span class="n">drops</span><span class="o">/</span><span class="n">flushes</span><span class="p">);</span> <span class="n">Total</span> <span class="n">output</span> <span class="n">drops</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">Queueing</span> <span class="n">strategy</span><span class="p">:</span> <span class="n">fifo</span>
+<span class="n">Output</span> <span class="n">queue</span> <span class="p">:</span><span class="mi">0</span><span class="o">/</span><span class="mi">40</span> <span class="p">(</span><span class="n">size</span><span class="o">/</span><span class="nb">max</span><span class="p">)</span>
+<span class="mi">5</span> <span class="n">minute</span> <span class="nb">input</span> <span class="n">rate</span> <span class="mi">0</span> <span class="n">bits</span><span class="o">/</span><span class="n">sec</span><span class="p">,</span> <span class="mi">0</span> <span class="n">packets</span><span class="o">/</span><span class="n">sec</span>
+<span class="mi">5</span> <span class="n">minute</span> <span class="n">output</span> <span class="n">rate</span> <span class="mi">0</span> <span class="n">bits</span><span class="o">/</span><span class="n">sec</span><span class="p">,</span> <span class="mi">0</span> <span class="n">packets</span><span class="o">/</span><span class="n">sec</span>
+    <span class="mi">956</span> <span class="n">packets</span> <span class="nb">input</span><span class="p">,</span> <span class="mi">193351</span> <span class="nb">bytes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">no</span> <span class="n">buffer</span>
+    <span class="n">Received</span> <span class="mi">956</span> <span class="n">broadcasts</span><span class="p">,</span> <span class="mi">0</span> <span class="n">runts</span><span class="p">,</span> <span class="mi">0</span> <span class="n">giants</span><span class="p">,</span> <span class="mi">0</span> <span class="n">throttles</span>
+    <span class="mi">0</span> <span class="nb">input</span> <span class="n">errors</span><span class="p">,</span> <span class="mi">0</span> <span class="n">CRC</span><span class="p">,</span> <span class="mi">0</span> <span class="n">frame</span><span class="p">,</span> <span class="mi">0</span> <span class="n">overrun</span><span class="p">,</span> <span class="mi">0</span> <span class="n">ignored</span><span class="p">,</span> <span class="mi">0</span> <span class="n">abort</span>
+    <span class="mi">0</span> <span class="n">watchdog</span><span class="p">,</span> <span class="mi">0</span> <span class="n">multicast</span><span class="p">,</span> <span class="mi">0</span> <span class="n">pause</span> <span class="nb">input</span>
+    <span class="mi">0</span> <span class="nb">input</span> <span class="n">packets</span> <span class="k">with</span> <span class="n">dribble</span> <span class="n">condition</span> <span class="n">detected</span>
+    <span class="mi">2357</span> <span class="n">packets</span> <span class="n">output</span><span class="p">,</span> <span class="mi">263570</span> <span class="nb">bytes</span><span class="p">,</span> <span class="mi">0</span> <span class="n">underruns</span>
+    <span class="mi">0</span> <span class="n">output</span> <span class="n">errors</span><span class="p">,</span> <span class="mi">0</span> <span class="n">collisions</span><span class="p">,</span> <span class="mi">10</span> <span class="n">interface</span> <span class="n">resets</span>
+    <span class="mi">0</span> <span class="n">babbles</span><span class="p">,</span> <span class="mi">0</span> <span class="n">late</span> <span class="n">collision</span><span class="p">,</span> <span class="mi">0</span> <span class="n">deferred</span>
+    <span class="mi">0</span> <span class="n">lost</span> <span class="n">carrier</span><span class="p">,</span> <span class="mi">0</span> <span class="n">no</span> <span class="n">carrier</span>
+    <span class="mi">0</span> <span class="n">output</span> <span class="n">buffer</span> <span class="n">failures</span><span class="p">,</span> <span class="mi">0</span> <span class="n">output</span> <span class="n">buffers</span> <span class="n">swapped</span> <span class="n">out</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="las-tormentas-de-broadcast">
+<h2>Las tormentas de «broadcast».<a class="headerlink" href="#las-tormentas-de-broadcast" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Las tormentas de paquetes ocurren cuando se dan estas dos condiciones:</p>
+<ol class="arabic simple">
+<li><p>Se ha formado un ciclo al intentar interconectar salas.</p></li>
+<li><p>Usamos switches de gama baja o si los hemos puesto de gama alta tienen desactivado STP (explicaremos lo que es un poco más abajo)</p></li>
+</ol>
+<p>Observemos la figura siguiente:</p>
+<div class="figure align-default">
+<img alt="../_images/04-tormenta-broadcast.png" src="../_images/04-tormenta-broadcast.png" />
+</div>
+<p>Supongamos que está todo recién encendido y un equipo intenta enviar un simple <code class="docutils literal notranslate"><span class="pre">ping</span></code> a otro. Ese <code class="docutils literal notranslate"><span class="pre">ping</span></code> tendrá que hacer una difusión ARP</p>
+</div>
+<div class="section" id="el-protocolo-spanning-tree">
+<h2>El protocolo Spanning-Tree.<a class="headerlink" href="#el-protocolo-spanning-tree" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Spanning-Tree es un mecanismo que permite a los switches <strong>detectar automáticamente los ciclos y bloquear puertos para evitar las tormentas de broadcast</strong>.</p>
+<p>Para ello debe hacer dos cosas:</p>
+<ol class="arabic simple">
+<li><p>Elegir un switch al que llamará «switch raíz» y en el que se fijarán todos los switches para tomar decisiones despues. El switch raíz será <strong>aquel que tenga la prioridad más pequeña</strong>. Si hay dos o más switch con la prioridad igual se elige <strong>aquel que tenga la MAC más pequeña</strong>. Por ejemplo la mac 0C-DD va antes que la A2-4F.</p></li>
+<li><p>Tomar decisiones sobre el estado en que quedarán los puertos. El algoritmo bloqueará puertos de manera que en la topología final no haya bucles.</p></li>
+</ol>
+<p>En concreto Spanning-Tree elige a la raíz  proceso en el que los switches empiezan eligiéndose a sí mismos como raíz y comunicando lo que saben por todos los puertos. Cuando un switch ve a otro que tiene una prioridad mejor deja de proclamarse a sí mismo como raíz y anunciará la nueva raíz en pasos siguientes.</p>
+<ul class="simple">
+<li><p>Puerto raíz: es un puerto que indica que es el mejor camino para llegar a la raíz.</p></li>
+<li><p>Puerto designado: es un puerto no raíz que es el mejor del segmento para llegar a la raíz.</p></li>
+<li><p>Puerto bloqueado: en un segmento es un puerto que no se usa.</p></li>
+</ul>
+<p>El proceso converge automáticamente en poco tiempo y resuelve el problema de los ciclos de red. Sin embargo, si la solución que alcanza el proceso no nos gusta, se puede modificar la prioridad de un switch para que tenga una mejor (con un número más bajo) y mejorar su probabilidad de que salga elegido como ganador o al menos que no se le bloqueen muchos puertos. Los comandos necesarios son:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
+<span class="n">configure</span> <span class="n">terminal</span>
+<span class="n">spanning</span><span class="o">-</span><span class="n">tree</span> <span class="n">vlan</span> <span class="mi">1</span> <span class="n">priority</span> <span class="o">&lt;</span><span class="n">numero</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Si queremos ver el estado actual de STP podemos ejecutar este comando en modo administrador:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Switch1</span><span class="c1">#show spanning-tree</span>
+<span class="n">Switch1</span><span class="c1">#show spanning-tree details</span>
+</pre></div>
+</div>
+<div class="section" id="como-se-decide-sobre-el-estado-de-los-puertos">
+<h3>¿Como se decide sobre el estado de los puertos?<a class="headerlink" href="#como-se-decide-sobre-el-estado-de-los-puertos" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Cuando un switch analiza un puerto tiene que decidir sobre si poner un puerto en «raíz», «designado» o «bloqueado». En general, la clave para tomar esta decisión está en varias cosas:</p>
+<ol class="arabic simple">
+<li><p>El coste en el que incurre ese switch para llegar al switch raíz.</p></li>
+<li><p>El identificador del switch. Recordemos que está formado por la prioridad y la MAC, aunque en estos apuntes y los ejercicios la prioridad se ha «trucado» para que sea un número simple de entender.</p></li>
+<li><p>La MAC del puerto en concreto.</p></li>
+</ol>
+<p>Así, el proceso es más o menos este:</p>
+<ul class="simple">
+<li><p>El switch raíz pone todos sus puertos a <strong>designado</strong>. Es lógico, el switch raíz es el mejor y sus puertos son siempre los mejores de cualquier segmento.</p></li>
+<li><p>El resto tienen que ir puerto por puerto examinando lo que han enviado y lo que han recibido. Este proceso es a su vez más complicado y lo desglosamos aparte.</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>Si un puerto tiene un coste mejor que el otro puerto del segmento se pone a «designado».</p></li>
+<li><p>Si un puerto tiene igual coste que el otro puerto del segmento se examinan las prioridades y se elige el puerto que lleve al switch con la mejor prioridad.</p></li>
+<li><p>Los puertos que queden son puertos que se ponen a «bloqueado». Han perdido frente a sus competidores, ya sea por coste o por MAC.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="ejemplo-de-stp-resuelto">
+<h2>Ejemplo de STP resuelto<a class="headerlink" href="#ejemplo-de-stp-resuelto" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En la figura siguiente se observa una red de switches. Podemos ver en su interior las prioridades que se les han dado y en los cables podemos ver la MAC de cada interfaz. Observando esto, ¿en qué estado quedarán los distintos puertos de los distintos switches?</p>
+<div class="figure align-default">
+<img alt="../_images/paso00.png" src="../_images/paso00.png" />
+</div>
+<div class="section" id="switch-1-derecha-raiz">
+<h3>Switch 1 (derecha), raíz<a class="headerlink" href="#switch-1-derecha-raiz" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>En primer lugar debemos saber quien actuará como raíz. Despues del proceso de elecciones ocurrirá que el switch 1 de la derecha ganará el proceso, ya que aunque tiene la misma prioridad que otro, el switch 1 de la derecha tiene la menor MAC (tiene la 0a). Esto significa que el proceso empieza declarando al switch 1 de la derecha el switch raíz y poniendo todos sus puertos a «designado». Todos los switches toman nota del coste que les supone llegar a la raíz.</p>
+<div class="figure align-default">
+<img alt="../_images/paso01.png" src="../_images/paso01.png" />
+</div>
+<p>A continuación iremos viendo los distintos switches y las decisiones que toman</p>
+</div>
+<div class="section" id="switch-2-abajo">
+<h3>Switch 2 (abajo)<a class="headerlink" href="#switch-2-abajo" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Ocurre esto:</p>
+<ul class="simple">
+<li><p>Todos los switches deben empezar indicando su puerto raíz. En este caso, su mejor puerto para llegar a la raíz es el 20.</p></li>
+<li><p>Examinamos el puerto 21. Este switch tiene un coste 1 y el switch de «enfrente» también, pero nuestra mac 21 es mejor que la del vecino (que es 2c), así que ponemos este puerto a «designado».</p></li>
+<li><p>Examinamos el puerto 22. Nuestro coste es mejor que el del vecino de enfrente, así que nuestro puerto «gana» y se pone a «designado».</p></li>
+</ul>
+<div class="figure align-default">
+<img alt="../_images/paso02.png" src="../_images/paso02.png" />
+</div>
+</div>
+<div class="section" id="switch-2-centro-arriba">
+<h3>Switch 2 (centro-arriba)<a class="headerlink" href="#switch-2-centro-arriba" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><p>El puerto 2d es el mejor. Se declara puerto raíz.</p></li>
+<li><p>El puerto 2c se compara con el vecino de enfrente. El vecino y nosotros tenemos el mismo coste (que es 1) pero nuestra MAC es peor. Perdemos y bloqueamos este puerto con la MAC 2c.</p></li>
+<li><p>El puerto 2b se compara con el vecino de enfrente. El vecino (switch 4) tiene un coste peor, así que él pierde y declaramos este puerto 2b como «designado».</p></li>
+<li><p>El puerto 2a se compara con el vecino de enfrente. El vecino (switch 1, izquierda) tiene un coste peor. Él pierde y declaramos nuestro puerto 2a como «designado».</p></li>
+</ul>
+<div class="figure align-default">
+<img alt="../_images/paso03.png" src="../_images/paso03.png" />
+</div>
+</div>
+<div class="section" id="switch-4">
+<h3>Switch 4<a class="headerlink" href="#switch-4" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Examina sus propios puertos:</p>
+<ul class="simple">
+<li><p>Su puerto 4a es el mejor, se declara raíz.</p></li>
+<li><p>Examina su puerto 4b. El vecino de enfrente tiene un coste 1 y nosotros 2. Perdemos y declaramos este puerto 4b como «bloqueado».</p></li>
+<li><p>Examina su puerto 4c. El vecino tiene un coste 2 y nosotros también. Nuestra MAC 4c es peor que la suya (que es 1b), así que perdemos y declaramos este puerto como «bloqueado».</p></li>
+</ul>
+<div class="figure align-default">
+<img alt="../_images/paso04.png" src="../_images/paso04.png" />
+</div>
+</div>
+<div class="section" id="switch-1-izquierda">
+<h3>Switch 1 (izquierda)<a class="headerlink" href="#switch-1-izquierda" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><p>Su puerto 1a es el mejor para llegar a la raíz, así que se declara puerto raíz.</p></li>
+<li><p>Su puerto 1b se compara con el vecino de enfrente. El vecino coste 2 y nosotros también, pero nuestra MAC es menor. Nuestro puerto 1b gana a su MAC 4c así que él pierde y nosotros ponemos nuestro puerto 1b a «designado».</p></li>
+</ul>
+<div class="figure align-default">
+<img alt="../_images/paso05.png" src="../_images/paso05.png" />
+</div>
+</div>
+<div class="section" id="estado-final">
+<h3>Estado final<a class="headerlink" href="#estado-final" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Si asumimos que los puertos bloqueados anulan el cable al que pertenecen observamos que la topología ha cambiado y queda algo como esto:</p>
+<div class="figure align-default">
+<img alt="../_images/paso06.png" src="../_images/paso06.png" />
+</div>
+</div>
+</div>
+<div class="section" id="ejemplo-de-stp-propuesto">
+<h2>Ejemplo de STP propuesto<a class="headerlink" href="#ejemplo-de-stp-propuesto" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Observa esta topología, indica el estado final en que quedarán los switches</p>
+<div class="figure align-default">
+<img alt="../_images/paso001.png" src="../_images/paso001.png" />
+</div>
+<p>No se da la solución paso por paso pero es importante reseñar que <strong>la topología ha cambiado por completo.</strong> No importa que hayamos añadido solo un switch con una conexión. Su prioridad es tan baja que el árbol STP se desequilibra por completo y toda la red se reorganiza en torno a él.</p>
+<p>El estado final de la red es algo como esto:</p>
+<div class="figure align-default">
+<img alt="../_images/pasofinal.png" src="../_images/pasofinal.png" />
+</div>
+<p>Y si examinamos como ha dejado la topología el algoritmo la configuración de la red es esta:</p>
+<div class="figure align-default">
+<img alt="../_images/sincables.png" src="../_images/sincables.png" />
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Apuntes de redes</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegación</h3>
+<p class="caption" role="heading"><span class="caption-text">Índice:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../t1_caracterizacion_redes/apuntes_t1.html">Tema 1:Caracterización de redes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/apuntes_t2.html">Tema 2:Integración de elementos en una red</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tema 3:Configuración y administración de conmutadores</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#segmentacion-de-la-red">Segmentación de la red.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ventajas-que-presenta">Ventajas que presenta.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conmutadores-y-dominios-de-colision-y-broadcast">Conmutadores y dominios de colisión y «broadcast».</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#formas-de-conexion-al-conmutador-para-su-configuracion">Formas de conexión al conmutador para su configuración.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cables">Cables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#protocolos">Protocolos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#practica-intercepcion-de-contrasenas">Práctica: intercepción de contraseñas.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#configuracion-del-conmutador">Configuración del conmutador.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#el-sistema-operativo-ios">El sistema operativo IOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#el-modo-usuario">El modo usuario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modo-privilegiado">Modo privilegiado</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modo-de-configuracion-global">Modo de configuración global:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuracion-de-contrasenas">Configuración de contraseñas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#poner-una-ip-de-gestion-a-un-switch">Poner una IP de gestión a un switch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configurar-claves-publicas-de-un-nodo">Configurar claves públicas de un nodo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configurar-el-acceso-ssh">Configurar el acceso SSH</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#configuracion-estatica-y-dinamica-de-la-tabla-de-direcciones-mac">Configuración estática y dinámica de la tabla de direcciones MAC.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#recordatorio-de-arp-y-funcionamiento-de-switches">Recordatorio de ARP y funcionamiento de switches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ver-la-tabla-de-macs">Ver la tabla de MACs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#borrado-de-la-tabla-de-macs">Borrado de la tabla de MACs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuracion-del-timeout-en-la-tabla-de-macs">Configuración del «timeout» en la tabla de MACs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#asignacion-estatica-de-una-mac-a-un-puerto">Asignación estática de una MAC a un puerto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#borrado-de-una-entrada-mac-en-la-tabla-del-switch">Borrado de una entrada MAC en la tabla del switch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#diagnostico-de-incidencias-del-conmutador">Diagnóstico de incidencias del conmutador.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#las-tormentas-de-broadcast">Las tormentas de «broadcast».</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#el-protocolo-spanning-tree">El protocolo Spanning-Tree.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#como-se-decide-sobre-el-estado-de-los-puertos">¿Como se decide sobre el estado de los puertos?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ejemplo-de-stp-resuelto">Ejemplo de STP resuelto</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#switch-1-derecha-raiz">Switch 1 (derecha), raíz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#switch-2-abajo">Switch 2 (abajo)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#switch-2-centro-arriba">Switch 2 (centro-arriba)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#switch-4">Switch 4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#switch-1-izquierda">Switch 1 (izquierda)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#estado-final">Estado final</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ejemplo-de-stp-propuesto">Ejemplo de STP propuesto</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../t5_vlans/apuntes_t5.html">Tema 4: Configuración de redes virtuales VLAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t4_routers/apuntes_t4.html">Tema 5: Configuración y administración básica de routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t6_enrutamiento_dinamico/apuntes_t6.html">Tema 6:Configuración y administración de protocolos dinámicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t7_acceso_internet/apuntes_t7.html">Tema 7: Configuración del acceso a Internet desde una LAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../anexos/t1_ejercicios.html">Anexo: Ejercicios propuestos para el tema 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejercicios_switches/ejercicios_dos_switches.html">Anexo: ejercicios con tablas MAC de switches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejercicios_subredes_ipv4/rangos_direcciones.html">Anexo: ejercicios sobre rangos de direcciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejercicios_subredes/ejercicios_calculo_subredes.html">Anexo: cálculo de subredes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejercicios_subredes_ipv4/ejercicios_dos_router.html">Anexo: ejercicios de enrutamiento</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejercicios_subredes_ipv4/ejercicios_3_router_caso_a.html">Anexo: ejercicios de enrutamiento con 3 routers (caso 1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejerciciosipv6/ejercicios_ipv6.html">Anexo: Ejercicios sobre compresión de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejerciciosipv6/ejercicios_ipv6.html#soluciones-a-compresion-de-direcciones-ipv6">Soluciones a compresión de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejercicios_ips/clasificacion_ipv6.html">Anexo: ejercicios sobre clasificación de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejercicios_ips/clasificacion_ipv6.html#soluciones-a-la-clasificaciones-de-direcciones-ipv6">Soluciones a la clasificaciones de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ejercicios/ejercicios_switches.html">Anexo al tema 3: Ejercicios sobre comandos Cisco en switches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simuladorstp/stp1.html">Anexo al tema 3:Ejercicios STP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t5_vlans/ejercicios_vlans/ejercicios_vlans.html">Ejercicios con VLANS y VTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t6_enrutamiento_dinamico/generador_ejercicios_vlsm/EjerciciosVLSM.html">Anexo:Ejercicios VLSM</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../t2_integracion_elementos/apuntes_t2.html" title="capítulo anterior">Tema 2:Integración de elementos en una red</a></li>
+      <li>Next: <a href="../t5_vlans/apuntes_t5.html" title="próximo capítulo">Tema 4: Configuración de redes virtuales VLAN</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Oscar G. G..
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/t3_conmutadores/apuntes_t3.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
