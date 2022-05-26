@@ -17,7 +17,7 @@ class GeneradorEjercicio(object):
         self.generador_ips=GeneradorIPV4Azar(
             num_ejercicio, cantidad_bits_mascara=32-self.total_bits_necesarios_para_ejercicio)
         self.mascara_vieja_en_decimal=self.generador_ips.get_mascara_en_decimal()
-        self.mascara_en_decimal=self.generador_ips.convertir_secuencia_unos_mascara_en_decimal(self.bits_mascara)
+        self.mascara_en_decimal=self.mascara_vieja_en_decimal
         self.num_ejercicio=num_ejercicio
 
     def get_cantidades_hosts_azar(self):
@@ -147,8 +147,9 @@ y la dirección de broadcast. Ignorar las subredes con todos los bits a 0 y las 
         return resultado
 
     def get_desglose_subred(self, id_subred, objeto_subred):
+        prefijo=self.generador_ips.secuencia_binaria[0:self.generador_ips.bits_mascara]
         subred_en_binario=self.convertir_a_binario(id_subred, self.bits_para_las_subredes)
-        filas=self.get_filas(self.generador_ips.prefijo, subred_en_binario, objeto_subred)
+        filas=self.get_filas(prefijo, subred_en_binario, objeto_subred)
         return filas
 
     def get_tabla(self, id_subred, objeto_subred):

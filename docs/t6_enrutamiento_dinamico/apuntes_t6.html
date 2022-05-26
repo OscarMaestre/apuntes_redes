@@ -841,15 +841,24 @@ asignable (239)</p></td>
 </div>
 <div class="section" id="configuracion-y-administracion-de-ripv2">
 <h2>Configuración y administración de RIPv2.<a class="headerlink" href="#configuracion-y-administracion-de-ripv2" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>RIP es un protocolo basado en un algoritmo de «vector-distancia». Básicamente, lo que hace este algoritmo es «contar saltos»: esto significa que si hay varios caminos a una cierta red y un camino conlleva «3 saltos» se dice que dicha ruta es mejor que una que necesite «5 saltos».</p>
 <p>La operativa básica consiste en ejecutar dos cosas en cada uno de los router:</p>
 <ul class="simple">
-<li><p>El comando <code class="docutils literal notranslate"><span class="pre">router</span> <span class="pre">rip</span></code></p></li>
+<li><p>El comando <code class="docutils literal notranslate"><span class="pre">router</span> <span class="pre">rip.</span></code></p></li>
 <li><p>El comando <code class="docutils literal notranslate"><span class="pre">network</span></code> para cada una de las redes que el router va a anunciar a sus vecinos.</p></li>
 </ul>
-<p>Observa la figura siguiente</p>
+<p>Observa la figura siguiente:</p>
 <div class="figure align-default">
-<img alt="../_images/red-cuadrada.png" src="../_images/red-cuadrada.png" />
+<img alt="../_images/rip01.png" src="../_images/rip01.png" />
 </div>
+<p>En dicha red hay una interconexión compleja de routers. Calcular todos los posibles caminos sería demasiado laborioso. Observa como podemos usar los comandos apropiados para que los routers se autoconfiguren.</p>
+<p>Mostrar el uso de estos comandos:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">debug</span> <span class="pre">ip</span> <span class="pre">routing</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">passive-interface</span> <span class="pre">&lt;interfaz&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">redistribute</span> <span class="pre">static</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">router</span> <span class="pre">0.0.0.0</span> <span class="pre">0.0.0.0</span> <span class="pre">&lt;interfaz&gt;</span></code></p></li>
+</ul>
 </div>
 <div class="section" id="diagnostico-de-incidencias-en-rippv2">
 <h2>Diagnóstico de incidencias en RIPpv2.<a class="headerlink" href="#diagnostico-de-incidencias-en-rippv2" title="Enlazar permanentemente con este título">¶</a></h2>
@@ -937,7 +946,6 @@ asignable (239)</p></td>
 <li class="toctree-l1"><a class="reference internal" href="../t3_conmutadores/simuladorstp/stp1.html">Anexo al tema 3:Ejercicios STP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../t5_vlans/ejercicios_vlans/ejercicios_vlans.html">Ejercicios con VLANS y VTP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generador_ejercicios_vlsm/EjerciciosVLSM.html">Anexo:Ejercicios VLSM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generador_ejercicios_vlsm/EjerciciosVLSM.html#soluciones-ejercicios-vlsm">Soluciones ejercicios VLSM</a></li>
 </ul>
 
 <div class="relations">
