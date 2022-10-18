@@ -5,8 +5,8 @@ from utilidades.ip.ipv4 import GeneradorIPV4Azar
 from random import randint
 from pytablewriter import RstSimpleTableWriter
 
-class GeneradorEjercicioMascaras(object):
-    def __init__(self, num_ejercicio, tuplas) -> None:
+class GeneradorEjercicio(object):
+    def __init__(self, num_ejercicio) -> None:
         super().__init__()
         self.bits_para_los_host=randint(3,6)
         self.bits_para_las_subredes=randint(3,6)
@@ -185,7 +185,7 @@ Anexo: cálculo de subredes
 """
     print(encabezamiento)
     for i in range(1, MAX_EJERCICIOS):
-        g=GeneradorEjercicioMascaras(i)
+        g=GeneradorEjercicio(i)
         ejercicios.append(g)
     for i in range(1, MAX_EJERCICIOS):
         g=ejercicios[i-1]

@@ -1,18 +1,35 @@
 #!/usr/bin/python3
 from utilidades.ip.ipv4 import GeneradorIPV4Azar
+import ipaddress
 
 from random import randint
 
 
 class GeneradorEjercicioMascaras(object):
-    def __init__(self, num_ejercicio, tuplas) -> None:
-        pass
-
+    def __init__(self, num_ejercicio) -> None:
+        self.num_ejercicio=num_ejercicio
+        byte1=randint(10,125)
+        byte2=randint(3,254)
+        bits_mascara=randint(16,30)
+        cad_red="{0}.{1}.0.0/{2}".format(byte1, byte2, bits_mascara)
+        red_azar=ipaddress.ip_network(cad_red)
+        todos_hosts=red_azar.hosts()
+        #El tipo de ejercicio 0 es en el que están
+        #en la misma red. El tipo 1 es en distinta red
+        self.tipo_ejercicio=randint(0, 1)
+        self.primera_ip=list(todos_hosts)[0]
+        self.mascara1=red_azar.netmask
+        if self.tipo_ejercicio==0:
+            todos_hosts=red_azar.hosts()
+            self.segunda_ip=list(todos_hosts)[-1]
+        if self.tipo_ejercicio==1:
+            todos_hosts=red_azar.hosts()
+            self.segunda_ip=list(todos_hosts)[-1]+3
     def get_cantidades_hosts_azar(self):
-    
+        pass
     def get_enunciado(self):
         texto="""
-Ejercicio {3}
+Ejercicio {4}
 -------------------
 
 Se dispone de dos máquinas:
@@ -20,39 +37,43 @@ Se dispone de dos máquinas:
 * Una de ellas, que llamaremos máquina A, tiene la IP {0} con la máscara {1}.
 * La otra, que llamaremos máquina B tiene la IP {2} con la máscara {3}.
 
-En la máquina A alguien escribe el comando ``ping {3}``. ¿Funcionará dicho comando o no? 
+En la máquina A alguien escribe el comando ``ping {2}``. ¿Funcionará dicho comando o no? 
 
 """
 
         enunciado=texto.format(
-            self.generador_ips.direccion,
-            self.total_subredes,
-            self.total_hosts,
+            self.primera_ip,self.mascara1, self.segunda_ip,self.mascara1,
             self.num_ejercicio
         )
         return enunciado
 
-    
+    def get_descripcion_maquina(self, direccion, mascara):
+        generador=GeneradorIPV4Azar(self.num_ejercicio)
+        direccion_binario=generador.get_direccion_en_binario(direccion)
+        mascara_binaria=generador.get_direccion_en_binario(mascara)
 
     
     def get_solucion(self):
-        inicio=f'Solución al ejercicio {self.num_ejercicio} de subredes\n----------------------------------------------------------------\n'\
-            f'Nos dan el prefijo {self.generador_ips.direccion} (o poniendo la máscara vieja en decimal {self.mascara_vieja_en_decimal}) '\
-            f'Nos piden {self.total_subredes} subredes con {self.total_hosts} hosts cada una. '
-        #print("Diferencia:"+str(self.bits_para_las_subredes))
-        subredes=self.get_lista_subredes()
-        #print(subredes)
-        encabezamiento=f'Para conseguir esta estructura usaremos {self.bits_para_las_subredes} bits de subred ' \
-        f' y {self.bits_para_los_host} bits de host. La máscara nueva será {self.mascara_en_decimal} (en formato CIDR un prefijo/{self.bits_mascara})'\
-            f' y el desglose de direcciones sería este:\n\n' 
-        primera_subred=subredes[1]
-        segunda_subred=subredes[2]
-        ultima_subred=subredes[-2]
-        txt_primera_subred=self.get_cadena_formato_red(primera_subred, "Primera")
-        txt_segunda_subred=self.get_cadena_formato_red(segunda_subred, "Segunda")
-        txt_ultima_subred=self.get_cadena_formato_red(ultima_subred, "Última")
-        
-        return inicio+encabezamiento + txt_primera_subred + txt_segunda_subred + txt_ultima_subred        
+        plantilla="""
+Solución al ejercicio {0}
+----------------------------------------
+Recordemos:
+
+* La máquina A tiene la IP {1} con la máscara {2}.
+* La máquina B tiene la IP {3} con la máscara {4}.
+
+En la máquina A alguien escribe el comando ``ping {3}`` y nos preguntan si funcionará.
+
+{5}
+
+        """
+        if self.tipo_ejercicio==0:
+            self.solucion="La respuesta es que ``ping {3}`` **sí funciona porque ambos están en la misma red."
+        if self.tipo_ejercicio==1:
+            self.solucion="La respuesta es que ``ping {3}`` **no funciona porque las máquinas están en una red distinta."
+        return plantilla.format(self.num_ejercicio,
+                    self.primera_ip,self.mascara1, self.segunda_ip,self.mascara1,
+                    self.solucion)
 
     def convertir_a_binario(self, numentero, anchura_bits):
         binario=bin(numentero)
@@ -70,7 +91,7 @@ En la máquina A alguien escribe el comando ``ping {3}``. ¿Funcionará dicho co
 if __name__=="__main__":
     ejercicios=[]
     
-    MAX_EJERCICIOS=50
+    MAX_EJERCICIOS=51
 
 
     encabezamiento="""
@@ -79,7 +100,7 @@ Anexo: ejercicios con máscaras
 """
     print(encabezamiento)
     for i in range(1, MAX_EJERCICIOS):
-        g=GeneradorEjercicio(i)
+        g=GeneradorEjercicioMascaras(i)
         ejercicios.append(g)
     for i in range(1, MAX_EJERCICIOS):
         g=ejercicios[i-1]
@@ -88,4 +109,4 @@ Anexo: ejercicios con máscaras
     for i in range(1, MAX_EJERCICIOS):
         g=ejercicios[i-1]
         print (g.get_solucion())
-        print (g.get_tablas())
+        
