@@ -256,11 +256,28 @@ Una vez estemos en un DHCP, como teníamos antes, podemos *excluir direcciones.*
 Activar NAT en un router
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-En los router de gama alta, solo hay que identificar qué tarjeta va conectada a la red interna y qué tarjeta va a la red externa.
+En los router de gama alta, hay que dar varios pasos:
+
+En primer lugar hay que identificar qué tarjeta va conectada a la red interna y qué tarjeta va a la red externa.
 
 * La tarjeta interna debe recibir el comando ``ip nat inside``.
 * La tarjeta externa el comando ``ip nat outside``.
+* Si tenemos subinterfaces, se deben definir los ``ip nat`` en los subinterfaces correspondientes (probablemente en todos)
 
+En segundo lugar hay que crear una lista de control de acceso que permita la entrada de tráfico en el router cuando el tráfico provenga de la red interna. Si suponemos que  nuestra red es algo como ``10.9.0.0/255.255.0.0`` tendremos que lanzar esto::
+
+    access-list 100 permit ip 10.9.0.0 0.0.255.255 any
+
+En tercer lugar hay que indicar al router que haga la sobrecarga de puertos indicándole la interfaz en la que se va a hacer la sobrecarga. Si por ejemplo, la tarjeta de salida de un router es la ``GigabitEthernet 0/1`` pondremos esto::
+
+    ip nat inside source list 100 interface GigabitEthernet0/1 overload 
+
+Una vez dados estos tres pasos, el router comenzará a modificar las IP de origen.
+
+.. NOTE::
+   En realidad, técnicamente lo que se realiza no es NAT sino **PAT** o Port Address Translation. Cisco llama "overload" a este proceso de "traducción de puertos"
+
+   
 Configuración del enrutamiento estático.
 ----------------------------------------------------------------------------
 

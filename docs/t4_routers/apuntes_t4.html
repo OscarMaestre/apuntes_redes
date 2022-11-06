@@ -273,11 +273,26 @@
 </section>
 <section id="activar-nat-en-un-router">
 <h3>Activar NAT en un router<a class="headerlink" href="#activar-nat-en-un-router" title="Enlace permanente a este encabezado"></a></h3>
-<p>En los router de gama alta, solo hay que identificar qué tarjeta va conectada a la red interna y qué tarjeta va a la red externa.</p>
+<p>En los router de gama alta, hay que dar varios pasos:</p>
+<p>En primer lugar hay que identificar qué tarjeta va conectada a la red interna y qué tarjeta va a la red externa.</p>
 <ul class="simple">
 <li><p>La tarjeta interna debe recibir el comando <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">nat</span> <span class="pre">inside</span></code>.</p></li>
 <li><p>La tarjeta externa el comando <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">nat</span> <span class="pre">outside</span></code>.</p></li>
+<li><p>Si tenemos subinterfaces, se deben definir los <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">nat</span></code> en los subinterfaces correspondientes (probablemente en todos)</p></li>
 </ul>
+<p>En segundo lugar hay que crear una lista de control de acceso que permita la entrada de tráfico en el router cuando el tráfico provenga de la red interna. Si suponemos que  nuestra red es algo como <code class="docutils literal notranslate"><span class="pre">10.9.0.0/255.255.0.0</span></code> tendremos que lanzar esto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">access</span><span class="o">-</span><span class="nb">list</span> <span class="mi">100</span> <span class="n">permit</span> <span class="n">ip</span> <span class="mf">10.9.0.0</span> <span class="mf">0.0.255.255</span> <span class="nb">any</span>
+</pre></div>
+</div>
+<p>En tercer lugar hay que indicar al router que haga la sobrecarga de puertos indicándole la interfaz en la que se va a hacer la sobrecarga. Si por ejemplo, la tarjeta de salida de un router es la <code class="docutils literal notranslate"><span class="pre">GigabitEthernet</span> <span class="pre">0/1</span></code> pondremos esto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ip</span> <span class="n">nat</span> <span class="n">inside</span> <span class="n">source</span> <span class="nb">list</span> <span class="mi">100</span> <span class="n">interface</span> <span class="n">GigabitEthernet0</span><span class="o">/</span><span class="mi">1</span> <span class="n">overload</span>
+</pre></div>
+</div>
+<p>Una vez dados estos tres pasos, el router comenzará a modificar las IP de origen.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>En realidad, técnicamente lo que se realiza no es NAT sino <strong>PAT</strong> o Port Address Translation. Cisco llama «overload» a este proceso de «traducción de puertos»</p>
+</div>
 </section>
 </section>
 <section id="configuracion-del-enrutamiento-estatico">
