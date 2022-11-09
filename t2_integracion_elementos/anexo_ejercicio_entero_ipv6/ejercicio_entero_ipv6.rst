@@ -83,6 +83,7 @@ La secuencia completa en PacketTracer sería::
     ipv6 address 2001:aabb::1/64
     no shutdown
     exit
+    ipv6 unicast-routing
     ipv6 route 2001:bbbb::/64 2001:aabb::2
 
 
@@ -101,5 +102,6 @@ La secuencia completa sería::
     ipv6 address 2001:bbbb::1/64
     no shutdown
     exit
-    ipv6 route 2001:aaa::/64 2001:aabb::1
+    ipv6 unicast-routing
+    ipv6 route 2001:aaaa::/64 2001:aabb::1
 
