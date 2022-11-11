@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Anexo: resolución entera de ejercicio IPv6 &#8212; documentación de Apuntes de redes - 1.0</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="Anexo al tema 3: Ejercicios sobre comandos Cisco en switches" href="../../t3_conmutadores/ejercicios/ejercicios_switches.html" />
+    <link rel="prev" title="Anexo: ejercicios sobre clasificación de direcciones IPv6" href="../ejercicios_ips/clasificacion_ipv6.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="anexo-resolucion-entera-de-ejercicio-ipv6">
+<h1>Anexo: resolución entera de ejercicio IPv6<a class="headerlink" href="#anexo-resolucion-entera-de-ejercicio-ipv6" title="Enlace permanente a este encabezado"></a></h1>
+<p>Observa la figura siguiente. En ella se muestra un ejemplo típico de una interconexión entre dos redes que podrían ser incluso de dos empresas distintas.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/ejercicio_entero_ipv6.png"><img alt="../../_images/ejercicio_entero_ipv6.png" src="../../_images/ejercicio_entero_ipv6.png" style="width: 80%;" /></a>
+</figure>
+<p>Se desea tener <strong>conectividad IPv6 entre todos los nodos</strong>. Para ello hay que</p>
+<ol class="arabic simple">
+<li><p>Asignar direcciones IPv6, máscaras y puertas de enlace a todos los nodos que lo necesiten.</p></li>
+<li><p>Configurar correctamente las rutas entre ambas redes.</p></li>
+</ol>
+<section id="boceto-general-de-la-solucion">
+<h2>Boceto general de la solución<a class="headerlink" href="#boceto-general-de-la-solucion" title="Enlace permanente a este encabezado"></a></h2>
+<p>En primer lugar necesitamos que las redes tengan un prefijo asignado. Por comodidad vamos a usar estos bloques:</p>
+<ul class="simple">
+<li><p>La empresa A usará direcciones 2001:aaaa::/64</p></li>
+<li><p>La empresa B usará direcciones 2001:bbbb::/64</p></li>
+<li><p>La interconexión entre routers usará direcciones 2001:aabb::64</p></li>
+</ul>
+</section>
+<section id="direccionamiento-en-la-empresa-a">
+<h2>Direccionamiento en la empresa A<a class="headerlink" href="#direccionamiento-en-la-empresa-a" title="Enlace permanente a este encabezado"></a></h2>
+<p>El router de la empresa A tendrá en su conexión izquierda (tarjeta GigabitEthernet 0/0) la dirección <code class="docutils literal notranslate"><span class="pre">2001:aaaa::1/64</span></code></p>
+<p>El equipo PC0 (arriba a la izquierda) tendrá estos parámetros:</p>
+<ul class="simple">
+<li><p>Dirección IPv6: <code class="docutils literal notranslate"><span class="pre">2001:aaaa::10/64</span></code></p></li>
+<li><p>Gateway IPv6: <code class="docutils literal notranslate"><span class="pre">2001:aaaa::1/64</span></code></p></li>
+</ul>
+<p>El equipo PC1 (abajo a la izquierda) tendrá estos parámetros:</p>
+<ul class="simple">
+<li><p>Dirección IPv6: <code class="docutils literal notranslate"><span class="pre">2001:aaaa::11/64</span></code></p></li>
+<li><p>Gateway IPv6: <code class="docutils literal notranslate"><span class="pre">2001:aaaa::1/64</span></code></p></li>
+</ul>
+</section>
+<section id="direccionamiento-en-la-empresa-b">
+<h2>Direccionamiento en la empresa B<a class="headerlink" href="#direccionamiento-en-la-empresa-b" title="Enlace permanente a este encabezado"></a></h2>
+<p>El router de la empresa B tendrá en su conexión derecha (tarjeta GigabitEthernet 0/1) la dirección <code class="docutils literal notranslate"><span class="pre">2001:bbbb::1/64</span></code></p>
+<p>El equipo PC0 (arriba a la derecha) tendrá estos parámetros:</p>
+<ul class="simple">
+<li><p>Dirección IPv6: <code class="docutils literal notranslate"><span class="pre">2001:bbbb::10/64</span></code></p></li>
+<li><p>Gateway IPv6: <code class="docutils literal notranslate"><span class="pre">2001:bbbb::1/64</span></code></p></li>
+</ul>
+<p>El equipo PC1 (abajo a la derecha) tendrá estos parámetros:</p>
+<ul class="simple">
+<li><p>Dirección IPv6: <code class="docutils literal notranslate"><span class="pre">2001:bbbb::11/64</span></code></p></li>
+<li><p>Gateway IPv6: <code class="docutils literal notranslate"><span class="pre">2001:bbbb::1/64</span></code></p></li>
+</ul>
+</section>
+<section id="direcciones-en-la-interconexion-de-routers">
+<h2>Direcciones en la interconexión de routers<a class="headerlink" href="#direcciones-en-la-interconexion-de-routers" title="Enlace permanente a este encabezado"></a></h2>
+<ul class="simple">
+<li><p>El router de la empresa A tendrá en su tarjeta izquierda (GigabitEthernet0/1) la dirección <code class="docutils literal notranslate"><span class="pre">2001:aabb::1/64</span></code></p></li>
+<li><p>El router de la empresa B tendrá en su tarjeta derecha (GigabitEthernet0/0) la dirección <code class="docutils literal notranslate"><span class="pre">2001:aabb::2/64</span></code></p></li>
+</ul>
+</section>
+<section id="enrutamiento-en-el-router-a">
+<h2>Enrutamiento en el router A<a class="headerlink" href="#enrutamiento-en-el-router-a" title="Enlace permanente a este encabezado"></a></h2>
+<p>En el router A hay que indicar de alguna manera que <em>para llegar a la red 2001:bbbb::/64 el siguiente salto que hay que dar es enviar a 2001:aabb::2</em></p>
+</section>
+<section id="enrutamiento-en-el-router-b">
+<h2>Enrutamiento en el router B<a class="headerlink" href="#enrutamiento-en-el-router-b" title="Enlace permanente a este encabezado"></a></h2>
+<p>En el router B hay que indicar de alguna manera que <em>para llegar a la red 2001:aaaa::/64 el siguiente salto que hay que dar es enviar a 2001:aabb::1</em></p>
+</section>
+<section id="comandos-en-el-router-a">
+<h2>Comandos en el router A<a class="headerlink" href="#comandos-en-el-router-a" title="Enlace permanente a este encabezado"></a></h2>
+<p>La secuencia completa en PacketTracer sería:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
+<span class="n">configure</span> <span class="n">terminal</span>
+<span class="n">interface</span> <span class="n">GigabitEthernet0</span><span class="o">/</span><span class="mi">0</span>
+<span class="n">ipv6</span> <span class="n">address</span> <span class="mi">2001</span><span class="p">:</span><span class="n">aaaa</span><span class="p">::</span><span class="mi">1</span><span class="o">/</span><span class="mi">64</span>
+<span class="n">no</span> <span class="n">shutdown</span>
+<span class="n">exit</span>
+<span class="n">interface</span> <span class="n">GigabitEthernet0</span><span class="o">/</span><span class="mi">1</span>
+<span class="n">ipv6</span> <span class="n">address</span> <span class="mi">2001</span><span class="p">:</span><span class="n">aabb</span><span class="p">::</span><span class="mi">1</span><span class="o">/</span><span class="mi">64</span>
+<span class="n">no</span> <span class="n">shutdown</span>
+<span class="n">exit</span>
+<span class="n">ipv6</span> <span class="n">unicast</span><span class="o">-</span><span class="n">routing</span>
+<span class="n">ipv6</span> <span class="n">route</span> <span class="mi">2001</span><span class="p">:</span><span class="n">bbbb</span><span class="p">::</span><span class="o">/</span><span class="mi">64</span> <span class="mi">2001</span><span class="p">:</span><span class="n">aabb</span><span class="p">::</span><span class="mi">2</span>
+</pre></div>
+</div>
+</section>
+<section id="comandos-en-el-router-b">
+<h2>Comandos en el router B<a class="headerlink" href="#comandos-en-el-router-b" title="Enlace permanente a este encabezado"></a></h2>
+<p>La secuencia completa sería:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
+<span class="n">configure</span> <span class="n">terminal</span>
+<span class="n">interface</span> <span class="n">GigabitEthernet0</span><span class="o">/</span><span class="mi">0</span>
+<span class="n">ipv6</span> <span class="n">address</span> <span class="mi">2001</span><span class="p">:</span><span class="n">aabb</span><span class="p">::</span><span class="mi">2</span><span class="o">/</span><span class="mi">64</span>
+<span class="n">no</span> <span class="n">shutdown</span>
+<span class="n">exit</span>
+<span class="n">interface</span> <span class="n">GigabitEthernet0</span><span class="o">/</span><span class="mi">1</span>
+<span class="n">ipv6</span> <span class="n">address</span> <span class="mi">2001</span><span class="p">:</span><span class="n">bbbb</span><span class="p">::</span><span class="mi">1</span><span class="o">/</span><span class="mi">64</span>
+<span class="n">no</span> <span class="n">shutdown</span>
+<span class="n">exit</span>
+<span class="n">ipv6</span> <span class="n">unicast</span><span class="o">-</span><span class="n">routing</span>
+<span class="n">ipv6</span> <span class="n">route</span> <span class="mi">2001</span><span class="p">:</span><span class="n">aaaa</span><span class="p">::</span><span class="o">/</span><span class="mi">64</span> <span class="mi">2001</span><span class="p">:</span><span class="n">aabb</span><span class="p">::</span><span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Apuntes de redes</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegación</h3>
+<p class="caption" role="heading"><span class="caption-text">Índice:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../t1_caracterizacion_redes/apuntes_t1.html">Tema 1:Caracterización de redes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apuntes_t2.html">Tema 2:Integración de elementos en una red</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t3_conmutadores/apuntes_t3.html">Tema 3:Configuración y administración de conmutadores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t5_vlans/apuntes_t5.html">Tema 4: Configuración de redes virtuales VLAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t4_routers/apuntes_t4.html">Tema 5: Configuración y administración básica de routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t6_enrutamiento_dinamico/apuntes_t6.html">Tema 6:Configuración y administración de protocolos dinámicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t7_acceso_internet/apuntes_t7.html">Tema 7: Configuración del acceso a Internet desde una LAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../anexos/t1_ejercicios.html">Anexo: Ejercicios propuestos para el tema 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ejercicios_switches/ejercicios_dos_switches.html">Anexo: ejercicios con tablas MAC de switches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ejercicios_subredes_ipv4/rangos_direcciones.html">Anexo: ejercicios sobre rangos de direcciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ejercicios_subredes/ejercicios_calculo_subredes.html">Anexo: cálculo de subredes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ejercicios_subredes_ipv4/ejercicios_dos_router.html">Anexo: ejercicios de enrutamiento</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ejercicios_subredes_ipv4/ejercicios_3_router_caso_a.html">Anexo: ejercicios de enrutamiento con 3 routers (caso 1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ejerciciosipv6/ejercicios_ipv6.html">Anexo: Ejercicios sobre compresión de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ejerciciosipv6/ejercicios_ipv6.html#soluciones-a-compresion-de-direcciones-ipv6">Soluciones a compresión de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ejercicios_ips/clasificacion_ipv6.html">Anexo: ejercicios sobre clasificación de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ejercicios_ips/clasificacion_ipv6.html#soluciones-a-la-clasificaciones-de-direcciones-ipv6">Soluciones a la clasificaciones de direcciones IPv6</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Anexo: resolución entera de ejercicio IPv6</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#boceto-general-de-la-solucion">Boceto general de la solución</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#direccionamiento-en-la-empresa-a">Direccionamiento en la empresa A</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#direccionamiento-en-la-empresa-b">Direccionamiento en la empresa B</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#direcciones-en-la-interconexion-de-routers">Direcciones en la interconexión de routers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#enrutamiento-en-el-router-a">Enrutamiento en el router A</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#enrutamiento-en-el-router-b">Enrutamiento en el router B</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#comandos-en-el-router-a">Comandos en el router A</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#comandos-en-el-router-b">Comandos en el router B</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../t3_conmutadores/ejercicios/ejercicios_switches.html">Anexo al tema 3: Ejercicios sobre comandos Cisco en switches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t3_conmutadores/simuladorstp/stp1.html">Anexo al tema 3:Ejercicios STP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t5_vlans/ejercicios_vlans/ejercicios_vlans.html">Ejercicios con VLANS y VTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t6_enrutamiento_dinamico/generador_ejercicios_vlsm/EjerciciosVLSM.html">Anexo:Ejercicios VLSM</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../ejercicios_ips/clasificacion_ipv6.html" title="capítulo anterior">Anexo: ejercicios sobre clasificación de direcciones IPv6</a></li>
+      <li>Next: <a href="../../t3_conmutadores/ejercicios/ejercicios_switches.html" title="próximo capítulo">Anexo al tema 3: Ejercicios sobre comandos Cisco en switches</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Oscar G. G..
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.1.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/t2_integracion_elementos/anexo_ejercicio_entero_ipv6/ejercicio_entero_ipv6.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
