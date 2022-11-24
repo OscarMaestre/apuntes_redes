@@ -1,6 +1,6 @@
 
 NOMBRE_TARJETAS                         = "GigabitEthernet"
-TARJETA_PABELLON_B                      = NOMBRE_TARJETAS+"0/0"
+TARJETA_PABELLON_B                      = NOMBRE_TARJETAS+"0/2"
 TARJETA_ESCUELAS_CONECTADAS             = NOMBRE_TARJETAS+"0/1"
 AULAS                                   = [8,9,10,11,12,13,14,15]
 
@@ -10,6 +10,9 @@ IP_HACIA_ESCUELAS_CONECTADAS            ="172.16.0.254"
 GATEWAY_SALIDA_ESCUELAS_CONECTADAS      ="172.16.0.1"
 IP_DENTRO_PABELLON_B                    ="192.168.1.1"
 MASCARA_TARJETA_EN_PABELLON_B           ="255.255.255.0"
+
+RED_ROUTER_Y_PABELLON_B                 ="192.168.1.0"
+WILDCARD_PABELLON_B                     ="0.0.0.255"
 
 COMANDOS_INICIO="""
 enable
@@ -48,9 +51,9 @@ def generar_comandos_subinterfaces():
     return COMANDOS_SUBINTERFACES
 
 
-def get_acl():
+def get_acl(red, mascara_inversa):
     comandos=[]
-    comandos.append("access-list 100 permit ip 10.0.0.0 0.255.255.255 any")
+    comandos.append("access-list 100 permit ip {0} {1} any".format(red, mascara_inversa))
     comandos.append("ip nat inside source list 100 interface {0} overload".format(
         TARJETA_ESCUELAS_CONECTADAS
     ))
@@ -88,6 +91,7 @@ def poner_ip_en_tarjeta(nombre_tarjeta, ip, mascara, tipo_nat):
                 ip, mascara)
         )
     COMANDOS.append("ip nat {0}".format(tipo_nat))
+    COMANDOS.append("no shutdown")
     COMANDOS.append("exit")
     return COMANDOS
 
@@ -96,13 +100,14 @@ def poner_dhcp_en_tarjeta(nombre_tarjeta, tipo_nat):
     #Entramos en la tarjeta del escuelas conectadas
     COMANDOS.append("interface {0}".format(nombre_tarjeta))
     COMANDOS.append("ip address dhcp")
+    COMANDOS.append("no shutdown")
     COMANDOS.append("ip nat {0}".format(tipo_nat))
     COMANDOS.append("exit")
 
 
 def poner_ruta_por_defecto(gateway):
     COMANDOS=[]
-    COMANDOS.append("ip route 0.0.0.0 0.0.0.0 {0}".format(gateway))
+    COMANDOS.append("ip default-gateway {0}".format(gateway))
     return COMANDOS
 
 def poner_ip_en_tarjeta_de_salida():
@@ -144,17 +149,17 @@ if __name__=="__main__":
     # lista=generar_comandos_subinterfaces()
     # print("\n".join(lista))
     
-    rutas=get_comandos_rutas_aulas()
-    print("\n".join(rutas))
+    # rutas=get_comandos_rutas_aulas()
+    # print("\n".join(rutas))
 
     ruta_por_defecto=poner_ruta_por_defecto(GATEWAY_SALIDA_ESCUELAS_CONECTADAS)
-    
-    config_tarjeta_hacia_pabellon_b=poner_ip_en_tarjeta(TARJETA_PABELLON_B, IP_DENTRO_PABELLON_B, MASCARA_PABELLON_B, "inside")
+    print("\n".join(ruta_por_defecto))
+    config_tarjeta_hacia_pabellon_b=poner_ip_en_tarjeta(TARJETA_PABELLON_B, IP_DENTRO_PABELLON_B, MASCARA_TARJETA_EN_PABELLON_B, "inside")
     print("\n".join(config_tarjeta_hacia_pabellon_b))
     
     config_tarjeta_salida=poner_ip_en_tarjeta(TARJETA_ESCUELAS_CONECTADAS, IP_HACIA_ESCUELAS_CONECTADAS, MASCARA_ESCUELAS_CONECTADAS, "outside")
     print("\n".join(config_tarjeta_salida))
 
-    acls=get_acl()
+    acls=get_acl(RED_ROUTER_Y_PABELLON_B, WILDCARD_PABELLON_B)
     print("\n".join(acls))
     
