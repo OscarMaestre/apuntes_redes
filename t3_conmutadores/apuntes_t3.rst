@@ -446,3 +446,26 @@ El estado final de la red es algo como esto:
 Y si examinamos como ha dejado la topología el algoritmo la configuración de la red es esta:
 
 .. figure:: pasos2/sincables.png
+
+Ejercicio resuelto II (sin detalles)
+-------------------------------------
+
+Observa la topología siguiente y decide como queda despues de ejecutar STP.
+
+.. figure:: ejercicios/stp/Ej01-no-resuelto.png
+
+El resultado final es este:
+
+.. figure:: ejercicios/stp/Ej01-resuelto.png
+
+
+Ejercicio resuelto III (sin detalles)
+----------------------------------------
+
+Observa la topología siguiente y decide como queda despues de ejecutar STP.
+
+.. figure:: ejercicios/stp/Ej02-no-resuelto.png
+
+El resultado final es este:
+
+.. figure:: ejercicios/stp/Ej02-resuelto.png
