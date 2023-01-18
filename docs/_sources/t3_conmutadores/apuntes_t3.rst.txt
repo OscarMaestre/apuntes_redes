@@ -469,3 +469,11 @@ Observa la topología siguiente y decide como queda despues de ejecutar STP.
 El resultado final es este:
 
 .. figure:: ejercicios/stp/Ej02-resuelto.png
+
+
+Ejercicio IV (sin resolver)
+----------------------------------------
+
+Observa la topología siguiente y decide como queda despues de ejecutar STP.
+
+.. figure:: ejercicios/stp/Ej03-no-resuelto.png
