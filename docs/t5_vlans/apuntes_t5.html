@@ -213,7 +213,7 @@
 <li><p>La empresa va a tener estas VLANS con estos nombres: 10 (GESTIONVTP), 100 (USUARIOS), 200 (TECNICOS), 300 (GERENCIA)</p></li>
 <li><p>El switch Acceso2 va a ser gestionado por sus propios técnicos y se desea que IGNORE por completo toda la información sobre VLANS.</p></li>
 <li><p>Dentro de la VLAN USUARIOS están los ordenadores 0 y 2.</p></li>
-<li><p>Dentro de la VLAN TECNICOS están los ordenadores 1 y 5.</p></li>
+<li><p>Dentro de la VLAN TECNICOS están los ordenadores 1, 5 y 9.</p></li>
 <li><p>Dentro de la VLAN GERENCIA están los ordenadores 6 y 8.</p></li>
 <li><p>La empresa dispone de la red 10.0.0.0/8 para configurar direcciones IP y se desea que la VLAN USUARIOS esté en la red 10.1.0.0/16, que la VLAN TECNICOS esté en la 10.2.0.0/16 y que la VLAN GERENCIA esté en la 10.3.0.0/16</p></li>
 </ol>
@@ -454,7 +454,7 @@
 </section>
 <section id="switch-acceso-5">
 <h3>Switch Acceso 5<a class="headerlink" href="#switch-acceso-5" title="Enlace permanente a este encabezado"></a></h3>
-<p>Los comandos serían:</p>
+<p>Los comandos serían (se deja un enlace sin configurar, intentar en casa):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
 <span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">8</span>
@@ -471,7 +471,7 @@
 <span class="n">exit</span>
 <span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">2</span>
 <span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
-<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">20</span>
+<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">200</span>
 <span class="n">exit</span>
 </pre></div>
 </div>
@@ -815,6 +815,7 @@ end
 <li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejerciciosipv6/ejercicios_ipv6.html#soluciones-a-compresion-de-direcciones-ipv6">Soluciones a compresión de direcciones IPv6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejercicios_ips/clasificacion_ipv6.html">Anexo: ejercicios sobre clasificación de direcciones IPv6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejercicios_ips/clasificacion_ipv6.html#soluciones-a-la-clasificaciones-de-direcciones-ipv6">Soluciones a la clasificaciones de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/anexo_ejercicio_entero_ipv6/ejercicio_entero_ipv6.html">Anexo: resolución entera de ejercicio IPv6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../t3_conmutadores/ejercicios/ejercicios_switches.html">Anexo al tema 3: Ejercicios sobre comandos Cisco en switches</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../t3_conmutadores/simuladorstp/stp1.html">Anexo al tema 3:Ejercicios STP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ejercicios_vlans/ejercicios_vlans.html">Ejercicios con VLANS y VTP</a></li>

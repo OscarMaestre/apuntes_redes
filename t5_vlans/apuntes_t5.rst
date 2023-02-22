@@ -198,7 +198,7 @@ En esta red se desea lo siguiente:
 2. La empresa va a tener estas VLANS con estos nombres: 10 (GESTIONVTP), 100 (USUARIOS), 200 (TECNICOS), 300 (GERENCIA)
 3. El switch Acceso2 va a ser gestionado por sus propios técnicos y se desea que IGNORE por completo toda la información sobre VLANS.
 4. Dentro de la VLAN USUARIOS están los ordenadores 0 y 2.
-5. Dentro de la VLAN TECNICOS están los ordenadores 1 y 5.
+5. Dentro de la VLAN TECNICOS están los ordenadores 1, 5 y 9.
 6. Dentro de la VLAN GERENCIA están los ordenadores 6 y 8.
 7. La empresa dispone de la red 10.0.0.0/8 para configurar direcciones IP y se desea que la VLAN USUARIOS esté en la red 10.1.0.0/16, que la VLAN TECNICOS esté en la 10.2.0.0/16 y que la VLAN GERENCIA esté en la 10.3.0.0/16
 
@@ -448,7 +448,7 @@ Los comandos serían::
 Switch Acceso 5
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Los comandos serían::
+Los comandos serían (se deja un enlace sin configurar, intentar en casa)::
 
     enable
     configure terminal
@@ -466,7 +466,7 @@ Los comandos serían::
     exit
     interface fastethernet 0/2
     switchport mode access
-    switchport access vlan 20
+    switchport access vlan 200
     exit
 
 Switch Acceso 6
