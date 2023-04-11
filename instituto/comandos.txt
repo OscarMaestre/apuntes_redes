@@ -1,0 +1,86 @@
+Switch B14
+------------------
+enable
+configure terminal
+vlan 140
+name AULAB14
+exit
+interface fastethernet 0/1
+switchport mode access
+switchport access vlan 140
+no shutdown
+exit
+interface fastethernet 0/1
+switchport mode access
+switchport access vlan 140
+no shutdown
+exit
+interface fastethernet 0/2
+switchport mode access
+switchport access vlan 140
+no shutdown
+exit
+interface fastethernet 0/3
+switchport mode trunk
+switchport trunk allowed vlan 140
+no shutdown
+exit
+
+Switch B15
+-----------------------
+enable
+configure terminal
+vlan 150
+name AULAB15
+exit
+interface fastethernet 0/1
+switchport mode access
+switchport access vlan 150
+no shutdown
+exit
+interface fastethernet 0/1
+switchport mode access
+switchport access vlan 150
+no shutdown
+exit
+interface fastethernet 0/2
+switchport mode access
+switchport access vlan 150
+no shutdown
+exit
+interface fastethernet 0/3
+switchport mode trunk
+switchport trunk allowed vlan 150
+no shutdown
+exit
+
+
+Switch Salida
+----------------
+enable
+configure terminal
+ip routing
+
+vlan 140
+name AULAB14
+exit
+vlan 150
+name AULAB15
+exit
+
+interface fastethernet 0/2
+switchport trunk encapsulation dot1q
+switchport trunk allowed vlan 150
+no shutdown
+exit
+interface fastethernet 0/1
+switchport trunk encapsulation dot1q
+switchport trunk allowed vlan 140
+no shutdown
+exit
+interface fastethernet 0/3
+switchport trunk encapsulation dot1q
+switchport trunk allowed vlan 140,150
+no shutdown
+exit
+
