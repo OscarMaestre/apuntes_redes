@@ -1,0 +1,170 @@
+03 Enrutamiento estático+dinámico
+===================================
+
+¡Cuidado!, este ejercicio tiene trampa, la veremos más abajo.
+
+Aparentemente los comandos son estos:
+
+
+Router 0
+-----------
+Tiene las redes 192.168.1.0. 1.0.0.0 y 2.0.0.0
+
+enable
+configure terminal
+router rip
+version 2
+network 192.168.1.0
+network 1.0.0.0
+network 2.0.0.0
+
+
+Router 1
+---------------
+Tiene las redes 192.168.2.0, 1.0.0.0 y 3.0.0.0
+
+enable
+configure terminal
+router rip
+version 2
+network 192.168.2.0
+network 1.0.0.0
+network 3.0.0.0
+
+
+Router 2
+------------
+Tiene las redes 2.0.0.0, 3.0.0.0 y 4.0.0.0
+
+enable
+configure terminal
+router rip
+version 2
+network 2.0.0.0
+network 4.0.0.0
+network 3.0.0.0
+
+
+Router 3
+--------------
+Tiene las redes 4.0.0.0, 5.0.0.0 y 6.0.0.0
+
+enable
+configure terminal
+router rip
+version 2
+network 4.0.0.0
+network 5.0.0.0
+network 6.0.0.0
+
+
+Router 4
+------------
+Tiene las redes 192.168.3.0, 5.0.0.0 y 7.0.0.0
+
+enable
+configure terminal
+router rip
+version 2
+network 192.168.3.0
+network 5.0.0.0
+network 7.0.0.0
+
+
+
+Router 5
+-------------
+Tiene las redes 192.168.4.0, 6.0.0.0 y 7.0.0.0
+
+enable
+configure terminal
+router rip
+version 2
+network 192.168.4.0
+network 6.0.0.0
+network 7.0.0.0
+
+
+Una vez que hemos hecho todo esto, ocurre que los ping NO TERMINAN DE FUNCIONAR. De hecho, no podemos enviar nada del área izquierda al área derecha.
+
+Nos vamos a los distintos router, y ejecutamos esto:
+
+enable
+show ip route
+
+Para ser concretos, probemos esto en los router 2 y 3. Pongamos las dos ventanas al lado y observemos si ambos router conocen las mismas rutas.
+
+Al poner ambas ventanas una al lado de la otra, observamos que el router 3 SABE MENOS RUTAS.
+
+Nuestro primer impulso es IR AL ROUTER 3, pero en este caso no es ese el problema. Debemos recordar que en el caso de rutas, un problema en un router probablemente implica que el problema VIENE DE UN ROUTER DISTINTO.
+
+Vayamos al router 2 y ejecutemos esto:
+
+enable
+show running-config
+
+Y observemos despacio la configuración RIP. Resulta que alguien ha puesto el comando passive-interface Serial0/1/0. HAY QUE DESACTIVARLO
+
+enable
+configure terminal
+router rip
+version 2
+no passive-interface Serial0/1/0
+
+
+Si dejamos unos minutos para que se actualicen las rutas, todo funcionará correctamente.
+
+
+
+
+¿Qué utilidad tiene el passive-interface?
+------------------------------------------
+
+En este ejemplo, passive-interface sería perfecto para "silenciar" los interfaces de los router que vayan conectados a redes internas. De esa manera, no generamos tráfico innecesario y no se perjudica a las redes internas.
+
+
+Router 0
+-----------
+enable
+configure terminal
+router rip
+version 2
+passive-interface GigabitEthernet 0/0
+exit
+
+Router 1
+------------
+enable
+configure terminal
+router rip
+version 2
+passive-interface GigabitEthernet 0/0
+exit
+
+Router 4
+-----------
+enable
+configure terminal
+router rip
+version 2
+passive-interface GigabitEthernet 0/0
+exit
+
+Router 5
+------------
+enable
+configure terminal
+router rip
+version 2
+passive-interface GigabitEthernet 0/0
+exit
+
+
+
+
+
+
+
+
+
+
