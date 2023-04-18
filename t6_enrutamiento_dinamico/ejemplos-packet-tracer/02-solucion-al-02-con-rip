@@ -1,0 +1,50 @@
+Enrutamiento dinámico con RIPv2
+====================================
+
+
+Router 1(Arriba-izquierda)
+---------------------------
+enable
+configure terminal 
+!Activamos el enrutamiento dinámico (protocolo RIP)
+router rip
+!Activamos la versión 2, que acepta subredes
+version 2
+network 10.0.0.0
+network 1.0.0.0
+network 2.0.0.0
+
+Router 2(Arriba-derecha)
+-------------------------
+enable
+configure terminal
+router rip
+version 2
+network 1.0.0.0
+network 20.0.0.0
+network 4.0.0.0
+
+Router 3(Abajo-izquierda)
+---------------------------
+enable
+configure terminal
+router rip
+version 2
+network 2.0.0.0
+network 3.0.0.0
+network 30.0.0.0
+
+Router 4 (Abajo-derecha)
+--------------------------
+enable
+configure terminal
+router rip
+version 2
+network 3.0.0.0
+network 4.0.0.0
+network 40.0.0.0
+
+
+
+
+
