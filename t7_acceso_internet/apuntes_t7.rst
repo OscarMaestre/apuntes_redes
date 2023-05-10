@@ -11,7 +11,7 @@ Desde el punto de vista del administrador de redes, estos términos se refieren 
 
 La mayor parte de las veces, el direccionamiento interno usa direcciones privadas, que ocupaban este rango:
 
-* 10.0.0.0/8
+* 10.0.0.0/8 (desde 10.0.0.0 hasta 10.255.255.255)
 * 172.16.0.0/12 (es decir desde 172.16.0.0 hasta 172.31.255.255)
 * 192.168.0.0/16 (es decir desde 192.168.0.0 hasta 192.168.255.255)
 
