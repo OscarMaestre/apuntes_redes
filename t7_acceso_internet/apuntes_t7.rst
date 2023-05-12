@@ -11,7 +11,7 @@ Desde el punto de vista del administrador de redes, estos términos se refieren 
 
 La mayor parte de las veces, el direccionamiento interno usa direcciones privadas, que ocupaban este rango:
 
-* 10.0.0.0/8 (desde 10.0.0.0 hasta 10.255.255.255)
+* 10.0.0.0/8
 * 172.16.0.0/12 (es decir desde 172.16.0.0 hasta 172.31.255.255)
 * 192.168.0.0/16 (es decir desde 192.168.0.0 hasta 192.168.255.255)
 
@@ -74,6 +74,35 @@ En router Cisco solo requiere usar el comando "show logging", ya se ha mencionad
 Introducción a las tecnologías WAN: Frame Relay, RDSI, ADSL y 5G
 ----------------------------------------------------------------------------
 En el examen no se preguntará ADSL, ni RDSI ni Frame Relay.
+
+Conceptos básicos sobre telefonía móvil
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+(Incluir imágenes)
+
+5G usa frecuencias cuya longitud de onda sitúa estas señales en el rango de los milímetros. A estas señales se les conoce como mmWave. Como la frecuencia es muy alta, la velocidad también puede serlo, pero hay un problema muy importante: la facilidad de propagación. 5G apenas consigue cruzar muros o puertas, por lo que no se prevee que a corto plazo reemplace las conexiones de cable/fibra que hay en los hogares.
+
+Tres bandas con distintas velocidades:
+
+* 5G Low-Band: velocidades de 30 a 250 Mbits/s
+* 5G Mid-band: 100 a 900 Mbits/s
+* 5G High-band: mínimo 1 Gbits/s y hasta 4 Gbits/s
+
+
+
+
+Aplicaciones 5G
+~~~~~~~~~~~~~~~~~~~~~
+
+5G pretende ofrecer estos tipos de servicio:
+
+* eMBB: Enhanced Mobile BroadBand: "Banda ancha móvil mejorada" o "Internet rápido en el móvil"
+* URLLC: Ultra Reliable Low-Latency Communications: "Comunicaciones ultra-fiables con una baja latencia" Como 5G ofrece tiempos de respuesta muy cortos puede utilizarse para monitorizar máquinas/dispositivos en tiempo real. Aún no está desplegado.
+* mMTC: massive Machine Type Communications "Comunicaciones masivas entre máquinas". 
+
+
+
+
 
 Las tecnologías Wifi y Wimax.
 ----------------------------------------------------------------------------
