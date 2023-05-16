@@ -14,6 +14,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
@@ -39,24 +40,107 @@
 <h1>Tema 7: Configuración del acceso a Internet desde una LAN<a class="headerlink" href="#tema-7-configuracion-del-acceso-a-internet-desde-una-lan" title="Enlace permanente a este encabezado"></a></h1>
 <section id="direccionamiento-interno-y-direccionamiento-externo">
 <h2>Direccionamiento interno y direccionamiento externo.<a class="headerlink" href="#direccionamiento-interno-y-direccionamiento-externo" title="Enlace permanente a este encabezado"></a></h2>
+<p>Desde el punto de vista del administrador de redes, estos términos se refieren a lo siguiente:</p>
+<ul class="simple">
+<li><p>Direccionamiento interno: es el conjunto de direcciones de la red que administramos.</p></li>
+<li><p>Direccionamiento externo: al conjunto del resto de direcciones.</p></li>
+</ul>
+<p>La mayor parte de las veces, el direccionamiento interno usa direcciones privadas, que ocupaban este rango:</p>
+<ul class="simple">
+<li><p>10.0.0.0/8</p></li>
+<li><p>172.16.0.0/12 (es decir desde 172.16.0.0 hasta 172.31.255.255)</p></li>
+<li><p>192.168.0.0/16 (es decir desde 192.168.0.0 hasta 192.168.255.255)</p></li>
+</ul>
 </section>
 <section id="nat-origen-y-nat-destino-nat-estatico-dinamico-de-sobrecarga-pat-e-inverso">
 <h2>NAT origen y NAT destino.NAT estático, dinámico, de sobrecarga (PAT) e inverso.<a class="headerlink" href="#nat-origen-y-nat-destino-nat-estatico-dinamico-de-sobrecarga-pat-e-inverso" title="Enlace permanente a este encabezado"></a></h2>
+<p>Ocurre que como muchas redes usan direcciones privadas, es necesario hacer algo para conseguir que los paquetes vayan correctamente del origen al destino incluso aunque ambos «tengan la misma IP».</p>
+<p>El proceso que consigue esto se denomina NAT, que consiste básicamente en que los router modifican las IP de origen y de destino. Para ello se apoyan en que los propios router tienen una dirección pública, es decir, una que no tiene nadie más.</p>
+<p>NAT viene de Network Address Translation (traducción de direcciones de red). Este proceso se puede hacer de muchas maneras (muchas son obsoletas).</p>
+<section id="nat-origen">
+<h3>NAT origen<a class="headerlink" href="#nat-origen" title="Enlace permanente a este encabezado"></a></h3>
+<p>Esto significa que el router modifica la IP de origen cuando un paquete intenta salir desde una red interna que usa direcciones privadas.</p>
+</section>
+<section id="nat-destino">
+<h3>NAT destino<a class="headerlink" href="#nat-destino" title="Enlace permanente a este encabezado"></a></h3>
+<p>Esto significa que el router al cual llega un paquete modifica la IP de destino.</p>
+</section>
+<section id="nat-estatico">
+<h3>NAT estático<a class="headerlink" href="#nat-estatico" title="Enlace permanente a este encabezado"></a></h3>
+<p>Consiste en que el administrador asigna a cada IP de la red interna una traducción con una IP y un puerto FIJOS. Obsoleto, los router efectúan este proceso de manera automática y desde hace bastante tiempo.</p>
+</section>
+<section id="nat-dinamico">
+<h3>NAT dinámico<a class="headerlink" href="#nat-dinamico" title="Enlace permanente a este encabezado"></a></h3>
+<p>Lo contrario de lo anterior, el administrador define un conjunto de traducciones y el router las hace de manera automática o incluso el administrador no necesita definir nada y todas las «traducciones» las hace el router de manera automática.</p>
+</section>
+<section id="nat-de-sobrecarga-pat">
+<h3>NAT de sobrecarga (PAT)<a class="headerlink" href="#nat-de-sobrecarga-pat" title="Enlace permanente a este encabezado"></a></h3>
+<p>En realidad PAT es lo que hacen los router desde hace mucho tiempo, no NAT. PAT viene de Port Address Translation y lo que implica es que los router modifican los paquetes de salida «apuntando» el puerto por el que salen y asignando una IP de origen fija que es la pública del router.</p>
+<p>Por costumbre, seguimos llamando NAT al proceso que se hace en nuestras casas. Algunas personas llaman también a este proceso «NPAT» (Network Port &amp; Address Translation) o incluso «NAT de sobrecarga» (en realidad solo Cisco llama «de sobrecarga» a este proceso)</p>
+</section>
+<section id="nat-inverso">
+<h3>NAT inverso<a class="headerlink" href="#nat-inverso" title="Enlace permanente a este encabezado"></a></h3>
+<p>Se denomina así al proceso por el cual un router recibe un paquete entrante y modifica la IP de destino para redirigirlo a otra IP del interior de la red.</p>
+</section>
 </section>
 <section id="configuracion-de-nat">
 <h2>Configuración de NAT.<a class="headerlink" href="#configuracion-de-nat" title="Enlace permanente a este encabezado"></a></h2>
+<p>Se mencionó en el tema 5, «Administración de routers»</p>
 </section>
 <section id="diagnostico-de-incidencias-de-nat">
 <h2>Diagnostico de incidencias de NAT.<a class="headerlink" href="#diagnostico-de-incidencias-de-nat" title="Enlace permanente a este encabezado"></a></h2>
+<p>En router Cisco solo requiere usar el comando «show logging», ya se ha mencionado.</p>
 </section>
 <section id="configuracion-de-pat">
 <h2>Configuración de PAT.<a class="headerlink" href="#configuracion-de-pat" title="Enlace permanente a este encabezado"></a></h2>
+<p>Se vió como hacer el NAT en el tema 5.</p>
 </section>
 <section id="diagnostico-de-fallos-de-pat">
 <h2>Diagnóstico de fallos de PAT.<a class="headerlink" href="#diagnostico-de-fallos-de-pat" title="Enlace permanente a este encabezado"></a></h2>
+<p>En router Cisco solo requiere usar el comando «show logging», ya se ha mencionado.</p>
 </section>
-<section id="introduccion-a-las-tecnologias-wan-frame-relay-rdsi-adsl">
-<h2>Introducción a las tecnologías WAN: Frame Relay, RDSI, ADSL.<a class="headerlink" href="#introduccion-a-las-tecnologias-wan-frame-relay-rdsi-adsl" title="Enlace permanente a este encabezado"></a></h2>
+<section id="introduccion-a-las-tecnologias-wan-frame-relay-rdsi-adsl-y-5g">
+<h2>Introducción a las tecnologías WAN: Frame Relay, RDSI, ADSL y 5G<a class="headerlink" href="#introduccion-a-las-tecnologias-wan-frame-relay-rdsi-adsl-y-5g" title="Enlace permanente a este encabezado"></a></h2>
+<p>En el examen no se preguntará ADSL, ni RDSI ni Frame Relay.</p>
+<section id="conceptos-basicos-sobre-telefonia-movil">
+<h3>Conceptos básicos sobre telefonía móvil<a class="headerlink" href="#conceptos-basicos-sobre-telefonia-movil" title="Enlace permanente a este encabezado"></a></h3>
+<p>Los teléfonos móviles basan la conectividad en «células» de conectividad. Las compañías distribuyen antenas que ofrecen «cobertura» en distintas áreas de manera que el territorios esté lo más «cubierto» posible usando el mínimo número de antenas.</p>
+<figure class="align-default">
+<img alt="../_images/Red-alta-densidad.png" src="../_images/Red-alta-densidad.png" />
+</figure>
+<p>Para establecer una llamada, los teléfonos difunden señales de establecimiento de llamada que obligan a las antenas a coordinarse de manera que se establezca un circuito entre el origen y el destino.</p>
+<figure class="align-default">
+<img alt="../_images/red_movil.png" src="../_images/red_movil.png" />
+</figure>
+<p>5G usa frecuencias cuya longitud de onda sitúa estas señales en el rango de los milímetros. A estas señales se les conoce como mmWave. Como la frecuencia es muy alta, la velocidad también puede serlo, pero hay un problema muy importante: la facilidad de propagación. 5G apenas consigue cruzar muros o puertas, por lo que no se prevee que a corto plazo reemplace las conexiones de cable/fibra que hay en los hogares.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/5g-puerta-abierta.png"><img alt="Propagación de mmWave sin obstáculos" src="../_images/5g-puerta-abierta.png" style="width: 427.0px; height: 238.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Propagación de mmWave sin obstáculos</span><a class="headerlink" href="#id1" title="Enlace permanente a esta imagen"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/5g-puerta-cerrada.png"><img alt="Propagación de mmWave con obstáculos, incluso de baja densidad." src="../_images/5g-puerta-cerrada.png" style="width: 420.0px; height: 240.5px;" /></a>
+<figcaption>
+<p><span class="caption-text">Propagación de mmWave con obstáculos, incluso de baja densidad.</span><a class="headerlink" href="#id2" title="Enlace permanente a esta imagen"></a></p>
+</figcaption>
+</figure>
+<p>Tres bandas con distintas velocidades:</p>
+<ul class="simple">
+<li><p>5G Low-Band: velocidades de 30 a 250 Mbits/s</p></li>
+<li><p>5G Mid-band: 100 a 900 Mbits/s</p></li>
+<li><p>5G High-band: mínimo 1 Gbits/s y hasta 4 Gbits/s</p></li>
+</ul>
+</section>
+<section id="aplicaciones-5g">
+<h3>Aplicaciones 5G<a class="headerlink" href="#aplicaciones-5g" title="Enlace permanente a este encabezado"></a></h3>
+<p>5G pretende ofrecer estos tipos de servicio:</p>
+<ul class="simple">
+<li><p>eMBB: Enhanced Mobile BroadBand: «Banda ancha móvil mejorada» o «Internet rápido en el móvil»</p></li>
+<li><p>URLLC: Ultra Reliable Low-Latency Communications: «Comunicaciones ultra-fiables con una baja latencia» Como 5G ofrece tiempos de respuesta muy cortos puede utilizarse para monitorizar máquinas/dispositivos en tiempo real. Aún no está desplegado.</p></li>
+<li><p>mMTC: massive Machine Type Communications «Comunicaciones masivas entre máquinas».</p></li>
+</ul>
+</section>
 </section>
 <section id="las-tecnologias-wifi-y-wimax">
 <h2>Las tecnologías Wifi y Wimax.<a class="headerlink" href="#las-tecnologias-wifi-y-wimax" title="Enlace permanente a este encabezado"></a></h2>
@@ -96,12 +180,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../t6_enrutamiento_dinamico/apuntes_t6.html">Tema 6:Configuración y administración de protocolos dinámicos</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tema 7: Configuración del acceso a Internet desde una LAN</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#direccionamiento-interno-y-direccionamiento-externo">Direccionamiento interno y direccionamiento externo.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#nat-origen-y-nat-destino-nat-estatico-dinamico-de-sobrecarga-pat-e-inverso">NAT origen y NAT destino.NAT estático, dinámico, de sobrecarga (PAT) e inverso.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nat-origen-y-nat-destino-nat-estatico-dinamico-de-sobrecarga-pat-e-inverso">NAT origen y NAT destino.NAT estático, dinámico, de sobrecarga (PAT) e inverso.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nat-origen">NAT origen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nat-destino">NAT destino</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nat-estatico">NAT estático</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nat-dinamico">NAT dinámico</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nat-de-sobrecarga-pat">NAT de sobrecarga (PAT)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nat-inverso">NAT inverso</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#configuracion-de-nat">Configuración de NAT.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#diagnostico-de-incidencias-de-nat">Diagnostico de incidencias de NAT.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configuracion-de-pat">Configuración de PAT.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#diagnostico-de-fallos-de-pat">Diagnóstico de fallos de PAT.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#introduccion-a-las-tecnologias-wan-frame-relay-rdsi-adsl">Introducción a las tecnologías WAN: Frame Relay, RDSI, ADSL.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#introduccion-a-las-tecnologias-wan-frame-relay-rdsi-adsl-y-5g">Introducción a las tecnologías WAN: Frame Relay, RDSI, ADSL y 5G</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#conceptos-basicos-sobre-telefonia-movil">Conceptos básicos sobre telefonía móvil</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#aplicaciones-5g">Aplicaciones 5G</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#las-tecnologias-wifi-y-wimax">Las tecnologías Wifi y Wimax.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#las-tecnologias-umts-y-hsdpa">Las tecnologías UMTS y HSDPA.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tecnologias-emergentes-basadas-en-cable-e-inalambricas">Tecnologías emergentes basadas en cable e inalámbricas.</a></li>
@@ -117,6 +213,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejerciciosipv6/ejercicios_ipv6.html#soluciones-a-compresion-de-direcciones-ipv6">Soluciones a compresión de direcciones IPv6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejercicios_ips/clasificacion_ipv6.html">Anexo: ejercicios sobre clasificación de direcciones IPv6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/ejercicios_ips/clasificacion_ipv6.html#soluciones-a-la-clasificaciones-de-direcciones-ipv6">Soluciones a la clasificaciones de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../t2_integracion_elementos/anexo_ejercicio_entero_ipv6/ejercicio_entero_ipv6.html">Anexo: resolución entera de ejercicio IPv6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../t3_conmutadores/ejercicios/ejercicios_switches.html">Anexo al tema 3: Ejercicios sobre comandos Cisco en switches</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../t3_conmutadores/simuladorstp/stp1.html">Anexo al tema 3:Ejercicios STP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../t5_vlans/ejercicios_vlans/ejercicios_vlans.html">Ejercicios con VLANS y VTP</a></li>
@@ -158,7 +255,7 @@
       &copy;2021, Oscar G. G..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.1.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

@@ -14,6 +14,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/translations.js"></script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -322,12 +323,24 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="t7_acceso_internet/apuntes_t7.html">Tema 7: Configuración del acceso a Internet desde una LAN</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="t7_acceso_internet/apuntes_t7.html#direccionamiento-interno-y-direccionamiento-externo">Direccionamiento interno y direccionamiento externo.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="t7_acceso_internet/apuntes_t7.html#nat-origen-y-nat-destino-nat-estatico-dinamico-de-sobrecarga-pat-e-inverso">NAT origen y NAT destino.NAT estático, dinámico, de sobrecarga (PAT) e inverso.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="t7_acceso_internet/apuntes_t7.html#nat-origen-y-nat-destino-nat-estatico-dinamico-de-sobrecarga-pat-e-inverso">NAT origen y NAT destino.NAT estático, dinámico, de sobrecarga (PAT) e inverso.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="t7_acceso_internet/apuntes_t7.html#nat-origen">NAT origen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="t7_acceso_internet/apuntes_t7.html#nat-destino">NAT destino</a></li>
+<li class="toctree-l3"><a class="reference internal" href="t7_acceso_internet/apuntes_t7.html#nat-estatico">NAT estático</a></li>
+<li class="toctree-l3"><a class="reference internal" href="t7_acceso_internet/apuntes_t7.html#nat-dinamico">NAT dinámico</a></li>
+<li class="toctree-l3"><a class="reference internal" href="t7_acceso_internet/apuntes_t7.html#nat-de-sobrecarga-pat">NAT de sobrecarga (PAT)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="t7_acceso_internet/apuntes_t7.html#nat-inverso">NAT inverso</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="t7_acceso_internet/apuntes_t7.html#configuracion-de-nat">Configuración de NAT.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="t7_acceso_internet/apuntes_t7.html#diagnostico-de-incidencias-de-nat">Diagnostico de incidencias de NAT.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="t7_acceso_internet/apuntes_t7.html#configuracion-de-pat">Configuración de PAT.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="t7_acceso_internet/apuntes_t7.html#diagnostico-de-fallos-de-pat">Diagnóstico de fallos de PAT.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="t7_acceso_internet/apuntes_t7.html#introduccion-a-las-tecnologias-wan-frame-relay-rdsi-adsl">Introducción a las tecnologías WAN: Frame Relay, RDSI, ADSL.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="t7_acceso_internet/apuntes_t7.html#introduccion-a-las-tecnologias-wan-frame-relay-rdsi-adsl-y-5g">Introducción a las tecnologías WAN: Frame Relay, RDSI, ADSL y 5G</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="t7_acceso_internet/apuntes_t7.html#conceptos-basicos-sobre-telefonia-movil">Conceptos básicos sobre telefonía móvil</a></li>
+<li class="toctree-l3"><a class="reference internal" href="t7_acceso_internet/apuntes_t7.html#aplicaciones-5g">Aplicaciones 5G</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="t7_acceso_internet/apuntes_t7.html#las-tecnologias-wifi-y-wimax">Las tecnologías Wifi y Wimax.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="t7_acceso_internet/apuntes_t7.html#las-tecnologias-umts-y-hsdpa">Las tecnologías UMTS y HSDPA.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="t7_acceso_internet/apuntes_t7.html#tecnologias-emergentes-basadas-en-cable-e-inalambricas">Tecnologías emergentes basadas en cable e inalámbricas.</a></li>
@@ -1354,7 +1367,7 @@
       &copy;2021, Oscar G. G..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.1.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

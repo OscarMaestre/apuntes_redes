@@ -1,0 +1,83 @@
+Configurar red con OSPF
+==============================
+
+En esta red se ha planteado la necesidad de que dos administradores distintos se ocupen de distintas zonas (pero todos seguimos perteneciendo a la misma empresa o Sistema Autónomo)
+
+Por ejemplo, la zona izquierda (Routers 0, 1 y 2) van a estar bajo el control de una persona. A esta zona, OSPF lo llama "ÁREA". Y por ejemplo, vamos a poner el número de área 1.
+
+La zona derecha (Router 3, 4 5 y 6) van a estar bajo el control administrativo de otra persona. Lo llamaremos "ÁREA 2".
+
+El proceso de configuración es bastante parecido.
+* Examinaremos las redes que tiene cada router
+* Activaremos OSPF en cada router
+* Pediremos a OSPF que anuncie las redes correspondientes.
+
+
+Router 0
+-----------
+
+* Tiene enganchadas las redes 192.168.1.0/24, 1.0.0.0/8 y la 2.0.0.0/8
+* Su interfaz GigabitEthernet0/0 va conectado a una red sin routers, podemos marcarla como "pasiva".
+
+enable
+configure terminal
+!El número puede ser el que queramos
+router ospf 12
+network 192.168.1.0 0.0.0.255      area 1
+network 1.0.0.0     0.255.255.255  area 1
+network 2.0.0.0     0.255.255.255  area 1
+passive-interface   GigabitEthernet0/0
+
+
+
+
+
+
+
+
+
+Router 1
+------------
+* Tiene enganchadas las redes 192.168.2.0, 1.0.0.0 y 3.0.0.0
+* Su interfaz GigabitEthernet0/0 va conectada a una red sin routers, la marcaremos como pasiva.
+
+enable
+configure terminal
+router ospf 18
+network 192.168.2.0 0.0.0.255     area 1
+network 1.0.0.0     0.255.255.255 area 1
+network 3.0.0.0     0.255.255.255 area 1
+passive-interface GigabitEthernet0/0
+
+
+
+Router 2
+------------
+* No tiene interfaces pasivas.
+* Tiene enganchadas las redes 2.0.0.0, 3.0.0.0 y 4.0.0.0
+* Para llegar a ciertas redes, su única posibilidad es enviarlo a su siguiente vecino, Router 2, que tiene la IP 4.1.1.2
+
+enable
+configure terminal
+ip route 0.0.0.0 0.0.0.0 4.1.1.2
+router ospf 8
+network 2.0.0.0 0.255.255.255 area 1
+network 3.0.0.0 0.255.255.255 area 1
+network 4.0.0.0 0.255.255.255 area 1
+
+
+Una vez hecho, OSPF funciona y los paquetes van por el mejor camino. ¿Qué ocurre si la línea del "mejor camino" fuera más lenta?
+
+Por ejemplo, vayamos al router 0 y hagamos esto:
+
+enable
+configure terminal
+interface Serial 0/3/1
+bandwidth 1000
+
+Nos vamos al Router 1 y ejecutamos
+
+enable
+configure terminal
+interface Serial 0/0/1
+bandwidth 1000

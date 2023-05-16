@@ -78,9 +78,39 @@ En el examen no se preguntará ADSL, ni RDSI ni Frame Relay.
 Conceptos básicos sobre telefonía móvil
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-(Incluir imágenes)
+Los teléfonos móviles basan la conectividad en "células" de conectividad. Las compañías distribuyen antenas que ofrecen "cobertura" en distintas áreas de manera que el territorios esté lo más "cubierto" posible usando el mínimo número de antenas.
+
+.. figure:: img/Red-alta-densidad.png
+
+
+Para establecer una llamada, los teléfonos difunden señales de establecimiento de llamada que obligan a las antenas a coordinarse de manera que se establezca un circuito entre el origen y el destino.
+
+.. figure:: img/red_movil.png
 
 5G usa frecuencias cuya longitud de onda sitúa estas señales en el rango de los milímetros. A estas señales se les conoce como mmWave. Como la frecuencia es muy alta, la velocidad también puede serlo, pero hay un problema muy importante: la facilidad de propagación. 5G apenas consigue cruzar muros o puertas, por lo que no se prevee que a corto plazo reemplace las conexiones de cable/fibra que hay en los hogares.
+
+
+
+
+.. figure:: img/5g-puerta-abierta.png
+   :scale: 50%
+   :align: center
+   :alt: Propagación de mmWave sin obstáculos
+
+   Propagación de mmWave sin obstáculos
+
+
+
+
+
+.. figure:: img/5g-puerta-cerrada.png
+   :scale: 50%
+   :align: center
+   :alt: Propagación de mmWave con obstáculos, incluso de baja densidad.
+
+   Propagación de mmWave con obstáculos, incluso de baja densidad.
+
+
 
 Tres bandas con distintas velocidades:
 
