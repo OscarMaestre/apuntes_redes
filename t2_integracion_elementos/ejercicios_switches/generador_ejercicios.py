@@ -175,17 +175,21 @@ class GeneradorEjercicios(object):
         txt_respuesta1="El {0} apunta en su tabla de MACS  la MAC de origen ``{1}``."
         txt_respuesta2="El {0} no modifica su tabla de MACS, no aprende nada nuevo."
         if switch.conoce_a_mac(mac_origen):
-            tupla1=(txt_respuesta1.format(nombre_switch1, mac_origen), False,
-            ", ya tenía esa MAC")
-            tupla2=(txt_respuesta2.format(nombre_switch1), False,
-            ", sí la modifica, no tenía la MAC de origen ``{0}``.".format(mac_origen))
+            ES_FALSA_EL_SWITCH_NO_APRENDE_NADA_EN_ESTE_CASO=False
+            VERDADERA_NO_HAY_QUE_APUNTAR_NADA=True
+            tupla1=(txt_respuesta1.format(nombre_switch1, mac_origen), ES_FALSA_EL_SWITCH_NO_APRENDE_NADA_EN_ESTE_CASO,
+            ", ya tenía esa MAC de origen ``{0}``".format(mac_origen))
+            tupla2=(txt_respuesta2.format(nombre_switch1), VERDADERA_NO_HAY_QUE_APUNTAR_NADA,
+            ", ya tenía la MAC de origen ``{0}``.".format(mac_origen))
             vector_tuplas_respuestas.append(tupla1)
             vector_tuplas_respuestas.append(tupla2)
         else:
+            ES_VERDADERA_EL_SWITCH_ANOTA_LA_MAC=True
+            ES_FALSA_EL_SWITCH_NO_ANOTA_LA_MAC=False
             otro_puerto=switch.get_num_puerto_libre_azar()
-            tupla1=(txt_respuesta1.format(nombre_switch1, mac_origen, otro_puerto), True,
+            tupla1=(txt_respuesta1.format(nombre_switch1, mac_origen, otro_puerto), ES_VERDADERA_EL_SWITCH_ANOTA_LA_MAC,
             ", antes no lo conocía, así que sí anota la MAC de origen ``{0}``.".format(mac_origen))
-            tupla2=(txt_respuesta2.format(nombre_switch1), False,
+            tupla2=(txt_respuesta2.format(nombre_switch1), ES_FALSA_EL_SWITCH_NO_ANOTA_LA_MAC,
             ", no conocía la MAC de origen ``{0}``, así que la anota.".format(mac_origen))
             vector_tuplas_respuestas.append(tupla1)
             vector_tuplas_respuestas.append(tupla2)
@@ -233,12 +237,14 @@ class GeneradorEjercicios(object):
 
     def generar_ejercicio_dos_switches(self, solucion=False):
         
+        NOMBRE_IZQ="Switch izquierdo"
+        NOMBRE_DER="Switch derecho"
         generador=GeneradorMACS()
         switch1=Switch()
         switch2=Switch()
         
-        switch1.set_nombre("Switch 1")
-        switch2.set_nombre("Switch 2")
+        switch1.set_nombre(NOMBRE_IZQ)
+        switch2.set_nombre(NOMBRE_DER)
         #Generamos un grupo de equipos
         num_equipos1=randint(2, 3)
         macs=[]
@@ -246,9 +252,9 @@ class GeneradorEjercicios(object):
         
         puerto_switch1=switch1.get_num_puerto_libre_azar()
         puerto_switch2=switch2.get_num_puerto_libre_azar()
-        switch1.anadir_entrada_a_puerto_libre("Switch 2", puerto_switch1)
-        switch2.anadir_entrada_a_puerto_libre("Switch 1", puerto_switch2)
-        mensaje_union="Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto {0} que va al puerto {1} del switch 2".format(puerto_switch1, puerto_switch2)
+        switch1.anadir_entrada_a_puerto_libre(NOMBRE_DER, puerto_switch1)
+        switch2.anadir_entrada_a_puerto_libre(NOMBRE_IZQ, puerto_switch2)
+        mensaje_union="Dada la red de la figura, en la que el switch izquierdo (I) tiene un cable en el puerto {0} que va al puerto {1} del switch derecho (D)".format(puerto_switch1, puerto_switch2)
         
         
         #Esta es la red izquierda
@@ -380,12 +386,15 @@ class GeneradorEjerciciosV2(GeneradorEjercicios):
 
     def generar_ejercicio_dos_switches(self, solucion=False):
         
+        NOMBRE_IZQ="Switch izquierdo"
+        NOMBRE_DER="Switch derecho"
+
         generador=GeneradorMACS()
         switch1=Switch()
         switch2=Switch()
         
-        switch1.set_nombre("Switch 1")
-        switch2.set_nombre("Switch 2")
+        switch1.set_nombre(NOMBRE_IZQ)
+        switch2.set_nombre(NOMBRE_DER)
         #Generamos un grupo de equipos
         
         pcs1=self.generar_lista_pcs_azar()
@@ -395,7 +404,7 @@ class GeneradorEjerciciosV2(GeneradorEjercicios):
         puerto_switch2=switch2.get_num_puerto_libre_azar()
         #switch1.anadir_entrada_a_puerto_libre("Switch 2", puerto_switch1)
         #switch2.anadir_entrada_a_puerto_libre("Switch 1", puerto_switch2)
-        mensaje_union="Dada la red de la figura, en la que el switch 1 tiene un cable en el puerto {0} que va al puerto {1} del switch 2".format(puerto_switch1, puerto_switch2)
+        mensaje_union="Dada la red de la figura, en la que el switch izquierdo (I) tiene un cable en el puerto {0} que va al puerto {1} del switch derecho (D)".format(puerto_switch1, puerto_switch2)
         
         self.asignar_pcs_remotos_en_puerto_switch_al_azar(
             switch1, pcs2, puerto_switch1
