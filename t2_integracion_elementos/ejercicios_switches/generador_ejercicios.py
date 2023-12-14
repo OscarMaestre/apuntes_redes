@@ -145,10 +145,7 @@ class GeneradorEjercicios(object):
 
     def get_tuplas_respuestas_switch(self, switch, mac_origen, mac_destino):
         vector_tuplas_respuestas=[]
-        nombre_switch1=switch.nombre
-        
-        
-
+        nombre_switch1=switch.nombre      
         #Caso 1 ¿El switch 1 conoce al destinatario?
         puerto_asociado_en_switch1=switch.get_puerto_asociado(mac_destino)
         txt_respuesta1="El {0} envía el mensaje por el puerto {1}."
@@ -482,7 +479,7 @@ def ejecutar_script():
     pos=1
     for ej in vector_ejercicios:
         print()
-        print("Solucion al ejercicio {0} de switches".format(pos))
+        print("Solución al ejercicio {0} de switches".format(pos))
         print("-----------------------------------------")
         print("Las respuestas son:")
         print()
