@@ -1,5 +1,6 @@
 import unittest
 from random import shuffle, randint
+import heapq
 
 class Arista(object):
     def __init__(self, nodo1, nodo2, mac1, mac2) -> None:
@@ -17,6 +18,10 @@ class Nodo(object):
         self.nombre=nombre
         self.prioridad_stp=self.calcular_prioridad_stp()
         self.estado_macs=["B" for mac in self.lista_macs]
+        self.costo_a_la_raiz=None
+
+    def set_costo_a_la_raiz(self, costo):
+        self.costo_a_la_raiz=costo
     
     def calcular_prioridad_stp(self):
         copia_lista=self.lista_macs.copy()
@@ -42,15 +47,23 @@ class Grafo:
         self.nodo_raiz=Nodo
 
     def agregar_arista(self, arista):
+        nodo_origen=arista.nodo1
+        nodo_destino=arista.nodo2
         if arista not in self.aristas:
             self.aristas.append(arista)
-            self.agregar_nodo(arista.nodo1)
-            self.agregar_nodo(arista.nodo2)
+            if (nodo_origen, []) in self.nodos or (nodo_destino, []) in self.nodos:
+                for nodo, adyacentes in self.nodos:
+                    #print(nodo, adyacentes)
+                    if nodo == nodo_origen:
+                        adyacentes.append(nodo_destino)
+                    elif nodo == nodo_destino:
+                        adyacentes.append(nodo_origen)
+            
 
     def agregar_nodo(self, nodo):
         # print(nodo)
         if nodo not in self.nodos:
-            self.nodos.append (nodo)
+            self.nodos.append ( (nodo, []) )
             if nodo.prioridad_stp<=self.mejor_prioridad:
                 self.nodo_raiz=nodo
                 self.mejor_prioridad=nodo.prioridad_stp
@@ -64,9 +77,37 @@ class Grafo:
     def __str__(self) -> str:
         cad=""
         for nodo in self.nodos:
-            cad+=str(nodo)+"\n"
+            cad+=str(nodo[0])+"\n"
         return cad
     
+    def calcular_costo_minimo(self, nodo_origen, nodo_destino):
+        print(self.nodos)
+        if (nodo_origen, []) not in self.nodos or (nodo_destino, []) not in self.nodos:
+            print("Fallo")
+            return None
+
+        distancia = {nodo: float('inf') for nodo, _ in self.nodos}
+        distancia[nodo_origen] = 0
+
+        cola_prioridad = [(0, nodo_origen)]  # (costo, nodo)
+
+        while cola_prioridad:
+            costo_actual, nodo_actual = heapq.heappop(cola_prioridad)
+
+            if nodo_actual == nodo_destino:
+                return costo_actual  # Hemos alcanzado el nodo de destino, devolvemos el costo mínimo
+
+            for nodo, adyacentes in self.nodos:
+                if nodo == nodo_actual:
+                    for vecino in adyacentes:
+                        costo_vecino = costo_actual + 1
+
+                        if costo_vecino < distancia[vecino]:
+                            distancia[vecino] = costo_vecino
+                            heapq.heappush(cola_prioridad, (costo_vecino, vecino))
+        print(distancia)
+        return None
+
     @staticmethod
     def get_macs(num_macs=20):
         macs=[str(hex(num)[2:]).zfill(2) for num in range(0,255)]
@@ -89,6 +130,10 @@ class Grafo:
                         macs[4:6], "Switch 2")
         nodo_oeste=Nodo(randint(PRIORIDAD_MINIMA,PRIORIDAD_MAXIMA), 
                         macs[6:8], "Switch 3")
+        grafo.agregar_nodo(nodo_norte)
+        grafo.agregar_nodo(nodo_sur)
+        grafo.agregar_nodo(nodo_este)
+        grafo.agregar_nodo(nodo_oeste)
         
         arista_no=Arista(nodo_norte, nodo_oeste, 
                          nodo_norte.lista_macs[0],
@@ -106,6 +151,7 @@ class Grafo:
         grafo.agregar_arista(arista_ne)
         grafo.agregar_arista(arista_os)
         grafo.agregar_arista(arista_se)
+        print(grafo.nodos)
         return grafo
         
         
@@ -121,9 +167,12 @@ class TestNodo(unittest.TestCase):
     def test_grafo(self):
         g=Grafo.get_grafo_cuadrado()
         print("grafo")
-        print(str(g))
-        print(g.get_nodo_mejor_prioridad())
-
+        #print(str(g))
+        #print(g.get_nodo_mejor_prioridad())
+        coste_minimo=g.calcular_costo_minimo(g.nodos[0], g.nodos[2])
+        print("Coste minimo")
+        print("--------------")
+        print(coste_minimo)
 
 if __name__=="__main__":
     unittest.main()
