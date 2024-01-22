@@ -239,13 +239,13 @@ La solución detallada sería esta::
 
 	Switch1>enable
 	Switch1#configure terminal
-	Switch1(config)#spanning tree vlan 1 priority 28672
+	Switch1(config)#spanning-tree vlan 1 priority 28672
 
 Los comandos listos para copiar y pegar serían estos::
 
 	enable
 	configure terminal
-	spanning tree vlan 1 priority 28672
+	spanning-tree vlan 1 priority 28672
 
 Solución al ejercicio 3 de switches
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -302,7 +302,7 @@ La solución detallada sería esta::
 
 	Switch1>enable
 	Switch1#configure terminal
-	Switch1(config)#spanning tree vlan 1 priority 20480
+	Switch1(config)#spanning-tree vlan 1 priority 20480
 	Switch1(config)#line console 0
 	Switch1(config-line)#password consola33
 	Switch1(config-line)#login
@@ -311,7 +311,7 @@ Los comandos listos para copiar y pegar serían estos::
 
 	enable
 	configure terminal
-	spanning tree vlan 1 priority 20480
+	spanning-tree vlan 1 priority 20480
 	line console 0
 	password consola33
 	login
@@ -450,7 +450,7 @@ La solución detallada sería esta::
 	Switch1(config-line)#login local
 	Switch1(config-line)#transport input ssh
 	Switch1(config-line)#exit
-	Switch1(config)#spanning tree vlan 1 priority 8192
+	Switch1(config)#spanning-tree vlan 1 priority 8192
 
 Los comandos listos para copiar y pegar serían estos::
 
@@ -467,7 +467,7 @@ Los comandos listos para copiar y pegar serían estos::
 	login local
 	transport input ssh
 	exit
-	spanning tree vlan 1 priority 8192
+	spanning-tree vlan 1 priority 8192
 
 Solución al ejercicio 11 de switches
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -482,7 +482,7 @@ La solución detallada sería esta::
 	Switch1>enable
 	Switch1#configure terminal
 	Switch1(config)#mac address-table static 00aa.ecce.ffbb vlan 1 interface fastEthernet 0/3
-	Switch1(config)#spanning tree vlan 1 priority 8192
+	Switch1(config)#spanning-tree vlan 1 priority 8192
 	Switch1(config)#interface vlan 1
 	Switch1(config-if)#ip address 33.22.0.0 255.254.0.0
 	Switch1(config-if)#no shutdown
@@ -492,7 +492,7 @@ Los comandos listos para copiar y pegar serían estos::
 	enable
 	configure terminal
 	mac address-table static 00aa.ecce.ffbb vlan 1 interface fastEthernet 0/3
-	spanning tree vlan 1 priority 8192
+	spanning-tree vlan 1 priority 8192
 	interface vlan 1
 	ip address 33.22.0.0 255.254.0.0
 	no shutdown
@@ -550,7 +550,7 @@ La solución detallada sería esta::
 	AulaB14(config-line)#login local
 	AulaB14(config-line)#transport input ssh
 	AulaB14(config-line)#exit
-	AulaB14(config)#spanning tree vlan 1 priority 45056
+	AulaB14(config)#spanning-tree vlan 1 priority 45056
 
 Los comandos listos para copiar y pegar serían estos::
 
@@ -568,7 +568,7 @@ Los comandos listos para copiar y pegar serían estos::
 	login local
 	transport input ssh
 	exit
-	spanning tree vlan 1 priority 45056
+	spanning-tree vlan 1 priority 45056
 
 Solución al ejercicio 14 de switches
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -618,7 +618,7 @@ La solución detallada sería esta::
 	Switch1(config-if)#arp timeout 3600
 	Switch1(config-if)#no shutdown
 	Switch1(config-if)#exit
-	Switch1(config)#spanning tree vlan 1 priority 24576
+	Switch1(config)#spanning-tree vlan 1 priority 24576
 	Switch1(config)#line console 0
 	Switch1(config-line)#password consola
 	Switch1(config-line)#login
@@ -635,7 +635,7 @@ Los comandos listos para copiar y pegar serían estos::
 	arp timeout 3600
 	no shutdown
 	exit
-	spanning tree vlan 1 priority 24576
+	spanning-tree vlan 1 priority 24576
 	line console 0
 	password consola
 	login
@@ -658,7 +658,7 @@ La solución detallada sería esta::
 	Switch1>enable
 	Switch1#configure terminal
 	Switch1(config)#hostname SwitchB11
-	SwitchB11(config)#spanning tree vlan 1 priority 45056
+	SwitchB11(config)#spanning-tree vlan 1 priority 45056
 	SwitchB11(config)#mac address-table static 00aa.efe0.aac0 vlan 1 interface fastEthernet 0/1
 	SwitchB11(config)#ip domain-name redes.es
 	SwitchB11(config)#crypto key generate rsa general-keys modulus 1024
@@ -672,7 +672,7 @@ Los comandos listos para copiar y pegar serían estos::
 	enable
 	configure terminal
 	hostname SwitchB11
-	spanning tree vlan 1 priority 45056
+	spanning-tree vlan 1 priority 45056
 	mac address-table static 00aa.efe0.aac0 vlan 1 interface fastEthernet 0/1
 	ip domain-name redes.es
 	crypto key generate rsa general-keys modulus 1024
@@ -876,7 +876,7 @@ La solución detallada sería esta::
 
 	Switch1>enable
 	Switch1#configure terminal
-	Switch1(config)#spanning tree vlan 1 priority 36864
+	Switch1(config)#spanning-tree vlan 1 priority 36864
 	Switch1(config)#ip domain-name network.es
 	Switch1(config)#crypto key generate rsa general-keys modulus 512
 	Switch1(config)#username sshadministrador secret sshadmin
@@ -900,7 +900,7 @@ Los comandos listos para copiar y pegar serían estos::
 
 	enable
 	configure terminal
-	spanning tree vlan 1 priority 36864
+	spanning-tree vlan 1 priority 36864
 	ip domain-name network.es
 	crypto key generate rsa general-keys modulus 512
 	username sshadministrador secret sshadmin
@@ -935,7 +935,7 @@ La solución detallada sería esta::
 
 	Switch1>enable
 	Switch1#configure terminal
-	Switch1(config)#spanning tree vlan 1 priority 49152
+	Switch1(config)#spanning-tree vlan 1 priority 49152
 	Switch1(config)#exit
 	Switch1#show mac-address-table
 	Switch1#configure terminal
@@ -957,7 +957,7 @@ Los comandos listos para copiar y pegar serían estos::
 
 	enable
 	configure terminal
-	spanning tree vlan 1 priority 49152
+	spanning-tree vlan 1 priority 49152
 	exit
 	show mac-address-table
 	configure terminal
@@ -995,7 +995,7 @@ La solución detallada sería esta::
 	SwitchB14(config-if)#ip address 112.54.0.0 255.255.0.0
 	SwitchB14(config-if)#no shutdown
 	SwitchB14(config-if)#exit
-	SwitchB14(config)#spanning tree vlan 1 priority 40960
+	SwitchB14(config)#spanning-tree vlan 1 priority 40960
 	SwitchB14(config)#line console 0
 	SwitchB14(config-line)#password consola
 	SwitchB14(config-line)#login
@@ -1012,7 +1012,7 @@ Los comandos listos para copiar y pegar serían estos::
 	ip address 112.54.0.0 255.255.0.0
 	no shutdown
 	exit
-	spanning tree vlan 1 priority 40960
+	spanning-tree vlan 1 priority 40960
 	line console 0
 	password consola
 	login
@@ -1047,7 +1047,7 @@ La solución detallada sería esta::
 	Switch1(config-line)#login
 	Switch1(config-line)#exit
 	Switch1(config)#enable secret admin
-	Switch1(config)#spanning tree vlan 1 priority 49152
+	Switch1(config)#spanning-tree vlan 1 priority 49152
 	Switch1(config)#hostname AulaB09
 	AulaB09(config)#line vty 0 15
 	AulaB09(config-line)#password administrador
@@ -1069,7 +1069,7 @@ Los comandos listos para copiar y pegar serían estos::
 	login
 	exit
 	enable secret admin
-	spanning tree vlan 1 priority 49152
+	spanning-tree vlan 1 priority 49152
 	hostname AulaB09
 	line vty 0 15
 	password administrador

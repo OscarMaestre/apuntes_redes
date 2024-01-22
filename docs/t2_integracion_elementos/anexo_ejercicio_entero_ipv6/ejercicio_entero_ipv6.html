@@ -1,21 +1,19 @@
-
 <!DOCTYPE html>
 
-<html lang="es">
+<html lang="es" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Anexo: resolución entera de ejercicio IPv6 &#8212; documentación de Apuntes de redes - 1.0</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
-    <script src="../../_static/translations.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../_static/documentation_options.js?v=4936afed"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/translations.js?v=efdbd0b9"></script>
     <link rel="index" title="Índice" href="../../genindex.html" />
     <link rel="search" title="Búsqueda" href="../../search.html" />
     <link rel="next" title="Anexo al tema 3: Ejercicios sobre comandos Cisco en switches" href="../../t3_conmutadores/ejercicios/ejercicios_switches.html" />
@@ -23,8 +21,9 @@
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
+
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  
 
   </head><body>
   
@@ -37,7 +36,7 @@
           <div class="body" role="main">
             
   <section id="anexo-resolucion-entera-de-ejercicio-ipv6">
-<h1>Anexo: resolución entera de ejercicio IPv6<a class="headerlink" href="#anexo-resolucion-entera-de-ejercicio-ipv6" title="Enlace permanente a este encabezado"></a></h1>
+<h1>Anexo: resolución entera de ejercicio IPv6<a class="headerlink" href="#anexo-resolucion-entera-de-ejercicio-ipv6" title="Link to this heading"></a></h1>
 <p>Observa la figura siguiente. En ella se muestra un ejemplo típico de una interconexión entre dos redes que podrían ser incluso de dos empresas distintas.</p>
 <figure class="align-default">
 <a class="reference internal image-reference" href="../../_images/ejercicio_entero_ipv6.png"><img alt="../../_images/ejercicio_entero_ipv6.png" src="../../_images/ejercicio_entero_ipv6.png" style="width: 80%;" /></a>
@@ -48,7 +47,7 @@
 <li><p>Configurar correctamente las rutas entre ambas redes.</p></li>
 </ol>
 <section id="boceto-general-de-la-solucion">
-<h2>Boceto general de la solución<a class="headerlink" href="#boceto-general-de-la-solucion" title="Enlace permanente a este encabezado"></a></h2>
+<h2>Boceto general de la solución<a class="headerlink" href="#boceto-general-de-la-solucion" title="Link to this heading"></a></h2>
 <p>En primer lugar necesitamos que las redes tengan un prefijo asignado. Por comodidad vamos a usar estos bloques:</p>
 <ul class="simple">
 <li><p>La empresa A usará direcciones 2001:aaaa::/64</p></li>
@@ -57,7 +56,7 @@
 </ul>
 </section>
 <section id="direccionamiento-en-la-empresa-a">
-<h2>Direccionamiento en la empresa A<a class="headerlink" href="#direccionamiento-en-la-empresa-a" title="Enlace permanente a este encabezado"></a></h2>
+<h2>Direccionamiento en la empresa A<a class="headerlink" href="#direccionamiento-en-la-empresa-a" title="Link to this heading"></a></h2>
 <p>El router de la empresa A tendrá en su conexión izquierda (tarjeta GigabitEthernet 0/0) la dirección <code class="docutils literal notranslate"><span class="pre">2001:aaaa::1/64</span></code></p>
 <p>El equipo PC0 (arriba a la izquierda) tendrá estos parámetros:</p>
 <ul class="simple">
@@ -71,7 +70,7 @@
 </ul>
 </section>
 <section id="direccionamiento-en-la-empresa-b">
-<h2>Direccionamiento en la empresa B<a class="headerlink" href="#direccionamiento-en-la-empresa-b" title="Enlace permanente a este encabezado"></a></h2>
+<h2>Direccionamiento en la empresa B<a class="headerlink" href="#direccionamiento-en-la-empresa-b" title="Link to this heading"></a></h2>
 <p>El router de la empresa B tendrá en su conexión derecha (tarjeta GigabitEthernet 0/1) la dirección <code class="docutils literal notranslate"><span class="pre">2001:bbbb::1/64</span></code></p>
 <p>El equipo PC0 (arriba a la derecha) tendrá estos parámetros:</p>
 <ul class="simple">
@@ -85,22 +84,22 @@
 </ul>
 </section>
 <section id="direcciones-en-la-interconexion-de-routers">
-<h2>Direcciones en la interconexión de routers<a class="headerlink" href="#direcciones-en-la-interconexion-de-routers" title="Enlace permanente a este encabezado"></a></h2>
+<h2>Direcciones en la interconexión de routers<a class="headerlink" href="#direcciones-en-la-interconexion-de-routers" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>El router de la empresa A tendrá en su tarjeta izquierda (GigabitEthernet0/1) la dirección <code class="docutils literal notranslate"><span class="pre">2001:aabb::1/64</span></code></p></li>
 <li><p>El router de la empresa B tendrá en su tarjeta derecha (GigabitEthernet0/0) la dirección <code class="docutils literal notranslate"><span class="pre">2001:aabb::2/64</span></code></p></li>
 </ul>
 </section>
 <section id="enrutamiento-en-el-router-a">
-<h2>Enrutamiento en el router A<a class="headerlink" href="#enrutamiento-en-el-router-a" title="Enlace permanente a este encabezado"></a></h2>
+<h2>Enrutamiento en el router A<a class="headerlink" href="#enrutamiento-en-el-router-a" title="Link to this heading"></a></h2>
 <p>En el router A hay que indicar de alguna manera que <em>para llegar a la red 2001:bbbb::/64 el siguiente salto que hay que dar es enviar a 2001:aabb::2</em></p>
 </section>
 <section id="enrutamiento-en-el-router-b">
-<h2>Enrutamiento en el router B<a class="headerlink" href="#enrutamiento-en-el-router-b" title="Enlace permanente a este encabezado"></a></h2>
+<h2>Enrutamiento en el router B<a class="headerlink" href="#enrutamiento-en-el-router-b" title="Link to this heading"></a></h2>
 <p>En el router B hay que indicar de alguna manera que <em>para llegar a la red 2001:aaaa::/64 el siguiente salto que hay que dar es enviar a 2001:aabb::1</em></p>
 </section>
 <section id="comandos-en-el-router-a">
-<h2>Comandos en el router A<a class="headerlink" href="#comandos-en-el-router-a" title="Enlace permanente a este encabezado"></a></h2>
+<h2>Comandos en el router A<a class="headerlink" href="#comandos-en-el-router-a" title="Link to this heading"></a></h2>
 <p>La secuencia completa en PacketTracer sería:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
@@ -118,7 +117,7 @@
 </div>
 </section>
 <section id="comandos-en-el-router-b">
-<h2>Comandos en el router B<a class="headerlink" href="#comandos-en-el-router-b" title="Enlace permanente a este encabezado"></a></h2>
+<h2>Comandos en el router B<a class="headerlink" href="#comandos-en-el-router-b" title="Link to this heading"></a></h2>
 <p>La secuencia completa sería:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
@@ -222,11 +221,11 @@
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2021, Oscar G. G..
+      &#169;2021, Oscar G. G..
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
       
       |
       <a href="../../_sources/t2_integracion_elementos/anexo_ejercicio_entero_ipv6/ejercicio_entero_ipv6.rst.txt"
