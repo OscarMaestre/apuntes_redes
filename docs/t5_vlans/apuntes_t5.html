@@ -173,314 +173,6 @@
 </ol>
 </section>
 </section>
-<section id="ejercicio-completo-con-vlans-y-vtp">
-<h2>Ejercicio completo con VLANs y VTP<a class="headerlink" href="#ejercicio-completo-con-vlans-y-vtp" title="Link to this heading"></a></h2>
-<p>Observa la red de la figura:</p>
-<figure class="align-default">
-<img alt="../_images/04-vlans-y-vtp.png" src="../_images/04-vlans-y-vtp.png" />
-</figure>
-<p>Las conexiones son las siguientes:</p>
-<ul class="simple">
-<li><p>Puerto 0/1 de Nucleo con puerto 0/1 de Distribucion1.</p></li>
-<li><p>Puerto 0/2 de Nucleo con puerto 0/2 de Distribucion2.</p></li>
-<li><p>Puerto 0/3 de Nucleo con puerto 0/1 de Distribucion3.</p></li>
-<li><p>Puerto 0/4 de Distribucion1 con puerto 0/4 de Acceso1.</p></li>
-<li><p>Puerto 0/5 de Distribucion1 con puerto 0/5 de Acceso2.</p></li>
-<li><p>Puerto 0/6 de Distribucion2 con puerto 0/6 de Acceso3.</p></li>
-<li><p>Puerto 0/7 de Distribucion2 con puerto 0/7 de Acceso4.</p></li>
-<li><p>Puerto 0/8 de Distribucion1 con puerto 0/8 de Acceso5.</p></li>
-<li><p>Puerto 0/9 de Distribucion1 con puerto 0/9 de Acceso6.</p></li>
-<li><p>PC 0 va conectado a puerto 0/1 de Acceso1.</p></li>
-<li><p>PC 1 va conectado a puerto 0/2 de Acceso1.</p></li>
-<li><p>PC 2 va conectado a puerto 0/1 de Acceso2.</p></li>
-<li><p>PC 3 va conectado a puerto 0/2 de Acceso2.</p></li>
-<li><p>PC 4 va conectado a puerto 0/1 de Acceso3.</p></li>
-<li><p>PC 5 va conectado a puerto 0/2 de Acceso3.</p></li>
-<li><p>PC 6 va conectado a puerto 0/1 de Acceso4.</p></li>
-<li><p>PC 7 va conectado a puerto 0/2 de Acceso4.</p></li>
-<li><p>PC 8 va conectado a puerto 0/1 de Acceso5.</p></li>
-<li><p>PC 9 va conectado a puerto 0/2 de Acceso5.</p></li>
-<li><p>PC 10 va conectado a puerto 0/1 de Acceso6.</p></li>
-<li><p>PC 11 va conectado a puerto 0/2 de Acceso6.</p></li>
-<li><p>Puerto 0/11 de Acceso1 va conectado a puerto 0/11 de Acceso2.</p></li>
-<li><p>Puerto 0/12 de Acceso2 va conectado a puerto 0/12 de Acceso3.</p></li>
-<li><p>Puerto 0/12 de Acceso1 va conectado a puerto 0/12 de Acceso5.</p></li>
-<li><p>Puerto 0/12 de Acceso5 va conectado a puerto 0/13 de Acceso6.</p></li>
-</ul>
-<p>En esta red se desea lo siguiente:</p>
-<ol class="arabic simple">
-<li><p>Usando VTP se desea tener centralizada la información sobre VLANs en un único switch, en este caso el switch Nucleo. El dominio de la empresa es <code class="docutils literal notranslate"><span class="pre">empresa.com</span></code> y la clave que se va a usar es <code class="docutils literal notranslate"><span class="pre">vtpadmin1234</span></code>.</p></li>
-<li><p>La empresa va a tener estas VLANS con estos nombres: 10 (GESTIONVTP), 100 (USUARIOS), 200 (TECNICOS), 300 (GERENCIA)</p></li>
-<li><p>El switch Acceso2 va a ser gestionado por sus propios técnicos y se desea que IGNORE por completo toda la información sobre VLANS.</p></li>
-<li><p>Dentro de la VLAN USUARIOS están los ordenadores 0 y 2.</p></li>
-<li><p>Dentro de la VLAN TECNICOS están los ordenadores 1, 5 y 9.</p></li>
-<li><p>Dentro de la VLAN GERENCIA están los ordenadores 6 y 8.</p></li>
-<li><p>La empresa dispone de la red 10.0.0.0/8 para configurar direcciones IP y se desea que la VLAN USUARIOS esté en la red 10.1.0.0/16, que la VLAN TECNICOS esté en la 10.2.0.0/16 y que la VLAN GERENCIA esté en la 10.3.0.0/16</p></li>
-</ol>
-<p>Configurar las direcciones IP, máscaras, enlaces de acceso, enlaces troncales y modos VTP para conseguir que la conectividad funcione según los requisitos pedidos.</p>
-<section id="solucion">
-<h3>Solución<a class="headerlink" href="#solucion" title="Link to this heading"></a></h3>
-<p>Empecemos por las direcciones IP.</p>
-<ul class="simple">
-<li><p>Las direcciones de USUARIOS deben ser algo como 10.1.xxx.xxx con máscara 255.255.0.0. Usaremos las IP 10.1.0.1 y la 10.1.0.2 para los dos ordenadores de esta VLAN.</p></li>
-<li><p>Para TECNICOS usaremos las IP 10.2.0.1 y 10.2.0.2. También llevarán la máscara 255.255.0.0</p></li>
-<li><p>Para GERENCIA usaremos las IP 10.3.0.1 y 10.3.0.2 con máscara 255.255.0.0</p></li>
-</ul>
-<p>Una vez hecho esto, los distintos ordenadores se pueden hacer ping solo con los de su subred. En este punto cabe preguntarse <strong>¿para qué queremos entonces las VLAN?</strong>.</p>
-<p>Recordemos que al formar VLANs los distintos grupos de ordenadores quedan <em>totalmente aislados</em>. Esto significa que</p>
-<ul class="simple">
-<li><p>Los de la VLAN USUARIOS <strong>no reciben las difusiones Ethernet de ninguna otra VLAN</strong> con lo que el rendimiento mejora. Recordemos que hemos dividido un dominio de colisiones grande en varios dominios de colisión pequeños.</p></li>
-<li><p>La seguridad también mejora porque nadie puede recibir tramas ni mensajes IP de ningún otra VLAN.</p></li>
-</ul>
-<p>Con solo una cualquiera de estas ventajas ya tendríamos suficiente para justificar la implantación de las VLANs, pero el hecho de obtener las dos hace que esta tecnología sea mucho más interesante aún.</p>
-<p>Analicemos ahora las VLANs y los enlaces. Empecemos por ver los equipos 0 y 2, que pertenecen a la VLAN 100 (USUARIOS).</p>
-<figure class="align-default">
-<img alt="../_images/04b-vlans-y-vtp.png" src="../_images/04b-vlans-y-vtp.png" />
-</figure>
-<p>Los puertos de los PC van a ser de acceso y van a usar la VLAN 100, pero ¿qué puertos vamos a poner como troncales usando la VLAN 100?</p>
-<ol class="arabic simple">
-<li><p>Una posibilidad sería poner como troncal para la VLAN 100 los enlaces 1 y 3. Esto implicaría que todo el tráfico iría primero al switch de distribución y si el PC0 quisiese pasar algo al 2 no podría hacerlo directamente.</p></li>
-<li><p>Podemos decidir poner troncal los enlaces 2 y 3. De esta manera no todo el tráfico va al switch de distribución. Lo malo es que esta solución hace que cuando el ordenador PC0 quiere salir siempre va a tener que dar un salto de más.</p></li>
-<li><p>Podríamos decidir poner troncal los enlaces 1 y 2. Esto es simplemente lo mismo que el punto anterior pero desde otro punto de vista.</p></li>
-</ol>
-<p>En realidad, debemos recordar que tenemos un gran aliado: el protocolo STP. Este protocolo resolverá automáticamente los ciclos por lo que en realidad la mejor solución sería <strong>poner los tres enlaces 1,2 y 3 como troncales con la 10 y manipular la prioridad del switch Distribución1 para que tenga una prioridad mejor. Así, el switch Distribucion1 conseguirá ser elegido como raíz antes que los de acceso</strong>. STP decidirá cerrar un enlace para la VLAN10 y volverá a activarlo si fuese necesario con lo que conseguimos una alta disponibilidad y además de manera automática.</p>
-<p>Por tanto, haremos lo siguiente (de momento, la configuración necesitará más comandos más adelante):</p>
-<ol class="arabic simple">
-<li><p>En el switch Acceso1 el puerto 0/1 será de acceso para la VLAN 100. Los puertos 0/4 y 0/10 serán troncales para la VLAN 100.</p></li>
-<li><p>En el switch Acceso2 el puerto 0/1 será de acceso para la VLAN 100.  Los puertos 0/5 y 0/10 serán troncales para la 100.</p></li>
-<li><p>En el switch Distribucion1 los puertos 0/4, 0/5 y 0/1 serán troncales para la 100. Tengamos en cuenta que el 0/1 es el puerto que lleva hacia el switch de núcleo. Si no ponemos troncal con la 100 este puerto 0/1 los ordenadores <em>no serán capaces de salir al exterior.</em> Aunque en este ejemplo no lo hemos puesto para simplificar, el switch de núcleo va conectado a un router que nos dará conectividad con el exterior.</p></li>
-</ol>
-<p>En la figura siguiente hemos creado un esquema que facilite el identificar que VLANs transitan por qué puertos.</p>
-<figure class="align-default">
-<img alt="../_images/04-vlans-y-vtp-solucion.png" src="../_images/04-vlans-y-vtp-solucion.png" />
-</figure>
-<p>Para VTP haremos esto en el switch Nucleo 1:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
-<span class="n">configure</span> <span class="n">terminal</span>
-<span class="n">vtp</span> <span class="n">domain</span> <span class="n">empresa</span><span class="o">.</span><span class="n">com</span>
-<span class="n">vtp</span> <span class="n">password</span> <span class="n">vtpadmin1234</span>
-<span class="n">vtp</span> <span class="n">mode</span> <span class="n">server</span>
-<span class="n">vlan</span> <span class="mi">100</span>
-<span class="n">name</span> <span class="n">USUARIOS</span>
-<span class="n">vlan</span> <span class="mi">200</span>
-<span class="n">name</span> <span class="n">TECNICOS</span>
-<span class="n">vlan</span> <span class="mi">300</span>
-<span class="n">name</span> <span class="n">GERENCIA</span>
-<span class="n">vlan</span> <span class="mi">10</span>
-<span class="n">name</span> <span class="n">GESTIONVTP</span>
-</pre></div>
-</div>
-<p>En todos los demás switches <strong>excepto «Acceso 2»</strong> pondremos esto:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
-<span class="n">configure</span> <span class="n">terminal</span>
-<span class="n">vtp</span> <span class="n">domain</span> <span class="n">empresa</span><span class="o">.</span><span class="n">com</span>
-<span class="n">vtp</span> <span class="n">password</span> <span class="n">vtpadmin1234</span>
-<span class="n">vtp</span> <span class="n">mode</span> <span class="n">client</span>
-</pre></div>
-</div>
-<p>En «Acceso 2»:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
-<span class="n">configure</span> <span class="n">terminal</span>
-<span class="n">vtp</span> <span class="n">domain</span> <span class="n">empresa</span><span class="o">.</span><span class="n">com</span>
-<span class="n">vtp</span> <span class="n">password</span> <span class="n">vtpadmin1234</span>
-<span class="n">vtp</span> <span class="n">mode</span> <span class="n">transparent</span>
-</pre></div>
-</div>
-<p>Y en todos los switches habilitaremos todos los enlaces troncales con la VLAN 10 si deseamos que reciban por ese interfaz las actualizaciones VTP</p>
-</section>
-<section id="switch-nucleo-1">
-<h3>Switch Nucleo 1<a class="headerlink" href="#switch-nucleo-1" title="Link to this heading"></a></h3>
-<p>Los comandos serían:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
-<span class="n">configure</span> <span class="n">terminal</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
-<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">10</span>
-<span class="n">exit</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">2</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
-<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="mi">10</span>
-<span class="n">exit</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">3</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
-<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">300</span><span class="p">,</span><span class="mi">10</span>
-<span class="n">exit</span>
-</pre></div>
-</div>
-</section>
-<section id="switch-distribucion-1">
-<h3>Switch Distribución 1<a class="headerlink" href="#switch-distribucion-1" title="Link to this heading"></a></h3>
-<p>Los comandos serían:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
-<span class="n">configure</span> <span class="n">terminal</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
-<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">10</span>
-<span class="n">exit</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">4</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
-<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">10</span>
-<span class="n">exit</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">5</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
-<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">10</span>
-<span class="n">exit</span>
-</pre></div>
-</div>
-</section>
-<section id="switch-distribucion-2">
-<h3>Switch Distribución 2<a class="headerlink" href="#switch-distribucion-2" title="Link to this heading"></a></h3>
-<p>Los comandos serían:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
-<span class="n">configure</span> <span class="n">terminal</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">2</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
-<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span><span class="mi">10</span>
-<span class="n">exit</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">6</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
-<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">200</span><span class="p">,</span><span class="mi">10</span>
-<span class="n">exit</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">7</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
-<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">300</span><span class="p">,</span><span class="mi">10</span>
-<span class="n">exit</span>
-</pre></div>
-</div>
-</section>
-<section id="switch-distribucion-3">
-<h3>Switch Distribución 3<a class="headerlink" href="#switch-distribucion-3" title="Link to this heading"></a></h3>
-<p>Los comandos serían:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
-<span class="n">configure</span> <span class="n">terminal</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">3</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
-<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">300</span><span class="p">,</span><span class="mi">10</span>
-<span class="n">exit</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">8</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
-<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">300</span><span class="p">,</span><span class="mi">10</span>
-<span class="n">exit</span>
-</pre></div>
-</div>
-</section>
-<section id="switch-acceso-1">
-<h3>Switch Acceso 1<a class="headerlink" href="#switch-acceso-1" title="Link to this heading"></a></h3>
-<p>Los comandos serían:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
-<span class="n">configure</span> <span class="n">terminal</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">4</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
-<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">10</span>
-<span class="n">exit</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">10</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
-<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">10</span>
-<span class="n">exit</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
-<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">100</span>
-<span class="n">exit</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">2</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
-<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">202</span>
-<span class="n">exit</span>
-</pre></div>
-</div>
-</section>
-<section id="switch-acceso-2">
-<h3>Switch Acceso 2<a class="headerlink" href="#switch-acceso-2" title="Link to this heading"></a></h3>
-<p>Los comandos serían:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
-<span class="n">configure</span> <span class="n">terminal</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">5</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
-<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">10</span>
-<span class="n">exit</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">10</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
-<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">10</span>
-<span class="n">exit</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">12</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
-<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">10</span>
-<span class="n">exit</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
-<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">100</span>
-<span class="n">exit</span>
-</pre></div>
-</div>
-</section>
-<section id="switch-acceso-3">
-<h3>Switch Acceso 3<a class="headerlink" href="#switch-acceso-3" title="Link to this heading"></a></h3>
-<p>Los comandos serían:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
-<span class="n">configure</span> <span class="n">terminal</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">6</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
-<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">200</span><span class="p">,</span><span class="mi">10</span>
-<span class="n">exit</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">12</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
-<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">10</span>
-<span class="n">exit</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">2</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
-<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">200</span>
-<span class="n">exit</span>
-</pre></div>
-</div>
-</section>
-<section id="switch-acceso-4">
-<h3>Switch Acceso 4<a class="headerlink" href="#switch-acceso-4" title="Link to this heading"></a></h3>
-<p>Los comandos serían:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
-<span class="n">configure</span> <span class="n">terminal</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">7</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
-<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">300</span><span class="p">,</span><span class="mi">10</span>
-<span class="n">exit</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">12</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
-<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">300</span><span class="p">,</span><span class="mi">10</span>
-<span class="n">exit</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
-<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">300</span>
-<span class="n">exit</span>
-</pre></div>
-</div>
-</section>
-<section id="switch-acceso-5">
-<h3>Switch Acceso 5<a class="headerlink" href="#switch-acceso-5" title="Link to this heading"></a></h3>
-<p>Los comandos serían (se deja un enlace sin configurar, intentar en casa):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
-<span class="n">configure</span> <span class="n">terminal</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">8</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
-<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">300</span><span class="p">,</span><span class="mi">10</span>
-<span class="n">exit</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">12</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
-<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">300</span><span class="p">,</span><span class="mi">10</span>
-<span class="n">exit</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
-<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">300</span>
-<span class="n">exit</span>
-<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">2</span>
-<span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
-<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">200</span>
-<span class="n">exit</span>
-</pre></div>
-</div>
-</section>
-<section id="switch-acceso-6">
-<h3>Switch Acceso 6<a class="headerlink" href="#switch-acceso-6" title="Link to this heading"></a></h3>
-<p>En este ejercicio concreto, no tiene ninguna función.</p>
-</section>
-</section>
 <section id="el-protocolo-ieee802-1q">
 <h2>El protocolo IEEE802.1Q<a class="headerlink" href="#el-protocolo-ieee802-1q" title="Link to this heading"></a></h2>
 <p>Es el protocolo estándar para construir tramas de datos que viajan entre enlaces troncales. No nos hemos preguntado una cosa ¿como sabe un switch con un enlace troncal que un paquete es de una VLAN y/o que va a otra VLAN?</p>
@@ -545,6 +237,140 @@
 <span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">100</span><span class="p">,</span><span class="mi">200</span>
 <span class="n">no</span> <span class="n">shutdown</span>
 <span class="n">exit</span>
+</pre></div>
+</div>
+</section>
+<section id="etherchannel-vlans-y-direcciones-ip">
+<h3>Etherchannel, VLANs y direcciones IP<a class="headerlink" href="#etherchannel-vlans-y-direcciones-ip" title="Link to this heading"></a></h3>
+<p>Supongamos la siguientes configuración de red:</p>
+<figure class="align-default">
+<img alt="../_images/07-etherchannel-vlans-ips.png" src="../_images/07-etherchannel-vlans-ips.png" />
+</figure>
+<p>Se nos pide:</p>
+<ul>
+<li><p>Crear un Etherchannel entre los switches «Switch0» y «Switch1». Se deben usar los puertos 0/3,0/4 y 0/5 de «Switch0» y los 0/3, 0/4 y 0/5 de «Switch1»</p></li>
+<li><p>Hay 3 VLANS. Una para contables, una para técnicos y otra para el sistema de copias de seguridad. La asignación es:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>100 CONTABLES</p></li>
+<li><p>200 TÉCNICOS</p></li>
+<li><p>300 BACKUPS</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Por algún motivo se desea que tanto CONTABLES como TECNICOS pertenezcan a la red 192.168.1.0/24. En el dibujo se muestra el último byte que debe tener cada ordenador.</p></li>
+<li><p>Los nodos que pertenecen a la red BACKUPS van a tener direcciones 10.2.0.0/16. En concreto se desea que:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Switch0 tenga la 10.2.1.0/16 (obsérvese que <strong>es una dirección IP válida para un host</strong>)</p></li>
+<li><p>Switch1 tenga la 10.2.1.1/16.</p></li>
+<li><p>Server debe tener la 10.2.0.101</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Se desea que una vez hecho todo, se pueda enviar una copia de seguridad desde cada switch al «server».</p></li>
+</ul>
+</section>
+<section id="etherchannel-vlans-y-direcciones-ip-resuelto">
+<h3>Etherchannel, VLANs y direcciones IP (resuelto)<a class="headerlink" href="#etherchannel-vlans-y-direcciones-ip-resuelto" title="Link to this heading"></a></h3>
+<p>Los pasos son estos:</p>
+<ul>
+<li><p>Poner las IPs en los dispositivos.</p></li>
+<li><p>Poner las VLAN correctas en los puertos de acceso correctos. En concreto:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>En Switch0 se debe poner la VLAN100 en el 0/1 y la VLAN200 en el 0/2</p></li>
+<li><p>En Switch1 se debe poner la VLAN200 en el 0/1, la VLAN100 en el 0/2 y la VLAN300 en el 0/6</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Se debe construir el Etherchannel entre Switch0 y Switch1. Una vez creado el Etherchannel se debe permitir que ese Etherchannel acepte tráfico de las VLAN 100,200 y 300</p></li>
+</ul>
+<p>Así, los comandos para Switch0 serían estos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!Crearemos las VLAN
+enable
+configure terminal
+vlan 100
+name CONTABLES
+exit
+vlan 200
+name TECNICOS
+exit
+vlan 300
+name BACKUPS
+exit
+!Asignamos las VLAN correctas a los puertos correctos
+interface fastethernet 0/1
+switchport mode access
+switchport access vlan 100
+exit
+interface fastethernet 0/2
+switchport mode access
+switchport access vlan 200
+exit
+!Construimos el Etherchannel
+interface range fastethernet 0/3-5
+!Recordemos que no es obligatorio usar siempre el ID Etherchannel 1
+channel-group 6 mode active
+exit
+!Ahora al Etherchannel le permitimos que mueva tráfico de la 100,200 **y 300**
+interface port-channel 6
+switchport mode trunk
+switchport trunk allowed vlan 100,200,300
+exit
+!Por último ponemos la IP correcta en la conexión VLAN correcta
+interface vlan 300
+ip address 10.2.1.0 255.255.0.0
+no shutdown
+</pre></div>
+</div>
+<p>Y para Switch1 serían estos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!Creamos de nuevo las VLAN
+enable
+configure terminal
+vlan 100
+name CONTABLES
+exit
+vlan 200
+name TECNICOS
+exit
+vlan 300
+name BACKUPS
+exit
+interface fastethernet 0/1
+switchport mode access
+switchport access vlan 200
+exit
+interface fastethernet 0/2
+switchport mode access
+switchport access vlan 100
+exit
+interface fastethernet 0/6
+switchport mode access
+switchport access vlan 300
+exit
+!Lo hacemos de distinta manera solo por repasar
+interface fastethernet 0/3
+!Por favor, recordar poner el mismo ID en los interfaces
+!que pertenezcan a los dos lados de un Etherchannel
+channel-group 6 mode active
+exit
+interface fastethernet 0/4
+channel-group 6 mode active
+exit
+interface fastethernet 0/5
+channel-group 6 mode active
+exit
+!Igual que antes, ponemos el Etherchannel en modo trunk
+interface port-channel 6
+switchport mode trunk
+switchport trunk allowed vlan 100,200,300
+exit
+!Recordemos poner la IP de gestión apropiada en la VLAN apropiada
+interface vlan 300
+ip address 10.2.1.1 255.255.0.0
+no shutdown
+exit
 </pre></div>
 </div>
 </section>
@@ -775,23 +601,11 @@ end
 <li class="toctree-l3"><a class="reference internal" href="#proceso-basico">Proceso básico</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#ejercicio-completo-con-vlans-y-vtp">Ejercicio completo con VLANs y VTP</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#solucion">Solución</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#switch-nucleo-1">Switch Nucleo 1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#switch-distribucion-1">Switch Distribución 1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#switch-distribucion-2">Switch Distribución 2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#switch-distribucion-3">Switch Distribución 3</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#switch-acceso-1">Switch Acceso 1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#switch-acceso-2">Switch Acceso 2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#switch-acceso-3">Switch Acceso 3</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#switch-acceso-4">Switch Acceso 4</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#switch-acceso-5">Switch Acceso 5</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#switch-acceso-6">Switch Acceso 6</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="#el-protocolo-ieee802-1q">El protocolo IEEE802.1Q</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#etherchannel">Etherchannel</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#etherchannel-y-vlans">Etherchannel y VLANs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#etherchannel-vlans-y-direcciones-ip">Etherchannel, VLANs y direcciones IP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#etherchannel-vlans-y-direcciones-ip-resuelto">Etherchannel, VLANs y direcciones IP (resuelto)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#copias-de-seguridad">Copias de seguridad</a></li>
