@@ -2,6 +2,7 @@ Experimentos con switches
 ==============================
 
 Para esta práctica se ha proporcionado un switch Cisco a cada mesa de trabajo (3-4 equipos). Comprueba lo siguiente:
+
 * Debes tener 3 máquinas virtuales que puedan ejecutar Windows y que tengan instalado Putty y TftpServer. Todas las máquinas deben tener una carpeta compartida con el anfitrión. Si es posible lo ideal es tener cada máquina en un equipo distintos.
 * Durante el ejercicio llamaremos a estas máquinas "administrador", "oficinista1" y "oficinista2". La máquina donde ejecutas Putty conectado al switch será "administrador".
 * Las tres máquinas virtuales deben tener la tarjeta de red en modo puente y conectada al cable de red del aula. Si estás usando portátiles recuerda que en general los drivers no permiten conectar la tarjeta puente de la máquina virtual con la tarjeta inalámbrica del equipo. 
@@ -83,6 +84,7 @@ VTP
 Al terminar
 ===============
 Por favor, asegúrate de que el switch que has recibido:
+
 * No tiene puesta ninguna clave.
 * Tiene puesta la misma IP que aparece en la etiqueta.
 * No está activo nada de lo que hemos practicado en clase. Solo debería estar la IP de gestión que aparece en la etiqueta y con la misma máscara. Gracias por tu colaboración
