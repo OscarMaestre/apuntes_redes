@@ -392,7 +392,8 @@ Podemos hacer **exactamente lo mismo con el router 6** y hacer esto::
    configure terminal 
    ip route 0.0.0.0 0.0.0.0 4.1.1.1
 
-También podríamos configurar RIP de la manera normal y lo indicamos a continuación. Empezaremos por el "área" izquierda, que contiene los router 1, 3 y 5
+También podríamos configurar RIP de la manera normal y lo indicamos a continuación. Empezaremos por el "área" izquierda, que contiene los router 0, 1 y 2.
+
 
 Router 1 con RIP
 ~~~~~~~~~~~~~~~~~~
@@ -402,9 +403,10 @@ Comandos necesarios::
    configure terminal
    router rip
    version 2
-   network 1.0.0.0
    network 2.0.0.0
+   network 1.0.0.0
    network 10.0.0.0
+
 
 Router 3 con RIP
 ~~~~~~~~~~~~~~~~~~
@@ -430,7 +432,19 @@ Comandos necesarios::
    network 3.0.0.0
    
 
-En este punto el área izquierda debe tener autoconfiguradas sus rutas. A continuación configuramos el "área" derecha, que involucra a los router 2, 4 y 6
+En este punto el área izquierda debe tener autoconfiguradas sus rutas. A continuación configuramos el "área" derecha, que involucra a los router 2, 4 y 6.
+
+Router 6 con RIP
+~~~~~~~~~~~~~~~~~~
+Comandos necesarios::
+
+   enable
+   configure terminal
+   router rip
+   version 2
+   network 5.0.0.0
+   network 6.0.0.0
+
 
 Router 2 con RIP
 ~~~~~~~~~~~~~~~~~~
@@ -444,6 +458,8 @@ Comandos necesarios::
    network 5.0.0.0
    network 7.0.0.0
 
+
+
 Router 4 con RIP
 ~~~~~~~~~~~~~~~~~~
 Comandos necesarios::
@@ -456,16 +472,6 @@ Comandos necesarios::
    network 6.0.0.0
    network 7.0.0.0
 
-Router 6 con RIP
-~~~~~~~~~~~~~~~~~~
-Comandos necesarios::
-
-   enable
-   configure terminal
-   router rip
-   version 2
-   network 5.0.0.0
-   network 6.0.0.0
 
 Y llegado este punto, el área derecha también funciona y permite que la información fluya dentro de esa zona. Sin embargo **¿qué ocurre si intentamos hacer ping desde un ordenador del área izquierda a uno del área derecha?** Ocurre que **NO FUNCIONA**
 

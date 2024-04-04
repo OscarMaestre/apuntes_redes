@@ -783,7 +783,7 @@ asignable (239)</p></td>
 <span class="n">ip</span> <span class="n">route</span> <span class="mf">0.0.0.0</span> <span class="mf">0.0.0.0</span> <span class="mf">4.1.1.1</span>
 </pre></div>
 </div>
-<p>También podríamos configurar RIP de la manera normal y lo indicamos a continuación. Empezaremos por el «área» izquierda, que contiene los router 1, 3 y 5</p>
+<p>También podríamos configurar RIP de la manera normal y lo indicamos a continuación. Empezaremos por el «área» izquierda, que contiene los router 0, 1 y 2.</p>
 <section id="router-1-con-rip">
 <h3>Router 1 con RIP<a class="headerlink" href="#router-1-con-rip" title="Link to this heading"></a></h3>
 <p>Comandos necesarios:</p>
@@ -791,8 +791,8 @@ asignable (239)</p></td>
 <span class="n">configure</span> <span class="n">terminal</span>
 <span class="n">router</span> <span class="n">rip</span>
 <span class="n">version</span> <span class="mi">2</span>
-<span class="n">network</span> <span class="mf">1.0.0.0</span>
 <span class="n">network</span> <span class="mf">2.0.0.0</span>
+<span class="n">network</span> <span class="mf">1.0.0.0</span>
 <span class="n">network</span> <span class="mf">10.0.0.0</span>
 </pre></div>
 </div>
@@ -821,7 +821,19 @@ asignable (239)</p></td>
 <span class="n">network</span> <span class="mf">3.0.0.0</span>
 </pre></div>
 </div>
-<p>En este punto el área izquierda debe tener autoconfiguradas sus rutas. A continuación configuramos el «área» derecha, que involucra a los router 2, 4 y 6</p>
+<p>En este punto el área izquierda debe tener autoconfiguradas sus rutas. A continuación configuramos el «área» derecha, que involucra a los router 2, 4 y 6.</p>
+</section>
+<section id="router-6-con-rip">
+<h3>Router 6 con RIP<a class="headerlink" href="#router-6-con-rip" title="Link to this heading"></a></h3>
+<p>Comandos necesarios:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
+<span class="n">configure</span> <span class="n">terminal</span>
+<span class="n">router</span> <span class="n">rip</span>
+<span class="n">version</span> <span class="mi">2</span>
+<span class="n">network</span> <span class="mf">5.0.0.0</span>
+<span class="n">network</span> <span class="mf">6.0.0.0</span>
+</pre></div>
+</div>
 </section>
 <section id="router-2-con-rip">
 <h3>Router 2 con RIP<a class="headerlink" href="#router-2-con-rip" title="Link to this heading"></a></h3>
@@ -846,18 +858,6 @@ asignable (239)</p></td>
 <span class="n">network</span> <span class="mf">40.0.0.0</span>
 <span class="n">network</span> <span class="mf">6.0.0.0</span>
 <span class="n">network</span> <span class="mf">7.0.0.0</span>
-</pre></div>
-</div>
-</section>
-<section id="router-6-con-rip">
-<h3>Router 6 con RIP<a class="headerlink" href="#router-6-con-rip" title="Link to this heading"></a></h3>
-<p>Comandos necesarios:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
-<span class="n">configure</span> <span class="n">terminal</span>
-<span class="n">router</span> <span class="n">rip</span>
-<span class="n">version</span> <span class="mi">2</span>
-<span class="n">network</span> <span class="mf">5.0.0.0</span>
-<span class="n">network</span> <span class="mf">6.0.0.0</span>
 </pre></div>
 </div>
 <p>Y llegado este punto, el área derecha también funciona y permite que la información fluya dentro de esa zona. Sin embargo <strong>¿qué ocurre si intentamos hacer ping desde un ordenador del área izquierda a uno del área derecha?</strong> Ocurre que <strong>NO FUNCIONA</strong></p>
@@ -999,9 +999,9 @@ redistribute static</p>
 <li class="toctree-l3"><a class="reference internal" href="#router-1-con-rip">Router 1 con RIP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#router-3-con-rip">Router 3 con RIP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#router-5-con-rip">Router 5 con RIP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#router-6-con-rip">Router 6 con RIP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#router-2-con-rip">Router 2 con RIP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#router-4-con-rip">Router 4 con RIP</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#router-6-con-rip">Router 6 con RIP</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#diagnostico-de-incidencias-en-rippv2">Diagnóstico de incidencias en RIPpv2.</a></li>
