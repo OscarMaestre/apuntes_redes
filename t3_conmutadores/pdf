@@ -1,0 +1,59 @@
+<h1 id="experimentos-con-switches">Experimentos con switches</h1>
+<p>Para esta práctica se ha proporcionado un switch Cisco a cada mesa de trabajo (3-4 equipos). Comprueba lo siguiente: * Debes tener 3 máquinas virtuales que puedan ejecutar Windows y que tengan instalado Putty y TftpServer. Todas las máquinas deben tener una carpeta compartida con el anfitrión. Si es posible lo ideal es tener cada máquina en un equipo distintos. * Durante el ejercicio llamaremos a estas máquinas “administrador”, “oficinista1” y “oficinista2”. La máquina donde ejecutas Putty conectado al switch será “administrador”. * Las tres máquinas virtuales deben tener la tarjeta de red en modo puente y conectada al cable de red del aula. Si estás usando portátiles recuerda que en general los drivers no permiten conectar la tarjeta puente de la máquina virtual con la tarjeta inalámbrica del equipo. * Conecta los cables desde los ordenadores al switch. Esto significa que tendrás que sacar los cables de las rosetas y conectarlos de los ordenadores al switch. * En la práctica a veces habrá que contactar con el switch por Telnet y otras por SSH. Asegúrate de que en Putty eliges el modo correcto. * Si algo no te funciona, <em>intenta resolverlo o al menos averiguar la causa del problema.</em> No te limites a “como no me funcionaba me he puesto a hacer otra cosa/leer el Marca/charlar”. No pasa nada si algo no sale, pero por favor</p>
+<h1 id="práctica">Práctica</h1>
+<p>En los puntos siguientes se te pide que pongas en práctica tareas básicas con el switch. <strong>No te limites a copiar y pegar comandos</strong> Lo importante no es conseguir hacer todo sino experimentar con un switch real y familiarizarse con el método de trabajo. Todo lo que tienes que hacer debe hacerse dentro de la máquina virtual. Apunta el nombre del switch que se te ha entregado por si se puede continuar el trabajo otro día.</p>
+<p>No se debe ejecutar <code>copy running-config startup-config</code> en ninguno de los ejercicios. Si crees que lo has hecho por error, por favor comunícalo al profesor.</p>
+<h2 id="conectividad-básica">Conectividad básica</h2>
+<p>Configura las 3 máquinas virtuales para que usen direcciones como 192.168.xxx.0/24. <strong>No</strong> se necesita poner puerta de enlace ni servidores DNS. Comprueba que las máquinas pueden “verse” entre ellas usando <code>ping</code>.</p>
+<h2 id="establecimiento-de-sesión">Establecimiento de sesión</h2>
+<p>Accede al switch que se te ha dado usando Telnet. Navega por los distintos modos y comprueba que todo funciona igual que en el simulador. Muestra la configuración de ejecución. Si no lo consigues comprueba que tu máquina virtual con Putty tiene una IP que esté en el mismo prefijo de red que tiene el switch. ¿Pueden hacerse ping entre ellas las máquinas 192.168.xxx.0/?</p>
+<h2 id="copia-de-seguridad-de-la-configuración">Copia de seguridad de la configuración</h2>
+<p>Haz una copia de seguridad de la configuración transfiriéndola a alguna de las máquinas virtuales que ejecute el servidor TFTP. Guarda bien el archivo de copia, se usará despues.</p>
+<h2 id="cambio-de-ip">Cambio de IP</h2>
+<p>Modifica la IP del switch a una 172.16.xxx.0/24. ¿Qué ocurre cuando lo haces?</p>
+<h2 id="clave-al-modo-enable">Clave al modo enable</h2>
+<ol type="1">
+<li>Asigna al modo administrador la clave “cisco”. Por favor <strong>no uses otra contraseña</strong>, usa exactamente la clave “cisco” (sin comillas, en minúsculas).</li>
+<li>Comprueba que efectivamente se pide clave al pasar de modo “usuario” a modo administrador.</li>
+<li>Quita la clave al terminar y comprueba que efectivamente ya no la pide.</li>
+</ol>
+<h2 id="clave-al-acceso-por-telnet">Clave al acceso por telnet</h2>
+<ol type="1">
+<li>Pon la clave “cisco” al modo Telnet (en algunas versiones de Cisco IOS el comando “login” es a veces “login local”.</li>
+<li>Cierra la sesión y vuelve a abrirla. Comprueba que ahora te pide una clave y que efectivamente al ponerla puedes entrar.</li>
+<li>Despues de comprobarlo quita la clave, cierra la sesión y comprueba que efectivamente ya no la pide.</li>
+</ol>
+<h2 id="clave-al-modo-ssh">Clave al modo SSH</h2>
+<ol type="1">
+<li>Configura SSH en el switch para que tenga el usuario <code>admin</code> y la clave <code>cisco</code>. Puedes elegir el nombre de dominio <code>practicaswitches.com</code>.</li>
+<li>Cierra la sesión Putty e inicia una sesión SSH con el switch y comprueba que funciona.</li>
+<li>Quita todo lo relativo a SSH. Cierra la sesión y comprueba que ahora ya no es posible acceder por SSH</li>
+</ol>
+<h2 id="cambio-de-ip-ii">Cambio de IP (II)</h2>
+<p>Vuelve a dejar la IP y máscara que tenía el switch. Recuerda que /24 significa 255.255.255.0 y que /16 significa 255.255.0.0</p>
+<h2 id="vlans">VLANs</h2>
+<ol type="1">
+<li>Fíjate bien en los puertos donde están conectados los ordenadores “oficinista1” y “oficinista2”.</li>
+<li>Comprueba que ambas máquinas pueden hacerse ping.</li>
+<li>Crea las VLAN 100 y 200 con los respectivos nombres CONTABLES y GERENTES.</li>
+<li>Asigna al puerto de “oficinista1” la VLAN 100 y a “oficinista2” la VLAN 200. Comprueba que <code>ping</code> ha dejado de funcionar.</li>
+<li>Asigna a “oficinista1” la VLAN 200 y comprueba que los <code>ping</code> vuelven a funcionar.</li>
+</ol>
+<h2 id="enlaces-troncales">Enlaces troncales</h2>
+<ol type="1">
+<li>Utiliza un cable para conectar tu switch al switch de otro grupo.</li>
+<li>Poned en las máquinas de vuestros oficinistas las IP 172.25.xxx.xxx/24. Comprobad que todos pueden hacer ping a todos.</li>
+<li>Cada grupo debe poner a su “oficinista1” en la VLAN 100 y a “oficinista2” en la VLAN 200.</li>
+<li>Cada grupo debe configurar el puerto correcto con el modo correcto “trunk” y permitiendo las VLAN 100 y 200</li>
+<li>Comprueba que ahora solo funcionan los ping entre ambos “oficinista1” y entre ambos “oficinista2” pero ningun “oficinista1” puede hacer “ping” a “oficinista2”</li>
+</ol>
+<h2 id="vtp">VTP</h2>
+<ol type="1">
+<li>Uno de los grupos pondrá su switch modo <code>vtp server</code>. Podéis usar como clave <code>vtp1234</code></li>
+<li>El otro grupo debe poner su switch en modo <code>vtp client</code></li>
+<li>Comprobad que cuando el servidor crea una VLAN nueva el cliente la recibe</li>
+<li>Desactivad los modos vtp en ambos switches y dejadlo todo como estaba.</li>
+</ol>
+<h1 id="al-terminar">Al terminar</h1>
+<p>Por favor, asegúrate de que el switch que has recibido: * No tiene puesta ninguna clave. * Tiene puesta la misma IP que aparece en la etiqueta. * No está activo nada de lo que hemos practicado en clase. Solo debería estar la IP de gestión que aparece en la etiqueta y con la misma máscara. Gracias por tu colaboración</p>
+<p>Vuelve a dejar los cables como estaban y comprueba que el equipo en el que estabas sentado tiene Internet.</p>
