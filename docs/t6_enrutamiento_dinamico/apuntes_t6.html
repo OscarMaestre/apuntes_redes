@@ -862,13 +862,13 @@ asignable (239)</p></td>
 </div>
 <p>Y llegado este punto, el área derecha también funciona y permite que la información fluya dentro de esa zona. Sin embargo <strong>¿qué ocurre si intentamos hacer ping desde un ordenador del área izquierda a uno del área derecha?</strong> Ocurre que <strong>NO FUNCIONA</strong></p>
 <p>Como ocurre que los router centrales usan rutas estáticas necesitamos que dicha información sobre rutas estáticas <strong>SE PROPAGUE</strong> para que otros router en la red usen los router 5 y 6 como routers por defecto. Para ello, hacemos lo siguiente en ambos router 5 y 6:</p>
-<blockquote>
-<div><p>enable
-configure terminal
-router rip
-version 2
-redistribute static</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
+<span class="n">configure</span> <span class="n">terminal</span>
+<span class="n">router</span> <span class="n">rip</span>
+<span class="n">version</span> <span class="mi">2</span>
+<span class="n">redistribute</span> <span class="n">static</span>
+</pre></div>
+</div>
 </section>
 <section id="el-comando-passive-interface-interfaz">
 <h3>El comando <code class="docutils literal notranslate"><span class="pre">passive-interface</span> <span class="pre">&lt;interfaz&gt;</span></code><a class="headerlink" href="#el-comando-passive-interface-interfaz" title="Link to this heading"></a></h3>

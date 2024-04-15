@@ -475,7 +475,7 @@ Comandos necesarios::
 
 Y llegado este punto, el área derecha también funciona y permite que la información fluya dentro de esa zona. Sin embargo **¿qué ocurre si intentamos hacer ping desde un ordenador del área izquierda a uno del área derecha?** Ocurre que **NO FUNCIONA**
 
-Como ocurre que los router centrales usan rutas estáticas necesitamos que dicha información sobre rutas estáticas **SE PROPAGUE** para que otros router en la red usen los router 5 y 6 como routers por defecto. Para ello, hacemos lo siguiente en ambos router 5 y 6:
+Como ocurre que los router centrales usan rutas estáticas necesitamos que dicha información sobre rutas estáticas **SE PROPAGUE** para que otros router en la red usen los router 5 y 6 como routers por defecto. Para ello, hacemos lo siguiente en ambos router 5 y 6::
 
    enable
    configure terminal
