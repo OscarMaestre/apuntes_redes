@@ -483,12 +483,23 @@ Como ocurre que los router centrales usan rutas estáticas necesitamos que dicha
    version 2
    redistribute static
 
-Mostrar el uso de estos comandos:
+
+El comando ``passive-interface <interfaz>`` 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Si ponemos Packet Tracer en modo simulación veremos que los router hacen anuncios *por todas las redes que tienen conectadas.* Sin embargo nosotros sabemos que en algunas interfaces no hay otros router conectados. Si deseamos evitar tráfico innecesario en la red podemos indicar al router que una cierta interfaz actuará en **modo pasivo y que por tanto no enviará anuncios por dicha tarjeta.** Esto mejora el rendimiento general de la red.
+
+El comando ``redistribute static`` 
+------------------------------------------
+
+En la vida real un router no tiene por qué tener todas las rutas configuradas dinámicamente. Es posible que en algunos casos el administrador haya configurado rutas estáticas. Si no hacemos nada, el router no redistribuirá dichas rutas estáticas y por tanto **puede haber routers** que no encuentren los caminos correctos a ciertas redes. 
+
+El comando ``redistribute static`` ordena al router que también anuncie dichas rutas estáticas a otros nodos. Como nota curiosa, no solo pueden redistribuirse rutas estáticas sino también información de otros protocolos de enrutamiento.
 
 
-* ``passive-interface <interfaz>`` 
-* ``redistribute static`` 
-* ``ip router 0.0.0.0 0.0.0.0 <interfaz>`` 
+El comando ``ip route 0.0.0.0 0.0.0.0 <interfaz o IP>`` 
+--------------------------------------------------------
+Lo conocemos de fechas anteriores. Se utiliza para indicar una ruta por defecto.
 
 Diagnóstico de incidencias en RIPpv2.
 ----------------------------------------------------------------------------
@@ -503,6 +514,14 @@ Los protocolos de enrutamiento estado-enlace
 
 Configuración y administración en OSPF.
 ----------------------------------------------------------------------------
+
+Proceso básico
+~~~~~~~~~~~~~~~~~~~~~
+
+En esencia el proceso de funcionamiento es muy parecido al de RIP. Solo usaremos estos comandos:
+
+* El comando ``router ospf <número de proceso>`` activará el enrutamiento OSPF.
+* El comando ``network <ip de red> <wildcard> <area>`` indica al router la red o redes que debe anunciarse. Hay que fijarse bien en que *OSPF utiliza wildcards y no máscaras de red estándar*
 
 Áreas
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
