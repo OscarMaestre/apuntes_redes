@@ -884,6 +884,11 @@ asignable (239)</p></td>
 <h2>El comando <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">route</span> <span class="pre">0.0.0.0</span> <span class="pre">0.0.0.0</span> <span class="pre">&lt;interfaz</span> <span class="pre">o</span> <span class="pre">IP&gt;</span></code><a class="headerlink" href="#el-comando-ip-route-0-0-0-0-0-0-0-0-interfaz-o-ip" title="Link to this heading"></a></h2>
 <p>Lo conocemos de fechas anteriores. Se utiliza para indicar una ruta por defecto.</p>
 </section>
+<section id="adaptabilidad-en-ospf">
+<h2>Adaptabilidad en OSPF<a class="headerlink" href="#adaptabilidad-en-ospf" title="Link to this heading"></a></h2>
+<p>Una línea serie (llamadas «Serial0/1/0» o similar en Packet Tracer) puede modificarse parq que funcione a otras velocidades. Por defecto funcionan a 2.000.000 bps o 2Mbps. En toda línea serie hay una que marca la velocidad de reloj y podemos modificar la velocidad de dicho reloj usando el comando <code class="docutils literal notranslate"><span class="pre">clock</span> <span class="pre">rate</span></code>.</p>
+<p>Si entramos en una línea serie, reducimos la velocidad usando por ejemplo <code class="docutils literal notranslate"><span class="pre">clock</span> <span class="pre">rate</span> <span class="pre">56000</span></code> e informamos a los procesos de enrutamiento de que el ancho de banda ha cambiado con un comando <code class="docutils literal notranslate"><span class="pre">bandwidth</span> <span class="pre">56</span></code> (el ancho de banda se escribe en kbps) y esperamos a que OSPF se actualice, podremos ver como un router elige un camino más largo. Puede usarse el comando de administrador <code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">ip</span> <span class="pre">ospf</span> <span class="pre">interfaces</span></code> para ver el coste que OSPF asigna a una línea.</p>
+</section>
 <section id="diagnostico-de-incidencias-en-rippv2">
 <h2>Diagnóstico de incidencias en RIPpv2.<a class="headerlink" href="#diagnostico-de-incidencias-en-rippv2" title="Link to this heading"></a></h2>
 <p>Lo habitual es que todo funcione correctamente. Sin embargo, existen varios comandos que nos van a permitir comprobar si hay errores de cualquier tipo:</p>
@@ -1022,6 +1027,7 @@ asignable (239)</p></td>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#el-comando-redistribute-static">El comando <code class="docutils literal notranslate"><span class="pre">redistribute</span> <span class="pre">static</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#el-comando-ip-route-0-0-0-0-0-0-0-0-interfaz-o-ip">El comando <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">route</span> <span class="pre">0.0.0.0</span> <span class="pre">0.0.0.0</span> <span class="pre">&lt;interfaz</span> <span class="pre">o</span> <span class="pre">IP&gt;</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adaptabilidad-en-ospf">Adaptabilidad en OSPF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#diagnostico-de-incidencias-en-rippv2">Diagnóstico de incidencias en RIPpv2.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#los-protocolos-de-enrutamiento-estado-enlace">Los protocolos de enrutamiento estado-enlace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configuracion-y-administracion-en-ospf">Configuración y administración en OSPF.</a><ul>

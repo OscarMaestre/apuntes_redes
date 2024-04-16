@@ -501,6 +501,14 @@ El comando ``ip route 0.0.0.0 0.0.0.0 <interfaz o IP>``
 --------------------------------------------------------
 Lo conocemos de fechas anteriores. Se utiliza para indicar una ruta por defecto.
 
+
+Adaptabilidad en OSPF
+-----------------------------
+Una línea serie (llamadas "Serial0/1/0" o similar en Packet Tracer) puede modificarse parq que funcione a otras velocidades. Por defecto funcionan a 2.000.000 bps o 2Mbps. En toda línea serie hay una que marca la velocidad de reloj y podemos modificar la velocidad de dicho reloj usando el comando ``clock rate``.
+
+Si entramos en una línea serie, reducimos la velocidad usando por ejemplo ``clock rate 56000`` e informamos a los procesos de enrutamiento de que el ancho de banda ha cambiado con un comando ``bandwidth 56`` (el ancho de banda se escribe en kbps) y esperamos a que OSPF se actualice, podremos ver como un router elige un camino más largo. Puede usarse el comando de administrador ``show ip ospf interfaces`` para ver el coste que OSPF asigna a una línea.
+
+
 Diagnóstico de incidencias en RIPpv2.
 ----------------------------------------------------------------------------
 Lo habitual es que todo funcione correctamente. Sin embargo, existen varios comandos que nos van a permitir comprobar si hay errores de cualquier tipo:
