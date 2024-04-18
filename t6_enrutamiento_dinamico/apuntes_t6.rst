@@ -496,6 +496,10 @@ En la vida real un router no tiene por qué tener todas las rutas configuradas d
 
 El comando ``redistribute static`` ordena al router que también anuncie dichas rutas estáticas a otros nodos. Como nota curiosa, no solo pueden redistribuirse rutas estáticas sino también información de otros protocolos de enrutamiento.
 
+.. WARNING::
+
+   El comando ``redistribute static`` en OSPF solo acepta redes "con clase". Para que OSPF redistribuya rutas por defecto se usa ``default-information originate``
+
 
 El comando ``ip route 0.0.0.0 0.0.0.0 <interfaz o IP>`` 
 --------------------------------------------------------

@@ -879,6 +879,10 @@ asignable (239)</p></td>
 <h2>El comando <code class="docutils literal notranslate"><span class="pre">redistribute</span> <span class="pre">static</span></code><a class="headerlink" href="#el-comando-redistribute-static" title="Link to this heading"></a></h2>
 <p>En la vida real un router no tiene por qué tener todas las rutas configuradas dinámicamente. Es posible que en algunos casos el administrador haya configurado rutas estáticas. Si no hacemos nada, el router no redistribuirá dichas rutas estáticas y por tanto <strong>puede haber routers</strong> que no encuentren los caminos correctos a ciertas redes.</p>
 <p>El comando <code class="docutils literal notranslate"><span class="pre">redistribute</span> <span class="pre">static</span></code> ordena al router que también anuncie dichas rutas estáticas a otros nodos. Como nota curiosa, no solo pueden redistribuirse rutas estáticas sino también información de otros protocolos de enrutamiento.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>El comando <code class="docutils literal notranslate"><span class="pre">redistribute</span> <span class="pre">static</span></code> en OSPF solo acepta redes «con clase». Para que OSPF redistribuya rutas por defecto se usa <code class="docutils literal notranslate"><span class="pre">default-information</span> <span class="pre">originate</span></code></p>
+</div>
 </section>
 <section id="el-comando-ip-route-0-0-0-0-0-0-0-0-interfaz-o-ip">
 <h2>El comando <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">route</span> <span class="pre">0.0.0.0</span> <span class="pre">0.0.0.0</span> <span class="pre">&lt;interfaz</span> <span class="pre">o</span> <span class="pre">IP&gt;</span></code><a class="headerlink" href="#el-comando-ip-route-0-0-0-0-0-0-0-0-interfaz-o-ip" title="Link to this heading"></a></h2>
