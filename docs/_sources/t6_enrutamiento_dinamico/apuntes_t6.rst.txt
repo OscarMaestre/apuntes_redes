@@ -104,7 +104,7 @@ Estos protocolos suelen llamarse a veces IGPs (Interior Gateway Protocols)
 
 Protocolos de enrutamiento externo
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-También son dinámicos pero están pensados para **interconectar nuestro AS con otros AS**.Estos protocolos suelen llamarse a veces EGPs (Exterior Gateway Protocols)
+También son dinámicos pero están pensados para **interconectar nuestro AS con otros AS**.Estos protocolos suelen llamarse a veces EGPs (Exterior Gateway Protocols). Más abajo veremos como funciona BGP, el protocolo EGP por excelencia.
 
 
 El enrutamiento sin clase.
@@ -523,6 +523,11 @@ Lo habitual es que todo funcione correctamente. Sin embargo, existen varios coma
 
 Los protocolos de enrutamiento estado-enlace
 ----------------------------------------------------------------------------
+Son protocolos de enrutamiento dinámico que **no utilizan el recuento de saltos** para determinar cual es el mejor camino, sino que **utilizan el estado del enlace**, es decir, **su ancho de banda**. Este mecanismo es, de media, mucho mejor que el "vector distancia" usado por los protoclos que hemos visto antes. 
+
+
+Con toda probabilidad el protolo de estado-enlace más usado es OSPF.
+
 
 Configuración y administración en OSPF.
 ----------------------------------------------------------------------------
@@ -587,6 +592,14 @@ Podemos usar **exactamente los mismos comandos que hemos visto antes** y que vol
 * ``debug ip routing`` Este comando activa el modo depuración. Una vez lanzado, podremos ver los distintos mensajes de actualización de rutas que afectan a este router (lo cual nos permitirá ver si otros router o este mismo están propagando rutas incorrectas)
 * ``show ip route`` Al lanzarlo veremos en la consola las distintas rutas que este router conoce. Además se nos informará de si son rutas aprendidas, configuradas estáticamente y si tenemos interfaces conectadas a dichas redes.
 * ``show log`` Muestra el registro general de actividad lo que puede permitir detectar otros errores que sin ser problemas de enrutamiento sí den lugar a errores de comunicación.
+
+Configuración  y administración de BGP
+------------------------------------------
+BGP (Border Gateway Protocol) es el principal protocolo EGP. El proceso es muy sencillo pero con un cambio importante.
+
+1. Todos los router deben anunciar las redes con equipos pero **no deben anunciar las redes de interconexión con otros routers.** Esto se hace con el comando ``network <dirección_ip> mask <máscara_de_red>``. Obsérvese que volvemos a usar máscaras de red y no *wildcards.*
+2. Cada router debe tomar nota de la IP de sus routers vecinos e identificarlos con el comando ``neighbor <ip_vecino> remote-as <número_de_AS>``
+3. Una vez hecho esto, BGP empezará a funcionar y podremos comprobarlo usando el comando ``show ip bgp``.
 
 
 Configuración y administración de protocolos de enrutamiento propietarios.

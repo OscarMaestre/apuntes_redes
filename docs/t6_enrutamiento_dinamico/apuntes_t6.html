@@ -166,7 +166,7 @@ que además está CLARAMENTE DEFINIDA.</p>
 </section>
 <section id="protocolos-de-enrutamiento-externo">
 <h3>Protocolos de enrutamiento externo<a class="headerlink" href="#protocolos-de-enrutamiento-externo" title="Link to this heading"></a></h3>
-<p>También son dinámicos pero están pensados para <strong>interconectar nuestro AS con otros AS</strong>.Estos protocolos suelen llamarse a veces EGPs (Exterior Gateway Protocols)</p>
+<p>También son dinámicos pero están pensados para <strong>interconectar nuestro AS con otros AS</strong>.Estos protocolos suelen llamarse a veces EGPs (Exterior Gateway Protocols). Más abajo veremos como funciona BGP, el protocolo EGP por excelencia.</p>
 </section>
 </section>
 <section id="el-enrutamiento-sin-clase">
@@ -904,6 +904,8 @@ asignable (239)</p></td>
 </section>
 <section id="los-protocolos-de-enrutamiento-estado-enlace">
 <h2>Los protocolos de enrutamiento estado-enlace<a class="headerlink" href="#los-protocolos-de-enrutamiento-estado-enlace" title="Link to this heading"></a></h2>
+<p>Son protocolos de enrutamiento dinámico que <strong>no utilizan el recuento de saltos</strong> para determinar cual es el mejor camino, sino que <strong>utilizan el estado del enlace</strong>, es decir, <strong>su ancho de banda</strong>. Este mecanismo es, de media, mucho mejor que el «vector distancia» usado por los protoclos que hemos visto antes.</p>
+<p>Con toda probabilidad el protolo de estado-enlace más usado es OSPF.</p>
 </section>
 <section id="configuracion-y-administracion-en-ospf">
 <h2>Configuración y administración en OSPF.<a class="headerlink" href="#configuracion-y-administracion-en-ospf" title="Link to this heading"></a></h2>
@@ -966,6 +968,15 @@ asignable (239)</p></td>
 <li><p><code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">ip</span> <span class="pre">route</span></code> Al lanzarlo veremos en la consola las distintas rutas que este router conoce. Además se nos informará de si son rutas aprendidas, configuradas estáticamente y si tenemos interfaces conectadas a dichas redes.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">log</span></code> Muestra el registro general de actividad lo que puede permitir detectar otros errores que sin ser problemas de enrutamiento sí den lugar a errores de comunicación.</p></li>
 </ul>
+</section>
+<section id="configuracion-y-administracion-de-bgp">
+<h2>Configuración  y administración de BGP<a class="headerlink" href="#configuracion-y-administracion-de-bgp" title="Link to this heading"></a></h2>
+<p>BGP (Border Gateway Protocol) es el principal protocolo EGP. El proceso es muy sencillo pero con un cambio importante.</p>
+<ol class="arabic simple">
+<li><p>Todos los router deben anunciar las redes con equipos pero <strong>no deben anunciar las redes de interconexión con otros routers.</strong> Esto se hace con el comando <code class="docutils literal notranslate"><span class="pre">network</span> <span class="pre">&lt;dirección_ip&gt;</span> <span class="pre">mask</span> <span class="pre">&lt;máscara_de_red&gt;</span></code>. Obsérvese que volvemos a usar máscaras de red y no <em>wildcards.</em></p></li>
+<li><p>Cada router debe tomar nota de la IP de sus routers vecinos e identificarlos con el comando <code class="docutils literal notranslate"><span class="pre">neighbor</span> <span class="pre">&lt;ip_vecino&gt;</span> <span class="pre">remote-as</span> <span class="pre">&lt;número_de_AS&gt;</span></code></p></li>
+<li><p>Una vez hecho esto, BGP empezará a funcionar y podremos comprobarlo usando el comando <code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">ip</span> <span class="pre">bgp</span></code>.</p></li>
+</ol>
 </section>
 <section id="configuracion-y-administracion-de-protocolos-de-enrutamiento-propietarios">
 <h2>Configuración y administración de protocolos de enrutamiento propietarios.<a class="headerlink" href="#configuracion-y-administracion-de-protocolos-de-enrutamiento-propietarios" title="Link to this heading"></a></h2>
@@ -1046,6 +1057,7 @@ asignable (239)</p></td>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#diagnostico-de-incidencias-en-ospf">Diagnóstico de incidencias en OSPF.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuracion-y-administracion-de-bgp">Configuración  y administración de BGP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configuracion-y-administracion-de-protocolos-de-enrutamiento-propietarios">Configuración y administración de protocolos de enrutamiento propietarios.</a></li>
 </ul>
 </li>
