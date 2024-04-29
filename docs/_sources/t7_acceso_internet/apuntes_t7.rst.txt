@@ -51,10 +51,15 @@ NAT inverso
 Se denomina así al proceso por el cual un router recibe un paquete entrante y modifica la IP de destino para redirigirlo a otra IP del interior de la red.
 
 
-Configuración de NAT.
+Configuración de NAT de sobrecarga o PAT.
 ----------------------------------------------------------------------------
 
-Se mencionó en el tema 5, "Administración de routers"
+El proceso básico es el siguiente:
+
+1. Indicar las direcciones que se traducirán con ``access-list <número> permit <origen> <wildcard>``
+2. Permitir la traducción metiendo esa lista y la tarjeta interna correspondiente con ``ip nat inside source list <número ACL> interface <interfaz> overload``.
+3. Identificar la interfaz interna con ``ip nat inside``.
+4. Identificar la interfaz externa con ``ip nat outside``.
 
 Diagnostico de incidencias de NAT.
 ----------------------------------------------------------------------------
