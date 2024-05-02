@@ -57,7 +57,7 @@ Configuración de NAT de sobrecarga o PAT.
 El proceso básico es el siguiente:
 
 1. Indicar las direcciones que se traducirán con ``access-list <número> permit <origen> <wildcard>``
-2. Permitir la traducción metiendo esa lista y la tarjeta interna correspondiente con ``ip nat inside source list <número ACL> interface <interfaz> overload``.
+2. Permitir la traducción metiendo esa lista y la tarjeta externa correspondiente con ``ip nat inside source list <número ACL> interface <interfaz> overload``.
 3. Identificar la interfaz interna con ``ip nat inside``.
 4. Identificar la interfaz externa con ``ip nat outside``.
 
@@ -66,9 +66,6 @@ Diagnostico de incidencias de NAT.
 En router Cisco solo requiere usar el comando "show logging", ya se ha mencionado.
 
 
-Configuración de PAT.
-----------------------------------------------------------------------------
-Se vió como hacer el NAT en el tema 5.
 
 
 Diagnóstico de fallos de PAT.
