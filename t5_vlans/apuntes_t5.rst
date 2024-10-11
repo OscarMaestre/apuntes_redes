@@ -157,327 +157,6 @@ En el modo de configuración global tenemos que hacer esto:
 3. Configurar el modo con ``vtp mode client`` o ``vtp mode server``
 4. Habilitar los interfaces troncales correspondientes.
 
-Ejercicio completo con VLANs y VTP
---------------------------------------
-
-Observa la red de la figura:
-
-.. figure:: img/04-vlans-y-vtp.png
-
-Las conexiones son las siguientes:
-
-* Puerto 0/1 de Nucleo con puerto 0/1 de Distribucion1.
-* Puerto 0/2 de Nucleo con puerto 0/2 de Distribucion2.
-* Puerto 0/3 de Nucleo con puerto 0/1 de Distribucion3.
-* Puerto 0/4 de Distribucion1 con puerto 0/4 de Acceso1.
-* Puerto 0/5 de Distribucion1 con puerto 0/5 de Acceso2.
-* Puerto 0/6 de Distribucion2 con puerto 0/6 de Acceso3.
-* Puerto 0/7 de Distribucion2 con puerto 0/7 de Acceso4.
-* Puerto 0/8 de Distribucion1 con puerto 0/8 de Acceso5.
-* Puerto 0/9 de Distribucion1 con puerto 0/9 de Acceso6.
-* PC 0 va conectado a puerto 0/1 de Acceso1.
-* PC 1 va conectado a puerto 0/2 de Acceso1.
-* PC 2 va conectado a puerto 0/1 de Acceso2.
-* PC 3 va conectado a puerto 0/2 de Acceso2.
-* PC 4 va conectado a puerto 0/1 de Acceso3.
-* PC 5 va conectado a puerto 0/2 de Acceso3.
-* PC 6 va conectado a puerto 0/1 de Acceso4.
-* PC 7 va conectado a puerto 0/2 de Acceso4.
-* PC 8 va conectado a puerto 0/1 de Acceso5.
-* PC 9 va conectado a puerto 0/2 de Acceso5.
-* PC 10 va conectado a puerto 0/1 de Acceso6.
-* PC 11 va conectado a puerto 0/2 de Acceso6.
-* Puerto 0/11 de Acceso1 va conectado a puerto 0/11 de Acceso2.
-* Puerto 0/12 de Acceso2 va conectado a puerto 0/12 de Acceso3.
-* Puerto 0/12 de Acceso1 va conectado a puerto 0/12 de Acceso5.
-* Puerto 0/12 de Acceso5 va conectado a puerto 0/13 de Acceso6.
-
-En esta red se desea lo siguiente:
-
-1. Usando VTP se desea tener centralizada la información sobre VLANs en un único switch, en este caso el switch Nucleo. El dominio de la empresa es ``empresa.com`` y la clave que se va a usar es ``vtpadmin1234``.
-2. La empresa va a tener estas VLANS con estos nombres: 10 (GESTIONVTP), 100 (USUARIOS), 200 (TECNICOS), 300 (GERENCIA)
-3. El switch Acceso2 va a ser gestionado por sus propios técnicos y se desea que IGNORE por completo toda la información sobre VLANS.
-4. Dentro de la VLAN USUARIOS están los ordenadores 0 y 2.
-5. Dentro de la VLAN TECNICOS están los ordenadores 1, 5 y 9.
-6. Dentro de la VLAN GERENCIA están los ordenadores 6 y 8.
-7. La empresa dispone de la red 10.0.0.0/8 para configurar direcciones IP y se desea que la VLAN USUARIOS esté en la red 10.1.0.0/16, que la VLAN TECNICOS esté en la 10.2.0.0/16 y que la VLAN GERENCIA esté en la 10.3.0.0/16
-
-Configurar las direcciones IP, máscaras, enlaces de acceso, enlaces troncales y modos VTP para conseguir que la conectividad funcione según los requisitos pedidos.
-
-Solución
-~~~~~~~~~~~~~
-
-Empecemos por las direcciones IP.
-
-* Las direcciones de USUARIOS deben ser algo como 10.1.xxx.xxx con máscara 255.255.0.0. Usaremos las IP 10.1.0.1 y la 10.1.0.2 para los dos ordenadores de esta VLAN.
-* Para TECNICOS usaremos las IP 10.2.0.1 y 10.2.0.2. También llevarán la máscara 255.255.0.0
-* Para GERENCIA usaremos las IP 10.3.0.1 y 10.3.0.2 con máscara 255.255.0.0
-
-Una vez hecho esto, los distintos ordenadores se pueden hacer ping solo con los de su subred. En este punto cabe preguntarse **¿para qué queremos entonces las VLAN?**.
-
-Recordemos que al formar VLANs los distintos grupos de ordenadores quedan *totalmente aislados*. Esto significa que 
-
-* Los de la VLAN USUARIOS **no reciben las difusiones Ethernet de ninguna otra VLAN** con lo que el rendimiento mejora. Recordemos que hemos dividido un dominio de colisiones grande en varios dominios de colisión pequeños.
-* La seguridad también mejora porque nadie puede recibir tramas ni mensajes IP de ningún otra VLAN. 
-
-Con solo una cualquiera de estas ventajas ya tendríamos suficiente para justificar la implantación de las VLANs, pero el hecho de obtener las dos hace que esta tecnología sea mucho más interesante aún.
-
-Analicemos ahora las VLANs y los enlaces. Empecemos por ver los equipos 0 y 2, que pertenecen a la VLAN 100 (USUARIOS). 
-
-.. figure:: img/04b-vlans-y-vtp.png
-
-Los puertos de los PC van a ser de acceso y van a usar la VLAN 100, pero ¿qué puertos vamos a poner como troncales usando la VLAN 100?
-
-1. Una posibilidad sería poner como troncal para la VLAN 100 los enlaces 1 y 3. Esto implicaría que todo el tráfico iría primero al switch de distribución y si el PC0 quisiese pasar algo al 2 no podría hacerlo directamente.
-2. Podemos decidir poner troncal los enlaces 2 y 3. De esta manera no todo el tráfico va al switch de distribución. Lo malo es que esta solución hace que cuando el ordenador PC0 quiere salir siempre va a tener que dar un salto de más.
-3. Podríamos decidir poner troncal los enlaces 1 y 2. Esto es simplemente lo mismo que el punto anterior pero desde otro punto de vista.
-
-En realidad, debemos recordar que tenemos un gran aliado: el protocolo STP. Este protocolo resolverá automáticamente los ciclos por lo que en realidad la mejor solución sería **poner los tres enlaces 1,2 y 3 como troncales con la 10 y manipular la prioridad del switch Distribución1 para que tenga una prioridad mejor. Así, el switch Distribucion1 conseguirá ser elegido como raíz antes que los de acceso**. STP decidirá cerrar un enlace para la VLAN10 y volverá a activarlo si fuese necesario con lo que conseguimos una alta disponibilidad y además de manera automática.
-
-Por tanto, haremos lo siguiente (de momento, la configuración necesitará más comandos más adelante):
-
-1. En el switch Acceso1 el puerto 0/1 será de acceso para la VLAN 100. Los puertos 0/4 y 0/10 serán troncales para la VLAN 100.
-2. En el switch Acceso2 el puerto 0/1 será de acceso para la VLAN 100.  Los puertos 0/5 y 0/10 serán troncales para la 100.
-3. En el switch Distribucion1 los puertos 0/4, 0/5 y 0/1 serán troncales para la 100. Tengamos en cuenta que el 0/1 es el puerto que lleva hacia el switch de núcleo. Si no ponemos troncal con la 100 este puerto 0/1 los ordenadores *no serán capaces de salir al exterior.* Aunque en este ejemplo no lo hemos puesto para simplificar, el switch de núcleo va conectado a un router que nos dará conectividad con el exterior.
-
-En la figura siguiente hemos creado un esquema que facilite el identificar que VLANs transitan por qué puertos.
-
-.. figure:: img/04-vlans-y-vtp-solucion.png
-
-
-Para VTP haremos esto en el switch Nucleo 1::
-
-    enable
-    configure terminal
-    vtp domain empresa.com 
-    vtp password vtpadmin1234
-    vtp mode server
-    vlan 100
-    name USUARIOS
-    vlan 200
-    name TECNICOS
-    vlan 300
-    name GERENCIA
-    vlan 10
-    name GESTIONVTP
-
-En todos los demás switches **excepto "Acceso 2"** pondremos esto::
-
-    enable
-    configure terminal
-    vtp domain empresa.com 
-    vtp password vtpadmin1234
-    vtp mode client
-
-En "Acceso 2"::
-
-    enable
-    configure terminal
-    vtp domain empresa.com 
-    vtp password vtpadmin1234
-    vtp mode transparent
-
-Y en todos los switches habilitaremos todos los enlaces troncales con la VLAN 10 si deseamos que reciban por ese interfaz las actualizaciones VTP
-
-
-Switch Nucleo 1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Los comandos serían::
-
-    enable
-    configure terminal
-    interface fastethernet 0/1
-    switchport mode trunk
-    switchport trunk allowed vlan 100,200,10
-    exit
-    interface fastethernet 0/2
-    switchport mode trunk
-    switchport trunk allowed vlan 200,300,10
-    exit
-    interface fastethernet 0/3
-    switchport mode trunk
-    switchport trunk allowed vlan 300,10
-    exit
-
-Switch Distribución 1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Los comandos serían::
-
-    enable
-    configure terminal
-    interface fastethernet 0/1
-    switchport mode trunk
-    switchport trunk allowed vlan 100,200,10
-    exit
-    interface fastethernet 0/4
-    switchport mode trunk
-    switchport trunk allowed vlan 100,200,10
-    exit
-    interface fastethernet 0/5
-    switchport mode trunk
-    switchport trunk allowed vlan 100,200,10
-    exit
-
-Switch Distribución 2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Los comandos serían::
-
-    enable
-    configure terminal
-    interface fastethernet 0/2
-    switchport mode trunk
-    switchport trunk allowed vlan 200,300,10
-    exit
-    interface fastethernet 0/6
-    switchport mode trunk
-    switchport trunk allowed vlan 200,10
-    exit
-    interface fastethernet 0/7
-    switchport mode trunk
-    switchport trunk allowed vlan 300,10
-    exit
-
-Switch Distribución 3
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Los comandos serían::
-
-    enable
-    configure terminal
-    interface fastethernet 0/3
-    switchport mode trunk
-    switchport trunk allowed vlan 300,10
-    exit
-    interface fastethernet 0/8
-    switchport mode trunk
-    switchport trunk allowed vlan 300,10
-    exit
-    
-Switch Acceso 1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Los comandos serían::
-
-    enable
-    configure terminal
-    interface fastethernet 0/4
-    switchport mode trunk
-    switchport trunk allowed vlan 100,200,10
-    exit
-    interface fastethernet 0/10
-    switchport mode trunk
-    switchport trunk allowed vlan 100,200,10
-    exit
-    interface fastethernet 0/1
-    switchport mode access
-    switchport access vlan 100
-    exit
-    interface fastethernet 0/2
-    switchport mode access
-    switchport access vlan 202
-    exit
-    
-Switch Acceso 2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Los comandos serían::
-
-    enable
-    configure terminal
-    interface fastethernet 0/5
-    switchport mode trunk
-    switchport trunk allowed vlan 100,200,10
-    exit
-    interface fastethernet 0/10
-    switchport mode trunk
-    switchport trunk allowed vlan 100,200,10
-    exit
-    interface fastethernet 0/12
-    switchport mode trunk
-    switchport trunk allowed vlan 100,200,10
-    exit
-    interface fastethernet 0/1
-    switchport mode access
-    switchport access vlan 100
-    exit
-
-Switch Acceso 3
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Los comandos serían::
-
-    enable
-    configure terminal
-    interface fastethernet 0/6
-    switchport mode trunk
-    switchport trunk allowed vlan 200,10
-    exit
-    interface fastethernet 0/12
-    switchport mode trunk
-    switchport trunk allowed vlan 100,200,10
-    exit
-    interface fastethernet 0/2
-    switchport mode access
-    switchport access vlan 200
-    exit
-
-Switch Acceso 4
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Los comandos serían::
-
-    enable
-    configure terminal
-    interface fastethernet 0/7
-    switchport mode trunk
-    switchport trunk allowed vlan 300,10
-    exit
-    interface fastethernet 0/12
-    switchport mode trunk
-    switchport trunk allowed vlan 300,10
-    exit
-    interface fastethernet 0/1
-    switchport mode access
-    switchport access vlan 300
-    exit
-
-
-Switch Acceso 5
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Los comandos serían (se deja un enlace sin configurar, intentar en casa)::
-
-    enable
-    configure terminal
-    interface fastethernet 0/8
-    switchport mode trunk
-    switchport trunk allowed vlan 300,10
-    exit
-    interface fastethernet 0/12
-    switchport mode trunk
-    switchport trunk allowed vlan 300,10
-    exit
-    interface fastethernet 0/1
-    switchport mode access
-    switchport access vlan 300
-    exit
-    interface fastethernet 0/2
-    switchport mode access
-    switchport access vlan 200
-    exit
-
-Switch Acceso 6
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-En este ejercicio concreto, no tiene ninguna función.
-
-
-    
-    
-    
     
     
 
@@ -555,6 +234,132 @@ Para resolver esto debemos crear los interfaces de acceso correspondientes y lue
     switchport trunk allowed vlan 100,200
     no shutdown
     exit
+
+Etherchannel, VLANs y direcciones IP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Supongamos la siguientes configuración de red:
+
+.. figure:: img/07-etherchannel-vlans-ips.png
+
+Se nos pide:
+
+* Crear un Etherchannel entre los switches "Switch0" y "Switch1". Se deben usar los puertos 0/3,0/4 y 0/5 de "Switch0" y los 0/3, 0/4 y 0/5 de "Switch1"
+* Hay 3 VLANS. Una para contables, una para técnicos y otra para el sistema de copias de seguridad. La asignación es:
+
+    * 100 CONTABLES
+    * 200 TÉCNICOS
+    * 300 BACKUPS
+
+* Por algún motivo se desea que tanto CONTABLES como TECNICOS pertenezcan a la red 192.168.1.0/24. En el dibujo se muestra el último byte que debe tener cada ordenador.
+* Los nodos que pertenecen a la red BACKUPS van a tener direcciones 10.2.0.0/16. En concreto se desea que:
+
+    * Switch0 tenga la 10.2.1.0/16 (obsérvese que **es una dirección IP válida para un host**)
+    * Switch1 tenga la 10.2.1.1/16.
+    * Server debe tener la 10.2.0.101
+
+* Se desea que una vez hecho todo, se pueda enviar una copia de seguridad desde cada switch al "server".
+
+Etherchannel, VLANs y direcciones IP (resuelto)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Los pasos son estos:
+
+* Poner las IPs en los dispositivos.
+* Poner las VLAN correctas en los puertos de acceso correctos. En concreto:
+
+    * En Switch0 se debe poner la VLAN100 en el 0/1 y la VLAN200 en el 0/2
+    * En Switch1 se debe poner la VLAN200 en el 0/1, la VLAN100 en el 0/2 y la VLAN300 en el 0/6
+* Se debe construir el Etherchannel entre Switch0 y Switch1. Una vez creado el Etherchannel se debe permitir que ese Etherchannel acepte tráfico de las VLAN 100,200 y 300
+
+Así, los comandos para Switch0 serían estos::
+
+    !Crearemos las VLAN
+    enable
+    configure terminal
+    vlan 100
+    name CONTABLES
+    exit
+    vlan 200
+    name TECNICOS
+    exit
+    vlan 300
+    name BACKUPS
+    exit
+    !Asignamos las VLAN correctas a los puertos correctos
+    interface fastethernet 0/1
+    switchport mode access
+    switchport access vlan 100
+    exit
+    interface fastethernet 0/2
+    switchport mode access
+    switchport access vlan 200
+    exit
+    !Construimos el Etherchannel
+    interface range fastethernet 0/3-5
+    !Recordemos que no es obligatorio usar siempre el ID Etherchannel 1
+    channel-group 6 mode active
+    exit
+    !Ahora al Etherchannel le permitimos que mueva tráfico de la 100,200 **y 300**
+    interface port-channel 6
+    switchport mode trunk
+    switchport trunk allowed vlan 100,200,300
+    exit
+    !Por último ponemos la IP correcta en la conexión VLAN correcta
+    interface vlan 300
+    ip address 10.2.1.0 255.255.0.0
+    no shutdown
+
+
+
+Y para Switch1 serían estos::
+
+    !Creamos de nuevo las VLAN
+    enable
+    configure terminal
+    vlan 100
+    name CONTABLES
+    exit
+    vlan 200
+    name TECNICOS
+    exit
+    vlan 300
+    name BACKUPS
+    exit
+    interface fastethernet 0/1
+    switchport mode access
+    switchport access vlan 200
+    exit
+    interface fastethernet 0/2
+    switchport mode access
+    switchport access vlan 100
+    exit
+    interface fastethernet 0/6
+    switchport mode access
+    switchport access vlan 300
+    exit
+    !Lo hacemos de distinta manera solo por repasar
+    interface fastethernet 0/3
+    !Por favor, recordar poner el mismo ID en los interfaces
+    !que pertenezcan a los dos lados de un Etherchannel
+    channel-group 6 mode active
+    exit
+    interface fastethernet 0/4
+    channel-group 6 mode active
+    exit
+    interface fastethernet 0/5
+    channel-group 6 mode active
+    exit
+    !Igual que antes, ponemos el Etherchannel en modo trunk
+    interface port-channel 6
+    switchport mode trunk
+    switchport trunk allowed vlan 100,200,300
+    exit
+    !Recordemos poner la IP de gestión apropiada en la VLAN apropiada
+    interface vlan 300
+    ip address 10.2.1.1 255.255.0.0
+    no shutdown
+    exit
+
+
 
 Copias de seguridad
 ------------------------

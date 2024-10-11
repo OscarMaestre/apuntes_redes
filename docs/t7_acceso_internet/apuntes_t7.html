@@ -82,17 +82,19 @@
 <p>Se denomina así al proceso por el cual un router recibe un paquete entrante y modifica la IP de destino para redirigirlo a otra IP del interior de la red.</p>
 </section>
 </section>
-<section id="configuracion-de-nat">
-<h2>Configuración de NAT.<a class="headerlink" href="#configuracion-de-nat" title="Link to this heading"></a></h2>
-<p>Se mencionó en el tema 5, «Administración de routers»</p>
+<section id="configuracion-de-nat-de-sobrecarga-o-pat">
+<h2>Configuración de NAT de sobrecarga o PAT.<a class="headerlink" href="#configuracion-de-nat-de-sobrecarga-o-pat" title="Link to this heading"></a></h2>
+<p>El proceso básico es el siguiente:</p>
+<ol class="arabic simple">
+<li><p>Indicar las direcciones que se traducirán con <code class="docutils literal notranslate"><span class="pre">access-list</span> <span class="pre">&lt;número&gt;</span> <span class="pre">permit</span> <span class="pre">&lt;origen&gt;</span> <span class="pre">&lt;wildcard&gt;</span></code></p></li>
+<li><p>Permitir la traducción metiendo esa lista y la tarjeta externa correspondiente con <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">nat</span> <span class="pre">inside</span> <span class="pre">source</span> <span class="pre">list</span> <span class="pre">&lt;número</span> <span class="pre">ACL&gt;</span> <span class="pre">interface</span> <span class="pre">&lt;interfaz&gt;</span> <span class="pre">overload</span></code>.</p></li>
+<li><p>Identificar la interfaz interna con <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">nat</span> <span class="pre">inside</span></code>.</p></li>
+<li><p>Identificar la interfaz externa con <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">nat</span> <span class="pre">outside</span></code>.</p></li>
+</ol>
 </section>
 <section id="diagnostico-de-incidencias-de-nat">
 <h2>Diagnostico de incidencias de NAT.<a class="headerlink" href="#diagnostico-de-incidencias-de-nat" title="Link to this heading"></a></h2>
 <p>En router Cisco solo requiere usar el comando «show logging», ya se ha mencionado.</p>
-</section>
-<section id="configuracion-de-pat">
-<h2>Configuración de PAT.<a class="headerlink" href="#configuracion-de-pat" title="Link to this heading"></a></h2>
-<p>Se vió como hacer el NAT en el tema 5.</p>
 </section>
 <section id="diagnostico-de-fallos-de-pat">
 <h2>Diagnóstico de fallos de PAT.<a class="headerlink" href="#diagnostico-de-fallos-de-pat" title="Link to this heading"></a></h2>
@@ -188,9 +190,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#nat-inverso">NAT inverso</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#configuracion-de-nat">Configuración de NAT.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuracion-de-nat-de-sobrecarga-o-pat">Configuración de NAT de sobrecarga o PAT.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#diagnostico-de-incidencias-de-nat">Diagnostico de incidencias de NAT.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configuracion-de-pat">Configuración de PAT.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#diagnostico-de-fallos-de-pat">Diagnóstico de fallos de PAT.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#introduccion-a-las-tecnologias-wan-frame-relay-rdsi-adsl-y-5g">Introducción a las tecnologías WAN: Frame Relay, RDSI, ADSL y 5G</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#conceptos-basicos-sobre-telefonia-movil">Conceptos básicos sobre telefonía móvil</a></li>

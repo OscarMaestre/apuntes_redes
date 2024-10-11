@@ -166,7 +166,7 @@ que además está CLARAMENTE DEFINIDA.</p>
 </section>
 <section id="protocolos-de-enrutamiento-externo">
 <h3>Protocolos de enrutamiento externo<a class="headerlink" href="#protocolos-de-enrutamiento-externo" title="Link to this heading"></a></h3>
-<p>También son dinámicos pero están pensados para <strong>interconectar nuestro AS con otros AS</strong>.Estos protocolos suelen llamarse a veces EGPs (Exterior Gateway Protocols)</p>
+<p>También son dinámicos pero están pensados para <strong>interconectar nuestro AS con otros AS</strong>.Estos protocolos suelen llamarse a veces EGPs (Exterior Gateway Protocols). Más abajo veremos como funciona BGP, el protocolo EGP por excelencia.</p>
 </section>
 </section>
 <section id="el-enrutamiento-sin-clase">
@@ -783,7 +783,7 @@ asignable (239)</p></td>
 <span class="n">ip</span> <span class="n">route</span> <span class="mf">0.0.0.0</span> <span class="mf">0.0.0.0</span> <span class="mf">4.1.1.1</span>
 </pre></div>
 </div>
-<p>También podríamos configurar RIP de la manera normal y lo indicamos a continuación. Empezaremos por el «área» izquierda, que contiene los router 1, 3 y 5</p>
+<p>También podríamos configurar RIP de la manera normal y lo indicamos a continuación. Empezaremos por el «área» izquierda, que contiene los router 0, 1 y 2.</p>
 <section id="router-1-con-rip">
 <h3>Router 1 con RIP<a class="headerlink" href="#router-1-con-rip" title="Link to this heading"></a></h3>
 <p>Comandos necesarios:</p>
@@ -791,8 +791,8 @@ asignable (239)</p></td>
 <span class="n">configure</span> <span class="n">terminal</span>
 <span class="n">router</span> <span class="n">rip</span>
 <span class="n">version</span> <span class="mi">2</span>
-<span class="n">network</span> <span class="mf">1.0.0.0</span>
 <span class="n">network</span> <span class="mf">2.0.0.0</span>
+<span class="n">network</span> <span class="mf">1.0.0.0</span>
 <span class="n">network</span> <span class="mf">10.0.0.0</span>
 </pre></div>
 </div>
@@ -821,7 +821,19 @@ asignable (239)</p></td>
 <span class="n">network</span> <span class="mf">3.0.0.0</span>
 </pre></div>
 </div>
-<p>En este punto el área izquierda debe tener autoconfiguradas sus rutas. A continuación configuramos el «área» derecha, que involucra a los router 2, 4 y 6</p>
+<p>En este punto el área izquierda debe tener autoconfiguradas sus rutas. A continuación configuramos el «área» derecha, que involucra a los router 2, 4 y 6.</p>
+</section>
+<section id="router-6-con-rip">
+<h3>Router 6 con RIP<a class="headerlink" href="#router-6-con-rip" title="Link to this heading"></a></h3>
+<p>Comandos necesarios:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
+<span class="n">configure</span> <span class="n">terminal</span>
+<span class="n">router</span> <span class="n">rip</span>
+<span class="n">version</span> <span class="mi">2</span>
+<span class="n">network</span> <span class="mf">5.0.0.0</span>
+<span class="n">network</span> <span class="mf">6.0.0.0</span>
+</pre></div>
+</div>
 </section>
 <section id="router-2-con-rip">
 <h3>Router 2 con RIP<a class="headerlink" href="#router-2-con-rip" title="Link to this heading"></a></h3>
@@ -848,34 +860,38 @@ asignable (239)</p></td>
 <span class="n">network</span> <span class="mf">7.0.0.0</span>
 </pre></div>
 </div>
-</section>
-<section id="router-6-con-rip">
-<h3>Router 6 con RIP<a class="headerlink" href="#router-6-con-rip" title="Link to this heading"></a></h3>
-<p>Comandos necesarios:</p>
+<p>Y llegado este punto, el área derecha también funciona y permite que la información fluya dentro de esa zona. Sin embargo <strong>¿qué ocurre si intentamos hacer ping desde un ordenador del área izquierda a uno del área derecha?</strong> Ocurre que <strong>NO FUNCIONA</strong></p>
+<p>Como ocurre que los router centrales usan rutas estáticas necesitamos que dicha información sobre rutas estáticas <strong>SE PROPAGUE</strong> para que otros router en la red usen los router 5 y 6 como routers por defecto. Para ello, hacemos lo siguiente en ambos router 5 y 6:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
 <span class="n">configure</span> <span class="n">terminal</span>
 <span class="n">router</span> <span class="n">rip</span>
 <span class="n">version</span> <span class="mi">2</span>
-<span class="n">network</span> <span class="mf">5.0.0.0</span>
-<span class="n">network</span> <span class="mf">6.0.0.0</span>
+<span class="n">redistribute</span> <span class="n">static</span>
 </pre></div>
 </div>
-<p>Y llegado este punto, el área derecha también funciona y permite que la información fluya dentro de esa zona. Sin embargo <strong>¿qué ocurre si intentamos hacer ping desde un ordenador del área izquierda a uno del área derecha?</strong> Ocurre que <strong>NO FUNCIONA</strong></p>
-<p>Como ocurre que los router centrales usan rutas estáticas necesitamos que dicha información sobre rutas estáticas <strong>SE PROPAGUE</strong> para que otros router en la red usen los router 5 y 6 como routers por defecto. Para ello, hacemos lo siguiente en ambos router 5 y 6:</p>
-<blockquote>
-<div><p>enable
-configure terminal
-router rip
-version 2
-redistribute static</p>
-</div></blockquote>
-<p>Mostrar el uso de estos comandos:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">passive-interface</span> <span class="pre">&lt;interfaz&gt;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">redistribute</span> <span class="pre">static</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">router</span> <span class="pre">0.0.0.0</span> <span class="pre">0.0.0.0</span> <span class="pre">&lt;interfaz&gt;</span></code></p></li>
-</ul>
 </section>
+<section id="el-comando-passive-interface-interfaz">
+<h3>El comando <code class="docutils literal notranslate"><span class="pre">passive-interface</span> <span class="pre">&lt;interfaz&gt;</span></code><a class="headerlink" href="#el-comando-passive-interface-interfaz" title="Link to this heading"></a></h3>
+<p>Si ponemos Packet Tracer en modo simulación veremos que los router hacen anuncios <em>por todas las redes que tienen conectadas.</em> Sin embargo nosotros sabemos que en algunas interfaces no hay otros router conectados. Si deseamos evitar tráfico innecesario en la red podemos indicar al router que una cierta interfaz actuará en <strong>modo pasivo y que por tanto no enviará anuncios por dicha tarjeta.</strong> Esto mejora el rendimiento general de la red.</p>
+</section>
+</section>
+<section id="el-comando-redistribute-static">
+<h2>El comando <code class="docutils literal notranslate"><span class="pre">redistribute</span> <span class="pre">static</span></code><a class="headerlink" href="#el-comando-redistribute-static" title="Link to this heading"></a></h2>
+<p>En la vida real un router no tiene por qué tener todas las rutas configuradas dinámicamente. Es posible que en algunos casos el administrador haya configurado rutas estáticas. Si no hacemos nada, el router no redistribuirá dichas rutas estáticas y por tanto <strong>puede haber routers</strong> que no encuentren los caminos correctos a ciertas redes.</p>
+<p>El comando <code class="docutils literal notranslate"><span class="pre">redistribute</span> <span class="pre">static</span></code> ordena al router que también anuncie dichas rutas estáticas a otros nodos. Como nota curiosa, no solo pueden redistribuirse rutas estáticas sino también información de otros protocolos de enrutamiento.</p>
+<div class="admonition warning">
+<p class="admonition-title">Advertencia</p>
+<p>El comando <code class="docutils literal notranslate"><span class="pre">redistribute</span> <span class="pre">static</span></code> en OSPF solo acepta redes «con clase». Para que OSPF redistribuya rutas por defecto se usa <code class="docutils literal notranslate"><span class="pre">default-information</span> <span class="pre">originate</span></code></p>
+</div>
+</section>
+<section id="el-comando-ip-route-0-0-0-0-0-0-0-0-interfaz-o-ip">
+<h2>El comando <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">route</span> <span class="pre">0.0.0.0</span> <span class="pre">0.0.0.0</span> <span class="pre">&lt;interfaz</span> <span class="pre">o</span> <span class="pre">IP&gt;</span></code><a class="headerlink" href="#el-comando-ip-route-0-0-0-0-0-0-0-0-interfaz-o-ip" title="Link to this heading"></a></h2>
+<p>Lo conocemos de fechas anteriores. Se utiliza para indicar una ruta por defecto.</p>
+</section>
+<section id="adaptabilidad-en-ospf">
+<h2>Adaptabilidad en OSPF<a class="headerlink" href="#adaptabilidad-en-ospf" title="Link to this heading"></a></h2>
+<p>Una línea serie (llamadas «Serial0/1/0» o similar en Packet Tracer) puede modificarse parq que funcione a otras velocidades. Por defecto funcionan a 2.000.000 bps o 2Mbps. En toda línea serie hay una que marca la velocidad de reloj y podemos modificar la velocidad de dicho reloj usando el comando <code class="docutils literal notranslate"><span class="pre">clock</span> <span class="pre">rate</span></code>.</p>
+<p>Si entramos en una línea serie, reducimos la velocidad usando por ejemplo <code class="docutils literal notranslate"><span class="pre">clock</span> <span class="pre">rate</span> <span class="pre">56000</span></code> e informamos a los procesos de enrutamiento de que el ancho de banda ha cambiado con un comando <code class="docutils literal notranslate"><span class="pre">bandwidth</span> <span class="pre">56</span></code> (el ancho de banda se escribe en kbps) y esperamos a que OSPF se actualice, podremos ver como un router elige un camino más largo. Puede usarse el comando de administrador <code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">ip</span> <span class="pre">ospf</span> <span class="pre">interfaces</span></code> para ver el coste que OSPF asigna a una línea.</p>
 </section>
 <section id="diagnostico-de-incidencias-en-rippv2">
 <h2>Diagnóstico de incidencias en RIPpv2.<a class="headerlink" href="#diagnostico-de-incidencias-en-rippv2" title="Link to this heading"></a></h2>
@@ -888,9 +904,19 @@ redistribute static</p>
 </section>
 <section id="los-protocolos-de-enrutamiento-estado-enlace">
 <h2>Los protocolos de enrutamiento estado-enlace<a class="headerlink" href="#los-protocolos-de-enrutamiento-estado-enlace" title="Link to this heading"></a></h2>
+<p>Son protocolos de enrutamiento dinámico que <strong>no utilizan el recuento de saltos</strong> para determinar cual es el mejor camino, sino que <strong>utilizan el estado del enlace</strong>, es decir, <strong>su ancho de banda</strong>. Este mecanismo es, de media, mucho mejor que el «vector distancia» usado por los protoclos que hemos visto antes.</p>
+<p>Con toda probabilidad el protolo de estado-enlace más usado es OSPF.</p>
 </section>
 <section id="configuracion-y-administracion-en-ospf">
 <h2>Configuración y administración en OSPF.<a class="headerlink" href="#configuracion-y-administracion-en-ospf" title="Link to this heading"></a></h2>
+<section id="proceso-basico">
+<h3>Proceso básico<a class="headerlink" href="#proceso-basico" title="Link to this heading"></a></h3>
+<p>En esencia el proceso de funcionamiento es muy parecido al de RIP. Solo usaremos estos comandos:</p>
+<ul class="simple">
+<li><p>El comando <code class="docutils literal notranslate"><span class="pre">router</span> <span class="pre">ospf</span> <span class="pre">&lt;número</span> <span class="pre">de</span> <span class="pre">proceso&gt;</span></code> activará el enrutamiento OSPF.</p></li>
+<li><p>El comando <code class="docutils literal notranslate"><span class="pre">network</span> <span class="pre">&lt;ip</span> <span class="pre">de</span> <span class="pre">red&gt;</span> <span class="pre">&lt;wildcard&gt;</span> <span class="pre">&lt;area&gt;</span></code> indica al router la red o redes que debe anunciarse. Hay que fijarse bien en que <em>OSPF utiliza wildcards y no máscaras de red estándar</em></p></li>
+</ul>
+</section>
 <section id="areas">
 <h3>Áreas<a class="headerlink" href="#areas" title="Link to this heading"></a></h3>
 <p>En RIP veíamos que si interconectamos un conjunto grande de routers puede ocurrir que haya:</p>
@@ -942,6 +968,15 @@ redistribute static</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">ip</span> <span class="pre">route</span></code> Al lanzarlo veremos en la consola las distintas rutas que este router conoce. Además se nos informará de si son rutas aprendidas, configuradas estáticamente y si tenemos interfaces conectadas a dichas redes.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">log</span></code> Muestra el registro general de actividad lo que puede permitir detectar otros errores que sin ser problemas de enrutamiento sí den lugar a errores de comunicación.</p></li>
 </ul>
+</section>
+<section id="configuracion-y-administracion-de-bgp">
+<h2>Configuración  y administración de BGP<a class="headerlink" href="#configuracion-y-administracion-de-bgp" title="Link to this heading"></a></h2>
+<p>BGP (Border Gateway Protocol) es el principal protocolo EGP. El proceso es muy sencillo pero con un cambio importante.</p>
+<ol class="arabic simple">
+<li><p>Todos los router deben anunciar las redes con equipos pero <strong>no deben anunciar las redes de interconexión con otros routers.</strong> Esto se hace con el comando <code class="docutils literal notranslate"><span class="pre">network</span> <span class="pre">&lt;dirección_ip&gt;</span> <span class="pre">mask</span> <span class="pre">&lt;máscara_de_red&gt;</span></code>. Obsérvese que volvemos a usar máscaras de red y no <em>wildcards.</em></p></li>
+<li><p>Cada router debe tomar nota de la IP de sus routers vecinos e identificarlos con el comando <code class="docutils literal notranslate"><span class="pre">neighbor</span> <span class="pre">&lt;ip_vecino&gt;</span> <span class="pre">remote-as</span> <span class="pre">&lt;número_de_AS&gt;</span></code></p></li>
+<li><p>Una vez hecho esto, BGP empezará a funcionar y podremos comprobarlo usando el comando <code class="docutils literal notranslate"><span class="pre">show</span> <span class="pre">ip</span> <span class="pre">bgp</span></code>.</p></li>
+</ol>
 </section>
 <section id="configuracion-y-administracion-de-protocolos-de-enrutamiento-propietarios">
 <h2>Configuración y administración de protocolos de enrutamiento propietarios.<a class="headerlink" href="#configuracion-y-administracion-de-protocolos-de-enrutamiento-propietarios" title="Link to this heading"></a></h2>
@@ -999,14 +1034,19 @@ redistribute static</p>
 <li class="toctree-l3"><a class="reference internal" href="#router-1-con-rip">Router 1 con RIP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#router-3-con-rip">Router 3 con RIP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#router-5-con-rip">Router 5 con RIP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#router-6-con-rip">Router 6 con RIP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#router-2-con-rip">Router 2 con RIP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#router-4-con-rip">Router 4 con RIP</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#router-6-con-rip">Router 6 con RIP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#el-comando-passive-interface-interfaz">El comando <code class="docutils literal notranslate"><span class="pre">passive-interface</span> <span class="pre">&lt;interfaz&gt;</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#el-comando-redistribute-static">El comando <code class="docutils literal notranslate"><span class="pre">redistribute</span> <span class="pre">static</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#el-comando-ip-route-0-0-0-0-0-0-0-0-interfaz-o-ip">El comando <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">route</span> <span class="pre">0.0.0.0</span> <span class="pre">0.0.0.0</span> <span class="pre">&lt;interfaz</span> <span class="pre">o</span> <span class="pre">IP&gt;</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adaptabilidad-en-ospf">Adaptabilidad en OSPF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#diagnostico-de-incidencias-en-rippv2">Diagnóstico de incidencias en RIPpv2.</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#los-protocolos-de-enrutamiento-estado-enlace">Los protocolos de enrutamiento estado-enlace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configuracion-y-administracion-en-ospf">Configuración y administración en OSPF.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#proceso-basico">Proceso básico</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#areas">Áreas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#lsdb">LSDB</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#lsa">LSA</a></li>
@@ -1017,6 +1057,7 @@ redistribute static</p>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#diagnostico-de-incidencias-en-ospf">Diagnóstico de incidencias en OSPF.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuracion-y-administracion-de-bgp">Configuración  y administración de BGP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configuracion-y-administracion-de-protocolos-de-enrutamiento-propietarios">Configuración y administración de protocolos de enrutamiento propietarios.</a></li>
 </ul>
 </li>

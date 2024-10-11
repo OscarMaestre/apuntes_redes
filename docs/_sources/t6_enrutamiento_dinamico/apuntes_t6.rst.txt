@@ -104,7 +104,7 @@ Estos protocolos suelen llamarse a veces IGPs (Interior Gateway Protocols)
 
 Protocolos de enrutamiento externo
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-También son dinámicos pero están pensados para **interconectar nuestro AS con otros AS**.Estos protocolos suelen llamarse a veces EGPs (Exterior Gateway Protocols)
+También son dinámicos pero están pensados para **interconectar nuestro AS con otros AS**.Estos protocolos suelen llamarse a veces EGPs (Exterior Gateway Protocols). Más abajo veremos como funciona BGP, el protocolo EGP por excelencia.
 
 
 El enrutamiento sin clase.
@@ -392,7 +392,8 @@ Podemos hacer **exactamente lo mismo con el router 6** y hacer esto::
    configure terminal 
    ip route 0.0.0.0 0.0.0.0 4.1.1.1
 
-También podríamos configurar RIP de la manera normal y lo indicamos a continuación. Empezaremos por el "área" izquierda, que contiene los router 1, 3 y 5
+También podríamos configurar RIP de la manera normal y lo indicamos a continuación. Empezaremos por el "área" izquierda, que contiene los router 0, 1 y 2.
+
 
 Router 1 con RIP
 ~~~~~~~~~~~~~~~~~~
@@ -402,9 +403,10 @@ Comandos necesarios::
    configure terminal
    router rip
    version 2
-   network 1.0.0.0
    network 2.0.0.0
+   network 1.0.0.0
    network 10.0.0.0
+
 
 Router 3 con RIP
 ~~~~~~~~~~~~~~~~~~
@@ -430,7 +432,19 @@ Comandos necesarios::
    network 3.0.0.0
    
 
-En este punto el área izquierda debe tener autoconfiguradas sus rutas. A continuación configuramos el "área" derecha, que involucra a los router 2, 4 y 6
+En este punto el área izquierda debe tener autoconfiguradas sus rutas. A continuación configuramos el "área" derecha, que involucra a los router 2, 4 y 6.
+
+Router 6 con RIP
+~~~~~~~~~~~~~~~~~~
+Comandos necesarios::
+
+   enable
+   configure terminal
+   router rip
+   version 2
+   network 5.0.0.0
+   network 6.0.0.0
+
 
 Router 2 con RIP
 ~~~~~~~~~~~~~~~~~~
@@ -444,6 +458,8 @@ Comandos necesarios::
    network 5.0.0.0
    network 7.0.0.0
 
+
+
 Router 4 con RIP
 ~~~~~~~~~~~~~~~~~~
 Comandos necesarios::
@@ -456,20 +472,10 @@ Comandos necesarios::
    network 6.0.0.0
    network 7.0.0.0
 
-Router 6 con RIP
-~~~~~~~~~~~~~~~~~~
-Comandos necesarios::
-
-   enable
-   configure terminal
-   router rip
-   version 2
-   network 5.0.0.0
-   network 6.0.0.0
 
 Y llegado este punto, el área derecha también funciona y permite que la información fluya dentro de esa zona. Sin embargo **¿qué ocurre si intentamos hacer ping desde un ordenador del área izquierda a uno del área derecha?** Ocurre que **NO FUNCIONA**
 
-Como ocurre que los router centrales usan rutas estáticas necesitamos que dicha información sobre rutas estáticas **SE PROPAGUE** para que otros router en la red usen los router 5 y 6 como routers por defecto. Para ello, hacemos lo siguiente en ambos router 5 y 6:
+Como ocurre que los router centrales usan rutas estáticas necesitamos que dicha información sobre rutas estáticas **SE PROPAGUE** para que otros router en la red usen los router 5 y 6 como routers por defecto. Para ello, hacemos lo siguiente en ambos router 5 y 6::
 
    enable
    configure terminal
@@ -477,12 +483,35 @@ Como ocurre que los router centrales usan rutas estáticas necesitamos que dicha
    version 2
    redistribute static
 
-Mostrar el uso de estos comandos:
+
+El comando ``passive-interface <interfaz>`` 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Si ponemos Packet Tracer en modo simulación veremos que los router hacen anuncios *por todas las redes que tienen conectadas.* Sin embargo nosotros sabemos que en algunas interfaces no hay otros router conectados. Si deseamos evitar tráfico innecesario en la red podemos indicar al router que una cierta interfaz actuará en **modo pasivo y que por tanto no enviará anuncios por dicha tarjeta.** Esto mejora el rendimiento general de la red.
+
+El comando ``redistribute static`` 
+------------------------------------------
+
+En la vida real un router no tiene por qué tener todas las rutas configuradas dinámicamente. Es posible que en algunos casos el administrador haya configurado rutas estáticas. Si no hacemos nada, el router no redistribuirá dichas rutas estáticas y por tanto **puede haber routers** que no encuentren los caminos correctos a ciertas redes. 
+
+El comando ``redistribute static`` ordena al router que también anuncie dichas rutas estáticas a otros nodos. Como nota curiosa, no solo pueden redistribuirse rutas estáticas sino también información de otros protocolos de enrutamiento.
+
+.. WARNING::
+
+   El comando ``redistribute static`` en OSPF solo acepta redes "con clase". Para que OSPF redistribuya rutas por defecto se usa ``default-information originate``
 
 
-* ``passive-interface <interfaz>`` 
-* ``redistribute static`` 
-* ``ip router 0.0.0.0 0.0.0.0 <interfaz>`` 
+El comando ``ip route 0.0.0.0 0.0.0.0 <interfaz o IP>`` 
+--------------------------------------------------------
+Lo conocemos de fechas anteriores. Se utiliza para indicar una ruta por defecto.
+
+
+Adaptabilidad en OSPF
+-----------------------------
+Una línea serie (llamadas "Serial0/1/0" o similar en Packet Tracer) puede modificarse parq que funcione a otras velocidades. Por defecto funcionan a 2.000.000 bps o 2Mbps. En toda línea serie hay una que marca la velocidad de reloj y podemos modificar la velocidad de dicho reloj usando el comando ``clock rate``.
+
+Si entramos en una línea serie, reducimos la velocidad usando por ejemplo ``clock rate 56000`` e informamos a los procesos de enrutamiento de que el ancho de banda ha cambiado con un comando ``bandwidth 56`` (el ancho de banda se escribe en kbps) y esperamos a que OSPF se actualice, podremos ver como un router elige un camino más largo. Puede usarse el comando de administrador ``show ip ospf interfaces`` para ver el coste que OSPF asigna a una línea.
+
 
 Diagnóstico de incidencias en RIPpv2.
 ----------------------------------------------------------------------------
@@ -494,9 +523,22 @@ Lo habitual es que todo funcione correctamente. Sin embargo, existen varios coma
 
 Los protocolos de enrutamiento estado-enlace
 ----------------------------------------------------------------------------
+Son protocolos de enrutamiento dinámico que **no utilizan el recuento de saltos** para determinar cual es el mejor camino, sino que **utilizan el estado del enlace**, es decir, **su ancho de banda**. Este mecanismo es, de media, mucho mejor que el "vector distancia" usado por los protoclos que hemos visto antes. 
+
+
+Con toda probabilidad el protolo de estado-enlace más usado es OSPF.
+
 
 Configuración y administración en OSPF.
 ----------------------------------------------------------------------------
+
+Proceso básico
+~~~~~~~~~~~~~~~~~~~~~
+
+En esencia el proceso de funcionamiento es muy parecido al de RIP. Solo usaremos estos comandos:
+
+* El comando ``router ospf <número de proceso>`` activará el enrutamiento OSPF.
+* El comando ``network <ip de red> <wildcard> <area>`` indica al router la red o redes que debe anunciarse. Hay que fijarse bien en que *OSPF utiliza wildcards y no máscaras de red estándar*
 
 Áreas
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -550,6 +592,14 @@ Podemos usar **exactamente los mismos comandos que hemos visto antes** y que vol
 * ``debug ip routing`` Este comando activa el modo depuración. Una vez lanzado, podremos ver los distintos mensajes de actualización de rutas que afectan a este router (lo cual nos permitirá ver si otros router o este mismo están propagando rutas incorrectas)
 * ``show ip route`` Al lanzarlo veremos en la consola las distintas rutas que este router conoce. Además se nos informará de si son rutas aprendidas, configuradas estáticamente y si tenemos interfaces conectadas a dichas redes.
 * ``show log`` Muestra el registro general de actividad lo que puede permitir detectar otros errores que sin ser problemas de enrutamiento sí den lugar a errores de comunicación.
+
+Configuración  y administración de BGP
+------------------------------------------
+BGP (Border Gateway Protocol) es el principal protocolo EGP. El proceso es muy sencillo pero con un cambio importante.
+
+1. Todos los router deben anunciar las redes con equipos pero **no deben anunciar las redes de interconexión con otros routers.** Esto se hace con el comando ``network <dirección_ip> mask <máscara_de_red>``. Obsérvese que volvemos a usar máscaras de red y no *wildcards.*
+2. Cada router debe tomar nota de la IP de sus routers vecinos e identificarlos con el comando ``neighbor <ip_vecino> remote-as <número_de_AS>``
+3. Una vez hecho esto, BGP empezará a funcionar y podremos comprobarlo usando el comando ``show ip bgp``.
 
 
 Configuración y administración de protocolos de enrutamiento propietarios.
