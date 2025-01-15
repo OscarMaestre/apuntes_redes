@@ -197,6 +197,15 @@
 <span class="n">Switch</span><span class="p">(</span><span class="n">config</span><span class="o">-</span><span class="k">if</span><span class="p">)</span><span class="c1">#no shutdown</span>
 </pre></div>
 </div>
+<section id="la-paradoja-de-los-switches-con-direccion-ip">
+<h3>La paradoja de los switches con dirección IP<a class="headerlink" href="#la-paradoja-de-los-switches-con-direccion-ip" title="Link to this heading"></a></h3>
+<p>Los switches son dispositivos de cada 2, es decir de capa de enlace, o lo que es lo mismo son de capa Ethernet. Esto significa que se supone que no trabajan con direcciones IP. ¿Como es posible que puedan tener direcciones IP?</p>
+<p>La respuesta es que <strong>tienen dirección IP para que podamos conectarnos a ellos desde un sitio lejano y poder configurarlos pero esto no hace que intervengan en la red.</strong> En suma, tienen una IP pero solo para que podamos operar con ellos, por eso se le llama <em>IP de gestión</em>.</p>
+<p>De hecho, la situación se puede complicar mucho más ya que existen <em>switches de capa 3</em> o también llamados <em>switches L3</em>. Algunos de estos switches de capa 3 pueden ser capaces de hacer NAT, lo cual los asemeja mucho a los routers. Sin embargo, los switches de capa 3 no pueden hacer las mismas funciones de enrutamiento avanzado que puede hacer un router de gama media/alta así que aún podemos considerar que un router y un switch de capa 3 son distintos. Sin embargo, es cierto que el límite entre ambas categorías se difumina.</p>
+</section>
+</section>
+<section id="contrasena-a-los-protocolos">
+<h2>Contraseña a los protocolos<a class="headerlink" href="#contrasena-a-los-protocolos" title="Link to this heading"></a></h2>
 <p>Para poner contraseña a Telnet y SSH el procedimiento es bastante parecido:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#Nos convertimos en administrador
 Switch&gt;enable
@@ -523,6 +532,10 @@ login
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#poner-una-ip-de-gestion-a-un-switch">Poner una IP de gestión a un switch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#la-paradoja-de-los-switches-con-direccion-ip">La paradoja de los switches con dirección IP</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#contrasena-a-los-protocolos">Contraseña a los protocolos</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#configurar-claves-publicas-de-un-nodo">Configurar claves públicas de un nodo</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configurar-el-acceso-ssh">Configurar el acceso SSH</a></li>
 </ul>
