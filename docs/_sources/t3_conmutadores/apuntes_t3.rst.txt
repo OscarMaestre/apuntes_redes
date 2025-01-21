@@ -171,6 +171,18 @@ Los comandos serían algo como esto::
     #Y activamos este interfaz
     Switch(config-if)#no shutdown
 
+La paradoja de los switches con dirección IP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Los switches son dispositivos de cada 2, es decir de capa de enlace, o lo que es lo mismo son de capa Ethernet. Esto significa que se supone que no trabajan con direcciones IP. ¿Como es posible que puedan tener direcciones IP?
+
+
+La respuesta es que **tienen dirección IP para que podamos conectarnos a ellos desde un sitio lejano y poder configurarlos pero esto no hace que intervengan en la red.** En suma, tienen una IP pero solo para que podamos operar con ellos, por eso se le llama *IP de gestión*.
+
+De hecho, la situación se puede complicar mucho más ya que existen *switches de capa 3* o también llamados *switches L3*. Algunos de estos switches de capa 3 pueden ser capaces de hacer NAT, lo cual los asemeja mucho a los routers. Sin embargo, los switches de capa 3 no pueden hacer las mismas funciones de enrutamiento avanzado que puede hacer un router de gama media/alta así que aún podemos considerar que un router y un switch de capa 3 son distintos. Sin embargo, es cierto que el límite entre ambas categorías se difumina.
+
+Contraseña a los protocolos
+-------------------------------
 
 Para poner contraseña a Telnet y SSH el procedimiento es bastante parecido::
 

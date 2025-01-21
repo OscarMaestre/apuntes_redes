@@ -103,6 +103,18 @@ Cable STP: apartado 4.2.1.4
 Cableado estructurado: subsistemas troncales y horizontales.
 -----------------------------------------------------------------------------
 
+En líneas generales el cableado siempre se realiza de la misma manera.
+
+* En cada aula/sala/oficina hay un armario de interconexiones. En dicho armario hay dos elementos:
+
+        * Panel de parcheo: centralizar las conexiones de la sala.
+
+        * Switch: dispositivo "inteligente" que interconecta los ordenadores.
+
+* Para llegar al armario, en la sala hay cable que puede ir por el suelo o por un falso techo y dicho cable tiene rosetas donde se pueden conectar los ordenadores y por el otro extremo las rosetas llevan una conexión al panel de parcheo.
+
+Este cableado dentro de una sala se denomina *cableado horizontal.* Por otra parte puede ser necesario interconectar salas. Estas interconexiones entre salas se denominan *cableado vertical.*
+
 Algoritmo de acceso al medio CSMA/CD.
 -----------------------------------------------------------------------------
 Apartado 4.4.3.3 página 198
