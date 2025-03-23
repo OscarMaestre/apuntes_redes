@@ -1,0 +1,11 @@
+graph{
+	"5:6a" -- "4:28" [headlabel="5c", taillabel="7d"]
+	"4:28" -- "3:26" [headlabel="87", taillabel="28"]
+	"3:26" -- "7:30" [headlabel="30", taillabel="26"]
+	"7:30" -- "8:39" [headlabel="39", taillabel="b8"]
+	"8:39" -- "3:36" [headlabel="90", taillabel="c9"]
+	"3:36" -- "5:7b" [headlabel="da", taillabel="36"]
+	"5:7b" -- "3:3f" [headlabel="ca", taillabel="7b"]
+	"7:30" -- "3:3f" [headlabel="3f", taillabel="8c"]
+	"5:6a" -- "5:7b" [headlabel="a3", taillabel="6a"]
+}

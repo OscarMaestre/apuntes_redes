@@ -180,6 +180,20 @@ Sin embargo los switches que usan VLANs **alteran** la trama añadiendo un *iden
 
 Se puede activar el uso de este protocolo en dispositivos Cisco con ``encapsulation dot1q``
 
+
+DTP
+------------
+DTP es un protocolo que permite configurar automáticamente los enlaces entre switches. DTP puede decidir poner un puerto en modo "trunk" o "access" automáticamente. Un puerto puede estar en varios modos:
+
+* ``dynamic auto`` el puerto no inicia la negociación con el puerto vecino pero aceptará ponerse en modo ``trunk`` si el vecino está en ``trunk`` , ``dynamic auto`` o ``dynamic desirable`` 
+* ``dynamic desirable`` el puerto sí inicia la negociación y aceptará ponerse en modo ``trunk`` si el vecino está en modo ``trunk`` , ``dynamic auto`` o ``dynamic desirable`` .
+* ``nonegotiate`` Desactiva el DTP en el puerto.
+
+Puede parecer muy cómodo pero:
+* Puede generar problemas de seguridad, ya que por defecto, los trunk aceptan **todas las VLAN**
+* Solo funciona con dispositivos Cisco.
+ 
+
 Etherchannel
 ---------------
 

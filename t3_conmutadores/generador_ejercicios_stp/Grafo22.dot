@@ -1,0 +1,10 @@
+graph{
+	"2:31" -- "1:57" [headlabel="d8", taillabel="31"]
+	"1:57" -- "7:27" [headlabel="fa", taillabel="57"]
+	"7:27" -- "6:7e" [headlabel="7e", taillabel="27"]
+	"6:7e" -- "6:7d" [headlabel="96", taillabel="c6"]
+	"6:7d" -- "2:48" [headlabel="73", taillabel="7d"]
+	"2:48" -- "1:95" [headlabel="e8", taillabel="48"]
+	"7:27" -- "1:95" [headlabel="b0", taillabel="f1"]
+	"1:95" -- "1:57" [headlabel="87", taillabel="95"]
+}

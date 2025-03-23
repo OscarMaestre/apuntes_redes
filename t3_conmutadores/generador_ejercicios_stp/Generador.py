@@ -32,8 +32,24 @@ class Nodo(object):
     def set_raiz(self, puerto):
         self.set_estado_puerto(puerto, Nodo.ESTADO_RAIZ)
 
+    def es_puerto_raiz(self, puerto):
+        if self.estado_puertos[puerto]==Nodo.ESTADO_RAIZ:
+            return True
+        return False
+    def es_puerto_designado(self, puerto):
+        if self.estado_puertos[puerto]==Nodo.ESTADO_DESIGNADO:
+            return True
+        return False
+    
+    def es_puerto_bloqueado(self, puerto):
+        if self.estado_puertos[puerto]==Nodo.ESTADO_BLOQUEADO:
+            return True
+        return False
+    
+    
     def set_distancia_a_raiz(self, distancia_a_raiz):
         self.distancia_a_raiz=distancia_a_raiz
+
     def get_distancia_a_raiz(self):
         return self.distancia_a_raiz
     
@@ -53,6 +69,16 @@ class Nodo(object):
         
         self.segmentos_vecinos.append(tupla_vecindad)
 
+    def calcular_mac_con_mejor_coste_a_raiz(self, distancias_desde_mac):
+        #Calculamos el menor coste de todos
+        menor_coste=min(list(distancias_desde_mac.values()))
+        
+        # Extraer todas las MAC que tengan ese coste mínimo
+        claves_filtradas = [clave for clave, valor in distancias_desde_mac.items() if valor == menor_coste]
+
+        #Podría haber varias MAC con el mismo coste, nos quedamos con la menor
+        mac=min(claves_filtradas)
+        return mac
     def establecer_puerto_raiz(self):
         #Comprobar qué puertos NO están a DESIGNADO y averiguar
         #el que nos lleva por un mejor camino a la raíz. Si hay dos, elegir el
@@ -63,13 +89,22 @@ class Nodo(object):
             (nodo_vecino, mac_nuestra, mac_vecino) = tupla_vecindad
             distancias_desde_mac[mac_nuestra]=nodo_vecino.get_distancia_a_raiz()
         print(distancias_desde_mac)
-        mac_con_mejor_coste=min(distancias_desde_mac, key=distancias_desde_mac.get)
+        mac_con_mejor_coste=self.calcular_mac_con_mejor_coste_a_raiz(distancias_desde_mac)
         self.set_raiz(mac_con_mejor_coste)
 
     def establecer_puertos_designados(self):
         #Buscar  nuestras MAC que NO SEAN RAÍZ y ver si son mejores
         #que las del "vecino de enfrente"
-        pass
+        for tupla_vecindad in self.segmentos_vecinos:
+            (nodo_vecino, mac_nuestra, mac_vecino) = tupla_vecindad
+            distancia_a_raiz_de_vecino=nodo_vecino.distancia_a_raiz
+            if not self.es_puerto_raiz(mac_nuestra):
+                if self.distancia_a_raiz<distancia_a_raiz_de_vecino:
+                    self.set_designado(mac_nuestra)
+                if self.distancia_a_raiz==distancia_a_raiz_de_vecino:
+                    if mac_nuestra<mac_vecino:
+                        self.set_designado(mac_nuestra)
+
     def comparar_distancia_con_vecino(self, nodo_vecino):
         if (self.distancia_a_raiz<nodo_vecino.distancia_a_raiz):
             return -1
@@ -84,10 +119,11 @@ class Nodo(object):
             comparacion=self.comparar_distancia_con_vecino(nodo_vecino)
 
     def get_estado_puertos(self):
-        estado=[self.get_prioridad()+", distancia a raíz:"+str(self.distancia_a_raiz)]
+        estado=[self.get_prioridad()+", distancia a raíz:"+str(self.distancia_a_raiz)+"\n"]
         for pos, puerto in enumerate(self.estado_puertos):
             cadena=f"* Puerto {puerto}, estado {self.estado_puertos[puerto]}"
             estado.append(cadena)
+        estado.append("\n")
         return "\n".join(estado)
 
     def __hash__(self):
@@ -214,6 +250,14 @@ class Grafo(object):
                 print("Ignorando nodo raíz "+nodo.get_prioridad())
             else:
                 nodo.establecer_puerto_raiz()
+
+        print("Estableciendo puertos designados...")
+        for nodo in self.nodos:
+            print("Comprobando nodo:"+nodo.get_prioridad())
+            if nodo==nodo_raiz:
+                print("Ignorando nodo raíz "+nodo.get_prioridad())
+            else:
+                nodo.establecer_puertos_designados()
 
     def anadir_arista_con_macs(self, nodo_origen, nodo_destino, mac_origen, mac_destino):
         nodo_origen.set_bloqueado(mac_origen)

@@ -1,0 +1,8 @@
+graph{
+	"6:1e" -- "8:90" [headlabel="d3", taillabel="1e"]
+	"8:90" -- "6:6c" [headlabel="bf", taillabel="bb"]
+	"6:6c" -- "1:1a" [headlabel="73", taillabel="6c"]
+	"1:1a" -- "8:23" [headlabel="23", taillabel="1a"]
+	"8:23" -- "8:90" [headlabel="90", taillabel="d9"]
+	"1:1a" -- "8:90" [headlabel="c8", taillabel="74"]
+}

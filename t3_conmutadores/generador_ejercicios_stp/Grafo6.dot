@@ -1,0 +1,8 @@
+graph{
+	"7:96" -- "1:12" [headlabel="20", taillabel="96"]
+	"1:12" -- "5:36" [headlabel="4b", taillabel="12"]
+	"5:36" -- "7:66" [headlabel="90", taillabel="36"]
+	"7:66" -- "5:44" [headlabel="44", taillabel="66"]
+	"7:96" -- "5:36" [headlabel="e3", taillabel="df"]
+	"5:44" -- "5:36" [headlabel="59", taillabel="ea"]
+}

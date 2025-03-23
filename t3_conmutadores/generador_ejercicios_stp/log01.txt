@@ -1,0 +1,57 @@
+* Switch 1, prioridad 8
+* Switch 2, prioridad 5
+* Switch 3, prioridad 3
+* Switch 4, prioridad 7
+* Switch 5, prioridad 7
+* Conexion desde el Switch 1, prioridad 8 con MAC 1e a la MAC b3 de Switch 4, prioridad 7 
+* Conexion desde el Switch 4, prioridad 7 con MAC f5 a la MAC 43 de Switch 2, prioridad 5 
+* Conexion desde el Switch 2, prioridad 5 con MAC 30 a la MAC 5c de Switch 5, prioridad 7 
+* Conexion desde el Switch 5, prioridad 7 con MAC 54 a la MAC 52 de Switch 3, prioridad 3 
+* Conexion desde el Switch 1, prioridad 8 con MAC ce a la MAC 64 de Switch 3, prioridad 3 
+* Conexion desde el Switch 2, prioridad 5 con MAC a4 a la MAC 12 de Switch 3, prioridad 3 
+La mejor prioridad es --> 3:12
+--------Arista-------
+8:1e puerto 1e--7:b3 puerto b3
+--------Fin de Arista-------
+
+--------Arista-------
+8:1e puerto ce--3:12 puerto 64
+--------Fin de Arista-------
+
+Ponemos a designado el puerto  64
+--------Arista-------
+5:30 puerto f5--7:b3 puerto 43
+--------Fin de Arista-------
+
+--------Arista-------
+5:30 puerto 30--7:54 puerto 5c
+--------Fin de Arista-------
+
+--------Arista-------
+5:30 puerto a4--3:12 puerto 12
+--------Fin de Arista-------
+
+Ponemos a designado el puerto  12
+--------Arista-------
+3:12 puerto 54--7:54 puerto 52
+--------Fin de Arista-------
+
+Ponemos a designado el puerto  54
+8:1e, distancia a raíz:1
+* Puerto 1e, estado Bloqueado
+* Puerto ce, estado Bloqueado
+5:30, distancia a raíz:1
+* Puerto 43, estado Bloqueado
+* Puerto 30, estado Bloqueado
+* Puerto a4, estado Bloqueado
+3:12, distancia a raíz:0
+* Puerto 52, estado Bloqueado
+* Puerto 64, estado Designado
+* Puerto 12, estado Designado
+* Puerto 54, estado Designado
+7:b3, distancia a raíz:2
+* Puerto b3, estado Bloqueado
+* Puerto f5, estado Bloqueado
+7:54, distancia a raíz:1
+* Puerto 5c, estado Bloqueado
+* Puerto 54, estado Bloqueado

@@ -1,0 +1,9 @@
+graph{
+	"8:9f" -- "7:60" [headlabel="60", taillabel="9f"]
+	"7:60" -- "7:1f" [headlabel="c4", taillabel="62"]
+	"7:1f" -- "3:50" [headlabel="a3", taillabel="1f"]
+	"3:50" -- "6:9d" [headlabel="9d", taillabel="51"]
+	"6:9d" -- "2:46" [headlabel="46", taillabel="fa"]
+	"7:60" -- "2:46" [headlabel="e0", taillabel="97"]
+	"3:50" -- "2:46" [headlabel="af", taillabel="50"]
+}

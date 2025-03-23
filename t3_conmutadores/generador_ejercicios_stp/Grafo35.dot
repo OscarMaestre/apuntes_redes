@@ -1,0 +1,11 @@
+graph{
+	"8:87" -- "4:2f" [headlabel="d9", taillabel="87"]
+	"4:2f" -- "4:37" [headlabel="37", taillabel="2f"]
+	"4:37" -- "4:a8" [headlabel="e2", taillabel="79"]
+	"4:a8" -- "5:1c" [headlabel="6e", taillabel="a8"]
+	"5:1c" -- "3:68" [headlabel="68", taillabel="1c"]
+	"3:68" -- "2:1f" [headlabel="60", taillabel="b0"]
+	"2:1f" -- "4:b2" [headlabel="b2", taillabel="1f"]
+	"4:37" -- "2:1f" [headlabel="9d", taillabel="8e"]
+	"5:1c" -- "4:37" [headlabel="83", taillabel="23"]
+}

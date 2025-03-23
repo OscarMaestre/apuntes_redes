@@ -1,0 +1,10 @@
+graph{
+	"3:1f" -- "7:28" [headlabel="28", taillabel="1f"]
+	"7:28" -- "7:52" [headlabel="52", taillabel="9c"]
+	"7:52" -- "6:38" [headlabel="e0", taillabel="d3"]
+	"6:38" -- "2:8e" [headlabel="8e", taillabel="38"]
+	"2:8e" -- "6:1a" [headlabel="2b", taillabel="c0"]
+	"6:1a" -- "4:b2" [headlabel="b2", taillabel="b3"]
+	"3:1f" -- "6:1a" [headlabel="1a", taillabel="22"]
+	"4:b2" -- "2:8e" [headlabel="b9", taillabel="c2"]
+}
