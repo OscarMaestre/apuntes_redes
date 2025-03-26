@@ -1,0 +1,13 @@
+Solución
+===============
+-Asignamos las direcciones y máscaras a los distintos PC
+-En la tarjeta GigabitEthernet 0/1 de Router 0 pondremos dos subinterfaces, uno para cada VLAN. Una IP será la 192.168.1.1/24 (que será el gateway por defecto para los PC de la red 192.168.1.0/24) y la otra IP será la 192.168.2.1/24
+-En la tarjeta GigabitEthernet 0/0 de Router1 pondremos dos IP, la 10.1.0.1/16 y la 10.2.0.1/16
+-Asignaremos la IP 1.1.1.1/16 a la tarjeta GigabitEthernet 0/0 de Router 1.
+-Asignaremos la IP 1.1.1.2/16 a la tarjeta GigabitEthernet 0/1 de Router 0.
+
+Switch 0
+-------------
+
+enable
+configure terminal
