@@ -334,7 +334,7 @@ Para ello debe hacer dos cosas:
 
 2. Tomar decisiones sobre el estado en que quedarán los puertos. El algoritmo bloqueará puertos de manera que en la topología final no haya bucles.
 
-En concreto Spanning-Tree elige a la raíz  proceso en el que los switches empiezan eligiéndose a sí mismos como raíz y comunicando lo que saben por todos los puertos. Cuando un switch ve a otro que tiene una prioridad mejor deja de proclamarse a sí mismo como raíz y anunciará la nueva raíz en pasos siguientes.
+En concreto Spanning-Tree elige a la raíz,  proceso en el que los switches empiezan eligiéndose a sí mismos como raíz y comunicando lo que saben por todos los puertos. Cuando un switch ve a otro que tiene una prioridad mejor deja de proclamarse a sí mismo como raíz y anunciará la nueva raíz en pasos siguientes.
 
 * Puerto raíz: es un puerto que indica que es el mejor camino para llegar a la raíz.
 * Puerto designado: es un puerto no raíz que es el mejor del segmento para llegar a la raíz.
