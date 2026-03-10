@@ -190,6 +190,18 @@
 </ol>
 <p>Se puede activar el uso de este protocolo en dispositivos Cisco con <code class="docutils literal notranslate"><span class="pre">encapsulation</span> <span class="pre">dot1q</span></code></p>
 </section>
+<section id="dtp">
+<h2>DTP<a class="headerlink" href="#dtp" title="Link to this heading"></a></h2>
+<p>DTP es un protocolo que permite configurar automáticamente los enlaces entre switches. DTP puede decidir poner un puerto en modo «trunk» o «access» automáticamente. Un puerto puede estar en varios modos:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dynamic</span> <span class="pre">auto</span></code> el puerto no inicia la negociación con el puerto vecino pero aceptará ponerse en modo <code class="docutils literal notranslate"><span class="pre">trunk</span></code> si el vecino está en <code class="docutils literal notranslate"><span class="pre">trunk</span></code> , <code class="docutils literal notranslate"><span class="pre">dynamic</span> <span class="pre">auto</span></code> o <code class="docutils literal notranslate"><span class="pre">dynamic</span> <span class="pre">desirable</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dynamic</span> <span class="pre">desirable</span></code> el puerto sí inicia la negociación y aceptará ponerse en modo <code class="docutils literal notranslate"><span class="pre">trunk</span></code> si el vecino está en modo <code class="docutils literal notranslate"><span class="pre">trunk</span></code> , <code class="docutils literal notranslate"><span class="pre">dynamic</span> <span class="pre">auto</span></code> o <code class="docutils literal notranslate"><span class="pre">dynamic</span> <span class="pre">desirable</span></code> .</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nonegotiate</span></code> Desactiva el DTP en el puerto.</p></li>
+</ul>
+<p>Puede parecer muy cómodo pero:
+* Puede generar problemas de seguridad, ya que por defecto, los trunk aceptan <strong>todas las VLAN</strong>
+* Solo funciona con dispositivos Cisco.</p>
+</section>
 <section id="etherchannel">
 <h2>Etherchannel<a class="headerlink" href="#etherchannel" title="Link to this heading"></a></h2>
 <p>Es la capacidad que tienen los switches de gama alta de «agrupar» o «agregar» varios interfaces de manera que se comporten como si fuesen uno solo incluso <strong>sumando el ancho de banda</strong>.</p>
@@ -602,6 +614,7 @@ end
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#el-protocolo-ieee802-1q">El protocolo IEEE802.1Q</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dtp">DTP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#etherchannel">Etherchannel</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#etherchannel-y-vlans">Etherchannel y VLANs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#etherchannel-vlans-y-direcciones-ip">Etherchannel, VLANs y direcciones IP</a></li>

@@ -1,0 +1,2594 @@
+<!DOCTYPE html>
+
+<html lang="es" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Ejercicios de STP &#8212; documentación de Apuntes de redes - 1.0</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=12dfc556" />
+    <script src="../../_static/jquery.js?v=5d32c60e"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+    <script src="../../_static/documentation_options.js?v=4936afed"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/translations.js?v=efdbd0b9"></script>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="ejercicios-de-stp">
+<h1>Ejercicios de STP<a class="headerlink" href="#ejercicios-de-stp" title="Link to this heading"></a></h1>
+<section id="ejercicio-stp-1">
+<h2>Ejercicio STP 1<a class="headerlink" href="#ejercicio-stp-1" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 7</p></li>
+<li><p>Switch 2, prioridad 5</p></li>
+<li><p>Switch 3, prioridad 8</p></li>
+<li><p>Switch 4, prioridad 6</p></li>
+<li><p>Switch 5, prioridad 7</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 5, prioridad 7 con MAC 43 a la MAC 97 de Switch 2, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 5 con MAC 2d a la MAC 26 de Switch 3, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 8 con MAC e8 a la MAC 39 de Switch 4, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 6 con MAC a6 a la MAC 57 de Switch 1, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 7 con MAC 12 a la MAC 6f de Switch 4, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 5 con MAC 7e a la MAC f6 de Switch 1, prioridad 7</p></li>
+</ul>
+<figure class="align-default" id="id1">
+<img alt="Ejercicio 1 de STP" src="../../_images/Grafo1.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 1 de STP</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-1">
+<h2>Solución al ejercicio STP 1<a class="headerlink" href="#solucion-al-ejercicio-stp-1" title="Link to this heading"></a></h2>
+<p>Switch raíz 5:2d</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>7:57, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 57, estado Designado</p></li>
+<li><p>Puerto f6, estado Raiz</p></li>
+</ul>
+<p>5:2d, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 97, estado Designado</p></li>
+<li><p>Puerto 2d, estado Designado</p></li>
+<li><p>Puerto 7e, estado Designado</p></li>
+</ul>
+<p>8:26, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 26, estado Raiz</p></li>
+<li><p>Puerto e8, estado Designado</p></li>
+</ul>
+<p>6:39, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 39, estado Raiz</p></li>
+<li><p>Puerto a6, estado Bloqueado</p></li>
+<li><p>Puerto 6f, estado Bloqueado</p></li>
+</ul>
+<p>7:12, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 43, estado Raiz</p></li>
+<li><p>Puerto 12, estado Designado</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-2">
+<h2>Ejercicio STP 2<a class="headerlink" href="#ejercicio-stp-2" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 2</p></li>
+<li><p>Switch 2, prioridad 2</p></li>
+<li><p>Switch 3, prioridad 1</p></li>
+<li><p>Switch 4, prioridad 7</p></li>
+<li><p>Switch 5, prioridad 2</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 1, prioridad 2 con MAC 41 a la MAC 13 de Switch 2, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 2 con MAC b5 a la MAC de de Switch 3, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 1 con MAC d5 a la MAC 97 de Switch 5, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 2 con MAC aa a la MAC a7 de Switch 4, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 7 con MAC 85 a la MAC 67 de Switch 1, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 2 con MAC 27 a la MAC 20 de Switch 5, prioridad 2</p></li>
+</ul>
+<figure class="align-default" id="id2">
+<img alt="Ejercicio 2 de STP" src="../../_images/Grafo2.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 2 de STP</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-2">
+<h2>Solución al ejercicio STP 2<a class="headerlink" href="#solucion-al-ejercicio-stp-2" title="Link to this heading"></a></h2>
+<p>Switch raíz 1:d5</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>2:41, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 41, estado Raiz</p></li>
+<li><p>Puerto 67, estado Designado</p></li>
+</ul>
+<p>2:13, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 13, estado Designado</p></li>
+<li><p>Puerto b5, estado Raiz</p></li>
+<li><p>Puerto 27, estado Bloqueado</p></li>
+</ul>
+<p>1:d5, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto de, estado Designado</p></li>
+<li><p>Puerto d5, estado Designado</p></li>
+</ul>
+<p>7:85, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto a7, estado Raiz</p></li>
+<li><p>Puerto 85, estado Bloqueado</p></li>
+</ul>
+<p>2:20, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 97, estado Raiz</p></li>
+<li><p>Puerto aa, estado Designado</p></li>
+<li><p>Puerto 20, estado Designado</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-3">
+<h2>Ejercicio STP 3<a class="headerlink" href="#ejercicio-stp-3" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 2</p></li>
+<li><p>Switch 2, prioridad 7</p></li>
+<li><p>Switch 3, prioridad 6</p></li>
+<li><p>Switch 4, prioridad 5</p></li>
+<li><p>Switch 5, prioridad 6</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 3, prioridad 6 con MAC 38 a la MAC 9e de Switch 2, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 7 con MAC 85 a la MAC 9c de Switch 1, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 2 con MAC d9 a la MAC 5b de Switch 4, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 5 con MAC 48 a la MAC c4 de Switch 5, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 2 con MAC 13 a la MAC 53 de Switch 5, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 6 con MAC db a la MAC 42 de Switch 1, prioridad 2</p></li>
+</ul>
+<figure class="align-default" id="id3">
+<img alt="Ejercicio 3 de STP" src="../../_images/Grafo3.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 3 de STP</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-3">
+<h2>Solución al ejercicio STP 3<a class="headerlink" href="#solucion-al-ejercicio-stp-3" title="Link to this heading"></a></h2>
+<p>Switch raíz 2:13</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>2:13, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 9c, estado Designado</p></li>
+<li><p>Puerto d9, estado Designado</p></li>
+<li><p>Puerto 13, estado Designado</p></li>
+<li><p>Puerto 42, estado Designado</p></li>
+</ul>
+<p>7:85, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 9e, estado Bloqueado</p></li>
+<li><p>Puerto 85, estado Raiz</p></li>
+</ul>
+<p>6:38, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 38, estado Designado</p></li>
+<li><p>Puerto db, estado Raiz</p></li>
+</ul>
+<p>5:48, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 5b, estado Raiz</p></li>
+<li><p>Puerto 48, estado Designado</p></li>
+</ul>
+<p>6:53, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto c4, estado Bloqueado</p></li>
+<li><p>Puerto 53, estado Raiz</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-4">
+<h2>Ejercicio STP 4<a class="headerlink" href="#ejercicio-stp-4" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 8</p></li>
+<li><p>Switch 2, prioridad 1</p></li>
+<li><p>Switch 3, prioridad 5</p></li>
+<li><p>Switch 4, prioridad 5</p></li>
+<li><p>Switch 5, prioridad 8</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 1, prioridad 8 con MAC f0 a la MAC cc de Switch 2, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 1 con MAC 32 a la MAC 9e de Switch 5, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 8 con MAC 70 a la MAC 7e de Switch 3, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 5 con MAC aa a la MAC b4 de Switch 4, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 5 con MAC dc a la MAC e6 de Switch 2, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 1 con MAC 31 a la MAC 65 de Switch 4, prioridad 5</p></li>
+</ul>
+<figure class="align-default" id="id4">
+<img alt="Ejercicio 4 de STP" src="../../_images/Grafo4.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 4 de STP</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-4">
+<h2>Solución al ejercicio STP 4<a class="headerlink" href="#solucion-al-ejercicio-stp-4" title="Link to this heading"></a></h2>
+<p>Switch raíz 1:31</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>8:f0, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto f0, estado Raiz</p></li>
+</ul>
+<p>1:31, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto cc, estado Designado</p></li>
+<li><p>Puerto 32, estado Designado</p></li>
+<li><p>Puerto e6, estado Designado</p></li>
+<li><p>Puerto 31, estado Designado</p></li>
+</ul>
+<p>5:7e, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 7e, estado Bloqueado</p></li>
+<li><p>Puerto aa, estado Designado</p></li>
+<li><p>Puerto dc, estado Raiz</p></li>
+</ul>
+<p>5:65, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto b4, estado Bloqueado</p></li>
+<li><p>Puerto 65, estado Raiz</p></li>
+</ul>
+<p>8:70, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 9e, estado Raiz</p></li>
+<li><p>Puerto 70, estado Designado</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-5">
+<h2>Ejercicio STP 5<a class="headerlink" href="#ejercicio-stp-5" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 5</p></li>
+<li><p>Switch 2, prioridad 7</p></li>
+<li><p>Switch 3, prioridad 3</p></li>
+<li><p>Switch 4, prioridad 5</p></li>
+<li><p>Switch 5, prioridad 7</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 1, prioridad 5 con MAC dd a la MAC ea de Switch 4, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 5 con MAC ef a la MAC 9b de Switch 2, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 7 con MAC e7 a la MAC 42 de Switch 3, prioridad 3</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 3 con MAC 6f a la MAC ac de Switch 5, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 7 con MAC fa a la MAC 4f de Switch 4, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 7 con MAC c2 a la MAC 3a de Switch 1, prioridad 5</p></li>
+</ul>
+<figure class="align-default" id="id5">
+<img alt="Ejercicio 5 de STP" src="../../_images/Grafo5.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 5 de STP</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-5">
+<h2>Solución al ejercicio STP 5<a class="headerlink" href="#solucion-al-ejercicio-stp-5" title="Link to this heading"></a></h2>
+<p>Switch raíz 3:42</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>5:3a, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto dd, estado Designado</p></li>
+<li><p>Puerto 3a, estado Raiz</p></li>
+</ul>
+<p>7:9b, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 9b, estado Designado</p></li>
+<li><p>Puerto e7, estado Raiz</p></li>
+</ul>
+<p>3:42, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 42, estado Designado</p></li>
+<li><p>Puerto 6f, estado Designado</p></li>
+</ul>
+<p>5:4f, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto ea, estado Bloqueado</p></li>
+<li><p>Puerto ef, estado Bloqueado</p></li>
+<li><p>Puerto 4f, estado Raiz</p></li>
+</ul>
+<p>7:ac, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto ac, estado Raiz</p></li>
+<li><p>Puerto fa, estado Designado</p></li>
+<li><p>Puerto c2, estado Designado</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-6">
+<h2>Ejercicio STP 6<a class="headerlink" href="#ejercicio-stp-6" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 1</p></li>
+<li><p>Switch 2, prioridad 7</p></li>
+<li><p>Switch 3, prioridad 5</p></li>
+<li><p>Switch 4, prioridad 5</p></li>
+<li><p>Switch 5, prioridad 7</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 2, prioridad 7 con MAC 96 a la MAC 20 de Switch 1, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 1 con MAC 12 a la MAC 4b de Switch 4, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 5 con MAC 36 a la MAC 90 de Switch 5, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 7 con MAC 66 a la MAC 44 de Switch 3, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 7 con MAC df a la MAC e3 de Switch 4, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 5 con MAC ea a la MAC 59 de Switch 4, prioridad 5</p></li>
+</ul>
+<figure class="align-default" id="id6">
+<img alt="Ejercicio 6 de STP" src="../../_images/Grafo6.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 6 de STP</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-6">
+<h2>Solución al ejercicio STP 6<a class="headerlink" href="#solucion-al-ejercicio-stp-6" title="Link to this heading"></a></h2>
+<p>Switch raíz 1:12</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>1:12, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 20, estado Designado</p></li>
+<li><p>Puerto 12, estado Designado</p></li>
+</ul>
+<p>7:96, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 96, estado Raiz</p></li>
+<li><p>Puerto df, estado Designado</p></li>
+</ul>
+<p>5:44, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 44, estado Designado</p></li>
+<li><p>Puerto ea, estado Raiz</p></li>
+</ul>
+<p>5:36, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 4b, estado Raiz</p></li>
+<li><p>Puerto 36, estado Designado</p></li>
+<li><p>Puerto e3, estado Bloqueado</p></li>
+<li><p>Puerto 59, estado Designado</p></li>
+</ul>
+<p>7:66, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 90, estado Raiz</p></li>
+<li><p>Puerto 66, estado Bloqueado</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-7">
+<h2>Ejercicio STP 7<a class="headerlink" href="#ejercicio-stp-7" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 8</p></li>
+<li><p>Switch 2, prioridad 6</p></li>
+<li><p>Switch 3, prioridad 8</p></li>
+<li><p>Switch 4, prioridad 6</p></li>
+<li><p>Switch 5, prioridad 1</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 4, prioridad 6 con MAC 1e a la MAC d3 de Switch 1, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 8 con MAC bb a la MAC bf de Switch 2, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 6 con MAC 6c a la MAC 73 de Switch 5, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 1 con MAC 1a a la MAC 23 de Switch 3, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 8 con MAC d9 a la MAC 90 de Switch 1, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 1 con MAC 74 a la MAC c8 de Switch 1, prioridad 8</p></li>
+</ul>
+<figure class="align-default" id="id7">
+<img alt="Ejercicio 7 de STP" src="../../_images/Grafo7.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 7 de STP</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-7">
+<h2>Solución al ejercicio STP 7<a class="headerlink" href="#solucion-al-ejercicio-stp-7" title="Link to this heading"></a></h2>
+<p>Switch raíz 1:1a</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>8:90, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto d3, estado Designado</p></li>
+<li><p>Puerto bb, estado Designado</p></li>
+<li><p>Puerto 90, estado Designado</p></li>
+<li><p>Puerto c8, estado Raiz</p></li>
+</ul>
+<p>6:6c, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto bf, estado Bloqueado</p></li>
+<li><p>Puerto 6c, estado Raiz</p></li>
+</ul>
+<p>8:23, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 23, estado Raiz</p></li>
+<li><p>Puerto d9, estado Bloqueado</p></li>
+</ul>
+<p>6:1e, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 1e, estado Raiz</p></li>
+</ul>
+<p>1:1a, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 73, estado Designado</p></li>
+<li><p>Puerto 1a, estado Designado</p></li>
+<li><p>Puerto 74, estado Designado</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-8">
+<h2>Ejercicio STP 8<a class="headerlink" href="#ejercicio-stp-8" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 3</p></li>
+<li><p>Switch 2, prioridad 2</p></li>
+<li><p>Switch 3, prioridad 7</p></li>
+<li><p>Switch 4, prioridad 5</p></li>
+<li><p>Switch 5, prioridad 6</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 5, prioridad 6 con MAC 78 a la MAC f5 de Switch 1, prioridad 3</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 3 con MAC 8b a la MAC fd de Switch 3, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 7 con MAC ed a la MAC c1 de Switch 4, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 5 con MAC a4 a la MAC f6 de Switch 2, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 3 con MAC 92 a la MAC 87 de Switch 2, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 2 con MAC 8f a la MAC 6a de Switch 3, prioridad 7</p></li>
+</ul>
+<figure class="align-default" id="id8">
+<img alt="Ejercicio 8 de STP" src="../../_images/Grafo8.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 8 de STP</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-8">
+<h2>Solución al ejercicio STP 8<a class="headerlink" href="#solucion-al-ejercicio-stp-8" title="Link to this heading"></a></h2>
+<p>Switch raíz 2:87</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>3:8b, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto f5, estado Designado</p></li>
+<li><p>Puerto 8b, estado Designado</p></li>
+<li><p>Puerto 92, estado Raiz</p></li>
+</ul>
+<p>2:87, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto f6, estado Designado</p></li>
+<li><p>Puerto 87, estado Designado</p></li>
+<li><p>Puerto 8f, estado Designado</p></li>
+</ul>
+<p>7:6a, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto fd, estado Bloqueado</p></li>
+<li><p>Puerto ed, estado Bloqueado</p></li>
+<li><p>Puerto 6a, estado Raiz</p></li>
+</ul>
+<p>5:a4, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto c1, estado Designado</p></li>
+<li><p>Puerto a4, estado Raiz</p></li>
+</ul>
+<p>6:78, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 78, estado Raiz</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-9">
+<h2>Ejercicio STP 9<a class="headerlink" href="#ejercicio-stp-9" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 1</p></li>
+<li><p>Switch 2, prioridad 4</p></li>
+<li><p>Switch 3, prioridad 7</p></li>
+<li><p>Switch 4, prioridad 5</p></li>
+<li><p>Switch 5, prioridad 8</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 1, prioridad 1 con MAC 83 a la MAC 5f de Switch 4, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 5 con MAC de a la MAC b6 de Switch 5, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 8 con MAC 58 a la MAC ab de Switch 2, prioridad 4</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 4 con MAC 7e a la MAC 82 de Switch 3, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 1 con MAC 25 a la MAC 14 de Switch 2, prioridad 4</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 5 con MAC cc a la MAC 97 de Switch 3, prioridad 7</p></li>
+</ul>
+<figure class="align-default" id="id9">
+<img alt="Ejercicio 9 de STP" src="../../_images/Grafo9.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 9 de STP</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-9">
+<h2>Solución al ejercicio STP 9<a class="headerlink" href="#solucion-al-ejercicio-stp-9" title="Link to this heading"></a></h2>
+<p>Switch raíz 1:25</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>1:25, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 83, estado Designado</p></li>
+<li><p>Puerto 25, estado Designado</p></li>
+</ul>
+<p>4:14, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto ab, estado Designado</p></li>
+<li><p>Puerto 7e, estado Designado</p></li>
+<li><p>Puerto 14, estado Raiz</p></li>
+</ul>
+<p>7:82, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 82, estado Raiz</p></li>
+<li><p>Puerto 97, estado Bloqueado</p></li>
+</ul>
+<p>5:5f, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 5f, estado Raiz</p></li>
+<li><p>Puerto de, estado Designado</p></li>
+<li><p>Puerto cc, estado Designado</p></li>
+</ul>
+<p>8:58, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto b6, estado Bloqueado</p></li>
+<li><p>Puerto 58, estado Raiz</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-11">
+<h2>Ejercicio STP 11<a class="headerlink" href="#ejercicio-stp-11" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 7</p></li>
+<li><p>Switch 2, prioridad 2</p></li>
+<li><p>Switch 3, prioridad 2</p></li>
+<li><p>Switch 4, prioridad 8</p></li>
+<li><p>Switch 5, prioridad 6</p></li>
+<li><p>Switch 6, prioridad 3</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 1, prioridad 7 con MAC 7b a la MAC 8c de Switch 3, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 2 con MAC 3a a la MAC 92 de Switch 4, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 8 con MAC 55 a la MAC a1 de Switch 5, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 6 con MAC d1 a la MAC 83 de Switch 6, prioridad 3</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 3 con MAC ce a la MAC 4b de Switch 2, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 7 con MAC 22 a la MAC b3 de Switch 5, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 3 con MAC c0 a la MAC 40 de Switch 1, prioridad 7</p></li>
+</ul>
+<figure class="align-default" id="id10">
+<img alt="Ejercicio 11 de STP" src="../../_images/Grafo11.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 11 de STP</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-11">
+<h2>Solución al ejercicio STP 11<a class="headerlink" href="#solucion-al-ejercicio-stp-11" title="Link to this heading"></a></h2>
+<p>Switch raíz 2:3a</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>7:22, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 7b, estado Raiz</p></li>
+<li><p>Puerto 22, estado Designado</p></li>
+<li><p>Puerto 40, estado Designado</p></li>
+</ul>
+<p>2:4b, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto 4b, estado Raiz</p></li>
+</ul>
+<p>2:3a, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 8c, estado Designado</p></li>
+<li><p>Puerto 3a, estado Designado</p></li>
+</ul>
+<p>8:55, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 92, estado Raiz</p></li>
+<li><p>Puerto 55, estado Designado</p></li>
+</ul>
+<p>6:a1, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto a1, estado Raiz</p></li>
+<li><p>Puerto d1, estado Bloqueado</p></li>
+<li><p>Puerto b3, estado Bloqueado</p></li>
+</ul>
+<p>3:83, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 83, estado Designado</p></li>
+<li><p>Puerto ce, estado Designado</p></li>
+<li><p>Puerto c0, estado Raiz</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-12">
+<h2>Ejercicio STP 12<a class="headerlink" href="#ejercicio-stp-12" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 4</p></li>
+<li><p>Switch 2, prioridad 8</p></li>
+<li><p>Switch 3, prioridad 3</p></li>
+<li><p>Switch 4, prioridad 6</p></li>
+<li><p>Switch 5, prioridad 2</p></li>
+<li><p>Switch 6, prioridad 1</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 4, prioridad 6 con MAC ee a la MAC 31 de Switch 3, prioridad 3</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 3 con MAC bd a la MAC 96 de Switch 1, prioridad 4</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 4 con MAC 49 a la MAC 68 de Switch 2, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 8 con MAC ef a la MAC 4d de Switch 6, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 1 con MAC 85 a la MAC b4 de Switch 5, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 8 con MAC 12 a la MAC d9 de Switch 5, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 4 con MAC 77 a la MAC b7 de Switch 6, prioridad 1</p></li>
+</ul>
+<figure class="align-default" id="id11">
+<img alt="Ejercicio 12 de STP" src="../../_images/Grafo12.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 12 de STP</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-12">
+<h2>Solución al ejercicio STP 12<a class="headerlink" href="#solucion-al-ejercicio-stp-12" title="Link to this heading"></a></h2>
+<p>Switch raíz 1:4d</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>4:49, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 96, estado Designado</p></li>
+<li><p>Puerto 49, estado Designado</p></li>
+<li><p>Puerto 77, estado Raiz</p></li>
+</ul>
+<p>8:12, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 68, estado Bloqueado</p></li>
+<li><p>Puerto ef, estado Raiz</p></li>
+<li><p>Puerto 12, estado Designado</p></li>
+</ul>
+<p>3:31, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 31, estado Designado</p></li>
+<li><p>Puerto bd, estado Raiz</p></li>
+</ul>
+<p>6:ee, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto ee, estado Raiz</p></li>
+</ul>
+<p>2:b4, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto b4, estado Raiz</p></li>
+<li><p>Puerto d9, estado Bloqueado</p></li>
+</ul>
+<p>1:4d, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 4d, estado Designado</p></li>
+<li><p>Puerto 85, estado Designado</p></li>
+<li><p>Puerto b7, estado Designado</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-13">
+<h2>Ejercicio STP 13<a class="headerlink" href="#ejercicio-stp-13" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 6</p></li>
+<li><p>Switch 2, prioridad 5</p></li>
+<li><p>Switch 3, prioridad 2</p></li>
+<li><p>Switch 4, prioridad 1</p></li>
+<li><p>Switch 5, prioridad 3</p></li>
+<li><p>Switch 6, prioridad 4</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 2, prioridad 5 con MAC 43 a la MAC ee de Switch 3, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 2 con MAC 70 a la MAC de de Switch 1, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 6 con MAC 5c a la MAC d0 de Switch 4, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 1 con MAC 83 a la MAC 4f de Switch 5, prioridad 3</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 3 con MAC e4 a la MAC cb de Switch 6, prioridad 4</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 2 con MAC dc a la MAC 57 de Switch 4, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 1 con MAC e6 a la MAC 74 de Switch 6, prioridad 4</p></li>
+</ul>
+<figure class="align-default" id="id12">
+<img alt="Ejercicio 13 de STP" src="../../_images/Grafo13.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 13 de STP</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-13">
+<h2>Solución al ejercicio STP 13<a class="headerlink" href="#solucion-al-ejercicio-stp-13" title="Link to this heading"></a></h2>
+<p>Switch raíz 1:57</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>6:5c, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto de, estado Bloqueado</p></li>
+<li><p>Puerto 5c, estado Raiz</p></li>
+</ul>
+<p>5:43, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 43, estado Raiz</p></li>
+</ul>
+<p>2:70, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto ee, estado Designado</p></li>
+<li><p>Puerto 70, estado Designado</p></li>
+<li><p>Puerto dc, estado Raiz</p></li>
+</ul>
+<p>1:57, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto d0, estado Designado</p></li>
+<li><p>Puerto 83, estado Designado</p></li>
+<li><p>Puerto 57, estado Designado</p></li>
+<li><p>Puerto e6, estado Designado</p></li>
+</ul>
+<p>3:4f, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 4f, estado Raiz</p></li>
+<li><p>Puerto e4, estado Bloqueado</p></li>
+</ul>
+<p>4:74, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto cb, estado Designado</p></li>
+<li><p>Puerto 74, estado Raiz</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-14">
+<h2>Ejercicio STP 14<a class="headerlink" href="#ejercicio-stp-14" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 3</p></li>
+<li><p>Switch 2, prioridad 4</p></li>
+<li><p>Switch 3, prioridad 6</p></li>
+<li><p>Switch 4, prioridad 8</p></li>
+<li><p>Switch 5, prioridad 5</p></li>
+<li><p>Switch 6, prioridad 5</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 2, prioridad 4 con MAC de a la MAC c3 de Switch 3, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 6 con MAC 45 a la MAC 4e de Switch 5, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 5 con MAC 11 a la MAC 8b de Switch 1, prioridad 3</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 3 con MAC 1a a la MAC 1c de Switch 6, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 5 con MAC 64 a la MAC 50 de Switch 4, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 8 con MAC 23 a la MAC 10 de Switch 5, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 5 con MAC f1 a la MAC 36 de Switch 6, prioridad 5</p></li>
+</ul>
+<figure class="align-default" id="id13">
+<img alt="Ejercicio 14 de STP" src="../../_images/Grafo14.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 14 de STP</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-14">
+<h2>Solución al ejercicio STP 14<a class="headerlink" href="#solucion-al-ejercicio-stp-14" title="Link to this heading"></a></h2>
+<p>Switch raíz 3:1a</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>3:1a, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 8b, estado Designado</p></li>
+<li><p>Puerto 1a, estado Designado</p></li>
+</ul>
+<p>4:de, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto de, estado Raiz</p></li>
+</ul>
+<p>6:45, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto c3, estado Designado</p></li>
+<li><p>Puerto 45, estado Raiz</p></li>
+</ul>
+<p>8:23, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 50, estado Bloqueado</p></li>
+<li><p>Puerto 23, estado Raiz</p></li>
+</ul>
+<p>5:10, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 4e, estado Designado</p></li>
+<li><p>Puerto 11, estado Raiz</p></li>
+<li><p>Puerto 10, estado Designado</p></li>
+<li><p>Puerto f1, estado Bloqueado</p></li>
+</ul>
+<p>5:1c, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 1c, estado Raiz</p></li>
+<li><p>Puerto 64, estado Designado</p></li>
+<li><p>Puerto 36, estado Designado</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-15">
+<h2>Ejercicio STP 15<a class="headerlink" href="#ejercicio-stp-15" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 8</p></li>
+<li><p>Switch 2, prioridad 3</p></li>
+<li><p>Switch 3, prioridad 8</p></li>
+<li><p>Switch 4, prioridad 3</p></li>
+<li><p>Switch 5, prioridad 2</p></li>
+<li><p>Switch 6, prioridad 3</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 6, prioridad 3 con MAC 9f a la MAC 9b de Switch 5, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 2 con MAC 5e a la MAC 11 de Switch 4, prioridad 3</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 3 con MAC 4f a la MAC 89 de Switch 1, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 8 con MAC 13 a la MAC cd de Switch 3, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 8 con MAC f1 a la MAC 1c de Switch 2, prioridad 3</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 3 con MAC 4d a la MAC b6 de Switch 2, prioridad 3</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 3 con MAC a4 a la MAC be de Switch 6, prioridad 3</p></li>
+</ul>
+<figure class="align-default" id="id14">
+<img alt="Ejercicio 15 de STP" src="../../_images/Grafo15.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 15 de STP</span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-15">
+<h2>Solución al ejercicio STP 15<a class="headerlink" href="#solucion-al-ejercicio-stp-15" title="Link to this heading"></a></h2>
+<p>Switch raíz 2:5e</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>8:13, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 89, estado Raiz</p></li>
+<li><p>Puerto 13, estado Designado</p></li>
+</ul>
+<p>3:1c, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 1c, estado Designado</p></li>
+<li><p>Puerto b6, estado Raiz</p></li>
+</ul>
+<p>8:cd, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto cd, estado Raiz</p></li>
+<li><p>Puerto f1, estado Bloqueado</p></li>
+</ul>
+<p>3:11, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 11, estado Raiz</p></li>
+<li><p>Puerto 4f, estado Designado</p></li>
+<li><p>Puerto a4, estado Designado</p></li>
+</ul>
+<p>2:5e, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 9b, estado Designado</p></li>
+<li><p>Puerto 5e, estado Designado</p></li>
+</ul>
+<p>3:4d, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 9f, estado Raiz</p></li>
+<li><p>Puerto 4d, estado Designado</p></li>
+<li><p>Puerto be, estado Bloqueado</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-16">
+<h2>Ejercicio STP 16<a class="headerlink" href="#ejercicio-stp-16" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 2</p></li>
+<li><p>Switch 2, prioridad 7</p></li>
+<li><p>Switch 3, prioridad 7</p></li>
+<li><p>Switch 4, prioridad 3</p></li>
+<li><p>Switch 5, prioridad 8</p></li>
+<li><p>Switch 6, prioridad 6</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 5, prioridad 8 con MAC 9f a la MAC 60 de Switch 3, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 7 con MAC 62 a la MAC c4 de Switch 2, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 7 con MAC 1f a la MAC a3 de Switch 4, prioridad 3</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 3 con MAC 51 a la MAC 9d de Switch 6, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 6 con MAC fa a la MAC 46 de Switch 1, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 7 con MAC 97 a la MAC e0 de Switch 1, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 3 con MAC 50 a la MAC af de Switch 1, prioridad 2</p></li>
+</ul>
+<figure class="align-default" id="id15">
+<img alt="Ejercicio 16 de STP" src="../../_images/Grafo16.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 16 de STP</span><a class="headerlink" href="#id15" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-16">
+<h2>Solución al ejercicio STP 16<a class="headerlink" href="#solucion-al-ejercicio-stp-16" title="Link to this heading"></a></h2>
+<p>Switch raíz 2:46</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>2:46, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 46, estado Designado</p></li>
+<li><p>Puerto e0, estado Designado</p></li>
+<li><p>Puerto af, estado Designado</p></li>
+</ul>
+<p>7:1f, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto c4, estado Bloqueado</p></li>
+<li><p>Puerto 1f, estado Raiz</p></li>
+</ul>
+<p>7:60, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 60, estado Designado</p></li>
+<li><p>Puerto 62, estado Designado</p></li>
+<li><p>Puerto 97, estado Raiz</p></li>
+</ul>
+<p>3:50, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto a3, estado Designado</p></li>
+<li><p>Puerto 51, estado Designado</p></li>
+<li><p>Puerto 50, estado Raiz</p></li>
+</ul>
+<p>8:9f, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 9f, estado Raiz</p></li>
+</ul>
+<p>6:9d, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 9d, estado Bloqueado</p></li>
+<li><p>Puerto fa, estado Raiz</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-17">
+<h2>Ejercicio STP 17<a class="headerlink" href="#ejercicio-stp-17" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 8</p></li>
+<li><p>Switch 2, prioridad 2</p></li>
+<li><p>Switch 3, prioridad 8</p></li>
+<li><p>Switch 4, prioridad 3</p></li>
+<li><p>Switch 5, prioridad 4</p></li>
+<li><p>Switch 6, prioridad 1</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 3, prioridad 8 con MAC dc a la MAC 86 de Switch 1, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 8 con MAC a8 a la MAC 8e de Switch 6, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 1 con MAC 5f a la MAC cb de Switch 5, prioridad 4</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 4 con MAC 68 a la MAC 73 de Switch 4, prioridad 3</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 3 con MAC 31 a la MAC be de Switch 2, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 2 con MAC 4d a la MAC de de Switch 5, prioridad 4</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 3 con MAC f8 a la MAC a5 de Switch 1, prioridad 8</p></li>
+</ul>
+<figure class="align-default" id="id16">
+<img alt="Ejercicio 17 de STP" src="../../_images/Grafo17.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 17 de STP</span><a class="headerlink" href="#id16" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-17">
+<h2>Solución al ejercicio STP 17<a class="headerlink" href="#solucion-al-ejercicio-stp-17" title="Link to this heading"></a></h2>
+<p>Switch raíz 1:5f</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>8:86, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 86, estado Designado</p></li>
+<li><p>Puerto a8, estado Raiz</p></li>
+<li><p>Puerto a5, estado Designado</p></li>
+</ul>
+<p>2:4d, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto be, estado Bloqueado</p></li>
+<li><p>Puerto 4d, estado Raiz</p></li>
+</ul>
+<p>8:dc, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto dc, estado Raiz</p></li>
+</ul>
+<p>3:31, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 73, estado Raiz</p></li>
+<li><p>Puerto 31, estado Designado</p></li>
+<li><p>Puerto f8, estado Bloqueado</p></li>
+</ul>
+<p>4:68, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto cb, estado Raiz</p></li>
+<li><p>Puerto 68, estado Designado</p></li>
+<li><p>Puerto de, estado Designado</p></li>
+</ul>
+<p>1:5f, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 8e, estado Designado</p></li>
+<li><p>Puerto 5f, estado Designado</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-18">
+<h2>Ejercicio STP 18<a class="headerlink" href="#ejercicio-stp-18" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 6</p></li>
+<li><p>Switch 2, prioridad 6</p></li>
+<li><p>Switch 3, prioridad 8</p></li>
+<li><p>Switch 4, prioridad 8</p></li>
+<li><p>Switch 5, prioridad 7</p></li>
+<li><p>Switch 6, prioridad 8</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 1, prioridad 6 con MAC 4f a la MAC e2 de Switch 5, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 7 con MAC 8e a la MAC 76 de Switch 3, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 8 con MAC 4b a la MAC 8c de Switch 2, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 6 con MAC a6 a la MAC 47 de Switch 6, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 8 con MAC 49 a la MAC a9 de Switch 4, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 7 con MAC 28 a la MAC 2f de Switch 6, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 7 con MAC bf a la MAC f8 de Switch 4, prioridad 8</p></li>
+</ul>
+<figure class="align-default" id="id17">
+<img alt="Ejercicio 18 de STP" src="../../_images/Grafo18.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 18 de STP</span><a class="headerlink" href="#id17" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-18">
+<h2>Solución al ejercicio STP 18<a class="headerlink" href="#solucion-al-ejercicio-stp-18" title="Link to this heading"></a></h2>
+<p>Switch raíz 6:4f</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>6:4f, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 4f, estado Designado</p></li>
+</ul>
+<p>6:8c, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto 8c, estado Raiz</p></li>
+<li><p>Puerto a6, estado Bloqueado</p></li>
+</ul>
+<p>8:4b, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 76, estado Raiz</p></li>
+<li><p>Puerto 4b, estado Designado</p></li>
+</ul>
+<p>8:a9, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto a9, estado Bloqueado</p></li>
+<li><p>Puerto f8, estado Raiz</p></li>
+</ul>
+<p>7:28, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto e2, estado Raiz</p></li>
+<li><p>Puerto 8e, estado Designado</p></li>
+<li><p>Puerto 28, estado Designado</p></li>
+<li><p>Puerto bf, estado Designado</p></li>
+</ul>
+<p>8:2f, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 47, estado Designado</p></li>
+<li><p>Puerto 49, estado Designado</p></li>
+<li><p>Puerto 2f, estado Raiz</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-19">
+<h2>Ejercicio STP 19<a class="headerlink" href="#ejercicio-stp-19" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 1</p></li>
+<li><p>Switch 2, prioridad 6</p></li>
+<li><p>Switch 3, prioridad 4</p></li>
+<li><p>Switch 4, prioridad 7</p></li>
+<li><p>Switch 5, prioridad 1</p></li>
+<li><p>Switch 6, prioridad 6</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 5, prioridad 1 con MAC b1 a la MAC 6e de Switch 1, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 1 con MAC 88 a la MAC c9 de Switch 3, prioridad 4</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 4 con MAC 19 a la MAC 23 de Switch 4, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 7 con MAC 4c a la MAC 53 de Switch 2, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 6 con MAC d5 a la MAC f4 de Switch 6, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 4 con MAC 55 a la MAC f9 de Switch 6, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 4 con MAC 4a a la MAC b3 de Switch 2, prioridad 6</p></li>
+</ul>
+<figure class="align-default" id="id18">
+<img alt="Ejercicio 19 de STP" src="../../_images/Grafo19.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 19 de STP</span><a class="headerlink" href="#id18" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-19">
+<h2>Solución al ejercicio STP 19<a class="headerlink" href="#solucion-al-ejercicio-stp-19" title="Link to this heading"></a></h2>
+<p>Switch raíz 1:6e</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>1:6e, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 6e, estado Designado</p></li>
+<li><p>Puerto 88, estado Designado</p></li>
+</ul>
+<p>6:53, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 53, estado Bloqueado</p></li>
+<li><p>Puerto d5, estado Designado</p></li>
+<li><p>Puerto b3, estado Raiz</p></li>
+</ul>
+<p>4:19, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto c9, estado Raiz</p></li>
+<li><p>Puerto 19, estado Designado</p></li>
+<li><p>Puerto 55, estado Designado</p></li>
+<li><p>Puerto 4a, estado Designado</p></li>
+</ul>
+<p>7:23, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 23, estado Raiz</p></li>
+<li><p>Puerto 4c, estado Designado</p></li>
+</ul>
+<p>1:b1, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto b1, estado Raiz</p></li>
+</ul>
+<p>6:f4, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto f4, estado Bloqueado</p></li>
+<li><p>Puerto f9, estado Raiz</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-21">
+<h2>Ejercicio STP 21<a class="headerlink" href="#ejercicio-stp-21" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 2</p></li>
+<li><p>Switch 2, prioridad 5</p></li>
+<li><p>Switch 3, prioridad 6</p></li>
+<li><p>Switch 4, prioridad 2</p></li>
+<li><p>Switch 5, prioridad 1</p></li>
+<li><p>Switch 6, prioridad 1</p></li>
+<li><p>Switch 7, prioridad 3</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 7, prioridad 3 con MAC 81 a la MAC f3 de Switch 3, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 6 con MAC 57 a la MAC cb de Switch 1, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 2 con MAC dc a la MAC ed de Switch 6, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 1 con MAC a4 a la MAC 1a de Switch 4, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 2 con MAC 27 a la MAC 4d de Switch 2, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 5 con MAC 1b a la MAC 6d de Switch 5, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 6 con MAC 83 a la MAC 43 de Switch 4, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 5 con MAC 20 a la MAC bd de Switch 6, prioridad 1</p></li>
+</ul>
+<figure class="align-default" id="id19">
+<img alt="Ejercicio 21 de STP" src="../../_images/Grafo21.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 21 de STP</span><a class="headerlink" href="#id19" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-21">
+<h2>Solución al ejercicio STP 21<a class="headerlink" href="#solucion-al-ejercicio-stp-21" title="Link to this heading"></a></h2>
+<p>Switch raíz 1:6d</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>2:cb, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto cb, estado Bloqueado</p></li>
+<li><p>Puerto dc, estado Raiz</p></li>
+</ul>
+<p>5:1b, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 4d, estado Designado</p></li>
+<li><p>Puerto 1b, estado Raiz</p></li>
+<li><p>Puerto 20, estado Designado</p></li>
+</ul>
+<p>6:57, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto f3, estado Designado</p></li>
+<li><p>Puerto 57, estado Designado</p></li>
+<li><p>Puerto 83, estado Raiz</p></li>
+</ul>
+<p>2:1a, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 1a, estado Designado</p></li>
+<li><p>Puerto 27, estado Raiz</p></li>
+<li><p>Puerto 43, estado Designado</p></li>
+</ul>
+<p>1:6d, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 6d, estado Designado</p></li>
+</ul>
+<p>1:a4, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto ed, estado Designado</p></li>
+<li><p>Puerto a4, estado Bloqueado</p></li>
+<li><p>Puerto bd, estado Raiz</p></li>
+</ul>
+<p>3:81, distancia a raíz:4</p>
+<ul class="simple">
+<li><p>Puerto 81, estado Raiz</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-22">
+<h2>Ejercicio STP 22<a class="headerlink" href="#ejercicio-stp-22" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 2</p></li>
+<li><p>Switch 2, prioridad 7</p></li>
+<li><p>Switch 3, prioridad 6</p></li>
+<li><p>Switch 4, prioridad 1</p></li>
+<li><p>Switch 5, prioridad 2</p></li>
+<li><p>Switch 6, prioridad 6</p></li>
+<li><p>Switch 7, prioridad 1</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 1, prioridad 2 con MAC 31 a la MAC d8 de Switch 7, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 7, prioridad 1 con MAC 57 a la MAC fa de Switch 2, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 7 con MAC 27 a la MAC 7e de Switch 3, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 6 con MAC c6 a la MAC 96 de Switch 6, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 6 con MAC 7d a la MAC 73 de Switch 5, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 2 con MAC 48 a la MAC e8 de Switch 4, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 7 con MAC f1 a la MAC b0 de Switch 4, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 1 con MAC 95 a la MAC 87 de Switch 7, prioridad 1</p></li>
+</ul>
+<figure class="align-default" id="id20">
+<img alt="Ejercicio 22 de STP" src="../../_images/Grafo22.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 22 de STP</span><a class="headerlink" href="#id20" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-22">
+<h2>Solución al ejercicio STP 22<a class="headerlink" href="#solucion-al-ejercicio-stp-22" title="Link to this heading"></a></h2>
+<p>Switch raíz 1:57</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>2:31, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 31, estado Raiz</p></li>
+</ul>
+<p>7:27, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto fa, estado Raiz</p></li>
+<li><p>Puerto 27, estado Designado</p></li>
+<li><p>Puerto f1, estado Bloqueado</p></li>
+</ul>
+<p>6:7e, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 7e, estado Raiz</p></li>
+<li><p>Puerto c6, estado Designado</p></li>
+</ul>
+<p>1:95, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto e8, estado Designado</p></li>
+<li><p>Puerto b0, estado Designado</p></li>
+<li><p>Puerto 95, estado Raiz</p></li>
+</ul>
+<p>2:48, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 73, estado Designado</p></li>
+<li><p>Puerto 48, estado Raiz</p></li>
+</ul>
+<p>6:7d, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto 96, estado Bloqueado</p></li>
+<li><p>Puerto 7d, estado Raiz</p></li>
+</ul>
+<p>1:57, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto d8, estado Designado</p></li>
+<li><p>Puerto 57, estado Designado</p></li>
+<li><p>Puerto 87, estado Designado</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-23">
+<h2>Ejercicio STP 23<a class="headerlink" href="#ejercicio-stp-23" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 7</p></li>
+<li><p>Switch 2, prioridad 8</p></li>
+<li><p>Switch 3, prioridad 7</p></li>
+<li><p>Switch 4, prioridad 3</p></li>
+<li><p>Switch 5, prioridad 5</p></li>
+<li><p>Switch 6, prioridad 7</p></li>
+<li><p>Switch 7, prioridad 2</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 2, prioridad 8 con MAC 97 a la MAC 10 de Switch 5, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 5 con MAC 2e a la MAC 9b de Switch 3, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 7 con MAC a9 a la MAC b3 de Switch 1, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 7 con MAC 75 a la MAC 41 de Switch 4, prioridad 3</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 3 con MAC fc a la MAC 92 de Switch 6, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 7 con MAC 6f a la MAC 36 de Switch 7, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 3 con MAC 79 a la MAC 58 de Switch 7, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 8 con MAC 2a a la MAC 80 de Switch 6, prioridad 7</p></li>
+</ul>
+<figure class="align-default" id="id21">
+<img alt="Ejercicio 23 de STP" src="../../_images/Grafo23.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 23 de STP</span><a class="headerlink" href="#id21" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-23">
+<h2>Solución al ejercicio STP 23<a class="headerlink" href="#solucion-al-ejercicio-stp-23" title="Link to this heading"></a></h2>
+<p>Switch raíz 2:36</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>7:75, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto b3, estado Designado</p></li>
+<li><p>Puerto 75, estado Raiz</p></li>
+</ul>
+<p>8:2a, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 97, estado Designado</p></li>
+<li><p>Puerto 2a, estado Raiz</p></li>
+</ul>
+<p>7:9b, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto 9b, estado Bloqueado</p></li>
+<li><p>Puerto a9, estado Raiz</p></li>
+</ul>
+<p>3:41, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 41, estado Designado</p></li>
+<li><p>Puerto fc, estado Bloqueado</p></li>
+<li><p>Puerto 79, estado Raiz</p></li>
+</ul>
+<p>5:10, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto 10, estado Raiz</p></li>
+<li><p>Puerto 2e, estado Designado</p></li>
+</ul>
+<p>7:6f, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 92, estado Designado</p></li>
+<li><p>Puerto 6f, estado Raiz</p></li>
+<li><p>Puerto 80, estado Designado</p></li>
+</ul>
+<p>2:36, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 36, estado Designado</p></li>
+<li><p>Puerto 58, estado Designado</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-24">
+<h2>Ejercicio STP 24<a class="headerlink" href="#ejercicio-stp-24" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 4</p></li>
+<li><p>Switch 2, prioridad 4</p></li>
+<li><p>Switch 3, prioridad 8</p></li>
+<li><p>Switch 4, prioridad 4</p></li>
+<li><p>Switch 5, prioridad 2</p></li>
+<li><p>Switch 6, prioridad 2</p></li>
+<li><p>Switch 7, prioridad 4</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 7, prioridad 4 con MAC a8 a la MAC 57 de Switch 5, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 2 con MAC 4f a la MAC c2 de Switch 4, prioridad 4</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 4 con MAC 41 a la MAC d1 de Switch 2, prioridad 4</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 4 con MAC a5 a la MAC 27 de Switch 3, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 8 con MAC 58 a la MAC b2 de Switch 1, prioridad 4</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 4 con MAC c9 a la MAC 7c de Switch 6, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 4 con MAC a7 a la MAC 35 de Switch 7, prioridad 4</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 4 con MAC 1f a la MAC f6 de Switch 5, prioridad 2</p></li>
+</ul>
+<figure class="align-default" id="id22">
+<img alt="Ejercicio 24 de STP" src="../../_images/Grafo24.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 24 de STP</span><a class="headerlink" href="#id22" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-24">
+<h2>Solución al ejercicio STP 24<a class="headerlink" href="#solucion-al-ejercicio-stp-24" title="Link to this heading"></a></h2>
+<p>Switch raíz 2:4f</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>4:1f, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto b2, estado Designado</p></li>
+<li><p>Puerto c9, estado Designado</p></li>
+<li><p>Puerto 1f, estado Raiz</p></li>
+</ul>
+<p>4:a5, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto d1, estado Raiz</p></li>
+<li><p>Puerto a5, estado Bloqueado</p></li>
+</ul>
+<p>8:27, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 27, estado Designado</p></li>
+<li><p>Puerto 58, estado Raiz</p></li>
+</ul>
+<p>4:41, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto c2, estado Raiz</p></li>
+<li><p>Puerto 41, estado Designado</p></li>
+<li><p>Puerto a7, estado Bloqueado</p></li>
+</ul>
+<p>2:4f, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 57, estado Designado</p></li>
+<li><p>Puerto 4f, estado Designado</p></li>
+<li><p>Puerto f6, estado Designado</p></li>
+</ul>
+<p>2:7c, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 7c, estado Raiz</p></li>
+</ul>
+<p>4:35, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto a8, estado Raiz</p></li>
+<li><p>Puerto 35, estado Designado</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-25">
+<h2>Ejercicio STP 25<a class="headerlink" href="#ejercicio-stp-25" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 5</p></li>
+<li><p>Switch 2, prioridad 3</p></li>
+<li><p>Switch 3, prioridad 4</p></li>
+<li><p>Switch 4, prioridad 6</p></li>
+<li><p>Switch 5, prioridad 1</p></li>
+<li><p>Switch 6, prioridad 5</p></li>
+<li><p>Switch 7, prioridad 1</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 6, prioridad 5 con MAC 5b a la MAC 7a de Switch 3, prioridad 4</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 4 con MAC 1c a la MAC 43 de Switch 5, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 1 con MAC dc a la MAC de de Switch 2, prioridad 3</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 3 con MAC e7 a la MAC a8 de Switch 4, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 6 con MAC 78 a la MAC 71 de Switch 7, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 7, prioridad 1 con MAC 95 a la MAC 11 de Switch 1, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 4 con MAC 55 a la MAC 34 de Switch 4, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 4 con MAC 93 a la MAC 38 de Switch 7, prioridad 1</p></li>
+</ul>
+<figure class="align-default" id="id23">
+<img alt="Ejercicio 25 de STP" src="../../_images/Grafo25.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 25 de STP</span><a class="headerlink" href="#id23" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-25">
+<h2>Solución al ejercicio STP 25<a class="headerlink" href="#solucion-al-ejercicio-stp-25" title="Link to this heading"></a></h2>
+<p>Switch raíz 1:38</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>5:11, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 11, estado Raiz</p></li>
+</ul>
+<p>3:de, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto de, estado Bloqueado</p></li>
+<li><p>Puerto e7, estado Raiz</p></li>
+</ul>
+<p>4:1c, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 7a, estado Designado</p></li>
+<li><p>Puerto 1c, estado Designado</p></li>
+<li><p>Puerto 55, estado Bloqueado</p></li>
+<li><p>Puerto 93, estado Raiz</p></li>
+</ul>
+<p>6:34, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto a8, estado Designado</p></li>
+<li><p>Puerto 78, estado Raiz</p></li>
+<li><p>Puerto 34, estado Designado</p></li>
+</ul>
+<p>1:43, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 43, estado Raiz</p></li>
+<li><p>Puerto dc, estado Designado</p></li>
+</ul>
+<p>5:5b, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 5b, estado Raiz</p></li>
+</ul>
+<p>1:38, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 71, estado Designado</p></li>
+<li><p>Puerto 95, estado Designado</p></li>
+<li><p>Puerto 38, estado Designado</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-26">
+<h2>Ejercicio STP 26<a class="headerlink" href="#ejercicio-stp-26" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 8</p></li>
+<li><p>Switch 2, prioridad 1</p></li>
+<li><p>Switch 3, prioridad 7</p></li>
+<li><p>Switch 4, prioridad 1</p></li>
+<li><p>Switch 5, prioridad 7</p></li>
+<li><p>Switch 6, prioridad 2</p></li>
+<li><p>Switch 7, prioridad 6</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 1, prioridad 8 con MAC d9 a la MAC 48 de Switch 2, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 1 con MAC 60 a la MAC dc de Switch 7, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 7, prioridad 6 con MAC d8 a la MAC 22 de Switch 6, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 2 con MAC 2e a la MAC f4 de Switch 5, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 7 con MAC 40 a la MAC a3 de Switch 3, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 7 con MAC e0 a la MAC b0 de Switch 4, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 7 con MAC b1 a la MAC dd de Switch 7, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 7 con MAC c4 a la MAC 81 de Switch 4, prioridad 1</p></li>
+</ul>
+<figure class="align-default" id="id24">
+<img alt="Ejercicio 26 de STP" src="../../_images/Grafo26.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 26 de STP</span><a class="headerlink" href="#id24" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-26">
+<h2>Solución al ejercicio STP 26<a class="headerlink" href="#solucion-al-ejercicio-stp-26" title="Link to this heading"></a></h2>
+<p>Switch raíz 1:48</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>8:d9, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto d9, estado Raiz</p></li>
+</ul>
+<p>1:48, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 48, estado Designado</p></li>
+<li><p>Puerto 60, estado Designado</p></li>
+</ul>
+<p>7:a3, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto a3, estado Raiz</p></li>
+<li><p>Puerto e0, estado Bloqueado</p></li>
+</ul>
+<p>1:81, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto b0, estado Designado</p></li>
+<li><p>Puerto 81, estado Raiz</p></li>
+</ul>
+<p>7:40, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto f4, estado Bloqueado</p></li>
+<li><p>Puerto 40, estado Designado</p></li>
+<li><p>Puerto b1, estado Raiz</p></li>
+<li><p>Puerto c4, estado Designado</p></li>
+</ul>
+<p>2:22, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 22, estado Raiz</p></li>
+<li><p>Puerto 2e, estado Designado</p></li>
+</ul>
+<p>6:d8, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto dc, estado Raiz</p></li>
+<li><p>Puerto d8, estado Designado</p></li>
+<li><p>Puerto dd, estado Designado</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-27">
+<h2>Ejercicio STP 27<a class="headerlink" href="#ejercicio-stp-27" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 7</p></li>
+<li><p>Switch 2, prioridad 6</p></li>
+<li><p>Switch 3, prioridad 4</p></li>
+<li><p>Switch 4, prioridad 7</p></li>
+<li><p>Switch 5, prioridad 6</p></li>
+<li><p>Switch 6, prioridad 2</p></li>
+<li><p>Switch 7, prioridad 3</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 7, prioridad 3 con MAC 1f a la MAC 28 de Switch 1, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 7 con MAC 9c a la MAC 52 de Switch 4, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 7 con MAC d3 a la MAC e0 de Switch 5, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 6 con MAC 38 a la MAC 8e de Switch 6, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 2 con MAC c0 a la MAC 2b de Switch 2, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 6 con MAC b3 a la MAC b2 de Switch 3, prioridad 4</p></li>
+<li><p>Conexion desde el Switch 7, prioridad 3 con MAC 22 a la MAC 1a de Switch 2, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 4 con MAC c2 a la MAC b9 de Switch 6, prioridad 2</p></li>
+</ul>
+<figure class="align-default" id="id25">
+<img alt="Ejercicio 27 de STP" src="../../_images/Grafo27.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 27 de STP</span><a class="headerlink" href="#id25" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-27">
+<h2>Solución al ejercicio STP 27<a class="headerlink" href="#solucion-al-ejercicio-stp-27" title="Link to this heading"></a></h2>
+<p>Switch raíz 2:8e</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>7:28, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto 28, estado Raiz</p></li>
+<li><p>Puerto 9c, estado Bloqueado</p></li>
+</ul>
+<p>6:1a, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 2b, estado Raiz</p></li>
+<li><p>Puerto b3, estado Bloqueado</p></li>
+<li><p>Puerto 1a, estado Designado</p></li>
+</ul>
+<p>4:b2, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto b2, estado Designado</p></li>
+<li><p>Puerto c2, estado Raiz</p></li>
+</ul>
+<p>7:52, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 52, estado Designado</p></li>
+<li><p>Puerto d3, estado Raiz</p></li>
+</ul>
+<p>6:38, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto e0, estado Designado</p></li>
+<li><p>Puerto 38, estado Raiz</p></li>
+</ul>
+<p>2:8e, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 8e, estado Designado</p></li>
+<li><p>Puerto c0, estado Designado</p></li>
+<li><p>Puerto b9, estado Designado</p></li>
+</ul>
+<p>3:1f, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 1f, estado Designado</p></li>
+<li><p>Puerto 22, estado Raiz</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-28">
+<h2>Ejercicio STP 28<a class="headerlink" href="#ejercicio-stp-28" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 1</p></li>
+<li><p>Switch 2, prioridad 5</p></li>
+<li><p>Switch 3, prioridad 1</p></li>
+<li><p>Switch 4, prioridad 7</p></li>
+<li><p>Switch 5, prioridad 3</p></li>
+<li><p>Switch 6, prioridad 7</p></li>
+<li><p>Switch 7, prioridad 5</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 1, prioridad 1 con MAC c0 a la MAC eb de Switch 5, prioridad 3</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 3 con MAC 37 a la MAC 25 de Switch 4, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 7 con MAC 59 a la MAC 19 de Switch 3, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 1 con MAC 5f a la MAC 24 de Switch 7, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 7, prioridad 5 con MAC 3e a la MAC 63 de Switch 2, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 5 con MAC 6d a la MAC 8c de Switch 6, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 1 con MAC ba a la MAC 23 de Switch 1, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 7 con MAC ca a la MAC 88 de Switch 7, prioridad 5</p></li>
+</ul>
+<figure class="align-default" id="id26">
+<img alt="Ejercicio 28 de STP" src="../../_images/Grafo28.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 28 de STP</span><a class="headerlink" href="#id26" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-28">
+<h2>Solución al ejercicio STP 28<a class="headerlink" href="#solucion-al-ejercicio-stp-28" title="Link to this heading"></a></h2>
+<p>Switch raíz 1:19</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>1:23, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto c0, estado Designado</p></li>
+<li><p>Puerto 23, estado Raiz</p></li>
+</ul>
+<p>5:63, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 63, estado Raiz</p></li>
+<li><p>Puerto 6d, estado Designado</p></li>
+</ul>
+<p>1:19, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 19, estado Designado</p></li>
+<li><p>Puerto 5f, estado Designado</p></li>
+<li><p>Puerto ba, estado Designado</p></li>
+</ul>
+<p>7:25, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 25, estado Designado</p></li>
+<li><p>Puerto 59, estado Raiz</p></li>
+<li><p>Puerto ca, estado Bloqueado</p></li>
+</ul>
+<p>3:37, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto eb, estado Bloqueado</p></li>
+<li><p>Puerto 37, estado Raiz</p></li>
+</ul>
+<p>7:8c, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto 8c, estado Raiz</p></li>
+</ul>
+<p>5:24, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 24, estado Raiz</p></li>
+<li><p>Puerto 3e, estado Designado</p></li>
+<li><p>Puerto 88, estado Designado</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-29">
+<h2>Ejercicio STP 29<a class="headerlink" href="#ejercicio-stp-29" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 6</p></li>
+<li><p>Switch 2, prioridad 3</p></li>
+<li><p>Switch 3, prioridad 2</p></li>
+<li><p>Switch 4, prioridad 1</p></li>
+<li><p>Switch 5, prioridad 7</p></li>
+<li><p>Switch 6, prioridad 7</p></li>
+<li><p>Switch 7, prioridad 7</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 2, prioridad 3 con MAC 44 a la MAC b8 de Switch 7, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 7, prioridad 7 con MAC 1f a la MAC ef de Switch 4, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 1 con MAC 98 a la MAC 4a de Switch 1, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 6 con MAC b3 a la MAC a6 de Switch 5, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 7 con MAC c7 a la MAC cf de Switch 6, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 7 con MAC 1d a la MAC af de Switch 3, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 1 con MAC 93 a la MAC 47 de Switch 5, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 2 con MAC d2 a la MAC f3 de Switch 5, prioridad 7</p></li>
+</ul>
+<figure class="align-default" id="id27">
+<img alt="Ejercicio 29 de STP" src="../../_images/Grafo29.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 29 de STP</span><a class="headerlink" href="#id27" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-29">
+<h2>Solución al ejercicio STP 29<a class="headerlink" href="#solucion-al-ejercicio-stp-29" title="Link to this heading"></a></h2>
+<p>Switch raíz 1:93</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>6:4a, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 4a, estado Raiz</p></li>
+<li><p>Puerto b3, estado Bloqueado</p></li>
+</ul>
+<p>3:44, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 44, estado Raiz</p></li>
+</ul>
+<p>2:af, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto af, estado Bloqueado</p></li>
+<li><p>Puerto d2, estado Raiz</p></li>
+</ul>
+<p>1:93, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto ef, estado Designado</p></li>
+<li><p>Puerto 98, estado Designado</p></li>
+<li><p>Puerto 93, estado Designado</p></li>
+</ul>
+<p>7:47, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto a6, estado Designado</p></li>
+<li><p>Puerto c7, estado Designado</p></li>
+<li><p>Puerto 47, estado Raiz</p></li>
+<li><p>Puerto f3, estado Designado</p></li>
+</ul>
+<p>7:1d, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto cf, estado Raiz</p></li>
+<li><p>Puerto 1d, estado Designado</p></li>
+</ul>
+<p>7:1f, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto b8, estado Designado</p></li>
+<li><p>Puerto 1f, estado Raiz</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-31">
+<h2>Ejercicio STP 31<a class="headerlink" href="#ejercicio-stp-31" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 4</p></li>
+<li><p>Switch 2, prioridad 3</p></li>
+<li><p>Switch 3, prioridad 5</p></li>
+<li><p>Switch 4, prioridad 5</p></li>
+<li><p>Switch 5, prioridad 8</p></li>
+<li><p>Switch 6, prioridad 3</p></li>
+<li><p>Switch 7, prioridad 3</p></li>
+<li><p>Switch 8, prioridad 7</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 3, prioridad 5 con MAC 7d a la MAC 5c de Switch 1, prioridad 4</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 4 con MAC 28 a la MAC 87 de Switch 6, prioridad 3</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 3 con MAC 26 a la MAC 30 de Switch 8, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 8, prioridad 7 con MAC b8 a la MAC 39 de Switch 5, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 8 con MAC c9 a la MAC 90 de Switch 2, prioridad 3</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 3 con MAC 36 a la MAC da de Switch 4, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 5 con MAC 7b a la MAC ca de Switch 7, prioridad 3</p></li>
+<li><p>Conexion desde el Switch 8, prioridad 7 con MAC 8c a la MAC 3f de Switch 7, prioridad 3</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 5 con MAC 6a a la MAC a3 de Switch 4, prioridad 5</p></li>
+</ul>
+<figure class="align-default" id="id28">
+<img alt="Ejercicio 31 de STP" src="../../_images/Grafo31.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 31 de STP</span><a class="headerlink" href="#id28" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-31">
+<h2>Solución al ejercicio STP 31<a class="headerlink" href="#solucion-al-ejercicio-stp-31" title="Link to this heading"></a></h2>
+<p>Switch raíz 3:26</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>4:28, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 5c, estado Designado</p></li>
+<li><p>Puerto 28, estado Raiz</p></li>
+</ul>
+<p>3:36, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto 90, estado Raiz</p></li>
+<li><p>Puerto 36, estado Designado</p></li>
+</ul>
+<p>5:6a, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 7d, estado Raiz</p></li>
+<li><p>Puerto 6a, estado Designado</p></li>
+</ul>
+<p>5:7b, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto da, estado Bloqueado</p></li>
+<li><p>Puerto 7b, estado Raiz</p></li>
+<li><p>Puerto a3, estado Bloqueado</p></li>
+</ul>
+<p>8:39, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 39, estado Raiz</p></li>
+<li><p>Puerto c9, estado Designado</p></li>
+</ul>
+<p>3:26, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 87, estado Designado</p></li>
+<li><p>Puerto 26, estado Designado</p></li>
+</ul>
+<p>3:3f, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto ca, estado Designado</p></li>
+<li><p>Puerto 3f, estado Raiz</p></li>
+</ul>
+<p>7:30, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 30, estado Raiz</p></li>
+<li><p>Puerto b8, estado Designado</p></li>
+<li><p>Puerto 8c, estado Designado</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-32">
+<h2>Ejercicio STP 32<a class="headerlink" href="#ejercicio-stp-32" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 1</p></li>
+<li><p>Switch 2, prioridad 8</p></li>
+<li><p>Switch 3, prioridad 4</p></li>
+<li><p>Switch 4, prioridad 1</p></li>
+<li><p>Switch 5, prioridad 6</p></li>
+<li><p>Switch 6, prioridad 4</p></li>
+<li><p>Switch 7, prioridad 8</p></li>
+<li><p>Switch 8, prioridad 5</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 4, prioridad 1 con MAC 7a a la MAC d0 de Switch 5, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 6 con MAC ae a la MAC d4 de Switch 6, prioridad 4</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 4 con MAC 46 a la MAC 83 de Switch 1, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 1 con MAC 73 a la MAC 94 de Switch 2, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 8 con MAC 4f a la MAC 20 de Switch 3, prioridad 4</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 4 con MAC 74 a la MAC 1a de Switch 7, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 7, prioridad 8 con MAC f1 a la MAC 15 de Switch 8, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 1 con MAC 13 a la MAC a6 de Switch 1, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 4 con MAC 87 a la MAC 4b de Switch 7, prioridad 8</p></li>
+</ul>
+<figure class="align-default" id="id29">
+<img alt="Ejercicio 32 de STP" src="../../_images/Grafo32.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 32 de STP</span><a class="headerlink" href="#id29" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-32">
+<h2>Solución al ejercicio STP 32<a class="headerlink" href="#solucion-al-ejercicio-stp-32" title="Link to this heading"></a></h2>
+<p>Switch raíz 1:13</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>1:73, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 83, estado Designado</p></li>
+<li><p>Puerto 73, estado Designado</p></li>
+<li><p>Puerto a6, estado Raiz</p></li>
+</ul>
+<p>8:4f, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 94, estado Raiz</p></li>
+<li><p>Puerto 4f, estado Designado</p></li>
+</ul>
+<p>4:20, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto 20, estado Raiz</p></li>
+<li><p>Puerto 74, estado Bloqueado</p></li>
+</ul>
+<p>1:13, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 7a, estado Designado</p></li>
+<li><p>Puerto 13, estado Designado</p></li>
+</ul>
+<p>6:ae, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto d0, estado Raiz</p></li>
+<li><p>Puerto ae, estado Designado</p></li>
+</ul>
+<p>4:46, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto d4, estado Bloqueado</p></li>
+<li><p>Puerto 46, estado Raiz</p></li>
+<li><p>Puerto 87, estado Designado</p></li>
+</ul>
+<p>8:1a, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto 1a, estado Designado</p></li>
+<li><p>Puerto f1, estado Designado</p></li>
+<li><p>Puerto 4b, estado Raiz</p></li>
+</ul>
+<p>5:15, distancia a raíz:4</p>
+<ul class="simple">
+<li><p>Puerto 15, estado Raiz</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-33">
+<h2>Ejercicio STP 33<a class="headerlink" href="#ejercicio-stp-33" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 7</p></li>
+<li><p>Switch 2, prioridad 5</p></li>
+<li><p>Switch 3, prioridad 4</p></li>
+<li><p>Switch 4, prioridad 3</p></li>
+<li><p>Switch 5, prioridad 2</p></li>
+<li><p>Switch 6, prioridad 3</p></li>
+<li><p>Switch 7, prioridad 3</p></li>
+<li><p>Switch 8, prioridad 3</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 3, prioridad 4 con MAC 1f a la MAC 49 de Switch 2, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 5 con MAC ae a la MAC d1 de Switch 6, prioridad 3</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 3 con MAC a6 a la MAC e7 de Switch 8, prioridad 3</p></li>
+<li><p>Conexion desde el Switch 8, prioridad 3 con MAC 78 a la MAC 2c de Switch 1, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 7 con MAC b2 a la MAC 71 de Switch 7, prioridad 3</p></li>
+<li><p>Conexion desde el Switch 7, prioridad 3 con MAC a2 a la MAC d8 de Switch 4, prioridad 3</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 3 con MAC e1 a la MAC 58 de Switch 5, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 5 con MAC 38 a la MAC 7f de Switch 5, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 3 con MAC 93 a la MAC 2d de Switch 1, prioridad 7</p></li>
+</ul>
+<figure class="align-default" id="id30">
+<img alt="Ejercicio 33 de STP" src="../../_images/Grafo33.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 33 de STP</span><a class="headerlink" href="#id30" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-33">
+<h2>Solución al ejercicio STP 33<a class="headerlink" href="#solucion-al-ejercicio-stp-33" title="Link to this heading"></a></h2>
+<p>Switch raíz 2:58</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>7:2c, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 2c, estado Designado</p></li>
+<li><p>Puerto b2, estado Bloqueado</p></li>
+<li><p>Puerto 2d, estado Raiz</p></li>
+</ul>
+<p>5:38, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 49, estado Designado</p></li>
+<li><p>Puerto ae, estado Designado</p></li>
+<li><p>Puerto 38, estado Raiz</p></li>
+</ul>
+<p>4:1f, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 1f, estado Raiz</p></li>
+</ul>
+<p>3:93, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto d8, estado Designado</p></li>
+<li><p>Puerto e1, estado Raiz</p></li>
+<li><p>Puerto 93, estado Designado</p></li>
+</ul>
+<p>2:58, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 58, estado Designado</p></li>
+<li><p>Puerto 7f, estado Designado</p></li>
+</ul>
+<p>3:a6, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto d1, estado Raiz</p></li>
+<li><p>Puerto a6, estado Designado</p></li>
+</ul>
+<p>3:71, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 71, estado Designado</p></li>
+<li><p>Puerto a2, estado Raiz</p></li>
+</ul>
+<p>3:78, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto e7, estado Bloqueado</p></li>
+<li><p>Puerto 78, estado Raiz</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-34">
+<h2>Ejercicio STP 34<a class="headerlink" href="#ejercicio-stp-34" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 6</p></li>
+<li><p>Switch 2, prioridad 8</p></li>
+<li><p>Switch 3, prioridad 6</p></li>
+<li><p>Switch 4, prioridad 2</p></li>
+<li><p>Switch 5, prioridad 3</p></li>
+<li><p>Switch 6, prioridad 1</p></li>
+<li><p>Switch 7, prioridad 6</p></li>
+<li><p>Switch 8, prioridad 1</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 5, prioridad 3 con MAC 94 a la MAC 59 de Switch 6, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 1 con MAC ad a la MAC 27 de Switch 4, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 2 con MAC 2e a la MAC a8 de Switch 1, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 6 con MAC ba a la MAC 3e de Switch 7, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 7, prioridad 6 con MAC a1 a la MAC d3 de Switch 8, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 8, prioridad 1 con MAC 1f a la MAC 6c de Switch 3, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 6 con MAC ef a la MAC 42 de Switch 2, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 6 con MAC ee a la MAC a4 de Switch 6, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 1 con MAC 69 a la MAC fe de Switch 7, prioridad 6</p></li>
+</ul>
+<figure class="align-default" id="id31">
+<img alt="Ejercicio 34 de STP" src="../../_images/Grafo34.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 34 de STP</span><a class="headerlink" href="#id31" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-34">
+<h2>Solución al ejercicio STP 34<a class="headerlink" href="#solucion-al-ejercicio-stp-34" title="Link to this heading"></a></h2>
+<p>Switch raíz 1:1f</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>6:a8, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto a8, estado Designado</p></li>
+<li><p>Puerto ba, estado Raiz</p></li>
+</ul>
+<p>8:42, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 42, estado Raiz</p></li>
+</ul>
+<p>6:6c, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 6c, estado Raiz</p></li>
+<li><p>Puerto ef, estado Designado</p></li>
+<li><p>Puerto ee, estado Designado</p></li>
+</ul>
+<p>2:27, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto 27, estado Raiz</p></li>
+<li><p>Puerto 2e, estado Bloqueado</p></li>
+</ul>
+<p>3:94, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto 94, estado Raiz</p></li>
+</ul>
+<p>1:59, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 59, estado Designado</p></li>
+<li><p>Puerto ad, estado Designado</p></li>
+<li><p>Puerto a4, estado Bloqueado</p></li>
+<li><p>Puerto 69, estado Raiz</p></li>
+</ul>
+<p>6:3e, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 3e, estado Designado</p></li>
+<li><p>Puerto a1, estado Raiz</p></li>
+<li><p>Puerto fe, estado Designado</p></li>
+</ul>
+<p>1:1f, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto d3, estado Designado</p></li>
+<li><p>Puerto 1f, estado Designado</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-35">
+<h2>Ejercicio STP 35<a class="headerlink" href="#ejercicio-stp-35" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 8</p></li>
+<li><p>Switch 2, prioridad 4</p></li>
+<li><p>Switch 3, prioridad 3</p></li>
+<li><p>Switch 4, prioridad 5</p></li>
+<li><p>Switch 5, prioridad 4</p></li>
+<li><p>Switch 6, prioridad 2</p></li>
+<li><p>Switch 7, prioridad 4</p></li>
+<li><p>Switch 8, prioridad 4</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 1, prioridad 8 con MAC 87 a la MAC d9 de Switch 2, prioridad 4</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 4 con MAC 2f a la MAC 37 de Switch 7, prioridad 4</p></li>
+<li><p>Conexion desde el Switch 7, prioridad 4 con MAC 79 a la MAC e2 de Switch 8, prioridad 4</p></li>
+<li><p>Conexion desde el Switch 8, prioridad 4 con MAC a8 a la MAC 6e de Switch 4, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 5 con MAC 1c a la MAC 68 de Switch 3, prioridad 3</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 3 con MAC b0 a la MAC 60 de Switch 6, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 2 con MAC 1f a la MAC b2 de Switch 5, prioridad 4</p></li>
+<li><p>Conexion desde el Switch 7, prioridad 4 con MAC 8e a la MAC 9d de Switch 6, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 5 con MAC 23 a la MAC 83 de Switch 7, prioridad 4</p></li>
+</ul>
+<figure class="align-default" id="id32">
+<img alt="Ejercicio 35 de STP" src="../../_images/Grafo35.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 35 de STP</span><a class="headerlink" href="#id32" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-35">
+<h2>Solución al ejercicio STP 35<a class="headerlink" href="#solucion-al-ejercicio-stp-35" title="Link to this heading"></a></h2>
+<p>Switch raíz 2:1f</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>8:87, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto 87, estado Raiz</p></li>
+</ul>
+<p>4:2f, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto d9, estado Designado</p></li>
+<li><p>Puerto 2f, estado Raiz</p></li>
+</ul>
+<p>3:68, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 68, estado Designado</p></li>
+<li><p>Puerto b0, estado Raiz</p></li>
+</ul>
+<p>5:1c, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 6e, estado Designado</p></li>
+<li><p>Puerto 1c, estado Raiz</p></li>
+<li><p>Puerto 23, estado Bloqueado</p></li>
+</ul>
+<p>4:b2, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto b2, estado Raiz</p></li>
+</ul>
+<p>2:1f, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 60, estado Designado</p></li>
+<li><p>Puerto 1f, estado Designado</p></li>
+<li><p>Puerto 9d, estado Designado</p></li>
+</ul>
+<p>4:37, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 37, estado Designado</p></li>
+<li><p>Puerto 79, estado Designado</p></li>
+<li><p>Puerto 8e, estado Raiz</p></li>
+<li><p>Puerto 83, estado Designado</p></li>
+</ul>
+<p>4:a8, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto e2, estado Raiz</p></li>
+<li><p>Puerto a8, estado Bloqueado</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-36">
+<h2>Ejercicio STP 36<a class="headerlink" href="#ejercicio-stp-36" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 1</p></li>
+<li><p>Switch 2, prioridad 2</p></li>
+<li><p>Switch 3, prioridad 3</p></li>
+<li><p>Switch 4, prioridad 2</p></li>
+<li><p>Switch 5, prioridad 2</p></li>
+<li><p>Switch 6, prioridad 4</p></li>
+<li><p>Switch 7, prioridad 5</p></li>
+<li><p>Switch 8, prioridad 8</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 3, prioridad 3 con MAC 75 a la MAC b3 de Switch 8, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 8, prioridad 8 con MAC 19 a la MAC 6d de Switch 7, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 7, prioridad 5 con MAC 1c a la MAC 81 de Switch 6, prioridad 4</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 4 con MAC a3 a la MAC b6 de Switch 4, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 2 con MAC 30 a la MAC 88 de Switch 2, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 2 con MAC 7f a la MAC 4f de Switch 1, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 1 con MAC 6a a la MAC 1f de Switch 5, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 3 con MAC ed a la MAC bd de Switch 1, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 7, prioridad 5 con MAC 9d a la MAC 89 de Switch 1, prioridad 1</p></li>
+</ul>
+<figure class="align-default" id="id33">
+<img alt="Ejercicio 36 de STP" src="../../_images/Grafo36.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 36 de STP</span><a class="headerlink" href="#id33" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-36">
+<h2>Solución al ejercicio STP 36<a class="headerlink" href="#solucion-al-ejercicio-stp-36" title="Link to this heading"></a></h2>
+<p>Switch raíz 1:4f</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>1:4f, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 4f, estado Designado</p></li>
+<li><p>Puerto 6a, estado Designado</p></li>
+<li><p>Puerto bd, estado Designado</p></li>
+<li><p>Puerto 89, estado Designado</p></li>
+</ul>
+<p>2:7f, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 88, estado Designado</p></li>
+<li><p>Puerto 7f, estado Raiz</p></li>
+</ul>
+<p>3:75, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 75, estado Designado</p></li>
+<li><p>Puerto ed, estado Raiz</p></li>
+</ul>
+<p>2:30, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto b6, estado Bloqueado</p></li>
+<li><p>Puerto 30, estado Raiz</p></li>
+</ul>
+<p>2:1f, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 1f, estado Raiz</p></li>
+</ul>
+<p>4:81, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 81, estado Raiz</p></li>
+<li><p>Puerto a3, estado Designado</p></li>
+</ul>
+<p>5:1c, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 6d, estado Designado</p></li>
+<li><p>Puerto 1c, estado Designado</p></li>
+<li><p>Puerto 9d, estado Raiz</p></li>
+</ul>
+<p>8:19, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto b3, estado Bloqueado</p></li>
+<li><p>Puerto 19, estado Raiz</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-37">
+<h2>Ejercicio STP 37<a class="headerlink" href="#ejercicio-stp-37" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 4</p></li>
+<li><p>Switch 2, prioridad 2</p></li>
+<li><p>Switch 3, prioridad 8</p></li>
+<li><p>Switch 4, prioridad 4</p></li>
+<li><p>Switch 5, prioridad 2</p></li>
+<li><p>Switch 6, prioridad 3</p></li>
+<li><p>Switch 7, prioridad 1</p></li>
+<li><p>Switch 8, prioridad 6</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 4, prioridad 4 con MAC 9b a la MAC a8 de Switch 8, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 8, prioridad 6 con MAC 97 a la MAC 23 de Switch 5, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 2 con MAC 84 a la MAC f2 de Switch 1, prioridad 4</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 4 con MAC e2 a la MAC 62 de Switch 2, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 2 con MAC 19 a la MAC 85 de Switch 7, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 7, prioridad 1 con MAC 82 a la MAC 1b de Switch 6, prioridad 3</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 3 con MAC 26 a la MAC 25 de Switch 3, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 4 con MAC 95 a la MAC 64 de Switch 7, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 3 con MAC e6 a la MAC b3 de Switch 2, prioridad 2</p></li>
+</ul>
+<figure class="align-default" id="id34">
+<img alt="Ejercicio 37 de STP" src="../../_images/Grafo37.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 37 de STP</span><a class="headerlink" href="#id34" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-37">
+<h2>Solución al ejercicio STP 37<a class="headerlink" href="#solucion-al-ejercicio-stp-37" title="Link to this heading"></a></h2>
+<p>Switch raíz 1:64</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>4:e2, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto f2, estado Designado</p></li>
+<li><p>Puerto e2, estado Raiz</p></li>
+</ul>
+<p>2:19, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 62, estado Designado</p></li>
+<li><p>Puerto 19, estado Raiz</p></li>
+<li><p>Puerto b3, estado Designado</p></li>
+</ul>
+<p>8:25, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 25, estado Raiz</p></li>
+</ul>
+<p>4:95, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 9b, estado Designado</p></li>
+<li><p>Puerto 95, estado Raiz</p></li>
+</ul>
+<p>2:23, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto 23, estado Raiz</p></li>
+<li><p>Puerto 84, estado Bloqueado</p></li>
+</ul>
+<p>3:1b, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 1b, estado Raiz</p></li>
+<li><p>Puerto 26, estado Designado</p></li>
+<li><p>Puerto e6, estado Bloqueado</p></li>
+</ul>
+<p>1:64, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 85, estado Designado</p></li>
+<li><p>Puerto 82, estado Designado</p></li>
+<li><p>Puerto 64, estado Designado</p></li>
+</ul>
+<p>6:97, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto a8, estado Raiz</p></li>
+<li><p>Puerto 97, estado Designado</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-38">
+<h2>Ejercicio STP 38<a class="headerlink" href="#ejercicio-stp-38" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 5</p></li>
+<li><p>Switch 2, prioridad 4</p></li>
+<li><p>Switch 3, prioridad 3</p></li>
+<li><p>Switch 4, prioridad 6</p></li>
+<li><p>Switch 5, prioridad 7</p></li>
+<li><p>Switch 6, prioridad 8</p></li>
+<li><p>Switch 7, prioridad 4</p></li>
+<li><p>Switch 8, prioridad 1</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 4, prioridad 6 con MAC 74 a la MAC 85 de Switch 8, prioridad 1</p></li>
+<li><p>Conexion desde el Switch 8, prioridad 1 con MAC fb a la MAC bf de Switch 2, prioridad 4</p></li>
+<li><p>Conexion desde el Switch 2, prioridad 4 con MAC df a la MAC 6c de Switch 5, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 7 con MAC 88 a la MAC d4 de Switch 3, prioridad 3</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 3 con MAC cd a la MAC 43 de Switch 1, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 5 con MAC e1 a la MAC f9 de Switch 7, prioridad 4</p></li>
+<li><p>Conexion desde el Switch 7, prioridad 4 con MAC 1b a la MAC c5 de Switch 6, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 3 con MAC 23 a la MAC a1 de Switch 2, prioridad 4</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 8 con MAC 7c a la MAC 59 de Switch 8, prioridad 1</p></li>
+</ul>
+<figure class="align-default" id="id35">
+<img alt="Ejercicio 38 de STP" src="../../_images/Grafo38.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 38 de STP</span><a class="headerlink" href="#id35" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-38">
+<h2>Solución al ejercicio STP 38<a class="headerlink" href="#solucion-al-ejercicio-stp-38" title="Link to this heading"></a></h2>
+<p>Switch raíz 1:59</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>5:43, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto 43, estado Raiz</p></li>
+<li><p>Puerto e1, estado Bloqueado</p></li>
+</ul>
+<p>4:a1, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto bf, estado Raiz</p></li>
+<li><p>Puerto df, estado Designado</p></li>
+<li><p>Puerto a1, estado Designado</p></li>
+</ul>
+<p>3:23, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto d4, estado Bloqueado</p></li>
+<li><p>Puerto cd, estado Designado</p></li>
+<li><p>Puerto 23, estado Raiz</p></li>
+</ul>
+<p>6:74, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 74, estado Raiz</p></li>
+</ul>
+<p>7:6c, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 6c, estado Raiz</p></li>
+<li><p>Puerto 88, estado Designado</p></li>
+</ul>
+<p>8:7c, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto c5, estado Designado</p></li>
+<li><p>Puerto 7c, estado Raiz</p></li>
+</ul>
+<p>4:1b, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto f9, estado Designado</p></li>
+<li><p>Puerto 1b, estado Raiz</p></li>
+</ul>
+<p>1:59, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 85, estado Designado</p></li>
+<li><p>Puerto fb, estado Designado</p></li>
+<li><p>Puerto 59, estado Designado</p></li>
+</ul>
+</section>
+<section id="ejercicio-stp-39">
+<h2>Ejercicio STP 39<a class="headerlink" href="#ejercicio-stp-39" title="Link to this heading"></a></h2>
+<p>Indicar el estado final en que quedará una red de switches que ejecutan STP. Ten en cuenta que el número de un switch es <em>irrelevante.</em> Lo que importa son las prioridades y las MAC más pequeñas. Las prioridades de los switches son:</p>
+<ul class="simple">
+<li><p>Switch 1, prioridad 5</p></li>
+<li><p>Switch 2, prioridad 4</p></li>
+<li><p>Switch 3, prioridad 7</p></li>
+<li><p>Switch 4, prioridad 2</p></li>
+<li><p>Switch 5, prioridad 8</p></li>
+<li><p>Switch 6, prioridad 5</p></li>
+<li><p>Switch 7, prioridad 6</p></li>
+<li><p>Switch 8, prioridad 8</p></li>
+</ul>
+<p>Las conexiones entre switches son:</p>
+<ul class="simple">
+<li><p>Conexion desde el Switch 2, prioridad 4 con MAC f3 a la MAC 9b de Switch 7, prioridad 6</p></li>
+<li><p>Conexion desde el Switch 7, prioridad 6 con MAC 4d a la MAC 26 de Switch 4, prioridad 2</p></li>
+<li><p>Conexion desde el Switch 4, prioridad 2 con MAC bc a la MAC 2b de Switch 1, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 5 con MAC 7f a la MAC f2 de Switch 3, prioridad 7</p></li>
+<li><p>Conexion desde el Switch 3, prioridad 7 con MAC 37 a la MAC 13 de Switch 5, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 5, prioridad 8 con MAC 68 a la MAC c9 de Switch 6, prioridad 5</p></li>
+<li><p>Conexion desde el Switch 6, prioridad 5 con MAC 9e a la MAC 97 de Switch 8, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 1, prioridad 5 con MAC 4f a la MAC cd de Switch 8, prioridad 8</p></li>
+<li><p>Conexion desde el Switch 8, prioridad 8 con MAC 74 a la MAC c2 de Switch 7, prioridad 6</p></li>
+</ul>
+<figure class="align-default" id="id36">
+<img alt="Ejercicio 39 de STP" src="../../_images/Grafo39.png" />
+<figcaption>
+<p><span class="caption-text">Ejercicio 39 de STP</span><a class="headerlink" href="#id36" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-al-ejercicio-stp-39">
+<h2>Solución al ejercicio STP 39<a class="headerlink" href="#solucion-al-ejercicio-stp-39" title="Link to this heading"></a></h2>
+<p>Switch raíz 2:26</p>
+<p>A continuación se indica cada switch con el formato prioridad:mac-mas-baja junto al estado de sus puertos.</p>
+<p>5:2b, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 2b, estado Raiz</p></li>
+<li><p>Puerto 7f, estado Designado</p></li>
+<li><p>Puerto 4f, estado Designado</p></li>
+</ul>
+<p>4:f3, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto f3, estado Raiz</p></li>
+</ul>
+<p>7:37, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto f2, estado Raiz</p></li>
+<li><p>Puerto 37, estado Designado</p></li>
+</ul>
+<p>2:26, distancia a raíz:0</p>
+<ul class="simple">
+<li><p>Puerto 26, estado Designado</p></li>
+<li><p>Puerto bc, estado Designado</p></li>
+</ul>
+<p>8:13, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto 13, estado Raiz</p></li>
+<li><p>Puerto 68, estado Designado</p></li>
+</ul>
+<p>5:9e, distancia a raíz:3</p>
+<ul class="simple">
+<li><p>Puerto c9, estado Bloqueado</p></li>
+<li><p>Puerto 9e, estado Raiz</p></li>
+</ul>
+<p>6:4d, distancia a raíz:1</p>
+<ul class="simple">
+<li><p>Puerto 9b, estado Designado</p></li>
+<li><p>Puerto 4d, estado Raiz</p></li>
+<li><p>Puerto c2, estado Designado</p></li>
+</ul>
+<p>8:74, distancia a raíz:2</p>
+<ul class="simple">
+<li><p>Puerto 97, estado Designado</p></li>
+<li><p>Puerto cd, estado Bloqueado</p></li>
+<li><p>Puerto 74, estado Raiz</p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Apuntes de redes</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegación</h3>
+<p class="caption" role="heading"><span class="caption-text">Índice:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../t1_caracterizacion_redes/apuntes_t1.html">Tema 1:Caracterización de redes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t2_integracion_elementos/apuntes_t2.html">Tema 2:Integración de elementos en una red</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apuntes_t3.html">Tema 3:Configuración y administración de conmutadores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t5_vlans/apuntes_t5.html">Tema 4: Configuración de redes virtuales VLAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t4_routers/apuntes_t4.html">Tema 5: Configuración y administración básica de routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t6_enrutamiento_dinamico/apuntes_t6.html">Tema 6:Configuración y administración de protocolos dinámicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t7_acceso_internet/apuntes_t7.html">Tema 7: Configuración del acceso a Internet desde una LAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../anexos/t1_ejercicios.html">Anexo: Ejercicios propuestos para el tema 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t2_integracion_elementos/ejercicios_switches/ejercicios_dos_switches.html">Anexo: ejercicios con tablas MAC de switches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t2_integracion_elementos/ejercicios_subredes_ipv4/rangos_direcciones.html">Anexo: ejercicios sobre rangos de direcciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t2_integracion_elementos/ejercicios_subredes/ejercicios_calculo_subredes.html">Anexo: cálculo de subredes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t2_integracion_elementos/ejercicios_subredes_ipv4/ejercicios_dos_router.html">Anexo: ejercicios de enrutamiento</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t2_integracion_elementos/ejercicios_subredes_ipv4/ejercicios_3_router_caso_a.html">Anexo: ejercicios de enrutamiento con 3 routers (caso 1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t2_integracion_elementos/ejerciciosipv6/ejercicios_ipv6.html">Anexo: Ejercicios sobre compresión de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t2_integracion_elementos/ejerciciosipv6/ejercicios_ipv6.html#soluciones-a-compresion-de-direcciones-ipv6">Soluciones a compresión de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t2_integracion_elementos/ejercicios_ips/clasificacion_ipv6.html">Anexo: ejercicios sobre clasificación de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t2_integracion_elementos/ejercicios_ips/clasificacion_ipv6.html#soluciones-a-la-clasificaciones-de-direcciones-ipv6">Soluciones a la clasificaciones de direcciones IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t2_integracion_elementos/anexo_ejercicio_entero_ipv6/ejercicio_entero_ipv6.html">Anexo: resolución entera de ejercicio IPv6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ejercicios/ejercicios_switches.html">Anexo al tema 3: Ejercicios sobre comandos Cisco en switches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simuladorstp/stp1.html">Anexo al tema 3:Ejercicios STP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t5_vlans/ejercicios_vlans/ejercicios_vlans.html">Ejercicios con VLANS y VTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../t6_enrutamiento_dinamico/generador_ejercicios_vlsm/EjerciciosVLSM.html">Anexo:Ejercicios VLSM</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2021, Oscar G. G..
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="../../_sources/t3_conmutadores/generador_ejercicios_stp/Ejercicios_stp.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

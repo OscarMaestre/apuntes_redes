@@ -330,11 +330,11 @@ Spanning-Tree es un mecanismo que permite a los switches **detectar automáticam
 
 Para ello debe hacer dos cosas:
 
-1. Elegir un switch al que llamará "switch raíz" y en el que se fijarán todos los switches para tomar decisiones despues. El switch raíz será **aquel que tenga la prioridad más pequeña**. Si hay dos o más switch con la prioridad igual se elige **aquel que tenga la MAC más pequeña**. Por ejemplo la mac 0C-DD va antes que la A2-4F.
+1. Elegir un switch al que llamará "switch raíz" y en el que se fijarán todos los switches para tomar decisiones despues. El switch raíz será **aquel que tenga el identificador de puente/switch más pequeño**. El identificador de un switch es Prioridad+VLAN seguido de MAC Base
 
 2. Tomar decisiones sobre el estado en que quedarán los puertos. El algoritmo bloqueará puertos de manera que en la topología final no haya bucles.
 
-En concreto Spanning-Tree elige a la raíz,  proceso en el que los switches empiezan eligiéndose a sí mismos como raíz y comunicando lo que saben por todos los puertos. Cuando un switch ve a otro que tiene una prioridad mejor deja de proclamarse a sí mismo como raíz y anunciará la nueva raíz en pasos siguientes.
+En concreto Spanning-Tree elige a la raíz,  proceso en el que los switches empiezan eligiéndose a sí mismos como raíz y comunicando lo que saben por todos los puertos. Cuando un switch ve a otro que tiene una prioridad mejor deja de proclamarse a sí mismo como raíz y anunciará la nueva raíz en pasos siguientes. El proceso de "elegir al raíz" termina cuando un  switch recibe confirmación por todos los puertos de cual es el switch raíz.
 
 * Puerto raíz: es un puerto que indica que es el mejor camino para llegar a la raíz.
 * Puerto designado: es un puerto no raíz que es el mejor del segmento para llegar a la raíz.
