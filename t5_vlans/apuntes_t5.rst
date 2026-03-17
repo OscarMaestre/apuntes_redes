@@ -107,6 +107,112 @@ En algunos dispositivos se pueden configurar muchas interfaces a la vez, haciend
 .. WARNING:: 
    Al construir VLANs y enlaces troncales se debe tener cuidado al "copiar y pegar configuraciones" de unos switches a otros. Podría ocurrir que sin querer autorizásemos VLANs en enlaces troncales que no debían permitir ese paso.
 
+
+Un ejemplo de creación de enlaces troncales
+-----------------------------------------------------
+
+Se pide hacer todo lo que sea necesario para que cada equipo pueda ver solo a los de "su grupo".
+
+.. figure:: img/07-troncales.png
+
+Análisis
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Algunos puertos troncales van a necesitar "permiso" para manejar el tráfico de ciertas VLAN. En concreto, para que los de la VLAN 10 puedan intercomunicarse van a necesitar cruzar ambos switches.
+
+Visto esto, los comandos serían algo así
+
+Switch 0
+~~~~~~~~~~~~~~~~~~~~~~
+Comandos::
+
+    enable
+    configure terminal
+    !Se DEBEN crear las VLANS en todos los switches
+    !Los nombres no son obligatorios, pero suelen ponerse.
+    vlan 10
+    name GERENTES
+    vlan 20
+    name CONTABLES
+    exit
+    interface fastethernet 0/1
+    switchport mode access
+    switchport access vlan 10
+    exit
+    interface fastethernet 0/2
+    switchport mode access
+    switchport access vlan 20
+    exit
+    !Aquí definimos el puerto o puertos troncales
+    interface fastethernet 0/3
+    switchport mode trunk
+    switchport trunk allowed vlan 10,20
+    exit
+
+Switch 1
+~~~~~~~~~~~~~~
+Comandos::
+
+    enable
+    configure terminal
+    vlan 10
+    name GERENTES
+    vlan 20
+    name CONTABLES
+    exit
+    interface fastethernet 0/2
+    switchport mode access
+    switchport access vlan 10
+    exit
+    interface fastethernet 0/3
+    switchport mode access
+    switchport access vlan 10
+    exit
+    !Puertos troncales
+    !El Fa0/1 conecta con el switch de la izquierda, Switch 0
+    interface fastethernet 0/1
+    switchport mode trunk
+    switchport trunk allowed vlan 10,20
+    exit
+    !El Fa0/4 conecta con el switch de la derecha, Switch 2
+    interface fastethernet 0/4
+    switchport mode trunk
+    !Recordemos que se debe permitir la VLAN 10 porque viene
+    !tráfico de la VLAN 10 desde la izquierda
+    switchport trunk allowed vlan 10,20
+    exit
+
+Switch 2
+~~~~~~~~~~~~~~~~~~
+Comandos::
+
+
+    enable
+    configure terminal
+    vlan 10
+    name GERENTES
+    vlan 20
+    name CONTABLES
+    exit
+    interface fastethernet0/4
+    switchport mode access
+    switchport access allowed vlan 10
+    exit
+    !Como los puertos 1 y 2 TIENEN EXACTAMENTE LA MISMA CONFIGURACIÓN
+    !se pueden configurar usando "range". Los dos están en modo acceso
+    !y los dos puertos acceden a la vlan 20
+    interface range fastethernet0/1-2
+    switchport mode access
+    switchport access vlan 20
+    exit
+    !Puerto troncal
+    interface fastethernet0/3
+    switchport mode trunk
+    switchport trunk allowed vlan 10,20
+    exit
+
+
+
+
 Reflexión sobre ciclos en switches con VLANs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
