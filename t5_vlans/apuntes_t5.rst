@@ -222,6 +222,199 @@ Observa la figura siguiente
 
 ¿Por qué no se han deshabilitado puertos? En realidad sí se deshabilitan, pero cuando tenemos ciclos en switches que forman parte de VLANs puede ocurrir que **un puerto esté bloqueado dentro de una VLAN, pero esté activo dentro de otra VLAN distinta**. En realidad lo que ejecutan los switches modernos es PVST (Per-VLAN Spanning Tree)
 
+Ejercicio tipo examen con VLANs y ciclos
+---------------------------------------------
+Observemos la figura siguiente en la que se pide configurar todo lo necesario para que cada equipo vea solo a los de su VLAN, de la manera más óptima posible y dando la mínima cantidad de permisos posibles en VLAN. Se deben indicar los comandos de cada uno de los switches y explicar qué ocurrirá con el ciclo ¿seguirá activo?
+
+.. figure:: img/08-Ejercicio-examen-ciclos-vlan.png
+
+Comentarios al ejercicio
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Esta red tiene ciclos, de hecho podemos analizar el switch de abajo y ver esto::
+
+	enable
+	show spanning-tree
+	Fa0/4            Root FWD 19        128.4    P2p
+	Fa0/2            Desg FWD 19        128.2    P2p
+	Fa0/3            Altn BLK 19        128.3    P2p
+	Fa0/1            Desg FWD 19        128.1    P2p
+
+Es decir, que **hay un puerto bloqueado.** Si analizamos las redes, va a ser posible resolver nuestro problema de 2 maneras. Una en la habrá ciclo físico **pero no habrá ciclos en ninguna VLAN** y otra en la que sí habrá ciclos en las VLAN **pero no pasará nada porque nuestros switches tienen STP**
+
+Se debe recordar crear en los switches dos cosas
+
+1. Las VLAN de los ordenadores de sus puertos de acceso.
+2. Las VLAN de puertos troncales que acepten tráfico que "va de paso".
+
+Comentarios al ejercicio
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Esta red tiene ciclos, de hecho podemos analizar el switch de abajo y ver esto::
+	enable
+	show spanning-tree
+	Fa0/4            Root FWD 19        128.4    P2p
+	Fa0/2            Desg FWD 19        128.2    P2p
+	Fa0/3            Altn BLK 19        128.3    P2p
+	Fa0/1            Desg FWD 19        128.1    P2p
+
+Es decir, que **hay un puerto bloqueado.** Si analizamos las redes, va a ser posible resolver nuestro problema de 2 maneras. Una en la habrá ciclo físico **pero no habrá ciclos en ninguna VLAN** y otra en la que sí habrá ciclos en las VLAN **pero no pasará nada porque nuestros switches tienen STP**
+
+Se debe recordar crear en los switches dos cosas
+
+1. Las VLAN de los ordenadores de sus puertos de acceso.
+2. Las VLAN de puertos troncales que acepten tráfico que "va de paso".
+
+Configuración del switch 0 (solución sin ciclos en VLANs)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Los comandos serían estos::
+
+	enable
+	configure terminal
+	vlan 10
+	name CONTABLES
+	vlan 30
+	name GERENTES
+	exit
+	interface fastethernet 0/1
+	switchport mode access
+	switchport access vlan 10
+	exit
+	interface fastethernet 0/2
+	switchport mode access
+	switchport access vlan 30
+	exit
+	interface fastethernet 0/3
+	switchport mode trunk
+	switchport trunk allowed vlan 10
+	exit
+	interface fastethernet 0/4
+	switchport mode trunk
+	switchport trunk allowed vlan 30
+	exit
+	
+Configuración del switch 1 (solución sin ciclos en VLANs)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Los comandos serían estos::
+
+	enable
+	configure terminal	
+	vlan 10
+	name CONTABLES
+	vlan 20
+	name TECNICOS
+	exit
+	interface fastethernet 0/1
+	switchport mode access
+	switchport access vlan 10
+	exit
+	interface fastethernet 0/2
+	switchport mode access
+	switchport access vlan 20
+	exit
+	interface fastethernet 0/3
+	switchport mode trunk
+	switchport trunk allowed vlan 10
+	exit
+	interface fastethernet 0/4
+	switchport mode trunk
+	switchport trunk allowed vlan 10,20
+	exit
+Configuración del switch 2 (solución sin ciclos en VLANs)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Los comandos serían estos::
+	
+	enable
+	configure terminal
+	vlan 10
+	name CONTABLES
+	!Este switch DEBE tener la VLAN 20
+	!porque vamos a pedirle que acepte tráfico
+	!de esta VLAN y lo lleve a otra
+	vlan 20
+	name TECNICOS
+	vlan 30
+	name GERENTES
+	exit
+	interface fastethernet 0/1
+	switchport mode access
+	switchport access vlan 10
+	exit
+	interface fastethernet 0/2
+	switchport mode access
+	switchport access vlan 30
+	exit
+	interface fastethernet 0/3
+	switchport mode trunk
+	switchport trunk allowed vlan 10,20
+	exit
+	interface fastethernet 0/4
+	switchport mode trunk
+	switchport trunk allowed vlan 20,30
+	exit
+	
+Configuración del switch 3 (solución sin ciclos en VLANs)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Los comandos serían estos::
+	
+	enable
+	configure terminal
+	vlan 20
+	name TECNICOS
+	vlan 30
+	name GERENTES
+	exit
+	interface fastethernet 0/1
+	switchport mode access
+	switchport access vlan 20
+	exit
+	interface fastethernet 0/2
+	switchport mode access
+	switchport access vlan 30
+	exit
+	interface fastethernet 0/3
+	switchport mode trunk
+	switchport trunk allowed vlan 20,30
+	exit
+	interface fastethernet 0/4
+	switchport mode trunk
+	switchport trunk allowed vlan 30
+	exit
+	
+	
+Estado del ciclo físico en esta solución "sin ciclos virtuales"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Switch 0::
+
+	VLAN0001
+		...omitido...
+	Interface        Role Sts Cost      Prio.Nbr Type
+	Fa0/4            Root FWD 19        128.4    P2p
+	Fa0/3            Altn BLK 19        128.3    P2p
+
+	VLAN0020
+		...omitido...
+	Interface        Role Sts Cost      Prio.Nbr Type
+	Fa0/4            Desg FWD 19        128.4    P2p
+	Fa0/3            Root FWD 19        128.3    P2p
+	Fa0/1            Desg FWD 19        128.1    P2p
+
+	VLAN0030
+	  ...omitido...
+	Interface        Role Sts Cost      Prio.Nbr Type
+	Fa0/4            Root FWD 19        128.4    P2p
+	Fa0/2            Desg FWD 19        128.2    P2p
+	Fa0/3            Desg FWD 19        128.3    P2p     
+
+Es decir **HAY UNA INSTANCIA O EJECUCIÓN DE SPANNING-TREE POR CADA VLAN** lo que significa que un mismo puerto puede estar en distintos estados en cada VLAN.
+
+
+
+
+
+
+
+
+
 
     
 Protocolos para la administración centralizada de redes virtuales; el protocolo VTP
