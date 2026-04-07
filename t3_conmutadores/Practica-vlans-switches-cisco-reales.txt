@@ -1,0 +1,42 @@
+VLANs
+================================================
+Esta práctica se hace en grupos pequeños: más o menos un switch para cada grupo de mesas con 2/3 ordenadores. Todo el trabajo se hará con máquinas virtuales que deben tener sus tarjetas de red en modo puente.
+
+Al hacer algunas cosas puedes perder la conectividad con el switch y en varios casos esto se ha hecho intencionadamente para que reflexiones por qué ocurre eso. Si no sabes el por qué ocurre puedes probar a preguntar. De hecho, una vez que averigües la respuesta puede que sea más práctico ir conectando un PC a distintos puertos del switch.
+
+Paso 0
+--------------
+Conectar los PCs del grupo al switch y apuntar los números de puerto del switch donde los hemos conectado. Estos números serán importantes más adelante.
+
+
+Paso 1
+--------------------
+Observad vuestro número de PC. Asignad a las máquinas virtuales direcciones IP del tipo 192.168.140.xxx siendo XXX el número de PC. Poned en la máquina virtual la máscara 255.255.255.0. NO SE PONE PUERTA DE ENLACE NI DNS, las máquinas no van a contactar con el exterior.
+
+Comprueba que las máquinas pueden hacerse ping entre ellas.
+
+Paso 2
+---------------
+Fabricad en el switch dos o tres VLANs como estas:
+
+* VLAN 10 con nombre CONTABLES
+* VLAN 20 con nombre GERENTES
+* VLAN 30 con nombre TECNICOS
+
+
+Paso 3
+----------------
+Pon todas las máquinas virtuales del grupo en la misma VLAN (tendrás que poner sus puertos en modo acceso). Las máquinas virtuales deberán poder hacerse ping entre ellas, pero deberías perder la conexión con el switch ¿por qué ocurre eso?
+
+
+Paso 4
+------------------------------------
+Poned todas las máquinas virtuales del grupo en DISTINTAS VLAN. Ahora las máquinas ya no deberían poder hacerse ping entre ellas.
+
+Paso 5
+--------------------------------------------
+Usad un cable para conectar vuestro switch al de otro grupo y configurad todo correctamente para que las máquinas de las mismas VLAN puedan verse entre ellas. (Pista, será necesario usar "trunks")
+
+Paso 6
+--------------------------------------------------
+Poned uno de los switches en modo VTP server y el otro en modo VTP cliente, usando las mismas claves en ambos. Comprobad que al crear una VLAN en el server el cliente recibe esa información. Configurad luego el VTP server como cliente y el cliente como servidor y repetid la operación de crear o borrar VLANs.
