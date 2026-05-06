@@ -6,7 +6,7 @@ Al hacer algunas cosas puedes perder la conectividad con el switch y en varios c
 
 Paso 0
 --------------
-Conectar los PCs del grupo al switch y apuntar los números de puerto del switch donde los hemos conectado. Estos números serán importantes más adelante.
+Conectar los PCs del grupo al switch y apuntar los números de puerto del switch donde los hemos conectado. Estos números serán importantes más adelante. Durante todo el ejercicio necesitarás una máquina virtual extra que tenga Putty o SSH y que esté conectada al switch. Todas las operaciones con el switch las harás desde esta máquina extra que deberá tener todo el tiempo una IP y máscara compatibles con las del switch.
 
 
 Paso 1
