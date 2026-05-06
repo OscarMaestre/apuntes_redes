@@ -548,7 +548,7 @@ Solución:
 
 * Forzaremos la prohibición tan pronto como los datos lleguen al router 1, su tarjeta de red es la Fa0/0 que es la que le conecta con el router 0.
 * ¿Quien es el origen? Es un host y tiene la IP 10.0.0.100
-* ¿Qué puerto de origen usará? Uno dinámico pero a partir de TCP 49152
+* ¿Qué puerto de origen usará? Uno dinámico pero a partir de TCP 49152. Nota: *en realidad no sabemos el número de puerto y lo mejor sería no poner número de puerto, que es como decir "todos los puertos."* En la vida real no se pondría nada, pero aquí en clase lo hacemos para recalcar que siempre hay una IP de origen, un puerto de origen, una IP de destino y un puerto de destino.
 * ¿Quien es el destino? La regla se aplicará a otro host y en concreto es el host 20.0.0.200
 * ¿Qué puerto es el destino?  El TCP 80
 * ¿Qué acción se va a tomar? "Deny"

@@ -248,6 +248,196 @@ exit
 <p>¿Por qué no se han deshabilitado puertos? En realidad sí se deshabilitan, pero cuando tenemos ciclos en switches que forman parte de VLANs puede ocurrir que <strong>un puerto esté bloqueado dentro de una VLAN, pero esté activo dentro de otra VLAN distinta</strong>. En realidad lo que ejecutan los switches modernos es PVST (Per-VLAN Spanning Tree)</p>
 </section>
 </section>
+<section id="ejercicio-tipo-examen-con-vlans-y-ciclos">
+<h2>Ejercicio tipo examen con VLANs y ciclos<a class="headerlink" href="#ejercicio-tipo-examen-con-vlans-y-ciclos" title="Link to this heading"></a></h2>
+<p>Observemos la figura siguiente en la que se pide configurar todo lo necesario para que cada equipo vea solo a los de su VLAN, de la manera más óptima posible y dando la mínima cantidad de permisos posibles en VLAN. Se deben indicar los comandos de cada uno de los switches y explicar qué ocurrirá con el ciclo ¿seguirá activo?</p>
+<figure class="align-default">
+<img alt="../_images/08-Ejercicio-examen-ciclos-vlan.png" src="../_images/08-Ejercicio-examen-ciclos-vlan.png" />
+</figure>
+<section id="comentarios-al-ejercicio">
+<h3>Comentarios al ejercicio<a class="headerlink" href="#comentarios-al-ejercicio" title="Link to this heading"></a></h3>
+<p>Esta red tiene ciclos, de hecho podemos analizar el switch de abajo y ver esto:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
+<span class="n">show</span> <span class="n">spanning</span><span class="o">-</span><span class="n">tree</span>
+<span class="n">Fa0</span><span class="o">/</span><span class="mi">4</span>            <span class="n">Root</span> <span class="n">FWD</span> <span class="mi">19</span>        <span class="mf">128.4</span>    <span class="n">P2p</span>
+<span class="n">Fa0</span><span class="o">/</span><span class="mi">2</span>            <span class="n">Desg</span> <span class="n">FWD</span> <span class="mi">19</span>        <span class="mf">128.2</span>    <span class="n">P2p</span>
+<span class="n">Fa0</span><span class="o">/</span><span class="mi">3</span>            <span class="n">Altn</span> <span class="n">BLK</span> <span class="mi">19</span>        <span class="mf">128.3</span>    <span class="n">P2p</span>
+<span class="n">Fa0</span><span class="o">/</span><span class="mi">1</span>            <span class="n">Desg</span> <span class="n">FWD</span> <span class="mi">19</span>        <span class="mf">128.1</span>    <span class="n">P2p</span>
+</pre></div>
+</div>
+<p>Es decir, que <strong>hay un puerto bloqueado.</strong> Si analizamos las redes, va a ser posible resolver nuestro problema de 2 maneras. Una en la habrá ciclo físico <strong>pero no habrá ciclos en ninguna VLAN</strong> y otra en la que sí habrá ciclos en las VLAN <strong>pero no pasará nada porque nuestros switches tienen STP</strong></p>
+<p>Se debe recordar crear en los switches dos cosas</p>
+<ol class="arabic simple">
+<li><p>Las VLAN de los ordenadores de sus puertos de acceso.</p></li>
+<li><p>Las VLAN de puertos troncales que acepten tráfico que «va de paso».</p></li>
+</ol>
+</section>
+<section id="id1">
+<h3>Comentarios al ejercicio<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>Esta red tiene ciclos, de hecho podemos analizar el switch de abajo y ver esto::</dt><dd><p>enable
+show spanning-tree
+Fa0/4            Root FWD 19        128.4    P2p
+Fa0/2            Desg FWD 19        128.2    P2p
+Fa0/3            Altn BLK 19        128.3    P2p
+Fa0/1            Desg FWD 19        128.1    P2p</p>
+</dd>
+</dl>
+<p>Es decir, que <strong>hay un puerto bloqueado.</strong> Si analizamos las redes, va a ser posible resolver nuestro problema de 2 maneras. Una en la habrá ciclo físico <strong>pero no habrá ciclos en ninguna VLAN</strong> y otra en la que sí habrá ciclos en las VLAN <strong>pero no pasará nada porque nuestros switches tienen STP</strong></p>
+<p>Se debe recordar crear en los switches dos cosas</p>
+<ol class="arabic simple">
+<li><p>Las VLAN de los ordenadores de sus puertos de acceso.</p></li>
+<li><p>Las VLAN de puertos troncales que acepten tráfico que «va de paso».</p></li>
+</ol>
+</section>
+<section id="configuracion-del-switch-0-solucion-sin-ciclos-en-vlans">
+<h3>Configuración del switch 0 (solución sin ciclos en VLANs)<a class="headerlink" href="#configuracion-del-switch-0-solucion-sin-ciclos-en-vlans" title="Link to this heading"></a></h3>
+<p>Los comandos serían estos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
+<span class="n">configure</span> <span class="n">terminal</span>
+<span class="n">vlan</span> <span class="mi">10</span>
+<span class="n">name</span> <span class="n">CONTABLES</span>
+<span class="n">vlan</span> <span class="mi">30</span>
+<span class="n">name</span> <span class="n">GERENTES</span>
+<span class="n">exit</span>
+<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>
+<span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
+<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">10</span>
+<span class="n">exit</span>
+<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
+<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">30</span>
+<span class="n">exit</span>
+<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">3</span>
+<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
+<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">10</span>
+<span class="n">exit</span>
+<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">4</span>
+<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
+<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">30</span>
+<span class="n">exit</span>
+</pre></div>
+</div>
+</section>
+<section id="configuracion-del-switch-1-solucion-sin-ciclos-en-vlans">
+<h3>Configuración del switch 1 (solución sin ciclos en VLANs)<a class="headerlink" href="#configuracion-del-switch-1-solucion-sin-ciclos-en-vlans" title="Link to this heading"></a></h3>
+<p>Los comandos serían estos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
+<span class="n">configure</span> <span class="n">terminal</span>
+<span class="n">vlan</span> <span class="mi">10</span>
+<span class="n">name</span> <span class="n">CONTABLES</span>
+<span class="n">vlan</span> <span class="mi">20</span>
+<span class="n">name</span> <span class="n">TECNICOS</span>
+<span class="n">exit</span>
+<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>
+<span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
+<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">10</span>
+<span class="n">exit</span>
+<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
+<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">20</span>
+<span class="n">exit</span>
+<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">3</span>
+<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
+<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">10</span>
+<span class="n">exit</span>
+<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">4</span>
+<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
+<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">10</span><span class="p">,</span><span class="mi">20</span>
+<span class="n">exit</span>
+</pre></div>
+</div>
+</section>
+<section id="configuracion-del-switch-2-solucion-sin-ciclos-en-vlans">
+<h3>Configuración del switch 2 (solución sin ciclos en VLANs)<a class="headerlink" href="#configuracion-del-switch-2-solucion-sin-ciclos-en-vlans" title="Link to this heading"></a></h3>
+<p>Los comandos serían estos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>enable
+configure terminal
+vlan 10
+name CONTABLES
+!Este switch DEBE tener la VLAN 20
+!porque vamos a pedirle que acepte tráfico
+!de esta VLAN y lo lleve a otra
+vlan 20
+name TECNICOS
+vlan 30
+name GERENTES
+exit
+interface fastethernet 0/1
+switchport mode access
+switchport access vlan 10
+exit
+interface fastethernet 0/2
+switchport mode access
+switchport access vlan 30
+exit
+interface fastethernet 0/3
+switchport mode trunk
+switchport trunk allowed vlan 10,20
+exit
+interface fastethernet 0/4
+switchport mode trunk
+switchport trunk allowed vlan 20,30
+exit
+</pre></div>
+</div>
+</section>
+<section id="configuracion-del-switch-3-solucion-sin-ciclos-en-vlans">
+<h3>Configuración del switch 3 (solución sin ciclos en VLANs)<a class="headerlink" href="#configuracion-del-switch-3-solucion-sin-ciclos-en-vlans" title="Link to this heading"></a></h3>
+<p>Los comandos serían estos:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enable</span>
+<span class="n">configure</span> <span class="n">terminal</span>
+<span class="n">vlan</span> <span class="mi">20</span>
+<span class="n">name</span> <span class="n">TECNICOS</span>
+<span class="n">vlan</span> <span class="mi">30</span>
+<span class="n">name</span> <span class="n">GERENTES</span>
+<span class="n">exit</span>
+<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">1</span>
+<span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
+<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">20</span>
+<span class="n">exit</span>
+<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">switchport</span> <span class="n">mode</span> <span class="n">access</span>
+<span class="n">switchport</span> <span class="n">access</span> <span class="n">vlan</span> <span class="mi">30</span>
+<span class="n">exit</span>
+<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">3</span>
+<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
+<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">20</span><span class="p">,</span><span class="mi">30</span>
+<span class="n">exit</span>
+<span class="n">interface</span> <span class="n">fastethernet</span> <span class="mi">0</span><span class="o">/</span><span class="mi">4</span>
+<span class="n">switchport</span> <span class="n">mode</span> <span class="n">trunk</span>
+<span class="n">switchport</span> <span class="n">trunk</span> <span class="n">allowed</span> <span class="n">vlan</span> <span class="mi">30</span>
+<span class="n">exit</span>
+</pre></div>
+</div>
+</section>
+<section id="estado-del-ciclo-fisico-en-esta-solucion-sin-ciclos-virtuales">
+<h3>Estado del ciclo físico en esta solución «sin ciclos virtuales»<a class="headerlink" href="#estado-del-ciclo-fisico-en-esta-solucion-sin-ciclos-virtuales" title="Link to this heading"></a></h3>
+<p>Switch 0:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VLAN0001</span>
+        <span class="o">...</span><span class="n">omitido</span><span class="o">...</span>
+<span class="n">Interface</span>        <span class="n">Role</span> <span class="n">Sts</span> <span class="n">Cost</span>      <span class="n">Prio</span><span class="o">.</span><span class="n">Nbr</span> <span class="n">Type</span>
+<span class="n">Fa0</span><span class="o">/</span><span class="mi">4</span>            <span class="n">Root</span> <span class="n">FWD</span> <span class="mi">19</span>        <span class="mf">128.4</span>    <span class="n">P2p</span>
+<span class="n">Fa0</span><span class="o">/</span><span class="mi">3</span>            <span class="n">Altn</span> <span class="n">BLK</span> <span class="mi">19</span>        <span class="mf">128.3</span>    <span class="n">P2p</span>
+
+<span class="n">VLAN0020</span>
+        <span class="o">...</span><span class="n">omitido</span><span class="o">...</span>
+<span class="n">Interface</span>        <span class="n">Role</span> <span class="n">Sts</span> <span class="n">Cost</span>      <span class="n">Prio</span><span class="o">.</span><span class="n">Nbr</span> <span class="n">Type</span>
+<span class="n">Fa0</span><span class="o">/</span><span class="mi">4</span>            <span class="n">Desg</span> <span class="n">FWD</span> <span class="mi">19</span>        <span class="mf">128.4</span>    <span class="n">P2p</span>
+<span class="n">Fa0</span><span class="o">/</span><span class="mi">3</span>            <span class="n">Root</span> <span class="n">FWD</span> <span class="mi">19</span>        <span class="mf">128.3</span>    <span class="n">P2p</span>
+<span class="n">Fa0</span><span class="o">/</span><span class="mi">1</span>            <span class="n">Desg</span> <span class="n">FWD</span> <span class="mi">19</span>        <span class="mf">128.1</span>    <span class="n">P2p</span>
+
+<span class="n">VLAN0030</span>
+  <span class="o">...</span><span class="n">omitido</span><span class="o">...</span>
+<span class="n">Interface</span>        <span class="n">Role</span> <span class="n">Sts</span> <span class="n">Cost</span>      <span class="n">Prio</span><span class="o">.</span><span class="n">Nbr</span> <span class="n">Type</span>
+<span class="n">Fa0</span><span class="o">/</span><span class="mi">4</span>            <span class="n">Root</span> <span class="n">FWD</span> <span class="mi">19</span>        <span class="mf">128.4</span>    <span class="n">P2p</span>
+<span class="n">Fa0</span><span class="o">/</span><span class="mi">2</span>            <span class="n">Desg</span> <span class="n">FWD</span> <span class="mi">19</span>        <span class="mf">128.2</span>    <span class="n">P2p</span>
+<span class="n">Fa0</span><span class="o">/</span><span class="mi">3</span>            <span class="n">Desg</span> <span class="n">FWD</span> <span class="mi">19</span>        <span class="mf">128.3</span>    <span class="n">P2p</span>
+</pre></div>
+</div>
+<p>Es decir <strong>HAY UNA INSTANCIA O EJECUCIÓN DE SPANNING-TREE POR CADA VLAN</strong> lo que significa que un mismo puerto puede estar en distintos estados en cada VLAN.</p>
+</section>
+</section>
 <section id="protocolos-para-la-administracion-centralizada-de-redes-virtuales-el-protocolo-vtp">
 <h2>Protocolos para la administración centralizada de redes virtuales; el protocolo VTP<a class="headerlink" href="#protocolos-para-la-administracion-centralizada-de-redes-virtuales-el-protocolo-vtp" title="Link to this heading"></a></h2>
 <p>En realidad <strong>las VLAN no se crean «sobre la marcha» a medida que definimos los interfaces</strong>. En redes grandes se establecen muy claramente dos cosas:</p>
@@ -519,17 +709,17 @@ Writing running-config...!!
 <section id="anexo-primeros-pasos-con-un-switch-cisco">
 <h2>Anexo: primeros pasos con un switch Cisco<a class="headerlink" href="#anexo-primeros-pasos-con-un-switch-cisco" title="Link to this heading"></a></h2>
 <p>En la imagen siguiente podemos ver el frontal de un switch Cisco Catalyst 2960-S.</p>
-<figure class="align-center" id="id1">
+<figure class="align-center" id="id2">
 <a class="reference internal image-reference" href="../_images/07-switch01.jpg"><img alt="Frontal de un switch Cisco" src="../_images/07-switch01.jpg" style="width: 648.0px; height: 170.0px;" /></a>
 <figcaption>
-<p><span class="caption-text">Frontal de un switch Cisco</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+<p><span class="caption-text">Frontal de un switch Cisco</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>Estos dispositivos son muy parecidos a un ordenador normal. De hecho, al encenderlos ejecutan un proceso de autocomprobación bastante exhaustivo que dura aproximadamente 5 minutos. Como puede verse, no solo hay varios puertos sino también unos cuantos indicadores y un botón con el texto «MODE».</p>
-<figure class="align-center" id="id2">
+<figure class="align-center" id="id3">
 <a class="reference internal image-reference" href="../_images/08-indicadores.jpg"><img alt="Indicadores de un switch Cisco" src="../_images/08-indicadores.jpg" style="width: 400.0px; height: 300.0px;" /></a>
 <figcaption>
-<p><span class="caption-text">Indicadores de un switch Cisco</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+<p><span class="caption-text">Indicadores de un switch Cisco</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>El botón MODE puede pulsarse de dos maneras: una pulsación corta y una larga. Cuando el switch está funcionando normalmente podemos hacer pulsaciones cortas sobre el botón MODE y veremos como el switch enciende uno de estos diodos:</p>
@@ -714,6 +904,16 @@ end
 <li class="toctree-l3"><a class="reference internal" href="#switch-1">Switch 1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#switch-2">Switch 2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#reflexion-sobre-ciclos-en-switches-con-vlans">Reflexión sobre ciclos en switches con VLANs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ejercicio-tipo-examen-con-vlans-y-ciclos">Ejercicio tipo examen con VLANs y ciclos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#comentarios-al-ejercicio">Comentarios al ejercicio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Comentarios al ejercicio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuracion-del-switch-0-solucion-sin-ciclos-en-vlans">Configuración del switch 0 (solución sin ciclos en VLANs)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuracion-del-switch-1-solucion-sin-ciclos-en-vlans">Configuración del switch 1 (solución sin ciclos en VLANs)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuracion-del-switch-2-solucion-sin-ciclos-en-vlans">Configuración del switch 2 (solución sin ciclos en VLANs)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuracion-del-switch-3-solucion-sin-ciclos-en-vlans">Configuración del switch 3 (solución sin ciclos en VLANs)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#estado-del-ciclo-fisico-en-esta-solucion-sin-ciclos-virtuales">Estado del ciclo físico en esta solución «sin ciclos virtuales»</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#protocolos-para-la-administracion-centralizada-de-redes-virtuales-el-protocolo-vtp">Protocolos para la administración centralizada de redes virtuales; el protocolo VTP</a><ul>
